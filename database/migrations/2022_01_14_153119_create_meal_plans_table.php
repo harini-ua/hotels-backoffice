@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCityStatusesTable extends Migration
+class CreateMealPlansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateCityStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('city_statuses', function (Blueprint $table) {
+        Schema::create('meal_plans', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('code');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +29,6 @@ class CreateCityStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('city_statuses');
+        Schema::dropIfExists('meal_plans');
     }
 }

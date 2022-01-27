@@ -19,17 +19,16 @@ class CreateCitiesTable extends Migration
             $table->string('state');
             $table->unsignedBigInteger('country_id');
             $table->unsignedBigInteger('city_status_id');
-            $table->boolean('status');
+            $table->boolean('active');
             $table->double('latitude')->nullable();
             $table->double('longitude')->nullable();
             $table->bigInteger('hotels_count');
             $table->smallInteger('popularity');
-            $table->boolean('binded_status');
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('country_id')->references('id')->on('countries');
-            $table->foreign('city_status_id')->references('id')->on('city_statuses');
+            $table->foreign('city_status_id')->references('id')->on('cities_statuses');
         });
     }
 
