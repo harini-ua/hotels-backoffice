@@ -15,14 +15,17 @@ class CreateCountriesTable extends Migration
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('currency_id');
+            $table->unsignedBigInteger('language_id');
             $table->string('name');
             $table->string('region');
             $table->string('code');
-            $table->string('currency');
-            $table->timestamp('binded_date');
-            $table->boolean('status');
+            $table->boolean('status')->default(0);
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('currency_id')->references('id')->on('currencies');
+            $table->foreign('language_id')->references('id')->on('languages');
         });
     }
 

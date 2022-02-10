@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProvidersTable extends Migration
+class CreateUserPartnerGiftcardTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateProvidersTable extends Migration
      */
     public function up()
     {
-        Schema::create('providers', function (Blueprint $table) {
+        Schema::create('user_partner_giftcard', function (Blueprint $table) {
             $table->id();
-            $table->string('provider_name');
-            $table->string('email')->unique()->default(null);
+            $table->unsignedBigInteger('user_id');
+            $table->string('partner_gitfcard_id', 500);
+            $table->string('partner_gitfcard_code', 500);
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -29,6 +32,6 @@ class CreateProvidersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('providers');
+        Schema::dropIfExists('user_partner_giftcard');
     }
 }

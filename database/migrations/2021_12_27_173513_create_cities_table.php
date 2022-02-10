@@ -16,19 +16,17 @@ class CreateCitiesTable extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('state');
+            $table->string('state')->default('');
             $table->unsignedBigInteger('country_id');
-            $table->unsignedBigInteger('city_status_id');
-            $table->boolean('active');
+            $table->boolean('status')->default(0)->comment('0-new city, 1-active, 2-inactive, 3-blacklisted');
             $table->double('latitude')->nullable();
             $table->double('longitude')->nullable();
-            $table->bigInteger('hotels_count');
-            $table->smallInteger('popularity');
+            $table->bigInteger('hotels_count')->default(0);
+            $table->smallInteger('popularity')->default(10);
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('country_id')->references('id')->on('countries');
-            $table->foreign('city_status_id')->references('id')->on('cities_statuses');
         });
     }
 

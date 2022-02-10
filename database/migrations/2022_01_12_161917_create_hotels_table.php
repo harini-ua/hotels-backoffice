@@ -18,8 +18,8 @@ class CreateHotelsTable extends Migration
             $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('tti_code');
             $table->unsignedBigInteger('giata_code');
-            $table->unsignedBigInteger('hotel_status_id');
-            $table->boolean('active');
+            $table->tinyInteger('status')->comment('0-old, 1-new, 2-blacklisted');
+            $table->boolean('active')->comment('0-not active, 1-active')->default(0);
             $table->smallInteger('rating');
             $table->smallInteger('popularity');
             $table->smallInteger('recommended');
@@ -30,15 +30,11 @@ class CreateHotelsTable extends Migration
             $table->string('postal_code');
             $table->double('latitude')->nullable();
             $table->double('longitude')->nullable();
-            $table->longText('description');
-            $table->longText('images');
-            $table->longText('facilities');
 
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('city_id')->references('id')->on('cities');
-            $table->foreign('hotel_status_id')->references('id')->on('hotels_statuses');
         });
     }
 

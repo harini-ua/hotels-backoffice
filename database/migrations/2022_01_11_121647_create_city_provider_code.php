@@ -18,8 +18,7 @@ class CreateCityProviderCode extends Migration
             $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('provider_id');
             $table->string('provider_city_code');
-            $table->boolean('status');
-            $table->boolean('bind_status');
+            $table->boolean('status')->default(0)->comment('0-inactive, 1-active');
             $table->timestamps();
             $table->softDeletes();
 

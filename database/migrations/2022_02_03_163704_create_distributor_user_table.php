@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHotelsStatusesTable extends Migration
+class CreateDistributorUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreateHotelsStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('hotels_statuses', function (Blueprint $table) {
+        Schema::create('distributor_user', function (Blueprint $table) {
             $table->id();
-            $table->string('status_name');
+            $table->unsignedBigInteger('distributor_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('distributor_id')->references('id')->on('distributors');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -28,6 +32,6 @@ class CreateHotelsStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hotels_statuses');
+        Schema::dropIfExists('distributor_user');
     }
 }

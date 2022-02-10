@@ -17,7 +17,7 @@ class CreatePartnersTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->boolean('type');
+            $table->boolean('type')->comment('0-external, 1-internal');
             $table->timestamps();
             $table->softDeletes();
         });

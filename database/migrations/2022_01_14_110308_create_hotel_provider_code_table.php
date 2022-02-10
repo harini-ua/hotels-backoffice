@@ -18,9 +18,7 @@ class CreateHotelProviderCodeTable extends Migration
             $table->unsignedBigInteger('hotel_id');
             $table->unsignedBigInteger('provider_id');
             $table->string('provider_hotel_code');
-            $table->bigInteger('tti_code');
-            $table->boolean('status');
-            $table->boolean('bind_status');
+            $table->boolean('active')->comment('0-not active, 1-active')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

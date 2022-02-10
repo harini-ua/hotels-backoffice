@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCitiesStatusesTable extends Migration
+class CreateDistributorCountryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreateCitiesStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cities_statuses', function (Blueprint $table) {
+        Schema::create('distributor_country', function (Blueprint $table) {
             $table->id();
-            $table->string('status_name');
+            $table->unsignedBigInteger('distributor_id');
+            $table->unsignedBigInteger('country_id');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('distributor_id')->references('id')->on('distributors');
+            $table->foreign('country_id')->references('id')->on('countries');
         });
     }
 
@@ -28,6 +32,6 @@ class CreateCitiesStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities_statuses');
+        Schema::dropIfExists('distributor_country');
     }
 }

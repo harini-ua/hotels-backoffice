@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompanyExtraNightsTable extends Migration
+class CreateCompanySupportTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,18 @@ class CreateCompanyExtraNightsTable extends Migration
      */
     public function up()
     {
-        Schema::create('company_extra_nights', function (Blueprint $table) {
+        Schema::create('company_support', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('company_id');
-            $table->unsignedBigInteger('currency_id');
-            $table->double('partner_price', 10, 4);
-            $table->double('customer_price', 10, 4);
+            $table->unsignedBigInteger('country_id');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('work_hours');
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('company_id')->references('id')->on('companies');
-            $table->foreign('currency_id')->references('id')->on('currencies');
+            $table->foreign('country_id')->references('id')->on('countries');
         });
     }
 
@@ -34,6 +35,6 @@ class CreateCompanyExtraNightsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_extra_nights');
+        Schema::dropIfExists('company_support');
     }
 }

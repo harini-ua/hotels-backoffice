@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProvidersTable extends Migration
+class CreateCompanyTestimonialItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,16 @@ class CreateProvidersTable extends Migration
      */
     public function up()
     {
-        Schema::create('providers', function (Blueprint $table) {
+        Schema::create('company_testimonial_items', function (Blueprint $table) {
             $table->id();
-            $table->string('provider_name');
-            $table->string('email')->unique()->default(null);
+            $table->unsignedBigInteger('testimonial_id');
+            $table->string('image');
+            $table->string('title');
+            $table->text('text');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('testimonial_id')->references('id')->on('company_testimonials');
         });
     }
 
@@ -29,6 +33,6 @@ class CreateProvidersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('providers');
+        Schema::dropIfExists('company_testimonial_items');
     }
 }
