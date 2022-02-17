@@ -18,12 +18,12 @@ class CreateCityProviderCode extends Migration
             $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('provider_id');
             $table->string('provider_city_code');
-            $table->boolean('status')->default(0)->comment('0-inactive, 1-active');
+            $table->boolean('status')->default(0)->comment('0-inactive, 1-active, 2-new');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('city_id')->references('id')->on('cities');
-            $table->foreign('provider_id')->references('id')->on('providers');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
+            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
         });
     }
 

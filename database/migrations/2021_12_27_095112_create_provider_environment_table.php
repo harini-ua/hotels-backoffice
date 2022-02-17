@@ -26,6 +26,7 @@ class CreateProviderEnvironmentTable extends Migration
             $table->string('user_code')->default(null);
             $table->string('api_key')->default(null);
             $table->string('api_secret')->default(null);
+            $table->string('main_endpoint', 1000)->default(null);
             $table->string('search_endpoint', 1000)->default(null);
             $table->string('recheck_endpoint', 1000)->default(null);
             $table->string('pre_reservation_endpoint', 1000)->default(null);
