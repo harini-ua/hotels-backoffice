@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CitySeeder::class);
         $this->call(CityProviderCodeSeeder::class);
         $this->call(HotelSeeder::class);
-//        $this->call(FacilitySeeder::class);
-//        $this->call(FacilityVariantSeeder::class);
-//        $this->call(HotelFacilitySeeder::class);
+        $this->call(FacilitySeeder::class);
+        $this->call(FacilityVariantSeeder::class);
+        $this->call(HotelFacilitySeeder::class);
         $this->call(HotelImageSeeder::class);
     }
 }
