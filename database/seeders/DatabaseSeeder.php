@@ -26,5 +26,6 @@ class DatabaseSeeder extends Seeder
         $this->call(FacilityVariantSeeder::class);
         $this->call(HotelFacilitySeeder::class);
         $this->call(HotelImageSeeder::class);
+        $this->call(HotelProviderCodeSeeder::class);
     }
 }

@@ -132,7 +132,7 @@ class FacilityVariantSeeder extends Seeder
                 $facility_id = DB::table('facilities')->select('id')->where('name', $facility_name)->first();
                 $facilities[] = [
                     'facility_id' => $facility_id->id,
-                    'name' => $variant,
+                    'name' => strtolower($variant),
                 ];
             }
         }

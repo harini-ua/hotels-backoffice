@@ -20,7 +20,9 @@ class CreateHotelProviderCodeTable extends Migration
             $table->string('provider_hotel_code');
             $table->unsignedBigInteger('tti_code');
             $table->unsignedBigInteger('giata_code');
-            $table->boolean('active')->comment('0-not active, 1-active')->default(0);
+            $table->tinyInteger('status')->comment('1-new, 2-old, 3-binded');
+            $table->boolean('blacklisted')->comment('0-active, 1-blacklisted')->default(0);
+            $table->string('hotel_name', 1000);
             $table->timestamps();
             $table->softDeletes();
 
