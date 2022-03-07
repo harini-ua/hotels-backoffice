@@ -17,6 +17,7 @@ class CreateMealPlansVariantsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('meal_plan_id');
             $table->string('name');
+            $table->string('code');
             $table->timestamps();
             $table->softDeletes();
 

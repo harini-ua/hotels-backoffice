@@ -17,7 +17,6 @@ class CreateCompanyThemeTable extends Migration
             $table->id();
             $table->string('theme_name');
             $table->string('theme_color');
-            $table->string('theme_image', 300);
             $table->string('theme_stylesheet', 300);
             $table->timestamps();
         });

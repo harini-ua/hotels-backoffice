@@ -17,7 +17,7 @@ class CreateHotelCommissionTable extends Migration
             $table->id();
             $table->unsignedBigInteger('hotel_id');
             $table->unsignedBigInteger('commission_id');
-            $table->mediumInteger('commission');
+            $table->mediumInteger('commission')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

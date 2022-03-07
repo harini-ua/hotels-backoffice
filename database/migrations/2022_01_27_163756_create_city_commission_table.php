@@ -17,7 +17,7 @@ class CreateCityCommissionTable extends Migration
             $table->id();
             $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('commission_id');
-            $table->mediumInteger('commission');
+            $table->mediumInteger('commission')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

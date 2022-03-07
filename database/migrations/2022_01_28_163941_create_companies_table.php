@@ -19,7 +19,7 @@ class CreateCompaniesTable extends Migration
             $table->string('company_name');
             $table->boolean('category');
             $table->unsignedBigInteger('country_id');
-            $table->unsignedBigInteger('city_id');
+            $table->unsignedBigInteger('city_id')->nullable();
             $table->unsignedBigInteger('language_id');
             $table->text('address');
             $table->string('email')->unique();

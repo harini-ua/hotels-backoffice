@@ -27,5 +27,15 @@ class DatabaseSeeder extends Seeder
         $this->call(HotelFacilitySeeder::class);
         $this->call(HotelImageSeeder::class);
         $this->call(HotelProviderCodeSeeder::class);
+        $this->call(MealPlanSeeder::class);
+        $this->call(MealPlanVariantSeeder::class);
+        $this->call(CommissionSeeder::class);
+        $this->call(CountryCommissionSeeder::class);
+        $this->call(CityCommissionSeeder::class);
+        $this->call(HotelCommissionSeeder::class);
+        $this->call(PartnerSeeder::class);
+        $this->call(PartnerProductSeeder::class);
+        $this->call(PartnerEnvironmentSeeder::class);
+        $this->call(CompanySeeder::class);
     }
 }
