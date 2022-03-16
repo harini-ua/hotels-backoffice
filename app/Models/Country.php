@@ -59,4 +59,12 @@ class Country extends Model
             ->using(CountryCommission::class)
             ->withPivot((new CountryCommission())->getFillable());
     }
+
+    /**
+     * The distributors that belong to the country.
+     */
+    public function distributors()
+    {
+        return $this->belongsToMany(Distributor::class, 'distributor_country');
+    }
 }

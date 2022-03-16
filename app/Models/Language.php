@@ -32,4 +32,12 @@ class Language extends Model
     {
         return $this->hasMany(Country::class);
     }
+
+    /**
+     * The distributors that belong to the language.
+     */
+    public function distributors()
+    {
+        return $this->belongsToMany(Distributor::class, 'distributor_language');
+    }
 }

@@ -49,4 +49,12 @@ class Company extends Model
     {
         return $this->hasOne(Language::class);
     }
+
+    /**
+     * The distributors that belong to the company.
+     */
+    public function distributors()
+    {
+        return $this->belongsToMany(Distributor::class, 'distributor_company');
+    }
 }
