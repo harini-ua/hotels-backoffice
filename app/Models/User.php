@@ -22,7 +22,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'title', 'firstname', 'lastname', 'email', 'password', 'company_name', 'phone', 'country_id', 'city_id',
+        'address', 'status', 'last_login', 'newsletter', 'currency_id', 'language_id', 'ip_address',
     ];
 
     /**
@@ -41,5 +42,48 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'last_login' => 'datetime',
     ];
+
+    /**
+     * Get the country associated with the user.
+     */
+    public function country()
+    {
+        return $this->hasOne(Country::class);
+    }
+
+    /**
+     * Get the city associated with the user.
+     */
+    public function city()
+    {
+        return $this->hasOne(City::class);
+    }
+
+    /**
+     * Get the currency associated with the user.
+     */
+    public function currency()
+    {
+        return $this->hasOne(Currency::class);
+    }
+
+    /**
+     * Get the language associated with the user.
+     */
+    public function language()
+    {
+        return $this->hasOne(Language::class);
+    }
+
+    /**
+     * Get the user's full name.
+     *
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return "{$this->firstname} {$this->lastname}";
+    }
 }

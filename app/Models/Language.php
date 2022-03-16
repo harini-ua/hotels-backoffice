@@ -40,4 +40,12 @@ class Language extends Model
     {
         return $this->belongsToMany(Distributor::class, 'distributor_language');
     }
+
+    /**
+     * Get the user that owns the language.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

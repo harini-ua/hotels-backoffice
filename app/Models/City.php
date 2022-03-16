@@ -73,4 +73,12 @@ class City extends Model
             ->using(CityCommission::class)
             ->withPivot((new CityCommission())->getFillable());
     }
+
+    /**
+     * Get the user that owns the city.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

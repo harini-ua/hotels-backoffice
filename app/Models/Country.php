@@ -67,4 +67,12 @@ class Country extends Model
     {
         return $this->belongsToMany(Distributor::class, 'distributor_country');
     }
+
+    /**
+     * Get the user that owns the country.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
