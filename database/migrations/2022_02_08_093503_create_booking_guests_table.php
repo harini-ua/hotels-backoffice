@@ -18,8 +18,8 @@ class CreateBookingGuestsTable extends Migration
             $table->unsignedBigInteger('booking_id');
             $table->string('firstname');
             $table->string('lastname');
-            $table->boolean('guest_type')->comment('0-adult, 1-child')->default(0);
-            $table->smallInteger('child_age')->default(null);
+            $table->boolean('guest_type')->default(0)->comment('0-adult, 1-child');
+            $table->smallInteger('child_age')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

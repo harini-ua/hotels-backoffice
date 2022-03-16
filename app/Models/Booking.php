@@ -1,0 +1,111 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Booking extends Model
+{
+    use HasFactory;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'bookings';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'provider_id', 'booking_reference', 'item_code', 'checkin', 'checkout', 'hotel_id', 'room_type',
+        'meal_plan_variant_id', 'rooms', 'nights', 'cancellation_date', 'refundable_status', 'user_id', 'city_id',
+        'inn_off_code', 'adults', 'children', 'remarks', 'customer_email', 'customer_phone', 'amount', 'commission',
+        'final_amount', 'currency_id', 'conversion_rate', 'discount_voucher_code_id', 'discount_voucher_conversion_rate',
+        'discount_voucher_amount', 'booking_payment_type_id', 'room_rate_key', 'payment_reference',
+    ];
+
+    /**
+     * Get the provider associated with the booking.
+     */
+    public function provider()
+    {
+        return $this->hasOne(Provider::class);
+    }
+
+    /**
+     * Get the hotel associated with the booking.
+     */
+    public function hotel()
+    {
+        return $this->hasOne(Hotel::class);
+    }
+
+    /**
+     * Get the meal plan variant associated with the booking.
+     */
+    public function mealPlanVariant()
+    {
+        return $this->hasOne(MealPlanVariant::class);
+    }
+
+    /**
+     * Get the meal plan variant associated with the booking.
+     */
+    public function discountCode()
+    {
+        return $this->hasOne(DiscountCode::class);
+    }
+
+    /**
+     * Get the booking guests for the booking.
+     */
+    public function guests()
+    {
+        return $this->hasMany(BookingGuest::class);
+    }
+
+    /**
+     * Get the booking statuses for the booking.
+     */
+    public function statuses()
+    {
+        return $this->hasMany(BookingStatus::class);
+    }
+
+    /**
+     * Get the payment for the booking.
+     */
+    public function paymentTypes()
+    {
+        return $this->hasMany(BookingPaymentType::class);
+    }
+
+    /**
+     * Get the user associated with the booking.
+     */
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
+
+    /**
+     * Get the city associated with the booking.
+     */
+    public function city()
+    {
+        return $this->hasOne(City::class);
+    }
+
+    /**
+     * Get the currency associated with the booking.
+     */
+    public function currency()
+    {
+        return $this->hasOne(Currency::class);
+    }
+}

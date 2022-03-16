@@ -15,9 +15,12 @@ class CreateBookingStatusesTable extends Migration
     {
         Schema::create('booking_statuses', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('booking_id');
             $table->string('name');
             $table->string('color');
             $table->timestamps();
+
+            $table->foreign('booking_id')->references('id')->on('bookings');
         });
     }
 

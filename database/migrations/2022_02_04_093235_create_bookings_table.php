@@ -40,7 +40,7 @@ class CreateBookingsTable extends Migration
             $table->double('final_amount', 10, 4)->comment('final booking amount with commission and discount in EUR');
             $table->unsignedBigInteger('currency_id')->comment('selected currency');
             $table->double('conversion_rate', 8, 6)->comment('conversion rate from EUR to selected currency');
-            $table->unsignedBigInteger('discount_voucher_code_id')->nullable();
+            $table->unsignedBigInteger('discount_voucher_code_id')->nullable()->unsigned();
             $table->double('discount_voucher_conversion_rate', 8, 6)->nullable()->comment('conversion rate from discount currency to EUR');
             $table->double('discount_voucher_amount', 10, 4)->nullable()->comment('discount amount in EUR');
             $table->string('room_rate_key', 1000)->nullable();
@@ -54,7 +54,7 @@ class CreateBookingsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('city_id')->references('id')->on('cities');
             $table->foreign('currency_id')->references('id')->on('currencies');
-            $table->foreign('discount_voucher_code_id')->references('id')->on('discount_vouchers_codes');
+            $table->foreign('discount_voucher_code_id')->references('id')->on('discount_voucher_codes');
         });
     }
 
