@@ -42,10 +42,10 @@ class Language extends Model
     }
 
     /**
-     * Get the user that owns the language.
+     * Get the users for the language.
      */
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class);
     }
 }

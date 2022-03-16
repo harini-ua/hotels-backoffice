@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Discount extends Model
+class DiscountVoucher extends Model
 {
     use HasFactory;
 
@@ -27,26 +27,26 @@ class Discount extends Model
     ];
 
     /**
+     * Get the currency that owns the discount.
+     */
+    public function currency()
+    {
+        return $this->belongsTo(Currency::class);
+    }
+
+    /**
+     * Get the company that owns the discount.
+     */
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    /**
      * Get the codes for the discount voucher.
      */
     public function codes()
     {
-        return $this->hasMany(DiscountCode::class);
-    }
-
-    /**
-     * Get the currency associated with the discount voucher.
-     */
-    public function currency()
-    {
-        return $this->hasOne(Currency::class);
-    }
-
-    /**
-     * Get the company associated with the discount voucher.
-     */
-    public function company()
-    {
-        return $this->hasOne(Company::class);
+        return $this->hasMany(DiscountVoucherCode::class);
     }
 }

@@ -22,16 +22,8 @@ class Country extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'region', 'code', 'status'
+        'currency_id', 'language_id', 'name', 'region', 'code', 'status'
     ];
-
-    /**
-     * Get the language that owns the country.
-     */
-    public function language()
-    {
-        return $this->belongsTo(Language::class);
-    }
 
     /**
      * Get the currency that owns the country.
@@ -39,6 +31,14 @@ class Country extends Model
     public function currency()
     {
         return $this->belongsTo(Currency::class);
+    }
+
+    /**
+     * Get the language that owns the country.
+     */
+    public function language()
+    {
+        return $this->belongsTo(Language::class);
     }
 
     /**
@@ -69,10 +69,10 @@ class Country extends Model
     }
 
     /**
-     * Get the user that owns the country.
+     * Get the user for the country.
      */
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class);
     }
 }

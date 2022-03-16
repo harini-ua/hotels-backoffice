@@ -54,7 +54,7 @@ class CreateBookingsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('city_id')->references('id')->on('cities');
             $table->foreign('currency_id')->references('id')->on('currencies');
-            $table->foreign('discount_voucher_code_id')->references('id')->on('discount_voucher_codes');
+            $table->foreign('discount_voucher_code_id')->references('id')->on('discount_voucher_code');
         });
     }
 

@@ -10,10 +10,18 @@ class BookingPaymentType extends Model
     use HasFactory;
 
     /**
-     * Get the booking that owns the booking guest.
+     * The table associated with the model.
+     *
+     * @var string
      */
-    public function booking()
-    {
-        return $this->belongsTo(Booking::class);
-    }
+    protected $table = 'booking_payment_types';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'booking_id', 'name',
+    ];
 }

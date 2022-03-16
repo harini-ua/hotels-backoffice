@@ -30,35 +30,35 @@ class Booking extends Model
     ];
 
     /**
-     * Get the provider associated with the booking.
+     * Get the provider that owns the booking.
      */
     public function provider()
     {
-        return $this->hasOne(Provider::class);
+        return $this->belongsTo(Provider::class);
     }
 
     /**
-     * Get the hotel associated with the booking.
+     * Get the hotel that owns the booking.
      */
     public function hotel()
     {
-        return $this->hasOne(Hotel::class);
+        return $this->belongsTo(Hotel::class);
     }
 
     /**
-     * Get the meal plan variant associated with the booking.
+     * Get the meal plan variant that owns the booking.
      */
     public function mealPlanVariant()
     {
-        return $this->hasOne(MealPlanVariant::class);
+        return $this->belongsTo(MealPlanVariant::class);
     }
 
     /**
-     * Get the meal plan variant associated with the booking.
+     * Get the discount code that owns the booking.
      */
     public function discountCode()
     {
-        return $this->hasOne(DiscountCode::class);
+        return $this->belongsTo(DiscountVoucherCode::class);
     }
 
     /**
@@ -86,26 +86,26 @@ class Booking extends Model
     }
 
     /**
-     * Get the user associated with the booking.
+     * Get the user that owns the booking.
      */
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     /**
-     * Get the city associated with the booking.
+     * Get the city that owns the booking.
      */
     public function city()
     {
-        return $this->hasOne(City::class);
+        return $this->belongsTo(City::class);
     }
 
     /**
-     * Get the currency associated with the booking.
+     * Get the currency that owns the booking.
      */
     public function currency()
     {
-        return $this->hasOne(Currency::class);
+        return $this->belongsTo(Currency::class);
     }
 }

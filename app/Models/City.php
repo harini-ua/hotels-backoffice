@@ -77,8 +77,16 @@ class City extends Model
     /**
      * Get the user that owns the city.
      */
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class);
+    }
+
+    /**
+     * Get the bookings that owns the city.
+     */
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
     }
 }

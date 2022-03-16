@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DiscountCode extends Model
+class DiscountVoucherCode extends Model
 {
     use HasFactory;
 
@@ -30,6 +30,6 @@ class DiscountCode extends Model
      */
     public function discount()
     {
-        return $this->belongsTo(Discount::class);
+        return $this->belongsTo(DiscountVoucher::class);
     }
 }

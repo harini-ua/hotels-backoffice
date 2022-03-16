@@ -34,18 +34,26 @@ class Currency extends Model
     }
 
     /**
-     * Get the user that owns the currency.
+     * Get the user for the currency.
      */
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class);
     }
 
     /**
-     * Get the discount that owns the currency.
+     * Get the discount for the currency.
      */
     public function discount()
     {
-        return $this->belongsTo(Discount::class);
+        return $this->hasMany(DiscountVoucher::class);
+    }
+
+    /**
+     * Get the bookings for the currency.
+     */
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
     }
 }

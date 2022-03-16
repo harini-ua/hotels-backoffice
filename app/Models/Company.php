@@ -91,10 +91,10 @@ class Company extends Model
     }
 
     /**
-     * Get the discount that owns the company.
+     * Get the discount for the blog company.
      */
-    public function discount()
+    public function discounts()
     {
-        return $this->belongsTo(Discount::class);
+        return $this->hasMany(DiscountVoucher::class);
     }
 }

@@ -62,35 +62,43 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the country associated with the user.
+     * Get the bookings for the user.
+     */
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
+
+    /**
+     * Get the country that owns the user.
      */
     public function country()
     {
-        return $this->hasOne(Country::class);
+        return $this->belongsTo(Country::class);
     }
 
     /**
-     * Get the city associated with the user.
+     * Get the city that owns the user.
      */
     public function city()
     {
-        return $this->hasOne(City::class);
+        return $this->belongsTo(City::class);
     }
 
     /**
-     * Get the currency associated with the user.
+     * Get the currency that owns the user.
      */
     public function currency()
     {
-        return $this->hasOne(Currency::class);
+        return $this->belongsTo(Currency::class);
     }
 
     /**
-     * Get the language associated with the user.
+     * Get the language that owns the user.
      */
     public function language()
     {
-        return $this->hasOne(Language::class);
+        return $this->belongsTo(Language::class);
     }
 
     /**

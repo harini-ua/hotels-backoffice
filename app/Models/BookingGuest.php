@@ -26,14 +26,6 @@ class BookingGuest extends Model
     ];
 
     /**
-     * Get the booking that owns the booking guest.
-     */
-    public function booking()
-    {
-        return $this->belongsTo(Booking::class);
-    }
-
-    /**
      * Get the user's full name.
      *
      * @return string
