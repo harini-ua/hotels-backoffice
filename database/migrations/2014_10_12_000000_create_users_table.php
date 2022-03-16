@@ -31,11 +31,11 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('city_id');
             $table->text('address');
             $table->boolean('status')->comment('0-inactive, 1-active');
-            $table->dateTime('last_login');
             $table->boolean('newsletter');
             $table->unsignedBigInteger('currency_id');
             $table->unsignedBigInteger('language_id');
-            $table->ipAddress('ip_address');
+            $table->dateTime('last_login')->nullable();
+            $table->ipAddress('ip_address')->nullable();
 
             $table->timestamps();
 
