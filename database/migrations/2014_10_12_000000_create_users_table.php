@@ -15,34 +15,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-
-            $table->string('title');
-            $table->string('firstname');
-            $table->string('lastname');
-
+            $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-
-            $table->string('company_name');
-            $table->string('phone');
-            $table->unsignedBigInteger('country_id');
-            $table->unsignedBigInteger('city_id');
-            $table->text('address');
-            $table->boolean('status')->comment('0-inactive, 1-active');
-            $table->boolean('newsletter');
-            $table->unsignedBigInteger('currency_id');
-            $table->unsignedBigInteger('language_id');
-            $table->dateTime('last_login')->nullable();
-            $table->ipAddress('ip_address')->nullable();
-
             $table->timestamps();
-
-            $table->foreign('country_id')->references('id')->on('countries');
-            $table->foreign('city_id')->references('id')->on('cities');
-            $table->foreign('currency_id')->references('id')->on('currencies');
-            $table->foreign('language_id')->references('id')->on('languages');
         });
     }
 
