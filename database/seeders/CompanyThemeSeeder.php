@@ -18,23 +18,20 @@ class CompanyThemeSeeder extends Seeder
 
 //        SELECT * FROM `whitelabel_theme`
 
-        if (($open = fopen(storage_path('app/seed') . "/company_themes.csv", "r")) !== FALSE) {
-
+        if (($open = fopen(storage_path('app/seed') . "/company_themes.csv", "r")) !== FALSE)
+        {
             while (($data = fgetcsv($open, 0,',')) !== FALSE) {
-
                 $themes[] = [
                     'id' => (int)$data[0],
                     'theme_name' => $data[1],
                     'theme_color' => strtolower($data[2]),
                     'theme_stylesheet' => $data[3],
                 ];
-
             }
 
             fclose($open);
         }
 
         DB::table('company_theme')->insert($themes);
-
     }
 }

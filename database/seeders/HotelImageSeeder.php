@@ -42,10 +42,10 @@ class HotelImageSeeder extends Seeder
         if(count($hotel_images) > 1000) {
             foreach (array_chunk($hotel_images,1000) as $hotel_image)
             {
-                DB::table('hotel_images')->insert($hotel_image);
+                DB::table('hotel_images')->insertTs($hotel_image);
             }
         } else {
-            DB::table('hotel_images')->insert($hotel_images);
+            DB::table('hotel_images')->insertTs($hotel_images);
         }
     }
 }

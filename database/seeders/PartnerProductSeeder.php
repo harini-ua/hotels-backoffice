@@ -18,8 +18,8 @@ class PartnerProductSeeder extends Seeder
 
         $partner_products = [];
 
-        if (($open = fopen(storage_path('app/seed') . "/partner_products.csv", "r")) !== FALSE) {
-
+        if (($open = fopen(storage_path('app/seed') . "/partner_products.csv", "r")) !== FALSE)
+        {
             while (($data = fgetcsv($open, 0,',')) !== FALSE) {
 
                 $partner_products[] = [
@@ -43,15 +43,13 @@ class PartnerProductSeeder extends Seeder
                     'adults' => (int)$data[17],
                     'sold_online' => (int)$data[18],
                     'sold_retail' => (int)$data[19],
-                    'sku' => $data[20],
-                    'comment' => $data[21],
+                    'sku' => $data[20] == '-' ? null : trim(preg_replace('/\s+/', ' ', $data[20])),
+                    'comment' => $data[21] == '-' ? null : $data[21],
                 ];
-
             }
             fclose($open);
         }
 
-        DB::table('partner_product')->insert($partner_products);
+        DB::table('partner_product')->insertTs($partner_products);
     }
-
 }

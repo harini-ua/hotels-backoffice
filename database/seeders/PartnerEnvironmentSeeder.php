@@ -14,7 +14,7 @@ class PartnerEnvironmentSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('partner_environment')->insert(
+        DB::table('partner_environment')->insertTs(
             [
                 [
                     'partner_id' => 1,

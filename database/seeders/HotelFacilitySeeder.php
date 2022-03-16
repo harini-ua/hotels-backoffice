@@ -14,7 +14,7 @@ class HotelFacilitySeeder extends Seeder
      */
     public function run()
     {
-        $hotel_facilities = [];
+        $hotelFacilities = [];
         $facilities_rows = DB::table('facility_variants')->select('facility_id', 'name')->get();
         $facilities_data = [];
         foreach ($facilities_rows as $facility_data) {
@@ -23,9 +23,8 @@ class HotelFacilitySeeder extends Seeder
 //        SELECT h.hotel_code, h.facility
 //        FROM hotel h WHERE h.city IN(3629,14229,14314,23474,73417,23,8234,14851,74412,74583,11643,22242,29796,36967,72407,2792,20613,20771,20823,20473,21366,26365,68218,74445,3584,25732,33910,74559,76081)
 //        GROUP BY h.hotel_code
-        if (($open = fopen(storage_path('app/seed') . "/hotel_facilities.csv", "r")) !== FALSE) {
-
-            //var_dump($facilities_data);
+        if (($open = fopen(storage_path('app/seed') . "/hotel_facilities.csv", "r")) !== FALSE)
+        {
             while (($data = fgetcsv($open, 0,',')) !== FALSE) {
                 if(!empty($data[1]) && $data[1] !== 'NULL') {
                     $facilities = explode('#*#', $data[1]);
@@ -34,31 +33,29 @@ class HotelFacilitySeeder extends Seeder
                         if (!empty($facility)) {
                             $facility = strtolower(trim(str_replace('YES', '', $facility)));
                             foreach ($facilities_data as $key => $facility_data) {
-                                if (in_array($facility, $facility_data) && !in_array($key, $facility_ids)) {
+                                if (in_array($facility, $facility_data, true) && !in_array($key, $facility_ids, true)) {
                                     $facility_ids[] = $key;
-                                    $hotel_facilities[] = [
+                                    $hotelFacilities[] = [
                                         'hotel_id' => (int)$data[0],
                                         'facility_id' => $key,
                                     ];
                                 }
                             }
-
                         }
                     }
                 }
-
             }
 
             fclose($open);
         }
 
-        if(count($hotel_facilities) > 1000) {
-            foreach (array_chunk($hotel_facilities,1000) as $hotel_facility)
+        if (count($hotelFacilities) > 1000) {
+            foreach (array_chunk($hotelFacilities,1000) as $sliceHotelFacilities)
             {
-                DB::table('hotel_facilities')->insert($hotel_facility);
+                DB::table('hotel_facility')->insertTs($sliceHotelFacilities);
             }
         } else {
-            DB::table('hotel_facilities')->insert($hotel_facilities);
+            DB::table('hotel_facility')->insertTs($hotelFacilities);
         }
     }
 }

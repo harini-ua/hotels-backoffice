@@ -17,8 +17,8 @@ class LanguageSeeder extends Seeder
     {
         $languages = [];
 
-        if (($open = fopen(storage_path('app/seed') . "/languages.csv", "r")) !== FALSE) {
-
+        if (($open = fopen(storage_path('app/seed') . "/languages.csv", "r")) !== FALSE)
+        {
             while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
                 $languages[] = [
                     'id' => $data[0],
@@ -30,6 +30,7 @@ class LanguageSeeder extends Seeder
 
             fclose($open);
         }
-        DB::table('languages')->insert($languages);
+
+        DB::table('languages')->insertTs($languages);
     }
 }

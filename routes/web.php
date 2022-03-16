@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
+    $test = \App\Models\Commission::find(1);
+
+    dd($test->countries);
+
     return view('index');
 });
 Route::get('/advanced-ui-kits-image-crop', function () {

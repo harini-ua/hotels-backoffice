@@ -16,8 +16,8 @@ class CountryCommissionSeeder extends Seeder
     {
         $country_commissions = [];
 
-        if (($open = fopen(storage_path('app/seed') . "/country_commissions.csv", "r")) !== FALSE) {
-
+        if (($open = fopen(storage_path('app/seed') . "/country_commissions.csv", "r")) !== FALSE)
+        {
             while (($data = fgetcsv($open, 0,',')) !== FALSE) {
 
                 $country_commissions[] = [
@@ -31,7 +31,6 @@ class CountryCommissionSeeder extends Seeder
             fclose($open);
         }
 
-        DB::table('country_commission')->insert($country_commissions);
-
+        DB::table('country_commission')->insertTs($country_commissions);
     }
 }

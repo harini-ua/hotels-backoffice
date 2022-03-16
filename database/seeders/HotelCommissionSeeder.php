@@ -18,11 +18,9 @@ class HotelCommissionSeeder extends Seeder
 
         $hotels_commissions = [];
 
-
-        if (($open = fopen(storage_path('app/seed') . "/hotels_commissions.csv", "r")) !== FALSE) {
-
+        if (($open = fopen(storage_path('app/seed') . "/hotels_commissions.csv", "r")) !== FALSE)
+        {
             while (($data = fgetcsv($open, 0,',')) !== FALSE) {
-
                 $hotels_commissions[] = [
                     'hotel_id' => (int)$data[0],
                     'commission_id' => 3,
@@ -34,14 +32,13 @@ class HotelCommissionSeeder extends Seeder
             fclose($open);
         }
 
-        if(count($hotels_commissions) > 1000) {
+        if (count($hotels_commissions) > 1000) {
             foreach (array_chunk($hotels_commissions,1000) as $hotel_datas)
             {
-                DB::table('hotel_commission')->insert($hotel_datas);
+                DB::table('hotel_commission')->insertTs($hotel_datas);
             }
         } else {
-            DB::table('hotel_commission')->insert($hotels_commissions);
+            DB::table('hotel_commission')->insertTs($hotels_commissions);
         }
-
     }
 }

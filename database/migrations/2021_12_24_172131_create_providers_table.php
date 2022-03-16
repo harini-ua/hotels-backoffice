@@ -15,8 +15,8 @@ class CreateProvidersTable extends Migration
     {
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
-            $table->string('provider_name');
-            $table->string('email')->unique()->default(null);
+            $table->string('name');
+            $table->string('email')->unique()->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });

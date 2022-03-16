@@ -16,14 +16,14 @@ class CitySeeder extends Seeder
     {
         $cities = [];
 
-        if (($open = fopen(storage_path('app/seed') . "/cities.csv", "r")) !== FALSE) {
-
+        if (($open = fopen(storage_path('app/seed') . "/cities.csv", "r")) !== FALSE)
+        {
             while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
                 $cities[] = [
                     'id' => $data[0],
                     'country_id' => $data[5],
                     'name' => $data[2],
-                    'state' => $data[4],
+                    'state' => $data[4] != '' ? $data[4] : null,
                     'status' => $data[8] == 4 ? 1 : ($data[8] == 3 ? 3 : ($data['8'] == 1 ? 0 : 2)),
                     'position' => DB::raw("(ST_GeomFromText('POINT($data[9] $data[10])'))"),
                     'hotels_count' => $data[12],
@@ -33,6 +33,7 @@ class CitySeeder extends Seeder
 
             fclose($open);
         }
-        DB::table('cities')->insert($cities);
+
+        DB::table('cities')->insertTs($cities);
     }
 }

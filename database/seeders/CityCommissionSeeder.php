@@ -14,7 +14,7 @@ class CityCommissionSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('city_commission')->insert(
+        DB::table('city_commission')->insertTs(
             [
                 [
                     'city_id' => '8234',

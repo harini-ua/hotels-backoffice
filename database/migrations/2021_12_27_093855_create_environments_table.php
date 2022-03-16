@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEnvironmentTable extends Migration
+class CreateEnvironmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class CreateEnvironmentTable extends Migration
     {
         Schema::create('environments', function (Blueprint $table) {
             $table->id();
-            $table->string('environment_name');
+            $table->string('name');
             $table->timestamps();
             $table->softDeletes();
         });

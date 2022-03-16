@@ -14,21 +14,21 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(ProviderSeeder::class);
+        $this->call(EnvironmentSeeder::class);
+        $this->call(EnvironmentProviderSeeder::class);
         $this->call(CurrencySeeder::class);
         $this->call(LanguageSeeder::class);
-        $this->call(EnvironmentSeeder::class);
-        $this->call(ProviderEnvironmentSeeder::class);
         $this->call(CountrySeeder::class);
         $this->call(CitySeeder::class);
         $this->call(CityProviderCodeSeeder::class);
         $this->call(HotelSeeder::class);
+        $this->call(HotelProviderCodeSeeder::class);
+        $this->call(MealPlanSeeder::class);
+        $this->call(MealPlanVariantSeeder::class);
         $this->call(FacilitySeeder::class);
         $this->call(FacilityVariantSeeder::class);
         $this->call(HotelFacilitySeeder::class);
         $this->call(HotelImageSeeder::class);
-        $this->call(HotelProviderCodeSeeder::class);
-        $this->call(MealPlanSeeder::class);
-        $this->call(MealPlanVariantSeeder::class);
         $this->call(CommissionSeeder::class);
         $this->call(CountryCommissionSeeder::class);
         $this->call(CityCommissionSeeder::class);

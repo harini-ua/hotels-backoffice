@@ -14,7 +14,7 @@ class MealPlanSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('meal_plans')->insert(
+        DB::table('meal_plans')->insertTs(
             [
                 [
                     'name' => 'all inclusive',

@@ -16,8 +16,8 @@ class CountrySeeder extends Seeder
     {
         $countries = [];
 
-        if (($open = fopen(storage_path('app/seed') . "/countries.csv", "r")) !== FALSE) {
-
+        if (($open = fopen(storage_path('app/seed') . "/countries.csv", "r")) !== FALSE)
+        {
             while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
                 $countries[] = [
                     'id' => $data[0],
@@ -32,6 +32,7 @@ class CountrySeeder extends Seeder
 
             fclose($open);
         }
-        DB::table('countries')->insert($countries);
+
+        DB::table('countries')->insertTs($countries);
     }
 }

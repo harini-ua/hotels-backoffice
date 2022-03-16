@@ -136,7 +136,7 @@ class FacilityVariantSeeder extends Seeder
                 ];
             }
         }
-        DB::table('facility_variants')->insert($facilities);
 
+        DB::table('facility_variants')->insertTs($facilities);
     }
 }

@@ -34,8 +34,8 @@ class CreatePartnerProductTable extends Migration
             $table->smallInteger('adults');
             $table->boolean('sold_online');
             $table->boolean('sold_retail');
-            $table->string('sku');
-            $table->text('comment');
+            $table->string('sku')->nullable();
+            $table->text('comment')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

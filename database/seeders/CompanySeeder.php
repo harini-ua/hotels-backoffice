@@ -16,7 +16,7 @@ class CompanySeeder extends Seeder
     {
         $companies = [];
 
-//        SELECT w.whtid, c.id as country_id, hc.id as city_id, l.langid as lang_id, w.wht_name, w.company_name,
+//SELECT w.whtid, c.id as country_id, hc.id as city_id, l.langid as lang_id, w.wht_name, w.company_name,
 //w.category, w.address, w.email, w.mobile, w.status, w.clientlevel, w.vat, w.newsletter
 //FROM white_profile_details w
 // LEFT JOIN hei_country c ON w.country = c.country
@@ -24,8 +24,8 @@ class CompanySeeder extends Seeder
 //lEFT JOIN ml_tbl_language l ON w.language = l.langname
 //WHERE c.id IN(1,2,7,8,18,23)
 
-        if (($open = fopen(storage_path('app/seed') . "/companies.csv", "r")) !== FALSE) {
-
+        if (($open = fopen(storage_path('app/seed') . "/companies.csv", "r")) !== FALSE)
+        {
             while (($data = fgetcsv($open, 0,',')) !== FALSE) {
 
                 $companies[] = [
@@ -66,10 +66,7 @@ class CompanySeeder extends Seeder
 
         foreach (array_chunk($companies,1000) as $company)
         {
-            DB::table('companies')->insert($company);
+            DB::table('companies')->insertTs($company);
         }
-
-
-
     }
 }

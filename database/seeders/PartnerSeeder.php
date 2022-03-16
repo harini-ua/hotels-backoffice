@@ -14,24 +14,21 @@ class PartnerSeeder extends Seeder
      */
     public function run()
     {
-
         $partners = [];
 
-        if (($open = fopen(storage_path('app/seed') . "/partners.csv", "r")) !== FALSE) {
-
+        if (($open = fopen(storage_path('app/seed') . "/partners.csv", "r")) !== FALSE)
+        {
             while (($data = fgetcsv($open, 0,',')) !== FALSE) {
-
                 $partners[] = [
                     'id' => (int)$data[0],
                     'name' => $data[1],
-                    'description' => $data[2] == null ? null : $data[2],
+                    'description' => $data[2] == 'NULL' ? null : $data[2],
                     'type' => (int)$data[3],
                 ];
             }
             fclose($open);
         }
 
-        DB::table('partners')->insert($partners);
-
+        DB::table('partners')->insertTs($partners);
     }
 }

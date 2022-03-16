@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Company extends Model
+{
+    use HasFactory;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'companies';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'holder_name', 'company_name', 'category', 'country_id', 'city_id', 'language_id', 'address', 'email', 'phone',
+        'status', 'level', 'vat', 'newsletter',
+    ];
+
+    /**
+     * Get the country associated with the company.
+     */
+    public function country()
+    {
+        return $this->hasOne(Country::class);
+    }
+
+    /**
+     * Get the city associated with the company.
+     */
+    public function city()
+    {
+        return $this->hasOne(City::class);
+    }
+
+    /**
+     * Get the language associated with the company.
+     */
+    public function language()
+    {
+        return $this->hasOne(Language::class);
+    }
+}

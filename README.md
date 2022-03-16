@@ -1,13 +1,12 @@
-#Hotelexpress Laravel project
+#HEI - Hotel Express International (Laravel)
 
-Virtualbox version 6.0  
-Node.js version 14.18.2  
-npm version 6.14.15  
-PHP version in Homestead.yaml 8.1  
+##Requirements
+- node.js - 14.18.2
+- npm - 6.14.15
+- php - 7.3
 
-HOW INSTALL  
-git clone git@github.com:hotelexpress/heilaravel.git .   
-composer install  
-composer require laravel/homestead --dev  
-php vendor/bin/homestead make  
-vagrant up  
+##Installation
+```
+git clone git@github.com:hotelexpress/heilaravel.git .  
+composer install
+```

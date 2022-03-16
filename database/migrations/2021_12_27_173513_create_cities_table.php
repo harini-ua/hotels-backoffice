@@ -16,7 +16,7 @@ class CreateCitiesTable extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('state')->default('');
+            $table->string('state')->nullable();
             $table->unsignedBigInteger('country_id');
             $table->boolean('status')->default(0)->comment('0-new city, 1-active, 2-inactive, 3-blacklisted');
             $table->point('position');

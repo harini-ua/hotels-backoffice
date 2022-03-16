@@ -14,7 +14,7 @@ class MealPlanVariantSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('meal_plans_variants')->insert(
+        DB::table('meal_plans_variants')->insertTs(
             [
                 [
                     'meal_plan_id' => 1,

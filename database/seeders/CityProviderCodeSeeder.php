@@ -16,8 +16,8 @@ class CityProviderCodeSeeder extends Seeder
     {
         $cityProviderCodes = [];
 
-        if (($open = fopen(storage_path('app/seed') . "/city_provider_codes.csv", "r")) !== FALSE) {
-
+        if (($open = fopen(storage_path('app/seed') . "/city_provider_codes.csv", "r")) !== FALSE)
+        {
             while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
                 if((int)$data[5] !== 5) {
                     $cityProviderCodes[] = [
@@ -31,6 +31,7 @@ class CityProviderCodeSeeder extends Seeder
             }
             fclose($open);
         }
-        DB::table('city_provider_code')->insert($cityProviderCodes);
+
+        DB::table('city_provider')->insertTs($cityProviderCodes);
     }
 }

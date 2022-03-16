@@ -14,7 +14,7 @@ class CommissionSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('commissions')->insert(
+        DB::table('commissions')->insertTs(
             [
                 [
                     'name' => 'country commission'

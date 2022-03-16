@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHotelFacilitiesTable extends Migration
+class CreateHotelFacilityPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateHotelFacilitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('hotel_facilities', function (Blueprint $table) {
+        Schema::create('hotel_facility', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('hotel_id');
             $table->unsignedBigInteger('facility_id');
@@ -32,6 +32,6 @@ class CreateHotelFacilitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hotel_facilities');
+        Schema::dropIfExists('facility_hotel');
     }
 }

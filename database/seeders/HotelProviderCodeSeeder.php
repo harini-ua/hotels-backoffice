@@ -15,12 +15,12 @@ class HotelProviderCodeSeeder extends Seeder
      */
     public function run()
     {
-        $hotel_provider_codes = [];
+        $hotelProviderCodes = [];
 
-        if (($open = fopen(storage_path('app/seed') . "/hotel_provider_codes.csv", "r")) !== FALSE) {
-
+        if (($open = fopen(storage_path('app/seed') . "/hotel_provider_codes.csv", "r")) !== FALSE)
+        {
             while (($data = fgetcsv($open, 0,',')) !== FALSE) {
-                $hotel_provider_codes[] = [
+                $hotelProviderCodes[] = [
                     'hotel_id' => (int)$data[0],
                     'provider_id' => (int)$data[1],
                     'provider_hotel_code' => $data[2],
@@ -35,10 +35,9 @@ class HotelProviderCodeSeeder extends Seeder
             fclose($open);
         }
 
-
-        foreach (array_chunk($hotel_provider_codes,1000) as $hotel_provider_code)
+        foreach (array_chunk($hotelProviderCodes,1000) as $hotelProviderCodes)
         {
-            DB::table('hotel_provider_code')->insert($hotel_provider_code);
+            DB::table('hotel_provider')->insertTs($hotelProviderCodes);
         }
     }
 }

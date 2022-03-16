@@ -14,7 +14,7 @@ class FacilitySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('facilities')->insert(
+        DB::table('facilities')->insertTs(
             [
                 [ 'name' => 'ac' ],
                 [ 'name' => 'room_tv' ],
@@ -57,10 +57,7 @@ class FacilitySeeder extends Seeder
                 [ 'name' => 'roof_terrace' ],
                 [ 'name' => 'complimentary_newspaper' ],
                 [ 'name' => 'tour_desk' ],
-
             ]
         );
-
     }
 }
-
