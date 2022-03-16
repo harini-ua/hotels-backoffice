@@ -20,8 +20,8 @@ class CreateDiscountVouchersTable extends Migration
             $table->bigInteger('voucher_codes_count');
             $table->mediumInteger('amount')->comment('in currency or %');
             $table->boolean('amount_type')->comment('0-in currency, 1-in percent');
-            $table->unsignedBigInteger('currency_id')->default(null);
-            $table->unsignedBigInteger('company_id')->default(null);
+            $table->unsignedBigInteger('currency_id')->nullable();
+            $table->unsignedBigInteger('company_id')->nullable();
             $table->text('description');
             $table->tinyInteger('commission')->comment('1-company booking commission, 2-company booking & company sale commissions, 3-company sale commission');
             $table->double('min_amount', 8, 2)->comment('minimal amount in EUR');

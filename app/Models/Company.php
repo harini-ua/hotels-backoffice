@@ -57,4 +57,12 @@ class Company extends Model
     {
         return $this->belongsToMany(Distributor::class, 'distributor_company');
     }
+
+    /**
+     * Get the discount that owns the company.
+     */
+    public function discount()
+    {
+        return $this->belongsTo(Discount::class);
+    }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Currency extends Model
+class DiscountCode extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class Currency extends Model
      *
      * @var string
      */
-    protected $table = 'currencies';
+    protected $table = 'discount_voucher_codes';
 
     /**
      * The attributes that are mass assignable.
@@ -22,27 +22,11 @@ class Currency extends Model
      * @var array
      */
     protected $fillable = [
-        'code',
+        'discount_voucher_id', 'code', 'status',
     ];
 
     /**
-     * Get the countries for the currency.
-     */
-    public function countries()
-    {
-        return $this->hasMany(Country::class);
-    }
-
-    /**
-     * Get the user that owns the currency.
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Get the discount that owns the currency.
+     * Get the discount that owns the code.
      */
     public function discount()
     {
