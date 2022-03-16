@@ -27,6 +27,30 @@ class Company extends Model
     ];
 
     /**
+     * Get the homepage options associated with the company.
+     */
+    public function homepageOptions()
+    {
+        return $this->hasOne(CompanyHomepageOption::class);
+    }
+
+    /**
+     * Get the main options associated with the company.
+     */
+    public function mainOptions()
+    {
+        return $this->hasOne(CompanyMainOption::class);
+    }
+
+    /**
+     * Get the prefilled options associated with the company.
+     */
+    public function prefilledOptions()
+    {
+        return $this->hasOne(CompanyPrefilledOption::class);
+    }
+
+    /**
      * The users that belong to the company.
      */
     public function users()

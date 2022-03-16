@@ -21,7 +21,7 @@ class CreateCompanyPrefilledOptionsTable extends Migration
             $table->tinyInteger('rooms_count');
             $table->unsignedBigInteger('country_id');
             $table->unsignedBigInteger('city_id');
-            $table->boolean('checkout_editable')->comment('0-not editable, 1-editable')->default(1);
+            $table->boolean('checkout_editable')->default(1)->comment('0-not editable, 1-editable');
             $table->timestamps();
             $table->softDeletes();
 
