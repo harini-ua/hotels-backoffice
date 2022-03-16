@@ -27,6 +27,14 @@ class Company extends Model
     ];
 
     /**
+     * The users that belong to the company.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'company_user');
+    }
+
+    /**
      * Get the country associated with the company.
      */
     public function country()

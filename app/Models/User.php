@@ -46,6 +46,14 @@ class User extends Authenticatable
     ];
 
     /**
+     * The companies that belong to the user.
+     */
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class, 'company_user');
+    }
+
+    /**
      * Get the country associated with the user.
      */
     public function country()
