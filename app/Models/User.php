@@ -54,6 +54,14 @@ class User extends Authenticatable
     }
 
     /**
+     * The distributors that belong to the user.
+     */
+    public function distributors()
+    {
+        return $this->belongsToMany(Distributor::class, 'distributor_user');
+    }
+
+    /**
      * Get the country associated with the user.
      */
     public function country()

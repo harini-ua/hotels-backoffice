@@ -26,6 +26,14 @@ class Distributor extends Model
     ];
 
     /**
+     * The users that belong to the distributor.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'distributor_user');
+    }
+
+    /**
      * The companies that belong to the distributor.
      */
     public function companies()
