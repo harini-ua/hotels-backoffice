@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Bookings;
+namespace App\Classes\Bookings;
 
-class BookingTranshotel extends BookingAbstract
+class BookingRestel extends BookingAbstract
 {
     public function create()
     {

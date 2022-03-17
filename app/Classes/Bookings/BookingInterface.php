@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Bookings;
+namespace App\Classes\Bookings;
 
 interface BookingInterface
 {

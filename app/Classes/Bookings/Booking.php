@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Services\Bookings;
+namespace App\Classes\Bookings;
 
 use Psr\Log\InvalidArgumentException;
 
 final class Booking
 {
     /**
+     * Init booking
+     *
      * @param string $type
      * @return BookingInterface
      */

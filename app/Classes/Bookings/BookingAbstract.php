@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Services\Bookings;
+namespace App\Classes\Bookings;
+
+use function config;
 
 abstract class BookingAbstract implements BookingInterface
 {
