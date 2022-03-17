@@ -31,7 +31,7 @@ class Provider extends Model
      * @var array
      */
     protected $with = [
-        'environments', 'cities'
+        'environments',
     ];
 
     /**
