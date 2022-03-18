@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services;
+namespace App\Libraries;
 
 /**
  * IPInfoDB API service.
  */
-class IPInfoDBService
+class IPInfoDB
 {
     /**
      * IPInfoDB API key.
@@ -17,12 +17,16 @@ class IPInfoDBService
     /**
      * Constructor.
      *
-     * @param string $apiKey a IPInfoDB API key
+     * @param string $apiKey
      *
      * @throws \Exception
      */
     public function __construct($apiKey = null)
     {
+        if ($apiKey == null) {
+            $this->apiKey = env('IPINFODB_API_KEY');
+        }
+
         if (!preg_match('/^[0-9a-z]{64}$/', $apiKey)) {
             throw new \Exception(__CLASS__ . __(': Invalid IPInfoDB API key.'));
         }
