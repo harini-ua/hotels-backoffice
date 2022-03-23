@@ -1,7 +1,5 @@
 <?php
 
-use App\Classes\Providers\ProviderFactory;
-use App\Services\IPInfoDBService;
 use Illuminate\Support\Facades\Route;
 
 /*
