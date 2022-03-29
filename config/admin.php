@@ -40,31 +40,31 @@ return [
                         ]
                     ]
                 ],
-//                [
-//                    'name' => 'Distributors',
-//                    'href' => '/#',
-//                    'image' => '/assets/images/svg-icon/maps.svg',
-//                ],
-//                [
-//                    'name' => 'Companies',
-//                    'href' => '/#',
-//                    'image' => '/assets/images/svg-icon/frontend.svg',
-//                ],
-//                [
-//                    'name' => 'Statistics',
-//                    'href' => '/#',
-//                    'image' => '/assets/images/svg-icon/charts.svg',
-//                ],
-//                [
-//                    'name' => 'Reports',
-//                    'href' => '/#',
-//                    'image' => 'assets/images/svg-icon/reports.svg',
-//                ],
-//                [
-//                    'name' => 'Settings',
-//                    'href' => '/#',
-//                    'image' => '/assets/images/svg-icon/settings.svg',
-//                ],
+                [
+                    'name' => 'Distributors',
+                    'href' => 'distributors.index',
+                    'image' => '/assets/images/svg-icon/maps.svg',
+                ],
+                [
+                    'name' => 'Companies',
+                    'href' => 'companies.index',
+                    'image' => '/assets/images/svg-icon/frontend.svg',
+                ],
+                [
+                    'name' => 'Statistics',
+                    'href' => 'statistics.index',
+                    'image' => '/assets/images/svg-icon/charts.svg',
+                ],
+                [
+                    'name' => 'Reports',
+                    'href' => 'reports.index',
+                    'image' => 'assets/images/svg-icon/reports.svg',
+                ],
+                [
+                    'name' => 'Settings',
+                    'href' => 'settings.index',
+                    'image' => '/assets/images/svg-icon/settings.svg',
+                ],
             ]
         ]
     ],
