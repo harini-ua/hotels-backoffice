@@ -25,8 +25,9 @@ class Booking extends Model
         'provider_id', 'booking_reference', 'item_code', 'checkin', 'checkout', 'hotel_id', 'room_type',
         'meal_plan_variant_id', 'rooms', 'nights', 'cancellation_date', 'refundable_status', 'user_id', 'city_id',
         'inn_off_code', 'adults', 'children', 'remarks', 'customer_email', 'customer_phone', 'amount', 'commission',
-        'final_amount', 'currency_id', 'conversion_rate', 'discount_voucher_code_id', 'discount_voucher_conversion_rate',
-        'discount_voucher_amount', 'booking_payment_type_id', 'room_rate_key', 'payment_reference',
+        'final_amount', 'currency_id', 'conversion_rate', 'discount_voucher_code_id',
+        'discount_voucher_conversion_rate', 'discount_voucher_amount', 'booking_payment_type_id', 'room_rate_key',
+        'payment_reference',
     ];
 
     /**
@@ -40,16 +41,14 @@ class Booking extends Model
     /**
      * Get the hotel that owns the booking.
      */
-    public function hotel()
-    {
+    public function hotel() {
         return $this->belongsTo(Hotel::class);
     }
 
     /**
      * Get the meal plan variant that owns the booking.
      */
-    public function mealPlanVariant()
-    {
+    public function mealPlanVariant() {
         return $this->belongsTo(MealPlanVariant::class);
     }
 

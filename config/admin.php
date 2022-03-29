@@ -20,4 +20,64 @@ return [
             '128.124.244.82',
         ],
     ],
+    'menu' => [
+        'main' => [
+            'items' => [
+                [
+                    'name' => 'Dashboard',
+                    'href' => 'home',
+                    'image' => '/assets/images/svg-icon/dashboard.svg',
+                ],
+                [
+                    'name' => 'Users',
+                    'href' => 'users.dashboard',
+                    'image' => '/assets/images/svg-icon/crm.svg',
+                    'items' => [
+                        [
+                            'name' => 'Admins',
+                            'href' => '/#',
+                            'image' => '/assets/images/svg-icon/customers.svg',
+                        ]
+                    ]
+                ],
+//                [
+//                    'name' => 'Distributors',
+//                    'href' => '/#',
+//                    'image' => '/assets/images/svg-icon/maps.svg',
+//                ],
+//                [
+//                    'name' => 'Companies',
+//                    'href' => '/#',
+//                    'image' => '/assets/images/svg-icon/frontend.svg',
+//                ],
+//                [
+//                    'name' => 'Statistics',
+//                    'href' => '/#',
+//                    'image' => '/assets/images/svg-icon/charts.svg',
+//                ],
+//                [
+//                    'name' => 'Reports',
+//                    'href' => '/#',
+//                    'image' => 'assets/images/svg-icon/reports.svg',
+//                ],
+//                [
+//                    'name' => 'Settings',
+//                    'href' => '/#',
+//                    'image' => '/assets/images/svg-icon/settings.svg',
+//                ],
+            ]
+        ]
+    ],
+    'templation' => [
+        'title' => [
+            'prefix' => env('ADMIN_TITLE_PREFIX', 'Admin'),
+            'separator' => env('ADMIN_TITLE_SEPARATOR', '-')
+        ],
+        'footer' => [
+            'enable' => false
+        ],
+        'search' => [
+            'enable' => false
+        ]
+    ]
 ];

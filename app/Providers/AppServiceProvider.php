@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('admin.*', function ($view) {
+            $view->with('user', \Auth::user());
+            $view->with('mainMenuItems', config('admin.menu.main.items'));
+        });
     }
 }
