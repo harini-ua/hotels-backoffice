@@ -19,14 +19,14 @@ class AddColumnsToUsersTable extends Migration
             $table->string('firstname')->after('title');
             $table->string('lastname')->after('firstname');
             $table->string('company_name')->after('password');
-            $table->string('phone')->after('company_name');
-            $table->unsignedBigInteger('country_id')->after('phone');
-            $table->unsignedBigInteger('city_id')->after('country_id');
-            $table->text('address')->after('city_id');
+            $table->string('phone')->nullable()->after('company_name');
+            $table->unsignedBigInteger('country_id')->nullable()->after('phone');
+            $table->unsignedBigInteger('city_id')->nullable()->after('country_id');
+            $table->text('address')->nullable()->after('city_id');
             $table->boolean('status')->after('address')->comment('0-inactive, 1-active');
-            $table->boolean('newsletter')->after('status');
-            $table->unsignedBigInteger('currency_id')->after('newsletter');
-            $table->unsignedBigInteger('language_id')->after('currency_id');
+            $table->boolean('newsletter')->nullable()->after('status');
+            $table->unsignedBigInteger('currency_id')->nullable()->after('newsletter');
+            $table->unsignedBigInteger('language_id')->nullable()->after('currency_id');
             $table->dateTime('last_login_at')->nullable()->after('language_id');
             $table->ipAddress('ip_address')->nullable()->after('last_login_at');
 
