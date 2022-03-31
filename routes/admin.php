@@ -9,41 +9,48 @@ use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [DashboardController::class, 'index'])->name('home');
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::middleware('auth')->group(function() {
+    Route::middleware('role:admin,distributor,employee')->group(function() {
 
-/** ----- ------ ----- USERS */
+        /** ----- ------ ----- OTHERS */
 
-Route::prefix('users')->as('users.')->group(function () {
-    Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
-});
+        Route::get('/', [DashboardController::class, 'index'])->name('home');
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-/** ----- ------ ----- DISTRIBUTORS */
+        /** ----- ------ ----- USERS */
 
-Route::prefix('distributors')->as('distributors.')->group(function () {
-    Route::get('/', [DistributorController::class, 'index'])->name('index');
-});
+        Route::prefix('users')->as('users.')->group(function () {
+            Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+        });
 
-/** ----- ------ ----- COMPANIES */
+        /** ----- ------ ----- DISTRIBUTORS */
 
-Route::prefix('companies')->as('companies.')->group(function () {
-    Route::get('/', [CompanyController::class, 'index'])->name('index');
-});
+        Route::prefix('distributors')->as('distributors.')->group(function () {
+            Route::get('/', [DistributorController::class, 'index'])->name('index');
+        });
 
-/** ----- ------ ----- STATISTICS */
+        /** ----- ------ ----- COMPANIES */
 
-Route::prefix('statistics')->as('statistics.')->group(function () {
-    Route::get('/', [StatisticController::class, 'index'])->name('index');
-});
+        Route::prefix('companies')->as('companies.')->group(function () {
+            Route::get('/', [CompanyController::class, 'index'])->name('index');
+        });
 
-/** ----- ------ ----- REPORTS */
+        /** ----- ------ ----- STATISTICS */
 
-Route::prefix('reports')->as('reports.')->group(function () {
-    Route::get('/', [ReportController::class, 'index'])->name('index');
-});
+        Route::prefix('statistics')->as('statistics.')->group(function () {
+            Route::get('/', [StatisticController::class, 'index'])->name('index');
+        });
 
-/** ----- ------ ----- SETTINGS */
+        /** ----- ------ ----- REPORTS */
 
-Route::prefix('settings')->as('settings.')->group(function () {
-    Route::get('/', [SettingController::class, 'index'])->name('index');
+        Route::prefix('reports')->as('reports.')->group(function () {
+            Route::get('/', [ReportController::class, 'index'])->name('index');
+        });
+
+        /** ----- ------ ----- SETTINGS */
+
+        Route::prefix('settings')->as('settings.')->group(function () {
+            Route::get('/', [SettingController::class, 'index'])->name('index');
+        });
+    });
 });

@@ -17,6 +17,7 @@
         "fruitcake/laravel-cors": "^1.0",
         "grimzy/laravel-mysql-spatial": "^4.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/fortify": "^1.12",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "spatie/laravel-permission": "^5.5",

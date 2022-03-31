@@ -179,6 +179,7 @@ return [
         /*
          * Custom Service Providers...
          */
+        App\Providers\FortifyServiceProvider::class,
         App\Providers\QueryBuilderMacroProvider::class,
     ],
 

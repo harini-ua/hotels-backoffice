@@ -64,7 +64,7 @@
                         <ul class="list-inline mb-0">
                             @if($user)
                             <li class="list-inline-item">
-                                @include('admin.admin.partials.menu-profile')
+                                @include('admin.partials.menu-profile')
                             </li>
                             @endif
                             <li class="list-inline-item menubar-toggle">

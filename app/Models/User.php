@@ -24,7 +24,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'title', 'firstname', 'lastname', 'email', 'password', 'company_name', 'phone', 'country_id', 'city_id',
-        'address', 'status', 'newsletter', 'currency_id', 'language_id', 'last_login', 'ip_address',
+        'address', 'status', 'newsletter', 'currency_id', 'language_id', 'last_login_at', 'ip_address',
     ];
 
     /**
@@ -43,7 +43,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'last_login' => 'datetime',
+        'last_login_at' => 'datetime',
     ];
 
     /**
@@ -110,5 +110,15 @@ class User extends Authenticatable
     public function getFullNameAttribute()
     {
         return "{$this->firstname} {$this->lastname}";
+    }
+
+    /**
+     * Get the user's active.
+     *
+     * @return string
+     */
+    public function getActiveAttribute()
+    {
+        return (boolean) $this->status;
     }
 }

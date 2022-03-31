@@ -17,7 +17,7 @@ class RoleAndPermissionSeeder extends Seeder
     {
         $admin = Role::create(['name' => 'admin']);
         $distributor = Role::create(['name' => 'distributor']);
-        $company = Role::create(['name' => 'company']);
+        $employee = Role::create(['name' => 'employee']);
 
         if (env('APP_ENV') === 'local') {
             $user = new User([
@@ -27,7 +27,7 @@ class RoleAndPermissionSeeder extends Seeder
                 'email' => 'admin@example.com',
                 'password' => \Hash::make('123321'),
                 'company_name' => 'Hotel Express',
-                'status' => 0
+                'status' => 1
             ]);
 
             $user->save();
