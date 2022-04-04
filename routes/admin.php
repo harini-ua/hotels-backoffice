@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function() {
         /** ----- ------ ----- OTHERS */
 
         Route::get('/', [DashboardsController::class, 'index'])->name('home');
+        Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 
         /** ----- ------ ----- DASHBOARDS */
 

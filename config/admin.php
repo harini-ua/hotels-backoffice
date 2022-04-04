@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'dateformat' => 'm/d/Y H:i:s',
     'ip' => [
         'verify' => env('ADMIN_IP_VERIFY', false),
         'allowed' => [

@@ -9,7 +9,7 @@
             <div class="userbox">
                 <ul class="list-unstyled mb-0">
                     <li class="media dropdown-item">
-                        <a href="#" class="profile-icon"><img src="assets/images/svg-icon/crm.svg" class="img-fluid" alt="user">{{ __('My Profile') }}</a>
+                        <a href="{{ route('profile') }}" class="profile-icon"><img src="assets/images/svg-icon/crm.svg" class="img-fluid" alt="user">{{ __('My Profile') }}</a>
                     </li>
                     <li class="media dropdown-item">
                         <a href="{{ route('logout') }}" class="profile-icon" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

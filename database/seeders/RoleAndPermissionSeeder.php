@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleAndPermissionSeeder extends Seeder
@@ -15,7 +16,14 @@ class RoleAndPermissionSeeder extends Seeder
      */
     public function run()
     {
+        $editProfile = Permission::create(['name' => 'edit profile']);
+
         $admin = Role::create(['name' => 'admin']);
+
+        $admin->syncPermissions([
+            $editProfile
+        ]);
+
         $distributor = Role::create(['name' => 'distributor']);
         $employee = Role::create(['name' => 'employee']);
 
