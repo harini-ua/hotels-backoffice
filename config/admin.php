@@ -30,12 +30,17 @@ return [
                 ],
                 [
                     'name' => 'Users',
-                    'href' => 'users.dashboard',
+                    'href' => 'dashboards.users',
                     'image' => '/assets/images/svg-icon/crm.svg',
                     'items' => [
                         [
+                            'name' => 'Users',
+                            'href' => 'users.index',
+                            'image' => '/assets/images/svg-icon/customers.svg',
+                        ],
+                        [
                             'name' => 'Admins',
-                            'href' => '/#',
+                            'href' => 'admins.index',
                             'image' => '/assets/images/svg-icon/customers.svg',
                         ]
                     ]

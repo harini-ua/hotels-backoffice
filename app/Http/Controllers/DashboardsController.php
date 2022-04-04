@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class DashboardsController extends Controller
 {
     public function index()
     {
@@ -19,5 +19,16 @@ class DashboardController extends Controller
         ];
 
         return view('admin.index', compact('breadcrumbs', 'actions'));
+    }
+
+    public function users()
+    {
+        $breadcrumbs = [
+            ['title' => __('Users Dashboard')],
+//            ['link' => route('home'), 'name' => __('Home')],
+//            ['name' => __('Dashboard')]
+        ];
+
+        return view('admin.pages.users.dashboard', compact('breadcrumbs'));
     }
 }

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\AdminsDataTable;
 use App\DataTables\UsersDataTable;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,11 +14,11 @@ class UserController extends Controller
      * @param UsersDataTable $dataTable
      * @return mixed
      */
-    public function index(UsersDataTable $dataTable)
+    public function index(AdminsDataTable $dataTable)
     {
         $breadcrumbs = [
             ['link' => route('home'), 'name' => __('Home')],
-            ['name' => __('Users')]
+            ['name' => __('Admins')]
         ];
 
         return $dataTable->render('admin.pages.users.index', compact(

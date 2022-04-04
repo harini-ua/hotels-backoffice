@@ -11,7 +11,7 @@
                         @if(isset($menuItem['items']))
                             <ul class="dropdown-menu">
                                 @foreach($menuItem['items'] as $item)
-                                    <li><a href="{{$item['href']}}"><img src="{{$item['image']}}" class="img-fluid" alt="{{__($item['name'])}}">{{__($item['name'])}}</a></li>
+                                    <li><a href="{{route($item['href'])}}"><img src="{{$item['image']}}" class="img-fluid" alt="{{__($item['name'])}}">{{__($item['name'])}}</a></li>
                                 @endforeach
                             </ul>
                         @endif
