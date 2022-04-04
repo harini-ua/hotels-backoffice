@@ -91,7 +91,9 @@
     <!-- Start Breadcrumbbar -->
     @include('admin.partials.breadcrumb')
     <!-- End Breadcrumbbar -->
+    <!-- Start Contentbar -->
     @yield('rightbar-content')
+    <!-- End Contentbar -->
     <!-- Start Footerbar -->
     @include('admin.partials.footer')
     <!-- End Footerbar -->

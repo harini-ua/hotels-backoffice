@@ -16,18 +16,13 @@ Route::middleware('auth')->group(function() {
         /** ----- ------ ----- OTHERS */
 
         Route::get('/', [DashboardsController::class, 'index'])->name('home');
-        Route::get('/profile', [UserController::class, 'profile'])->name('profile');
-
-        /** ----- ------ ----- DASHBOARDS */
-
-        Route::as('dashboards.')->group(function () {
-            Route::get('dashboard', [DashboardsController::class, 'index'])->name('index');
-            Route::get('/users/dashboard', [DashboardsController::class, 'users'])->name('users');
-        });
+        Route::get('dashboard', [DashboardsController::class, 'index'])->name('index');
+        Route::get('profile', [UserController::class, 'profile'])->name('profile');
 
         /** ----- ------ ----- USERS */
 
         Route::prefix('users')->as('users.')->group(function () {
+            Route::get('dashboard', [DashboardsController::class, 'users'])->name('dashboard');
             Route::get('/', [UserController::class, 'index'])->name('index');
         });
 
