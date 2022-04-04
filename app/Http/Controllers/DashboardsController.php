@@ -20,15 +20,4 @@ class DashboardsController extends Controller
 
         return view('admin.index', compact('breadcrumbs', 'actions'));
     }
-
-    public function users()
-    {
-        $breadcrumbs = [
-            ['title' => __('Users Dashboard')],
-//            ['link' => route('home'), 'name' => __('Home')],
-//            ['name' => __('Dashboard')]
-        ];
-
-        return view('admin.pages.users.dashboard', compact('breadcrumbs'));
-    }
 }

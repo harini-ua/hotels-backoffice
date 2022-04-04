@@ -7,7 +7,7 @@
                 <ul class="horizontal-menu">
                     @foreach($mainMenuItems as $key => $menuItem)
                     <li class="dropdown">
-                        <a href="{{route($menuItem['href'])}}"><img src="{{$menuItem['image']}}" class="img-fluid" alt="{{__($menuItem['name'])}}">{{__($menuItem['name'])}}</a>
+                        <a href="{{isset($menuItem['href']) ? route($menuItem['href']) : 'javaScript:void();' }}"><img src="{{$menuItem['image']}}" class="img-fluid" alt="{{__($menuItem['name'])}}">{{__($menuItem['name'])}}</a>
                         @if(isset($menuItem['items']))
                             <ul class="dropdown-menu">
                                 @foreach($menuItem['items'] as $item)

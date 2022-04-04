@@ -31,7 +31,6 @@ return [
                 ],
                 [
                     'name' => 'Users',
-                    'href' => 'dashboards.users',
                     'image' => '/assets/images/svg-icon/crm.svg',
                     'items' => [
                         [

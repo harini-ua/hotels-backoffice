@@ -14,22 +14,21 @@ Route::middleware('auth')->group(function() {
     Route::middleware('role:admin,distributor,employee')->group(function() {
 
         /** ----- ------ ----- OTHERS */
-
         Route::get('/', [DashboardsController::class, 'index'])->name('home');
         Route::get('dashboard', [DashboardsController::class, 'index'])->name('index');
         Route::get('profile', [UserController::class, 'profile'])->name('profile');
 
         /** ----- ------ ----- USERS */
-
+        Route::resource('users', UserController::class);
         Route::prefix('users')->as('users.')->group(function () {
-            Route::get('dashboard', [DashboardsController::class, 'users'])->name('dashboard');
-            Route::get('/', [UserController::class, 'index'])->name('index');
+//            Route::get('dashboard', [DashboardsController::class, 'users'])->name('dashboard');
+//            Route::get('/', [UserController::class, 'index'])->name('index');
         });
 
         /** ----- ------ ----- ADMINS */
-
+        Route::resource('admins', AdminController::class)->except(['delete']);
         Route::prefix('admins')->as('admins.')->group(function () {
-            Route::get('/', [AdminController::class, 'index'])->name('index');
+//            Route::get('/', [AdminController::class, 'index'])->name('index');
         });
 
         /** ----- ------ ----- DISTRIBUTORS */
