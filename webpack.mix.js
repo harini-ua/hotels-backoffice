@@ -13,10 +13,6 @@ require('dotenv').config();
  |
  */
 
-const sassOptions = {
-    // precision: 5
-};
-
 function mixAssetsDir(query, cb) {
     (glob.sync('resources/' + query) || []).forEach(f => {
         f = f.replace(/[\\\/]+/g, '/');
@@ -24,16 +20,19 @@ function mixAssetsDir(query, cb) {
     });
 }
 
+// Other resources
 mix.copyDirectory('resources/images', 'public/images');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 
-// Pages stylesheets
+// Stylesheets
 mixAssetsDir(
     'sass/pages/**/!(_)*.scss',
-    (src, dest) => mix.sass(src, dest.replace(/(\\|\/)sass(\\|\/)/, '$1css$2').replace(/\.scss$/, '.css'), sassOptions)
+    (src, dest) => mix.sass(src, dest.replace(/(\\|\/)sass(\\|\/)/, '$1css$2').replace(/\.scss$/, '.css'), {})
 );
 
-// Pages scripts
-mix.js('resources/js/pages/**/*.js', 'public/js/pages')
+// Scripts
+mixAssetsDir('js/pages/**/*.js', (src, dest) => mix.scripts(src, dest, {}));
+mixAssetsDir('js/scripts/**/*.js', (src, dest) => mix.scripts(src, dest, {}));
+
