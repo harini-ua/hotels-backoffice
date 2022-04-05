@@ -45,10 +45,18 @@ class UserController extends Controller
 
         /** @var User $user */
         $user = \Auth::user();
+
+        $lastLogin = __('Never');
+        if ($user->last_login_at) {
+            $lastLogin = $user->last_login_at->format(config('admin.dateformat'));
+            $forHumans = __($user->last_login_at->diffForHumans());
+            $lastLogin .= " ($forHumans)";
+        }
+
         $canEdit = $user->hasPermissionTo('edit profile');
 
         return view('admin.pages.profile', compact(
-            'breadcrumbs', 'user', 'canEdit'
+            'breadcrumbs', 'user', 'lastLogin', 'canEdit'
         ));
     }
 

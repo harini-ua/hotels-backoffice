@@ -66,7 +66,7 @@
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-4 col-form-label">{{ __('Last Login in on') }}</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" value="{{ $user->last_login_at->format($format ?? config('admin.dateformat')) . ' ('.$user->last_login_at->diffForHumans().')' }}" disabled>
+                                        <input type="text" class="form-control" value="{{ $lastLogin }}" disabled>
                                     </div>
                                 </div>
                             @endif
