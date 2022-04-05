@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use App\DataTables\AdminsDataTable;
 use App\DataTables\UsersDataTable;
-use Illuminate\Http\Request;
+use App\Http\Requests\AbminStoreRequest;
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class AdminController extends Controller
 {
@@ -17,12 +22,74 @@ class AdminController extends Controller
     public function index(AdminsDataTable $dataTable)
     {
         $breadcrumbs = [
+            ['title' => __('List Admins')],
             ['link' => route('home'), 'name' => __('Home')],
             ['name' => __('Admins')]
         ];
 
-        return $dataTable->render('admin.pages.users.index', compact(
-            'breadcrumbs'
+        $actions = [
+            ['href' => route('admins.create'), 'icon' => 'plus', 'name' => __('Create')]
+        ];
+
+        return $dataTable->render('admin.pages.admins.index', compact(
+            'breadcrumbs', 'actions'
         ));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response|View
+     */
+    public function create()
+    {
+        $breadcrumbs = [
+            ['title' => __('Create Admin')],
+            ['link' => route('home'), 'name' => __('Home')],
+            ['link' => route('admins.index'), 'name' => __('Admins')],
+            ['name' => __('Create')]
+        ];
+
+        return view('admin.pages.admins.create', compact('breadcrumbs'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param AbminStoreRequest $request
+     * @return RedirectResponse
+     */
+    public function store(AbminStoreRequest $request)
+    {
+        User::create($request->all());
+
+        return redirect()->route('admin.pages.users.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param User $user
+     * @return Response
+     */
+    public function show(User $user)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param User $user
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function destroy(User $user)
+    {
+        if ($user->delete()) {
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => false]);
     }
 }

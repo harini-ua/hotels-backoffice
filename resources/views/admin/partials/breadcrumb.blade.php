@@ -23,7 +23,10 @@
             @if(isset($actions))
             <div class="widgetbar">
                 @foreach($actions as $action)
-                <button class="btn btn-primary-rgba"><i class="feather @if($action['icon']) {{ 'icon-'.$action['icon'] }} @endif mr-2"></i>{{ $action['name'] }}</button>
+                <button onclick="window.location.href='{{$action['href']}}'" type="button" class="btn btn-success-rgba">
+                    <i class="feather @if($action['icon']) {{ 'icon-'.$action['icon'] }} @endif mr-2"></i>
+                    {{ $action['name'] }}
+                </button>
                 @endforeach
             </div>
             @endif

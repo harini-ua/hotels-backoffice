@@ -64,7 +64,6 @@ class UsersDataTable extends DataTable
             ->dom('Bfrtip')
             ->orderBy(1)
             ->buttons(
-                Button::make('create'),
                 Button::make('postExcel'),
                 Button::make('print'),
                 Button::make('reload')
