@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class AbminStoreRequest extends FormRequest
+class AdminStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,7 @@ class AbminStoreRequest extends FormRequest
             'username' => 'required|string|min:3',
             'firstname' => 'required|string',
             'lastname' => 'required|string',
-            'email' => ['required', 'email', Rule::unique('users')->whereNull('deleted_at')],
+            'email' => ['required', 'email', Rule::unique('users')],
             'address' => 'required|string',
             'password' => 'required|string|min:8',
         ];

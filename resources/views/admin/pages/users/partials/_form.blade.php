@@ -36,7 +36,7 @@
     <div class="form-group row">
         <label for="firstname" class="col-sm-2 col-form-label">{{ __('First Name') }} *</label>
         <div class="col-sm-4">
-            <input type="email" id="firstname" name="firstname" class="form-control @error('firstname') is-invalid @enderror">
+            <input type="text" id="firstname" name="firstname" class="form-control @error('firstname') is-invalid @enderror">
             @error('firstname')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
@@ -45,7 +45,7 @@
     <div class="form-group row">
         <label for="lastname" class="col-sm-2 col-form-label">{{ __('Last Name') }} *</label>
         <div class="col-sm-4">
-            <input type="email" id="lastname" name="lastname" class="form-control @error('lastname') is-invalid @enderror">
+            <input type="text" id="lastname" name="lastname" class="form-control @error('lastname') is-invalid @enderror">
             @error('lastname')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
@@ -63,7 +63,7 @@
     <div class="form-group row">
         <label for="password" class="col-sm-2 col-form-label">{{ __('Password') }} *</label>
         <div class="input-group col-sm-4 mb-3">
-            <input type="text" id="password" name="password" class="form-control @error('password') is-invalid @enderror" >
+            <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" >
             <div class="input-group-append">
                 <button class="btn btn-light" type="button" id="generate">{{ __('Generate') }}</button>
             </div>
@@ -121,11 +121,10 @@
 Be extremely cautios when creating these users and sending the details to the correct person.') }}
         </h6>
     </div>
-
     <div class="form-group row">
         <label for="send_to_email" class="col-sm-2 col-form-label">{{ __('Send to email') }} *</label>
         <div class="input-group col-sm-4 mb-3 same-wrapper">
-            <input type="text" id="send_to_email" name="send_to_email" class="form-control insert @error('send_to_email') is-invalid @enderror" >
+            <input type="email" id="send_to_email" name="send_to_email" class="form-control insert @error('send_to_email') is-invalid @enderror" >
             <div class="input-group-append">
                 <button class="btn btn-light same" data-same="email" type="button">{{ __('Same') }}</button>
             </div>

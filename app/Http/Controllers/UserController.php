@@ -104,8 +104,11 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-        /** @var User $user */
-        $user = User::create($request->all());
+        $user = new User();
+        $user->fill($request->except('password', 'invoice_allowed', 'send_to_email'));
+        $user->password = Hash::make($request->get('password'));
+        $user->save();
+
         $user->assignRole('employee');
 
         if ($request->has('invoice_allowed')) {

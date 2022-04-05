@@ -28,11 +28,11 @@ jQuery(document).ready(function ($) {
 
         $('.same-wrapper').each(function () {
             let $this = $(this);
-            console.log('1111111');
             $('.same').on('click', function () {
-                const same = $(this);
-                console.log(same);
-                $this.find('insert').value = document.getElementById(same).value;
+                const same = $(this).data('same');
+                $this.find('.insert').val(
+                    document.getElementById(same).value
+                );
             });
         });
     });

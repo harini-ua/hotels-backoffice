@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\DataTables\AdminsDataTable;
 use App\DataTables\UsersDataTable;
-use App\Http\Requests\AbminStoreRequest;
+use App\Http\Requests\AdminStoreRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 class AdminController extends Controller
@@ -56,15 +57,19 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param AbminStoreRequest $request
+     * @param AdminStoreRequest $request
      * @return RedirectResponse
      */
-    public function update(AbminStoreRequest $request)
+    public function store(AdminStoreRequest $request)
     {
-        $user = User::create($request->all());
+        $user = new User();
+        $user->fill($request->except('password'));
+        $user->password = Hash::make($request->get('password'));
+        $user->save();
+
         $user->assignRole('admin');
 
-        return redirect()->route('admin.pages.admins.index');
+        return redirect()->route('admins.index');
     }
 
     /**

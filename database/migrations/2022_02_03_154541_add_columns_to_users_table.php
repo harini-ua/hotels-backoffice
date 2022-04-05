@@ -18,15 +18,16 @@ class AddColumnsToUsersTable extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->string('title')->after('username');
+            $table->string('title')->nullable()->after('username');
             $table->string('firstname')->after('title');
             $table->string('lastname')->after('firstname');
-            $table->string('company_name')->after('password');
+            $table->string('company_name')->nullable()->after('password');
             $table->string('phone')->nullable()->after('company_name');
             $table->unsignedBigInteger('country_id')->nullable()->after('phone');
             $table->unsignedBigInteger('city_id')->nullable()->after('country_id');
             $table->text('address')->nullable()->after('city_id');
-            $table->boolean('status')->after('address')->comment('0-inactive, 1-active');
+            $table->boolean('status')->after('address')->default(1)
+                ->comment('0-inactive, 1-active');
             $table->boolean('newsletter')->nullable()->after('status');
             $table->unsignedBigInteger('currency_id')->nullable()->after('newsletter');
             $table->unsignedBigInteger('language_id')->nullable()->after('currency_id');

@@ -21,14 +21,14 @@ class AdminsDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('title', function(User $user) {
-                return $user->title;
+            ->addColumn('username', function(User $user) {
+                return $user->username;
             })
             ->addColumn('email', function(User $user) {
-                return $user->emailw;
+                return $user->email;
             })
-            ->addColumn('action', function (User $user) {
-                return view("admin.datatables.actions", ['actions' => [], 'model' => $user]);
+            ->addColumn('qr', function(User $user) {
+                return $user->email;
             })
         ;
     }
@@ -79,10 +79,10 @@ class AdminsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
-            Column::make('title'),
+            Column::make('id')->title(__('ID')),
+            Column::make('username')->title(__('User Name')),
             Column::make('email')->orderable(false),
-            Column::computed('action')
+            Column::computed('qr')->title(__('QR Code'))
                 ->orderable(false)
                 ->exportable(false)
                 ->printable(false)
