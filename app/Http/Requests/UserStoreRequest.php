@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UserStoreRequest extends FormRequest
 {
@@ -24,7 +25,15 @@ class UserStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'distributor_id' => 'required|exists:distributors,id',
+            'company_id' => 'required|exists:companies,id',
+            'email' => ['required', 'email', Rule::unique('users')->whereNull('deleted_at')],
+            'password' => 'required|string|min:8',
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'address' => 'required|string',
+            'country_id' => 'required|exists:countries,id',
+            'language_id' => 'required|exists:languages,id',
         ];
     }
 }

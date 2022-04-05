@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class AbminStoreRequest extends FormRequest
 {
@@ -24,7 +25,12 @@ class AbminStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'username' => 'required|string|min:3',
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'email' => ['required', 'email', Rule::unique('users')->whereNull('deleted_at')],
+            'address' => 'required|string',
+            'password' => 'required|string|min:8',
         ];
     }
 }
