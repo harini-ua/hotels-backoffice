@@ -21,14 +21,13 @@ Route::middleware('auth')->group(function() {
         /** ----- ------ ----- USERS */
         Route::resource('users', UserController::class);
         Route::prefix('users')->as('users.')->group(function () {
-//            Route::get('dashboard', [DashboardsController::class, 'users'])->name('dashboard');
-//            Route::get('/', [UserController::class, 'index'])->name('index');
+            // TODO: Implement users routes
         });
 
         /** ----- ------ ----- ADMINS */
         Route::resource('admins', AdminController::class)->except(['delete']);
         Route::prefix('admins')->as('admins.')->group(function () {
-//            Route::get('/', [AdminController::class, 'index'])->name('index');
+            // TODO: Implement admins routes
         });
 
         /** ----- ------ ----- DISTRIBUTORS */

@@ -21,14 +21,32 @@ class UsersDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('title', function(User $user) {
-                return $user->title;
+            ->addColumn('company_name', function(User $user) {
+                return $user->company_name ?? '-';
+            })
+            ->addColumn('username', function(User $user) {
+                return $user->username;
+            })
+            ->addColumn('fullname', function(User $user) {
+                return $user->fullname;
+            })
+            ->addColumn('phone', function(User $user) {
+                return $user->phone ?? '-';
             })
             ->addColumn('email', function(User $user) {
-                return $user->emailw;
+                return $user->email;
+            })
+            ->addColumn('city', function(User $user) {
+                return isset($user->city) ? $user->city->name : '-';
+            })
+            ->addColumn('country', function(User $user) {
+                return isset($user->country) ? $user->country->name : '-';
+            })
+            ->addColumn('created_at', function(User $user) {
+                return $user->created_at;
             })
             ->addColumn('action', function (User $user) {
-                return view("admin.datatables.actions", ['actions' => [], 'model' => $user]);
+                return view("admin.datatables.actions", ['actions' => ['login'], 'model' => $user]);
             })
         ;
     }
@@ -42,6 +60,7 @@ class UsersDataTable extends DataTable
     public function query(User $model)
     {
         return $model->newQuery()
+            ->with(['city', 'country'])
             ->select('users.*')
             ->whereHas("roles", function($q) {
                 $q->where("name", "employee");
@@ -79,9 +98,15 @@ class UsersDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
-            Column::make('title'),
+            Column::make('id')->title(__('ID')),
+            Column::make('company_name')->title(__('Company')),
+            Column::make('username')->title(__('User Name')),
+            Column::make('fullname')->title(__('Full Name')),
+            Column::make('phone')->title(__('Telephone')),
             Column::make('email')->orderable(false),
+            Column::make('city'),
+            Column::make('country'),
+            Column::make('created_at')->title(__('Created Date')),
             Column::computed('action')
                 ->orderable(false)
                 ->exportable(false)
