@@ -59,11 +59,12 @@ class AdminController extends Controller
      * @param AbminStoreRequest $request
      * @return RedirectResponse
      */
-    public function store(AbminStoreRequest $request)
+    public function update(AbminStoreRequest $request)
     {
-        User::create($request->all());
+        $user = User::create($request->all());
+        $user->assignRole('admin');
 
-        return redirect()->route('admin.pages.users.index');
+        return redirect()->route('admin.pages.admins.index');
     }
 
     /**

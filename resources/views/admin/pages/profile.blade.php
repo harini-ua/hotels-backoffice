@@ -23,7 +23,7 @@
                                 <div class="col-sm-8">
                                     <input type="text" name="username" value="{{ old('title') ?? $user->title }}" class="form-control @error('title') is-invalid @enderror">
                                     @error('username')
-                                    <small class="form-text text-red text-muted" role="alert">{{ $message }}</small>
+                                    <small class="form-text text-danger" role="alert">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
@@ -33,7 +33,7 @@
                                     <div class="col-sm-8">
                                         <input type="password" name="current_password" class="form-control @error('current_password') is-invalid @enderror">
                                         @error('password')
-                                        <small class="form-text text-red text-muted" role="alert">{{ $message }}</small>
+                                        <small class="form-text text-danger" role="alert">{{ $message }}</small>
                                         @enderror
                                     </div>
                                 </div>
@@ -42,7 +42,7 @@
                                     <div class="col-sm-8">
                                         <input type="password" name="new_password" class="form-control @error('new_password') is-invalid @enderror">
                                         @error('new_password')
-                                        <small class="form-text text-red text-muted" role="alert">{{ $message }}</small>
+                                        <small class="form-text text-danger" role="alert">{{ $message }}</small>
                                         @enderror
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@
                                     <div class="col-sm-8">
                                         <input type="password" name="confirm_password" class="form-control @error('confirm_password') is-invalid @enderror">
                                         @error('confirm_password')
-                                        <small class="form-text text-red text-muted" role="alert">{{ $message }}</small>
+                                        <small class="form-text text-danger" role="alert">{{ $message }}</small>
                                         @enderror
                                     </div>
                                 </div>

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\DataTables\UsersDataTable;
 use App\Http\Requests\UserStoreRequest;
+use App\Models\Country;
+use App\Models\Distributor;
+use App\Models\Language;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -74,8 +77,22 @@ class UserController extends Controller
             ['name' => __('Create')]
         ];
 
+        $distributors = Distributor::all()
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        $countries = Country::all()
+            ->where('active', 1)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        $languages = Language::all()
+            ->where('active', 1)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
         return view('admin.pages.users.create', compact(
-            'breadcrumbs'
+            'breadcrumbs', 'distributors', 'countries', 'languages'
         ));
     }
 
@@ -87,7 +104,17 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-        User::create($request->all());
+        /** @var User $user */
+        $user = User::create($request->all());
+        $user->assignRole('employee');
+
+        if ($request->has('invoice_allowed')) {
+            $user->givePermissionTo('invoice allowed');
+        }
+
+        if ($request->has('send_to_email')) {
+            // TODO: Implement send login details to email.
+        }
 
         return redirect()->route('admin.pages.users.index');
     }

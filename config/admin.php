@@ -63,7 +63,7 @@ return [
                 [
                     'name' => 'Reports',
                     'href' => 'reports.index',
-                    'image' => 'assets/images/svg-icon/reports.svg',
+                    'image' => '/assets/images/svg-icon/reports.svg',
                 ],
                 [
                     'name' => 'Settings',
