@@ -16,12 +16,14 @@ class RoleAndPermissionSeeder extends Seeder
      */
     public function run()
     {
+        $createAdmin = Permission::create(['name' => 'create admin']);
         $editProfile = Permission::create(['name' => 'edit profile']);
 
         $admin = Role::create(['name' => 'admin']);
 
         $admin->syncPermissions([
-            $editProfile
+            $createAdmin,
+            $editProfile,
         ]);
 
         $distributor = Role::create(['name' => 'distributor']);
@@ -29,6 +31,7 @@ class RoleAndPermissionSeeder extends Seeder
 
         if (env('APP_ENV') === 'local') {
             $user = new User([
+                'username' => 'admin',
                 'title' => 'Administrator',
                 'firstname' => 'Firstname',
                 'lastname' => 'Lastname',

@@ -12,6 +12,7 @@
         "ext-curl": "*",
         "ext-json": "*",
         "arrilot/laravel-widgets": "^3.13",
+        "doctrine/dbal": "^3.3",
         "elasticsearch/elasticsearch": "^7.17",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
