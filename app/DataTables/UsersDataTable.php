@@ -21,32 +21,32 @@ class UsersDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('company_name', function(User $user) {
-                return $user->company_name ?? '-';
+            ->addColumn('company_name', function(User $model) {
+                return $model->company_name ?? '-';
             })
-            ->addColumn('username', function(User $user) {
-                return $user->username;
+            ->addColumn('username', function(User $model) {
+                return $model->username;
             })
-            ->addColumn('fullname', function(User $user) {
-                return $user->fullname;
+            ->addColumn('fullname', function(User $model) {
+                return view('admin.datatables.view-link', ['model' => $model, 'title' => $model->fullname]);
             })
-            ->addColumn('phone', function(User $user) {
-                return $user->phone ?? '-';
+            ->addColumn('phone', function(User $model) {
+                return $model->phone ?? '-';
             })
-            ->addColumn('email', function(User $user) {
-                return $user->email;
+            ->addColumn('email', function(User $model) {
+                return $model->email;
             })
-            ->addColumn('city', function(User $user) {
-                return isset($user->city) ? $user->city->name : '-';
+            ->addColumn('city', function(User $model) {
+                return isset($model->city) ? $model->city->name : '-';
             })
-            ->addColumn('country', function(User $user) {
-                return isset($user->country) ? $user->country->name : '-';
+            ->addColumn('country', function(User $model) {
+                return isset($model->country) ? $model->country->name : '-';
             })
-            ->addColumn('created_at', function(User $user) {
-                return $user->created_at;
+            ->addColumn('created_at', function(User $model) {
+                return $model->created_at;
             })
-            ->addColumn('action', function (User $user) {
-                return view("admin.datatables.actions", ['actions' => ['login'], 'model' => $user]);
+            ->addColumn('action', function (User $model) {
+                return view("admin.datatables.actions", ['actions' => ['login', 'delete'], 'model' => $model]);
             })
         ;
     }
@@ -62,9 +62,9 @@ class UsersDataTable extends DataTable
         return $model->newQuery()
             ->with(['city', 'country'])
             ->select('users.*')
-            ->whereHas("roles", function($q) {
-                $q->where("name", "employee");
-            })
+//            ->whereHas("roles", function($q) {
+//                $q->where("name", "employee");
+//            })
         ;
     }
 

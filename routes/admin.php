@@ -21,7 +21,10 @@ Route::middleware('auth')->group(function() {
         /** ----- ------ ----- USERS */
         Route::resource('users', UserController::class);
         Route::prefix('users')->as('users.')->group(function () {
-            // TODO: Implement users routes
+            Route::prefix('{user}/password')->as('password.')->group(function () {
+                Route::post('change', [UserController::class, 'passwordChange'])->name('change');
+                Route::post('send', [UserController::class, 'passwordSend'])->name('send');
+            });
         });
 
         /** ----- ------ ----- ADMINS */

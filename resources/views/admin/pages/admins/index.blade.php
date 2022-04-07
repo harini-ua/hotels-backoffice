@@ -24,5 +24,6 @@
 
 @section('script')
     {{ $dataTable->scripts() }}
+    <script src="{{asset('js/scripts/datatable.js')}}"></script>
 @endsection
 

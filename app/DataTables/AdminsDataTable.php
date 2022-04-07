@@ -21,14 +21,14 @@ class AdminsDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('username', function(User $user) {
-                return $user->username;
+            ->addColumn('username', function(User $model) {
+                return $model->username;
             })
-            ->addColumn('email', function(User $user) {
-                return $user->email;
+            ->addColumn('email', function(User $model) {
+                return $model->email;
             })
-            ->addColumn('qr', function(User $user) {
-                return $user->email;
+            ->addColumn('qr', function(User $model) {
+                return $model->email;
             })
         ;
     }

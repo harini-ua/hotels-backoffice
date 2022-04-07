@@ -3,5 +3,7 @@
     "/css/app.css": "/css/app.css",
     "/css/pages/users.css": "/css/pages/users.css",
     "/js/pages/users.js": "/js/pages/users.js",
+    "/js/scripts/datatable.js": "/js/scripts/datatable.js",
+    "/js/scripts/form.js": "/js/scripts/form.js",
     "/js/scripts/password.js": "/js/scripts/password.js"
 }

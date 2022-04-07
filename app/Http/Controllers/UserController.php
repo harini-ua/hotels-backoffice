@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class UserController extends Controller
@@ -126,11 +127,44 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param User $user
-     * @return Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show(User $user)
     {
-        //
+        $breadcrumbs = [
+            ['title' => $user->fullname],
+            ['link' => route('home'), 'name' => __('Home')],
+            ['link' => route('users.index'), 'name' => __('Users')],
+            ['name' => __('Show User')]
+        ];
+
+        return view('admin.pages.users.show', compact(
+            'breadcrumbs', 'user'
+        ));
+    }
+
+    public function passwordChange(Request $request, User $user)
+    {
+        $success = false;
+
+        if ($request->has('password')) {
+            $success = $user->update([
+                'password' => \Hash::make($request->get('password'))
+            ]);
+        }
+
+        return response()->json([
+            'success' => $success
+        ]);
+    }
+
+    public function passwordSend(User $user)
+    {
+        //TODO: Need implement sent user password
+
+        return response()->json([
+            'success' => true
+        ]);
     }
 
     /**
