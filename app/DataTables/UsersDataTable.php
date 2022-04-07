@@ -19,36 +19,79 @@ class UsersDataTable extends DataTable
      */
     public function dataTable($query)
     {
-        return datatables()
-            ->eloquent($query)
-            ->addColumn('company_name', function(User $model) {
-                return $model->company_name ?? '-';
-            })
-            ->addColumn('username', function(User $model) {
-                return $model->username;
-            })
-            ->addColumn('fullname', function(User $model) {
-                return view('admin.datatables.view-link', ['model' => $model, 'title' => $model->fullname]);
-            })
-            ->addColumn('phone', function(User $model) {
-                return $model->phone ?? '-';
-            })
-            ->addColumn('email', function(User $model) {
-                return $model->email;
-            })
-            ->addColumn('city', function(User $model) {
-                return isset($model->city) ? $model->city->name : '-';
-            })
-            ->addColumn('country', function(User $model) {
-                return isset($model->country) ? $model->country->name : '-';
-            })
-            ->addColumn('created_at', function(User $model) {
-                return $model->created_at;
-            })
-            ->addColumn('action', function (User $model) {
-                return view("admin.datatables.actions", ['actions' => ['login', 'delete'], 'model' => $model]);
-            })
-        ;
+        $dataTable =  datatables()->eloquent($query);
+
+        $dataTable->addColumn('company_name', function(User $model) {
+            return $model->company_name ?? '-';
+        });
+
+        $dataTable->addColumn('username', function(User $model) {
+            return $model->username;
+        });
+
+        $dataTable->addColumn('fullname', function(User $model) {
+            return view('admin.datatables.view-link', ['model' => $model, 'title' => $model->fullname]);
+        });
+
+        $dataTable->addColumn('phone', function(User $model) {
+            return $model->phone ?? '-';
+        });
+
+        $dataTable->addColumn('email', function(User $model) {
+            return $model->email;
+        });
+
+        $dataTable->addColumn('city', function(User $model) {
+            return isset($model->city) ? $model->city->name : '-';
+        });
+
+        $dataTable->addColumn('country', function(User $model) {
+            return isset($model->country) ? $model->country->name : '-';
+        });
+
+        $dataTable->addColumn('created_at', function(User $model) {
+            return $model->created_at;
+        });
+
+        $dataTable->addColumn('action', function (User $model) {
+            return view("admin.datatables.actions", ['actions' => ['login', 'delete'], 'model' => $model]);
+        });
+
+        $this->setFilterColumns($dataTable);
+
+        $dataTable->filter(function($query) {
+            if ($this->request->has('company')) {
+                // TODO: Implement filter by company
+//                dd($this->request->has('company'));
+            }
+        }, true);
+
+        return $dataTable;
+    }
+
+    /**
+     * Set filter columns
+     *
+     * @param $dataTable
+     */
+    protected function setFilterColumns($dataTable)
+    {
+        $dataTable->filterColumn('company_name', static function($query, $keyword) {
+            $query->where('company_name', 'like', "%$keyword%");
+        });
+
+        $dataTable->filterColumn('username', static function($query, $keyword) {
+            $query->where('username', 'like', "%$keyword%");
+        });
+
+        $dataTable->filterColumn('fullname', static function($query, $keyword) {
+            $query->where('firstname', 'like', "%$keyword%")
+                ->orWhere('lastname', 'like', "%$keyword%");
+        });
+
+        $dataTable->filterColumn('email', static function($query, $keyword) {
+            $query->where('email', 'like', "%$keyword%");
+        });
     }
 
     /**
@@ -80,12 +123,13 @@ class UsersDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('Bfrtip')
+            ->dom('frtip')
             ->orderBy(1)
+            ->language([ 'search' => "<span>".__('Search')."</span>" ])
             ->buttons(
-                Button::make('postExcel'),
-                Button::make('print'),
-                Button::make('reload')
+                Button::make('postExcel')
+//                Button::make('print'),
+//                Button::make('reload')
             )
         ;
     }
@@ -112,7 +156,7 @@ class UsersDataTable extends DataTable
                 ->exportable(false)
                 ->printable(false)
                 ->orderable(false)
-                ->width(60)
+                ->width(150)
                 ->addClass('text-center'),
         ];
     }

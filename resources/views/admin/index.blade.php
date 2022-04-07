@@ -20,10 +20,12 @@
         <!-- Start col -->
         <div class="col-lg-12">
             <!-- Start row -->
-            <div class="row">
+            <div class="row justify-content-center">
                 <!-- Start col -->
-                <div class="col-lg-12 col-xl-2">
-{{--                    {{ (new \App\Widgets\Distributors)->run() }}--}}
+                <div class="col-lg-4">
+                    <div class="onboard-content text-center my-5">
+                        <img src="{{asset('assets/images/ui-onboard/unboard.svg')}}" class="img-fluid mb-5" alt="onboard">
+                    </div>
                 </div>
             </div>
             <!-- End row -->

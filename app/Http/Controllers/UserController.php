@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\UsersDataTable;
 use App\Http\Requests\UserStoreRequest;
+use App\Models\Company;
 use App\Models\Country;
 use App\Models\Distributor;
 use App\Models\Language;
@@ -34,8 +35,13 @@ class UserController extends Controller
             ['href' => route('users.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
+        $companies = Company::all()
+            ->sortBy('name')
+            ->where('status', 1)
+            ->pluck('name', 'id');
+
         return $dataTable->render('admin.pages.users.index', compact(
-            'breadcrumbs' ,'actions'
+            'breadcrumbs' ,'actions', 'companies'
         ));
     }
 

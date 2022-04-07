@@ -33,6 +33,6 @@ mixAssetsDir(
 );
 
 // Scripts
-mixAssetsDir('js/pages/**/*.js', (src, dest) => mix.scripts(src, dest, {}));
-mixAssetsDir('js/scripts/**/*.js', (src, dest) => mix.scripts(src, dest, {}));
+mixAssetsDir('js/pages/**/*.js', (src, dest) => mix.scripts(src, dest));
+mixAssetsDir('js/scripts/**/*.js', (src, dest) => mix.scripts(src, dest));
 
