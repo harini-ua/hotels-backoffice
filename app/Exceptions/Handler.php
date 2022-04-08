@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\View;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -51,5 +52,14 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         return parent::render($request, $exception);
+    }
+
+    protected function registerErrorViewPaths()
+    {
+        $paths = collect(config('view.paths'));
+
+        View::replaceNamespace('errors', $paths->map(function ($path) {
+            return "{$path}/admin/errors";
+        })->push(__DIR__.'/views')->all());
     }
 }
