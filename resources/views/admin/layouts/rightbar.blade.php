@@ -86,7 +86,7 @@
     </div>
     <!-- End Topbar -->
     <!-- Start Navigationbar -->
-    @include('admin.partials.menu-main')
+    <x-menu/>
     <!-- End Navigationbar -->
     <!-- Start Breadcrumbbar -->
     @include('admin.partials.breadcrumb')
