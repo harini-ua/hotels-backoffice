@@ -5,8 +5,6 @@ namespace App\DataTables;
 use App\Models\Distributor;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class DistributorsDataTable extends DataTable
@@ -77,7 +75,7 @@ class DistributorsDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('users-list-datatable')
+            ->setTableId('distributors-list-datatable')
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()

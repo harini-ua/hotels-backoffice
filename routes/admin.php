@@ -42,8 +42,9 @@ Route::middleware('auth')->group(function() {
 
         /** ----- ------ ----- COMPANIES */
 
+        Route::resource('companies', CompanyController::class);
         Route::prefix('companies')->as('companies.')->group(function () {
-            Route::get('/', [CompanyController::class, 'index'])->name('index');
+            Route::post('{companies}/duplicate', [CompanyController::class, 'duplicate'])->name('duplicate');
         });
 
         /** ----- ------ ----- STATISTICS */

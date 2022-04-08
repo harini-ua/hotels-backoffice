@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\CompaniesDataTable;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    public function index()
+    public function index(CompaniesDataTable $dataTable)
     {
         $breadcrumbs = [
             ['title' => __('Companies')],
@@ -14,6 +15,12 @@ class CompanyController extends Controller
             ['name' => __('Companies')]
         ];
 
-        return view('admin.pages.companies.index', compact('breadcrumbs'));
+        $actions = [
+            ['href' => route('users.create'), 'icon' => 'plus', 'name' => __('Create')]
+        ];
+
+        return $dataTable->render('admin.pages.companies.index', compact(
+            'breadcrumbs', 'actions'
+        ));
     }
 }
