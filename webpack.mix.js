@@ -24,7 +24,8 @@ function mixAssetsDir(query, cb) {
 mix.copyDirectory('resources/images', 'public/images');
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/custom.scss', 'public/css');
 
 // Stylesheets
 mixAssetsDir(

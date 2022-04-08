@@ -57,6 +57,10 @@ class Filters
         }
     }
 
+    delete(name) {
+        delete (this.filters[name]);
+    }
+
     url(route) {
         const url = new URL(route);
         for (let name in this.filters) {

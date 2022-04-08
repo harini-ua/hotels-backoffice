@@ -4,3 +4,4 @@
 <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('assets/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css">

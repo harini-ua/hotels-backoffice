@@ -1,0 +1,25 @@
+.dataTables_wrapper {
+    .dt-buttons {
+        margin-bottom: 5px !important;
+        float: right !important;
+    }
+    .dataTables_info {
+        float: left !important;
+    }
+    .dataTables_paginate {
+        float: right !important;
+    }
+    .dataTables_filter {
+        float: left !important;
+    }
+    .dataTables_processing {
+        margin: 5px 0 0 10px;
+        float: left;
+    }
+}
+
+#datatable-filters {
+    .reset-filters {
+        margin: 40px 0 0 10px;
+    }
+}

@@ -10,7 +10,7 @@ $(document).ready(function () {
         const name = filterItem.find('.filter-input').attr('name');
         const table = $('#' + filterItem.find('.filter-input').attr('data-table')).DataTable();
 
-        filterItem.on('change', '.select-filters', function(e) {
+        filterItem.on('change', '.select-filter, .text-filter', function(e) {
             e.preventDefault();
             filters.set(name, this.value);
             table.ajax.url(filters.url(route)).load();

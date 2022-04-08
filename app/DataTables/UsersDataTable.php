@@ -62,8 +62,18 @@ class UsersDataTable extends DataTable
         $dataTable->filter(function($query) {
             if ($this->request->has('company')) {
                 // TODO: Implement filter by company
-//                dd($this->request->has('company'));
             }
+//            if ($this->request->has('search_value')) {
+//                $keyword = $this->request->get('search_value');
+//
+//                if ($keyword) {
+//                    $query->where('company_name', 'like', "%$keyword%")
+//                        ->orWhere('username', 'like', "%$keyword%")
+//                        ->orWhere('firstname', 'like', "%$keyword%")
+//                        ->orWhere('lastname', 'like', "%$keyword%")
+//                        ->orWhere('email', 'like', "%$keyword%");
+//                }
+//            }
         }, true);
 
         return $dataTable;
@@ -123,13 +133,15 @@ class UsersDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('frtip')
+            ->dom('Bfrtip')
             ->orderBy(1)
-            ->language([ 'search' => "<span>".__('Search')."</span>" ])
+            ->language([
+                'search' => '',
+                'searchPlaceholder' => __('Search')
+            ])
             ->buttons(
-                Button::make('postExcel')
-//                Button::make('print'),
-//                Button::make('reload')
+                Button::make('postExcel'),
+                Button::make('print')
             )
         ;
     }
