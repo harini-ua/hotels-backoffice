@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',  __('Create Distributor'))
+@section('title',  __('Update Distributor'))
 
 @section('style')
     <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
@@ -8,7 +8,7 @@
 @endsection
 
 @section('rightbar-content')
-    <div class="contentbar distributors-create-wrapper">
+    <div class="contentbar distributors-edit-wrapper">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card m-b-30">

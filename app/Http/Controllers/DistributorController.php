@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\DataTables\DistributorsDataTable;
 use App\Http\Requests\DistributorStoreRequest;
 use App\Models\Company;
+use App\Models\Country;
 use App\Models\Distributor;
+use App\Models\Language;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -49,8 +51,23 @@ class DistributorController extends Controller
             ['name' => __('Create')]
         ];
 
+        $countries = Country::all()
+            ->where('active', 1)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        $languages = Language::all()
+            ->where('active', 1)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        $companies = Company::all()
+            ->where('active', 1)
+            ->sortBy('company_name')
+            ->pluck('company_name', 'id');
+
         return view('admin.pages.distributors.create', compact(
-            'breadcrumbs'
+            'breadcrumbs', 'countries', 'languages', 'companies'
         ));
     }
 
