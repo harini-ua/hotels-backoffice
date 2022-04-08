@@ -19,9 +19,43 @@ class DistributorsDataTable extends DataTable
      */
     public function dataTable($query)
     {
-        return datatables()
-            ->eloquent($query)
-            ->addColumn('action', 'distributorsdatatable.action');
+        $dataTable = datatables()->eloquent($query);
+
+        $dataTable->addColumn('name', function(Distributor $model) {
+            return $model->name ?? '-';
+        });
+
+        $dataTable->addColumn('company', function(Distributor $model) {
+            return '-';
+        });
+
+        $dataTable->addColumn('country', function(Distributor $model) {
+            return '-';
+        });
+
+        $dataTable->addColumn('language', function(Distributor $model) {
+            return '-';
+        });
+
+        $dataTable->addColumn('action', function (Distributor $model) {
+            return view("admin.datatables.actions", ['actions' => ['edit', 'delete'], 'model' => $model]);
+        });
+
+        $this->setFilterColumns($dataTable);
+
+        return $dataTable;
+    }
+
+    /**
+     * Set filter columns
+     *
+     * @param $dataTable
+     */
+    protected function setFilterColumns($dataTable)
+    {
+        $dataTable->filterColumn('name', static function($query, $keyword) {
+            $query->where('name', 'like', "%$keyword%");
+        });
     }
 
     /**
@@ -43,18 +77,21 @@ class DistributorsDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('distributorsdatatable-table')
+            ->setTableId('users-list-datatable')
+            ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('Bfrtip')
             ->orderBy(1)
+            ->language([
+                'search' => '',
+                'searchPlaceholder' => __('Search')
+            ])
             ->buttons(
-                Button::make('create'),
-                Button::make('export'),
-                Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
-            );
+                Button::make('postExcel'),
+                Button::make('print')
+            )
+        ;
     }
 
     /**
@@ -65,15 +102,18 @@ class DistributorsDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('id')->title(__('ID')),
+            Column::make('name')->title(__('Distributor')),
+            Column::make('company'),
+            Column::make('country'),
+            Column::make('language'),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+                ->orderable(false)
+                ->exportable(false)
+                ->printable(false)
+                ->orderable(false)
+                ->width(150)
+                ->addClass('text-center'),
         ];
     }
 

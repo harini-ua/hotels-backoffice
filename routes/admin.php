@@ -35,8 +35,9 @@ Route::middleware('auth')->group(function() {
 
         /** ----- ------ ----- DISTRIBUTORS */
 
+        Route::resource('distributors', DistributorController::class);
         Route::prefix('distributors')->as('distributors.')->group(function () {
-            Route::get('/', [DistributorController::class, 'index'])->name('index');
+            // TODO: Implement distributors routes
         });
 
         /** ----- ------ ----- COMPANIES */

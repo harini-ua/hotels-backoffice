@@ -115,9 +115,9 @@ class UsersDataTable extends DataTable
         return $model->newQuery()
             ->with(['city', 'country'])
             ->select('users.*')
-//            ->whereHas("roles", function($q) {
-//                $q->where("name", "employee");
-//            })
+            ->whereHas("roles", function($q) {
+                $q->where("name", "employee");
+            })
         ;
     }
 

@@ -124,7 +124,5 @@
 
 @section('script')
     <script src="{{asset('js/pages/users.js')}}"></script>
-{{--    <script src="{{asset('js/scripts/form.js')}}"></script>--}}
     <script src="{{asset('js/scripts/password.js')}}"></script>
 @endsection
-
