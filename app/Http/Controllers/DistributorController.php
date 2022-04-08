@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\DistributorsDataTable;
+use App\Http\Requests\DistributorStoreRequest;
 use App\Models\Company;
+use App\Models\Distributor;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 
@@ -48,5 +52,36 @@ class DistributorController extends Controller
         return view('admin.pages.distributors.create', compact(
             'breadcrumbs'
         ));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param DistributorStoreRequest $request
+     * @return RedirectResponse
+     */
+    public function store(DistributorStoreRequest $request)
+    {
+        $distributor = new Distributor();
+        $distributor->fill($request->all());
+        $distributor->save();
+
+        return redirect()->route('admin.pages.distributors.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Distributor $distributor
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function destroy(Distributor $distributor)
+    {
+        if ($distributor->delete()) {
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => false]);
     }
 }
