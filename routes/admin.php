@@ -39,18 +39,8 @@ Route::middleware('auth')->group(function() {
         Route::resource('distributors', DistributorController::class)->except(['show']);
         Route::prefix('distributors')->as('distributors.')->group(function () {
             Route::resource('users', DistributorUserController::class)->except(['show']);
-
-
-//            Route::get('users', [DistributorUserController::class, 'index'])->name('users.index');
-//            Route::get('users/create', [DistributorUserController::class, 'create'])->name('users.create');
-//            Route::post('users', [DistributorUserController::class, 'store'])->name('users.store');
-//            Route::get('users/{user}/edit', [DistributorUserController::class, 'edit'])->name('users.edit');
-//            Route::put('users/{user}', [DistributorUserController::class, 'update'])->name('users.update');
-//            Route::delete('users/{user}', [DistributorUserController::class, 'destroy'])->name('users.destroy');
-
-//            Route::prefix('{distributor}/users')->as('users.')->group(function () {
-//                Route::get('create', [DistributorUserController::class, 'create'])->name('users.create');
-//            });
+            Route::get('{distributor?}/users/create', [DistributorUserController::class, 'create'])
+                ->name('users.create');
         });
 
         /** ----- ------ ----- COMPANIES */
