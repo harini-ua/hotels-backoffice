@@ -10,9 +10,11 @@
     <div class="contentbar distributors-users-list-wrapper">
         <div class="row">
             <div class="col-lg-12">
+                @if((Auth::user())->hasRole('admin'))
                 <x-filter>
                     @include('admin.pages.distributor-users.partials._filter')
                 </x-filter>
+                @endif
             </div>
             <div class="col-lg-12">
                 <div class="card m-b-30">
