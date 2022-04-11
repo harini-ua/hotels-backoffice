@@ -63,14 +63,14 @@ class Menu extends Component
             'href' => route('distributors.index'),
             'image' => asset('assets/images/svg-icon/maps.svg'),
             'guard' => $user->hasRole('admin'),
-//            'items' => [
-//                [
-//                    'name' => __('Distributor Users'),
-//                    'href' => route('distributors.users.index'),
-//                    'image' => asset('assets/images/svg-icon/customers.svg'),
-//                    'guard' => $user->hasRole('admin'),
-//                ]
-//            ]
+            'items' => [
+                [
+                    'name' => __('Distributors Users'),
+                    'href' => route('distributors.users.index'),
+                    'image' => asset('assets/images/svg-icon/customers.svg'),
+                    'guard' => $user->hasRole('admin'),
+                ]
+            ]
         ];
 
         /** ----- Companies ----- */

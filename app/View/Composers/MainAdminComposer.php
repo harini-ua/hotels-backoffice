@@ -9,7 +9,7 @@ class MainAdminComposer
     public function compose(View $view)
     {
         return $view
-            ->with('user', \Auth::user())
-            ->with('mainMenuItems', config('admin.menu.main.items'));
+            ->with('profile', \Auth::user())
+        ;
     }
 }

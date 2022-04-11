@@ -17,8 +17,6 @@ class CreateDistributorUserTable extends Migration
             $table->id();
             $table->unsignedBigInteger('distributor_id');
             $table->unsignedBigInteger('user_id');
-            $table->boolean('master')->default(0)
-                ->comment('0-common, 1-master');
             $table->timestamps();
             $table->softDeletes();
 

@@ -62,7 +62,7 @@
                     </div>
                     <div class="infobar">
                         <ul class="list-inline mb-0">
-                            @if($user)
+                            @if($profile)
                             <li class="list-inline-item">
                                 @include('admin.partials.menu-profile')
                             </li>

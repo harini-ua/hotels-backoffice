@@ -105,11 +105,12 @@ class DistributorController extends Controller
             $user = new User();
             $user->fill($request->except('name'));
             $user->password = Hash::make($request->get('password'));
+            $user->master = true;
             $user->save();
 
             $user->assignRole('distributor');
 
-            $distributor->users()->attach($user->id, ['master' => 1]);
+            $distributor->users()->attach($user->id);
 
             DB::commit();
 
@@ -141,7 +142,7 @@ class DistributorController extends Controller
             ['href' => route('distributors.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
-        $master = $distributor->master()->first();
+        $master = $distributor->users()->where('master', true)->first();
 
         $countries = Country::all()
             ->where('active', 1)
@@ -167,7 +168,7 @@ class DistributorController extends Controller
      * Update the specified resource in storage.
      *
      * @param DistributorUpdateRequest $request
-     * @param Distributor $person
+     * @param Distributor $distributor
      *
      * @return RedirectResponse
      * @throws \Exception
@@ -183,7 +184,7 @@ class DistributorController extends Controller
             $distributor->fill($request->only('name'));
             $distributor->save();
 
-            $master = $distributor->master()->first();
+            $master = $distributor->users()->where('master', true)->first();
             $master->fill($request->except('name'));
 
             if ($request->has('password')) {

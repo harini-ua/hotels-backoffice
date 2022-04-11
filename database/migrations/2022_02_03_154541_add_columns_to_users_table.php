@@ -26,9 +26,11 @@ class AddColumnsToUsersTable extends Migration
             $table->unsignedBigInteger('country_id')->nullable()->after('phone');
             $table->unsignedBigInteger('city_id')->nullable()->after('country_id');
             $table->text('address')->nullable()->after('city_id');
-            $table->boolean('status')->after('address')->default(1)
+            $table->boolean('status')->default(1)->after('address')
                 ->comment('0-inactive, 1-active');
-            $table->boolean('newsletter')->nullable()->after('status');
+            $table->boolean('master')->default(0)->after('status')
+                ->comment('0-common, 1-master');
+            $table->boolean('newsletter')->nullable()->after('master');
             $table->unsignedBigInteger('currency_id')->nullable()->after('newsletter');
             $table->unsignedBigInteger('language_id')->nullable()->after('currency_id');
             $table->dateTime('last_login_at')->nullable()->after('language_id');

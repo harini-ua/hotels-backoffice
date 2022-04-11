@@ -1,3 +1,4 @@
+@php($user = $profile)
 <div class="profilebar">
     <div class="dropdown">
         <a class="dropdown-toggle" href="#" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

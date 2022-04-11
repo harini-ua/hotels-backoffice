@@ -5,7 +5,7 @@
             id="company"
             name="company"
             class="form-control filter-input select-filter select2 select2-single"
-            data-table="users-list-datatable"
+            data-table="distributors-list-datatable"
             data-url="{{ route('distributors.index') }}"
         >
             <option selected value="">{{ __('All') }}</option>
@@ -20,7 +20,7 @@
             id="country"
             name="country"
             class="form-control filter-input select-filter select2 select2-single"
-            data-table="users-list-datatable"
+            data-table="distributors-list-datatable"
             data-url="{{ route('distributors.index') }}"
         >
             <option selected value="">{{ __('All') }}</option>
@@ -35,7 +35,7 @@
             id="language"
             name="language"
             class="form-control filter-input select-filter select2 select2-single"
-            data-table="users-list-datatable"
+            data-table="distributors-list-datatable"
             data-url="{{ route('distributors.index') }}"
         >
             <option selected value="">{{ __('All') }}</option>

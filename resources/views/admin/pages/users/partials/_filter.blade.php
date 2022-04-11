@@ -25,6 +25,6 @@
         </select>
     </div>
     <div class="reset-filters">
-        <a href="{{ url()->current() }}" class="reset-btn"><i class="feather icon-x"></i> Reset filters</a>
+        <a href="{{ url()->current() }}" class="reset-btn"><i class="feather icon-x"></i> {{ __('Reset filters<') }}/a>
     </div>
 </div>

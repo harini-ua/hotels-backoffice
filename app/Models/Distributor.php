@@ -29,15 +29,6 @@ class Distributor extends Model
     ];
 
     /**
-     * Get the user that owns the distributor.
-     */
-    public function master()
-    {
-        return $this->users()
-            ->wherePivot('master', true);
-    }
-
-    /**
      * The users that belong to the distributor.
      */
     public function users(): BelongsToMany
