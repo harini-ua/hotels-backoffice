@@ -36,7 +36,7 @@ class Menu extends Component
 
         /** ----- Users ----- */
 
-        $this->items[] = $user->hasRole('admin') ? [
+        $this->items[] = [
             'name' => __('Users'),
             'image' => asset('assets/images/svg-icon/crm.svg'),
             'guard' => true,
@@ -54,11 +54,6 @@ class Menu extends Component
                     'guard' => $user->hasRole('admin'),
                 ]
             ]
-        ] : [
-            'name' => __('Users'),
-            'image' => asset('assets/images/svg-icon/crm.svg'),
-            'href' => route('users.index'),
-            'guard' => true,
         ];
 
         /** ----- Distributors ----- */
@@ -68,6 +63,14 @@ class Menu extends Component
             'href' => route('distributors.index'),
             'image' => asset('assets/images/svg-icon/maps.svg'),
             'guard' => $user->hasRole('admin'),
+//            'items' => [
+//                [
+//                    'name' => __('Distributor Users'),
+//                    'href' => route('distributors.users.index'),
+//                    'image' => asset('assets/images/svg-icon/customers.svg'),
+//                    'guard' => $user->hasRole('admin'),
+//                ]
+//            ]
         ];
 
         /** ----- Companies ----- */

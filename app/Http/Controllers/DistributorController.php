@@ -100,6 +100,7 @@ class DistributorController extends Controller
             $distributor = new Distributor();
             $distributor->fill($request->only('name'));
             $distributor->status = 1; // Status active
+            $distributor->save();
 
             $user = new User();
             $user->fill($request->except('name'));
@@ -108,7 +109,7 @@ class DistributorController extends Controller
 
             $user->assignRole('distributor');
 
-            $distributor->user()->associate($user)->save();
+            $distributor->users()->attach($user->id, ['master' => 1]);
 
             DB::commit();
 
@@ -140,7 +141,7 @@ class DistributorController extends Controller
             ['href' => route('distributors.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
-        $distributor->load('user');
+        $master = $distributor->master()->first();
 
         $countries = Country::all()
             ->where('active', 1)
@@ -158,7 +159,7 @@ class DistributorController extends Controller
             ->pluck('company_name', 'id');
 
         return view('admin.pages.distributors.update', compact(
-            'breadcrumbs', 'actions', 'distributor', 'countries', 'languages', 'companies'
+            'breadcrumbs', 'actions', 'distributor', 'master', 'countries', 'languages', 'companies'
         ));
     }
 
@@ -182,14 +183,14 @@ class DistributorController extends Controller
             $distributor->fill($request->only('name'));
             $distributor->save();
 
-            $user = $distributor->user;
-            $user->fill($request->except('name'));
+            $master = $distributor->master()->first();
+            $master->fill($request->except('name'));
 
             if ($request->has('password')) {
-                $user->password = Hash::make($request->get('password'));
+                $master->password = Hash::make($request->get('password'));
             }
 
-            $user->save();
+            $master->save();
 
             DB::commit();
 

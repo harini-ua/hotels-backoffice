@@ -18,11 +18,8 @@ class CreateDistributorsTable extends Migration
             $table->string('name');
             $table->tinyInteger('status')->default(1)
                 ->comment('0-inactive, 1-active');
-            $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->softDeletes();
-
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

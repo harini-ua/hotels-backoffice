@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Distributor extends Model
 {
@@ -24,15 +25,16 @@ class Distributor extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'status',
+        'name', 'status', 'master',
     ];
 
     /**
      * Get the user that owns the distributor.
      */
-    public function user(): BelongsTo
+    public function master()
     {
-        return $this->belongsTo(User::class);
+        return $this->users()
+            ->wherePivot('master', true);
     }
 
     /**

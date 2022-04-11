@@ -21,7 +21,7 @@
         <label for="phone" class="col-sm-2 col-form-label">{{ __('Phone') }} *</label>
         <div class="col-sm-4">
             <input type="text" id="phone" name="phone"
-                   value="{{ old('phone') ?? ($model ? $model->user->phone : null ) }}"
+                   value="{{ old('phone') ?? ($model ? $master->phone : null ) }}"
                    class="form-control @error('phone') is-invalid @enderror">
             @error('phone')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
@@ -32,7 +32,7 @@
         <label for="email" class="col-sm-2 col-form-label">{{ __('Email') }} *</label>
         <div class="col-sm-4">
             <input type="email" id="email" name="email"
-                   value="{{ old('email') ?? ($model ? $model->user->email : null ) }}"
+                   value="{{ old('email') ?? ($model ? $master->email : null ) }}"
                    class="form-control @error('email') is-invalid @enderror">
             @error('email')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
@@ -43,7 +43,7 @@
         <label for="username" class="col-sm-2 col-form-label">{{ __('User Name') }} *</label>
         <div class="col-sm-4">
             <input type="text" id="username" name="username"
-                   value="{{ old('username') ?? ($model ? $model->user->username : null ) }}"
+                   value="{{ old('username') ?? ($model ? $master->username : null ) }}"
                    class="form-control @error('username') is-invalid @enderror">
             @error('username')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
@@ -67,7 +67,7 @@
         <div class="col-sm-4">
             <textarea id="address" name="address" rows="3"
                       class="form-control @error('address') is-invalid @enderror"
-            >{{ old('address') ?? ($model ? $model->user->address : null ) }}</textarea>
+            >{{ old('address') ?? ($model ? $master->address : null ) }}</textarea>
             @error('address')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror

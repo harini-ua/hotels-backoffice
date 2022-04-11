@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\DistributorController;
+use App\Http\Controllers\DistributorUserController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StatisticController;
@@ -37,8 +38,13 @@ Route::middleware('auth')->group(function() {
 
         Route::resource('distributors', DistributorController::class);
         Route::prefix('distributors')->as('distributors.')->group(function () {
-            // TODO: Implement distributors routes
+            Route::get('users', [DistributorUserController::class, 'index'])->name('users.index');
+            Route::prefix('{distributor}/users')->as('users.')->group(function () {
+                Route::get('create', [DistributorController::class, 'index'])->name('index');
+            });
         });
+
+        Route::resource('distributor/users', DistributorController::class);
 
         /** ----- ------ ----- COMPANIES */
 

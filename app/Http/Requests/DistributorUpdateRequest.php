@@ -24,11 +24,13 @@ class DistributorUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        $master = $this->distributor->master()->first();
+
         return [
             'name' => 'required|string',
             // Distributor user
             'phone' => 'required|string',
-            'email' => ['required', 'email', Rule::unique('users')->ignore($this->distributor->user)->whereNull('deleted_at')],
+            'email' => ['required', 'email', Rule::unique('users')->ignore($master)->whereNull('deleted_at')],
             'username' => 'required|string|min:3',
             'password' => 'nullable|string|min:8',
             'address' => 'required|string',
