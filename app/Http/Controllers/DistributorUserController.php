@@ -52,13 +52,17 @@ class DistributorUserController extends Controller
             ['name' => __('Create User')]
         ];
 
-        $distributors = Distributor::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
+        $distributor = (\Auth::user())->hasRole('admin') ?
+            Distributor::all()
+                ->where('status', 1)
+                ->sortBy('name')
+                ->pluck('name', 'id')
+            :
+            (\Auth::user())->distributors()->where('status', true)->first()
+        ;
 
         return view('admin.pages.distributor-users.create', compact(
-            'breadcrumbs', 'distributors'
+            'breadcrumbs', 'distributor'
         ));
     }
 
@@ -111,7 +115,14 @@ class DistributorUserController extends Controller
             ['name' => $user->fullname]
         ];
 
-        $distributor = $user->distributors()->where('status', true)->first();
+        $distributor = (\Auth::user())->hasRole('admin') ?
+            Distributor::all()
+                ->where('status', 1)
+                ->sortBy('name')
+                ->pluck('name', 'id')
+            :
+            (\Auth::user())->distributors()->where('status', true)->first()
+        ;
 
         return view('admin.pages.distributor-users.update', compact(
             'breadcrumbs', 'user', 'distributor'

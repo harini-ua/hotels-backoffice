@@ -2,7 +2,6 @@
 
 namespace App\DataTables;
 
-use App\Models\Distributor;
 use App\Models\User;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -42,13 +41,15 @@ class DistributorUsersDataTable extends DataTable
 
         $this->setFilterColumns($dataTable);
 
-        $dataTable->filter(function($query) {
-            if ($this->request->has('distributor')) {
-                $query->whereHas('distributors', function ($q) {
-                    $q->where('distributors.id', $this->request->get('distributor'));
-                });
-            }
-        }, true);
+        if ((\Auth::user())->hasRole('admin')) {
+            $dataTable->filter(function($query) {
+                if ($this->request->has('distributor')) {
+                    $query->whereHas('distributors', function ($q) {
+                        $q->where('distributors.id', $this->request->get('distributor'));
+                    });
+                }
+            }, true);
+        }
 
         return $dataTable;
     }
@@ -81,13 +82,21 @@ class DistributorUsersDataTable extends DataTable
      */
     public function query(User $model)
     {
-        return $model->newQuery()
-            ->with('distributors')
-            ->where('master', false)
-            ->whereHas("roles", function($q) {
-                $q->where("name", "distributor");
-            })
-        ;
+        $query = $model->newQuery();
+        $query->with('distributors');
+        $query->where('master', false);
+        $query->whereHas("roles", function($q) {
+            $q->where("name", "distributor");
+        });
+
+        if ((\Auth::user())->hasRole('distributor')) {
+            $distributor = (\Auth::user())->distributors()->where('status', true)->first();
+            $query->whereHas('distributors', function ($q) use ($distributor) {
+                $q->where('distributors.id', $distributor->id);
+            });
+        }
+
+        return $query;
     }
 
     /**

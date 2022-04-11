@@ -73,6 +73,13 @@ class Menu extends Component
             ]
         ];
 
+        $this->items[] = [
+            'name' => __('Users'),
+            'href' => route('distributors.users.index'),
+            'image' => asset('assets/images/svg-icon/maps.svg'),
+            'guard' => $user->hasRole('distributor')
+        ];
+
         /** ----- Companies ----- */
 
         $this->items[] = [

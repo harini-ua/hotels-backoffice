@@ -9,7 +9,7 @@
     <div class="form-group row">
         <label for="distributor" class="col-sm-2 col-form-label">{{ __('Distributor') }} *</label>
         <div class="col-sm-4">
-            @if(isset($model))
+            @if(get_class($distributor) !== 'Illuminate\Support\Collection')
                 <input type="text" id="distributor" name="distributor"
                        class="form-control" disabled value="{{ $distributor->name }}">
             @else
@@ -17,11 +17,8 @@
                         class="form-control select2 select2-single @error('distributor') is-invalid @enderror"
                 >
                     <option value="">{{ __('- Choose Distributor -') }}</option>
-                    @foreach($distributors as $id => $distributor)
-                        <option
-                            @if($model && $model->distributor->id === $id) selected @endif
-                        value="{{ $id }}"
-                        >{{ $distributor }}</option>
+                    @foreach($distributor as $id => $name)
+                        <option value="{{ $id }}">{{ $name }}</option>
                     @endforeach
                 </select>
                 @error('distributor')
