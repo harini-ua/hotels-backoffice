@@ -18,7 +18,8 @@ class CreateCitiesTable extends Migration
             $table->string('name');
             $table->string('state')->nullable();
             $table->unsignedBigInteger('country_id');
-            $table->boolean('status')->default(0)->comment('0-new city, 1-active, 2-inactive, 3-blacklisted');
+            $table->tinyInteger('status')->default(0)
+                ->comment('0-new city, 1-active, 2-inactive, 3-blacklisted');
             $table->point('position');
             $table->bigInteger('hotels_count')->default(0);
             $table->smallInteger('popularity')->default(10);

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Distributor extends Model
 {
@@ -22,13 +24,21 @@ class Distributor extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'address', 'phone',
+        'name', 'status',
     ];
+
+    /**
+     * Get the user that owns the distributor.
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     /**
      * The users that belong to the distributor.
      */
-    public function users()
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'distributor_user');
     }
@@ -36,7 +46,7 @@ class Distributor extends Model
     /**
      * The companies that belong to the distributor.
      */
-    public function companies()
+    public function companies(): BelongsToMany
     {
         return $this->belongsToMany(Company::class, 'distributor_company');
     }
@@ -44,7 +54,7 @@ class Distributor extends Model
     /**
      * The countries that belong to the distributor.
      */
-    public function countries()
+    public function countries(): BelongsToMany
     {
         return $this->belongsToMany(Country::class, 'distributor_country');
     }
@@ -52,7 +62,7 @@ class Distributor extends Model
     /**
      * The languages that belong to the distributor.
      */
-    public function languages()
+    public function languages(): BelongsToMany
     {
         return $this->belongsToMany(Language::class, 'distributor_language');
     }

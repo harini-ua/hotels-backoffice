@@ -9,10 +9,11 @@ use App\Models\Country;
 use App\Models\Distributor;
 use App\Models\Language;
 use App\Models\User;
+use Hash;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 class UserController extends Controller
@@ -113,6 +114,7 @@ class UserController extends Controller
     {
         $user = new User();
         $user->fill($request->except('password', 'invoice_allowed', 'send_to_email'));
+        $user->username = $user->email;
         $user->password = Hash::make($request->get('password'));
         $user->save();
 
@@ -125,6 +127,8 @@ class UserController extends Controller
         if ($request->has('send_to_email')) {
             // TODO: Implement send login details to email.
         }
+
+        alert()->success($user->fullname, __('Distributor created has been successful.'));
 
         return redirect()->route('admin.pages.users.index');
     }

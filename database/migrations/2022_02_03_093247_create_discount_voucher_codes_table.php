@@ -17,7 +17,8 @@ class CreateDiscountVoucherCodesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('discount_voucher_id');
             $table->string('code', 50);
-            $table->boolean('status')->default(1)->comment('0-used, 1-not used');
+            $table->boolean('status')->default(1)
+                ->comment('0-used, 1-not used');
             $table->timestamps();
             $table->softDeletes();
 

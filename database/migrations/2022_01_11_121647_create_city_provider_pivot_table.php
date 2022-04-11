@@ -18,7 +18,8 @@ class CreateCityProviderPivotTable extends Migration
             $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('provider_id');
             $table->string('provider_city_code');
-            $table->boolean('status')->default(0)->comment('0-inactive, 1-active, 2-new');
+            $table->tinyInteger('status')->default(0)
+                ->comment('0-inactive, 1-active, 2-new');
             $table->timestamps();
             $table->softDeletes();
 

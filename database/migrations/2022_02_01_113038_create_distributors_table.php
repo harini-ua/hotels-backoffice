@@ -16,13 +16,13 @@ class CreateDistributorsTable extends Migration
         Schema::create('distributors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->text('address');
-            $table->mediumText('phone');
+            $table->tinyInteger('status')->default(1)
+                ->comment('0-inactive, 1-active');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->unique('email', 'unique_email');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

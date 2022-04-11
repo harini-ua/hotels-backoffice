@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasRoles, Notifiable;
+    use HasRoles, Notifiable, SoftDeletes;
 
     /**
      * The table associated with the model.
@@ -109,6 +110,10 @@ class User extends Authenticatable
      */
     public function getFullNameAttribute()
     {
+        if ((\Auth::user())->hasAnyRole(['distributor'])) {
+            return $this->username;
+        }
+
         return "{$this->firstname} {$this->lastname}";
     }
 

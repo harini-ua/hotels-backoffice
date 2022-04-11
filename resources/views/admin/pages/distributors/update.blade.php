@@ -13,7 +13,7 @@
             <div class="col-lg-12">
                 <div class="card m-b-30">
                     <div class="card-header">
-                        <h5 class="card-title">{{ __('New Distributor') }}</h5>
+                        <h5 class="card-title">{{ __('Update Distributor') }}</h5>
                     </div>
                     <div class="card-body">
                         <div class="row">

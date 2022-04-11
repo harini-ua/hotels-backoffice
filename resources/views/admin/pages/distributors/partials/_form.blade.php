@@ -20,8 +20,8 @@
     <div class="form-group row">
         <label for="phone" class="col-sm-2 col-form-label">{{ __('Phone') }} *</label>
         <div class="col-sm-4">
-            <input type="email" id="phone" name="phone"
-                   value="{{ old('phone') ?? ($model ? $model->phone : null ) }}"
+            <input type="text" id="phone" name="phone"
+                   value="{{ old('phone') ?? ($model ? $model->user->phone : null ) }}"
                    class="form-control @error('phone') is-invalid @enderror">
             @error('phone')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
@@ -32,7 +32,7 @@
         <label for="email" class="col-sm-2 col-form-label">{{ __('Email') }} *</label>
         <div class="col-sm-4">
             <input type="email" id="email" name="email"
-                   value="{{ old('email') ?? ($model ? $model->email : null ) }}"
+                   value="{{ old('email') ?? ($model ? $model->user->email : null ) }}"
                    class="form-control @error('email') is-invalid @enderror">
             @error('email')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
@@ -43,7 +43,7 @@
         <label for="username" class="col-sm-2 col-form-label">{{ __('User Name') }} *</label>
         <div class="col-sm-4">
             <input type="text" id="username" name="username"
-                   value="{{ old('username') ?? ($model ? $model->username : null ) }}"
+                   value="{{ old('username') ?? ($model ? $model->user->username : null ) }}"
                    class="form-control @error('username') is-invalid @enderror">
             @error('username')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
@@ -51,7 +51,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="password" class="col-sm-2 col-form-label">{{ __('Password') }} *</label>
+        <label for="password" class="col-sm-2 col-form-label">{{ __('Password') }}</label>
         <div class="input-group col-sm-4 mb-3">
             <input type="text" id="password" name="password" class="form-control @error('password') is-invalid @enderror" >
             <div class="input-group-append">
@@ -65,9 +65,9 @@
     <div class="form-group row">
         <label for="address" class="col-sm-2 col-form-label">{{ __('Address') }} *</label>
         <div class="col-sm-4">
-            <textarea id="address" name="address" rows="3" class="form-control @error('address') is-invalid @enderror">
-                {{ old('address') ?? ($model ? $model->address : null ) }}
-            </textarea>
+            <textarea id="address" name="address" rows="3"
+                      class="form-control @error('address') is-invalid @enderror"
+            >{{ old('address') ?? ($model ? $model->user->address : null ) }}</textarea>
             @error('address')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror

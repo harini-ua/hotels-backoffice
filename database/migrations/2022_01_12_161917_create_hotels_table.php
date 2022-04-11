@@ -16,8 +16,10 @@ class CreateHotelsTable extends Migration
         Schema::create('hotels', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('city_id');
-            $table->tinyInteger('status')->comment('1-new, 2-updated, 3-old, 4-deleted');
-            $table->boolean('blacklisted')->comment('0-active, 1-blacklisted')->default(0);
+            $table->tinyInteger('status')->default(0)
+                ->comment('1-new, 2-updated, 3-old, 4-deleted');
+            $table->boolean('blacklisted')
+                ->comment('0-active, 1-blacklisted');
             $table->smallInteger('rating')->default(0);
             $table->smallInteger('popularity')->default(0);
             $table->smallInteger('recommended')->default(0);

@@ -44,6 +44,18 @@ class DistributorsDataTable extends DataTable
 
         $this->setFilterColumns($dataTable);
 
+        $dataTable->filter(function($query) {
+            if ($this->request->has('company')) {
+                // TODO: Implement filter by company
+            }
+            if ($this->request->has('country')) {
+                // TODO: Implement filter by country
+            }
+            if ($this->request->has('language')) {
+                // TODO: Implement filter by language
+            }
+        }, true);
+
         return $dataTable;
     }
 

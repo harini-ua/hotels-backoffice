@@ -69,6 +69,8 @@ class AdminController extends Controller
 
         $user->assignRole('admin');
 
+        alert()->success($user->fullname, __('Admin created has been successful.'));
+
         return redirect()->route('admins.index');
     }
 

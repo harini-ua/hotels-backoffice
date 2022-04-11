@@ -19,8 +19,8 @@ class AddColumnsToUsersTable extends Migration
 
         Schema::table('users', function (Blueprint $table) {
             $table->string('title')->nullable()->after('username');
-            $table->string('firstname')->after('title');
-            $table->string('lastname')->after('firstname');
+            $table->string('firstname')->nullable()->after('title');
+            $table->string('lastname')->nullable()->after('firstname');
             $table->string('company_name')->nullable()->after('password');
             $table->string('phone')->nullable()->after('company_name');
             $table->unsignedBigInteger('country_id')->nullable()->after('phone');
@@ -33,6 +33,8 @@ class AddColumnsToUsersTable extends Migration
             $table->unsignedBigInteger('language_id')->nullable()->after('currency_id');
             $table->dateTime('last_login_at')->nullable()->after('language_id');
             $table->ipAddress('ip_address')->nullable()->after('last_login_at');
+
+            $table->softDeletes()->after('updated_at');
 
             $table->foreign('country_id')->references('id')->on('countries');
             $table->foreign('city_id')->references('id')->on('cities');

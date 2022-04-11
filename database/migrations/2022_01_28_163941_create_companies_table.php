@@ -24,8 +24,10 @@ class CreateCompaniesTable extends Migration
             $table->text('address');
             $table->string('email')->unique();
             $table->string('phone');
-            $table->tinyInteger('status')->default(1)->comment('0-inactive, 1-active, 2-pending');
-            $table->tinyInteger('level')->default(1)->comment('0-without level, 1-fist level, 2-second level');
+            $table->tinyInteger('status')->default(1)
+                ->comment('0-inactive, 1-active, 2-pending');
+            $table->tinyInteger('level')->default(1)
+                ->comment('0-without level, 1-fist level, 2-second level');
             $table->boolean('vat')->default(0);
             $table->boolean('newsletter')->default(0);
             $table->timestamps();
