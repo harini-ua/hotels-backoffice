@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CompanyThemeController;
 use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\DistributorUserController;
@@ -45,9 +46,10 @@ Route::middleware('auth')->group(function() {
 
         /** ----- ------ ----- COMPANIES */
 
-        Route::resource('companies', CompanyController::class);
+        Route::resource('companies', CompanyController::class)->except(['show']);
         Route::prefix('companies')->as('companies.')->group(function () {
             Route::get('{companies}/duplicate', [CompanyController::class, 'duplicate'])->name('duplicate');
+            Route::resource('themes', CompanyThemeController::class)->except(['show']);
         });
 
         /** ----- ------ ----- STATISTICS */
