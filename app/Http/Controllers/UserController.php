@@ -86,8 +86,14 @@ class UserController extends Controller
         ];
 
         $distributors = Distributor::all()
+            ->where('status', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
+
+        $companies = Company::all()
+            ->where('status', 1)
+            ->sortBy('company_name')
+            ->pluck('company_name', 'id');
 
         $countries = Country::all()
             ->where('active', 1)
@@ -100,7 +106,7 @@ class UserController extends Controller
             ->pluck('name', 'id');
 
         return view('admin.pages.users.create', compact(
-            'breadcrumbs', 'distributors', 'countries', 'languages'
+            'breadcrumbs', 'distributors', 'companies', 'countries', 'languages'
         ));
     }
 

@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function() {
 
         Route::resource('companies', CompanyController::class);
         Route::prefix('companies')->as('companies.')->group(function () {
-            Route::post('{companies}/duplicate', [CompanyController::class, 'duplicate'])->name('duplicate');
+            Route::get('{companies}/duplicate', [CompanyController::class, 'duplicate'])->name('duplicate');
         });
 
         /** ----- ------ ----- STATISTICS */

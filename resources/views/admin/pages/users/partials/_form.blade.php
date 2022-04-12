@@ -9,7 +9,6 @@
                 name="distributor_id"
                 class="form-control select2-single linked @error('distributor_id') is-invalid @enderror"
             >
-                <option selected value=""></option>
                 @foreach($distributors as $id => $distributor)
                     <option value="{{ $id }}">{{ $distributor }}</option>
                 @endforeach
@@ -27,6 +26,9 @@
                 class="form-control select2-single @error('company_id') is-invalid @enderror"
                 data-linked="distributor"
             >
+                @foreach($companies as $id => $company)
+                    <option value="{{ $id }}">{{ $company }}</option>
+                @endforeach
             </select>
             @error('company_id')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>

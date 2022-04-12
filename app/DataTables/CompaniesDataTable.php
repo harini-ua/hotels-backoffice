@@ -29,6 +29,15 @@ class CompaniesDataTable extends DataTable
 
         $this->setFilterColumns($dataTable);
 
+        $dataTable->filter(function($query) {
+            if ($this->request->has('status')) {
+                $query->where('status', $this->request->get('status'));
+            }
+            if ($this->request->has('category')) {
+                $query->where('status', $this->request->get('status'));
+            }
+        }, true);
+
         return $dataTable;
     }
 

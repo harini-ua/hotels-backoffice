@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\CompaniesDataTable;
+use App\Enums\CompanyCategory;
+use App\Enums\CompanyStatus;
 use App\Http\Requests\CompanyStoreRequest;
 use App\Models\Company;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
@@ -23,8 +26,11 @@ class CompanyController extends Controller
             ['href' => route('companies.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
+        $status = CompanyStatus::asSelectArray();
+        $categories = CompanyCategory::asSelectArray();
+
         return $dataTable->render('admin.pages.companies.index', compact(
-            'breadcrumbs', 'actions'
+            'breadcrumbs', 'actions', 'status', 'categories'
         ));
     }
 
@@ -42,8 +48,17 @@ class CompanyController extends Controller
             ['name' => __('Create')]
         ];
 
+        $status = CompanyStatus::asSelectArray();
+        $categories = CompanyCategory::asSelectArray();
+        $admins = User::whereHas("roles", function($q) {
+                $q->where("name", "admin");
+            })->where('status', 1)->get()
+            ->sortBy('fullname')
+            ->pluck('fullname', 'id')
+        ;
+
         return view('admin.pages.companies.create', compact(
-            'breadcrumbs'
+            'breadcrumbs', 'status', 'categories', 'admins'
         ));
     }
 
