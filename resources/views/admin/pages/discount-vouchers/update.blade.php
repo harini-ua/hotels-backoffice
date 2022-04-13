@@ -19,9 +19,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col s12">
+                                @include('admin.pages.discount-vouchers.partials._form')
                             </div>
-                            < @include('admin.pages.discount-vouchers.partials._form')
-                           /div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -141,8 +141,17 @@ class DiscountVoucherController extends Controller
             ['href' => route('discount-vouchers.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
+        $companies = Company::all()
+            ->where('status', 1)
+            ->sortBy('company_name')
+            ->pluck('company_name', 'id');
+
+        $codeTypes = DiscountCodeType::asSelectArray();
+        $commissionTypes = DiscountCommissionType::asSelectArray();
+        $amountTypes = DiscountAmountType::asSelectArray();
+
         return view('admin.pages.discount-vouchers.update', compact(
-            'breadcrumbs', 'actions', 'discountVoucher'
+            'breadcrumbs', 'actions', 'discountVoucher', 'companies', 'codeTypes', 'commissionTypes', 'amountTypes'
         ));
     }
 
