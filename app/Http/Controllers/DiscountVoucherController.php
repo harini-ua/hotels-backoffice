@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\DataTables\DiscountVouchersDataTable;
 use App\Enums\DiscountAmountType;
-use App\Enums\DiscountCommissionType;
 use App\Enums\DiscountCodeType;
+use App\Enums\DiscountCommissionType;
 use App\Exports\DiscountVoucherCodes;
 use App\Http\Requests\DiscountVoucherStoreRequest;
 use App\Http\Requests\DiscountVoucherUpdateRequest;
@@ -13,7 +13,6 @@ use App\Models\Company;
 use App\Models\DiscountVoucher;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -34,7 +33,7 @@ class DiscountVoucherController extends Controller
         ];
 
         $companies = Company::all()
-            ->where('active', 1)
+            ->where('status', 1)
             ->sortBy('company_name')
             ->pluck('company_name', 'id');
 

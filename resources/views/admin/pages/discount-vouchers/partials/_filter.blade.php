@@ -15,10 +15,10 @@
         </select>
     </div>
     <div class="form-group filter-item col-md-2">
-        <label for="discount_type">{{ __('By Discount Type') }}</label>
+        <label for="discount_type">{{ __('By Voucher Type') }}</label>
         <select
-            id="discount_type"
-            name="discount_type"
+            id="voucher_type"
+            name="voucher_type"
             class="form-control filter-input select-filter select2 select2-single"
             data-table="discount-vouchers-list-datatable"
             data-url="{{ route('discount-vouchers.index') }}"

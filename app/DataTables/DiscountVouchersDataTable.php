@@ -91,13 +91,13 @@ class DiscountVouchersDataTable extends DataTable
 
         $dataTable->filter(function($query) {
             if ($this->request->has('company')) {
-                // TODO: Implement filter by company
+                $query->where('company_id', $this->request->get('company'));
             }
-            if ($this->request->has('discount_type')) {
-                // TODO: Implement filter by discount type
+            if ($this->request->has('voucher_type')) {
+                $query->where('voucher_type', $this->request->get('voucher_type'));
             }
             if ($this->request->has('commission_type')) {
-                // TODO: Implement filter by commission type
+                $query->where('commission', $this->request->get('commission_type'));
             }
         }, true);
 

@@ -30,6 +30,7 @@
 @section('script')
     {{ $dataTable->scripts() }}
     <script src="{{asset('js/scripts/datatable.js')}}"></script>
+    <script src="{{asset('js/scripts/filters.js')}}"></script>
     <script src="{{asset('js/pages/discount-vouchers.js')}}"></script>
 @endsection
 
