@@ -28,9 +28,8 @@ class Menu extends Component
         /** ----- Dashboard ----- */
 
         $this->items[] = [
-            'name' => __('Dashboard'),
             'href' => route('home'),
-            'image' => asset('assets/images/svg-icon/dashboard.svg'),
+            'image' => asset('assets/images/svg-icon/widgets.svg'),
             'guard' => true,
         ];
 
@@ -87,6 +86,15 @@ class Menu extends Component
             'href' => route('companies.index'),
             'image' => asset('assets/images/svg-icon/frontend.svg'),
             'guard' => $user->hasAnyRole(['admin', 'distributor']),
+        ];
+
+        /** ----- Discounts ----- */
+
+        $this->items[] = [
+            'name' => __('Discounts'),
+            'href' => route('discount-vouchers.index'),
+            'image' => asset('assets/images/svg-icon/backend.svg'),
+            'guard' => $user->hasAnyRole(['admin']),
         ];
 
         /** ----- Statistics ----- */

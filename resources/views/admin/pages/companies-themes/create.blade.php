@@ -3,11 +3,11 @@
 @section('title',  __('Create Theme'))
 
 @section('style')
-    <link href="{{ asset('assets/plugins/colorpicker/bootstrap-colorpicker.css') }}" rel="stylesheet" type="text/css">
+
 @endsection
 
 @section('rightbar-content')
-    <div class="contentbar admins-create-wrapper">
+    <div class="contentbar companies-themes-create-wrapper">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card m-b-30">
@@ -28,6 +28,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('assets/plugins/colorpicker/bootstrap-colorpicker.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/custom-form-colorpicker.js') }}"></script>
+
 @endsection

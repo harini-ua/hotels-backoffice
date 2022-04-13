@@ -7,7 +7,7 @@
 @endsection
 
 @section('rightbar-content')
-    <div class="contentbar">
+    <div class="contentbar settings-list-wrapper">
     </div>
 @endsection
 

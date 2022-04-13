@@ -30,7 +30,6 @@
 
 @section('script')
     <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/custom-form-select.js') }}"></script>
     <script src="{{asset('js/scripts/password.js')}}"></script>
     <script src="{{asset('js/pages/distributors.js')}}"></script>
 @endsection

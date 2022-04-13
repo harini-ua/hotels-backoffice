@@ -6,7 +6,6 @@ use App\DataTables\CompanyThemesDataTable;
 use App\Http\Requests\CompanyThemeStoreRequest;
 use App\Http\Requests\CompanyThemeUpdateRequest;
 use App\Models\CompanyTheme;
-use App\Models\Distributor;
 use DB;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;

@@ -7,7 +7,7 @@
 @endsection
 
 @section('rightbar-content')
-    <div class="contentbar distributors-edit-wrapper">
+    <div class="contentbar distributors-users-edit-wrapper">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card m-b-30">
@@ -29,6 +29,5 @@
 
 @section('script')
     <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/custom-form-select.js') }}"></script>
     <script src="{{asset('js/scripts/password.js')}}"></script>
 @endsection

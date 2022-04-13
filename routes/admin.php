@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyThemeController;
 use App\Http\Controllers\DashboardsController;
+use App\Http\Controllers\DiscountVoucherController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\DistributorUserController;
 use App\Http\Controllers\ReportController;
@@ -50,6 +51,13 @@ Route::middleware('auth')->group(function() {
         Route::prefix('companies')->as('companies.')->group(function () {
             Route::get('{companies}/duplicate', [CompanyController::class, 'duplicate'])->name('duplicate');
             Route::resource('themes', CompanyThemeController::class)->except(['show']);
+        });
+
+        /** ----- ------ ----- DISCOUNT VOUCHERS */
+
+        Route::resource('discount-vouchers', DiscountVoucherController::class)->except(['show']);
+        Route::prefix('discount-vouchers')->as('discount-vouchers.')->group(function () {
+            Route::get('{discountVoucher}/download/codes', [DiscountVoucherController::class, 'download'])->name('download.codes');
         });
 
         /** ----- ------ ----- STATISTICS */

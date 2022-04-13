@@ -8,7 +8,11 @@
                     @foreach($items as $key => $item)
                         @if($item['guard'])
                         <li class="dropdown">
-                            <a href="{{isset($item['href']) ? $item['href'] : 'javaScript:void();' }}"><img src="{{$item['image']}}" class="img-fluid" alt="{{__($item['name'])}}">{{__($item['name'])}}</a>
+                            <a href="{{isset($item['href']) ? $item['href'] : 'javaScript:void();' }}">
+                                <img src="{{$item['image']}}" class="img-fluid" alt="{{__($item['name'] ?? '')}}"
+                                     @if(!isset($item['name'])) style="margin-right: 0px !important;" @endif
+                                >{{__($item['name'] ?? '')}}
+                            </a>
                             @if(isset($item['items']))
                                 <ul class="dropdown-menu">
                                     @foreach($item['items'] as $subItem)

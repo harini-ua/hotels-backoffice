@@ -21,6 +21,20 @@ return [
             '128.124.244.82',
         ],
     ],
+    'date' => [
+        'format' => 'd/m/Y',
+    ],
+    'currency' => [
+        'delimiter' => ' ',
+        'format' => '{SYMBOL}{DELIMITER}{VALUE}',
+    ],
+    'number' => [
+        'format' => [
+            'decimals' => 2,
+            'dec_point' => ',',
+            'thousands_sep' => ' ',
+        ]
+    ],
     'menu' => [
         'main' => [
             'items' => [

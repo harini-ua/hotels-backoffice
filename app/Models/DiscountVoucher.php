@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,8 +24,28 @@ class DiscountVoucher extends Model
      */
     protected $fillable = [
         'name', 'voucher_type', 'voucher_codes_count', 'amount', 'amount_type', 'currency_id', 'company_id',
-        'description', 'commission', 'min_amount', 'expiry',
+        'description', 'commission', 'min_price', 'expiry',
     ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'expiry',
+    ];
+
+    /**
+     * Set the user's first name.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setExpiryAttribute($value)
+    {
+        $this->attributes['expiry'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+    }
 
     /**
      * Get the currency that owns the discount.

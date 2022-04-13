@@ -1,0 +1,7 @@
+#discount-vouchers {
+    .form-group {
+        &.disabled {
+            display: none;
+        }
+    }
+}

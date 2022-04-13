@@ -16,7 +16,7 @@ class CreateDiscountVoucherCodesTable extends Migration
         Schema::create('discount_voucher_codes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('discount_voucher_id');
-            $table->string('code', 50);
+            $table->string('code', 50)->unique();
             $table->boolean('status')->default(1)
                 ->comment('0-used, 1-not used');
             $table->timestamps();

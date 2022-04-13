@@ -18,14 +18,14 @@ class CreateDiscountVouchersTable extends Migration
             $table->string('name');
             $table->tinyInteger('voucher_type')->comment('1-individual, 2-for all');
             $table->bigInteger('voucher_codes_count');
-            $table->mediumInteger('amount')->comment('in currency or %');
-            $table->boolean('amount_type')->comment('0-in currency, 1-in percent');
+            $table->double('amount', 8, 2)->comment('in currency or %');
+            $table->boolean('amount_type')->comment('0-fixed, 1-percent');
             $table->unsignedBigInteger('currency_id')->nullable();
-            $table->unsignedBigInteger('company_id')->nullable();
-            $table->text('description');
+            $table->unsignedBigInteger('company_id');
+            $table->text('description')->nullable();
             $table->tinyInteger('commission')->comment('1-company booking commission, 2-company booking & company sale commissions, 3-company sale commission');
-            $table->double('min_amount', 8, 2)->comment('minimal amount in EUR');
-            $table->date('expiry');
+            $table->double('min_price', 8, 2)->comment('minimal booking price in EUR');
+            $table->date('expiry')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

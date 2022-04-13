@@ -22,6 +22,7 @@
         "laravel/fortify": "^1.12",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
+        "maatwebsite/excel": "^3.1",
         "realrashid/sweet-alert": "^5.0",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-permission": "^5.5",
