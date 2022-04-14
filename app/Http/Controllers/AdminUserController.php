@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
-class AdminController extends Controller
+class AdminUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +24,7 @@ class AdminController extends Controller
     public function index(AdminsDataTable $dataTable)
     {
         $breadcrumbs = [
-            ['title' => __('List Admins')],
+            ['title' => __('List Admin Users')],
             ['link' => route('home'), 'name' => __('Home')],
             ['name' => __('Admins')]
         ];

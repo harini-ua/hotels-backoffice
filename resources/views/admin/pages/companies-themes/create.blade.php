@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',  __('Create Company Theme'))
+@section('title',  __('Create Company Site Theme'))
 
 @section('style')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/companies-themes.css') }}">
@@ -12,7 +12,7 @@
             <div class="col-lg-12">
                 <div class="card m-b-30">
                     <div class="card-header">
-                        <h5 class="card-title">{{ __('Company Theme') }}</h5>
+                        <h5 class="card-title">{{ __('Company Site Theme') }}</h5>
                     </div>
                     <div class="card-body">
                         <div class="row">

@@ -41,17 +41,23 @@ class Menu extends Component
             'guard' => true,
             'items' => [
                 [
-                    'name' => __('Users'),
-                    'href' => route('users.index'),
-                    'image' => asset('assets/images/svg-icon/customers.svg'),
-                    'guard' => true,
-                ],
-                [
                     'name' => __('Admins'),
                     'href' => route('admins.index'),
                     'image' => asset('assets/images/svg-icon/customers.svg'),
                     'guard' => $user->hasRole('admin'),
-                ]
+                ],
+                [
+                    'name' => __('Distributors'),
+                    'href' => route('distributors.users.index'),
+                    'image' => asset('assets/images/svg-icon/customers.svg'),
+                    'guard' => $user->hasRole('admin'),
+                ],
+                [
+                    'name' => __('Bookings'),
+                    'href' => route('users.index'),
+                    'image' => asset('assets/images/svg-icon/customers.svg'),
+                    'guard' => true,
+                ],
             ]
         ];
 
@@ -62,21 +68,13 @@ class Menu extends Component
             'href' => route('distributors.index'),
             'image' => asset('assets/images/svg-icon/maps.svg'),
             'guard' => $user->hasRole('admin'),
-            'items' => [
-                [
-                    'name' => __('Distributors Users'),
-                    'href' => route('distributors.users.index'),
-                    'image' => asset('assets/images/svg-icon/customers.svg'),
-                    'guard' => $user->hasRole('admin'),
-                ]
-            ]
         ];
 
         $this->items[] = [
             'name' => __('Users'),
             'href' => route('distributors.users.index'),
             'image' => asset('assets/images/svg-icon/maps.svg'),
-            'guard' => $user->hasRole('distributor')
+            'guard' => $user->hasRole('distributor'),
         ];
 
         /** ----- Company Sites ----- */
@@ -91,13 +89,13 @@ class Menu extends Component
                     'name' => __('Site Themes'),
                     'href' => route('companies.themes.index'),
                     'image' => asset('assets/images/svg-icon/ui-kits.svg'),
-                    'guard' => $user->hasRole('admin')
+                    'guard' => $user->hasRole('admin'),
                 ],
                 [
                     'name' => __('Site Templates'),
                     'href' => route('companies.templates.index'),
                     'image' => asset('assets/images/svg-icon/ui-kits.svg'),
-                    'guard' => $user->hasRole('admin')
+                    'guard' => $user->hasRole('admin'),
                 ]
             ]
         ];

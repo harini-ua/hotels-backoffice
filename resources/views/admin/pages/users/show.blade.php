@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',  $user->fullname)
+@section('title', $user->fullname)
 
 @section('style')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/users.css') }}">

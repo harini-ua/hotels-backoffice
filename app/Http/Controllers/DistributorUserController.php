@@ -25,7 +25,7 @@ class DistributorUserController extends Controller
     public function index(DistributorUsersDataTable $dataTable)
     {
         $breadcrumbs = [
-            ['title' => __('Distributor Users')],
+            ['title' => __('list Distributor Users')],
             ['link' => route('home'), 'name' => __('Home')],
             ['name' => __('Users')]
         ];

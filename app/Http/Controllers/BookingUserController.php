@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 
-class UserController extends Controller
+class BookingUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class UserController extends Controller
     public function index(UsersDataTable $dataTable)
     {
         $breadcrumbs = [
-            ['title' => __('List Users')],
+            ['title' => __('List Booking Users')],
             ['link' => route('home'), 'name' => __('Home')],
             ['name' => __('Users')]
         ];
@@ -46,31 +46,6 @@ class UserController extends Controller
         ));
     }
 
-    public function profile()
-    {
-        $breadcrumbs = [
-            ['title' => __('My Profile')],
-            ['link' => route('home'), 'name' => __('Home')],
-            ['name' => __('My Profile')]
-        ];
-
-        /** @var User $user */
-        $user = \Auth::user();
-
-        $lastLogin = __('Never');
-        if ($user->last_login_at) {
-            $lastLogin = $user->last_login_at->format(config('admin.dateformat'));
-            $forHumans = __($user->last_login_at->diffForHumans());
-            $lastLogin .= " ($forHumans)";
-        }
-
-        $canEdit = $user->hasPermissionTo('edit profile');
-
-        return view('admin.pages.profile', compact(
-            'breadcrumbs', 'user', 'lastLogin', 'canEdit'
-        ));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -79,9 +54,9 @@ class UserController extends Controller
     public function create()
     {
         $breadcrumbs = [
-            ['title' => __('Create User')],
+            ['title' => __('Create Booking User')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['link' => route('users.index'), 'name' => __('Users')],
+            ['link' => route('users.index'), 'name' => __('Booking Users')],
             ['name' => __('Create')]
         ];
 
@@ -150,8 +125,8 @@ class UserController extends Controller
         $breadcrumbs = [
             ['title' => $user->fullname],
             ['link' => route('home'), 'name' => __('Home')],
-            ['link' => route('users.index'), 'name' => __('Users')],
-            ['name' => __('Show User')]
+            ['link' => route('users.index'), 'name' => __('Booking Users')],
+            ['name' => __('Show')]
         ];
 
         return view('admin.pages.users.show', compact(

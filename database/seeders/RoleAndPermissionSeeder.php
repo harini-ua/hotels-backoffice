@@ -44,5 +44,7 @@ class RoleAndPermissionSeeder extends Seeder
             $user->save();
             $user->assignRole($admin);
         }
+
+        $booking = Role::create(['name' => 'booking']);
     }
 }

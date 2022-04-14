@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',  __('Users'))
+@section('title',  __('Booking Users'))
 
 @section('style')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/users.css') }}">
