@@ -11,6 +11,7 @@
         "php": "^7.2.5",
         "ext-curl": "*",
         "ext-pdo": "*",
+        "ext-http": "*",
         "ext-json": "*",
         "arrilot/laravel-widgets": "^3.13",
         "bensampo/laravel-enum": "^4.2",

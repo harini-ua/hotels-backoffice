@@ -14,6 +14,12 @@ use Illuminate\View\View;
 
 class CompanyThemeController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @param CompanyThemesDataTable $dataTable
+     * @return mixed
+     */
     public function index(CompanyThemesDataTable $dataTable)
     {
         $breadcrumbs = [
@@ -66,7 +72,7 @@ class CompanyThemeController extends Controller
 
             DB::commit();
 
-            alert()->success($companyTheme->name, __('Themes created has been successful.'));
+            alert()->success($companyTheme->name, __('Theme created has been successful.'));
         } catch (\PDOException $e) {
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
@@ -112,6 +118,7 @@ class CompanyThemeController extends Controller
     {
         try {
             DB::beginTransaction();
+
             $theme->fill($request->all());
             $theme->save();
 

@@ -19,6 +19,12 @@ use Illuminate\View\View;
 
 class DistributorController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @param DistributorsDataTable $dataTable
+     * @return mixed
+     */
     public function index(DistributorsDataTable $dataTable)
     {
         $breadcrumbs = [

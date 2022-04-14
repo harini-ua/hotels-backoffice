@@ -3,7 +3,7 @@
 @section('title',  __('Create Company Theme'))
 
 @section('style')
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/companies-themes.css') }}">
 @endsection
 
 @section('rightbar-content')
@@ -28,5 +28,5 @@
 @endsection
 
 @section('script')
-
+    <script src="{{asset('js/pages/companies-themes.js')}}"></script>
 @endsection

@@ -20,6 +20,12 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class DiscountVoucherController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @param DiscountVouchersDataTable $dataTable
+     * @return mixed
+     */
     public function index(DiscountVouchersDataTable $dataTable)
     {
         $breadcrumbs = [

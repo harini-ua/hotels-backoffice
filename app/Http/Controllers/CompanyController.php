@@ -14,6 +14,12 @@ use Illuminate\View\View;
 
 class CompanyController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @param CompaniesDataTable $dataTable
+     * @return mixed
+     */
     public function index(CompaniesDataTable $dataTable)
     {
         $breadcrumbs = [
