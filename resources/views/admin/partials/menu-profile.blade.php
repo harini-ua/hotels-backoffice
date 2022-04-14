@@ -2,8 +2,11 @@
 <div class="profilebar">
     <div class="dropdown">
         <a class="dropdown-toggle" href="#" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="{{ asset('assets/images/users/profile.svg') }}" class="img-fluid" alt="profile">
-            <span class="live-icon">{{ $user->title }}</span>
+            <img src="{{ asset('assets/images/users/profile.svg') }}"
+                 style="visibility: hidden; width: 1px; height: 36px;"
+                 class="img-fluid" alt="profile"
+            >
+            <span class="live-icon"><b>{{ $user->title }}</b></span>
             <span class="feather icon-chevron-down live-icon"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profilelink">

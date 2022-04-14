@@ -62,6 +62,13 @@
                     </div>
                     <div class="infobar">
                         <ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                                <div class="languagebar">
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" href="javaScript:void();"><span class="live-icon">Hello</span></a>
+                                    </div>
+                                </div>
+                            </li>
                             @if($profile)
                             <li class="list-inline-item">
                                 @include('admin.partials.menu-profile')

@@ -1,3 +1,36 @@
+.horizontal-layout {
+    .navigationbar {
+        padding: 0px 15px;
+        top: 62px;
+    }
+
+    .breadcrumbbar {
+        margin: 130px 30px 0 30px;
+    }
+
+    .contentbar {
+        padding: 10px 30px 30px 30px;
+    }
+
+    .container-fluid {
+        width: 100%;
+    }
+
+    .topbar {
+        padding: 10px 15px;
+    }
+
+    .horizontal-nav .horizontal-menu > li > a {
+        padding: 10px 15px 10px 15px;
+    }
+
+    @media (min-width: 992px) {
+        .horizontal-nav .horizontal-menu {
+            text-align: left;
+        }
+    }
+}
+
 .dataTables_wrapper {
     .dt-buttons {
         margin-bottom: 5px !important;
