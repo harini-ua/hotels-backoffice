@@ -7,7 +7,12 @@
         </div>
         <div id="collapseFilters" class="collapse" aria-labelledby="headingOne" data-parent="#datatable-filters" style="">
             <div class="card-body">
-                {{ $slot }}
+                <div class="form-row filter-items-wrapper">
+                    {{ $slot }}
+                    <div class="reset-filters">
+                        <a href="{{ url()->current() }}" class="reset-btn"><i class="feather icon-x"></i> {{ __('Reset filters') }}</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
