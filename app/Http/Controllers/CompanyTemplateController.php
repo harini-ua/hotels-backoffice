@@ -50,7 +50,9 @@ class CompanyTemplateController extends Controller
             ['name' => __('Create')]
         ];
 
-        return view('admin.pages.companies-templates.create', compact('breadcrumbs'));
+        return view('admin.pages.companies-templates.create', compact(
+            'breadcrumbs'
+        ));
     }
 
     /**

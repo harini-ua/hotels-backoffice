@@ -3,7 +3,8 @@
 @section('title',  __('Create Company Site Template'))
 
 @section('style')
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/companies-templates.css') }}">
+    <link rel="stylesheet" type="text/css"  href="{{ asset('assets/plugins/select2/select2.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/companies-templates.css') }}"/>
 @endsection
 
 @section('rightbar-content')
@@ -28,5 +29,6 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
     <script src="{{asset('js/pages/companies-templates.js')}}"></script>
 @endsection

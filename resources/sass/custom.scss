@@ -22,6 +22,12 @@
 
     .horizontal-nav .horizontal-menu > li > a {
         padding: 10px 15px 10px 15px;
+        font-size: 16px;
+    }
+
+    input[type="checkbox"],
+    input[type="checkbox"]+label {
+        cursor: pointer;
     }
 
     @media (min-width: 992px) {
