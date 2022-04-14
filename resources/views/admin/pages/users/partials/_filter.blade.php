@@ -1,16 +1,6 @@
 <div class="form-row filter-items-wrapper">
-{{--    <div class="form-group filter-item col-md-2">--}}
-{{--        <label for="company">{{ __('Search') }}</label>--}}
-{{--        <input type="text"--}}
-{{--               id="search"--}}
-{{--               name="search_value"--}}
-{{--               class="form-control filter-input text-filter"--}}
-{{--               data-table="users-list-datatable"--}}
-{{--               data-url="{{ route('users.index') }}"--}}
-{{--        />--}}
-{{--    </div>--}}
     <div class="form-group filter-item col-md-2">
-        <label for="company">{{ __('By Company') }}</label>
+        <label for="company">{{ __('By Company Site') }}</label>
         <select
             id="company"
             name="company"

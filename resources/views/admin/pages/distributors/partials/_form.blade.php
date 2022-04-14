@@ -106,11 +106,10 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="company" class="col-sm-2 col-form-label">{{ __('Company') }} *</label>
+        <label for="company" class="col-sm-2 col-form-label">{{ __('Company Site') }} *</label>
         <div class="col-sm-4">
             <select id="company" name="company_ids"
-                class="form-control select2-multi-select @error('company_ids') is-invalid @enderror"
-                multiple
+                class="form-control select2-single @error('company_ids') is-invalid @enderror"
             >
                 @foreach($companies as $id => $company)
                     <option value="{{ $id }}">{{ $company }}</option>

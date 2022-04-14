@@ -1,6 +1,6 @@
 <div class="form-row filter-items-wrapper">
     <div class="form-group filter-item col-md-2">
-        <label for="company">{{ __('By Company') }}</label>
+        <label for="company">{{ __('By Company Site') }}</label>
         <select
             id="company"
             name="company"

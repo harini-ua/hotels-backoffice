@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',  __('Create Companiy'))
+@section('title',  __('Create Company Site'))
 
 @section('style')
     <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
@@ -13,7 +13,7 @@
             <div class="col-lg-12">
                 <div class="card m-b-30">
                     <div class="card-header">
-                        <h5 class="card-title">{{ __('Create Company') }}</h5>
+                        <h5 class="card-title">{{ __('Company Site') }}</h5>
                     </div>
                     <div class="card-body">
                         <div class="row">

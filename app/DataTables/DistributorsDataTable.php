@@ -117,7 +117,7 @@ class DistributorsDataTable extends DataTable
         return [
             Column::make('id')->title(__('ID')),
             Column::make('name')->title(__('Distributor')),
-            Column::make('company'),
+            Column::make('company')->title(__('Company Site')),
             Column::make('country'),
             Column::make('language'),
             Column::computed('action')

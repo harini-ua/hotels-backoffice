@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class AdminController extends Controller
 {
@@ -99,5 +100,22 @@ class AdminController extends Controller
         }
 
         return response()->json(['success' => false]);
+    }
+
+    /**
+     * Get QR code.
+     *
+     * @param User $user
+     * @return JsonResponse
+     */
+    public function qr(User $user)
+    {
+        try {
+            $qr = (string) QrCode::size(250)->generate($user->fullname);
+
+            return response()->json(['success' => true, 'qr' => $qr]);
+        } catch (\PDOException $e) {
+            return response()->json(['success' => false]);
+        }
     }
 }

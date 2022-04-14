@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',  __('Companies'))
+@section('title',  __('Company Sites'))
 
 @section('style')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/companies.css') }}">

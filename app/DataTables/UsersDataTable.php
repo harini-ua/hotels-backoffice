@@ -155,7 +155,7 @@ class UsersDataTable extends DataTable
     {
         return [
             Column::make('id')->title(__('ID')),
-            Column::make('company_name')->title(__('Company')),
+            Column::make('company_name')->title(__('Company Site')),
             Column::make('username')->title(__('User Name')),
             Column::make('fullname')->title(__('Full Name')),
             Column::make('phone')->title(__('Telephone')),

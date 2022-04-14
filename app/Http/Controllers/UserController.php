@@ -39,7 +39,7 @@ class UserController extends Controller
         $companies = Company::all()
             ->sortBy('name')
             ->where('status', 1)
-            ->pluck('name', 'id');
+            ->pluck('company_name', 'id');
 
         return $dataTable->render('admin.pages.users.index', compact(
             'breadcrumbs' ,'actions', 'companies'

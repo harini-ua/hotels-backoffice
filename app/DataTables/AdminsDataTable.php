@@ -19,18 +19,21 @@ class AdminsDataTable extends DataTable
      */
     public function dataTable($query)
     {
-        return datatables()
-            ->eloquent($query)
-            ->addColumn('username', function(User $model) {
-                return $model->username;
-            })
-            ->addColumn('email', function(User $model) {
-                return $model->email;
-            })
-            ->addColumn('qr', function(User $model) {
-                return $model->email;
-            })
-        ;
+        $dataTable = datatables()->eloquent($query);
+
+        $dataTable->addColumn('username', function(User $model) {
+            return $model->username;
+        });
+
+        $dataTable->addColumn('email', function(User $model) {
+            return $model->email;
+        });
+
+        $dataTable->addColumn('action', function (User $model) {
+            return view("admin.pages.admins.partials._qr-code", compact('model'));
+        });
+
+        return $dataTable;
     }
 
     /**
@@ -65,8 +68,7 @@ class AdminsDataTable extends DataTable
             ->orderBy(1)
             ->buttons(
                 Button::make('postExcel'),
-                Button::make('print'),
-                Button::make('reload')
+                Button::make('print')
             )
         ;
     }
@@ -82,12 +84,12 @@ class AdminsDataTable extends DataTable
             Column::make('id')->title(__('ID')),
             Column::make('username')->title(__('User Name')),
             Column::make('email')->orderable(false),
-            Column::computed('qr')->title(__('QR Code'))
+            Column::computed('action')->title(__('Action'))
                 ->orderable(false)
                 ->exportable(false)
                 ->printable(false)
                 ->orderable(false)
-                ->width(60)
+                ->width(150)
                 ->addClass('text-center'),
         ];
     }

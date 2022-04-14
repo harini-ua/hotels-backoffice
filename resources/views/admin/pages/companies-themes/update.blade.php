@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',  __('Update Theme'))
+@section('title',  __('Update Company Theme'))
 
 @section('style')
 
@@ -12,7 +12,7 @@
             <div class="col-lg-12">
                 <div class="card m-b-30">
                     <div class="card-header">
-                        <h5 class="card-title">{{ __('Edit Theme') }}</h5>
+                        <h5 class="card-title">{{ __('Company Theme') }}</h5>
                     </div>
                     <div class="card-body">
                         <div class="row">

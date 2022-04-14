@@ -79,13 +79,27 @@ class Menu extends Component
             'guard' => $user->hasRole('distributor')
         ];
 
-        /** ----- Companies ----- */
+        /** ----- Company Sites ----- */
 
         $this->items[] = [
-            'name' => __('Companies'),
+            'name' => __('Company Sites'),
             'href' => route('companies.index'),
             'image' => asset('assets/images/svg-icon/frontend.svg'),
             'guard' => $user->hasAnyRole(['admin', 'distributor']),
+            'items' => [
+                [
+                    'name' => __('Site Themes'),
+                    'href' => route('companies.themes.index'),
+                    'image' => asset('assets/images/svg-icon/ui-kits.svg'),
+                    'guard' => $user->hasRole('admin')
+                ],
+                [
+                    'name' => __('Site Templates'),
+                    'href' => route('companies.templates.index'),
+                    'image' => asset('assets/images/svg-icon/ui-kits.svg'),
+                    'guard' => $user->hasRole('admin')
+                ]
+            ]
         ];
 
         /** ----- Discounts ----- */

@@ -3,7 +3,7 @@
 @section('title',  __('Admins'))
 
 @section('style')
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/admins.css') }}">
 @endsection
 
 @section('rightbar-content')
@@ -25,5 +25,6 @@
 @section('script')
     {{ $dataTable->scripts() }}
     <script src="{{asset('js/scripts/datatable.js')}}"></script>
+    <script src="{{asset('js/pages/admins.js')}}"></script>
 @endsection
 

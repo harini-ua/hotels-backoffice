@@ -3,7 +3,7 @@
 @section('title',  __('Create Admin'))
 
 @section('style')
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/admins.css') }}">
 @endsection
 
 @section('rightbar-content')
@@ -28,5 +28,5 @@
 @endsection
 
 @section('script')
-
+    <script src="{{asset('js/pages/admins.js')}}"></script>
 @endsection

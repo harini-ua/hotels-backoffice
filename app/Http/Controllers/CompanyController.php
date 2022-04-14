@@ -17,9 +17,9 @@ class CompanyController extends Controller
     public function index(CompaniesDataTable $dataTable)
     {
         $breadcrumbs = [
-            ['title' => __('Companies')],
+            ['title' => __('Company Sites')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['name' => __('Companies')]
+            ['name' => __('All Company Sites')]
         ];
 
         $actions = [
@@ -42,9 +42,9 @@ class CompanyController extends Controller
     public function create()
     {
         $breadcrumbs = [
-            ['title' => __('Create Company')],
+            ['title' => __('Create Company Site')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['link' => route('companies.index'), 'name' => __('Companies')],
+            ['link' => route('companies.index'), 'name' => __('Company Sites')],
             ['name' => __('Create')]
         ];
 

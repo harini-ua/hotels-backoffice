@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="company" class="col-sm-2 col-form-label">{{ __('Company') }} *</label>
+        <label for="company" class="col-sm-2 col-form-label">{{ __('Company Site') }} *</label>
         <div class="col-sm-4">
             <select id="company"
                 name="company_id"

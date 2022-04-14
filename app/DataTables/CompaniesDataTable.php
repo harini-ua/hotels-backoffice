@@ -98,13 +98,13 @@ class CompaniesDataTable extends DataTable
     {
         return [
             Column::make('id')->title(__('ID')),
-            Column::make('company_name'),
+            Column::make('company_name')->title(__('Name')),
             Column::computed('action')
                 ->orderable(false)
                 ->exportable(false)
                 ->printable(false)
                 ->orderable(false)
-                ->width(150)
+                ->width(200)
                 ->addClass('text-center'),
         ];
     }

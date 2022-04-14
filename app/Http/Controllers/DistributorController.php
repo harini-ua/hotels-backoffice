@@ -42,7 +42,7 @@ class DistributorController extends Controller
             ->pluck('name', 'id');
 
         $companies = Company::all()
-            ->where('active', 1)
+            ->where('status', 1)
             ->sortBy('company_name')
             ->pluck('company_name', 'id');
 
@@ -76,7 +76,7 @@ class DistributorController extends Controller
             ->pluck('name', 'id');
 
         $companies = Company::all()
-            ->where('active', 1)
+            ->where('status', 1)
             ->sortBy('company_name')
             ->pluck('company_name', 'id');
 
@@ -155,7 +155,7 @@ class DistributorController extends Controller
             ->pluck('name', 'id');
 
         $companies = Company::all()
-            ->where('active', 1)
+            ->where('status', 1)
             ->sortBy('company_name')
             ->pluck('company_name', 'id');
 
