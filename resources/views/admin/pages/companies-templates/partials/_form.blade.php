@@ -24,7 +24,8 @@
         <div class="input-group col-sm-4">
             <div class="custom-control custom-checkbox custom-control-inline">
                 <input type="checkbox" id="{{ $field }}" name="{{ $field }}"
-                       value="{{ old($field) ?? ($model ? $model->{$field} : null) }}"
+                       value="1"
+                       @if($model && $model->{$field}) checked @endif
                        class="custom-control-input @error('invoice_allowed') is-invalid @enderror"
                 />
                 <label class="custom-control-label" for="{{ $field }}"></label>
