@@ -120,7 +120,6 @@ class DiscountVoucherController extends Controller
 
             alert()->success($discountVoucher->name, __('Discount voucher created has been successful.'));
         } catch (\PDOException $e) {
-            dd($e);
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
         }
