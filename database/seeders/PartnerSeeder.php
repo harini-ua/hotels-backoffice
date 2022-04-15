@@ -23,7 +23,7 @@ class PartnerSeeder extends Seeder
                     'id' => (int)$data[0],
                     'name' => $data[1],
                     'description' => $data[2] == 'NULL' ? null : $data[2],
-                    'type' => (int)$data[3],
+                    'internal' => (int)$data[3],
                 ];
             }
             fclose($open);

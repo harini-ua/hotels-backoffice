@@ -22,7 +22,16 @@ class Partner extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'type',
+        'name', 'description', 'internal',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'internal' => 'boolean',
     ];
 
     /**

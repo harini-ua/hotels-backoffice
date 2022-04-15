@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\DiscountVoucherController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\DistributorUserController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SettingController;
@@ -58,6 +59,12 @@ Route::middleware('auth')->group(function() {
         Route::resource('discount-vouchers', DiscountVoucherController::class)->except(['show']);
         Route::prefix('discount-vouchers')->as('discount-vouchers.')->group(function () {
             Route::get('{discountVoucher}/download/codes', [DiscountVoucherController::class, 'download'])->name('download.codes');
+        });
+
+        /** ----- ------ ----- PARTNERS */
+        Route::resource('partners', PartnerController::class)->except(['show']);
+        Route::prefix('partners')->as('partners.')->group(function () {
+            //
         });
 
         /** ----- ------ ----- STATISTICS */
