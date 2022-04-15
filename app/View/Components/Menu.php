@@ -29,33 +29,34 @@ class Menu extends Component
 
         $this->items[] = [
             'href' => route('home'),
-            'image' => asset('assets/images/svg-icon/widgets.svg'),
+            'icon' => 'feather icon-grid',
             'guard' => true,
         ];
 
         /** ----- Users ----- */
 
+
         $this->items[] = [
             'name' => __('Users'),
-            'image' => asset('assets/images/svg-icon/crm.svg'),
+            'icon' => 'feather icon-users',
             'guard' => true,
             'items' => [
                 [
                     'name' => __('Admins'),
                     'href' => route('admins.index'),
-                    'image' => asset('assets/images/svg-icon/customers.svg'),
+                    'icon' => 'feather icon-user',
                     'guard' => $user->hasRole('admin'),
                 ],
                 [
                     'name' => __('Distributors'),
                     'href' => route('distributors.users.index'),
-                    'image' => asset('assets/images/svg-icon/customers.svg'),
+                    'icon' => 'feather icon-user',
                     'guard' => $user->hasRole('admin'),
                 ],
                 [
                     'name' => __('Bookings'),
                     'href' => route('users.index'),
-                    'image' => asset('assets/images/svg-icon/customers.svg'),
+                    'icon' => 'feather icon-user',
                     'guard' => true,
                 ],
             ]
@@ -66,14 +67,14 @@ class Menu extends Component
         $this->items[] = [
             'name' => __('Distributors'),
             'href' => route('distributors.index'),
-            'image' => asset('assets/images/svg-icon/maps.svg'),
+            'icon' => 'feather icon-truck',
             'guard' => $user->hasRole('admin'),
         ];
 
         $this->items[] = [
             'name' => __('Users'),
             'href' => route('distributors.users.index'),
-            'image' => asset('assets/images/svg-icon/maps.svg'),
+            'icon' => 'feather icon-users',
             'guard' => $user->hasRole('distributor'),
         ];
 
@@ -82,19 +83,19 @@ class Menu extends Component
         $this->items[] = [
             'name' => __('Company Sites'),
             'href' => route('companies.index'),
-            'image' => asset('assets/images/svg-icon/frontend.svg'),
+            'icon' => 'feather icon-shopping-bag',
             'guard' => $user->hasAnyRole(['admin', 'distributor']),
             'items' => [
                 [
-                    'name' => __('Site Themes'),
+                    'name' => __('Themes'),
                     'href' => route('companies.themes.index'),
-                    'image' => asset('assets/images/svg-icon/ui-kits.svg'),
+                    'icon' => 'feather icon-feather',
                     'guard' => $user->hasRole('admin'),
                 ],
                 [
-                    'name' => __('Site Templates'),
+                    'name' => __('Templates'),
                     'href' => route('companies.templates.index'),
-                    'image' => asset('assets/images/svg-icon/ui-kits.svg'),
+                    'icon' => 'feather icon-feather',
                     'guard' => $user->hasRole('admin'),
                 ]
             ]
@@ -105,7 +106,16 @@ class Menu extends Component
         $this->items[] = [
             'name' => __('Discounts'),
             'href' => route('discount-vouchers.index'),
-            'image' => asset('assets/images/svg-icon/backend.svg'),
+            'icon' => 'feather icon-truck',
+            'guard' => $user->hasAnyRole(['admin']),
+        ];
+
+        /** ----- Partners ----- */
+
+        $this->items[] = [
+            'name' => __('Partners'),
+            'href' => route('partners.index'),
+            'icon' => 'feather icon-briefcase',
             'guard' => $user->hasAnyRole(['admin']),
         ];
 
@@ -114,7 +124,7 @@ class Menu extends Component
         $this->items[] = [
             'name' => __('Statistics'),
             'href' => route('statistics.index'),
-            'image' => asset('assets/images/svg-icon/charts.svg'),
+            'icon' => 'feather icon-pie-chart',
             'guard' => true,
         ];
 
@@ -123,7 +133,7 @@ class Menu extends Component
         $this->items[] = [
             'name' => __('Reports'),
             'href' => route('reports.index'),
-            'image' => asset('assets/images/svg-icon/reports.svg'),
+            'icon' => 'feather icon-file-text',
             'guard' => true,
         ];
 
@@ -132,7 +142,7 @@ class Menu extends Component
         $this->items[] = [
             'name' => __('Settings'),
             'href' => route('settings.index'),
-            'image' => asset('assets/images/svg-icon/settings.svg'),
+            'icon' => 'feather icon-settings',
             'guard' => $user->hasRole('admin'),
         ];
     }

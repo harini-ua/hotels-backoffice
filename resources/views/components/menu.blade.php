@@ -9,15 +9,17 @@
                         @if($item['guard'])
                         <li class="dropdown">
                             <a href="{{isset($item['href']) ? $item['href'] : 'javaScript:void();' }}">
-                                <img src="{{$item['image']}}" class="img-fluid" alt="{{__($item['name'] ?? '')}}"
-                                     @if(!isset($item['name'])) style="margin-right: 0px !important;" @endif
-                                >{{__($item['name'] ?? '')}}
+                                @if(isset($item['icon']))<i class="{{ $item['icon'] }}"></i>@endif {{__($item['name'] ?? '')}}
                             </a>
                             @if(isset($item['items']))
                                 <ul class="dropdown-menu">
                                     @foreach($item['items'] as $subItem)
                                         @if($subItem['guard'])
-                                        <li><a href="{{$subItem['href']}}"><img src="{{$subItem['image']}}" class="img-fluid" alt="{{__($subItem['name'])}}">{{__($subItem['name'])}}</a></li>
+                                        <li>
+                                            <a href="{{$subItem['href']}}">
+                                                @if(isset($subItem['icon']))<i class="{{ $subItem['icon'] }}"></i>@endif {{__($subItem['name'])}}
+                                            </a>
+                                        </li>
                                         @endif
                                     @endforeach
                                 </ul>

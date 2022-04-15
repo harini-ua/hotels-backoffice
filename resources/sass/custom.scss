@@ -22,7 +22,13 @@
 
     .horizontal-nav .horizontal-menu > li > a {
         padding: 10px 15px 10px 15px;
-        font-size: 16px;
+        font-size: 18px;
+    }
+
+    .horizontal-nav .horizontal-menu > li > a i {
+        width: auto;
+        font-size: 18px;
+        vertical-align: initial;
     }
 
     input[type="checkbox"],
