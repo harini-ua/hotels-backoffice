@@ -106,7 +106,7 @@ class Menu extends Component
         $this->items[] = [
             'name' => __('Discounts'),
             'href' => route('discount-vouchers.index'),
-            'icon' => 'feather icon-truck',
+            'icon' => 'feather icon-zap',
             'guard' => $user->hasAnyRole(['admin']),
         ];
 
