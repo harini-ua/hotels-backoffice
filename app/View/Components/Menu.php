@@ -133,7 +133,7 @@ class Menu extends Component
             'name' => __('Newsletters'),
             'href' => route('newsletters.create'),
             'icon' => 'feather icon-send',
-            'guard' => true,
+            'guard' => $user->hasAnyRole(['admin', 'distributor', 'employee']),
         ];
 
         /** ----- Statistics ----- */

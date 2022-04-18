@@ -43,12 +43,12 @@ class SendNewsletterEmail implements ShouldQueue
         switch ($this->newsletter->type) {
             case NewsletterUserType::All:
                 $query->whereHas('roles', function ($q) {
-                    $q->whereIn('name', ['employer', 'booking']);
+                    $q->whereIn('name', ['employee', 'booking']);
                 });
                 break;
             case NewsletterUserType::CompanySiteClient:
                 $query->whereHas('roles', function ($q) {
-                    $q->whereIn('name', ['employer']);
+                    $q->whereIn('name', ['employee']);
                 });
                 break;
             case NewsletterUserType::BookingUsers:
@@ -73,8 +73,6 @@ class SendNewsletterEmail implements ShouldQueue
 
         foreach ($users as $user) {
             Mail::to($user->email)->send(new NewsletterEmail($this->newsletter));
-
         }
-
     }
 }

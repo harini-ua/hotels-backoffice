@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Enums\NewsletterUserType;
+use App\Exports\DiscountVoucherCodesExport;
+use App\Exports\NewsletterUsersExport;
 use App\Http\Requests\DistributorStoreRequest;
+use App\Http\Requests\NewsletterExportRequest;
 use App\Http\Requests\NewsletterStoreRequest;
 use App\Jobs\SendNewsletterEmail;
 use App\Models\Company;
@@ -15,6 +18,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Maatwebsite\Excel\Facades\Excel;
 
 class NewsletterController extends Controller
 {
@@ -69,5 +73,17 @@ class NewsletterController extends Controller
         }
 
         return redirect()->route('newsletters.create');
+    }
+
+    /**
+     * Download the newsletter users.
+     *
+     * @param NewsletterExportRequest $request
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     * @throws \Exception
+     */
+    public function export(NewsletterExportRequest $request)
+    {
+        return Excel::download(new NewsletterUsersExport($request->all()), 'newsletters.xlsx');
     }
 }
