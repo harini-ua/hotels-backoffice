@@ -48,7 +48,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="from" class="col-sm-2 col-form-label">{{ __('From') }} *</label>
+        <label for="from" class="col-sm-2 col-form-label">{{ __('From') }}</label>
         <div class="col-sm-4">
             <input type="text" id="from" name="from"
                    class="form-control @error('from') is-invalid @enderror"
@@ -60,7 +60,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="subject" class="col-sm-2 col-form-label">{{ __('Subject') }} *</label>
+        <label for="subject" class="col-sm-2 col-form-label">{{ __('Subject') }}</label>
         <div class="col-sm-4">
             <input type="text" id="subject" name="subject"
                    class="form-control @error('subject') is-invalid @enderror"
@@ -72,7 +72,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="message" class="col-sm-2 col-form-label">{{ __('Message') }} *</label>
+        <label for="message" class="col-sm-2 col-form-label">{{ __('Message') }}</label>
         <div class="col-sm-10">
             <textarea id="message" name="message"
                       class="form-control tinymce-editor @error('message') is-invalid @enderror"
