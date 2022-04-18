@@ -106,7 +106,7 @@ class Menu extends Component
         $this->items[] = [
             'name' => __('Discounts'),
             'href' => route('discount-vouchers.index'),
-            'icon' => 'feather icon-zap',
+            'icon' => 'feather icon-gift',
             'guard' => $user->hasAnyRole(['admin']),
         ];
 
@@ -117,6 +117,14 @@ class Menu extends Component
             'href' => route('partners.index'),
             'icon' => 'feather icon-briefcase',
             'guard' => $user->hasAnyRole(['admin']),
+            'items' => [
+                [
+                    'name' => __('Products'),
+                    'href' => route('partners.products.index'),
+                    'icon' => 'feather icon-shopping-bag',
+                    'guard' => $user->hasRole('admin'),
+                ]
+            ]
         ];
 
         /** ----- Statistics ----- */

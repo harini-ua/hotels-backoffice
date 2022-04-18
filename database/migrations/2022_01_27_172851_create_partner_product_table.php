@@ -15,11 +15,11 @@ class CreatePartnerProductTable extends Migration
     {
         Schema::create('partner_product', function (Blueprint $table) {
             $table->id();
-            $table->string('product_code');
+            $table->string('name');
+            $table->string('code');
             $table->unsignedBigInteger('meal_plan_id');
             $table->unsignedBigInteger('currency_id');
             $table->unsignedBigInteger('partner_id');
-            $table->text('product_name');
             $table->double('price', 8, 2);
             $table->double('partner_pay_price', 8, 2);
             $table->mediumInteger('partner_commission');

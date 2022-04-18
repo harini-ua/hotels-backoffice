@@ -24,11 +24,11 @@ class PartnerProductSeeder extends Seeder
 
                 $partner_products[] = [
                     'id' => (int)$data[0],
-                    'product_code' => $data[1],
+                    'name' => $data[3],
+                    'code' => $data[1],
                     'meal_plan_id' => (int)($data[2]),
                     'currency_id' => (int)$data[26],
                     'partner_id' => (int)$data[25],
-                    'product_name' => $data[3],
                     'price' => (double)$data[4],
                     'partner_pay_price' => (double)$data[5],
                     'partner_commission' => (int)$data[6],

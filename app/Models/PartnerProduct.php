@@ -22,10 +22,18 @@ class PartnerProduct extends Model
      * @var array
      */
     protected $fillable = [
-        'product_code', 'meal_plan_id', 'currency_id', 'partner_id', 'product_name', 'price', 'partner_pay_price',
+        'name', 'code', 'meal_plan_id', 'currency_id', 'partner_id', 'price', 'partner_pay_price',
         'partner_commission', 'price_filter', 'price_min', 'price_max', 'star_filter', 'star_min', 'star_max',
         'commission_min', 'nights', 'adults', 'sold_online', 'sold_retail', 'sku', 'comment',
     ];
+
+    /**
+     * Get the partner that owns the product.
+     */
+    public function partner()
+    {
+        return $this->belongsTo(Partner::class);
+    }
 
     /**
      * Get the meal plan that owns the product.
@@ -41,13 +49,5 @@ class PartnerProduct extends Model
     public function currency()
     {
         return $this->belongsTo(Currency::class);
-    }
-
-    /**
-     * Get the partner that owns the product.
-     */
-    public function partner()
-    {
-        return $this->belongsTo(Partner::class);
     }
 }

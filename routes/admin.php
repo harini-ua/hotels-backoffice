@@ -9,6 +9,7 @@ use App\Http\Controllers\DiscountVoucherController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\DistributorUserController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\PartnerProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SettingController;
@@ -64,7 +65,7 @@ Route::middleware('auth')->group(function() {
         /** ----- ------ ----- PARTNERS */
         Route::resource('partners', PartnerController::class)->except(['show']);
         Route::prefix('partners')->as('partners.')->group(function () {
-            //
+            Route::resource('products', PartnerProductController::class)->except(['show']);
         });
 
         /** ----- ------ ----- STATISTICS */
