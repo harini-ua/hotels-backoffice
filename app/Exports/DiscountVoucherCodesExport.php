@@ -5,7 +5,7 @@ namespace App\Exports;
 use App\Models\DiscountVoucher;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class DiscountVoucherCodes implements FromCollection
+class DiscountVoucherCodesExport implements FromCollection
 {
     /** @var DiscountVoucher */
     public $discountVoucher;

@@ -6,7 +6,7 @@ use App\DataTables\DiscountVouchersDataTable;
 use App\Enums\DiscountAmountType;
 use App\Enums\DiscountCodeType;
 use App\Enums\DiscountCommissionType;
-use App\Exports\DiscountVoucherCodes;
+use App\Exports\DiscountVoucherCodesExport;
 use App\Http\Requests\DiscountVoucherStoreRequest;
 use App\Http\Requests\DiscountVoucherUpdateRequest;
 use App\Models\Company;
@@ -195,7 +195,7 @@ class DiscountVoucherController extends Controller
      */
     public function download(DiscountVoucher $discountVoucher)
     {
-        return Excel::download(new DiscountVoucherCodes($discountVoucher), 'codes.xlsx');
+        return Excel::download(new DiscountVoucherCodesExport($discountVoucher), 'codes.xlsx');
     }
 
     /**
