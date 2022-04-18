@@ -38,7 +38,21 @@ class CompanyThemesDataTable extends DataTable
             ]);
         });
 
+        $this->setOrderColumns($dataTable);
+
         return $dataTable;
+    }
+
+    /**
+     * Set order columns
+     *
+     * @param $dataTable
+     */
+    protected function setOrderColumns($dataTable)
+    {
+        $dataTable->orderColumn('theme_name', static function($query, $order) {
+            $query->orderBy('theme_name', $order);
+        });
     }
 
     /**
@@ -82,8 +96,8 @@ class CompanyThemesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id')->title(__('ID'))->orderable(false),
-            Column::make('theme_name')->title(__('Theme Name'))->orderable(false),
+            Column::make('id')->title(__('ID')),
+            Column::make('theme_name')->title(__('Theme Name')),
             Column::make('theme_color')->title(__('Base Color'))->orderable(false),
             Column::computed('action')
                 ->orderable(false)

@@ -5,8 +5,6 @@ namespace App\DataTables;
 use App\Models\User;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class AdminsDataTable extends DataTable
@@ -33,7 +31,21 @@ class AdminsDataTable extends DataTable
             return view("admin.pages.admins.partials._qr-code", compact('model'));
         });
 
+        $this->setOrderColumns($dataTable);
+
         return $dataTable;
+    }
+
+    /**
+     * Set order columns
+     *
+     * @param $dataTable
+     */
+    protected function setOrderColumns($dataTable)
+    {
+        $dataTable->orderColumn('username', static function($query, $order) {
+            $query->orderBy('username', $order);
+        });
     }
 
     /**

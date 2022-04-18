@@ -5,8 +5,6 @@ namespace App\DataTables;
 use App\Models\User;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class UsersDataTable extends DataTable
@@ -57,6 +55,7 @@ class UsersDataTable extends DataTable
             return view("admin.datatables.actions", ['actions' => ['login', 'delete'], 'model' => $model]);
         });
 
+        $this->setOrderColumns($dataTable);
         $this->setFilterColumns($dataTable);
 
         $dataTable->filter(function($query) {
@@ -66,6 +65,30 @@ class UsersDataTable extends DataTable
         }, true);
 
         return $dataTable;
+    }
+
+    /**
+     * Set order columns
+     *
+     * @param $dataTable
+     */
+    protected function setOrderColumns($dataTable)
+    {
+        $dataTable->orderColumn('company_name', static function($query, $order) {
+            $query->orderBy('company_name', $order);
+        });
+
+        $dataTable->orderColumn('username', static function($query, $order) {
+            $query->orderBy('username', $order);
+        });
+
+        $dataTable->orderColumn('fullname', static function($query, $order) {
+            $query->orderBy('fullname', $order);
+        });
+
+        $dataTable->orderColumn('created_at', static function($query, $order) {
+            $query->orderBy('created_at', $order);
+        });
     }
 
     /**
@@ -147,10 +170,14 @@ class UsersDataTable extends DataTable
             Column::make('company_name')->title(__('Company Site')),
             Column::make('username')->title(__('User Name')),
             Column::make('fullname')->title(__('Full Name')),
-            Column::make('phone')->title(__('Telephone')),
-            Column::make('email')->orderable(false),
-            Column::make('city'),
-            Column::make('country'),
+            Column::make('phone')->title(__('Telephone'))
+                ->orderable(false),
+            Column::make('email')->orderable(false)
+                ->orderable(false),
+            Column::make('city')
+                ->orderable(false),
+            Column::make('country')
+                ->orderable(false),
             Column::make('created_at')->title(__('Created Date')),
             Column::computed('action')
                 ->orderable(false)

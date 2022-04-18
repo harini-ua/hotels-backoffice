@@ -32,7 +32,21 @@ class CompanyTemplatesDataTable extends DataTable
             ]);
         });
 
+        $this->setOrderColumns($dataTable);
+
         return $dataTable;
+    }
+
+    /**
+     * Set order columns
+     *
+     * @param $dataTable
+     */
+    protected function setOrderColumns($dataTable)
+    {
+        $dataTable->orderColumn('name', static function($query, $order) {
+            $query->orderBy('name', $order);
+        });
     }
 
     /**
@@ -76,7 +90,7 @@ class CompanyTemplatesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id')->title(__('ID'))->orderable(false),
+            Column::make('id')->title(__('ID')),
             Column::make('name')->title(__('Template Name')),
             Column::computed('action')
                 ->orderable(false)

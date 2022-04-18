@@ -27,6 +27,7 @@ class CompaniesDataTable extends DataTable
             return view("admin.datatables.actions", ['actions' => ['duplicate', 'edit', 'delete'], 'model' => $model]);
         });
 
+        $this->setOrderColumns($dataTable);
         $this->setFilterColumns($dataTable);
 
         $dataTable->filter(function($query) {
@@ -39,6 +40,18 @@ class CompaniesDataTable extends DataTable
         }, true);
 
         return $dataTable;
+    }
+
+    /**
+     * Set order columns
+     *
+     * @param $dataTable
+     */
+    protected function setOrderColumns($dataTable)
+    {
+        $dataTable->orderColumn('company_name', static function($query, $order) {
+            $query->orderBy('company_name', $order);
+        });
     }
 
     /**

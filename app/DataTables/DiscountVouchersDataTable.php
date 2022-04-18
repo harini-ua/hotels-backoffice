@@ -84,6 +84,8 @@ class DiscountVouchersDataTable extends DataTable
             ]);
         });
 
+        $this->setOrderColumns($dataTable);
+
         $dataTable->rawColumns([
             'voucher_type',
             'voucher_code',
@@ -102,6 +104,34 @@ class DiscountVouchersDataTable extends DataTable
         }, true);
 
         return $dataTable;
+    }
+
+    /**
+     * Set order columns
+     *
+     * @param $dataTable
+     */
+    protected function setOrderColumns($dataTable)
+    {
+        $dataTable->orderColumn('name', static function($query, $order) {
+            $query->orderBy('name', $order);
+        });
+
+        $dataTable->orderColumn('voucher_codes_count', static function($query, $order) {
+            $query->orderBy('voucher_codes_count', $order);
+        });
+
+        $dataTable->orderColumn('amount', static function($query, $order) {
+            $query->orderBy('amount', $order);
+        });
+
+        $dataTable->orderColumn('min_price', static function($query, $order) {
+            $query->orderBy('min_price', $order);
+        });
+
+        $dataTable->orderColumn('expiry', static function($query, $order) {
+            $query->orderBy('expiry', $order);
+        });
     }
 
     /**
@@ -147,17 +177,21 @@ class DiscountVouchersDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id')->title(__('ID'))->orderable(false),
+            Column::make('id')->title(__('ID')),
             Column::make('name')->title(__('Name')),
-            Column::make('company')->title(__('Company Site')),
-            Column::make('voucher_type')->title(__('Voucher Type')),
+            Column::make('company')->title(__('Company Site'))
+                ->orderable(false),
+            Column::make('voucher_type')->title(__('Voucher Type'))
+                ->orderable(false),
             Column::make('voucher_codes_count')->title(__('Total codes'))
                 ->addClass('text-center'),
             Column::make('amount')->title(__('Amount')),
             Column::make('min_price')->title(__('Minimum Price')),
-            Column::make('commission')->title(__('Commission')),
+            Column::make('commission')->title(__('Commission'))
+                ->orderable(false),
             Column::make('expiry')->title(__('Expiry')),
             Column::make('voucher_code')->title(__('Codes'))
+                ->orderable(false)
                 ->width(160)
                 ->addClass('text-center'),
             Column::computed('action')

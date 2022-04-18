@@ -39,6 +39,7 @@ class DistributorUsersDataTable extends DataTable
             ]);
         });
 
+        $this->setOrderColumns($dataTable);
         $this->setFilterColumns($dataTable);
 
         if ((\Auth::user())->hasRole('admin')) {
@@ -52,6 +53,22 @@ class DistributorUsersDataTable extends DataTable
         }
 
         return $dataTable;
+    }
+
+    /**
+     * Set order columns
+     *
+     * @param $dataTable
+     */
+    protected function setOrderColumns($dataTable)
+    {
+        $dataTable->orderColumn('fullname', static function($query, $order) {
+            $query->orderBy('fullname', $order);
+        });
+
+        $dataTable->orderColumn('name', static function($query, $order) {
+            $query->orderBy('name', $order);
+        });
     }
 
     /**
@@ -135,7 +152,7 @@ class DistributorUsersDataTable extends DataTable
             Column::make('id')->title(__('ID')),
             Column::make('fullname')->title(__('Full Name')),
             Column::make('username')->title(__('User Name')),
-            Column::make('email'),
+            Column::make('email')->orderable(false),
             Column::computed('action')
                 ->orderable(false)
                 ->exportable(false)

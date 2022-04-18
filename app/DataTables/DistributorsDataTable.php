@@ -42,6 +42,7 @@ class DistributorsDataTable extends DataTable
             ]);
         });
 
+        $this->setOrderColumns($dataTable);
         $this->setFilterColumns($dataTable);
 
         $dataTable->filter(function($query) {
@@ -57,6 +58,18 @@ class DistributorsDataTable extends DataTable
         }, true);
 
         return $dataTable;
+    }
+
+    /**
+     * Set order columns
+     *
+     * @param $dataTable
+     */
+    protected function setOrderColumns($dataTable)
+    {
+        $dataTable->orderColumn('name', static function($query, $order) {
+            $query->orderBy('name', $order);
+        });
     }
 
     /**
@@ -116,10 +129,14 @@ class DistributorsDataTable extends DataTable
     {
         return [
             Column::make('id')->title(__('ID')),
-            Column::make('name')->title(__('Distributor')),
-            Column::make('company')->title(__('Company Site')),
-            Column::make('country'),
-            Column::make('language'),
+            Column::make('name')->title(__('Distributor Name'))
+                ->orderable(false),
+            Column::make('company')->title(__('Company Site'))
+                ->orderable(false),
+            Column::make('country')
+                ->orderable(false),
+            Column::make('language')
+                ->orderable(false),
             Column::computed('action')
                 ->orderable(false)
                 ->exportable(false)
