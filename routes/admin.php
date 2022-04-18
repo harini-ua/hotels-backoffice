@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\DiscountVoucherController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\DistributorUserController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PartnerProductController;
 use App\Http\Controllers\ProfileController;
@@ -66,6 +67,13 @@ Route::middleware('auth')->group(function() {
         Route::resource('partners', PartnerController::class)->except(['show']);
         Route::prefix('partners')->as('partners.')->group(function () {
             Route::resource('products', PartnerProductController::class)->except(['show']);
+        });
+
+        /** ----- ------ ----- NEWSLETTER */
+        Route::prefix('newsletters')->as('newsletters.')->group(function () {
+            Route::get('create', [NewsletterController::class, 'create'])->name('create');
+            Route::post('send', [NewsletterController::class, 'send'])->name('send');
+            Route::post('export', [NewsletterController::class, 'export'])->name('export');
         });
 
         /** ----- ------ ----- STATISTICS */

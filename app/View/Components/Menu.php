@@ -127,6 +127,15 @@ class Menu extends Component
             ]
         ];
 
+        /** ----- Newsletters ----- */
+
+        $this->items[] = [
+            'name' => __('Newsletters'),
+            'href' => route('newsletters.create'),
+            'icon' => 'feather icon-send',
+            'guard' => true,
+        ];
+
         /** ----- Statistics ----- */
 
         $this->items[] = [
