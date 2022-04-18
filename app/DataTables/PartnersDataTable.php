@@ -4,6 +4,7 @@ namespace App\DataTables;
 
 use App\Models\Partner;
 use App\Services\Formatter;
+use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
@@ -43,6 +44,7 @@ class PartnersDataTable extends DataTable
             return view("admin.datatables.actions", ['actions' => ['edit', 'delete'], 'model' => $model]);
         });
 
+        $this->setOrderColumns($dataTable);
         $this->setFilterColumns($dataTable);
 
         $dataTable->filter(function($query) {
@@ -55,6 +57,22 @@ class PartnersDataTable extends DataTable
     }
 
     /**
+     * Set order columns
+     *
+     * @param $dataTable
+     */
+    protected function setOrderColumns($dataTable)
+    {
+        $dataTable->orderColumn('name', static function($query, $order) {
+            $query->orderBy('name', $order);
+        });
+
+        $dataTable->orderColumn('created_at', static function($query, $order) {
+            $query->orderBy('created_at', $order);
+        });
+    }
+
+    /**
      * Set filter columns
      *
      * @param $dataTable
@@ -63,6 +81,7 @@ class PartnersDataTable extends DataTable
     {
         $dataTable->filterColumn('name', static function($query, $keyword) {
             $query->where('name', 'like', "%$keyword%");
+            $query->orWhere('description', 'like', "%$keyword%");
         });
     }
 
@@ -89,12 +108,16 @@ class PartnersDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('frtip')
+            ->dom('Bfrtip')
             ->orderBy(1)
             ->language([
                 'search' => '',
                 'searchPlaceholder' => __('Search')
             ])
+            ->buttons(
+                Button::make('postExcel'),
+                Button::make('print')
+            )
         ;
     }
 
@@ -108,15 +131,17 @@ class PartnersDataTable extends DataTable
         return [
             Column::make('id')->title(__('ID')),
             Column::make('name')->title(__('Partner Name')),
-            Column::make('description')->title(__('Description')),
-            Column::make('internal')->title(__('API Type')),
+            Column::make('description')->title(__('Description'))
+                ->orderable(false),
+            Column::make('internal')->title(__('API Type'))
+                ->orderable(false),
             Column::make('created_at')->title(__('Date Create')),
             Column::computed('action')
                 ->orderable(false)
                 ->exportable(false)
                 ->printable(false)
                 ->orderable(false)
-                ->width(200)
+                ->width(150)
                 ->addClass('text-center'),
         ];
     }

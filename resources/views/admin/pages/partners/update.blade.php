@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',  __('Update Distributor'))
+@section('title',  __('Update Partner'))
 
 @section('style')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/partners.css') }}">
