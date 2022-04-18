@@ -1,4 +1,4 @@
-<form id="create-admin" method="POST" action="{{ route('newsletters.send') }}">
+<form id="create-admin" method="POST" action="{{ route('newsletters.store') }}">
     @csrf
     <div class="form-group row">
         <label for="type" class="col-sm-2 col-form-label">{{ __('Newsletter Type') }} *</label>
@@ -82,6 +82,6 @@
             @enderror
         </div>
     </div>
-    <button id="send-btn" class="btn btn-primary">{{ __('Submit') }}</button>
-    <button id="download-btn" class="btn btn-primary">{{ __('Download') }}</button>
+    <button id="send-btn" class="btn btn-primary" name="action" value="send">{{ __('Submit') }}</button>
+    <button id="download-btn" class="btn btn-primary" name="action" value="export">{{ __('Download') }}</button>
 </form>

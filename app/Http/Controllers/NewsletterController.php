@@ -49,12 +49,19 @@ class NewsletterController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param NewsletterStoreRequest $request
-     * @return RedirectResponse
+     * @param Request $request
+     * @return RedirectResponse|\Symfony\Component\HttpFoundation\BinaryFileResponse
      * @throws \Exception
      */
-    public function send(NewsletterStoreRequest $request)
+    public function store(Request $request)
     {
+        if ($request->get('action')) {
+            return Excel::download(
+                new NewsletterUsersExport($request->all()),
+                'newsletters.xlsx'
+            );
+        }
+
         try {
             DB::beginTransaction();
 
@@ -73,17 +80,5 @@ class NewsletterController extends Controller
         }
 
         return redirect()->route('newsletters.create');
-    }
-
-    /**
-     * Download the newsletter users.
-     *
-     * @param NewsletterExportRequest $request
-     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
-     * @throws \Exception
-     */
-    public function export(NewsletterExportRequest $request)
-    {
-        return Excel::download(new NewsletterUsersExport($request->all()), 'newsletters.xlsx');
     }
 }

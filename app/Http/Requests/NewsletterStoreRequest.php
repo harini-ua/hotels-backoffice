@@ -27,6 +27,7 @@ class NewsletterStoreRequest extends FormRequest
     public function rules()
     {
         return [
+            'action' => 'required',
             'type' => ['required', new EnumValue(NewsletterUserType::class, false)],
             'company_id' => [
                 Rule::requiredIf(static function () {
@@ -38,10 +39,25 @@ class NewsletterStoreRequest extends FormRequest
                 'nullable',
                 Rule::exists('companies', 'id')
             ],
-            'registered_date_from' => 'date_format:m/d/Y|before:today',
-            'from' => 'required|email',
-            'subject' => 'required|string',
-            'message' => 'required|string',
+            'registered_date_from' => 'nullable|date_format:m/d/Y|before:today',
+            'from' => [
+                Rule::requiredIf(static function () {
+                    return request()->get('action') === 'send';
+                }),
+                'email'
+            ],
+            'subject' => [
+                Rule::requiredIf(static function () {
+                    return request()->get('action') === 'send';
+                }),
+                'nullable'
+            ],
+            'message' => [
+                Rule::requiredIf(static function () {
+                    return request()->get('action') === 'send';
+                }),
+                'nullable'
+            ],
         ];
     }
 }

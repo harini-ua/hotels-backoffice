@@ -72,8 +72,7 @@ Route::middleware('auth')->group(function() {
         /** ----- ------ ----- NEWSLETTER */
         Route::prefix('newsletters')->as('newsletters.')->group(function () {
             Route::get('create', [NewsletterController::class, 'create'])->name('create');
-            Route::post('send', [NewsletterController::class, 'send'])->name('send');
-            Route::post('export', [NewsletterController::class, 'export'])->name('export');
+            Route::post('store', [NewsletterController::class, 'store'])->name('store');
         });
 
         /** ----- ------ ----- STATISTICS */
