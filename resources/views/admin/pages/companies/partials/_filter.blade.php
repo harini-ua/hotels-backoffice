@@ -4,7 +4,7 @@
         id="status"
         name="status"
         class="form-control filter-input select-filter select2 select2-single"
-        data-table="distributors-list-datatable"
+        data-table="companies-list-datatable"
         data-url="{{ route('companies.index') }}"
     >
         <option selected value="">{{ __('All') }}</option>
@@ -19,7 +19,7 @@
         id="category"
         name="category"
         class="form-control filter-input select-filter select2 select2-single"
-        data-table="distributors-list-datatable"
+        data-table="companies-list-datatable"
         data-url="{{ route('companies.index') }}"
     >
         <option selected value="">{{ __('All') }}</option>
