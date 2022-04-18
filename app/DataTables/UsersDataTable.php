@@ -63,17 +63,6 @@ class UsersDataTable extends DataTable
             if ($this->request->has('company')) {
                 // TODO: Implement filter by company
             }
-//            if ($this->request->has('search_value')) {
-//                $keyword = $this->request->get('search_value');
-//
-//                if ($keyword) {
-//                    $query->where('company_name', 'like', "%$keyword%")
-//                        ->orWhere('username', 'like', "%$keyword%")
-//                        ->orWhere('firstname', 'like', "%$keyword%")
-//                        ->orWhere('lastname', 'like', "%$keyword%")
-//                        ->orWhere('email', 'like', "%$keyword%");
-//                }
-//            }
         }, true);
 
         return $dataTable;
