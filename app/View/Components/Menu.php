@@ -161,6 +161,14 @@ class Menu extends Component
             'href' => route('settings.index'),
             'icon' => 'feather icon-settings',
             'guard' => $user->hasRole('admin'),
+            'items' => [
+                [
+                    'name' => __('Providers'),
+                    'href' => route('providers.index'),
+                    'icon' => 'feather icon-package',
+                    'guard' => $user->hasRole('admin'),
+                ]
+            ]
         ];
     }
 

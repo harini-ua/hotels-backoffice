@@ -22,7 +22,16 @@ class Provider extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email',
+        'name', 'email', 'description', 'active'
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'active' => 'boolean',
     ];
 
     /**

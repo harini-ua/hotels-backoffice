@@ -12,6 +12,7 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PartnerProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StatisticController;
@@ -73,6 +74,12 @@ Route::middleware('auth')->group(function() {
         Route::prefix('newsletters')->as('newsletters.')->group(function () {
             Route::get('create', [NewsletterController::class, 'create'])->name('create');
             Route::post('store', [NewsletterController::class, 'store'])->name('store');
+        });
+
+        /** ----- ------ ----- PROVIDERS */
+        Route::resource('providers', ProviderController::class)->except(['create', 'store', 'show', 'delete']);
+        Route::prefix('providers')->as('providers.')->group(function () {
+            Route::post('{provider}/active', [ProviderController::class, 'active'])->name('active');
         });
 
         /** ----- ------ ----- STATISTICS */
