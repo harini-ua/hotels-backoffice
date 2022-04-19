@@ -17,18 +17,20 @@
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
-        <!-- Start col -->
-        <div class="col-lg-12">
-            <!-- Start row -->
-            <div class="row justify-content-center">
-                <!-- Start col -->
-                <div class="col-lg-4">
-                    <div class="onboard-content text-center my-5">
-                        <img src="{{asset('assets/images/ui-onboard/unboard.svg')}}" class="img-fluid mb-5" alt="onboard">
-                    </div>
-                </div>
-            </div>
-            <!-- End row -->
+        <div class="col-lg-12 col-xl-2 widget-link-wrapper">
+            <a class="btn btn-primary link" href="{{ route('statistics.index') }}" role="button">
+                <i class="feather icon-file-text"></i> {{ __('Booking Report') }}
+            </a>
+        </div>
+        <div class="col-lg-12 col-xl-2 widget-link-wrapper">
+            <a class="btn btn-primary link" href="{{ route('statistics.index') }}" role="button">
+                <i class="feather icon-file-text"></i> {{ __('Commission Report') }}
+            </a>
+        </div>
+        <div class="col-lg-12 col-xl-2 widget-link-wrapper">
+            <a class="btn btn-primary link" href="{{ route('users.index') }}" role="button">
+                <i class="feather icon-users"></i> {{ __('Booking Users') }}
+            </a>
         </div>
     </div>
     <!-- End row -->
