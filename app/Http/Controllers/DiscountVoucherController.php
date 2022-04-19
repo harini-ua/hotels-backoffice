@@ -173,6 +173,7 @@ class DiscountVoucherController extends Controller
     {
         try {
             DB::beginTransaction();
+
             $discountVoucher->fill($request->all());
             $discountVoucher->save();
 

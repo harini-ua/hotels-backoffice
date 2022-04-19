@@ -52,7 +52,7 @@ Route::middleware('auth')->group(function() {
         /** ----- ------ ----- COMPANIES */
         Route::resource('companies', CompanyController::class)->except(['show']);
         Route::prefix('companies')->as('companies.')->group(function () {
-            Route::get('{companies}/duplicate', [CompanyController::class, 'duplicate'])->name('duplicate');
+            Route::post('{company}/duplicate', [CompanyController::class, 'duplicate'])->name('duplicate');
             Route::resource('themes', CompanyThemeController::class)->except(['show']);
             Route::resource('templates', CompanyTemplateController::class)->except(['show']);
         });

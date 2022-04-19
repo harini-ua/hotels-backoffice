@@ -18,12 +18,12 @@ class CreateCompaniesTable extends Migration
             $table->string('holder_name');
             $table->string('company_name');
             $table->boolean('category');
-            $table->unsignedBigInteger('country_id');
+            $table->unsignedBigInteger('country_id')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
-            $table->unsignedBigInteger('language_id');
-            $table->text('address');
-            $table->string('email')->unique();
-            $table->string('phone');
+            $table->unsignedBigInteger('language_id')->nullable();
+            $table->text('address')->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->string('phone')->nullable();
             $table->tinyInteger('status')->default(1)
                 ->comment('0-inactive, 1-active, 2-pending');
             $table->tinyInteger('level')->default(1)

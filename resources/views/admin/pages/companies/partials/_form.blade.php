@@ -7,12 +7,12 @@
     @csrf
     @if(isset($model)) @method('PUT') @endif
     <div class="form-group row">
-        <label for="name" class="col-sm-2 col-form-label">{{ __('Name') }} *</label>
+        <label for="company_name" class="col-sm-2 col-form-label">{{ __('Company Site Name') }} *</label>
         <div class="col-sm-4">
-            <input type="text" id="name" name="name"
-                   value="{{ old('name') ?? ($model ? $model->name : null ) }}"
+            <input type="text" id="company_name" name="company_name"
+                   value="{{ old('company_name') ?? ($model ? $model->name : null ) }}"
                    class="form-control @error('name') is-invalid @enderror">
-            @error('name')
+            @error('company_name')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
         </div>
@@ -31,28 +31,42 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="categories" class="col-sm-2 col-form-label">{{ __('Category') }} *</label>
+        <label for="category" class="col-sm-2 col-form-label">{{ __('Category') }} *</label>
         <div class="col-sm-4">
-            <select id="categories" name="categories" class="form-control @error('status') is-invalid @enderror">
+            <select id="category" name="category" class="form-control @error('status') is-invalid @enderror">
                 @foreach($categories as $id => $category)
                     <option value="{{ $id }}">{{ $category }}</option>
                 @endforeach
             </select>
-            @error('categories')
+            @error('category')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
         </div>
     </div>
     <div class="form-group row">
-        <label for="admins" class="col-sm-2 col-form-label">{{ __('Administrator') }} *</label>
+        <label for="admin" class="col-sm-2 col-form-label">{{ __('Administrator') }} *</label>
         <div class="col-sm-4">
-            <select id="admins" name="admins"
+            <select id="admin" name="admin"
                     class="form-control select2 select2-single @error('status') is-invalid @enderror">
                 @foreach($admins as $id => $admin)
                     <option value="{{ $id }}">{{ $admin }}</option>
                 @endforeach
             </select>
-            @error('admins')
+            @error('admin')
+            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+            @enderror
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="country" class="col-sm-2 col-form-label">{{ __('Country') }} *</label>
+        <div class="col-sm-4">
+            <select id="country" name="country"
+                    class="form-control select2 select2-single @error('country') is-invalid @enderror">
+                @foreach($countries as $id => $country)
+                    <option value="{{ $id }}">{{ $country }}</option>
+                @endforeach
+            </select>
+            @error('country')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
         </div>

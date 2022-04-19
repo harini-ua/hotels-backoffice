@@ -4,7 +4,6 @@ $(document).ready(function () {
     // Filters
     const filterItems = $(".filter-item");
     filterItems.each(id => {
-        console.log(0);
         const filterItem = $(filterItems[id]);
         const route = filterItem.find('.filter-input').attr('data-url');
         const name = filterItem.find('.filter-input').attr('name');
