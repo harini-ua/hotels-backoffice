@@ -20,4 +20,6 @@
 
     <!-- Show progression -->
     <arg value="p"/>
+    <arg name="colors"/>
+    <arg value="np"/>
 </ruleset>

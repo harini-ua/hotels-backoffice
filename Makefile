@@ -17,3 +17,9 @@ endif
 
 share:
 	ngrok http $(host):$(port)
+
+code_sniffer:
+	./vendor/bin/phpcs
+
+code_sniffer_fixing:
+	./vendor/bin/phpcbf
