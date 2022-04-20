@@ -98,7 +98,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/', [SettingController::class, 'index'])->name('index');
             Route::prefix('company/default')->as('company-default.')->group(function () {
                 Route::get('/', [CompanyDefaultController::class, 'edit'])->name('edit');
-                Route::post('/', [CompanyDefaultController::class, 'update'])->name('update');
+                Route::put('/', [CompanyDefaultController::class, 'update'])->name('update');
             });
         });
     });

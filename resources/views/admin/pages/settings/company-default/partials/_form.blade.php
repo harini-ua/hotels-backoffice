@@ -1,6 +1,7 @@
 @php($model = $companyDefault ?? null)
-<form id="company-default" method="PUT" action="{{ route('settings.company-default.update', $model) }}">
+<form id="company-default" method="PUT" action="{{ route('settings.company-default.update') }}">
     @csrf
+    @if(isset($model)) @method('PUT') @endif
     <div class="form-group row">
         <label for="logo" class="col-sm-2 col-form-label">{{ __('Logo') }} *</label>
         <div class="col-sm-6">
