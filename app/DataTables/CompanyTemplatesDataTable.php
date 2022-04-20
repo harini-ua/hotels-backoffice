@@ -20,7 +20,7 @@ class CompanyTemplatesDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('name', function(CompanyTheme $model) {
+        $dataTable->addColumn('name', function (CompanyTheme $model) {
             return $model->name;
         });
 
@@ -44,7 +44,7 @@ class CompanyTemplatesDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        $dataTable->orderColumn('name', static function($query, $order) {
+        $dataTable->orderColumn('name', static function ($query, $order) {
             $query->orderBy('name', $order);
         });
     }

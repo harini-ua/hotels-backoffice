@@ -28,5 +28,4 @@ class Controller extends BaseController
         dump($request->all());
         die('dump');
     }
-
 }

@@ -41,14 +41,16 @@ class Booking extends Model
     /**
      * Get the hotel that owns the booking.
      */
-    public function hotel() {
+    public function hotel()
+    {
         return $this->belongsTo(Hotel::class);
     }
 
     /**
      * Get the meal plan variant that owns the booking.
      */
-    public function mealPlanVariant() {
+    public function mealPlanVariant()
+    {
         return $this->belongsTo(MealPlanVariant::class);
     }
 

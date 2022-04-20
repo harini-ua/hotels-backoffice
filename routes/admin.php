@@ -19,8 +19,8 @@ use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\BookingUserController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth')->group(function() {
-    Route::middleware('role:admin,distributor,employee')->group(function() {
+Route::middleware('auth')->group(function () {
+    Route::middleware('role:admin,distributor,employee')->group(function () {
 
         /** ----- ------ ----- OTHERS */
         Route::get('/', [DashboardsController::class, 'index'])->name('home');

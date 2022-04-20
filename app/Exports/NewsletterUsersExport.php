@@ -48,7 +48,7 @@ class NewsletterUsersExport implements FromCollection
         }
 
         if ($this->detail['registered_date_from']) {
-            $query->whereDate('created_at', '>=' , $this->detail['registered_date_from']);
+            $query->whereDate('created_at', '>=', $this->detail['registered_date_from']);
         }
 
         return $query->get(['email', 'username']);

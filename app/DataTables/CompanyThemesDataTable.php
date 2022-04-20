@@ -20,11 +20,11 @@ class CompanyThemesDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('theme_name', function(CompanyTheme $model) {
+        $dataTable->addColumn('theme_name', function (CompanyTheme $model) {
             return $model->theme_name;
         });
 
-        $dataTable->addColumn('theme_color', function(CompanyTheme $model) {
+        $dataTable->addColumn('theme_color', function (CompanyTheme $model) {
             return view('admin.datatables.view-color', [
                 'color' => $model->theme_color,
             ]);
@@ -50,7 +50,7 @@ class CompanyThemesDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        $dataTable->orderColumn('theme_name', static function($query, $order) {
+        $dataTable->orderColumn('theme_name', static function ($query, $order) {
             $query->orderBy('theme_name', $order);
         });
     }

@@ -47,7 +47,11 @@ class DiscountVoucherController extends Controller
         $commissionTypes = DiscountCommissionType::asSelectArray();
 
         return $dataTable->render('admin.pages.discount-vouchers.index', compact(
-            'breadcrumbs', 'actions', 'companies', 'discountVoucherTypes', 'commissionTypes'
+            'breadcrumbs',
+            'actions',
+            'companies',
+            'discountVoucherTypes',
+            'commissionTypes'
         ));
     }
 
@@ -75,7 +79,11 @@ class DiscountVoucherController extends Controller
         $amountTypes = DiscountAmountType::asSelectArray();
 
         return view('admin.pages.discount-vouchers.create', compact(
-            'breadcrumbs', 'companies', 'codeTypes', 'commissionTypes', 'amountTypes'
+            'breadcrumbs',
+            'companies',
+            'codeTypes',
+            'commissionTypes',
+            'amountTypes'
         ));
     }
 
@@ -156,7 +164,13 @@ class DiscountVoucherController extends Controller
         $amountTypes = DiscountAmountType::asSelectArray();
 
         return view('admin.pages.discount-vouchers.update', compact(
-            'breadcrumbs', 'actions', 'discountVoucher', 'companies', 'codeTypes', 'commissionTypes', 'amountTypes'
+            'breadcrumbs',
+            'actions',
+            'discountVoucher',
+            'companies',
+            'codeTypes',
+            'commissionTypes',
+            'amountTypes'
         ));
     }
 

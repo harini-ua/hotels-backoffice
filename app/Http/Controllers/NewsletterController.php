@@ -42,7 +42,9 @@ class NewsletterController extends Controller
             ->pluck('company_name', 'id');
 
         return view('admin.pages.newsletters.create', compact(
-            'breadcrumbs', 'newsletterTypes', 'companies'
+            'breadcrumbs',
+            'newsletterTypes',
+            'companies'
         ));
     }
 

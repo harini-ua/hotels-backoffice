@@ -18,9 +18,8 @@ class HotelCommissionSeeder extends Seeder
 
         $hotels_commissions = [];
 
-        if (($open = fopen(storage_path('app/seed') . "/hotels_commissions.csv", "r")) !== FALSE)
-        {
-            while (($data = fgetcsv($open, 0,',')) !== FALSE) {
+        if (($open = fopen(storage_path('app/seed') . "/hotels_commissions.csv", "r")) !== false) {
+            while (($data = fgetcsv($open, 0, ',')) !== false) {
                 $hotels_commissions[] = [
                     'hotel_id' => (int)$data[0],
                     'commission_id' => 3,
@@ -33,8 +32,7 @@ class HotelCommissionSeeder extends Seeder
         }
 
         if (count($hotels_commissions) > 1000) {
-            foreach (array_chunk($hotels_commissions,1000) as $hotel_datas)
-            {
+            foreach (array_chunk($hotels_commissions, 1000) as $hotel_datas) {
                 DB::table('hotel_commission')->insertTs($hotel_datas);
             }
         } else {

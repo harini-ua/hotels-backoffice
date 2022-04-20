@@ -107,8 +107,8 @@ class FacilityVariantSeeder extends Seeder
             'Car parking (Payable to hotel, if applicable)', 'Car park', 'YES Car park',
             'Secure parking', 'Outdoor Parking', 'Pay Parking', 'Free Parking', 'Bus parking', 'Indoor parking',
             'Limited parking', 'Long term parking', 'Motorcycle parking', 'Off-Site parking',
-            'Parking - controlled access gates to enter parking area',	'Parking - controlled access gates to enter parking area',
-            'Parking deck',	'Parking fee managed by hotel',	'Parking lot', 'Recreational vehicle parking',
+            'Parking - controlled access gates to enter parking area',  'Parking - controlled access gates to enter parking area',
+            'Parking deck', 'Parking fee managed by hotel', 'Parking lot', 'Recreational vehicle parking',
             'Secured parking', 'Street side parking', 'Truck parking', 'Free parking'];
         $facility['non_smoking_rooms'] = ['non_smoking_rooms', 'No Smoking in the hotel', 'Non Smoking facilities',
             'No Smoking in the hotel', 'NO Smoking rooms', 'Non-smoking area', 'All public areas non-smoking',

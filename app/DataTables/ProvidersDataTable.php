@@ -19,15 +19,15 @@ class ProvidersDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('name', function(Provider $model) {
+        $dataTable->addColumn('name', function (Provider $model) {
             return $model->name;
         });
 
-        $dataTable->addColumn('email', function(Provider $model) {
+        $dataTable->addColumn('email', function (Provider $model) {
             return $model->email ? '<a href="mailto:'.$model->email.'">'.$model->email.'</a>' : '-';
         });
 
-        $dataTable->addColumn('active', function(Provider $model) {
+        $dataTable->addColumn('active', function (Provider $model) {
             return view("admin.pages.providers.partials._active-switch", compact('model'));
         });
 
@@ -49,7 +49,7 @@ class ProvidersDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        $dataTable->orderColumn('name', static function($query, $order) {
+        $dataTable->orderColumn('name', static function ($query, $order) {
             $query->orderBy('name', $order);
         });
     }

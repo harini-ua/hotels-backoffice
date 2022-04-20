@@ -19,35 +19,35 @@ class UsersDataTable extends DataTable
     {
         $dataTable =  datatables()->eloquent($query);
 
-        $dataTable->addColumn('company_name', function(User $model) {
+        $dataTable->addColumn('company_name', function (User $model) {
             return $model->company_name ?? '-';
         });
 
-        $dataTable->addColumn('username', function(User $model) {
+        $dataTable->addColumn('username', function (User $model) {
             return $model->username;
         });
 
-        $dataTable->addColumn('fullname', function(User $model) {
+        $dataTable->addColumn('fullname', function (User $model) {
             return view('admin.datatables.view-link', ['model' => $model, 'title' => $model->fullname]);
         });
 
-        $dataTable->addColumn('phone', function(User $model) {
+        $dataTable->addColumn('phone', function (User $model) {
             return $model->phone ?? '-';
         });
 
-        $dataTable->addColumn('email', function(User $model) {
+        $dataTable->addColumn('email', function (User $model) {
             return $model->email;
         });
 
-        $dataTable->addColumn('city', function(User $model) {
+        $dataTable->addColumn('city', function (User $model) {
             return isset($model->city) ? $model->city->name : '-';
         });
 
-        $dataTable->addColumn('country', function(User $model) {
+        $dataTable->addColumn('country', function (User $model) {
             return isset($model->country) ? $model->country->name : '-';
         });
 
-        $dataTable->addColumn('created_at', function(User $model) {
+        $dataTable->addColumn('created_at', function (User $model) {
             return $model->created_at;
         });
 
@@ -58,7 +58,7 @@ class UsersDataTable extends DataTable
         $this->setOrderColumns($dataTable);
         $this->setFilterColumns($dataTable);
 
-        $dataTable->filter(function($query) {
+        $dataTable->filter(function ($query) {
             if ($this->request->has('company')) {
                 // TODO: Implement filter by company
             }
@@ -74,19 +74,19 @@ class UsersDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        $dataTable->orderColumn('company_name', static function($query, $order) {
+        $dataTable->orderColumn('company_name', static function ($query, $order) {
             $query->orderBy('company_name', $order);
         });
 
-        $dataTable->orderColumn('username', static function($query, $order) {
+        $dataTable->orderColumn('username', static function ($query, $order) {
             $query->orderBy('username', $order);
         });
 
-        $dataTable->orderColumn('fullname', static function($query, $order) {
+        $dataTable->orderColumn('fullname', static function ($query, $order) {
             $query->orderBy('fullname', $order);
         });
 
-        $dataTable->orderColumn('created_at', static function($query, $order) {
+        $dataTable->orderColumn('created_at', static function ($query, $order) {
             $query->orderBy('created_at', $order);
         });
     }
@@ -98,20 +98,20 @@ class UsersDataTable extends DataTable
      */
     protected function setFilterColumns($dataTable)
     {
-        $dataTable->filterColumn('company_name', static function($query, $keyword) {
+        $dataTable->filterColumn('company_name', static function ($query, $keyword) {
             $query->where('company_name', 'like', "%$keyword%");
         });
 
-        $dataTable->filterColumn('username', static function($query, $keyword) {
+        $dataTable->filterColumn('username', static function ($query, $keyword) {
             $query->where('username', 'like', "%$keyword%");
         });
 
-        $dataTable->filterColumn('fullname', static function($query, $keyword) {
+        $dataTable->filterColumn('fullname', static function ($query, $keyword) {
             $query->where('firstname', 'like', "%$keyword%")
                 ->orWhere('lastname', 'like', "%$keyword%");
         });
 
-        $dataTable->filterColumn('email', static function($query, $keyword) {
+        $dataTable->filterColumn('email', static function ($query, $keyword) {
             $query->where('email', 'like', "%$keyword%");
         });
     }
@@ -127,7 +127,7 @@ class UsersDataTable extends DataTable
         return $model->newQuery()
             ->with(['city', 'country'])
             ->select('users.*')
-            ->whereHas("roles", function($q) {
+            ->whereHas("roles", function ($q) {
                 $q->where("name", "employee");
             })
         ;

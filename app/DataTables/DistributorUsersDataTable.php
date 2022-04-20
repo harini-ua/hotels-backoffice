@@ -19,15 +19,15 @@ class DistributorUsersDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('fullname', function(User $model) {
+        $dataTable->addColumn('fullname', function (User $model) {
             return $model->fullname;
         });
 
-        $dataTable->addColumn('username', function(User $model) {
+        $dataTable->addColumn('username', function (User $model) {
             return $model->username;
         });
 
-        $dataTable->addColumn('email', function(User $model) {
+        $dataTable->addColumn('email', function (User $model) {
             return $model->email;
         });
 
@@ -43,7 +43,7 @@ class DistributorUsersDataTable extends DataTable
         $this->setFilterColumns($dataTable);
 
         if ((\Auth::user())->hasRole('admin')) {
-            $dataTable->filter(function($query) {
+            $dataTable->filter(function ($query) {
                 if ($this->request->has('distributor')) {
                     $query->whereHas('distributors', function ($q) {
                         $q->where('distributors.id', $this->request->get('distributor'));
@@ -62,11 +62,11 @@ class DistributorUsersDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        $dataTable->orderColumn('fullname', static function($query, $order) {
+        $dataTable->orderColumn('fullname', static function ($query, $order) {
             $query->orderBy('fullname', $order);
         });
 
-        $dataTable->orderColumn('name', static function($query, $order) {
+        $dataTable->orderColumn('name', static function ($query, $order) {
             $query->orderBy('name', $order);
         });
     }
@@ -78,15 +78,15 @@ class DistributorUsersDataTable extends DataTable
      */
     protected function setFilterColumns($dataTable)
     {
-        $dataTable->filterColumn('fullname', static function($query, $keyword) {
+        $dataTable->filterColumn('fullname', static function ($query, $keyword) {
             $query->where('fullname', 'like', "%$keyword%");
         });
 
-        $dataTable->filterColumn('username', static function($query, $keyword) {
+        $dataTable->filterColumn('username', static function ($query, $keyword) {
             $query->where('username', 'like', "%$keyword%");
         });
 
-        $dataTable->filterColumn('email', static function($query, $keyword) {
+        $dataTable->filterColumn('email', static function ($query, $keyword) {
             $query->where('email', 'like', "%$keyword%");
         });
     }
@@ -102,7 +102,7 @@ class DistributorUsersDataTable extends DataTable
         $query = $model->newQuery();
         $query->with('distributors');
         $query->where('master', false);
-        $query->whereHas("roles", function($q) {
+        $query->whereHas("roles", function ($q) {
             $q->where("name", "distributor");
         });
 

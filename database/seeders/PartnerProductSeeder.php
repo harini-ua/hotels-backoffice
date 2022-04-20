@@ -18,10 +18,8 @@ class PartnerProductSeeder extends Seeder
 
         $partner_products = [];
 
-        if (($open = fopen(storage_path('app/seed') . "/partner_products.csv", "r")) !== FALSE)
-        {
-            while (($data = fgetcsv($open, 0,',')) !== FALSE) {
-
+        if (($open = fopen(storage_path('app/seed') . "/partner_products.csv", "r")) !== false) {
+            while (($data = fgetcsv($open, 0, ',')) !== false) {
                 $partner_products[] = [
                     'id' => (int)$data[0],
                     'name' => $data[3],

@@ -30,7 +30,10 @@ class ProfileController extends Controller
         $canEdit = $user->hasPermissionTo('edit profile');
 
         return view('admin.pages.profile', compact(
-            'breadcrumbs', 'user', 'lastLogin', 'canEdit'
+            'breadcrumbs',
+            'user',
+            'lastLogin',
+            'canEdit'
         ));
     }
 }

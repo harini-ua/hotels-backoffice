@@ -34,7 +34,8 @@ class AdminUserController extends Controller
         ];
 
         return $dataTable->render('admin.pages.admins.index', compact(
-            'breadcrumbs', 'actions'
+            'breadcrumbs',
+            'actions'
         ));
     }
 

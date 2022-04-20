@@ -24,10 +24,8 @@ class CompanySeeder extends Seeder
 //lEFT JOIN ml_tbl_language l ON w.language = l.langname
 //WHERE c.id IN(1,2,7,8,18,23)
 
-        if (($open = fopen(storage_path('app/seed') . "/companies.csv", "r")) !== FALSE)
-        {
-            while (($data = fgetcsv($open, 0,',')) !== FALSE) {
-
+        if (($open = fopen(storage_path('app/seed') . "/companies.csv", "r")) !== false) {
+            while (($data = fgetcsv($open, 0, ',')) !== false) {
                 $companies[] = [
                     'id' => (int)$data[0],
                     'country_id' => (int)$data[1],
@@ -64,8 +62,7 @@ class CompanySeeder extends Seeder
             fclose($open);
         }
 
-        foreach (array_chunk($companies,1000) as $company)
-        {
+        foreach (array_chunk($companies, 1000) as $company) {
             DB::table('companies')->insertTs($company);
         }
     }

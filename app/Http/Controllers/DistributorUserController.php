@@ -40,7 +40,9 @@ class DistributorUserController extends Controller
             ->pluck('name', 'id');
 
         return $dataTable->render('admin.pages.distributor-users.index', compact(
-            'breadcrumbs', 'actions', 'distributors'
+            'breadcrumbs',
+            'actions',
+            'distributors'
         ));
     }
 
@@ -70,7 +72,8 @@ class DistributorUserController extends Controller
         }
 
         return view('admin.pages.distributor-users.create', compact(
-            'breadcrumbs', 'distributor'
+            'breadcrumbs',
+            'distributor'
         ));
     }
 
@@ -133,7 +136,9 @@ class DistributorUserController extends Controller
         ;
 
         return view('admin.pages.distributor-users.update', compact(
-            'breadcrumbs', 'user', 'distributor'
+            'breadcrumbs',
+            'user',
+            'distributor'
         ));
     }
 

@@ -17,9 +17,8 @@ class LanguageSeeder extends Seeder
     {
         $languages = [];
 
-        if (($open = fopen(storage_path('app/seed') . "/languages.csv", "r")) !== FALSE)
-        {
-            while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
+        if (($open = fopen(storage_path('app/seed') . "/languages.csv", "r")) !== false) {
+            while (($data = fgetcsv($open, 1000, ",")) !== false) {
                 $languages[] = [
                     'id' => $data[0],
                     'name' => $data[1],

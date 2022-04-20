@@ -56,7 +56,10 @@ class CompanyController extends Controller
         $categories = CompanyCategory::asSelectArray();
 
         return $dataTable->render('admin.pages.companies.index', compact(
-            'breadcrumbs', 'actions', 'status', 'categories'
+            'breadcrumbs',
+            'actions',
+            'status',
+            'categories'
         ));
     }
 
@@ -87,7 +90,7 @@ class CompanyController extends Controller
         $categories = CompanyCategory::asSelectArray();
 
         $admins = User::where('status', 1)
-            ->whereHas("roles", function($q) {
+            ->whereHas("roles", function ($q) {
                 $q->where("name", "admin");
             })->get()
             ->sortBy('fullname')
@@ -99,7 +102,13 @@ class CompanyController extends Controller
             ->pluck('name', 'id');
 
         return view('admin.pages.companies.create', compact(
-            'breadcrumbs', 'themes', 'templates', 'status', 'categories', 'admins', 'countries'
+            'breadcrumbs',
+            'themes',
+            'templates',
+            'status',
+            'categories',
+            'admins',
+            'countries'
         ));
     }
 
@@ -163,7 +172,7 @@ class CompanyController extends Controller
         $categories = CompanyCategory::asSelectArray();
 
         $admins = User::where('status', 1)
-            ->whereHas("roles", function($q) {
+            ->whereHas("roles", function ($q) {
                 $q->where("name", "admin");
             })->get()
             ->sortBy('fullname')
@@ -175,7 +184,14 @@ class CompanyController extends Controller
             ->pluck('name', 'id');
 
         return view('admin.pages.companies.update', compact(
-            'breadcrumbs', 'actions', 'themes', 'templates', 'status', 'categories', 'admins', 'countries'
+            'breadcrumbs',
+            'actions',
+            'themes',
+            'templates',
+            'status',
+            'categories',
+            'admins',
+            'countries'
         ));
     }
 

@@ -42,7 +42,9 @@ class BookingUserController extends Controller
             ->pluck('company_name', 'id');
 
         return $dataTable->render('admin.pages.users.index', compact(
-            'breadcrumbs' ,'actions', 'companies'
+            'breadcrumbs',
+            'actions',
+            'companies'
         ));
     }
 
@@ -81,7 +83,11 @@ class BookingUserController extends Controller
             ->pluck('name', 'id');
 
         return view('admin.pages.users.create', compact(
-            'breadcrumbs', 'distributors', 'companies', 'countries', 'languages'
+            'breadcrumbs',
+            'distributors',
+            'companies',
+            'countries',
+            'languages'
         ));
     }
 
@@ -130,7 +136,8 @@ class BookingUserController extends Controller
         ];
 
         return view('admin.pages.users.show', compact(
-            'breadcrumbs', 'user'
+            'breadcrumbs',
+            'user'
         ));
     }
 

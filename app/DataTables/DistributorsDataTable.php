@@ -19,19 +19,19 @@ class DistributorsDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('name', function(Distributor $model) {
+        $dataTable->addColumn('name', function (Distributor $model) {
             return $model->name ?? '-';
         });
 
-        $dataTable->addColumn('company', function(Distributor $model) {
+        $dataTable->addColumn('company', function (Distributor $model) {
             return '-';
         });
 
-        $dataTable->addColumn('country', function(Distributor $model) {
+        $dataTable->addColumn('country', function (Distributor $model) {
             return '-';
         });
 
-        $dataTable->addColumn('language', function(Distributor $model) {
+        $dataTable->addColumn('language', function (Distributor $model) {
             return '-';
         });
 
@@ -45,7 +45,7 @@ class DistributorsDataTable extends DataTable
         $this->setOrderColumns($dataTable);
         $this->setFilterColumns($dataTable);
 
-        $dataTable->filter(function($query) {
+        $dataTable->filter(function ($query) {
             if ($this->request->has('company')) {
                 // TODO: Implement filter by company
             }
@@ -67,7 +67,7 @@ class DistributorsDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        $dataTable->orderColumn('name', static function($query, $order) {
+        $dataTable->orderColumn('name', static function ($query, $order) {
             $query->orderBy('name', $order);
         });
     }
@@ -79,7 +79,7 @@ class DistributorsDataTable extends DataTable
      */
     protected function setFilterColumns($dataTable)
     {
-        $dataTable->filterColumn('name', static function($query, $keyword) {
+        $dataTable->filterColumn('name', static function ($query, $keyword) {
             $query->where('name', 'like', "%$keyword%");
         });
     }

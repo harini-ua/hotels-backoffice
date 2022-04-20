@@ -43,7 +43,7 @@ class ProviderController extends Controller
             ['name' => $provider->name]
         ];
 
-        return view('admin.pages.providers.update', compact('breadcrumbs' , 'provider'));
+        return view('admin.pages.providers.update', compact('breadcrumbs', 'provider'));
     }
 
     /**

@@ -33,7 +33,8 @@ class CompanyThemeController extends Controller
         ];
 
         return $dataTable->render('admin.pages.companies-themes.index', compact(
-            'breadcrumbs', 'actions'
+            'breadcrumbs',
+            'actions'
         ));
     }
 
@@ -101,7 +102,9 @@ class CompanyThemeController extends Controller
         ];
 
         return view('admin.pages.companies-themes.update', compact(
-            'breadcrumbs', 'actions', 'theme'
+            'breadcrumbs',
+            'actions',
+            'theme'
         ));
     }
 

@@ -19,7 +19,7 @@ class CompaniesDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('name', function(Company $model) {
+        $dataTable->addColumn('name', function (Company $model) {
             return $model->company_name ?? '-';
         });
 
@@ -30,7 +30,7 @@ class CompaniesDataTable extends DataTable
         $this->setOrderColumns($dataTable);
         $this->setFilterColumns($dataTable);
 
-        $dataTable->filter(function($query) {
+        $dataTable->filter(function ($query) {
             if ($this->request->has('status')) {
                 $query->where('status', $this->request->get('status'));
             }
@@ -49,7 +49,7 @@ class CompaniesDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        $dataTable->orderColumn('company_name', static function($query, $order) {
+        $dataTable->orderColumn('company_name', static function ($query, $order) {
             $query->orderBy('company_name', $order);
         });
     }
@@ -61,7 +61,7 @@ class CompaniesDataTable extends DataTable
      */
     protected function setFilterColumns($dataTable)
     {
-        $dataTable->filterColumn('company_name', static function($query, $keyword) {
+        $dataTable->filterColumn('company_name', static function ($query, $keyword) {
             $query->where('company_name', 'like', "%$keyword%");
         });
     }

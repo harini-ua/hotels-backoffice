@@ -33,7 +33,8 @@ class PartnerController extends Controller
         ];
 
         return $dataTable->render('admin.pages.partners.index', compact(
-            'breadcrumbs', 'actions',
+            'breadcrumbs',
+            'actions',
         ));
     }
 
@@ -101,7 +102,9 @@ class PartnerController extends Controller
         ];
 
         return view('admin.pages.partners.update', compact(
-            'breadcrumbs', 'actions', 'partner',
+            'breadcrumbs',
+            'actions',
+            'partner',
         ));
     }
 

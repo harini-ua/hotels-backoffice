@@ -49,7 +49,11 @@ class PartnerProductController extends Controller
             ->pluck('code', 'id');
 
         return $dataTable->render('admin.pages.partners-products.index', compact(
-            'breadcrumbs', 'actions', 'partners', 'mealPlans', 'currencies'
+            'breadcrumbs',
+            'actions',
+            'partners',
+            'mealPlans',
+            'currencies'
         ));
     }
 
@@ -117,7 +121,9 @@ class PartnerProductController extends Controller
         ];
 
         return view('admin.pages.partners-products.update', compact(
-            'breadcrumbs', 'actions', 'partnerProduct',
+            'breadcrumbs',
+            'actions',
+            'partnerProduct',
         ));
     }
 

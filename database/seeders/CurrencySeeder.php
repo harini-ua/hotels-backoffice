@@ -16,9 +16,8 @@ class CurrencySeeder extends Seeder
     {
         $currencies = [];
 
-        if (($open = fopen(storage_path('app/seed') . "/currencies.csv", "r")) !== FALSE)
-        {
-            while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
+        if (($open = fopen(storage_path('app/seed') . "/currencies.csv", "r")) !== false) {
+            while (($data = fgetcsv($open, 1000, ",")) !== false) {
                 $currencies[] = [
                     'id' => $data[0],
                     'code' => $data[1]

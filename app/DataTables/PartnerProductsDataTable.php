@@ -23,39 +23,39 @@ class PartnerProductsDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('partner', function(PartnerProduct $model) {
+        $dataTable->addColumn('partner', function (PartnerProduct $model) {
             return $model->partner_id ? Partner::find($model->partner_id)->name : '-';
         });
 
-        $dataTable->addColumn('name', function(PartnerProduct $model) {
+        $dataTable->addColumn('name', function (PartnerProduct $model) {
             return $model->name ?? '-';
         });
 
-        $dataTable->addColumn('code', function(PartnerProduct $model) {
+        $dataTable->addColumn('code', function (PartnerProduct $model) {
             return $model->code ?? '-';
         });
 
-        $dataTable->addColumn('meal_plan', function(PartnerProduct $model) {
+        $dataTable->addColumn('meal_plan', function (PartnerProduct $model) {
             return $model->meal_plan_id ? MealPlan::find($model->meal_plan_id)->name : '-';
         });
 
-        $dataTable->addColumn('price', function(PartnerProduct $model) {
+        $dataTable->addColumn('price', function (PartnerProduct $model) {
             return Formatter::currency($model->price) ?? '-';
         });
 
-        $dataTable->addColumn('currency', function(PartnerProduct $model) {
+        $dataTable->addColumn('currency', function (PartnerProduct $model) {
             return $model->currency_id ? Currency::find($model->currency_id)->code : '-';
         });
 
-        $dataTable->addColumn('price_min', function(PartnerProduct $model) {
+        $dataTable->addColumn('price_min', function (PartnerProduct $model) {
             return Formatter::currency($model->price_min) ?? '-';
         });
 
-        $dataTable->addColumn('price_max', function(PartnerProduct $model) {
+        $dataTable->addColumn('price_max', function (PartnerProduct $model) {
             return Formatter::currency($model->price_max) ?? '-';
         });
 
-        $dataTable->addColumn('sku', function(PartnerProduct $model) {
+        $dataTable->addColumn('sku', function (PartnerProduct $model) {
             return $model->sku ?? '-';
         });
 
@@ -70,7 +70,7 @@ class PartnerProductsDataTable extends DataTable
         $this->setOrderColumns($dataTable);
         $this->setFilterColumns($dataTable);
 
-        $dataTable->filter(function($query) {
+        $dataTable->filter(function ($query) {
             if ($this->request->has('partner')) {
                 $query->where('partner_id', $this->request->get('partner'));
             }
@@ -92,19 +92,19 @@ class PartnerProductsDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        $dataTable->orderColumn('name', static function($query, $order) {
+        $dataTable->orderColumn('name', static function ($query, $order) {
             $query->orderBy('name', $order);
         });
 
-        $dataTable->orderColumn('price', static function($query, $order) {
+        $dataTable->orderColumn('price', static function ($query, $order) {
             $query->orderBy('price', $order);
         });
 
-        $dataTable->orderColumn('price_min', static function($query, $order) {
+        $dataTable->orderColumn('price_min', static function ($query, $order) {
             $query->orderBy('price_min', $order);
         });
 
-        $dataTable->orderColumn('price_max', static function($query, $order) {
+        $dataTable->orderColumn('price_max', static function ($query, $order) {
             $query->orderBy('price_max', $order);
         });
     }
@@ -116,7 +116,7 @@ class PartnerProductsDataTable extends DataTable
      */
     protected function setFilterColumns($dataTable)
     {
-        $dataTable->filterColumn('name', static function($query, $keyword) {
+        $dataTable->filterColumn('name', static function ($query, $keyword) {
             $query->where('name', 'like', "%$keyword%");
             $query->orWhere('code', 'like', "%$keyword%");
             $query->orWhere('sku', 'like', "%$keyword%");

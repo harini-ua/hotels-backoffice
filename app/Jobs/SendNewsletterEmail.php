@@ -65,7 +65,7 @@ class SendNewsletterEmail implements ShouldQueue
         }
 
         if ($this->newsletter->registered_date_from) {
-            $query->whereDate('created_at', '>=' , $this->newsletter->registered_date_from);
+            $query->whereDate('created_at', '>=', $this->newsletter->registered_date_from);
         }
 
         /** @var User[] $users */

@@ -16,9 +16,8 @@ class CountrySeeder extends Seeder
     {
         $countries = [];
 
-        if (($open = fopen(storage_path('app/seed') . "/countries.csv", "r")) !== FALSE)
-        {
-            while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
+        if (($open = fopen(storage_path('app/seed') . "/countries.csv", "r")) !== false) {
+            while (($data = fgetcsv($open, 1000, ",")) !== false) {
                 $countries[] = [
                     'id' => $data[0],
                     'currency_id' => 1,

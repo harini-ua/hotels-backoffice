@@ -19,11 +19,11 @@ class AdminsDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('username', function(User $model) {
+        $dataTable->addColumn('username', function (User $model) {
             return $model->username;
         });
 
-        $dataTable->addColumn('email', function(User $model) {
+        $dataTable->addColumn('email', function (User $model) {
             return $model->email;
         });
 
@@ -43,7 +43,7 @@ class AdminsDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        $dataTable->orderColumn('username', static function($query, $order) {
+        $dataTable->orderColumn('username', static function ($query, $order) {
             $query->orderBy('username', $order);
         });
     }
@@ -58,7 +58,7 @@ class AdminsDataTable extends DataTable
     {
         return $model->newQuery()
             ->select('users.*')
-            ->whereHas("roles", function($q) {
+            ->whereHas("roles", function ($q) {
                 $q->where("name", "admin");
             })
         ;

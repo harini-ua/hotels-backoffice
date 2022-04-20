@@ -32,7 +32,8 @@ class CompanyTemplateController extends Controller
         ];
 
         return $dataTable->render('admin.pages.companies-templates.index', compact(
-            'breadcrumbs', 'actions'
+            'breadcrumbs',
+            'actions'
         ));
     }
 
@@ -102,7 +103,9 @@ class CompanyTemplateController extends Controller
         ];
 
         return view('admin.pages.companies-templates.update', compact(
-            'breadcrumbs', 'actions', 'template'
+            'breadcrumbs',
+            'actions',
+            'template'
         ));
     }
 

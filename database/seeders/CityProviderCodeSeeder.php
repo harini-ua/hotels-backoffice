@@ -16,10 +16,9 @@ class CityProviderCodeSeeder extends Seeder
     {
         $cityProviderCodes = [];
 
-        if (($open = fopen(storage_path('app/seed') . "/city_provider_codes.csv", "r")) !== FALSE)
-        {
-            while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
-                if((int)$data[5] !== 5) {
+        if (($open = fopen(storage_path('app/seed') . "/city_provider_codes.csv", "r")) !== false) {
+            while (($data = fgetcsv($open, 1000, ",")) !== false) {
+                if ((int)$data[5] !== 5) {
                     $cityProviderCodes[] = [
                         'id' => (int)$data[0],
                         'city_id' => (int)$data[7],

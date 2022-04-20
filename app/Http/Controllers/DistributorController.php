@@ -53,7 +53,11 @@ class DistributorController extends Controller
             ->pluck('company_name', 'id');
 
         return $dataTable->render('admin.pages.distributors.index', compact(
-            'breadcrumbs', 'actions', 'companies', 'countries', 'languages'
+            'breadcrumbs',
+            'actions',
+            'companies',
+            'countries',
+            'languages'
         ));
     }
 
@@ -87,7 +91,10 @@ class DistributorController extends Controller
             ->pluck('company_name', 'id');
 
         return view('admin.pages.distributors.create', compact(
-            'breadcrumbs', 'countries', 'languages', 'companies'
+            'breadcrumbs',
+            'countries',
+            'languages',
+            'companies'
         ));
     }
 
@@ -166,7 +173,13 @@ class DistributorController extends Controller
             ->pluck('company_name', 'id');
 
         return view('admin.pages.distributors.update', compact(
-            'breadcrumbs', 'actions', 'distributor', 'master', 'countries', 'languages', 'companies'
+            'breadcrumbs',
+            'actions',
+            'distributor',
+            'master',
+            'countries',
+            'languages',
+            'companies'
         ));
     }
 

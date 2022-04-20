@@ -26,23 +26,23 @@ class DiscountVouchersDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('name', function(DiscountVoucher $model) {
+        $dataTable->addColumn('name', function (DiscountVoucher $model) {
             return $model->name;
         });
 
-        $dataTable->addColumn('company', function(DiscountVoucher $model) {
+        $dataTable->addColumn('company', function (DiscountVoucher $model) {
             return $model->company->company_name;
         });
 
-        $dataTable->addColumn('voucher_type', function(DiscountVoucher $model) {
+        $dataTable->addColumn('voucher_type', function (DiscountVoucher $model) {
             return view("admin.pages.discount-vouchers.partials._voucher-type", compact('model'));
         });
 
-        $dataTable->addColumn('voucher_codes_count', function(DiscountVoucher $model) {
+        $dataTable->addColumn('voucher_codes_count', function (DiscountVoucher $model) {
             return $model->voucher_codes_count;
         });
 
-        $dataTable->addColumn('amount', function(DiscountVoucher $model) {
+        $dataTable->addColumn('amount', function (DiscountVoucher $model) {
             if ($model->amount_type == DiscountAmountType::Percent) {
                 return $model->amount.' %';
             }
@@ -54,19 +54,19 @@ class DiscountVouchersDataTable extends DataTable
             return Formatter::currency($model->amount);
         });
 
-        $dataTable->addColumn('min_price', function(DiscountVoucher $model) {
+        $dataTable->addColumn('min_price', function (DiscountVoucher $model) {
             return Formatter::currency($model->min_price);
         });
 
-        $dataTable->addColumn('commission', function(DiscountVoucher $model) {
+        $dataTable->addColumn('commission', function (DiscountVoucher $model) {
             return DiscountCommissionType::getDescription($model->commission);
         });
 
-        $dataTable->addColumn('expiry', function(DiscountVoucher $model) {
+        $dataTable->addColumn('expiry', function (DiscountVoucher $model) {
             return Formatter::date($model->expiry);
         });
 
-        $dataTable->addColumn('voucher_code', function(DiscountVoucher $model) {
+        $dataTable->addColumn('voucher_code', function (DiscountVoucher $model) {
             return view("admin.pages.discount-vouchers.partials._voucher-code", compact('model'));
 
             if ($model->voucher_type == DiscountCodeType::AccessForAll) {
@@ -91,7 +91,7 @@ class DiscountVouchersDataTable extends DataTable
             'voucher_code',
         ]);
 
-        $dataTable->filter(function($query) {
+        $dataTable->filter(function ($query) {
             if ($this->request->has('company')) {
                 $query->where('company_id', $this->request->get('company'));
             }
@@ -113,23 +113,23 @@ class DiscountVouchersDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        $dataTable->orderColumn('name', static function($query, $order) {
+        $dataTable->orderColumn('name', static function ($query, $order) {
             $query->orderBy('name', $order);
         });
 
-        $dataTable->orderColumn('voucher_codes_count', static function($query, $order) {
+        $dataTable->orderColumn('voucher_codes_count', static function ($query, $order) {
             $query->orderBy('voucher_codes_count', $order);
         });
 
-        $dataTable->orderColumn('amount', static function($query, $order) {
+        $dataTable->orderColumn('amount', static function ($query, $order) {
             $query->orderBy('amount', $order);
         });
 
-        $dataTable->orderColumn('min_price', static function($query, $order) {
+        $dataTable->orderColumn('min_price', static function ($query, $order) {
             $query->orderBy('min_price', $order);
         });
 
-        $dataTable->orderColumn('expiry', static function($query, $order) {
+        $dataTable->orderColumn('expiry', static function ($query, $order) {
             $query->orderBy('expiry', $order);
         });
     }

@@ -16,16 +16,13 @@ class CountryCommissionSeeder extends Seeder
     {
         $country_commissions = [];
 
-        if (($open = fopen(storage_path('app/seed') . "/country_commissions.csv", "r")) !== FALSE)
-        {
-            while (($data = fgetcsv($open, 0,',')) !== FALSE) {
-
+        if (($open = fopen(storage_path('app/seed') . "/country_commissions.csv", "r")) !== false) {
+            while (($data = fgetcsv($open, 0, ',')) !== false) {
                 $country_commissions[] = [
                     'country_id' => (int)$data[4],
                     'commission_id' => 1,
                     'commission' => (int)$data[2],
                 ];
-
             }
 
             fclose($open);

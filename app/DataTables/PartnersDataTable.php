@@ -20,15 +20,15 @@ class PartnersDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('name', function(Partner $model) {
+        $dataTable->addColumn('name', function (Partner $model) {
             return $model->name ?? '-';
         });
 
-        $dataTable->addColumn('description', function(Partner $model) {
+        $dataTable->addColumn('description', function (Partner $model) {
             return $model->description ?? '-';
         });
 
-        $dataTable->addColumn('internal', function(Partner $model) {
+        $dataTable->addColumn('internal', function (Partner $model) {
             if ($model->internal == 1) {
                 return __('Internal');
             }
@@ -36,7 +36,7 @@ class PartnersDataTable extends DataTable
             return __('External');
         });
 
-        $dataTable->addColumn('created_at', function(Partner $model) {
+        $dataTable->addColumn('created_at', function (Partner $model) {
             return Formatter::date($model->created_at);
         });
 
@@ -47,7 +47,7 @@ class PartnersDataTable extends DataTable
         $this->setOrderColumns($dataTable);
         $this->setFilterColumns($dataTable);
 
-        $dataTable->filter(function($query) {
+        $dataTable->filter(function ($query) {
             if ($this->request->has('internal')) {
                 $query->where('internal', $this->request->get('internal'));
             }
@@ -63,11 +63,11 @@ class PartnersDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        $dataTable->orderColumn('name', static function($query, $order) {
+        $dataTable->orderColumn('name', static function ($query, $order) {
             $query->orderBy('name', $order);
         });
 
-        $dataTable->orderColumn('created_at', static function($query, $order) {
+        $dataTable->orderColumn('created_at', static function ($query, $order) {
             $query->orderBy('created_at', $order);
         });
     }
@@ -79,7 +79,7 @@ class PartnersDataTable extends DataTable
      */
     protected function setFilterColumns($dataTable)
     {
-        $dataTable->filterColumn('name', static function($query, $keyword) {
+        $dataTable->filterColumn('name', static function ($query, $keyword) {
             $query->where('name', 'like', "%$keyword%");
             $query->orWhere('description', 'like', "%$keyword%");
         });

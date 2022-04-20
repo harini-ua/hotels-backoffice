@@ -16,9 +16,8 @@ class CitySeeder extends Seeder
     {
         $cities = [];
 
-        if (($open = fopen(storage_path('app/seed') . "/cities.csv", "r")) !== FALSE)
-        {
-            while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
+        if (($open = fopen(storage_path('app/seed') . "/cities.csv", "r")) !== false) {
+            while (($data = fgetcsv($open, 1000, ",")) !== false) {
                 $cities[] = [
                     'id' => $data[0],
                     'country_id' => $data[5],
