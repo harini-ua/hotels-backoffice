@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CompanyDefaultController;
 use App\Http\Controllers\CompanyTemplateController;
 use App\Http\Controllers\CompanyThemeController;
 use App\Http\Controllers\DashboardsController;
@@ -95,6 +96,10 @@ Route::middleware('auth')->group(function () {
         /** ----- ------ ----- SETTINGS */
         Route::prefix('settings')->as('settings.')->group(function () {
             Route::get('/', [SettingController::class, 'index'])->name('index');
+            Route::prefix('company/default')->as('company-default.')->group(function () {
+                Route::get('/', [CompanyDefaultController::class, 'edit'])->name('edit');
+                Route::post('/', [CompanyDefaultController::class, 'update'])->name('update');
+            });
         });
     });
 });

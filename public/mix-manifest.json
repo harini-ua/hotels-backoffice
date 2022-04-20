@@ -17,6 +17,7 @@
     "/js/pages/companies-templates.js": "/js/pages/companies-templates.js",
     "/js/pages/companies-themes.js": "/js/pages/companies-themes.js",
     "/js/pages/companies.js": "/js/pages/companies.js",
+    "/js/pages/company-default.js": "/js/pages/company-default.js",
     "/js/pages/discount-vouchers.js": "/js/pages/discount-vouchers.js",
     "/js/pages/distributors.js": "/js/pages/distributors.js",
     "/js/pages/newsletters.js": "/js/pages/newsletters.js",

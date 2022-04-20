@@ -167,6 +167,12 @@ class Menu extends Component
                     'href' => route('providers.index'),
                     'icon' => 'feather icon-package',
                     'guard' => $user->hasRole('admin'),
+                ],
+                [
+                    'name' => __('Company Site Default'),
+                    'href' => route('settings.company-default.edit'),
+                    'icon' => 'feather icon-shopping-bag',
+                    'guard' => $user->hasRole('admin'),
                 ]
             ]
         ];
