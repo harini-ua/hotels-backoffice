@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use App\Traits\ImageUpload;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CompanyDefault extends Model
 {
-    use HasFactory;
+    use HasFactory, ImageUpload;
 
-    public const IMAGE_DIRECTORY = 'company/default';
+    public const IMAGE_DIRECTORY = 'company/default/';
+    public const IMAGE_EXTENSIONS = [ 'png', 'jpg', 'jpeg' ];
+    public const IMAGE_KILOBYTES_SIZE = 4096;
 
     public const IMAGE_FIELDS = [
         'logo',

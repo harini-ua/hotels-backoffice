@@ -48,6 +48,8 @@ class CompanyDefaultController extends Controller
             $companyDefault->fill($request->all());
             $companyDefault->save();
 
+            $companyDefault->saveImage($request->only(CompanyDefault::IMAGE_FIELDS));
+
             DB::commit();
 
             alert()->success(__('Success'), __('Default data updated has been successful.'));
