@@ -18,14 +18,14 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="status" class="col-sm-2 col-form-label">{{ __('Status') }} *</label>
+        <label for="theme_id" class="col-sm-2 col-form-label">{{ __('Theme') }} *</label>
         <div class="col-sm-4">
-            <select id="status" name="status" class="form-control @error('status') is-invalid @enderror">
-                @foreach($status as $id => $name)
+            <select id="theme_id" name="theme_id" class="form-control @error('theme_id') is-invalid @enderror">
+                @foreach($themes as $id => $name)
                     <option value="{{ $id }}">{{ $name }}</option>
                 @endforeach
             </select>
-            @error('status')
+            @error('theme_id')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
         </div>
@@ -44,10 +44,22 @@
         </div>
     </div>
     <div class="form-group row">
+        <label for="status" class="col-sm-2 col-form-label">{{ __('Status') }} *</label>
+        <div class="col-sm-4">
+            <select id="status" name="status" class="form-control @error('status') is-invalid @enderror">
+                @foreach($status as $id => $name)
+                    <option value="{{ $id }}">{{ $name }}</option>
+                @endforeach
+            </select>
+            @error('status')
+            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+            @enderror
+        </div>
+    </div>
+    <div class="form-group row">
         <label for="admin" class="col-sm-2 col-form-label">{{ __('Administrator') }} *</label>
         <div class="col-sm-4">
-            <select id="admin" name="admin"
-                    class="form-control select2 select2-single @error('status') is-invalid @enderror">
+            <select id="admin" name="admin" class="form-control @error('status') is-invalid @enderror">
                 @foreach($admins as $id => $admin)
                     <option value="{{ $id }}">{{ $admin }}</option>
                 @endforeach
@@ -58,10 +70,27 @@
         </div>
     </div>
     <div class="form-group row">
+        <label for="template_id" class="col-sm-2 col-form-label">{{ __('Template') }} *</label>
+        <div class="col-sm-4">
+            <select id="template_id" name="template_id"
+                    class="form-control @error('template_id') is-invalid @enderror"
+            >
+                @foreach($templates as $id => $name)
+                    <option value="{{ $id }}">{{ $name }}</option>
+                @endforeach
+            </select>
+            @error('template_id')
+            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+            @enderror
+        </div>
+    </div>
+    <div class="form-group row">
         <label for="country" class="col-sm-2 col-form-label">{{ __('Country') }} *</label>
         <div class="col-sm-4">
             <select id="country" name="country"
-                    class="form-control select2 select2-single @error('country') is-invalid @enderror">
+                    class="form-control select2 select2-single @error('country') is-invalid @enderror"
+            >
+                <option value="">-- {{ __('Select Country') }} --</option>
                 @foreach($countries as $id => $country)
                     <option value="{{ $id }}">{{ $country }}</option>
                 @endforeach

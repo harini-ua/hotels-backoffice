@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\CompanyTemplatesDataTable;
+use App\Enums\SpaPoolFilter;
+use App\Enums\SystemType;
 use App\Http\Requests\CompanyTemplateStoreRequest;
 use App\Http\Requests\CompanyTemplateUpdateRequest;
 use App\Models\CompanyTemplate;
+use App\Models\Language;
+use App\Models\MealPlan;
 use http\Client\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
@@ -51,8 +55,13 @@ class CompanyTemplateController extends Controller
             ['name' => __('Create')]
         ];
 
+        $mealPlans = MealPlan::all()->sortBy('name')->pluck('name', 'id');
+        $spaPoolFilters = SpaPoolFilter::asSelectArray();
+        $systemTypes = SystemType::asSelectArray();
+        $languages = Language::all()->sortBy('name')->pluck('name', 'id');
+
         return view('admin.pages.companies-templates.create', compact(
-            'breadcrumbs'
+            'breadcrumbs', 'mealPlans', 'spaPoolFilters', 'systemTypes', 'languages'
         ));
     }
 
@@ -102,10 +111,14 @@ class CompanyTemplateController extends Controller
             ['href' => route('companies.templates.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
+        $mealPlans = MealPlan::all()->sortBy('name')->pluck('name', 'id');
+        $spaPoolFilters = SpaPoolFilter::asSelectArray();
+        $systemTypes = SystemType::asSelectArray();
+        $languages = Language::all()->sortBy('name')->pluck('name', 'id');
+
         return view('admin.pages.companies-templates.update', compact(
-            'breadcrumbs',
-            'actions',
-            'template'
+            'breadcrumbs', 'actions', 'template', 'mealPlans', 'spaPoolFilters', 'systemTypes',
+            'languages'
         ));
     }
 

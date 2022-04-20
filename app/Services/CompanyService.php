@@ -72,9 +72,16 @@ class CompanyService
             ->sortBy('theme_name')
             ->pluck('theme_name', 'id');
 
-        $templates = CompanyTemplate::all()
-            ->sortBy('name')
-            ->pluck('name', 'id');
+        $templates = CompanyTemplate::all()->sortBy('name');
+        $templates->map(function ($template, $key) {
+            $name[] = $template->name;
+            $name[] = 'English';
+            $name[] = 'non-refundables';
+            $name[] = '3ds';
+
+            $template->name = implode(' | ', $name);
+        });
+        $templates->pluck('name', 'id');
 
         $status = CompanyStatus::asSelectArray();
 

@@ -22,7 +22,7 @@ class CompanyTemplate extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'client_level', 'meal_plan_id', 'spa_pool_filter', 'system',
+        'name', 'client_level', 'meal_plan_id', 'spa_pool_filter', 'system', 'language_id',
         'vat', 'price_guarantee', 'show_car_rental_tab', 'show_extra_benefit_tab', 'show_hotel_tab', 'show_flight_tab',
         'default_newsletter', 'popular_sorting', 'signup_flag', 'login_flag', 'enable_star_rating', 'min_star_rating',
         'max_star_rating', 'chat_enabled', 'voucher_search', 'secure_payment', 'new_user_secure_payment',
@@ -64,5 +64,21 @@ class CompanyTemplate extends Model
             'show_number_hotels' => 'Show Number Hotels',
             'show_all_booking_non_refund' => 'Show All Booking Non Refund',
         ];
+    }
+
+    /**
+     * Get the meal plan that owns the company template.
+     */
+    public function mealPlan(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(MealPlan::class);
+    }
+
+    /**
+     * Get the language that owns the company template.
+     */
+    public function language(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Language::class);
     }
 }

@@ -17,9 +17,10 @@ class CreateCompanyTemplateTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('client_level');
-            $table->string('meal_plan_id');
-            $table->string('spa_pool_filter');
+            $table->unsignedBigInteger('meal_plan_id');
+            $table->tinyInteger('spa_pool_filter');
             $table->tinyInteger('system');
+            $table->unsignedBigInteger('language_id');
 
             $table->boolean('vat')->nullable();
             $table->boolean('price_guarantee')->nullable();
@@ -48,6 +49,9 @@ class CreateCompanyTemplateTable extends Migration
             $table->boolean('show_all_booking_non_refund')->nullable();
 
             $table->timestamps();
+
+            $table->foreign('meal_plan_id')->references('id')->on('meal_plans');
+            $table->foreign('language_id')->references('id')->on('languages');
         });
     }
 

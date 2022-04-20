@@ -2,6 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\SpaPoolFilter;
+use App\Enums\SystemType;
+use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CompanyTemplateUpdateRequest extends FormRequest
@@ -25,6 +28,11 @@ class CompanyTemplateUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
+            'client_level' => 'required|string',
+            'meal_plan_id' => 'required|exists:meal_plans,id',
+            'spa_pool_filter' => ['required', new EnumValue(SpaPoolFilter::class, false)],
+            'system' => ['required', new EnumValue(SystemType::class, false)],
+            'language_id' => 'required|exists:languages,id',
         ];
     }
 }

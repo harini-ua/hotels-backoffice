@@ -17,23 +17,23 @@ class MealPlanSeeder extends Seeder
         DB::table('meal_plans')->insertTs(
             [
                 [
-                    'name' => 'all inclusive',
+                    'name' => 'All inclusive',
                     'code'  => 'AI'
                 ],
                 [
-                    'name' => 'full board',
+                    'name' => 'Full board',
                     'code' => 'FB'
                 ],
                 [
-                    'name' => 'half board',
+                    'name' => 'Half board',
                     'code' => 'HB'
                 ],
                 [
-                    'name' => 'bed and breakfast',
+                    'name' => 'Bed and breakfast',
                     'code' => 'BB'
                 ],
                 [
-                    'name' => 'room only',
+                    'name' => 'Room only',
                     'code' => 'RO'
                 ],
             ]

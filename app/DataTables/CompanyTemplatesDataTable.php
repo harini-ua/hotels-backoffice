@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Enums\SpaPoolFilter;
 use App\Models\CompanyTemplate;
 use App\Models\CompanyTheme;
 use Yajra\DataTables\Html\Button;
@@ -20,8 +21,28 @@ class CompanyTemplatesDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('name', function (CompanyTheme $model) {
+        $dataTable->addColumn('name', function (CompanyTemplate $model) {
             return $model->name;
+        });
+
+        $dataTable->addColumn('client_level', function (CompanyTemplate $model) {
+            return $model->client_level;
+        });
+
+        $dataTable->addColumn('meal_plan', function (CompanyTemplate $model) {
+            return $model->mealPlan->name ?? '-';
+        });
+
+        $dataTable->addColumn('spa_pool_filter', function (CompanyTemplate $model) {
+            return SpaPoolFilter::getDescription((int) $model->spa_pool_filter);
+        });
+
+        $dataTable->addColumn('vat', function (CompanyTemplate $model) {
+            return $model->vat ? __('Yes') : __('No');
+        });
+
+        $dataTable->addColumn('language', function (CompanyTemplate $model) {
+            return $model->language->name ?? '-';
         });
 
         $dataTable->addColumn('action', function (CompanyTemplate $model) {
@@ -52,10 +73,10 @@ class CompanyTemplatesDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\CompanyTheme $model
+     * @param \App\Models\CompanyTemplate $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(CompanyTheme $model)
+    public function query(CompanyTemplate $model)
     {
         return $model->newQuery();
     }
@@ -92,6 +113,12 @@ class CompanyTemplatesDataTable extends DataTable
         return [
             Column::make('id')->title(__('ID')),
             Column::make('name')->title(__('Template Name')),
+            Column::make('client_level'),
+            Column::make('meal_plan'),
+            Column::make('spa_pool_filter')->title(__('Spa, Pool Filter')),
+            Column::make('vat')->title(__('VAT'))
+                ->addClass('text-center'),
+            Column::make('language'),
             Column::computed('action')
                 ->orderable(false)
                 ->exportable(false)
