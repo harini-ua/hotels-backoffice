@@ -77,29 +77,7 @@ class CompanyController extends Controller
             ['name' => __('Create')]
         ];
 
-        $themes = CompanyTheme::all()
-            ->sortBy('theme_name')
-            ->pluck('theme_name', 'id');
-
-        $templates = CompanyTemplate::all()
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $status = CompanyStatus::asSelectArray();
-
-        $categories = CompanyCategory::asSelectArray();
-
-        $admins = User::where('status', 1)
-            ->whereHas("roles", function ($q) {
-                $q->where("name", "admin");
-            })->get()
-            ->sortBy('fullname')
-            ->pluck('fullname', 'id');
-
-        $countries = Country::all()
-            ->where('active', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
+        [ $themes, $templates, $status, $categories, $admins, $countries] = $this->companyService->payload();
 
         return view('admin.pages.companies.create', compact(
             'breadcrumbs',
@@ -159,29 +137,7 @@ class CompanyController extends Controller
             ['href' => route('companies.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
-        $themes = CompanyTheme::all()
-            ->sortBy('theme_name')
-            ->pluck('theme_name', 'id');
-
-        $templates = CompanyTemplate::all()
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $status = CompanyStatus::asSelectArray();
-
-        $categories = CompanyCategory::asSelectArray();
-
-        $admins = User::where('status', 1)
-            ->whereHas("roles", function ($q) {
-                $q->where("name", "admin");
-            })->get()
-            ->sortBy('fullname')
-            ->pluck('fullname', 'id');
-
-        $countries = Country::all()
-            ->where('active', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
+        [ $themes, $templates, $status, $categories, $admins, $countries] = $this->companyService->payload('edit');
 
         return view('admin.pages.companies.update', compact(
             'breadcrumbs',
