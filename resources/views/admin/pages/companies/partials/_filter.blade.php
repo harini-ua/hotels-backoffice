@@ -14,7 +14,7 @@
     </select>
 </div>
 <div class="form-group filter-item col-md-2">
-    <label for="company">{{ __('By Category') }}</label>
+    <label for="category">{{ __('By Category') }}</label>
     <select
         id="category"
         name="category"
