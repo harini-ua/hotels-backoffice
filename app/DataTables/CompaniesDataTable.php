@@ -38,6 +38,10 @@ class CompaniesDataTable extends DataTable
             return $model->email ? '<a href="mailto:'.$model->email.'">'.$model->email.'</a>' : '-';
         });
 
+        $dataTable->addColumn('city', function (Company $model) {
+            return $model->city ? $model->city->name : '-';
+        });
+
         $dataTable->addColumn('status', function (Company $model) {
             return view('admin.datatables.view-status', [
                 'status' => CompanyStatus::getDescription($model->status),
@@ -110,7 +114,9 @@ class CompaniesDataTable extends DataTable
      */
     public function query(Company $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()
+            ->with(['city'])
+        ;
     }
 
     /**
@@ -153,6 +159,8 @@ class CompaniesDataTable extends DataTable
             Column::make('phone')
                 ->orderable(false),
             Column::make('email')
+                ->orderable(false),
+            Column::make('city')
                 ->orderable(false),
             Column::make('status')
                 ->orderable(false)

@@ -59,27 +59,27 @@ class Company extends Model
     }
 
     /**
-     * Get the country associated with the company.
+     * Get the country that owns the company.
      */
     public function country()
     {
-        return $this->hasOne(Country::class);
+        return $this->belongsTo(Country::class);
     }
 
     /**
-     * Get the city associated with the company.
+     * Get the city that owns the company.
      */
     public function city()
     {
-        return $this->hasOne(City::class);
+        return $this->belongsTo(City::class);
     }
 
     /**
-     * Get the language associated with the company.
+     * Get the language that owns the company.
      */
     public function language()
     {
-        return $this->hasOne(Language::class);
+        return $this->belongsTo(Language::class);
     }
 
     /**
