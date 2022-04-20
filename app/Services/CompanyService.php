@@ -4,10 +4,12 @@ namespace App\Services;
 
 use App\Enums\CompanyCategory;
 use App\Enums\CompanyStatus;
+use App\Enums\SystemType;
 use App\Models\Company;
 use App\Models\CompanyTemplate;
 use App\Models\CompanyTheme;
 use App\Models\Country;
+use App\Models\PartnerProduct;
 use App\Models\User;
 use Carbon\Carbon;
 
@@ -72,16 +74,49 @@ class CompanyService
             ->sortBy('theme_name')
             ->pluck('theme_name', 'id');
 
-        $templates = CompanyTemplate::all()->sortBy('name');
-        $templates->map(function ($template, $key) {
-            $name[] = $template->name;
-            $name[] = 'English';
-            $name[] = 'non-refundables';
-            $name[] = '3ds';
+        $templates = CompanyTemplate::with('language')->get()
+            ->sortBy('name');
 
-            $template->name = implode(' | ', $name);
+        $templates->map(function ($template) {
+            $template->name = implode(' | ', [
+                $template->name,
+                $template->language->name,
+                $template->restal_non_refundable ? 'refundables' : 'non-refundables',
+                '3ds', // TODO: Need clarification
+            ]);
         });
-        $templates->pluck('name', 'id');
+
+        $templates = $templates->pluck('name', 'id');
+
+        $products = PartnerProduct::with('currency')
+            ->wherePartnerId(SystemType::GoDreamSystem)
+            ->get()->sortBy('name');
+
+        $products->map(function ($product) {
+            $product->name = implode(' | ', [
+                trim($product->code),
+                trim(preg_replace('~[\r\n]+~', '', $product->name)),
+                Formatter::currency($product->price),
+                $product->currency->code,
+            ]);
+        });
+
+        $goDreamProducts = $products->pluck('name', 'id');
+
+        $products = PartnerProduct::with('currency')
+            ->wherePartnerId(SystemType::WonderBoxSystem)
+            ->get()->sortBy('code');
+
+        $products->map(function ($product) {
+            $product->name = implode(' | ', [
+                trim($product->code),
+                trim(preg_replace('~[\r\n]+~', '', $product->name)),
+                Formatter::currency($product->price),
+                $product->currency->code,
+            ]);
+        });
+
+        $wonderBoxProducts = $products->pluck('name', 'id');
 
         $status = CompanyStatus::asSelectArray();
 
@@ -105,7 +140,9 @@ class CompanyService
             $status,
             $categories,
             $admins,
-            $countries
+            $countries,
+            $goDreamProducts,
+            $wonderBoxProducts,
         ];
     }
 
@@ -120,9 +157,19 @@ class CompanyService
             ->sortBy('theme_name')
             ->pluck('theme_name', 'id');
 
-        $templates = CompanyTemplate::all()
-            ->sortBy('name')
-            ->pluck('name', 'id');
+        $templates = CompanyTemplate::with('language')->get()
+            ->sortBy('name');
+
+        $templates->map(function ($template) {
+            $template->name = implode(' | ', [
+                $template->name,
+                $template->language->name,
+                $template->restal_non_refundable ? 'refundables' : 'non-refundables',
+                '3ds', // TODO: Need clarification
+            ]);
+        });
+
+        $templates = $templates->pluck('name', 'id');
 
         $status = CompanyStatus::asSelectArray();
 

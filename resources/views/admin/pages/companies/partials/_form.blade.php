@@ -70,6 +70,22 @@
         </div>
     </div>
     <div class="form-group row">
+        <label for="country" class="col-sm-2 col-form-label">{{ __('Country') }} *</label>
+        <div class="col-sm-4">
+            <select id="country" name="country"
+                    class="form-control select2 select2-single @error('country') is-invalid @enderror"
+            >
+                <option value="">-- {{ __('Select Country') }} --</option>
+                @foreach($countries as $id => $country)
+                    <option value="{{ $id }}">{{ $country }}</option>
+                @endforeach
+            </select>
+            @error('country')
+            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+            @enderror
+        </div>
+    </div>
+    <div class="form-group row">
         <label for="template_id" class="col-sm-2 col-form-label">{{ __('Template') }} *</label>
         <div class="col-sm-4">
             <select id="template_id" name="template_id"
@@ -84,18 +100,18 @@
             @enderror
         </div>
     </div>
+
     <div class="form-group row">
-        <label for="country" class="col-sm-2 col-form-label">{{ __('Country') }} *</label>
+        <label for="product" class="col-sm-2 col-form-label">{{ __('Product (if any)') }}</label>
         <div class="col-sm-4">
-            <select id="country" name="country"
-                    class="form-control select2 select2-single @error('country') is-invalid @enderror"
+            <select id="product" name="product"
+                    class="form-control @error('product') is-invalid @enderror"
             >
-                <option value="">-- {{ __('Select Country') }} --</option>
-                @foreach($countries as $id => $country)
-                    <option value="{{ $id }}">{{ $country }}</option>
+                @foreach($templates as $id => $name)
+                    <option value="{{ $id }}">{{ $name }}</option>
                 @endforeach
             </select>
-            @error('country')
+            @error('product')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
         </div>
