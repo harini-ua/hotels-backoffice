@@ -27,6 +27,10 @@ class ProvidersDataTable extends DataTable
             return $model->email ? '<a href="mailto:'.$model->email.'">'.$model->email.'</a>' : '-';
         });
 
+        $dataTable->addColumn('support_phone', function (Provider $model) {
+            return $model->phone ? '<a href="tel:'.$model->support_phone.'">'.$model->support_phone.'</a>' : '-';
+        });
+
         $dataTable->addColumn('active', function (Provider $model) {
             return view("admin.pages.providers.partials._active-switch", compact('model'));
         });
@@ -98,6 +102,8 @@ class ProvidersDataTable extends DataTable
             Column::make('id')->title(__('ID')),
             Column::make('name')->title(__('Provider Name')),
             Column::make('email')
+                ->orderable('false'),
+            Column::make('support_phone')
                 ->orderable('false'),
             Column::make('active')
                 ->orderable('false')

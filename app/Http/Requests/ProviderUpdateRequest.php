@@ -27,6 +27,7 @@ class ProviderUpdateRequest extends FormRequest
             'name' => 'required|string',
             'description' => 'nullable|string',
             'email' => 'nullable|email',
+            'support_phone' => 'nullable|string',
             'active' => 'boolean',
         ];
     }

@@ -41,6 +41,18 @@
         </div>
     </div>
     <div class="form-group row">
+        <label for="support_phone" class="col-sm-2 col-form-label">{{ __('Support Phone') }}</label>
+        <div class="col-sm-4">
+            <input type="text" id="support_phone" name="support_phone"
+                   class="form-control @error('support_phone') is-invalid @enderror"
+                   value="{{ old('support_phone') ?? ($model ? $model->support_phone : null) }}"
+            >
+            @error('support_phone')
+            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+            @enderror
+        </div>
+    </div>
+    <div class="form-group row">
         <label for="active" class="col-sm-2 col-form-label">{{ __('Active') }}</label>
         <div class="input-group col-sm-4">
             <div class="custom-control custom-checkbox custom-control-inline">
