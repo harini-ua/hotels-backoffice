@@ -18,7 +18,7 @@ class CreateProvidersTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('email')->unique()->nullable()->default(null);
-            $table->string('phone')->nullable();
+            $table->string('support_phone')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
             $table->softDeletes();
