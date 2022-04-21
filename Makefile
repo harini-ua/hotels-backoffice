@@ -1,5 +1,6 @@
 re-build:
 	php artisan migrate:fresh --seed
+	notify-send 'Hotel Express' 'Re-build database finished has been successful.' -u normal
 clear:
 	php artisan route:clear
 	php artisan config:clear
