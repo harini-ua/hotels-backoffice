@@ -38,7 +38,5 @@ class CompanySiteDefaultSeeder extends Seeder
             'right_heading_2' => 'Hotel Express website',
             'right_heading_message_2' => '<p>www.hotelexpressonline.com</p>',
         ]);
-
-        Artisan::call('cp resources/images/company/default/ storage/app/public/company/default');
     }
 }
