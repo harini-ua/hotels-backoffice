@@ -14,7 +14,7 @@ class CompanyDefaultUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -31,34 +31,34 @@ class CompanyDefaultUpdateRequest extends FormRequest
             ],
             'testimonial_heading_1' => 'required|string',
             'testimonial_heading_2' => 'required|string',
-            'main_page_picture' => ['required', 'image',
+            'main_page_picture' => ['nullable', 'image',
                 'mimes:'.implode(',', CompanyDefault::IMAGE_EXTENSIONS),
                 'max:'.CompanyDefault::IMAGE_KILOBYTES_SIZE
             ],
             'main_page_heading_1' => 'required|string',
             'main_page_heading_2' => 'required|string',
             'main_page_heading_3' => 'required|string',
-            'picture_1' => [ 'required', 'image',
+            'picture_1' => [ 'nullable', 'image',
                 'mimes:'.implode(',', CompanyDefault::IMAGE_EXTENSIONS),
                 'max:'.CompanyDefault::IMAGE_KILOBYTES_SIZE
             ],
             'text_picture_1' => 'required|string',
-            'picture_2' => [ 'required', 'image',
+            'picture_2' => [ 'nullable', 'image',
                 'mimes:'.implode(',', CompanyDefault::IMAGE_EXTENSIONS),
                 'max:'.CompanyDefault::IMAGE_KILOBYTES_SIZE
             ],
             'text_picture_2' => 'required|string',
-            'picture_3' => [ 'required', 'image',
+            'picture_3' => [ 'nullable', 'image',
                 'mimes:'.implode(',', CompanyDefault::IMAGE_EXTENSIONS),
                 'max:'.CompanyDefault::IMAGE_KILOBYTES_SIZE
             ],
             'text_picture_3' => 'required|string',
-            'picture_4' => [ 'required', 'image',
+            'picture_4' => [ 'nullable', 'image',
                 'mimes:'.implode(',', CompanyDefault::IMAGE_EXTENSIONS),
                 'max:'.CompanyDefault::IMAGE_KILOBYTES_SIZE
             ],
             'text_picture_4' => 'required|string',
-            'picture_5' => [ 'required', 'image',
+            'picture_5' => [ 'nullable', 'image',
                 'mimes:'.implode(',', CompanyDefault::IMAGE_EXTENSIONS),
                 'max:'.CompanyDefault::IMAGE_KILOBYTES_SIZE
             ],

@@ -26,7 +26,7 @@ class CompanyTemplate extends Model
         'vat', 'price_guarantee', 'show_car_rental_tab', 'show_extra_benefit_tab', 'show_hotel_tab', 'show_flight_tab',
         'default_newsletter', 'popular_sorting', 'signup_flag', 'login_flag', 'enable_star_rating', 'min_star_rating',
         'max_star_rating', 'chat_enabled', 'voucher_search', 'secure_payment', 'new_user_secure_payment',
-        'restal_non_refundable', 'show_resort_tab', 'invoice_enabled', 'user_state', 'allow_package',
+        'restel_non_refundable', 'show_resort_tab', 'invoice_enabled', 'user_state', 'allow_package',
         'show_mobile_store_links', 'show_number_hotels', 'show_all_booking_non_refund',
     ];
 
@@ -55,7 +55,7 @@ class CompanyTemplate extends Model
             'voucher_search' => 'Voucher Search',
             'secure_payment' => 'Secure Payment',
             'new_user_secure_payment' => 'New User Secure Payment',
-            'restal_non_refundable' => 'Restal Non Refundable',
+            'restel_non_refundable' => 'Restel Non Refundable',
             'show_resort_tab' => 'Show Resort Tab',
             'invoice_enabled' => 'Invoice Enabled',
             'user_state' => 'User State',

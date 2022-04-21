@@ -3,6 +3,16 @@ jQuery(document).ready(function ($) {
     $('.company-default-edit-wrapper').each(function () {
         var $this = $(this);
 
+        $('input.image-input').on('change', function() {
+            const [file] = this.files;
+
+            if (file) {
+                $(this).closest('.form-group')
+                    .find('img.preview')
+                    .attr("src", URL.createObjectURL(file));
+            }
+        });
+
         tinymce.init({
             selector: "textarea.tinymce-editor",
             theme: "modern",

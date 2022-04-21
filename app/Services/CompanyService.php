@@ -78,12 +78,14 @@ class CompanyService
             ->sortBy('name');
 
         $templates->map(function ($template) {
-            $template->name = implode(' | ', [
-                $template->name,
-                $template->language->name,
-                $template->restal_non_refundable ? 'refundables' : 'non-refundables',
-                '3ds', // TODO: Need clarification
-            ]);
+            $name[] = $template->name;
+            $name[] = $template->language->name; // TODO: Need clarification
+            $name[] = $template->show_all_booking_non_refund ? 'refundables' : 'non-refundables';
+            if ($template->secure_payment) {
+                $name[] = '3ds';
+            }
+
+            $template->name = implode(' | ', $name);
         });
 
         $templates = $templates->pluck('name', 'id');
@@ -161,12 +163,14 @@ class CompanyService
             ->sortBy('name');
 
         $templates->map(function ($template) {
-            $template->name = implode(' | ', [
-                $template->name,
-                $template->language->name,
-                $template->restal_non_refundable ? 'refundables' : 'non-refundables',
-                '3ds', // TODO: Need clarification
-            ]);
+            $name[] = $template->name;
+            $name[] = $template->language->name; // TODO: Need clarification
+            $name[] = $template->show_all_booking_non_refund ? 'refundables' : 'non-refundables';
+            if ($template->secure_payment) {
+                $name[] = '3ds';
+            }
+
+            $template->name = implode(' | ', $name);
         });
 
         $templates = $templates->pluck('name', 'id');

@@ -39,7 +39,7 @@ class CreateCompanyTemplateTable extends Migration
             $table->boolean('voucher_search')->nullable();
             $table->boolean('secure_payment')->nullable();
             $table->boolean('new_user_secure_payment')->nullable();
-            $table->boolean('restal_non_refundable')->nullable();
+            $table->boolean('restel_non_refundable')->nullable();
             $table->boolean('show_resort_tab')->nullable();
             $table->boolean('invoice_enabled')->nullable();
             $table->boolean('user_state')->nullable();

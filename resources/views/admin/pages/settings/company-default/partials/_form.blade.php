@@ -1,5 +1,5 @@
 @php($model = $companyDefault ?? null)
-<form id="company-default" method="PUT" action="{{ route('settings.company-default.update') }}">
+<form id="company-default" method="POST" action="{{ route('settings.company-default.update') }}" enctype="multipart/form-data">
     @csrf
     @if(isset($model)) @method('PUT') @endif
     <div class="form-group row">
@@ -7,10 +7,12 @@
         <div class="col-sm-6">
             <input type="file" id="logo" name="logo"
                    value="{{ old('logo') ?? ($model ? $model->logo : null ) }}"
-                   class="form-control @error('logo') is-invalid @enderror">
+                   class="form-control image-input @error('logo') is-invalid @enderror">
             @error('logo')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
+            <br/>
+            <img src="{{ asset('storage/company/default/'.$model->logo) }}" alt="logo" class="rounded preview">
         </div>
     </div>
     <div class="form-group row">
@@ -40,10 +42,12 @@
         <div class="col-sm-6">
             <input type="file" id="main_page_picture" name="main_page_picture"
                    value="{{ old('main_page_picture') ?? ($model ? $model->main_page_picture : null ) }}"
-                   class="form-control @error('main_page_picture') is-invalid @enderror">
+                   class="form-control image-input @error('main_page_picture') is-invalid @enderror">
             @error('main_page_picture')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
+            <br/>
+            <img src="{{ asset('storage/company/default/'.$model->main_page_picture) }}" alt="main_page_picture" class="rounded preview">
         </div>
     </div>
     <div class="form-group row">
@@ -84,10 +88,12 @@
         <div class="col-sm-6">
             <input type="file" id="picture_1" name="picture_1"
                    value="{{ old('picture_1') ?? ($model ? $model->picture_1 : null ) }}"
-                   class="form-control @error('picture_1') is-invalid @enderror">
+                   class="form-control image-input @error('picture_1') is-invalid @enderror">
             @error('picture_1')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
+            <br/>
+            <img src="{{ asset('storage/company/default/'.$model->picture_1) }}" alt="picture_1" class="rounded preview">
         </div>
     </div>
     <div class="form-group row">
@@ -106,10 +112,12 @@
         <div class="col-sm-6">
             <input type="file" id="picture_2" name="picture_2"
                    value="{{ old('picture_2') ?? ($model ? $model->picture_2 : null ) }}"
-                   class="form-control @error('picture_2') is-invalid @enderror">
+                   class="form-control image-input @error('picture_2') is-invalid @enderror">
             @error('picture_2')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
+            <br/>
+            <img src="{{ asset('storage/company/default/'.$model->picture_2) }}" alt="picture_2" class="rounded preview">
         </div>
     </div>
     <div class="form-group row">
@@ -128,10 +136,12 @@
         <div class="col-sm-6">
             <input type="file" id="picture_3" name="picture_3"
                    value="{{ old('picture_3') ?? ($model ? $model->picture_3 : null ) }}"
-                   class="form-control @error('picture_3') is-invalid @enderror">
+                   class="form-control image-input @error('picture_3') is-invalid @enderror">
             @error('picture_3')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
+            <br/>
+            <img src="{{ asset('storage/company/default/'.$model->picture_3) }}" alt="picture_3" class="rounded preview">
         </div>
     </div>
     <div class="form-group row">
@@ -150,10 +160,12 @@
         <div class="col-sm-6">
             <input type="file" id="picture_4" name="picture_4"
                    value="{{ old('picture_4') ?? ($model ? $model->picture_4 : null ) }}"
-                   class="form-control @error('picture_4') is-invalid @enderror">
+                   class="form-control image-input @error('picture_4') is-invalid @enderror">
             @error('picture_4')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
+            <br/>
+            <img src="{{ asset('storage/company/default/'.$model->picture_4) }}" alt="picture_4" class="rounded preview">
         </div>
     </div>
     <div class="form-group row">
@@ -172,10 +184,12 @@
         <div class="col-sm-6">
             <input type="file" id="picture_5" name="picture_5"
                    value="{{ old('picture_5') ?? ($model ? $model->picture_5 : null ) }}"
-                   class="form-control @error('picture_5') is-invalid @enderror">
+                   class="form-control image-input @error('picture_5') is-invalid @enderror">
             @error('picture_5')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
+            <br/>
+            <img src="{{ asset('storage/company/default/'.$model->picture_5) }}" alt="picture_5" class="rounded preview">
         </div>
     </div>
     <div class="form-group row">

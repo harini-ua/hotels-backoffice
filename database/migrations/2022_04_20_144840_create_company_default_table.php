@@ -36,6 +36,8 @@ class CreateCompanyDefaultTable extends Migration
             $table->text('right_heading_message_1')->nullable();
             $table->string('right_heading_2')->nullable();
             $table->text('right_heading_message_2')->nullable();
+
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

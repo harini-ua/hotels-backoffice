@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class CompanyDefault extends Model
 {
-    use HasFactory, ImageUpload;
+    use ImageUpload, HasFactory;
 
-    public const IMAGE_DIRECTORY = 'company/default/';
+    public const IMAGE_DIRECTORY = 'public/company/default/';
     public const IMAGE_EXTENSIONS = [ 'png', 'jpg', 'jpeg' ];
     public const IMAGE_KILOBYTES_SIZE = 4096;
 

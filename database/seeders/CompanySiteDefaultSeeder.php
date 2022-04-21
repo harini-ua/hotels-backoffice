@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\CompanyDefault;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class CompanySiteDefaultSeeder extends Seeder
 {
@@ -37,5 +38,7 @@ class CompanySiteDefaultSeeder extends Seeder
             'right_heading_2' => 'Hotel Express website',
             'right_heading_message_2' => '<p>www.hotelexpressonline.com</p>',
         ]);
+
+        Artisan::call('cp resources/images/company/default/ storage/app/public/company/default');
     }
 }

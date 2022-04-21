@@ -16,6 +16,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SettingSupportPhoneController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\BookingUserController;
 use Illuminate\Support\Facades\Route;
@@ -96,7 +97,7 @@ Route::middleware('auth')->group(function () {
         /** ----- ------ ----- SETTINGS */
         Route::prefix('settings')->as('settings.')->group(function () {
             Route::get('/', [SettingController::class, 'index'])->name('index');
-            Route::prefix('company/default')->as('company-default.')->group(function () {
+            Route::prefix('company-default')->as('company-default.')->group(function () {
                 Route::get('/', [CompanyDefaultController::class, 'edit'])->name('edit');
                 Route::put('/', [CompanyDefaultController::class, 'update'])->name('update');
             });

@@ -18,12 +18,13 @@ trait ImageUpload
         $updated = false;
 
         if ($imageUpload) {
-            if (Storage::exists( $this::IMAGE_DIRECTORY.$current)) {
-                Storage::delete( $this::IMAGE_DIRECTORY.$current);
+            if (Storage::exists($this::IMAGE_DIRECTORY.$current)) {
+                Storage::delete($this::IMAGE_DIRECTORY.$current);
             }
 
-            $path = storage_path('app/').$this::IMAGE_DIRECTORY;
-            $fileName = $field.$imageUpload->extension();
+            $path = storage_path('app/public/').$this::IMAGE_DIRECTORY;
+            $fileName = $field.'.'.$imageUpload->extension();
+
             $imageUpload->move($path, $fileName);
             $updated = $this->update([ $field => $fileName ]);
         }

@@ -3,7 +3,7 @@
 @section('title',  __('Update Company Site Default'))
 
 @section('style')
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/company-default.css') }}">
 @endsection
 
 @section('rightbar-content')
