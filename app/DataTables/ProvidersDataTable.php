@@ -28,7 +28,7 @@ class ProvidersDataTable extends DataTable
         });
 
         $dataTable->addColumn('support_phone', function (Provider $model) {
-            return $model->phone ? '<a href="tel:'.$model->support_phone.'">'.$model->support_phone.'</a>' : '-';
+            return $model->support_phone ? '<a href="tel:'.$model->support_phone.'">'.$model->support_phone.'</a>' : '-';
         });
 
         $dataTable->addColumn('active', function (Provider $model) {
@@ -39,7 +39,7 @@ class ProvidersDataTable extends DataTable
             return view("admin.datatables.actions", ['actions' => ['edit'], 'model' => $model]);
         });
 
-        $dataTable->rawColumns(['email', 'active']);
+        $dataTable->rawColumns(['email', 'support_phone', 'active']);
 
         $this->setOrderColumns($dataTable);
 
