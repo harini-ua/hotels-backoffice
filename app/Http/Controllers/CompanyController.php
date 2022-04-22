@@ -124,6 +124,8 @@ class CompanyController extends Controller
                 $company->access_codes = 0;
             }
 
+            // TODO: Copy default template content
+
             $company->save();
 
             $this->companyService->setCompany($company);

@@ -27,6 +27,14 @@ class Company extends Model
     ];
 
     /**
+     * Get the supports for the company.
+     */
+    public function supports()
+    {
+        return $this->hasMany(CompanySupport::class);
+    }
+
+    /**
      * Get the homepage options associated with the company.
      */
     public function homepageOptions()
@@ -43,11 +51,19 @@ class Company extends Model
     }
 
     /**
-     * Get the prefilled options associated with the company.
+     * Get the prefilled option associated with the company.
      */
-    public function prefilledOptions()
+    public function prefilledOption()
     {
         return $this->hasOne(CompanyPrefilledOption::class);
+    }
+
+    /**
+     * Get the extra night associated with the company.
+     */
+    public function extraNight()
+    {
+        return $this->hasOne(CompanyExtraNight::class);
     }
 
     /**

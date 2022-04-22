@@ -1,10 +1,16 @@
 <?php
 
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\CompanyCommissionController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyDefaultController;
+use App\Http\Controllers\CompanyExtraNightController;
+use App\Http\Controllers\CompanyHotelDistanceController;
+use App\Http\Controllers\CompanyPrefilledOptionController;
+use App\Http\Controllers\CompanySupportController;
 use App\Http\Controllers\CompanyTemplateController;
 use App\Http\Controllers\CompanyThemeController;
+use App\Http\Controllers\CompanyVatController;
 use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\DiscountVoucherController;
 use App\Http\Controllers\DistributorController;
@@ -56,6 +62,37 @@ Route::middleware('auth')->group(function () {
         Route::resource('companies', CompanyController::class)->except(['show']);
         Route::prefix('companies')->as('companies.')->group(function () {
             Route::post('{company}/duplicate', [CompanyController::class, 'duplicate'])->name('duplicate');
+
+            Route::prefix('{company}/prefilled-options')->as('prefilled-options.')->group(function () {
+                Route::get('/edit', [CompanyPrefilledOptionController::class, 'edit'])->name('edit');
+                Route::put('/update', [CompanyPrefilledOptionController::class, 'update'])->name('update');
+            });
+
+            Route::prefix('{company}/commissions')->as('commissions.')->group(function () {
+                Route::get('/edit', [CompanyCommissionController::class, 'edit'])->name('edit');
+                Route::put('/update', [CompanyCommissionController::class, 'update'])->name('update');
+            });
+
+            Route::prefix('{company}/extra-nights')->as('extra-nights.')->group(function () {
+                Route::get('/edit', [CompanyExtraNightController::class, 'edit'])->name('edit');
+                Route::put('/update', [CompanyExtraNightController::class, 'update'])->name('update');
+            });
+
+            Route::prefix('{company}/supports')->as('supports.')->group(function () {
+                Route::get('/edit', [CompanySupportController::class, 'edit'])->name('edit');
+                Route::put('/update', [CompanySupportController::class, 'update'])->name('update');
+            });
+
+            Route::prefix('{company}/vat')->as('vat.')->group(function () {
+                Route::get('/edit', [CompanyVatController::class, 'edit'])->name('edit');
+                Route::put('/update', [CompanyVatController::class, 'update'])->name('update');
+            });
+
+            Route::prefix('{company}/hotel-distances')->as('hotel-distances.')->group(function () {
+                Route::get('/edit', [CompanyHotelDistanceController::class, 'edit'])->name('edit');
+                Route::put('/update', [CompanyHotelDistanceController::class, 'update'])->name('update');
+            });
+
             Route::resource('themes', CompanyThemeController::class)->except(['show']);
             Route::resource('templates', CompanyTemplateController::class)->except(['show']);
         });

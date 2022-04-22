@@ -19,6 +19,7 @@ class CreateCompanyExtraNightsTable extends Migration
             $table->unsignedBigInteger('currency_id');
             $table->double('partner_price', 10, 4);
             $table->double('customer_price', 10, 4);
+            $table->boolean('enable')->default(false);
             $table->timestamps();
             $table->softDeletes();
 

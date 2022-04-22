@@ -28,7 +28,16 @@ class CompanyMainOption extends Model
         'price_filter_currency_id', 'min_price_filter', 'max_price_filter', 'show_star_rating', 'min_star_rating',
         'max_star_rating', 'ask_voucher_on_search', 'use_secure_payment', 'show_restel_non_refundable',
         'show_all_rooms_non_refundable', 'invoice_payment', 'allow_package', 'spa_pool_filter', 'chat_enabled',
-        'chat_script', 'adobe_enabled', 'adobe_script',
+        'chat_script', 'adobe_enabled', 'adobe_script', 'hotel_distances_filter',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'hotel_distance_filters' => 'object',
     ];
 
     /**

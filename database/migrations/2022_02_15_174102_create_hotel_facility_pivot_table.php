@@ -32,6 +32,6 @@ class CreateHotelFacilityPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('facility_hotel');
+        Schema::dropIfExists('hotel_facility');
     }
 }
