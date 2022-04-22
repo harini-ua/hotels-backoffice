@@ -115,7 +115,7 @@ class CompanyController extends Controller
             DB::rollBack();
         }
 
-        return redirect()->route('admin.pages.companies.index');
+        return redirect()->route('companies.index');
     }
 
     /**

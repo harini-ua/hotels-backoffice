@@ -100,18 +100,50 @@
             @enderror
         </div>
     </div>
-
+{{--    <div class="form-group row">--}}
+{{--        <label for="product" class="col-sm-2 col-form-label">{{ __('Product (if any)') }}</label>--}}
+{{--        <div class="col-sm-4">--}}
+{{--            <select id="product" name="product"--}}
+{{--                    class="form-control @error('product') is-invalid @enderror"--}}
+{{--            >--}}
+{{--                @foreach($templates as $id => $name)--}}
+{{--                    <option value="{{ $id }}">{{ $name }}</option>--}}
+{{--                @endforeach--}}
+{{--            </select>--}}
+{{--            @error('product')--}}
+{{--            <small class="form-text text-danger" role="alert">{{ $message }}</small>--}}
+{{--            @enderror--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div class="form-group row">
-        <label for="product" class="col-sm-2 col-form-label">{{ __('Product (if any)') }}</label>
+        <label for="username" class="col-sm-2 col-form-label">{{ __('Contact Name') }} *</label>
         <div class="col-sm-4">
-            <select id="product" name="product"
-                    class="form-control @error('product') is-invalid @enderror"
-            >
-                @foreach($templates as $id => $name)
-                    <option value="{{ $id }}">{{ $name }}</option>
-                @endforeach
-            </select>
-            @error('product')
+            <input type="text" id="username" name="username"
+                   value="{{ old('username') ?? ($model ? $model->username : null ) }}"
+                   class="form-control @error('username') is-invalid @enderror">
+            @error('username')
+            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+            @enderror
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="email" class="col-sm-2 col-form-label">{{ __('Contact Email') }} *</label>
+        <div class="col-sm-4">
+            <input type="text" id="email" name="email"
+                   value="{{ old('email') ?? ($model ? $model->email : null ) }}"
+                   class="form-control @error('email') is-invalid @enderror">
+            @error('email')
+            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+            @enderror
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="address" class="col-sm-2 col-form-label">{{ __('Company address') }} *</label>
+        <div class="col-sm-4">
+            <input type="text" id="address" name="address"
+                   value="{{ old('address') ?? ($model ? $model->address : null ) }}"
+                   class="form-control @error('email') is-invalid @enderror">
+            @error('address')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
         </div>

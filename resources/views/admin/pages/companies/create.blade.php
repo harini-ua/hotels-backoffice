@@ -31,5 +31,6 @@
 @section('script')
     <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
     <script src="{{asset('js/scripts/password.js')}}"></script>
+    <script src="{{asset('js/scripts/related-select.js')}}"></script>
     <script src="{{asset('js/pages/companies.js')}}"></script>
 @endsection
