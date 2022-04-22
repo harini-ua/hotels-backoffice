@@ -58,14 +58,14 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="admin" class="col-sm-2 col-form-label">{{ __('Administrator') }} *</label>
+        <label for="admin_id" class="col-sm-2 col-form-label">{{ __('Administrator') }} *</label>
         <div class="col-sm-4">
-            <select id="admin" name="admin" class="form-control @error('status') is-invalid @enderror">
+            <select id="admin_id" name="admin_id" class="form-control @error('status') is-invalid @enderror">
                 @foreach($admins as $id => $admin)
                     <option value="{{ $id }}">{{ $admin }}</option>
                 @endforeach
             </select>
-            @error('admin')
+            @error('admin_id')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
         </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Enums\AccessCodeType;
+use App\Enums\CompanyCategory;
+use App\Enums\CompanyStatus;
 use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -27,7 +29,10 @@ class CompanyStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'company_name' => 'required|string',
+            'company_name' => 'required|unique|string',
+            'category' => ['required', new EnumValue(CompanyCategory::class, false)],
+            'country_id' => 'required|exists:companies,id',
+            'status' => ['required', new EnumValue(CompanyStatus::class, false)],
             'login_type' => ['required', new EnumValue(AccessCodeType::class, false)],
             'access_codes' => [
                 Rule::requiredIf(static function () {
@@ -36,7 +41,7 @@ class CompanyStoreRequest extends FormRequest
                         AccessCodeType::FIXED,
                     ], true);
                 }),
-            ]
+            ],
         ];
     }
 }
