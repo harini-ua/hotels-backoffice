@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\CompaniesDataTable;
+use App\Enums\AccessCodeType;
 use App\Enums\CompanyCategory;
 use App\Enums\CompanyStatus;
 use App\Enums\DiscountAmountType;
@@ -77,7 +78,15 @@ class CompanyController extends Controller
             ['name' => __('Create')]
         ];
 
-        [ $themes, $templates, $status, $categories, $admins, $countries] = $this->companyService->payload();
+        [
+            $themes,
+            $templates,
+            $status,
+            $categories,
+            $admins,
+            $countries,
+            $loginTypes
+        ] = $this->companyService->payload();
 
         return view('admin.pages.companies.create', compact(
             'breadcrumbs',
@@ -86,7 +95,8 @@ class CompanyController extends Controller
             'status',
             'categories',
             'admins',
-            'countries'
+            'countries',
+            'loginTypes'
         ));
     }
 
@@ -105,12 +115,28 @@ class CompanyController extends Controller
             $company = new Company();
             $company->fill($request->all());
             $company->holder_name = $company->company_name; // TODO: Need to be clarified
+
+            if (AccessCodeType::FIXED === (int) $request->get('login_type')) {
+                $company->access_codes = 1;
+            }
+
+            if (AccessCodeType::NO_CODE === (int) $request->get('login_type')) {
+                $company->access_codes = 0;
+            }
+
             $company->save();
+
+            $this->companyService->setCompany($company);
+            $this->companyService->genegateAccesCodes(
+                $request->get('access_codes'),
+                $request->get('login_type'),
+            );
 
             DB::commit();
 
             alert()->success($company->name, __('Company created has been successful.'));
         } catch (\PDOException $e) {
+            dd($e);
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
         }

@@ -23,7 +23,7 @@ class Company extends Model
      */
     protected $fillable = [
         'holder_name', 'company_name', 'category', 'country_id', 'city_id', 'language_id', 'address', 'email', 'phone',
-        'status', 'level', 'vat', 'newsletter',
+        'status', 'level', 'vat', 'newsletter', 'login_type', 'access_codes'
     ];
 
     /**
@@ -91,10 +91,18 @@ class Company extends Model
     }
 
     /**
-     * Get the discount for the blog company.
+     * Get the discount for the company.
      */
     public function discounts()
     {
         return $this->hasMany(DiscountVoucher::class);
+    }
+
+    /**
+     * Get the access codes for the company.
+     */
+    public function accessCodes()
+    {
+        return $this->hasMany(AccessCode::class);
     }
 }

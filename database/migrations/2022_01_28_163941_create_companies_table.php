@@ -30,6 +30,8 @@ class CreateCompaniesTable extends Migration
                 ->comment('0-without level, 1-fist level, 2-second level');
             $table->boolean('vat')->default(0);
             $table->boolean('newsletter')->default(0);
+            $table->tinyInteger('login_type')->default(\App\Enums\AccessCodeType::NO_CODE);
+            $table->integer('access_codes')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

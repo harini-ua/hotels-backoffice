@@ -1,4 +1,5 @@
 @php($model = $distributor ?? null)
+@php($model)
 <form
     id="company"
     method="POST"
@@ -142,8 +143,37 @@
         <div class="col-sm-4">
             <input type="text" id="address" name="address"
                    value="{{ old('address') ?? ($model ? $model->address : null ) }}"
-                   class="form-control @error('email') is-invalid @enderror">
+                   class="form-control @error('address') is-invalid @enderror">
             @error('address')
+            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+            @enderror
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="login_type" class="col-sm-2 col-form-label">{{ __('Login Type') }} *</label>
+        <div class="col-sm-4">
+            <select id="login_type" name="login_type"
+                    class="form-control @error('login_type') is-invalid @enderror"
+            >
+                @foreach($loginTypes as $id => $type)
+                    <option
+                        value="{{ $id }}"
+                        @if(old('login_type') == $id) selected @endif
+                    >{{ $type }}</option>
+                @endforeach
+            </select>
+            @error('login_type')
+            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+            @enderror
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="access_codes" class="col-sm-2 col-form-label">{{ __('Access code') }} *</label>
+        <div class="col-sm-4">
+            <input type="text" id="access_codes" name="access_codes" min="1"
+                   value="{{ old('access_codes') ?? ($model ? $model->access_codes : null ) }}"
+                   class="form-control @error('access_codes') is-invalid @enderror">
+            @error('access_codes')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
         </div>

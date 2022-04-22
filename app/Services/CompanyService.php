@@ -2,9 +2,11 @@
 
 namespace App\Services;
 
+use App\Enums\AccessCodeType;
 use App\Enums\CompanyCategory;
 use App\Enums\CompanyStatus;
 use App\Enums\SystemType;
+use App\Models\AccessCode;
 use App\Models\Company;
 use App\Models\CompanyTemplate;
 use App\Models\CompanyTheme;
@@ -12,6 +14,8 @@ use App\Models\Country;
 use App\Models\PartnerProduct;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
 class CompanyService
 {
@@ -52,6 +56,10 @@ class CompanyService
      */
     public function duplicate($newName = null)
     {
+        if (!$this->company) {
+            throw (new BadRequestException(__('Unknown company site')));
+        }
+
         $newCompany = $this->company->replicate();
         $newCompany->company_name = $newName ?? $this->company->company_name.' (Copy)';
         $newCompany->holder_name = $newCompany->company_name; // TODO: Need to be clarified
@@ -61,6 +69,59 @@ class CompanyService
         // TODO: Implement duplicate all relationship
 
         return $newCompany;
+    }
+
+    /**
+     * Generate access codes for company site
+     *
+     * @param $code
+     * @param int $type
+     * @return void
+     */
+    public function genegateAccesCodes($code, int $type = AccessCodeType::FIXED)
+    {
+        if (!$this->company) {
+            throw (new BadRequestException(__('Unknown company site')));
+        }
+
+        $accessCodes = [];
+        if ($type === AccessCodeType::FIXED) {
+            $accessCode = new AccessCode();
+            $accessCode->fill([
+                'type' => $type,
+                'code' => $code,
+            ]);
+            $accessCodes[] = $accessCode;
+        } else {
+            for ($i = 0; $i <= $code; $i++) {
+
+                $accessCode = new AccessCode();
+                $accessCode->fill([
+                    'type' => $type,
+                    'code' => Str::uuid(),
+                ]);
+                $accessCodes[] = $accessCode;
+            }
+        }
+
+//        dd($accessCodes);
+
+        $this->company->accessCodes()->delete();
+        $this->company->accessCodes()->saveMany($accessCodes);
+    }
+
+    /**
+     * Get last access code for company site
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function getLastAccessCode()
+    {
+        if (!$this->company) {
+            throw (new BadRequestException(__('Unknown company site')));
+        }
+
+        return $this->company->accessCodes()->latest();
     }
 
     /**
@@ -90,35 +151,35 @@ class CompanyService
 
         $templates = $templates->pluck('name', 'id');
 
-        $products = PartnerProduct::with('currency')
-            ->wherePartnerId(SystemType::GoDreamSystem)
-            ->get()->sortBy('name');
-
-        $products->map(function ($product) {
-            $product->name = implode(' | ', [
-                trim($product->code),
-                trim(preg_replace('~[\r\n]+~', '', $product->name)),
-                Formatter::currency($product->price),
-                $product->currency->code,
-            ]);
-        });
-
-        $goDreamProducts = $products->pluck('name', 'id');
-
-        $products = PartnerProduct::with('currency')
-            ->wherePartnerId(SystemType::WonderBoxSystem)
-            ->get()->sortBy('code');
-
-        $products->map(function ($product) {
-            $product->name = implode(' | ', [
-                trim($product->code),
-                trim(preg_replace('~[\r\n]+~', '', $product->name)),
-                Formatter::currency($product->price),
-                $product->currency->code,
-            ]);
-        });
-
-        $wonderBoxProducts = $products->pluck('name', 'id');
+//        $products = PartnerProduct::with('currency')
+//            ->wherePartnerId(SystemType::GoDreamSystem)
+//            ->get()->sortBy('name');
+//
+//        $products->map(function ($product) {
+//            $product->name = implode(' | ', [
+//                trim($product->code),
+//                trim(preg_replace('~[\r\n]+~', '', $product->name)),
+//                Formatter::currency($product->price),
+//                $product->currency->code,
+//            ]);
+//        });
+//
+//        $goDreamProducts = $products->pluck('name', 'id');
+//
+//        $products = PartnerProduct::with('currency')
+//            ->wherePartnerId(SystemType::WonderBoxSystem)
+//            ->get()->sortBy('code');
+//
+//        $products->map(function ($product) {
+//            $product->name = implode(' | ', [
+//                trim($product->code),
+//                trim(preg_replace('~[\r\n]+~', '', $product->name)),
+//                Formatter::currency($product->price),
+//                $product->currency->code,
+//            ]);
+//        });
+//
+//        $wonderBoxProducts = $products->pluck('name', 'id');
 
         $status = CompanyStatus::asSelectArray();
 
@@ -136,6 +197,8 @@ class CompanyService
             ->sortBy('name')
             ->pluck('name', 'id');
 
+        $loginTypes = AccessCodeType::asSelectArray();
+
         return [
             $themes,
             $templates,
@@ -143,8 +206,9 @@ class CompanyService
             $categories,
             $admins,
             $countries,
-            $goDreamProducts,
-            $wonderBoxProducts,
+//            $goDreamProducts,
+//            $wonderBoxProducts,
+            $loginTypes,
         ];
     }
 

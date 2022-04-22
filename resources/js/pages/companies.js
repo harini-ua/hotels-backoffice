@@ -52,7 +52,35 @@ jQuery(document).ready(function ($) {
     $('.companies-create-wrapper').each(function () {
         var $this = $(this);
 
-        //..
+        const form = {
+            loginType: $this.find('#login_type'),
+            accessCodes: $this.find('#access_codes'),
+        }
+
+        swichAccessCodes(form.loginType.val(), true)
+
+        form.loginType.on('change', function () {
+            swichAccessCodes(this.value);
+        });
+
+        function swichAccessCodes(login_type, first = false)
+        {
+            if (!first) form.accessCodes.val('');
+            if (login_type === '0') {
+                form.accessCodes.closest('.form-group').find('.col-form-label').html('Number codes *');
+                form.accessCodes.closest('.form-group').show();
+                form.accessCodes.attr('type', 'number');
+            }
+            if (login_type === '1') {
+                form.accessCodes.closest('.form-group').find('.col-form-label').html('Access code *');
+                form.accessCodes.closest('.form-group').show();
+                form.accessCodes.attr('type', 'text');
+            }
+            if (login_type === '2') {
+                form.accessCodes.closest('.form-group').find('.col-form-label').html('');
+                form.accessCodes.closest('.form-group').hide();
+            }
+        }
     });
 
     $('.companies-edit-wrapper').each(function () {

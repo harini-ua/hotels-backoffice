@@ -67,6 +67,29 @@ class CompanyTemplate extends Model
     }
 
     /**
+     * Get all boolean fields has default
+     *
+     * @return string[]
+     */
+    public static function getBooleanDefault()
+    {
+        return [
+            'price_guarantee',
+            'show_car_rental_tab',
+            'show_extra_benefit_tab',
+            'show_hotel_tab',
+            'default_newsletter',
+            'signup_flag',
+            'secure_payment',
+            'new_user_secure_payment',
+            'restel_non_refundable',
+            'user_state',
+            'show_mobile_store_links',
+            'show_number_hotels',
+        ];
+    }
+
+    /**
      * Get the meal plan that owns the company template.
      */
     public function mealPlan(): \Illuminate\Database\Eloquent\Relations\BelongsTo

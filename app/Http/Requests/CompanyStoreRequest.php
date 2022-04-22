@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\AccessCodeType;
+use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CompanyStoreRequest extends FormRequest
 {
@@ -25,6 +28,15 @@ class CompanyStoreRequest extends FormRequest
     {
         return [
             'company_name' => 'required|string',
+            'login_type' => ['required', new EnumValue(AccessCodeType::class, false)],
+            'access_codes' => [
+                Rule::requiredIf(static function () {
+                    return in_array((int) request()->get('login_type'), [
+                        AccessCodeType::UNIQUE,
+                        AccessCodeType::FIXED,
+                    ], true);
+                }),
+            ]
         ];
     }
 }
