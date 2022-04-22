@@ -22,7 +22,7 @@ trait ImageUpload
                 Storage::delete($this::IMAGE_DIRECTORY.$current);
             }
 
-            $path = storage_path('app/public/').$this::IMAGE_DIRECTORY;
+            $path = storage_path('app/').$this::IMAGE_DIRECTORY;
             $fileName = $field.'.'.$imageUpload->extension();
 
             $imageUpload->move($path, $fileName);

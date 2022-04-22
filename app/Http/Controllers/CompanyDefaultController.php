@@ -6,8 +6,6 @@ use App\Http\Requests\CompanyDefaultUpdateRequest;
 use App\Models\CompanyDefault;
 use App\Models\Partner;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
 class CompanyDefaultController extends Controller
@@ -52,18 +50,17 @@ class CompanyDefaultController extends Controller
             $companyDefault->save();
 
             $companyDefault->updateDefaultImage($request->logo, 'logo', $companyDefault->logo);
-//            $companyDefault->updateDefaultImage($request->main_page_picture, 'main_page_picture', $companyDefault->main_page_picture);
-//            $companyDefault->updateDefaultImage($request->picture_1, 'picture_1', $companyDefault->picture_1);
-//            $companyDefault->updateDefaultImage($request->picture_2, 'picture_2', $companyDefault->picture_2);
-//            $companyDefault->updateDefaultImage($request->picture_3, 'picture_3', $companyDefault->picture_3);
-//            $companyDefault->updateDefaultImage($request->picture_4, 'picture_4', $companyDefault->picture_4);
-//            $companyDefault->updateDefaultImage($request->picture_5, 'picture_5', $companyDefault->picture_5);
+            $companyDefault->updateDefaultImage($request->main_page_picture, 'main_page_picture', $companyDefault->main_page_picture);
+            $companyDefault->updateDefaultImage($request->picture_1, 'picture_1', $companyDefault->picture_1);
+            $companyDefault->updateDefaultImage($request->picture_2, 'picture_2', $companyDefault->picture_2);
+            $companyDefault->updateDefaultImage($request->picture_3, 'picture_3', $companyDefault->picture_3);
+            $companyDefault->updateDefaultImage($request->picture_4, 'picture_4', $companyDefault->picture_4);
+            $companyDefault->updateDefaultImage($request->picture_5, 'picture_5', $companyDefault->picture_5);
 
             DB::commit();
 
             alert()->success(__('Success'), __('Default data updated has been successful.'));
         } catch (\PDOException $e) {
-            dd($e);
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
         }
