@@ -93,7 +93,7 @@ class CompanyService
             ]);
             $accessCodes[] = $accessCode;
         } else {
-            for ($i = 0; $i <= $code; $i++) {
+            for ($i = 0; $i < $code; $i++) {
 
                 $accessCode = new AccessCode();
                 $accessCode->fill([
@@ -103,8 +103,6 @@ class CompanyService
                 $accessCodes[] = $accessCode;
             }
         }
-
-//        dd($accessCodes);
 
         $this->company->accessCodes()->delete();
         $this->company->accessCodes()->saveMany($accessCodes);
