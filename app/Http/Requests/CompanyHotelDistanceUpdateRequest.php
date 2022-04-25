@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\HotelDistanceFilters;
+use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CompanyHotelDistanceUpdateRequest extends FormRequest
@@ -24,7 +26,7 @@ class CompanyHotelDistanceUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'distances.*.name' => ['required', new EnumValue(HotelDistanceFilters::class, false)],
         ];
     }
 }

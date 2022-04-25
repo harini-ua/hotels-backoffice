@@ -37,7 +37,7 @@ class CompanyMainOption extends Model
      * @var array
      */
     protected $casts = [
-        'hotel_distance_filters' => 'object',
+        'hotel_distances_filter' => 'object',
     ];
 
     /**

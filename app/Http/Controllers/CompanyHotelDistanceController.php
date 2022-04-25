@@ -25,12 +25,14 @@ class CompanyHotelDistanceController extends Controller
             ['name' => $company->company_name]
         ];
 
+        $hotelDistances = $company->mainOptions->hotel_distances_filter;
+
         $actions = [
             ['href' => route('companies.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
         return view('admin.pages.companies.hotel-distances',
-            compact('breadcrumbs', 'actions', 'company')
+            compact('breadcrumbs', 'actions', 'company', 'hotelDistances')
         );
     }
 
@@ -48,9 +50,20 @@ class CompanyHotelDistanceController extends Controller
         try {
             DB::beginTransaction();
 
-            $company->mainOptions()->update([
-                'hotel_distances_filter' => ''
-            ]);
+            $distances = $request->get('distances');
+
+            foreach ($distances as $key => $distance) {
+                if (!isset($distance['status'])) {
+                    $distances[$key]['status'] = 0;
+                }
+                if ($distance['value'] === NULL) {
+                    $distances[$key]['value'] = '';
+                }
+            }
+
+            $mainOptions = $company->mainOptions;
+            $mainOptions->hotel_distances_filter = $distances;
+            $mainOptions->save();
 
             DB::commit();
 
@@ -60,6 +73,6 @@ class CompanyHotelDistanceController extends Controller
             DB::rollBack();
         }
 
-        return redirect()->route('companies.hotel-distances.edit');
+        return redirect()->route('companies.hotel-distances.edit', $company);
     }
 }

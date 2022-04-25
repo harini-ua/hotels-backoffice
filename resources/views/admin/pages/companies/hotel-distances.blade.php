@@ -43,7 +43,33 @@
                                 >
                                     @csrf
                                     @if(isset($model)) @method('PUT') @endif
-
+                                    @foreach($hotelDistances as $i => $item)
+                                        <input type="hidden"
+                                               name="distances[{{ $i }}][name]"
+                                               value="{{ $item->name }}"
+                                        >
+                                        <div class="input-group mb-3">
+                                            <label for="{{ $item->name }}" class="col-sm-2 col-form-label">{{ \App\Enums\HotelDistanceFilters::getDescription($item->name) }}</label>
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <input type="checkbox"
+                                                           name="distances[{{ $i }}][status]"
+                                                           value="1"
+                                                           @if($item->status) checked @endif
+                                                    >
+                                                </div>
+                                            </div>
+                                            <input type="number" min="0"
+                                                   name="distances[{{ $i }}][value]"
+                                                   class="form-control @error($item->name) is-invalid @enderror"
+                                                   value="{{ old($item->name) ?? $item->value }}"
+                                            >
+                                            @error($item->name)
+                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    @endforeach
+                                    <button class="btn btn-primary">{{ __('Submit') }}</button>
                                 </form>
                             </div>
                         </div>
