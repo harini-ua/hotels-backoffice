@@ -29,9 +29,9 @@ class CompanyStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'company_name' => 'required|unique|string',
+            'company_name' => 'required|unique:companies,company_name|string',
             'category' => ['required', new EnumValue(CompanyCategory::class, false)],
-            'country_id' => 'required|exists:companies,id',
+            'country_id' => 'required|exists:countries,id',
             'status' => ['required', new EnumValue(CompanyStatus::class, false)],
             'login_type' => ['required', new EnumValue(AccessCodeType::class, false)],
             'access_codes' => [

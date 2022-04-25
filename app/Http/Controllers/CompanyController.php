@@ -6,18 +6,9 @@ use App\DataTables\CompaniesDataTable;
 use App\Enums\AccessCodeType;
 use App\Enums\CompanyCategory;
 use App\Enums\CompanyStatus;
-use App\Enums\DiscountAmountType;
-use App\Enums\DiscountCodeType;
-use App\Enums\DiscountCommissionType;
 use App\Http\Requests\CompanyStoreRequest;
 use App\Models\Company;
-use App\Models\CompanyTemplate;
-use App\Models\CompanyTheme;
-use App\Models\Country;
-use App\Models\DiscountVoucher;
-use App\Models\User;
 use App\Services\CompanyService;
-use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -126,8 +117,15 @@ class CompanyController extends Controller
 
             $company->save();
 
-            $company->mainOptions()->create([]); // Create default main options
-            // TODO: Copy default template content
+            // Create default main options
+            $company->mainOptions()->create([
+                'hotel_distances_filter' => setDefaultHotelDistancesFilters()
+            ]);
+
+            // Create default prefilled options
+            $company->prefilledOption()->create([]);
+            // Create default extra night
+            $company->extraNight()->create([]);
 
             $this->companyService->setCompany($company);
             $this->companyService->genegateAccesCodes(
@@ -168,9 +166,10 @@ class CompanyController extends Controller
 
         [ $themes, $templates, $status, $categories, $admins, $countries] = $this->companyService->payload('edit');
 
-        return view('admin.pages.companies.update', compact(
+        return view('admin.pages.companies.homepage', compact(
             'breadcrumbs',
             'actions',
+            'company',
             'themes',
             'templates',
             'status',

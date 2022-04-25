@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CompanyPrefilledOptionUpdateRequest;
-use App\Models\City;
+use App\Http\Requests\CompanyCustomerSupportUpdateRequest;
 use App\Models\Company;
-use App\Models\Country;
+use App\Models\CompanySupport;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 
-class CompanyPrefilledOptionController extends Controller
+class CompanyCustomerSupportController extends Controller
 {
     /**
      * Show the form for editing the specified resource.
@@ -20,7 +20,7 @@ class CompanyPrefilledOptionController extends Controller
     public function edit(Company $company)
     {
         $breadcrumbs = [
-            ['title' => __('Edit Company Prefilled Options')],
+            ['title' => __('Edit Company Site Customer Supports')],
             ['link' => route('home'), 'name' => __('Home')],
             ['link' => route('companies.index'), 'name' => __('Company Sites')],
             ['name' => $company->company_name]
@@ -30,45 +30,51 @@ class CompanyPrefilledOptionController extends Controller
             ['href' => route('companies.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
-        $countries = Country::all()
-            ->where('active', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $cities = City::all()
-            ->where('active', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        return view('admin.pages.companies.prefilled-options',
-            compact('breadcrumbs', 'actions', 'company', 'countries', 'cities')
+        return view('admin.pages.companies.customer-supports',
+            compact('breadcrumbs', 'actions', 'company')
         );
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param CompanyPrefilledOptionUpdateRequest $request
+     * @param CompanyCustomerSupportUpdateRequest $request
      * @param Company $company
      *
      * @return RedirectResponse
      * @throws \Exception
      */
-    public function update(CompanyPrefilledOptionUpdateRequest $request, Company $company)
+    public function update(CompanyCustomerSupportUpdateRequest $request, Company $company)
     {
         try {
             DB::beginTransaction();
 
-            $company->prefilledOption()->update($request->all());
+            $company->extraNight()->update([]);
 
             DB::commit();
 
-            alert()->success(__('Success'), __('Prefilled options updated has been successful.'));
+            alert()->success(__('Success'), __('Customer support updated has been successful.'));
         } catch (\PDOException $e) {
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
         }
 
-        return redirect()->route('companies.prefilled-options.edit');
+        return redirect()->route('companies.customer-supports.edit');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param CompanySupport $support
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function destroy(CompanySupport $support)
+    {
+        if ($support->delete()) {
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => false]);
     }
 }

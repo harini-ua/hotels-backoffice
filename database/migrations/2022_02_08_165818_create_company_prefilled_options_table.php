@@ -16,9 +16,9 @@ class CreateCompanyPrefilledOptionsTable extends Migration
         Schema::create('company_prefilled_options', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('company_id');
-            $table->tinyInteger('adults_count');
-            $table->tinyInteger('nights_count');
-            $table->tinyInteger('rooms_count');
+            $table->tinyInteger('adults_count')->default(1);
+            $table->tinyInteger('nights_count')->default(1);
+            $table->tinyInteger('rooms_count')->default(1);
             $table->unsignedBigInteger('country_id')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->boolean('checkout_editable')->default(1)

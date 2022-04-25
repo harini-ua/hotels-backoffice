@@ -30,12 +30,12 @@ class CreateCompanyMainOptionsTable extends Migration
             $table->boolean('show_sightseeing')->default(1);
             $table->boolean('use_redirect')->default(0);
             $table->boolean('show_price_filter')->default(0);
-            $table->unsignedBigInteger('price_filter_currency_id');
-            $table->double('min_price_filter', 8, 2);
-            $table->double('max_price_filter', 8, 2);
+            $table->unsignedBigInteger('price_filter_currency_id')->nullable();
+            $table->double('min_price_filter', 8, 2)->nullable();
+            $table->double('max_price_filter', 8, 2)->nullable();
             $table->boolean('show_star_rating')->default(0);
-            $table->smallInteger('min_star_rating');
-            $table->smallInteger('max_star_rating');
+            $table->smallInteger('min_star_rating')->nullable();
+            $table->smallInteger('max_star_rating')->nullable();
             $table->boolean('ask_voucher_on_search')->default(0);
             $table->boolean('use_secure_payment')->default(1);
             $table->boolean('show_restel_non_refundable')->default(1);
@@ -45,9 +45,9 @@ class CreateCompanyMainOptionsTable extends Migration
             $table->tinyInteger('spa_pool_filter')
                 ->default(\App\Enums\SpaPoolFilter::NoFiltersApplied);
             $table->boolean('chat_enabled')->default(0);
-            $table->text('chat_script');
+            $table->text('chat_script')->nullable();
             $table->boolean('adobe_enabled')->default(0);
-            $table->text('adobe_script');
+            $table->text('adobe_script')->nullable();
             $table->json('hotel_distances_filter');
 
             $table->timestamps();
@@ -56,47 +56,6 @@ class CreateCompanyMainOptionsTable extends Migration
             $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('price_filter_currency_id')->references('id')->on('currencies');
         });
-    }
-
-    /**
-     * @throws JsonException
-     */
-    protected function getDefaultHotelDistances()
-    {
-        $filters = [
-            'dist_bars_pubs',
-            'dist_beach',
-            'dist_bus_station',
-            'dist_city_centre',
-            'dist_cross_country_skiing',
-            'dist_forest',
-            'dist_golf_course',
-            'dist_lake',
-            'dist_nightclubs',
-            'dist_park',
-            'dist_public_transport',
-            'dist_restaurants',
-            'dist_river',
-            'dist_sea',
-            'dist_shopping',
-            'dist_ski_area',
-            'dist_ski_lift',
-            'dist_station',
-            'dist_tourist_centre',
-            'dist_train_station',
-        ];
-
-        $default = [];
-        foreach ($filters as $filter)
-        {
-            $default[] = [
-                "name" => $filter,
-                "value" => "",
-                "status" => 1
-            ];
-        }
-
-        return json_encode($default, JSON_THROW_ON_ERROR);
     }
 
     /**

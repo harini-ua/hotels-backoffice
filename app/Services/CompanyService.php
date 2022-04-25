@@ -191,7 +191,7 @@ class CompanyService
             ->pluck('fullname', 'id');
 
         $countries = Country::all()
-            ->where('active', 1)
+            ->where('status', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
 

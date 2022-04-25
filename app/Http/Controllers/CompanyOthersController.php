@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CompanyPrefilledOptionUpdateRequest;
-use App\Models\City;
 use App\Models\Company;
-use App\Models\Country;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 
-class CompanyPrefilledOptionController extends Controller
+class CompanyOthersController extends Controller
 {
     /**
      * Show the form for editing the specified resource.
@@ -20,7 +17,7 @@ class CompanyPrefilledOptionController extends Controller
     public function edit(Company $company)
     {
         $breadcrumbs = [
-            ['title' => __('Edit Company Prefilled Options')],
+            ['title' => __('Edit Company Site Options')],
             ['link' => route('home'), 'name' => __('Home')],
             ['link' => route('companies.index'), 'name' => __('Company Sites')],
             ['name' => $company->company_name]
@@ -30,45 +27,35 @@ class CompanyPrefilledOptionController extends Controller
             ['href' => route('companies.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
-        $countries = Country::all()
-            ->where('active', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $cities = City::all()
-            ->where('active', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        return view('admin.pages.companies.prefilled-options',
-            compact('breadcrumbs', 'actions', 'company', 'countries', 'cities')
+        return view('admin.pages.companies.others',
+            compact('breadcrumbs', 'actions', 'company')
         );
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param CompanyPrefilledOptionUpdateRequest $request
+     * @param CompanyOthersController $request
      * @param Company $company
      *
      * @return RedirectResponse
      * @throws \Exception
      */
-    public function update(CompanyPrefilledOptionUpdateRequest $request, Company $company)
+    public function update(CompanyOthersController $request, Company $company)
     {
         try {
             DB::beginTransaction();
 
-            $company->prefilledOption()->update($request->all());
+            $company->mainOptions()->update([]);
 
             DB::commit();
 
-            alert()->success(__('Success'), __('Prefilled options updated has been successful.'));
+            alert()->success(__('Success'), __('Company options updated has been successful.'));
         } catch (\PDOException $e) {
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
         }
 
-        return redirect()->route('companies.prefilled-options.edit');
+        return redirect()->route('companies.others.edit');
     }
 }

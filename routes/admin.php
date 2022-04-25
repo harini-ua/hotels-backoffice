@@ -5,9 +5,11 @@ use App\Http\Controllers\CompanyCommissionController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyDefaultController;
 use App\Http\Controllers\CompanyExtraNightController;
+use App\Http\Controllers\CompanyHomepageController;
 use App\Http\Controllers\CompanyHotelDistanceController;
+use App\Http\Controllers\CompanyOthersController;
 use App\Http\Controllers\CompanyPrefilledOptionController;
-use App\Http\Controllers\CompanySupportController;
+use App\Http\Controllers\CompanyCustomerSupportController;
 use App\Http\Controllers\CompanyTemplateController;
 use App\Http\Controllers\CompanyThemeController;
 use App\Http\Controllers\CompanyVatController;
@@ -22,7 +24,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SettingController;
-use App\Http\Controllers\SettingSupportPhoneController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\BookingUserController;
 use Illuminate\Support\Facades\Route;
@@ -63,6 +64,11 @@ Route::middleware('auth')->group(function () {
         Route::prefix('companies')->as('companies.')->group(function () {
             Route::post('{company}/duplicate', [CompanyController::class, 'duplicate'])->name('duplicate');
 
+            Route::prefix('{company}/homepage')->as('homepage.')->group(function () {
+                Route::get('/edit', [CompanyHomepageController::class, 'edit'])->name('edit');
+                Route::put('/update', [CompanyHomepageController::class, 'update'])->name('update');
+            });
+
             Route::prefix('{company}/prefilled-options')->as('prefilled-options.')->group(function () {
                 Route::get('/edit', [CompanyPrefilledOptionController::class, 'edit'])->name('edit');
                 Route::put('/update', [CompanyPrefilledOptionController::class, 'update'])->name('update');
@@ -78,9 +84,9 @@ Route::middleware('auth')->group(function () {
                 Route::put('/update', [CompanyExtraNightController::class, 'update'])->name('update');
             });
 
-            Route::prefix('{company}/supports')->as('supports.')->group(function () {
-                Route::get('/edit', [CompanySupportController::class, 'edit'])->name('edit');
-                Route::put('/update', [CompanySupportController::class, 'update'])->name('update');
+            Route::prefix('{company}/customer-supports')->as('customer-supports.')->group(function () {
+                Route::get('/edit', [CompanyCustomerSupportController::class, 'edit'])->name('edit');
+                Route::put('/update', [CompanyCustomerSupportController::class, 'update'])->name('update');
             });
 
             Route::prefix('{company}/vat')->as('vat.')->group(function () {
@@ -91,6 +97,11 @@ Route::middleware('auth')->group(function () {
             Route::prefix('{company}/hotel-distances')->as('hotel-distances.')->group(function () {
                 Route::get('/edit', [CompanyHotelDistanceController::class, 'edit'])->name('edit');
                 Route::put('/update', [CompanyHotelDistanceController::class, 'update'])->name('update');
+            });
+
+            Route::prefix('{company}/others')->as('others.')->group(function () {
+                Route::get('/edit', [CompanyOthersController::class, 'edit'])->name('edit');
+                Route::put('/update', [CompanyOthersController::class, 'update'])->name('update');
             });
 
             Route::resource('themes', CompanyThemeController::class)->except(['show']);

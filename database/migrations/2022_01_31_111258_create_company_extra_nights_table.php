@@ -16,9 +16,9 @@ class CreateCompanyExtraNightsTable extends Migration
         Schema::create('company_extra_nights', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('company_id');
-            $table->unsignedBigInteger('currency_id');
-            $table->double('partner_price', 10, 4);
-            $table->double('customer_price', 10, 4);
+            $table->unsignedBigInteger('currency_id')->nullable();
+            $table->double('partner_price', 10, 4)->nullable();
+            $table->double('customer_price', 10, 4)->nullable();
             $table->boolean('enable')->default(false);
             $table->timestamps();
             $table->softDeletes();

@@ -1,17 +1,10 @@
-@php($model = $distributor ?? null)
-@php($model)
-<form
-    id="company"
-    method="POST"
-    action="{{ isset($model) ? route('companies.update', $model) : route('companies.store') }}"
->
+<form id="company" method="POST" action="{{ route('companies.store') }}">
     @csrf
-    @if(isset($model)) @method('PUT') @endif
     <div class="form-group row">
         <label for="company_name" class="col-sm-2 col-form-label">{{ __('Company Site Name') }} *</label>
         <div class="col-sm-4">
             <input type="text" id="company_name" name="company_name"
-                   value="{{ old('company_name') ?? ($model ? $model->name : null ) }}"
+                   value="{{ old('company_name') }}"
                    class="form-control @error('name') is-invalid @enderror">
             @error('company_name')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
@@ -23,7 +16,10 @@
         <div class="col-sm-4">
             <select id="theme_id" name="theme_id" class="form-control @error('theme_id') is-invalid @enderror">
                 @foreach($themes as $id => $name)
-                    <option value="{{ $id }}">{{ $name }}</option>
+                    <option
+                        value="{{ $id }}"
+                        @if(old('company_name') == $id) selected @endif
+                    >{{ $name }}</option>
                 @endforeach
             </select>
             @error('theme_id')
@@ -36,7 +32,10 @@
         <div class="col-sm-4">
             <select id="category" name="category" class="form-control @error('status') is-invalid @enderror">
                 @foreach($categories as $id => $category)
-                    <option value="{{ $id }}">{{ $category }}</option>
+                    <option
+                        value="{{ $id }}"
+                        @if(old('category') == $id) selected @endif
+                    >{{ $category }}</option>
                 @endforeach
             </select>
             @error('category')
@@ -49,7 +48,10 @@
         <div class="col-sm-4">
             <select id="status" name="status" class="form-control @error('status') is-invalid @enderror">
                 @foreach($status as $id => $name)
-                    <option value="{{ $id }}">{{ $name }}</option>
+                    <option
+                        value="{{ $id }}"
+                        @if(old('status') == $id) selected @endif
+                    >{{ $name }}</option>
                 @endforeach
             </select>
             @error('status')
@@ -62,7 +64,10 @@
         <div class="col-sm-4">
             <select id="admin_id" name="admin_id" class="form-control @error('status') is-invalid @enderror">
                 @foreach($admins as $id => $admin)
-                    <option value="{{ $id }}">{{ $admin }}</option>
+                    <option
+                        value="{{ $id }}"
+                        @if(old('admin_id') == $id) selected @endif
+                    >{{ $admin }}</option>
                 @endforeach
             </select>
             @error('admin_id')
@@ -78,7 +83,10 @@
             >
                 <option value="">-- {{ __('Select Country') }} --</option>
                 @foreach($countries as $id => $country)
-                    <option value="{{ $id }}">{{ $country }}</option>
+                    <option
+                        value="{{ $id }}"
+                        @if(old('country') == $id) selected @endif
+                    >{{ $country }}</option>
                 @endforeach
             </select>
             @error('country')
@@ -93,7 +101,10 @@
                     class="form-control @error('template_id') is-invalid @enderror"
             >
                 @foreach($templates as $id => $name)
-                    <option value="{{ $id }}">{{ $name }}</option>
+                    <option
+                        value="{{ $id }}"
+                        @if(old('template_id') == $id) selected @endif
+                    >{{ $name }}</option>
                 @endforeach
             </select>
             @error('template_id')
@@ -101,26 +112,11 @@
             @enderror
         </div>
     </div>
-{{--    <div class="form-group row">--}}
-{{--        <label for="product" class="col-sm-2 col-form-label">{{ __('Product (if any)') }}</label>--}}
-{{--        <div class="col-sm-4">--}}
-{{--            <select id="product" name="product"--}}
-{{--                    class="form-control @error('product') is-invalid @enderror"--}}
-{{--            >--}}
-{{--                @foreach($templates as $id => $name)--}}
-{{--                    <option value="{{ $id }}">{{ $name }}</option>--}}
-{{--                @endforeach--}}
-{{--            </select>--}}
-{{--            @error('product')--}}
-{{--            <small class="form-text text-danger" role="alert">{{ $message }}</small>--}}
-{{--            @enderror--}}
-{{--        </div>--}}
-{{--    </div>--}}
     <div class="form-group row">
         <label for="username" class="col-sm-2 col-form-label">{{ __('Contact Name') }} *</label>
         <div class="col-sm-4">
             <input type="text" id="username" name="username"
-                   value="{{ old('username') ?? ($model ? $model->username : null ) }}"
+                   value="{{ old('username') }}"
                    class="form-control @error('username') is-invalid @enderror">
             @error('username')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
@@ -131,7 +127,7 @@
         <label for="email" class="col-sm-2 col-form-label">{{ __('Contact Email') }} *</label>
         <div class="col-sm-4">
             <input type="text" id="email" name="email"
-                   value="{{ old('email') ?? ($model ? $model->email : null ) }}"
+                   value="{{ old('email') }}"
                    class="form-control @error('email') is-invalid @enderror">
             @error('email')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
@@ -142,7 +138,7 @@
         <label for="address" class="col-sm-2 col-form-label">{{ __('Company address') }} *</label>
         <div class="col-sm-4">
             <input type="text" id="address" name="address"
-                   value="{{ old('address') ?? ($model ? $model->address : null ) }}"
+                   value="{{ old('address') }}"
                    class="form-control @error('address') is-invalid @enderror">
             @error('address')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
@@ -171,7 +167,7 @@
         <label for="access_codes" class="col-sm-2 col-form-label">{{ __('Access code') }} *</label>
         <div class="col-sm-4">
             <input type="text" id="access_codes" name="access_codes" min="1"
-                   value="{{ old('access_codes') ?? ($model ? $model->access_codes : null ) }}"
+                   value="{{ old('access_codes') }}"
                    class="form-control @error('access_codes') is-invalid @enderror">
             @error('access_codes')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
