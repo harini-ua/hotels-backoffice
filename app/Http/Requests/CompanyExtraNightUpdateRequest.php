@@ -24,7 +24,7 @@ class CompanyExtraNightUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'currency_id' => 'nullable|exists:currencies,id',
         ];
     }
 }

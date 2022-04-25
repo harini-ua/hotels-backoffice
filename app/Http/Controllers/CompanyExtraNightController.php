@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyExtraNightUpdateRequest;
 use App\Models\Company;
+use App\Models\Currency;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 
@@ -24,12 +25,18 @@ class CompanyExtraNightController extends Controller
             ['name' => $company->company_name]
         ];
 
+        $extraNight = $company->extraNight;
+
+        $currencies = Currency::all()
+            ->sortBy('code')
+            ->pluck('code', 'id');
+
         $actions = [
             ['href' => route('companies.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
         return view('admin.pages.companies.extra-nights',
-            compact('breadcrumbs', 'actions', 'company')
+            compact('breadcrumbs', 'actions', 'company', 'extraNight', 'currencies')
         );
     }
 
@@ -47,7 +54,16 @@ class CompanyExtraNightController extends Controller
         try {
             DB::beginTransaction();
 
-            $company->extraNight()->update([]);
+            $company->extraNight()
+                ->updateOrCreate(
+                    [ 'company_id' => $company->id ],
+                    [
+                        'enable' => $request->has('enable'),
+                        'partner_price' => $request->get('partner_price'),
+                        'customer_price' => $request->get('customer_price'),
+                        'currency_id' => $request->get('currency_id'),
+                    ],
+                );
 
             DB::commit();
 
@@ -57,6 +73,6 @@ class CompanyExtraNightController extends Controller
             DB::rollBack();
         }
 
-        return redirect()->route('companies.extra-nights.edit');
+        return redirect()->route('companies.extra-nights.edit', $company);
     }
 }
