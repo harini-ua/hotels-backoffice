@@ -43,7 +43,83 @@
                                 >
                                     @csrf
                                     @if(isset($model)) @method('PUT') @endif
-
+                                    <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <label for="inputCity">{{ __('Country') }}</label>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="inputState">{{ __('Email') }}</label>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="inputZip">{{ __('Phone') }}</label>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label for="inputZip">{{ __('Work Hours') }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="supports-repeater">
+                                        <div data-repeater-list="supports">
+                                            @for($i = 0; $i < $count; $i++)
+                                            <div class="form-row supports-wrapper" data-repeater-item>
+                                                <div class="form-group col-md-3">
+                                                    <select name="supports[{{ $i }}][country_id]"
+                                                            class="form-control select2-single @error('country_id') is-invalid @enderror"
+                                                    >
+                                                        <option value="">{{ __('Select Country') }}</option>
+                                                        @php( $country_id = old("supports.$i.country_id") )
+                                                        @php( $country_id = $supports && $supports[$i]->country_id ? $supports[$i]->country_id : null )
+                                                        {{ $country_id }}
+                                                        @foreach($countries as $id => $country)
+                                                            <option value="{{ $id }}"
+                                                                    @if($id === $country_id) selected @endif
+                                                            >{{ $country }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('supports.'.$i.'.country_id')
+                                                    <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <input type="text" class="form-control"
+                                                           name="supports[{{ $i }}][email]"
+                                                           value="{{ old("supports.$i.email") ?? ((!empty($supports) && $supports[$i]->email) ? $supports[$i]->email : null) }}">
+                                                    @error('supports.'.$i.'.email')
+                                                    <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <input type="text" class="form-control"
+                                                           name="supports[{{ $i }}][phone]"
+                                                           value="{{ old("supports.$i.phone")  ?? ((!empty($supports) && $supports[$i]->phone) ? $supports[$i]->phone : null) }}">
+                                                    @error('supports.'.$i.'.phone')
+                                                    <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                    <input type="text" class="form-control"
+                                                           name="supports[{{ $i }}][work_hours]"
+                                                           value="{{ old("supports.$i.work_hours")  ?? ((!empty($supports) && $supports[$i]->work_hours) ? $supports[$i]->work_hours : null) }}">
+                                                    @error('supports.'.$i.'.work_hours')
+                                                    <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group col-md-1">
+                                                    <button type="button" class="btn btn-danger" data-repeater-delete>
+                                                        <i class="feather icon-trash-2"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            @endfor
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group offset-md-11 col-md-1">
+                                                <button type="button" class="btn btn-success" data-repeater-create>
+                                                    <i class="feather icon-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary">{{ __('Submit') }}</button>
                                 </form>
                             </div>
                         </div>
@@ -56,5 +132,6 @@
 
 @section('script')
     <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
-    <script src="{{asset('js/pages/companies.js')}}"></script>
+    <script src="{{ asset('assets/plugins/form-repeater/jquery.repeater.min.js') }}"></script>
+    <script src="{{ asset('js/pages/customer-supports.js') }}"></script>
 @endsection

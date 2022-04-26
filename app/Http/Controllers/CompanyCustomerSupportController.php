@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CompanyCustomerSupportUpdateRequest;
 use App\Models\Company;
 use App\Models\CompanySupport;
+use App\Models\Country;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CompanyCustomerSupportController extends Controller
@@ -30,8 +32,16 @@ class CompanyCustomerSupportController extends Controller
             ['href' => route('companies.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
+        $supports = $company->supports ?? [];
+        $count = $supports ? $supports->count() : 1;
+
+        $countries = Country::all()
+            ->where('status', 1)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
         return view('admin.pages.companies.customer-supports',
-            compact('breadcrumbs', 'actions', 'company')
+            compact('breadcrumbs', 'actions', 'company', 'countries', 'supports', 'count')
         );
     }
 
@@ -49,7 +59,12 @@ class CompanyCustomerSupportController extends Controller
         try {
             DB::beginTransaction();
 
-            $company->extraNight()->update([]);
+            $supports = [];
+            foreach ($request->get('supports') as $support) {
+                $supports[] = new CompanySupport($support);
+            }
+            $company->supports()->delete();
+            $company->supports()->saveMany($supports);
 
             DB::commit();
 
@@ -59,7 +74,7 @@ class CompanyCustomerSupportController extends Controller
             DB::rollBack();
         }
 
-        return redirect()->route('companies.customer-supports.edit');
+        return redirect()->route('companies.customer-supports.edit', $company);
     }
 
     /**
