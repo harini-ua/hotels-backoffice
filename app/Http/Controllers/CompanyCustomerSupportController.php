@@ -6,9 +6,7 @@ use App\Http\Requests\CompanyCustomerSupportUpdateRequest;
 use App\Models\Company;
 use App\Models\CompanySupport;
 use App\Models\Country;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CompanyCustomerSupportController extends Controller

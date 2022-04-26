@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\CompanyAccountController;
 use App\Http\Controllers\CompanyCommissionController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyDefaultController;
@@ -99,6 +100,11 @@ Route::middleware('auth')->group(function () {
             Route::prefix('{company}/hotel-distances')->as('hotel-distances.')->group(function () {
                 Route::get('/edit', [CompanyHotelDistanceController::class, 'edit'])->name('edit');
                 Route::put('/update', [CompanyHotelDistanceController::class, 'update'])->name('update');
+            });
+
+            Route::prefix('{company}/account')->as('account.')->group(function () {
+                Route::get('/edit', [CompanyAccountController::class, 'edit'])->name('edit');
+                Route::put('/update', [CompanyAccountController::class, 'update'])->name('update');
             });
 
             Route::prefix('{company}/others')->as('others.')->group(function () {

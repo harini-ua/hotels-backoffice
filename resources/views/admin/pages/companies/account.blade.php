@@ -21,10 +21,10 @@
                             <a class="nav-link mb-2" href="{{ route('companies.homepage.edit', $model) }}">{{ __('Homepage') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.extra-nights.edit', $model) }}">{{ __('Extra Nights') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.prefilled-options.edit', $model) }}">{{ __('Pre Filled Options') }}</a>
-                            <a class="nav-link mb-2 active" href="{{ route('companies.hotel-distances.edit', $model) }}">{{ __('Hotel Distances') }}</a>
+                            <a class="nav-link mb-2" href="{{ route('companies.hotel-distances.edit', $model) }}">{{ __('Hotel Distances') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.customer-supports.edit', $model) }}">{{ __('Customer Supports') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.commissions.edit', $model) }}">{{ __('Commissions') }}</a>
-                            <a class="nav-link mb-2" href="{{ route('companies.account.edit', $model) }}">{{ __('Account') }}</a>
+                            <a class="nav-link mb-2 active" href="{{ route('companies.account.edit', $model) }}">{{ __('Account') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.others.edit', $model) }}">{{ __('Others') }}</a>
                         </div>
                     </div>
@@ -35,42 +35,40 @@
                     <div class="tab-pane fade show active" id="v-pills-extra-nights" role="tabpanel" aria-labelledby="v-pills-extra-nights-tab">
                         <div class="card m-b-30">
                             <div class="card-header">
-                                <h5 class="card-title mb-0">{{ __('Hotel Distances') }}</h5>
+                                <h5 class="card-title mb-0">{{ __('Account') }}</h5>
                             </div>
                             <div class="card-body">
                                 <form
-                                    id="company-hotel-distances"
+                                    id="company-account"
                                     method="POST"
-                                    action="{{ route('companies.hotel-distances.update', $model) }}"
+                                    action="{{ route('companies.account.update', $model) }}"
                                 >
                                     @csrf
                                     @if(isset($model)) @method('PUT') @endif
-                                    @foreach($hotelDistances as $i => $item)
-                                        <input type="hidden"
-                                               name="distances[{{ $i }}][name]"
-                                               value="{{ $item->name }}"
-                                        >
-                                        <div class="input-group mb-3">
-                                            <label for="{{ $item->name }}" class="col-sm-2 col-form-label">{{ \App\Enums\HotelDistanceFilters::getDescription($item->name) }}</label>
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text">
-                                                    <input type="checkbox"
-                                                           name="distances[{{ $i }}][status]"
-                                                           value="1"
-                                                           @if($item->status) checked @endif
-                                                    >
-                                                </div>
-                                            </div>
-                                            <input type="number" min="0"
-                                                   name="distances[{{ $i }}][value]"
-                                                   class="form-control @error($item->name) is-invalid @enderror"
-                                                   value="{{ old($item->name) ?? $item->value }}"
+                                    <div class="form-group row">
+                                        <label for="username" class="col-sm-2 col-form-label">{{ __('Username') }}</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" id="username" name="username" min="0"
+                                                   class="form-control @error('username') is-invalid @enderror"
+                                                   value="{{ old('username') ?? ($user ? $user->username : null) }}"
                                             >
-                                            @error($item->name)
+                                            @error('username')
                                             <small class="form-text text-danger" role="alert">{{ $message }}</small>
                                             @enderror
                                         </div>
-                                    @endforeach
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="password" class="col-sm-2 col-form-label">{{ __('Password') }}</label>
+                                        <div class="input-group col-sm-4 mb-3">
+                                            <input type="text" id="password" name="password" class="form-control @error('password') is-invalid @enderror" >
+                                            <div class="input-group-append">
+                                                <button class="btn btn-light" type="button" id="generate">{{ __('Generate') }}</button>
+                                            </div>
+                                            @error('password')
+                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
                                     <button class="btn btn-primary">{{ __('Submit') }}</button>
                                 </form>
                             </div>
@@ -84,5 +82,5 @@
 
 @section('script')
     <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
-    <script src="{{asset('js/pages/companies.js')}}"></script>
+    <script src="{{asset('js/scripts/password.js')}}"></script>
 @endsection
