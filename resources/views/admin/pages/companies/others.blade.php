@@ -43,7 +43,71 @@
                                 >
                                     @csrf
                                     @if(isset($model)) @method('PUT') @endif
-
+                                    <div class="form-group row">
+                                        <label for="chat_enabled" class="col-sm-2 col-form-label">{{ __('Enable Chat') }}</label>
+                                        <div class="input-group col-sm-1">
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                <input type="checkbox" id="chat_enabled" name="chat_enabled"
+                                                       value="1"
+                                                       @if(old('chat_enabled')) checked @endif
+                                                       @if($mainOptions && $mainOptions->chat_enabled) checked @endif
+                                                       class="custom-control-input @error('chat_enabled') is-invalid @enderror"
+                                                >
+                                                <label class="custom-control-label" for="chat_enabled"></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <button type="button"
+                                                    id="default_chat"
+                                                    class="btn btn-primary-rgba"
+                                                    data-default="{{ 'https://embed.tawk.to/5947c22350fd5105d0c81c75/default' }}"
+                                            >{{ __('Insert Default Chat') }}</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="chat_script" class="col-sm-2 col-form-label">{{ __('Chat Script') }}</label>
+                                        <div class="col-sm-6">
+                                            <textarea id="chat_script" name="chat_script" rows="5"
+                                                      class="form-control @error('chat_script') is-invalid @enderror"
+                                            >{{ old('chat_script') ?? ($model ? $mainOptions->chat_script : null ) }}</textarea>
+                                            @error('chat_script')
+                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="adobe_enabled" class="col-sm-2 col-form-label">{{ __('Enable Adobe') }}</label>
+                                        <div class="input-group col-sm-1">
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                <input type="checkbox" id="adobe_enabled" name="adobe_enabled"
+                                                       value="1"
+                                                       @if(old('adobe_enabled')) checked @endif
+                                                       @if($mainOptions && $mainOptions->adobe_enabled) checked @endif
+                                                       class="custom-control-input @error('adobe_enabled') is-invalid @enderror"
+                                                >
+                                                <label class="custom-control-label" for="adobe_enabled"></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <button type="button"
+                                                    id="default_adobe"
+                                                    class="btn btn-primary-rgba"
+                                                    data-default="{{ 'https://assets.adobedtm.com/fdd3d8394b31/69dad4fc44e1/launch-a37b8e230322.min.js' }}"
+                                            >{{ __('Insert Default Chat') }}</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="adobe_script" class="col-sm-2 col-form-label">{{ __('Adobe Script') }}</label>
+                                        <div class="col-sm-6">
+                                            <textarea id="adobe_script" name="adobe_script" rows="5"
+                                                      class="form-control @error('adobe_script') is-invalid @enderror"
+                                            >{{ old('adobe_script') ?? ($model ? $mainOptions->adobe_script : null ) }}</textarea>
+                                            @error('adobe_script')
+                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary">{{ __('Submit') }}</button>
                                 </form>
                             </div>
                         </div>

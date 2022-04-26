@@ -51,20 +51,32 @@ class CompanyService
     /**
      * Replicate a company
      *
-     * @param $newName
+     * @param $companyName
      * @return Company
      */
-    public function duplicate($newName = null)
+    public function duplicate($companyName = null)
     {
         if (!$this->company) {
             throw (new BadRequestException(__('Unknown company site')));
         }
 
         $newCompany = $this->company->replicate();
-        $newCompany->company_name = $newName ?? $this->company->company_name.' (Copy)';
+        $newCompany->company_name = $companyName ?? $this->company->company_name.' (Copy)';
         $newCompany->holder_name = $newCompany->company_name; // TODO: Need to be clarified
         $newCompany->created_at = Carbon::now();
         $newCompany->save();
+
+        $extraNight = $this->company->extraNight->replicate();
+        $newCompany->extraNight()->create($extraNight->toArray());
+
+        $homepageOptions = $this->company->homepageOptions->replicate();
+        $newCompany->homepageOptions()->create($homepageOptions->toArray());
+
+        $mainOptions = $this->company->mainOptions->replicate();
+        $newCompany->mainOptions()->create($mainOptions->toArray());
+
+        $prefilledOptions = $this->company->prefilledOption->replicate();
+        $newCompany->prefilledOption()->create($prefilledOptions->toArray());
 
         // TODO: Implement duplicate all relationship
 
