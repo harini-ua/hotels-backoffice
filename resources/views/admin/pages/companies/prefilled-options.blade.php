@@ -41,9 +41,95 @@
                                     method="POST"
                                     action="{{ route('companies.prefilled-options.update', $model) }}"
                                 >
-                                @csrf
-                                @if(isset($model)) @method('PUT') @endif
-
+                                    @csrf
+                                    @if(isset($model)) @method('PUT') @endif
+                                    <div class="form-group row">
+                                        <label for="adults_count" class="col-sm-2 col-form-label">{{ __('Adults Count') }}</label>
+                                        <div class="col-sm-4">
+                                            <input type="number" id="adults_count" name="adults_count" min="0"
+                                                   class="form-control @error('adults_count') is-invalid @enderror"
+                                                   value="{{ old('adults_count') ?? ($prefilledOptions ? $prefilledOptions->adults_count : null) }}"
+                                            >
+                                            @error('adults_count')
+                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="nights_count" class="col-sm-2 col-form-label">{{ __('Nights Count') }}</label>
+                                        <div class="col-sm-4">
+                                            <input type="number" id="nights_count" name="nights_count" min="0"
+                                                   class="form-control @error('nights_count') is-invalid @enderror"
+                                                   value="{{ old('nights_count') ?? ($prefilledOptions ? $prefilledOptions->nights_count : null) }}"
+                                            >
+                                            @error('nights_count')
+                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="rooms_count" class="col-sm-2 col-form-label">{{ __('Rooms Count') }}</label>
+                                        <div class="col-sm-4">
+                                            <input type="number" id="rooms_count" name="rooms_count" min="1" max="3"
+                                                   class="form-control @error('rooms_count') is-invalid @enderror"
+                                                   value="{{ old('rooms_count') ?? ($prefilledOptions ? $prefilledOptions->rooms_count : null) }}"
+                                            >
+                                            @error('rooms_count')
+                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="checkout_editable" class="col-sm-2 col-form-label">{{ __('Is Checkout Date Editable') }}</label>
+                                        <div class="input-group col-sm-4">
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                <input type="checkbox" id="checkout_editable" name="checkout_editable"
+                                                       value="1"
+                                                       @if(old('checkout_editable')) checked @endif
+                                                       @if($prefilledOptions && $prefilledOptions->checkout_editable) checked @endif
+                                                       class="custom-control-input @error('checkout_editable') is-invalid @enderror"
+                                                >
+                                                <label class="custom-control-label" for="checkout_editable"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="country_id" class="col-sm-2 col-form-label">{{ __('Country') }}</label>
+                                        <div class="col-sm-4">
+                                            <select id="country_id" name="country_id"
+                                                    class="form-control select2-single @error('country_id') is-invalid @enderror"
+                                            >
+                                                @foreach($countries as $id => $country)
+                                                    <option value="{{ $id }}"
+                                                            @if($id == old('country_id')) selected @endif
+                                                            @if($prefilledOptions && $prefilledOptions->country_id == $id) selected @endif
+                                                    >{{ $country }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('country_id')
+                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="city_id" class="col-sm-2 col-form-label">{{ __('City') }}</label>
+                                        <div class="col-sm-4">
+                                            <select id="city_id" name="city_id"
+                                                    class="form-control select2-single @error('city_id') is-invalid @enderror"
+                                            >
+                                                @foreach($cities as $id => $city)
+                                                    <option value="{{ $id }}"
+                                                            @if($id == old('city_id')) selected @endif
+                                                            @if($prefilledOptions && $prefilledOptions->city_id == $id) selected @endif
+                                                    >{{ $city }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('city_id')
+                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary">{{ __('Submit') }}</button>
                                 </form>
                             </div>
                         </div>

@@ -30,18 +30,20 @@ class CompanyPrefilledOptionController extends Controller
             ['href' => route('companies.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
+        $prefilledOptions = $company->prefilledOption;
+
         $countries = Country::all()
-            ->where('active', 1)
+            ->where('status', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
 
         $cities = City::all()
-            ->where('active', 1)
+            ->where('status', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
 
         return view('admin.pages.companies.prefilled-options',
-            compact('breadcrumbs', 'actions', 'company', 'countries', 'cities')
+            compact('breadcrumbs', 'actions', 'prefilledOptions', 'company', 'countries', 'cities')
         );
     }
 
@@ -59,7 +61,18 @@ class CompanyPrefilledOptionController extends Controller
         try {
             DB::beginTransaction();
 
-            $company->prefilledOption()->update($request->all());
+            $company->prefilledOption()
+                ->updateOrCreate(
+                    [ 'company_id' => $company->id ],
+                    [
+                        'adults_count' => $request->get('adults_count'),
+                        'nights_count' => $request->get('nights_count'),
+                        'rooms_count' => $request->get('rooms_count'),
+                        'checkout_editable' => $request->has('checkout_editable'),
+                        'country_id' => $request->get('country_id'),
+                        'city_id' => $request->get('city_id'),
+                    ]
+                );
 
             DB::commit();
 
@@ -69,6 +82,6 @@ class CompanyPrefilledOptionController extends Controller
             DB::rollBack();
         }
 
-        return redirect()->route('companies.prefilled-options.edit');
+        return redirect()->route('companies.prefilled-options.edit', $company);
     }
 }
