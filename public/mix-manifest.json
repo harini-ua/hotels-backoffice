@@ -19,6 +19,7 @@
     "/js/pages/companies-themes.js": "/js/pages/companies-themes.js",
     "/js/pages/companies.js": "/js/pages/companies.js",
     "/js/pages/company-default.js": "/js/pages/company-default.js",
+    "/js/pages/company-other.js": "/js/pages/company-other.js",
     "/js/pages/customer-supports.js": "/js/pages/customer-supports.js",
     "/js/pages/discount-vouchers.js": "/js/pages/discount-vouchers.js",
     "/js/pages/distributors.js": "/js/pages/distributors.js",

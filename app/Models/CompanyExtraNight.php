@@ -22,7 +22,7 @@ class CompanyExtraNight extends Model
      * @var array
      */
     protected $fillable = [
-        'company_id', 'country_id', 'partner_price', 'customer_price',
+        'company_id', 'country_id', 'partner_price', 'customer_price', 'enable'
     ];
 
     /**

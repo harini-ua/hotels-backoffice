@@ -120,5 +120,5 @@
 
 @section('script')
     <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
-    <script src="{{asset('js/pages/companies.js')}}"></script>
+    <script src="{{asset('js/pages/company-other.js')}}"></script>
 @endsection
