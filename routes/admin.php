@@ -76,7 +76,9 @@ Route::middleware('auth')->group(function () {
 
             Route::prefix('{company}/commissions')->as('commissions.')->group(function () {
                 Route::get('/edit', [CompanyCommissionController::class, 'edit'])->name('edit');
-                Route::put('/update', [CompanyCommissionController::class, 'update'])->name('update');
+                Route::put('/level-1/update', [CompanyCommissionController::class, 'updateLevel1'])->name('update.level.1');
+                Route::put('/level-2/update', [CompanyCommissionController::class, 'updateLevel2'])->name('update.level.2');
+                Route::put('/booking/update', [CompanyCommissionController::class, 'updateBooking'])->name('update.booking');
             });
 
             Route::prefix('{company}/extra-nights')->as('extra-nights.')->group(function () {

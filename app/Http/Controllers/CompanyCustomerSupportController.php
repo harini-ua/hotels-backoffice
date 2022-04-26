@@ -76,20 +76,4 @@ class CompanyCustomerSupportController extends Controller
 
         return redirect()->route('companies.customer-supports.edit', $company);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param CompanySupport $support
-     * @return JsonResponse
-     * @throws \Exception
-     */
-    public function destroy(CompanySupport $support)
-    {
-        if ($support->delete()) {
-            return response()->json(['success' => true]);
-        }
-
-        return response()->json(['success' => false]);
-    }
 }
