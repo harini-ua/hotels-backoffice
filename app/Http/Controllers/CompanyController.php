@@ -164,7 +164,7 @@ class CompanyController extends Controller
             ['href' => route('companies.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
-        return view('admin.pages.companies.contact', compact(
+        return view('admin.pages.companies.general', compact(
             'breadcrumbs',
             'actions',
             'company',

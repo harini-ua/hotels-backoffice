@@ -7,6 +7,7 @@ use App\Http\Controllers\CompanyContactController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyDefaultController;
 use App\Http\Controllers\CompanyExtraNightController;
+use App\Http\Controllers\CompanyGeneralController;
 use App\Http\Controllers\CompanyHomepageController;
 use App\Http\Controllers\CompanyHotelDistanceController;
 use App\Http\Controllers\CompanyOthersController;
