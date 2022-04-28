@@ -30,8 +30,8 @@ class CompanyCustomerSupportController extends Controller
             ['href' => route('companies.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
-        $supports = $company->supports ?? [];
-        $count = $supports ? $supports->count() : 1;
+        $supports = $company->supports->count() > 0 ? $company->supports : [];
+        $count = $company->supports->count() > 0 ? $company->supports->count() : 1;
 
         $countries = Country::all()
             ->where('status', 1)
