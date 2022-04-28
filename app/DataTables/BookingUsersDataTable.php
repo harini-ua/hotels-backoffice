@@ -2,12 +2,12 @@
 
 namespace App\DataTables;
 
-use App\Models\User;
+use App\Models\BookingUser;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
-class UsersDataTable extends DataTable
+class BookingUsersDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -19,39 +19,39 @@ class UsersDataTable extends DataTable
     {
         $dataTable =  datatables()->eloquent($query);
 
-        $dataTable->addColumn('company_name', function (User $model) {
+        $dataTable->addColumn('company_name', function (BookingUser $model) {
             return $model->company_name ?? '-';
         });
 
-        $dataTable->addColumn('username', function (User $model) {
+        $dataTable->addColumn('username', function (BookingUser $model) {
             return $model->username;
         });
 
-        $dataTable->addColumn('fullname', function (User $model) {
+        $dataTable->addColumn('fullname', function (BookingUser $model) {
             return view('admin.datatables.view-link', ['model' => $model, 'title' => $model->fullname]);
         });
 
-        $dataTable->addColumn('phone', function (User $model) {
+        $dataTable->addColumn('phone', function (BookingUser $model) {
             return $model->phone ?? '-';
         });
 
-        $dataTable->addColumn('email', function (User $model) {
+        $dataTable->addColumn('email', function (BookingUser $model) {
             return $model->email;
         });
 
-        $dataTable->addColumn('city', function (User $model) {
+        $dataTable->addColumn('city', function (BookingUser $model) {
             return isset($model->city) ? $model->city->name : '-';
         });
 
-        $dataTable->addColumn('country', function (User $model) {
+        $dataTable->addColumn('country', function (BookingUser $model) {
             return isset($model->country) ? $model->country->name : '-';
         });
 
-        $dataTable->addColumn('created_at', function (User $model) {
+        $dataTable->addColumn('created_at', function (BookingUser $model) {
             return $model->created_at;
         });
 
-        $dataTable->addColumn('action', function (User $model) {
+        $dataTable->addColumn('action', function (BookingUser $model) {
             return view("admin.datatables.actions", ['actions' => ['login', 'delete'], 'model' => $model]);
         });
 
@@ -122,14 +122,11 @@ class UsersDataTable extends DataTable
      * @param \App\Models\User $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(User $model)
+    public function query(BookingUser $model)
     {
         return $model->newQuery()
             ->with(['city', 'country'])
-            ->select('users.*')
-            ->whereHas("roles", function ($q) {
-                $q->where("name", "employee");
-            })
+            ->select('booking_users.*')
         ;
     }
 
@@ -141,7 +138,7 @@ class UsersDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('users-list-datatable')
+            ->setTableId('booking-users-list-datatable')
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
@@ -196,6 +193,6 @@ class UsersDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Users_' . date('YmdHis');
+        return 'BookingUsers_' . date('YmdHis');
     }
 }

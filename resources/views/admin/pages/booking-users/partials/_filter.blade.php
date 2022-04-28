@@ -4,8 +4,8 @@
         id="company"
         name="company"
         class="form-control filter-input select-filter select2 select2-single"
-        data-table="users-list-datatable"
-        data-url="{{ route('users.index') }}"
+        data-table="booking-users-list-datatable"
+        data-url="{{ route('booking-users.index') }}"
     >
         <option selected value="">{{ __('All') }}</option>
         @foreach($companies as $id => $company)

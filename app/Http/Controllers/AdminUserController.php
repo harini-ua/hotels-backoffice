@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\AdminsDataTable;
-use App\DataTables\UsersDataTable;
+use App\DataTables\BookingUsersDataTable;
+use App\Enums\UserRole;
 use App\Http\Requests\AdminStoreRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -18,7 +19,7 @@ class AdminUserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param UsersDataTable $dataTable
+     * @param BookingUsersDataTable $dataTable
      * @return mixed
      */
     public function index(AdminsDataTable $dataTable)
@@ -69,7 +70,7 @@ class AdminUserController extends Controller
         $user->password = Hash::make($request->get('password'));
         $user->save();
 
-        $user->assignRole('admin');
+        $user->assignRole(UserRole::ADMIN);
 
         alert()->success($user->fullname, __('Admin created has been successful.'));
 

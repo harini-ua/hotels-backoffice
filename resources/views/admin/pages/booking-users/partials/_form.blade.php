@@ -1,16 +1,21 @@
 
-<form id="create-user" method="POST" action="{{ route('users.create') }}">
+<form id="create-booking-user" method="POST" action="{{ route('booking-users.store') }}">
     @csrf
-    @method('PUT')
     <div class="form-group row">
         <label for="distributor" class="col-sm-2 col-form-label">{{ __('Distributor') }} *</label>
         <div class="col-sm-4">
             <select id="distributor"
                 name="distributor_id"
                 class="form-control select2-single linked @error('distributor_id') is-invalid @enderror"
+                data-url="/distributors/[id]/companies"
+                data-binded-select="company"
             >
+                <option selected value="">{{ '- '.__('Choose Distributor').' -' }}</option>
                 @foreach($distributors as $id => $distributor)
-                    <option value="{{ $id }}">{{ $distributor }}</option>
+                    <option
+                        value="{{ $id }}"
+                        @if(old('distributor') == $id) selected @endif
+                    >{{ $distributor }}</option>
                 @endforeach
             </select>
             @error('distributor_id')
@@ -25,10 +30,9 @@
                 name="company_id"
                 class="form-control select2-single @error('company_id') is-invalid @enderror"
                 data-linked="distributor"
+                disabled
             >
-                @foreach($companies as $id => $company)
-                    <option value="{{ $id }}">{{ $company }}</option>
-                @endforeach
+                <option selected value="">{{ __('No Available') }}</option>
             </select>
             @error('company_id')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
@@ -65,14 +69,14 @@
     <div class="form-group row">
         <label for="password" class="col-sm-2 col-form-label">{{ __('Password') }} *</label>
         <div class="input-group col-sm-4 mb-3">
-            <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" >
+            <input type="text" id="password" name="password" class="form-control @error('password') is-invalid @enderror" >
             <div class="input-group-append">
                 <button class="btn btn-light" type="button" id="generate">{{ __('Generate') }}</button>
             </div>
-            @error('password')
-            <small class="form-text text-danger" role="alert">{{ $message }}</small>
-            @enderror
         </div>
+        @error('password')
+        <small class="form-text text-danger" role="alert">{{ $message }}</small>
+        @enderror
     </div>
     <div class="form-group row">
         <label for="country" class="col-sm-2 col-form-label">{{ __('Country') }} *</label>
@@ -81,7 +85,7 @@
                 name="country_id"
                 class="form-control select2-single @error('country_id') is-invalid @enderror"
             >
-                <option selected value=""></option>
+                <option selected value="">{{ '- '.__('Choose Country').' -' }}</option>
                 @foreach($countries as $id => $country)
                     <option value="{{ $id }}">{{ $country }}</option>
                 @endforeach
@@ -98,7 +102,7 @@
                 name="language_id"
                 class="form-control select2-single @error('language_id') is-invalid @enderror"
             >
-                <option selected value=""></option>
+                <option selected value="">{{ '- '.__('Choose Language').' -' }}</option>
                 @foreach($languages as $id => $language)
                     <option value="{{ $id }}">{{ $language }}</option>
                 @endforeach
@@ -109,7 +113,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="invoice_allowed" class="col-sm-2 col-form-label">{{ __('Invoice Allowed') }} *</label>
+        <label for="invoice_allowed" class="col-sm-2 col-form-label">{{ __('Invoice Allowed') }}</label>
         <div class="input-group col-sm-4">
             <div class="custom-control custom-checkbox custom-control-inline">
                 <input type="checkbox" id="invoice_allowed" name="invoice_allowed" class="custom-control-input @error('invoice_allowed') is-invalid @enderror">
@@ -124,7 +128,7 @@ Be extremely cautios when creating these users and sending the details to the co
         </h6>
     </div>
     <div class="form-group row">
-        <label for="send_to_email" class="col-sm-2 col-form-label">{{ __('Send to email') }} *</label>
+        <label for="send_to_email" class="col-sm-2 col-form-label">{{ __('Send to email') }}</label>
         <div class="input-group col-sm-4 mb-3 same-wrapper">
             <input type="email" id="send_to_email" name="send_to_email" class="form-control insert @error('send_to_email') is-invalid @enderror" >
             <div class="input-group-append">

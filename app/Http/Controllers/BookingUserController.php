@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\UsersDataTable;
-use App\Http\Requests\UserStoreRequest;
+use App\DataTables\BookingUsersDataTable;
+use App\Enums\UserRole;
+use App\Http\Requests\BookingUserStoreRequest;
+use App\Models\BookingUser;
 use App\Models\Company;
 use App\Models\Country;
 use App\Models\Distributor;
@@ -21,10 +23,10 @@ class BookingUserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param UsersDataTable $dataTable
+     * @param BookingUsersDataTable $dataTable
      * @return mixed
      */
-    public function index(UsersDataTable $dataTable)
+    public function index(BookingUsersDataTable $dataTable)
     {
         $breadcrumbs = [
             ['title' => __('List Booking Users')],
@@ -33,7 +35,7 @@ class BookingUserController extends Controller
         ];
 
         $actions = [
-            ['href' => route('users.create'), 'icon' => 'plus', 'name' => __('Create')]
+            ['href' => route('booking-users.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
         $companies = Company::all()
@@ -41,7 +43,7 @@ class BookingUserController extends Controller
             ->where('status', 1)
             ->pluck('company_name', 'id');
 
-        return $dataTable->render('admin.pages.users.index', compact(
+        return $dataTable->render('admin.pages.booking-users.index', compact(
             'breadcrumbs',
             'actions',
             'companies'
@@ -58,7 +60,7 @@ class BookingUserController extends Controller
         $breadcrumbs = [
             ['title' => __('Create Booking User')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['link' => route('users.index'), 'name' => __('Booking Users')],
+            ['link' => route('booking-users.index'), 'name' => __('Booking Users')],
             ['name' => __('Create')]
         ];
 
@@ -67,13 +69,8 @@ class BookingUserController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $companies = Company::all()
-            ->where('status', 1)
-            ->sortBy('company_name')
-            ->pluck('company_name', 'id');
-
         $countries = Country::all()
-            ->where('active', 1)
+            ->where('status', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
 
@@ -82,10 +79,9 @@ class BookingUserController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        return view('admin.pages.users.create', compact(
+        return view('admin.pages.booking-users.create', compact(
             'breadcrumbs',
             'distributors',
-            'companies',
             'countries',
             'languages'
         ));
@@ -94,18 +90,18 @@ class BookingUserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param UserStoreRequest $request
+     * @param BookingUserStoreRequest $request
      * @return RedirectResponse
      */
-    public function store(UserStoreRequest $request)
+    public function store(BookingUserStoreRequest $request)
     {
-        $user = new User();
+        $user = new BookingUser();
         $user->fill($request->except('password', 'invoice_allowed', 'send_to_email'));
         $user->username = $user->email;
         $user->password = Hash::make($request->get('password'));
         $user->save();
 
-        $user->assignRole('employee');
+        $user->assignRole(UserRole::BOOKING);
 
         if ($request->has('invoice_allowed')) {
             $user->givePermissionTo('invoice allowed');
@@ -115,9 +111,9 @@ class BookingUserController extends Controller
             // TODO: Implement send login details to email.
         }
 
-        alert()->success($user->fullname, __('Distributor created has been successful.'));
+        alert()->success($user->fullname, __('User created has been successful.'));
 
-        return redirect()->route('admin.pages.users.index');
+        return redirect()->route('admin.pages.booking-users.index');
     }
 
     /**
@@ -131,11 +127,11 @@ class BookingUserController extends Controller
         $breadcrumbs = [
             ['title' => $user->fullname],
             ['link' => route('home'), 'name' => __('Home')],
-            ['link' => route('users.index'), 'name' => __('Booking Users')],
+            ['link' => route('booking-users.index'), 'name' => __('Booking Users')],
             ['name' => __('Show')]
         ];
 
-        return view('admin.pages.users.show', compact(
+        return view('admin.pages.booking-users.show', compact(
             'breadcrumbs',
             'user'
         ));

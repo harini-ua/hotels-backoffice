@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Enums\NewsletterUserType;
+use App\Enums\UserRole;
 use App\Mail\NewsletterEmail;
 use App\Models\Newsletter;
 use App\Models\User;
@@ -43,17 +44,17 @@ class SendNewsletterEmail implements ShouldQueue
         switch ($this->newsletter->type) {
             case NewsletterUserType::All:
                 $query->whereHas('roles', function ($q) {
-                    $q->whereIn('name', ['employee', 'booking']);
+                    $q->whereIn('name', [UserRole::EMPLOYEE, UserRole::BOOKING]);
                 });
                 break;
             case NewsletterUserType::CompanySiteClient:
                 $query->whereHas('roles', function ($q) {
-                    $q->whereIn('name', ['employee']);
+                    $q->whereIn('name', [UserRole::EMPLOYEE]);
                 });
                 break;
             case NewsletterUserType::BookingUsers:
                 $query->whereHas('roles', function ($q) {
-                    $q->whereIn('name', ['booking']);
+                    $q->whereIn('name', [UserRole::BOOKING]);
                 });
                 break;
         }

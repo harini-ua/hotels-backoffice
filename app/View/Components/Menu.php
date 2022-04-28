@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\View\Component;
 
@@ -45,17 +46,17 @@ class Menu extends Component
                     'name' => __('Admins'),
                     'href' => route('admins.index'),
                     'icon' => 'feather icon-user',
-                    'guard' => $user->hasRole('admin'),
+                    'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
                 [
                     'name' => __('Distributors'),
                     'href' => route('distributors.users.index'),
                     'icon' => 'feather icon-user',
-                    'guard' => $user->hasRole('admin'),
+                    'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
                 [
                     'name' => __('Bookings'),
-                    'href' => route('users.index'),
+                    'href' => route('booking-users.index'),
                     'icon' => 'feather icon-user',
                     'guard' => true,
                 ],
@@ -68,14 +69,14 @@ class Menu extends Component
             'name' => __('Distributors'),
             'href' => route('distributors.index'),
             'icon' => 'feather icon-truck',
-            'guard' => $user->hasRole('admin'),
+            'guard' => $user->hasRole(UserRole::ADMIN),
         ];
 
         $this->items[] = [
             'name' => __('Users'),
             'href' => route('distributors.users.index'),
             'icon' => 'feather icon-users',
-            'guard' => $user->hasRole('distributor'),
+            'guard' => $user->hasRole(UserRole::DISTRIBUTOR),
         ];
 
         /** ----- Company Sites ----- */
@@ -84,19 +85,19 @@ class Menu extends Component
             'name' => __('Company Sites'),
             'href' => route('companies.index'),
             'icon' => 'feather icon-shopping-bag',
-            'guard' => $user->hasAnyRole(['admin', 'distributor']),
+            'guard' => $user->hasAnyRole([UserRole::ADMIN, UserRole::DISTRIBUTOR]),
             'items' => [
                 [
                     'name' => __('Themes'),
                     'href' => route('companies.themes.index'),
                     'icon' => 'feather icon-feather',
-                    'guard' => $user->hasRole('admin'),
+                    'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
                 [
                     'name' => __('Templates'),
                     'href' => route('companies.templates.index'),
                     'icon' => 'feather icon-feather',
-                    'guard' => $user->hasRole('admin'),
+                    'guard' => $user->hasRole(UserRole::ADMIN),
                 ]
             ]
         ];
@@ -107,7 +108,7 @@ class Menu extends Component
             'name' => __('Discounts'),
             'href' => route('discount-vouchers.index'),
             'icon' => 'feather icon-gift',
-            'guard' => $user->hasAnyRole(['admin']),
+            'guard' => $user->hasAnyRole([UserRole::ADMIN]),
         ];
 
         /** ----- Partners ----- */
@@ -116,13 +117,13 @@ class Menu extends Component
             'name' => __('Partners'),
             'href' => route('partners.index'),
             'icon' => 'feather icon-briefcase',
-            'guard' => $user->hasAnyRole(['admin']),
+            'guard' => $user->hasAnyRole([UserRole::ADMIN]),
             'items' => [
                 [
                     'name' => __('Products'),
                     'href' => route('partners.products.index'),
                     'icon' => 'feather icon-shopping-bag',
-                    'guard' => $user->hasRole('admin'),
+                    'guard' => $user->hasRole(UserRole::ADMIN),
                 ]
             ]
         ];
@@ -133,7 +134,7 @@ class Menu extends Component
             'name' => __('Newsletters'),
             'href' => route('newsletters.create'),
             'icon' => 'feather icon-send',
-            'guard' => $user->hasAnyRole(['admin', 'distributor', 'employee']),
+            'guard' => $user->hasAnyRole([UserRole::ADMIN, UserRole::DISTRIBUTOR, UserRole::EMPLOYEE]),
         ];
 
         /** ----- Statistics ----- */
@@ -160,19 +161,19 @@ class Menu extends Component
             'name' => __('Settings'),
             'href' => route('settings.index'),
             'icon' => 'feather icon-settings',
-            'guard' => $user->hasRole('admin'),
+            'guard' => $user->hasRole(UserRole::ADMIN),
             'items' => [
                 [
                     'name' => __('Providers'),
                     'href' => route('providers.index'),
                     'icon' => 'feather icon-package',
-                    'guard' => $user->hasRole('admin'),
+                    'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
                 [
                     'name' => __('Company Site Default'),
                     'href' => route('settings.company-default.edit'),
                     'icon' => 'feather icon-shopping-bag',
-                    'guard' => $user->hasRole('admin'),
+                    'guard' => $user->hasRole(UserRole::ADMIN),
                 ]
             ]
         ];

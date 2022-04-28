@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserRole;
 use App\Http\Requests\CompanyAccountUpdateRequest;
 use App\Http\Requests\CompanyCustomerSupportUpdateRequest;
 use App\Models\Company;
@@ -76,7 +77,7 @@ class CompanyAccountController extends Controller
 
             if ($isNewUser) {
                 $company->users()->attach($user);
-                $user->assignRole('employee');
+                $user->assignRole(UserRole::EMPLOYEE);
             }
 
             DB::commit();

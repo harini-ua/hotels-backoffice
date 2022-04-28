@@ -2,22 +2,21 @@
 
 namespace App\Models;
 
-use App\Enums\UserRole;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class BookingUser extends Model
 {
-    use HasRoles, Notifiable, SoftDeletes;
+    use SoftDeletes;
+
+    public const TABLE = 'booking_users';
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = self::TABLE;
 
     /**
      * The attributes that are mass assignable.
@@ -25,9 +24,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'title', 'firstname', 'lastname', 'email', 'password', 'company_name', 'phone', 'country_id',
-        'city_id', 'address', 'status', 'master', 'newsletter', 'currency_id', 'language_id', 'last_login_at',
-        'ip_address',
+        'username', 'firstname', 'lastname', 'email', 'password', 'status', 'company_name', 'address', 'phone',
+        'distributor_id', 'company_id', 'city', 'country_id', 'language_id',
     ];
 
     /**
@@ -37,16 +35,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'last_login_at' => 'datetime',
     ];
 
     /**
@@ -66,35 +54,11 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the bookings for the user.
-     */
-    public function bookings()
-    {
-        return $this->hasMany(Booking::class);
-    }
-
-    /**
      * Get the country that owns the user.
      */
     public function country()
     {
         return $this->belongsTo(Country::class);
-    }
-
-    /**
-     * Get the city that owns the user.
-     */
-    public function city()
-    {
-        return $this->belongsTo(City::class);
-    }
-
-    /**
-     * Get the currency that owns the user.
-     */
-    public function currency()
-    {
-        return $this->belongsTo(Currency::class);
     }
 
     /**

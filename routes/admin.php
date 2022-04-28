@@ -37,10 +37,10 @@ Route::middleware('auth')->group(function () {
         Route::get('dashboard', [DashboardsController::class, 'index'])->name('index');
         Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
 
-        /** ----- ------ ----- USERS */
-        Route::resource('users', BookingUserController::class);
-        Route::prefix('users')->as('users.')->group(function () {
-            Route::prefix('{user}/password')->as('password.')->group(function () {
+        /** ----- ------ ----- BOOKING USERS */
+        Route::resource('booking-users', BookingUserController::class)->except(['edit', 'update']);
+        Route::prefix('booking-users')->as('booking-users.')->group(function () {
+            Route::prefix('{booking-user}/password')->as('password.')->group(function () {
                 Route::post('change', [BookingUserController::class, 'passwordChange'])->name('change');
                 Route::post('send', [BookingUserController::class, 'passwordSend'])->name('send');
             });
@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
         /** ----- ------ ----- DISTRIBUTORS */
         Route::resource('distributors', DistributorController::class)->except(['show']);
         Route::prefix('distributors')->as('distributors.')->group(function () {
+            Route::get('{distributor}/companies', [DistributorController::class, 'companies'])->name('companies');
             Route::resource('users', DistributorUserController::class)->except(['show']);
             Route::get('/{distributor?}/users/create', [DistributorUserController::class, 'create'])
                 ->name('users.create');

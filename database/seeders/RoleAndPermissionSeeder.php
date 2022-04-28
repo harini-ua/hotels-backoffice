@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -19,15 +20,15 @@ class RoleAndPermissionSeeder extends Seeder
         $createAdmin = Permission::create(['name' => 'create admin']);
         $editProfile = Permission::create(['name' => 'edit profile']);
 
-        $admin = Role::create(['name' => 'admin']);
+        $admin = Role::create(['name' => UserRole::ADMIN]);
 
         $admin->syncPermissions([
             $createAdmin,
             $editProfile,
         ]);
 
-        $distributor = Role::create(['name' => 'distributor']);
-        $employee = Role::create(['name' => 'employee']);
+        $distributor = Role::create(['name' => UserRole::DISTRIBUTOR]);
+        $employee = Role::create(['name' => UserRole::EMPLOYEE]);
 
         if (env('APP_ENV') === 'local') {
             $user = new User([
@@ -45,6 +46,6 @@ class RoleAndPermissionSeeder extends Seeder
             $user->assignRole($admin);
         }
 
-        $booking = Role::create(['name' => 'booking']);
+        $booking = Role::create(['name' => UserRole::BOOKING]);
     }
 }

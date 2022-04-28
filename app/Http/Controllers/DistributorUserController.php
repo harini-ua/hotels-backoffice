@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\DistributorUsersDataTable;
+use App\Enums\UserRole;
 use App\Http\Requests\DistributorUserStoreRequest;
 use App\Http\Requests\DistributorUserUpdateRequest;
 use App\Models\Distributor;
@@ -25,7 +26,7 @@ class DistributorUserController extends Controller
     public function index(DistributorUsersDataTable $dataTable)
     {
         $breadcrumbs = [
-            ['title' => __('list Distributor Users')],
+            ['title' => __('List Distributor Users')],
             ['link' => route('home'), 'name' => __('Home')],
             ['name' => __('Users')]
         ];
@@ -61,7 +62,7 @@ class DistributorUserController extends Controller
         ];
 
         if (!$distributor) {
-            if ((\Auth::user())->hasRole('admin')) {
+            if ((\Auth::user())->hasRole(UserRole::ADMIN)) {
                 $distributor = Distributor::all()
                     ->where('status', 1)
                     ->sortBy('name')
@@ -98,7 +99,7 @@ class DistributorUserController extends Controller
 
             $user->distributors()->attach($distributor);
 
-            $user->assignRole('distributor');
+            $user->assignRole(UserRole::DISTRIBUTOR);
 
             DB::commit();
 
@@ -126,7 +127,7 @@ class DistributorUserController extends Controller
             ['name' => $user->fullname]
         ];
 
-        $distributor = (\Auth::user())->hasRole('admin') ?
+        $distributor = (\Auth::user())->hasRole(UserRole::ADMIN) ?
             Distributor::all()
                 ->where('status', 1)
                 ->sortBy('name')

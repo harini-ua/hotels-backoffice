@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
 
-    $('.users-create-wrapper').each(function () {
+    $('.booking-users-create-wrapper').each(function () {
         $('form').on('change', '.linked', function() {
             $.ajax({
                 url: this.dataset.url.replace('[id]', this.value),
@@ -43,7 +43,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    $('.users-show-wrapper').each(function () {
+    $('.booking-users-show-wrapper').each(function () {
         var $this = $(this);
 
         var password = {

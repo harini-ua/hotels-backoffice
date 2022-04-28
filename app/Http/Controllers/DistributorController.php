@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\DistributorsDataTable;
+use App\Enums\UserRole;
 use App\Http\Requests\DistributorStoreRequest;
 use App\Http\Requests\DistributorUpdateRequest;
 use App\Models\Company;
@@ -121,7 +122,7 @@ class DistributorController extends Controller
             $user->master = true;
             $user->save();
 
-            $user->assignRole('distributor');
+            $user->assignRole(UserRole::DISTRIBUTOR);
 
             $distributor->users()->attach($user->id);
 
@@ -221,6 +222,29 @@ class DistributorController extends Controller
         }
 
         return redirect()->route('distributors.index');
+    }
+
+    /**
+     * Get all companies by distributor
+     *
+     * @param Distributor $distributor
+     * @return array
+     */
+    public function companies(Distributor $distributor)
+    {
+        $companies = $distributor->companies
+            ->sortBy('company_name')
+            ->map(static function ($contract) {
+                return [
+                    'id' => $contract->id,
+                    'name' => $contract->name,
+                ];
+            });
+
+        $default = $companies->count() ? __('- Choose Company Site -') : __('No Available');
+        $companies->prepend(['id' => '', 'name' => $default]);
+
+        return $companies;
     }
 
     /**

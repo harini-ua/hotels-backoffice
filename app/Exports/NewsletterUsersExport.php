@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Enums\NewsletterUserType;
+use App\Enums\UserRole;
 use App\Models\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
@@ -26,17 +27,17 @@ class NewsletterUsersExport implements FromCollection
         switch ($this->detail['type']) {
             case NewsletterUserType::All:
                 $query->whereHas('roles', function ($q) {
-                    $q->whereIn('name', ['employee', 'booking']);
+                    $q->whereIn('name', [UserRole::EMPLOYEE, UserRole::BOOKING]);
                 });
                 break;
             case NewsletterUserType::CompanySiteClient:
                 $query->whereHas('roles', function ($q) {
-                    $q->whereIn('name', ['employee']);
+                    $q->whereIn('name', [UserRole::EMPLOYEE]);
                 });
                 break;
             case NewsletterUserType::BookingUsers:
                 $query->whereHas('roles', function ($q) {
-                    $q->whereIn('name', ['booking']);
+                    $q->whereIn('name', [UserRole::BOOKING]);
                 });
                 break;
         }

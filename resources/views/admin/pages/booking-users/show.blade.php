@@ -3,11 +3,11 @@
 @section('title', $user->fullname)
 
 @section('style')
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/users.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/booking-users.css') }}">
 @endsection
 
 @section('rightbar-content')
-    <div class="contentbar users-show-wrapper">
+    <div class="contentbar booking-users-show-wrapper">
         <div class="row">
             <div class="col-lg-5 col-xl-3">
                 <div class="card m-b-30">
@@ -110,8 +110,8 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-primary change-pass" data-action="{{ route('users.password.change', $user) }}"><i class="feather icon-save mr-2"></i>{{ __('Change Password') }}</button>
-                                    <button type="button" class="btn btn-success send-pass" data-action="{{ route('users.password.send', $user) }}"><i class="feather icon-send mr-2"></i>{{ __('Send Password') }}</button>
+                                    <button type="button" class="btn btn-primary change-pass" data-action="{{ route('booking-users.password.change', $user) }}"><i class="feather icon-save mr-2"></i>{{ __('Change Password') }}</button>
+                                    <button type="button" class="btn btn-success send-pass" data-action="{{ route('booking-users.password.send', $user) }}"><i class="feather icon-send mr-2"></i>{{ __('Send Password') }}</button>
                                 </form>
                             </div>
                         </div>
@@ -123,6 +123,6 @@
 @endsection
 
 @section('script')
-    <script src="{{asset('js/pages/users.js')}}"></script>
     <script src="{{asset('js/scripts/password.js')}}"></script>
+    <script src="{{asset('js/pages/booking-users.js')}}"></script>
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Enums\UserRole;
 use App\Models\User;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -42,9 +43,9 @@ class DistributorUsersDataTable extends DataTable
         $this->setOrderColumns($dataTable);
         $this->setFilterColumns($dataTable);
 
-        if ((\Auth::user())->hasRole('admin')) {
+        if ((\Auth::user())->hasRole(UserRole::ADMIN)) {
             $dataTable->filter(function ($query) {
-                if ($this->request->has('distributor')) {
+                if ($this->request->has(UserRole::DISTRIBUTOR)) {
                     $query->whereHas('distributors', function ($q) {
                         $q->where('distributors.id', $this->request->get('distributor'));
                     });
@@ -106,7 +107,7 @@ class DistributorUsersDataTable extends DataTable
             $q->where("name", "distributor");
         });
 
-        if ((\Auth::user())->hasRole('distributor')) {
+        if ((\Auth::user())->hasRole(UserRole::DISTRIBUTOR)) {
             $distributor = (\Auth::user())->distributors()->where('status', true)->first();
             $query->whereHas('distributors', function ($q) use ($distributor) {
                 $q->where('distributors.id', $distributor->id);
