@@ -16,6 +16,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class BookingUserController extends Controller
@@ -92,28 +93,42 @@ class BookingUserController extends Controller
      *
      * @param BookingUserStoreRequest $request
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function store(BookingUserStoreRequest $request)
     {
-        $user = new BookingUser();
-        $user->fill($request->except('password', 'invoice_allowed', 'send_to_email'));
-        $user->username = $user->email;
-        $user->password = Hash::make($request->get('password'));
-        $user->save();
+        try {
+            DB::beginTransaction();
 
-        $user->assignRole(UserRole::BOOKING);
+            $company = Company::findOrFail($request->get('company_id'));
 
-        if ($request->has('invoice_allowed')) {
-            $user->givePermissionTo('invoice allowed');
+            $user = new BookingUser();
+            $user->fill($request->except('password', 'invoice_allowed', 'send_to_email'));
+            $user->username = $user->email;
+            $user->password = Hash::make($request->get('password'));
+            $user->save();
+
+            $user->companies()->attach($company);
+
+            $user->assignRole(UserRole::BOOKING);
+
+            if ($request->has('invoice_allowed')) {
+                $user->givePermissionTo('invoice allowed');
+            }
+
+            if ($request->has('send_to_email')) {
+                // TODO: Implement send login details to email.
+            }
+
+            DB::commit();
+
+            alert()->success($user->fullname, __('User created has been successful.'));
+        } catch (\PDOException $e) {
+            alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
+            DB::rollBack();
         }
 
-        if ($request->has('send_to_email')) {
-            // TODO: Implement send login details to email.
-        }
-
-        alert()->success($user->fullname, __('User created has been successful.'));
-
-        return redirect()->route('admin.pages.booking-users.index');
+        return redirect()->route('booking-users.index');
     }
 
     /**

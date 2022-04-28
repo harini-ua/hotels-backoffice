@@ -38,7 +38,7 @@ class BookingUser extends Model
     ];
 
     /**
-     * The companies that belong to the user.
+     * The companies that belong to the booking user.
      */
     public function companies()
     {
@@ -46,7 +46,7 @@ class BookingUser extends Model
     }
 
     /**
-     * The distributors that belong to the user.
+     * The distributors that belong to the booking user.
      */
     public function distributors()
     {
@@ -54,7 +54,23 @@ class BookingUser extends Model
     }
 
     /**
-     * Get the country that owns the user.
+     * Get the distributor that owns the booking user.
+     */
+    public function distributor()
+    {
+        return $this->belongsTo(Distributor::class);
+    }
+
+    /**
+     * Get the company that owns the booking user.
+     */
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    /**
+     * Get the country that owns the booking user.
      */
     public function country()
     {
@@ -62,7 +78,7 @@ class BookingUser extends Model
     }
 
     /**
-     * Get the language that owns the user.
+     * Get the language that owns the booking user.
      */
     public function language()
     {
@@ -70,7 +86,7 @@ class BookingUser extends Model
     }
 
     /**
-     * Get the user's full name.
+     * Get the booking user's full name.
      *
      * @return string
      */

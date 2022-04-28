@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CompanyContactUpdateRequest extends FormRequest
 {
@@ -24,7 +25,12 @@ class CompanyContactUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('companies')->whereNull('deleted_at'),
+                Rule::unique('users')->whereNull('deleted_at'),
+            ],
         ];
     }
 }

@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\UserRole;
-use App\Http\Requests\CompanyAccountUpdateRequest;
 use App\Http\Requests\CompanyContactUpdateRequest;
 use App\Models\Company;
-use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CompanyContactController extends Controller

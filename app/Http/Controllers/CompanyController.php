@@ -164,18 +164,10 @@ class CompanyController extends Controller
             ['href' => route('companies.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
-        [ $themes, $templates, $status, $categories, $admins, $countries] = $this->companyService->payload('edit');
-
-        return view('admin.pages.companies.homepage', compact(
+        return view('admin.pages.companies.contact', compact(
             'breadcrumbs',
             'actions',
             'company',
-            'themes',
-            'templates',
-            'status',
-            'categories',
-            'admins',
-            'countries'
         ));
     }
 
