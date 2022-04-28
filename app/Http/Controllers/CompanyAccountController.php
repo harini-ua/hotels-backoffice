@@ -76,7 +76,7 @@ class CompanyAccountController extends Controller
             $user->save();
 
             if ($isNewUser) {
-                $company->users()->attach($user);
+                $company->employee()->associate($user);
                 $user->assignRole(UserRole::EMPLOYEE);
             }
 

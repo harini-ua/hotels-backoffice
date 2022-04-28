@@ -21,6 +21,7 @@ class CreateCompaniesTable extends Migration
             $table->unsignedBigInteger('city_id')->nullable(); // TODO: Need to be clarified
             $table->unsignedBigInteger('language_id')->nullable();
             $table->unsignedBigInteger('admin_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('holder_name')->nullable();
             $table->string('email')->unique()->nullable();
             $table->text('address')->nullable();
@@ -43,6 +44,7 @@ class CreateCompaniesTable extends Migration
             $table->foreign('city_id')->references('id')->on('cities');
             $table->foreign('language_id')->references('id')->on('languages');
             $table->foreign('admin_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
