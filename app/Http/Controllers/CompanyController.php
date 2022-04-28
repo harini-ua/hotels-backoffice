@@ -8,6 +8,7 @@ use App\Enums\CompanyCategory;
 use App\Enums\CompanyStatus;
 use App\Http\Requests\CompanyStoreRequest;
 use App\Models\Company;
+use App\Models\CompanyMainOption;
 use App\Services\CompanyService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -117,9 +118,10 @@ class CompanyController extends Controller
             $company->save();
 
             // Create default main options
-            $company->mainOptions()->create([
-                'hotel_distances_filter' => setDefaultHotelDistancesFilters()
-            ]);
+            $mainOption = new CompanyMainOption();
+            $mainOption->company_id = $company->id;
+            $mainOption->hotel_distances_filter = setDefaultHotelDistancesFilters();
+            $mainOption->save();
 
             // Create default prefilled options
             $company->prefilledOption()->create([]);

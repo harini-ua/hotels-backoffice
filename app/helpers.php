@@ -51,6 +51,6 @@ if (!function_exists('setDefaultHotelDistancesFilters')) {
             ];
         }
 
-        return json_encode($default, JSON_THROW_ON_ERROR);
+        return $default;
     }
 }

@@ -76,20 +76,20 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="country" class="col-sm-2 col-form-label">{{ __('Country') }} *</label>
+        <label for="country_id" class="col-sm-2 col-form-label">{{ __('Country') }} *</label>
         <div class="col-sm-4">
-            <select id="country" name="country"
-                    class="form-control select2 select2-single @error('country') is-invalid @enderror"
+            <select id="country_id" name="country_id"
+                    class="form-control select2 select2-single @error('country_id') is-invalid @enderror"
             >
                 <option value="">-- {{ __('Select Country') }} --</option>
                 @foreach($countries as $id => $country)
                     <option
                         value="{{ $id }}"
-                        @if(old('country') == $id) selected @endif
+                        @if(old('country_id') == $id) selected @endif
                     >{{ $country }}</option>
                 @endforeach
             </select>
-            @error('country')
+            @error('country_id')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
         </div>
