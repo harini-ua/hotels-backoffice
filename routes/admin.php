@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\CompanyAccountController;
 use App\Http\Controllers\CompanyCommissionController;
+use App\Http\Controllers\CompanyContactController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyDefaultController;
 use App\Http\Controllers\CompanyExtraNightController;
@@ -65,6 +66,11 @@ Route::middleware('auth')->group(function () {
         Route::resource('companies', CompanyController::class)->except(['show']);
         Route::prefix('companies')->as('companies.')->group(function () {
             Route::post('{company}/duplicate', [CompanyController::class, 'duplicate'])->name('duplicate');
+
+            Route::prefix('{company}/contact')->as('contact.')->group(function () {
+                Route::get('/edit', [CompanyContactController::class, 'edit'])->name('edit');
+                Route::put('/update', [CompanyContactController::class, 'update'])->name('update');
+            });
 
             Route::prefix('{company}/homepage')->as('homepage.')->group(function () {
                 Route::get('/edit', [CompanyHomepageController::class, 'edit'])->name('edit');

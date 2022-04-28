@@ -25,6 +25,7 @@ class CreateCompaniesTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->text('address')->nullable();
             $table->string('phone')->nullable();
+            $table->text('comment')->nullable();
             $table->tinyInteger('status')->default(1)
                 ->comment('0-inactive, 1-active, 2-pending');
             $table->tinyInteger('level')->default(1)
