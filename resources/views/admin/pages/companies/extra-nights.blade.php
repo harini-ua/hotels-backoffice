@@ -18,6 +18,7 @@
                     </div>
                     <div class="card-body">
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link mb-2" href="{{ route('companies.general.edit', $model) }}">{{ __('General') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.contact.edit', $model) }}">{{ __('Contact Info') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.homepage.edit', $model) }}">{{ __('Homepage') }}</a>
                             <a class="nav-link mb-2 active" href="{{ route('companies.extra-nights.edit', $model) }}">{{ __('Extra Nights') }}</a>
@@ -90,6 +91,7 @@
                                                     name="currency_id"
                                                     class="form-control select2-single @error('currency_id') is-invalid @enderror"
                                             >
+                                                <option value="">{{ '- '.__('Choice Currency').' -' }}</option>
                                                 @foreach($currencies as $id => $currency)
                                                     <option value="{{ $id }}"
                                                             @if($id == old('currency_id')) selected @endif

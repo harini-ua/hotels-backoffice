@@ -67,6 +67,11 @@ Route::middleware('auth')->group(function () {
         Route::prefix('companies')->as('companies.')->group(function () {
             Route::post('{company}/duplicate', [CompanyController::class, 'duplicate'])->name('duplicate');
 
+            Route::prefix('{company}/general')->as('general.')->group(function () {
+                Route::get('/edit', [CompanyGeneralController::class, 'edit'])->name('edit');
+                Route::put('/update', [CompanyGeneralController::class, 'update'])->name('update');
+            });
+
             Route::prefix('{company}/contact')->as('contact.')->group(function () {
                 Route::get('/edit', [CompanyContactController::class, 'edit'])->name('edit');
                 Route::put('/update', [CompanyContactController::class, 'update'])->name('update');

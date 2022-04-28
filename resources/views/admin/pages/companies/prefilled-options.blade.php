@@ -18,6 +18,7 @@
                     </div>
                     <div class="card-body">
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link mb-2" href="{{ route('companies.general.edit', $model) }}">{{ __('General') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.contact.edit', $model) }}">{{ __('Contact Info') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.homepage.edit', $model) }}">{{ __('Homepage') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.extra-nights.edit', $model) }}">{{ __('Extra Nights') }}</a>
@@ -102,6 +103,7 @@
                                             <select id="country_id" name="country_id"
                                                     class="form-control select2-single @error('country_id') is-invalid @enderror"
                                             >
+                                                <option value="">{{ '- '.__('Choice Country').' -' }}</option>
                                                 @foreach($countries as $id => $country)
                                                     <option value="{{ $id }}"
                                                             @if($id == old('country_id')) selected @endif
@@ -120,6 +122,7 @@
                                             <select id="city_id" name="city_id"
                                                     class="form-control select2-single @error('city_id') is-invalid @enderror"
                                             >
+                                                <option value="">{{ '- '.__('Choice City').' -' }}</option>
                                                 @foreach($cities as $id => $city)
                                                     <option value="{{ $id }}"
                                                             @if($id == old('city_id')) selected @endif

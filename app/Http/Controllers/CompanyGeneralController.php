@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\UserRole;
-use App\Http\Requests\CompanyAccountUpdateRequest;
-use App\Http\Requests\CompanyCustomerSupportUpdateRequest;
+use App\Http\Requests\CompanyGeneralUpdateRequest;
 use App\Models\Company;
-use App\Models\CompanySupport;
-use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
-class CompanyAccountController extends Controller
+class CompanyGeneralController extends Controller
 {
     /**
      * Show the form for editing the specified resource.
@@ -23,7 +18,7 @@ class CompanyAccountController extends Controller
     public function edit(Company $company)
     {
         $breadcrumbs = [
-            ['title' => __('Edit Company Site Account')],
+            ['title' => __('Edit Company Site General')],
             ['link' => route('home'), 'name' => __('Home')],
             ['link' => route('companies.index'), 'name' => __('Company Sites')],
             ['name' => $company->company_name]
@@ -35,7 +30,7 @@ class CompanyAccountController extends Controller
 
         $user = $company->employee;
 
-        return view('admin.pages.companies.account',
+        return view('admin.pages.companies.general',
             compact('breadcrumbs', 'actions', 'company', 'user')
         );
     }
@@ -43,44 +38,27 @@ class CompanyAccountController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param CompanyAccountUpdateRequest $request
+     * @param CompanyGeneralUpdateRequest $request
      * @param Company $company
      *
      * @return RedirectResponse
      * @throws \Exception
      */
-    public function update(CompanyAccountUpdateRequest $request, Company $company)
+    public function update(CompanyGeneralUpdateRequest $request, Company $company)
     {
         try {
             DB::beginTransaction();
 
-            $isNewUser = false;
-
-            $user = $company->employee;
-
-            if (!$user) {
-                $isNewUser = true;
-                $user = new User();
-            }
-
-            $user->fill($request->except('password'));
-            $user->email = $company->email;
-            $user->password = Hash::make($request->get('password'));
-            $user->save();
-
-            if ($isNewUser) {
-                $company->employee()->associate($user);
-                $user->assignRole(UserRole::EMPLOYEE);
-            }
+            // TODO: Need implement
 
             DB::commit();
 
-            alert()->success(__('Success'), __('Account updated has been successful.'));
+            alert()->success(__('Success'), __('Company updated has been successful.'));
         } catch (\PDOException $e) {
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
         }
 
-        return redirect()->route('companies.account.edit', $company);
+        return redirect()->route('companies.general.edit', $company);
     }
 }

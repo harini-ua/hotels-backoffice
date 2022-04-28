@@ -28,7 +28,7 @@
             </a>
         </div>
         <div class="col-lg-12 col-xl-2 widget-link-wrapper">
-            <a class="btn btn-primary link" href="{{ route('users.index') }}" role="button">
+            <a class="btn btn-primary link" href="{{ route('booking-users.index') }}" role="button">
                 <i class="feather icon-users"></i> {{ __('Booking Users') }}
             </a>
         </div>
