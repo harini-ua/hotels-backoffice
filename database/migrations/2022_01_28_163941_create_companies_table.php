@@ -21,7 +21,7 @@ class CreateCompaniesTable extends Migration
             $table->unsignedBigInteger('city_id')->nullable(); // TODO: Need to be clarified
             $table->unsignedBigInteger('language_id')->nullable();
             $table->unsignedBigInteger('admin_id')->nullable();
-            $table->string('holder_name'); // TODO: Need to be clarified
+            $table->string('holder_name');
             $table->string('email')->unique()->nullable();
             $table->text('address')->nullable();
             $table->string('phone')->nullable();

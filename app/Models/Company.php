@@ -22,8 +22,8 @@ class Company extends Model
      * @var array
      */
     protected $fillable = [
-        'holder_name', 'company_name', 'category', 'country_id', 'city_id', 'language_id', 'address', 'email', 'phone',
-        'status', 'level', 'vat', 'newsletter', 'login_type', 'access_codes'
+        'holder_name', 'company_name', 'category', 'country_id', 'city_id', 'language_id', 'admin_id',
+        'address', 'email', 'phone', 'status', 'level', 'vat', 'newsletter', 'login_type', 'access_codes'
     ];
 
     /**
@@ -96,6 +96,14 @@ class Company extends Model
     public function language()
     {
         return $this->belongsTo(Language::class);
+    }
+
+    /**
+     * Get the admin that owns the company.
+     */
+    public function admin()
+    {
+        return $this->belongsTo(User::class);
     }
 
     /**

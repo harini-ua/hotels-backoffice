@@ -105,7 +105,6 @@ class CompanyController extends Controller
 
             $company = new Company();
             $company->fill($request->all());
-            $company->holder_name = $company->company_name; // TODO: Need to be clarified
 
             if (AccessCodeType::FIXED === (int) $request->get('login_type')) {
                 $company->access_codes = 1;
@@ -137,7 +136,6 @@ class CompanyController extends Controller
 
             alert()->success($company->name, __('Company created has been successful.'));
         } catch (\PDOException $e) {
-            dd($e);
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
         }

@@ -113,39 +113,6 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="username" class="col-sm-2 col-form-label">{{ __('Contact Name') }} *</label>
-        <div class="col-sm-4">
-            <input type="text" id="username" name="username"
-                   value="{{ old('username') }}"
-                   class="form-control @error('username') is-invalid @enderror">
-            @error('username')
-            <small class="form-text text-danger" role="alert">{{ $message }}</small>
-            @enderror
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="email" class="col-sm-2 col-form-label">{{ __('Contact Email') }} *</label>
-        <div class="col-sm-4">
-            <input type="text" id="email" name="email"
-                   value="{{ old('email') }}"
-                   class="form-control @error('email') is-invalid @enderror">
-            @error('email')
-            <small class="form-text text-danger" role="alert">{{ $message }}</small>
-            @enderror
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="address" class="col-sm-2 col-form-label">{{ __('Company address') }} *</label>
-        <div class="col-sm-4">
-            <input type="text" id="address" name="address"
-                   value="{{ old('address') }}"
-                   class="form-control @error('address') is-invalid @enderror">
-            @error('address')
-            <small class="form-text text-danger" role="alert">{{ $message }}</small>
-            @enderror
-        </div>
-    </div>
-    <div class="form-group row">
         <label for="login_type" class="col-sm-2 col-form-label">{{ __('Login Type') }} *</label>
         <div class="col-sm-4">
             <select id="login_type" name="login_type"
