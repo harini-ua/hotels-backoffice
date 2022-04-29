@@ -137,4 +137,12 @@ class Company extends Model
     {
         return $this->hasMany(AccessCode::class);
     }
+
+    /**
+     * Get the VATs for the company.
+     */
+    public function vats()
+    {
+        return $this->hasMany(CompanyVat::class);
+    }
 }
