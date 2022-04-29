@@ -41,12 +41,50 @@
                                 <form
                                     id="company-access-codes"
                                     method="POST"
-                                    action="{{ route('companies.access-codes.update', $model) }}"
+                                    action="{{ route('companies.access-codes.unique.update', $model) }}"
                                 >
                                     @csrf
                                     @if(isset($model)) @method('PUT') @endif
-
-                                    <button class="btn btn-primary">{{ __('Submit') }}</button>
+                                    <div class="form-group row">
+                                        <label for="access_codes" class="col-sm-2 col-form-label">{{ __('Access Codes') }} *</label>
+                                        <div class="col-sm-4">
+                                            <input type="number" id="access_codes" name="access_codes" min="1"
+                                                   class="form-control @error('access_codes') is-invalid @enderror"
+                                                   value="{{ old('access_codes') ?? ($model ? $model->access_codes : null) }}"
+                                            >
+                                            @error('access_codes')
+                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="updates_by_dates" class="col-sm-2 col-form-label">{{ __('Update By Dates') }} *</label>
+                                        <div class="col-sm-4">
+                                            <select id="updates_by_dates" name="updates_by_dates"
+                                                    class="form-control @error('updates_by_dates') is-invalid @enderror"
+                                                    @if(!$updatesByDates->count()) disabled @endif
+                                            >
+                                                <option value="">{{ '- '.__('Choice Date').' -' }}</option>
+                                                @foreach($updatesByDates as $id => $date)
+                                                    <option value="{{ $id }}"
+                                                            @if($id == old('updates_by_dates')) selected @endif
+                                                    >{{ $date }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('updates_by_dates')
+                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="codes" class="col-sm-2 col-form-label">{{ __('Codes') }}</label>
+                                        <div class="col-sm-6">
+                                            <textarea id="codes" name="codes" class="form-control" rows="5" disabled
+                                            >{{ __('Please сhoice a date to view codes') }}</textarea>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" name="update">{{ __('Submit') }}</button>
+                                    <button class="btn btn-success" name="download">{{ __('Download') }}</button>
                                 </form>
                             </div>
                         </div>

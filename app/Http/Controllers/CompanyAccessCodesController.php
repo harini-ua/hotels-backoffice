@@ -28,8 +28,11 @@ class CompanyAccessCodesController extends Controller
             ['name' => $company->company_name]
         ];
 
-        return view('admin.pages.companies.access-codes.update', compact(
-            'breadcrumbs', 'company'
+        $updatesByDates = collect([]);
+        $codes = [];
+
+        return view('admin.pages.companies.access-codes', compact(
+            'breadcrumbs', 'company', 'updatesByDates'
         ));
     }
 
