@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\AccessCodeType;
 use App\Http\Requests\CompanyGeneralUpdateRequest;
 use App\Models\Company;
 use Illuminate\Http\RedirectResponse;
@@ -30,8 +31,13 @@ class CompanyGeneralController extends Controller
 
         $user = $company->employee;
 
+        $accessCode = null;
+        if ((int) $company->login_type === AccessCodeType::FIXED) {
+            $accessCode = $company->accessCodes()->first();
+        }
+
         return view('admin.pages.companies.general',
-            compact('breadcrumbs', 'actions', 'company', 'user')
+            compact('breadcrumbs', 'actions', 'company', 'user', 'accessCode')
         );
     }
 

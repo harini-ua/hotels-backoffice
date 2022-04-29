@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\CompanyAccessCodesController;
 use App\Http\Controllers\CompanyAccountController;
 use App\Http\Controllers\CompanyCommissionController;
 use App\Http\Controllers\CompanyContactController;
@@ -118,6 +119,12 @@ Route::middleware('auth')->group(function () {
             Route::prefix('{company}/account')->as('account.')->group(function () {
                 Route::get('/edit', [CompanyAccountController::class, 'edit'])->name('edit');
                 Route::put('/update', [CompanyAccountController::class, 'update'])->name('update');
+            });
+
+            Route::prefix('{company}/access-codes')->as('access-codes.')->group(function () {
+                Route::get('/edit', [CompanyAccessCodesController::class, 'edit'])->name('edit');
+                Route::post('/fixed/update', [CompanyAccessCodesController::class, 'fixedUpdate'])->name('fixed.update');
+                Route::put('/unique/update', [CompanyAccessCodesController::class, 'uniqueUpdate'])->name('unique.update');
             });
 
             Route::prefix('{company}/others')->as('others.')->group(function () {

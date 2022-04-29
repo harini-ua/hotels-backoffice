@@ -4,7 +4,6 @@ namespace App\DataTables;
 
 use App\Enums\SpaPoolFilter;
 use App\Models\CompanyTemplate;
-use App\Models\CompanyTheme;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;

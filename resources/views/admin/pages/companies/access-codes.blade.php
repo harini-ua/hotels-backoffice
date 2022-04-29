@@ -1,12 +1,8 @@
 @extends('admin.layouts.main')
-
 @section('title',  __('Update Company Site'))
-
 @section('style')
     <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/companies.css') }}">
 @endsection
-
 @section('rightbar-content')
     @php($model = $company ?? null)
     <div class="contentbar companies-edit-wrapper">
@@ -20,7 +16,7 @@
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <a class="nav-link mb-2" href="{{ route('companies.general.edit', $model) }}">{{ __('General') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.contact.edit', $model) }}">{{ __('Contact Info') }}</a>
-                            <a class="nav-link mb-2 active" href="{{ route('companies.homepage.edit', $model) }}">{{ __('Homepage') }}</a>
+                            <a class="nav-link mb-2" href="{{ route('companies.homepage.edit', $model) }}">{{ __('Homepage') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.extra-nights.edit', $model) }}">{{ __('Extra Nights') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.prefilled-options.edit', $model) }}">{{ __('Pre Filled Options') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.hotel-distances.edit', $model) }}">{{ __('Hotel Distances') }}</a>
@@ -28,9 +24,7 @@
                             <a class="nav-link mb-2" href="{{ route('companies.commissions.edit', $model) }}">{{ __('Commissions') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.vat.edit', $model) }}">{{ __('VAT') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.account.edit', $model) }}">{{ __('Account') }}</a>
-                            @if((int) $model->login_type === \App\Enums\AccessCodeType::UNIQUE)
-                                <a class="nav-link mb-2" href="{{ route('companies.access-codes.edit', $model) }}">{{ __('Access Codes') }}</a>
-                            @endif
+                            <a class="nav-link mb-2 active" href="{{ route('companies.access-codes.edit', $model) }}">{{ __('Access Codes') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.others.edit', $model) }}">{{ __('Others') }}</a>
                         </div>
                     </div>
@@ -41,17 +35,18 @@
                     <div class="tab-pane fade show active" id="v-pills-extra-nights" role="tabpanel" aria-labelledby="v-pills-extra-nights-tab">
                         <div class="card m-b-30">
                             <div class="card-header">
-                                <h5 class="card-title mb-0">{{ __('Homepage') }}</h5>
+                                <h5 class="card-title mb-0">{{ __('Access Codes') }}</h5>
                             </div>
                             <div class="card-body">
                                 <form
-                                    id="company-homepage"
+                                    id="company-access-codes"
                                     method="POST"
-                                    action="{{ route('companies.homepage.update', $model) }}"
+                                    action="{{ route('companies.access-codes.update', $model) }}"
                                 >
                                     @csrf
                                     @if(isset($model)) @method('PUT') @endif
 
+                                    <button class="btn btn-primary">{{ __('Submit') }}</button>
                                 </form>
                             </div>
                         </div>
@@ -61,8 +56,6 @@
         </div>
     </div>
 @endsection
-
 @section('script')
     <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
-    <script src="{{asset('js/pages/companies.js')}}"></script>
 @endsection

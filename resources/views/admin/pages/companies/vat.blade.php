@@ -27,6 +27,9 @@
                             <a class="nav-link mb-2" href="{{ route('companies.commissions.edit', $model) }}">{{ __('Commissions') }}</a>
                             <a class="nav-link mb-2 active" href="{{ route('companies.vat.edit', $model) }}">{{ __('VAT') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.account.edit', $model) }}">{{ __('Account') }}</a>
+                            @if((int) $model->login_type === \App\Enums\AccessCodeType::UNIQUE)
+                                <a class="nav-link mb-2" href="{{ route('companies.access-codes.edit', $model) }}">{{ __('Access Codes') }}</a>
+                            @endif
                             <a class="nav-link mb-2" href="{{ route('companies.others.edit', $model) }}">{{ __('Others') }}</a>
                         </div>
                     </div>
