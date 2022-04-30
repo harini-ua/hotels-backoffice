@@ -40,7 +40,6 @@ class CompanySaleOfficeLevel2CommissionController extends Controller
 
             alert()->success(__('Success'), __('Commission for sales office level #2 updated has been successful.'));
         } catch (\PDOException $e) {
-            dd($e);
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
         }
