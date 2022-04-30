@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\Level;
 use App\Http\Requests\CompanySaleOfficeLevel2CommissionUpdateRequest;
 use App\Models\Company;
+use App\Models\CompanySaleOfficeCommission;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 
@@ -24,15 +25,16 @@ class CompanySaleOfficeLevel2CommissionController extends Controller
         try {
             DB::beginTransaction();
 
-            $company->saleOfficeCommissions()
-                ->updateOrCreate(
-                    [ 'company_id' => $company->id, 'level' => Level::Second ],
-                    [
-                        'level' => Level::Second,
-                        'sale_office_country_id' => $request->get('country_id'),
-                        'commission' => $request->get('commission'),
-                    ],
-                );
+            $commissions = [];
+            foreach ($request->get('level2-commissions') as $commission) {
+                $payload = [
+                    'level' => Level::Second,
+                    'company_id' => $company->id
+                ];
+                $commissions[] = new CompanySaleOfficeCommission(array_merge($commission, $payload));
+            }
+            $company->saleOfficeCommissions()->whereLevel(Level::Second)->delete();
+            $company->saleOfficeCommissions()->saveMany($commissions);
 
             DB::commit();
 

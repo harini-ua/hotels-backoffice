@@ -141,20 +141,20 @@
                                             @for($i = 0; $i < $level1CommissionsCount; $i++)
                                                 <div class="form-row level1-commissions-wrapper" data-repeater-item>
                                                     <div class="form-group col-md-3">
-                                                        <select name="level1-commissions[{{ $i }}][country_id]"
-                                                                class="form-control select2-single @error('country_id') is-invalid @enderror"
+                                                        <select name="level1-commissions[{{ $i }}][sale_office_country_id]"
+                                                                class="form-control select2-single @error('sale_office_country_id') is-invalid @enderror"
                                                         >
                                                             <option value="">{{ __('Select Country') }}</option>
-                                                            @php( $country_id = old("level1commissions.$i.country_id") )
-                                                            @php( $country_id = $level1Commissions && $level1Commissions[$i]->country_id ? $level1Commissions[$i]->country_id : null )
-                                                            {{ $country_id }}
+                                                            @php( $sale_office_country_id = old("level1commissions.$i.sale_office_country_id") )
+                                                            @php( $sale_office_country_id = $level1Commissions && $level1Commissions[$i]->sale_office_country_id ? $level1Commissions[$i]->sale_office_country_id : null )
+                                                            {{ $sale_office_country_id }}
                                                             @foreach($countries as $id => $country)
                                                                 <option value="{{ $id }}"
-                                                                        @if($id === $country_id) selected @endif
+                                                                        @if($id === $sale_office_country_id) selected @endif
                                                                 >{{ $country }}</option>
                                                             @endforeach
                                                         </select>
-                                                        @error('level1commissions.'.$i.'.country_id')
+                                                        @error('level1commissions.'.$i.'.sale_office_country_id')
                                                         <small class="form-text text-danger" role="alert">{{ $message }}</small>
                                                         @enderror
                                                     </div>
@@ -212,20 +212,20 @@
                                             @for($i = 0; $i < $level2CommissionsCount; $i++)
                                                 <div class="form-row level2-commissions-wrapper" data-repeater-item>
                                                     <div class="form-group col-md-3">
-                                                        <select name="level2-commissions[{{ $i }}][country_id]"
-                                                                class="form-control select2-single @error('country_id') is-invalid @enderror"
+                                                        <select name="level2-commissions[{{ $i }}][sale_office_country_id]"
+                                                                class="form-control select2-single @error('sale_office_country_id') is-invalid @enderror"
                                                         >
                                                             <option value="">{{ __('Select Country') }}</option>
-                                                            @php( $country_id = old("level2commissions.$i.country_id") )
-                                                            @php( $country_id = $level2Commissions && $level2Commissions[$i]->country_id ? $level2Commissions[$i]->country_id : null )
-                                                            {{ $country_id }}
+                                                            @php( $sale_office_country_id = old("level2commissions.$i.sale_office_country_id") )
+                                                            @php( $sale_office_country_id = $level2Commissions && $level2Commissions[$i]->sale_office_country_id ? $level2Commissions[$i]->sale_office_country_id : null )
+                                                            {{ $sale_office_country_id }}
                                                             @foreach($countries as $id => $country)
                                                                 <option value="{{ $id }}"
-                                                                        @if($id === $country_id) selected @endif
+                                                                        @if($id === $sale_office_country_id) selected @endif
                                                                 >{{ $country }}</option>
                                                             @endforeach
                                                         </select>
-                                                        @error('level2commissions.'.$i.'.country_id')
+                                                        @error('level2commissions.'.$i.'.sale_office_country_id')
                                                         <small class="form-text text-danger" role="alert">{{ $message }}</small>
                                                         @enderror
                                                     </div>

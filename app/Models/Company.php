@@ -144,7 +144,7 @@ class Company extends Model
      */
     public function saleOfficeCommissions()
     {
-        return $this->hasMany(CompanySaleOfficeCommission::class);
+        return $this->hasMany(CompanySaleOfficeCommission::class, 'sale_office_country_id');
     }
 
     /**

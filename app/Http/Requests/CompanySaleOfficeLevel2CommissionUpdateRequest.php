@@ -24,7 +24,7 @@ class CompanySaleOfficeLevel2CommissionUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'level2commissions.*.company_id' => 'required|exists:companies,id',
+            'level2commissions.*.sale_office_country_id' => 'required|exists:companies,id',
             'level2commissions.*.percentage' => 'required',
         ];
     }
@@ -37,7 +37,7 @@ class CompanySaleOfficeLevel2CommissionUpdateRequest extends FormRequest
     public function messages()
     {
         return [
-            'level2commissions.*.company_id.required' => __('The country field is required.'),
+            'level2commissions.*.sale_office_country_id.required' => __('The country field is required.'),
             'level2commissions.*.percentage.required' => __('The percentage field is required.'),
         ];
     }
