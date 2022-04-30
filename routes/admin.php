@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\CityCommissionController;
+use App\Http\Controllers\CommissionController;
 use App\Http\Controllers\CompanyAccessCodesController;
 use App\Http\Controllers\CompanyAccountController;
 use App\Http\Controllers\CompanyBookingCommissionController;
@@ -180,6 +182,13 @@ Route::middleware('auth')->group(function () {
         /** ----- ------ ----- SETTINGS */
         Route::prefix('settings')->as('settings.')->group(function () {
             Route::get('/', [SettingController::class, 'index'])->name('index');
+
+            Route::prefix('commissions')->as('commissions.')->group(function () {
+                Route::get('/', [CommissionController::class, 'edit'])->name('edit');
+                Route::put('/cities/update', [CityCommissionController::class, 'update'])->name('cities.update');
+                Route::put('/companies/update', [CompanyCommissionController::class, 'update'])->name('companies.update');
+            });
+
             Route::prefix('company-default')->as('company-default.')->group(function () {
                 Route::get('/', [CompanyDefaultController::class, 'edit'])->name('edit');
                 Route::put('/', [CompanyDefaultController::class, 'update'])->name('update');
