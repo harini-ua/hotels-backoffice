@@ -19,6 +19,22 @@ class HotelCommission extends Pivot
      * @var array
      */
     protected $fillable = [
-        'commission',
+        'company_id', 'hotel_id', 'commission'
     ];
+
+    /**
+     * Get the company that owns the city commission.
+     */
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    /**
+     * Get the hotel that owns the city commission.
+     */
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
+    }
 }

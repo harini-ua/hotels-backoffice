@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\CompanyAccessCodesController;
 use App\Http\Controllers\CompanyAccountController;
+use App\Http\Controllers\CompanyBookingCommissionController;
 use App\Http\Controllers\CompanyCommissionController;
 use App\Http\Controllers\CompanyContactController;
 use App\Http\Controllers\CompanyController;
@@ -14,6 +15,8 @@ use App\Http\Controllers\CompanyHotelDistanceController;
 use App\Http\Controllers\CompanyOthersController;
 use App\Http\Controllers\CompanyPrefilledOptionController;
 use App\Http\Controllers\CompanyCustomerSupportController;
+use App\Http\Controllers\CompanySaleOfficeLevel1CommissionController;
+use App\Http\Controllers\CompanySaleOfficeLevel2CommissionController;
 use App\Http\Controllers\CompanyTemplateController;
 use App\Http\Controllers\CompanyThemeController;
 use App\Http\Controllers\CompanyVatController;
@@ -91,9 +94,11 @@ Route::middleware('auth')->group(function () {
 
             Route::prefix('{company}/commissions')->as('commissions.')->group(function () {
                 Route::get('/edit', [CompanyCommissionController::class, 'edit'])->name('edit');
-                Route::put('/level-1/update', [CompanyCommissionController::class, 'updateLevel1'])->name('update.level.1');
-                Route::put('/level-2/update', [CompanyCommissionController::class, 'updateLevel2'])->name('update.level.2');
-                Route::put('/booking/update', [CompanyCommissionController::class, 'updateBooking'])->name('update.booking');
+                Route::prefix('sale-office')->as('sale-office.')->group(function () {
+                    Route::put('/level/1/update', [CompanySaleOfficeLevel1CommissionController::class, 'update'])->name('update.level.1');
+                    Route::put('/level/2/update', [CompanySaleOfficeLevel2CommissionController::class, 'update'])->name('update.level.2');
+                });
+                Route::put('/booking/update', [CompanyBookingCommissionController::class, 'update'])->name('update.booking');
             });
 
             Route::prefix('{company}/extra-nights')->as('extra-nights.')->group(function () {

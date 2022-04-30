@@ -43,6 +43,14 @@ class Company extends Model
     }
 
     /**
+     * Get the booking commissions associated with the company.
+     */
+    public function bookingCommission()
+    {
+        return $this->hasOne(CompanyBookingCommission::class);
+    }
+
+    /**
      * Get the main options associated with the company.
      */
     public function mainOptions()

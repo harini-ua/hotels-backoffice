@@ -16,13 +16,11 @@ class CreateHotelCommissionTable extends Migration
         Schema::create('hotel_commission', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('hotel_id');
-            $table->unsignedBigInteger('commission_id');
             $table->mediumInteger('commission')->default(0);
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('hotel_id')->references('id')->on('hotels');
-            $table->foreign('commission_id')->references('id')->on('commissions');
         });
     }
 

@@ -16,13 +16,11 @@ class CreateCountryCommissionPivotTable extends Migration
         Schema::create('country_commission', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('country_id');
-            $table->unsignedBigInteger('commission_id');
             $table->mediumInteger('commission');
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('country_id')->references('id')->on('countries');
-            $table->foreign('commission_id')->references('id')->on('commissions');
         });
     }
 

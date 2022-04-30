@@ -20,7 +20,6 @@ class CountryCommissionSeeder extends Seeder
             while (($data = fgetcsv($open, 0, ',')) !== false) {
                 $country_commissions[] = [
                     'country_id' => (int)$data[4],
-                    'commission_id' => 1,
                     'commission' => (int)$data[2],
                 ];
             }

@@ -18,7 +18,6 @@ class CityCommissionSeeder extends Seeder
             [
                 [
                     'city_id' => '8234',
-                    'commission_id' => '2'
                 ]
             ]
         );

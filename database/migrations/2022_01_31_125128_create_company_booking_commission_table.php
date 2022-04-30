@@ -16,7 +16,6 @@ class CreateCompanyBookingCommissionTable extends Migration
         Schema::create('company_booking_commission', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('company_id');
-            $table->unsignedBigInteger('commission_id');
             $table->mediumInteger('standard_commission');
             $table->mediumInteger('booking_commission');
             $table->mediumInteger('payback_to_client');
@@ -26,7 +25,6 @@ class CreateCompanyBookingCommissionTable extends Migration
             $table->softDeletes();
 
             $table->foreign('company_id')->references('id')->on('companies');
-            $table->foreign('commission_id')->references('id')->on('commissions');
         });
     }
 

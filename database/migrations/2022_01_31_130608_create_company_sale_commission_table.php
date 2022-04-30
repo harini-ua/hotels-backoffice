@@ -16,14 +16,14 @@ class CreateCompanySaleCommissionTable extends Migration
         Schema::create('company_sale_commission', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('company_id');
-            $table->unsignedBigInteger('commission_id');
-            $table->unsignedBigInteger('level_id');
+            $table->smallInteger('level')->default(\App\Enums\Level::First);
+            $table->unsignedBigInteger('sale_office_country_id')->default(null);
+            $table->mediumInteger('commission');
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('company_id')->references('id')->on('companies');
-            $table->foreign('commission_id')->references('id')->on('commissions');
-            $table->foreign('level_id')->references('id')->on('company_sale_commission_level');
+            $table->foreign('sale_office_country_id')->references('id')->on('countries');
         });
     }
 

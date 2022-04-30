@@ -22,7 +22,6 @@ class HotelCommissionSeeder extends Seeder
             while (($data = fgetcsv($open, 0, ',')) !== false) {
                 $hotels_commissions[] = [
                     'hotel_id' => (int)$data[0],
-                    'commission_id' => 3,
                     'commission' => (int)$data[1],
 
                 ];

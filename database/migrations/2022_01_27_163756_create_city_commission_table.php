@@ -16,13 +16,11 @@ class CreateCityCommissionTable extends Migration
         Schema::create('city_commission', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('city_id');
-            $table->unsignedBigInteger('commission_id');
             $table->mediumInteger('commission')->default(0);
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('city_id')->references('id')->on('cities');
-            $table->foreign('commission_id')->references('id')->on('commissions');
         });
     }
 

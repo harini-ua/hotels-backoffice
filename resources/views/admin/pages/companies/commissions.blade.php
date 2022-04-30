@@ -41,67 +41,119 @@
                     <div class="tab-pane fade show active" id="v-pills-extra-nights" role="tabpanel" aria-labelledby="v-pills-extra-nights-tab">
                         <div class="card m-b-30">
                             <div class="card-header">
-                                <h5 class="card-title mb-0">{{ __('Sales Office Level 1') }}</h5>
+                                <h5 class="card-title mb-0">{{ __('Services Commissions') }}</h5>
                             </div>
                             <div class="card-body">
                                 <form
-                                    id="company-homepage"
-                                    method="POST"
-                                    action="{{ route('companies.commissions.update.level.1', $model) }}"
-                                >
-                                    @csrf
-                                    @if(isset($model)) @method('PUT') @endif
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-7 col-xl-9">
-                <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade show active" id="v-pills-extra-nights" role="tabpanel" aria-labelledby="v-pills-extra-nights-tab">
-                        <div class="card m-b-30">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">{{ __('Sales Office Level 2') }}</h5>
-                            </div>
-                            <div class="card-body">
-                                <form
-                                    id="company-homepage"
-                                    method="POST"
-                                    action="{{ route('companies.commissions.update.level.2', $model) }}"
-                                >
-                                    @csrf
-                                    @if(isset($model)) @method('PUT') @endif
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-7 col-xl-9">
-                <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade show active" id="v-pills-extra-nights" role="tabpanel" aria-labelledby="v-pills-extra-nights-tab">
-                        <div class="card m-b-30">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">{{ __('Commissions') }}</h5>
-                            </div>
-                            <div class="card-body">
-                                <form
-                                    id="company-homepage"
+                                    id="company-booking-commissions"
                                     method="POST"
                                     action="{{ route('companies.commissions.update.booking', $model) }}"
                                 >
                                     @csrf
                                     @if(isset($model)) @method('PUT') @endif
+                                    <div class="form-group row">
+                                        <label for="standard_commission" class="col-sm-3 col-form-label">{{ __('Standard Commission') }}</label>
+                                        <div class="col-sm-4">
+                                            <input type="number" id="standard_commission" name="standard_commission" min="0"
+                                                   class="form-control @error('standard_commission') is-invalid @enderror"
+                                                   value="{{ old('standard_commission') ?? ($bookingCommission ? $bookingCommission->standard_commission : null) }}"
+                                            >
+                                            @error('standard_commission')
+                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="booking_commission" class="col-sm-3 col-form-label">{{ __('Booking Commission') }}</label>
+                                        <div class="col-sm-4">
+                                            <input type="number" id="booking_commission" name="booking_commission" min="0"
+                                                   class="form-control @error('booking_commission') is-invalid @enderror"
+                                                   value="{{ old('booking_commission') ?? ($bookingCommission ? $bookingCommission->booking_commission : null) }}"
+                                            >
+                                            @error('booking_commission')
+                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="payback_to_client" class="col-sm-3 col-form-label">{{ __('Payback To Client') }}</label>
+                                        <div class="col-sm-4">
+                                            <input type="number" id="payback_to_client" name="payback_to_client" min="0"
+                                                   class="form-control @error('payback_to_client') is-invalid @enderror"
+                                                   value="{{ old('payback_to_client') ?? ($bookingCommission ? $bookingCommission->payback_to_client : null) }}"
+                                            >
+                                            @error('payback_to_client')
+                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="minimal_commission" class="col-sm-3 col-form-label">{{ __('Minimal Commission') }}</label>
+                                        <div class="col-sm-4">
+                                            <input type="number" id="minimal_commission" name="minimal_commission" min="0"
+                                                   class="form-control @error('minimal_commission') is-invalid @enderror"
+                                                   value="{{ old('minimal_commission') ?? ($bookingCommission ? $bookingCommission->minimal_commission : null) }}"
+                                            >
+                                            @error('minimal_commission')
+                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="use_minimal_commission" class="col-sm-3 col-form-label">{{ __('Use Minimal Commission') }}</label>
+                                        <div class="input-group col-sm-4">
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                <input type="checkbox" id="use_minimal_commission" name="use_minimal_commission"
+                                                       value="1"
+                                                       @if($bookingCommission && $bookingCommission->use_minimal_commission) checked @endif
+                                                       class="custom-control-input @error('use_minimal_commission') is-invalid @enderror"
+                                                >
+                                                <label class="custom-control-label" for="use_minimal_commission"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary">{{ __('Submit') }}</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card m-b-30">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">{{ __('Sales Office Level #1') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <form
+                                    id="company-sale-office-level-1-commissions"
+                                    method="POST"
+                                    action="{{ route('companies.commissions.sale-office.update.level.1', $model) }}"
+                                >
+                                    @csrf
+                                    @if(isset($model)) @method('PUT') @endif
 
+                                    <button class="btn btn-primary">{{ __('Submit') }}</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card m-b-30">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">{{ __('Sales Office Level #2') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <form
+                                    id="company-sale-office-level-2-commissions"
+                                    method="POST"
+                                    action="{{ route('companies.commissions.sale-office.update.level.2', $model) }}"
+                                >
+                                    @csrf
+                                    @if(isset($model)) @method('PUT') @endif
+
+                                    <button class="btn btn-primary">{{ __('Submit') }}</button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 @endsection

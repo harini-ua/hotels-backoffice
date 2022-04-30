@@ -19,6 +19,22 @@ class CountryCommission extends Pivot
      * @var array
      */
     protected $fillable = [
-        'commission',
+        'company_id', 'country_id', 'commission'
     ];
+
+    /**
+     * Get the company that owns the city commission.
+     */
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    /**
+     * Get the country that owns the city commission.
+     */
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
 }
