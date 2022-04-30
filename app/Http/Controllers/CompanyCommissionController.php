@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Level;
 use App\Models\Company;
 use App\Models\Country;
 
@@ -26,15 +27,24 @@ class CompanyCommissionController extends Controller
             ['href' => route('companies.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
-        $bookingCommission = $company->bookingCommission;
-
         $countries = Country::all()
             ->where('status', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
 
+        $bookingCommission = $company->bookingCommission;
+
+        $level1Commissions = $company->saleOfficeCommissions()->whereLevel(Level::First)->get();
+        $level1Commissions = $level1Commissions->count() > 0 ? $level1Commissions : [];
+        $level1CommissionsCount = $level1Commissions ? $level1Commissions->count() : 1;
+
+        $level2Commissions = $company->saleOfficeCommissions()->whereLevel(Level::Second)->get();
+        $level2Commissions = $level2Commissions->count() > 0 ? $level2Commissions : [];
+        $level2CommissionsCount = $level2Commissions ? $level2Commissions->count() : 1;
+
         return view('admin.pages.companies.commissions', compact(
-            'breadcrumbs', 'actions', 'company', 'bookingCommission', 'countries'
+            'breadcrumbs', 'actions', 'company', 'countries', 'bookingCommission',
+            'level1Commissions', 'level1CommissionsCount', 'level2Commissions', 'level2CommissionsCount'
         ));
     }
 }

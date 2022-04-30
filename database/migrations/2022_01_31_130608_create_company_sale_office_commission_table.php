@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompanySaleCommissionTable extends Migration
+class CreateCompanySaleOfficeCommissionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateCompanySaleCommissionTable extends Migration
      */
     public function up()
     {
-        Schema::create('company_sale_commission', function (Blueprint $table) {
+        Schema::create('company_sale_office_commission', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('company_id');
             $table->smallInteger('level')->default(\App\Enums\Level::First);
-            $table->unsignedBigInteger('sale_office_country_id')->default(null);
+            $table->unsignedBigInteger('sale_office_country_id');
             $table->mediumInteger('commission');
             $table->timestamps();
             $table->softDeletes();
@@ -34,6 +34,6 @@ class CreateCompanySaleCommissionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_sale_commission');
+        Schema::dropIfExists('company_sale_office_commission');
     }
 }

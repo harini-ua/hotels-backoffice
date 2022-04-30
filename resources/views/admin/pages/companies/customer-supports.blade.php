@@ -88,7 +88,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <input type="text" class="form-control"
+                                                    <input type="email" class="form-control"
                                                            name="supports[{{ $i }}][email]"
                                                            value="{{ old("supports.$i.email") ?? ((!empty($supports) && $supports[$i]->email) ? $supports[$i]->email : null) }}">
                                                     @error('supports.'.$i.'.email')

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\CompanySaleOfficeLevel1CommissionController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -136,6 +137,14 @@ class Company extends Model
     public function discounts()
     {
         return $this->hasMany(DiscountVoucher::class);
+    }
+
+    /**
+     * Get the sale office commissions for the company.
+     */
+    public function saleOfficeCommissions()
+    {
+        return $this->hasMany(CompanySaleOfficeCommission::class);
     }
 
     /**

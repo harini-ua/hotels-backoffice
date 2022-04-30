@@ -13,7 +13,7 @@ class CompanySaleOfficeLevel1CommissionUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,21 @@ class CompanySaleOfficeLevel1CommissionUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'level1commissions.*.company_id' => 'required|exists:companies,id',
+            'level1commissions.*.percentage' => 'required',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'level1commissions.*.company_id.required' => __('The country field is required.'),
+            'level1commissions.*.percentage.required' => __('The percentage field is required.'),
         ];
     }
 }

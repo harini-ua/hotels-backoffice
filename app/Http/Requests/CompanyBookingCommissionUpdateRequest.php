@@ -24,7 +24,7 @@ class CompanyBookingCommissionUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'company_id' => 'required|exists:companies,id',
         ];
     }
 }

@@ -128,7 +128,61 @@
                                 >
                                     @csrf
                                     @if(isset($model)) @method('PUT') @endif
-
+                                    <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <label for="inputCity">{{ __('Country') }}</label>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="inputState">{{ __('Commission') }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="level1-commissions-repeater">
+                                        <div data-repeater-list="level1-commissions">
+                                            @for($i = 0; $i < $level1CommissionsCount; $i++)
+                                                <div class="form-row level1-commissions-wrapper" data-repeater-item>
+                                                    <div class="form-group col-md-3">
+                                                        <select name="level1-commissions[{{ $i }}][country_id]"
+                                                                class="form-control select2-single @error('country_id') is-invalid @enderror"
+                                                        >
+                                                            <option value="">{{ __('Select Country') }}</option>
+                                                            @php( $country_id = old("level1commissions.$i.country_id") )
+                                                            @php( $country_id = $level1Commissions && $level1Commissions[$i]->country_id ? $level1Commissions[$i]->country_id : null )
+                                                            {{ $country_id }}
+                                                            @foreach($countries as $id => $country)
+                                                                <option value="{{ $id }}"
+                                                                        @if($id === $country_id) selected @endif
+                                                                >{{ $country }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('level1commissions.'.$i.'.country_id')
+                                                        <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <input type="number" class="form-control" min="0"
+                                                               name="level1-commissions[{{ $i }}][commission]"
+                                                               value="{{ old("level1commissions.$i.commission") ?? ((!empty($level1Commissions) && $level1Commissions[$i]->commission) ? $level1Commissions[$i]->commission : null) }}"
+                                                        >
+                                                        @error('level1commissions.'.$i.'.commission')
+                                                        <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group col-md-1">
+                                                        <button type="button" class="btn btn-danger" data-repeater-delete>
+                                                            <i class="feather icon-trash-2"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            @endfor
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group offset-md-6 col-md-1">
+                                                <button type="button" class="btn btn-success" data-repeater-create>
+                                                    <i class="feather icon-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <button class="btn btn-primary">{{ __('Submit') }}</button>
                                 </form>
                             </div>
@@ -145,7 +199,61 @@
                                 >
                                     @csrf
                                     @if(isset($model)) @method('PUT') @endif
-
+                                    <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <label for="inputCity">{{ __('Country') }}</label>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="inputState">{{ __('Commission') }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="level2-commissions-repeater">
+                                        <div data-repeater-list="level2-commissions">
+                                            @for($i = 0; $i < $level2CommissionsCount; $i++)
+                                                <div class="form-row level2-commissions-wrapper" data-repeater-item>
+                                                    <div class="form-group col-md-3">
+                                                        <select name="level2-commissions[{{ $i }}][country_id]"
+                                                                class="form-control select2-single @error('country_id') is-invalid @enderror"
+                                                        >
+                                                            <option value="">{{ __('Select Country') }}</option>
+                                                            @php( $country_id = old("level2commissions.$i.country_id") )
+                                                            @php( $country_id = $level2Commissions && $level2Commissions[$i]->country_id ? $level2Commissions[$i]->country_id : null )
+                                                            {{ $country_id }}
+                                                            @foreach($countries as $id => $country)
+                                                                <option value="{{ $id }}"
+                                                                        @if($id === $country_id) selected @endif
+                                                                >{{ $country }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('level2commissions.'.$i.'.country_id')
+                                                        <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <input type="number" class="form-control" min="0"
+                                                               name="level2-commissions[{{ $i }}][commission]"
+                                                               value="{{ old("level2commissions.$i.commission") ?? ((!empty($level2Commissions) && $level2Commissions[$i]->commission) ? $level2Commissions[$i]->commission : null) }}"
+                                                        >
+                                                        @error('level2commissions.'.$i.'.commission')
+                                                        <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group col-md-1">
+                                                        <button type="button" class="btn btn-danger" data-repeater-delete>
+                                                            <i class="feather icon-trash-2"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            @endfor
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group offset-md-6 col-md-1">
+                                                <button type="button" class="btn btn-success" data-repeater-create>
+                                                    <i class="feather icon-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <button class="btn btn-primary">{{ __('Submit') }}</button>
                                 </form>
                             </div>
@@ -160,5 +268,6 @@
 
 @section('script')
     <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
-    <script src="{{asset('js/pages/companies.js')}}"></script>
+    <script src="{{ asset('assets/plugins/form-repeater/jquery.repeater.min.js') }}"></script>
+    <script src="{{asset('js/pages/company-commissions.js')}}"></script>
 @endsection
