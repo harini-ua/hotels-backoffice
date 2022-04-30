@@ -3,16 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Enums\AccessCodeType;
+use App\Exports\AccessCodesExport;
 use App\Http\Requests\CompanyAccessCodesUpdateRequest;
+use App\Models\AccessCode;
 use App\Models\Company;
+use App\Services\CompanyService;
 use App\Services\Formatter;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CompanyAccessCodesController extends Controller
 {
+    /** @var CompanyService */
+    protected $companyService;
+
+    public function __construct(CompanyService $companyService)
+    {
+        $this->companyService = $companyService;
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -28,11 +41,13 @@ class CompanyAccessCodesController extends Controller
             ['name' => $company->company_name]
         ];
 
-        $updatesByDates = collect([]);
-        $codes = [];
+        $accessCodes = $company->accessCodes()
+            ->groupBy('created_at')
+            ->orderBy('created_at')
+            ->get();
 
         return view('admin.pages.companies.access-codes', compact(
-            'breadcrumbs', 'company', 'updatesByDates'
+            'breadcrumbs', 'company', 'accessCodes'
         ));
     }
 
@@ -78,7 +93,11 @@ class CompanyAccessCodesController extends Controller
         try {
             DB::beginTransaction();
 
-            //
+            $company->access_codes = $request->get('access_codes');
+            $company->save();
+
+            $this->companyService->setCompany($company);
+            $this->companyService->genegateAccesCodes($company->access_codes, AccessCodeType::UNIQUE);
 
             DB::commit();
 
@@ -89,5 +108,43 @@ class CompanyAccessCodesController extends Controller
         }
 
         return redirect()->route('companies.access-codes.edit', $company);
+    }
+
+    /**
+     * View the company access codes.
+     *
+     * @param Company $company
+     * @param AccessCode $accessCode
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function view(Company $company, AccessCode $accessCode)
+    {
+        $query = $company->accessCodes();
+        $query->where('created_at', $accessCode->created_at);
+
+        $accessCodes = $query->get()->pluck('code')->toArray();
+        if ($accessCodes) {
+            return response()->json([
+                'success' => true,
+                'codes' => implode('<br />', $accessCodes),
+            ]);
+        }
+
+        return response()->json(['success' => false]);
+    }
+
+    /**
+     * Download the company access codes.
+     *
+     * @param Company $company
+     * @param AccessCode $accessCode
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    public function download(Company $company, AccessCode $accessCode)
+    {
+        return Excel::download(
+            new AccessCodesExport($company, $accessCode),
+            'access-codes.xlsx'
+        );
     }
 }

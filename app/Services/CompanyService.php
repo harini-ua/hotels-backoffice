@@ -104,6 +104,8 @@ class CompanyService
                 'code' => $code,
             ]);
             $accessCodes[] = $accessCode;
+
+            $this->company->accessCodes()->delete();
         } else {
             for ($i = 0; $i < $code; $i++) {
 
@@ -116,7 +118,6 @@ class CompanyService
             }
         }
 
-        $this->company->accessCodes()->delete();
         $this->company->accessCodes()->saveMany($accessCodes);
     }
 

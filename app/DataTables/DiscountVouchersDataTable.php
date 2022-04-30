@@ -66,7 +66,7 @@ class DiscountVouchersDataTable extends DataTable
         $dataTable->addColumn('voucher_code', function (DiscountVoucher $model) {
             return view("admin.pages.discount-vouchers.partials._voucher-code", compact('model'));
 
-            if ($model->voucher_type == DiscountCodeType::AccessForAll) {
+            if ((int) $model->voucher_type === DiscountCodeType::AccessForAll) {
                 return $model->codes()->first()->code;
             }
 

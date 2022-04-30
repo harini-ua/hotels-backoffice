@@ -125,6 +125,8 @@ Route::middleware('auth')->group(function () {
                 Route::get('/edit', [CompanyAccessCodesController::class, 'edit'])->name('edit');
                 Route::post('/fixed/update', [CompanyAccessCodesController::class, 'fixedUpdate'])->name('fixed.update');
                 Route::put('/unique/update', [CompanyAccessCodesController::class, 'uniqueUpdate'])->name('unique.update');
+                Route::get('/{accessCode}/view', [CompanyAccessCodesController::class, 'view'])->name('view');
+                Route::get('/{accessCode}/download', [CompanyAccessCodesController::class, 'download'])->name('download');
             });
 
             Route::prefix('{company}/others')->as('others.')->group(function () {

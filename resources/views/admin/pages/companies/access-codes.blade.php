@@ -2,6 +2,7 @@
 @section('title',  __('Update Company Site'))
 @section('style')
     <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/access-codes.css') }}" />
 @endsection
 @section('rightbar-content')
     @php($model = $company ?? null)
@@ -47,44 +48,48 @@
                                     @if(isset($model)) @method('PUT') @endif
                                     <div class="form-group row">
                                         <label for="access_codes" class="col-sm-2 col-form-label">{{ __('Access Codes') }} *</label>
-                                        <div class="col-sm-4">
+                                        <div class="input-group mb-3 col-sm-6">
                                             <input type="number" id="access_codes" name="access_codes" min="1"
                                                    class="form-control @error('access_codes') is-invalid @enderror"
                                                    value="{{ old('access_codes') ?? ($model ? $model->access_codes : null) }}"
                                             >
-                                            @error('access_codes')
-                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
-                                            @enderror
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" name="update">{{ __('Update Codes') }}</button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="updates_by_dates" class="col-sm-2 col-form-label">{{ __('Update By Dates') }} *</label>
-                                        <div class="col-sm-4">
-                                            <select id="updates_by_dates" name="updates_by_dates"
-                                                    class="form-control @error('updates_by_dates') is-invalid @enderror"
-                                                    @if(!$updatesByDates->count()) disabled @endif
-                                            >
-                                                <option value="">{{ '- '.__('Choice Date').' -' }}</option>
-                                                @foreach($updatesByDates as $id => $date)
-                                                    <option value="{{ $id }}"
-                                                            @if($id == old('updates_by_dates')) selected @endif
-                                                    >{{ $date }}</option>
+                                        <div class="input-group col-sm-8">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                @foreach($accessCodes as $accessCode)
+                                                <tr>
+                                                    <td class="col-sm-1">{{ __('Date').' :' }}</td>
+                                                    <td class="col-sm-2">{{ \App\Services\Formatter::date($accessCode->created_at, 'Y-m-d H:i:s') }}</td>
+                                                    <td class="col-sm-2">
+                                                        <a class="btn btn-primary-rgba view-access-codes"
+                                                           href="{{ route('companies.access-codes.view', [$model, $accessCode]) }}"
+                                                        >
+                                                            <i class="feather icon-eye"></i>&nbsp;&nbsp;{{ __('View') }}
+                                                        </a>
+                                                        <a class="btn btn-success-rgba download-access-codes"
+                                                                href="{{ route('companies.access-codes.download', [$model, $accessCode]) }}"
+                                                        >
+                                                            <i class="feather icon-download"></i>&nbsp;&nbsp;{{ __('Download') }}
+                                                        </a>
+                                                    </td>
+                                                </tr>
                                                 @endforeach
-                                            </select>
-                                            @error('updates_by_dates')
-                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
-                                            @enderror
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="codes" class="col-sm-2 col-form-label">{{ __('Codes') }}</label>
-                                        <div class="col-sm-6">
-                                            <textarea id="codes" name="codes" class="form-control" rows="5" disabled
-                                            >{{ __('Please сhoice a date to view codes') }}</textarea>
+                                        <label for="codes" class="col-sm-2 col-form-label">{{ __('View Codes').' :' }}</label>
+                                        <div class="col-sm-6 mt-1">
+                                            <div id="codes" class="form-control textarea-access-codes">{{ '- '.__('No data available').' -' }}</div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary" name="update">{{ __('Submit') }}</button>
-                                    <button class="btn btn-success" name="download">{{ __('Download') }}</button>
                                 </form>
                             </div>
                         </div>
@@ -96,4 +101,5 @@
 @endsection
 @section('script')
     <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
+    <script src="{{asset('js/pages/access-codes.js')}}"></script>
 @endsection

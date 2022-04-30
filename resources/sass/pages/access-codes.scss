@@ -1,0 +1,12 @@
+.textarea-access-codes {
+    -moz-appearance: textfield-multiline;
+    -webkit-appearance: textarea;
+    border: 1px solid gray;
+    font: medium -moz-fixed;
+    font: -webkit-small-control;
+    height: 28px;
+    overflow: auto !important;
+    padding: 2px;
+    resize: both;
+    width: 400px;
+}
