@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CityCommissionUpdateRequest;
+use App\Models\CityCommission;
 use App\Models\Company;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +24,13 @@ class CityCommissionController extends Controller
         try {
             DB::beginTransaction();
 
-            // TODO: Need Implement
+            $commissions = [];
+            foreach ($request->get('cities-commissions') as $commission) {
+                $commissions[] = new CityCommission($commission);
+            }
+
+            $company->cityCommissions()->delete();
+            $company->cityCommissions()->saveMany($commissions);
 
             DB::commit();
 

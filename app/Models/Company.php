@@ -162,4 +162,20 @@ class Company extends Model
     {
         return $this->hasMany(CompanyVat::class);
     }
+
+    /**
+     * Get the city commissions for the company.
+     */
+    public function cityCommissions()
+    {
+        return $this->hasMany(CityCommission::class);
+    }
+
+    /**
+     * Get the country commissions for the company.
+     */
+    public function countryCommissions()
+    {
+        return $this->hasMany(CountryCommission::class);
+    }
 }

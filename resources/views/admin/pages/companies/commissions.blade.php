@@ -54,10 +54,15 @@
                                     <div class="form-group row">
                                         <label for="standard_commission" class="col-sm-3 col-form-label">{{ __('Standard Commission') }}</label>
                                         <div class="col-sm-4">
-                                            <input type="number" id="standard_commission" name="standard_commission" min="0"
-                                                   class="form-control @error('standard_commission') is-invalid @enderror"
-                                                   value="{{ old('standard_commission') ?? ($bookingCommission ? $bookingCommission->standard_commission : null) }}"
-                                            >
+                                            <div class="input-group">
+                                                <input type="number" id="standard_commission" name="standard_commission" min="0"
+                                                       class="form-control @error('standard_commission') is-invalid @enderror"
+                                                       value="{{ old('standard_commission') ?? ($bookingCommission ? $bookingCommission->standard_commission : null) }}"
+                                                >
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </div>
                                             @error('standard_commission')
                                             <small class="form-text text-danger" role="alert">{{ $message }}</small>
                                             @enderror
@@ -66,10 +71,15 @@
                                     <div class="form-group row">
                                         <label for="booking_commission" class="col-sm-3 col-form-label">{{ __('Booking Commission') }}</label>
                                         <div class="col-sm-4">
-                                            <input type="number" id="booking_commission" name="booking_commission" min="0"
-                                                   class="form-control @error('booking_commission') is-invalid @enderror"
-                                                   value="{{ old('booking_commission') ?? ($bookingCommission ? $bookingCommission->booking_commission : null) }}"
-                                            >
+                                            <div class="input-group">
+                                                <input type="number" id="booking_commission" name="booking_commission" min="0"
+                                                       class="form-control @error('booking_commission') is-invalid @enderror"
+                                                       value="{{ old('booking_commission') ?? ($bookingCommission ? $bookingCommission->booking_commission : null) }}"
+                                                >
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </div>
                                             @error('booking_commission')
                                             <small class="form-text text-danger" role="alert">{{ $message }}</small>
                                             @enderror
@@ -78,10 +88,15 @@
                                     <div class="form-group row">
                                         <label for="payback_to_client" class="col-sm-3 col-form-label">{{ __('Payback To Client') }}</label>
                                         <div class="col-sm-4">
-                                            <input type="number" id="payback_to_client" name="payback_to_client" min="0"
-                                                   class="form-control @error('payback_to_client') is-invalid @enderror"
-                                                   value="{{ old('payback_to_client') ?? ($bookingCommission ? $bookingCommission->payback_to_client : null) }}"
-                                            >
+                                            <div class="input-group">
+                                                <input type="number" id="payback_to_client" name="payback_to_client" min="0"
+                                                       class="form-control @error('payback_to_client') is-invalid @enderror"
+                                                       value="{{ old('payback_to_client') ?? ($bookingCommission ? $bookingCommission->payback_to_client : null) }}"
+                                                >
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </div>
                                             @error('payback_to_client')
                                             <small class="form-text text-danger" role="alert">{{ $message }}</small>
                                             @enderror
@@ -90,10 +105,15 @@
                                     <div class="form-group row">
                                         <label for="minimal_commission" class="col-sm-3 col-form-label">{{ __('Minimal Commission') }}</label>
                                         <div class="col-sm-4">
-                                            <input type="number" id="minimal_commission" name="minimal_commission" min="0"
-                                                   class="form-control @error('minimal_commission') is-invalid @enderror"
-                                                   value="{{ old('minimal_commission') ?? ($bookingCommission ? $bookingCommission->minimal_commission : null) }}"
-                                            >
+                                            <div class="input-group">
+                                                <input type="number" id="minimal_commission" name="minimal_commission" min="0"
+                                                       class="form-control @error('minimal_commission') is-invalid @enderror"
+                                                       value="{{ old('minimal_commission') ?? ($bookingCommission ? $bookingCommission->minimal_commission : null) }}"
+                                                >
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </div>
                                             @error('minimal_commission')
                                             <small class="form-text text-danger" role="alert">{{ $message }}</small>
                                             @enderror
@@ -147,7 +167,6 @@
                                                             <option value="">{{ __('Select Country') }}</option>
                                                             @php( $sale_office_country_id = old("level1commissions.$i.sale_office_country_id") )
                                                             @php( $sale_office_country_id = $level1Commissions && $level1Commissions[$i]->sale_office_country_id ? $level1Commissions[$i]->sale_office_country_id : null )
-                                                            {{ $sale_office_country_id }}
                                                             @foreach($countries as $id => $country)
                                                                 <option value="{{ $id }}"
                                                                         @if($id === $sale_office_country_id) selected @endif
@@ -159,10 +178,15 @@
                                                         @enderror
                                                     </div>
                                                     <div class="form-group col-md-3">
-                                                        <input type="number" class="form-control" min="0"
-                                                               name="level1-commissions[{{ $i }}][commission]"
-                                                               value="{{ old("level1commissions.$i.commission") ?? ((!empty($level1Commissions) && $level1Commissions[$i]->commission) ? $level1Commissions[$i]->commission : null) }}"
-                                                        >
+                                                        <div class="input-group">
+                                                            <input type="number" class="form-control" min="0"
+                                                                   name="level1-commissions[{{ $i }}][commission]"
+                                                                   value="{{ old("level1commissions.$i.commission") ?? ((!empty($level1Commissions) && $level1Commissions[$i]->commission) ? $level1Commissions[$i]->commission : null) }}"
+                                                            >
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">%</span>
+                                                            </div>
+                                                        </div>
                                                         @error('level1commissions.'.$i.'.commission')
                                                         <small class="form-text text-danger" role="alert">{{ $message }}</small>
                                                         @enderror
@@ -218,7 +242,6 @@
                                                             <option value="">{{ __('Select Country') }}</option>
                                                             @php( $sale_office_country_id = old("level2commissions.$i.sale_office_country_id") )
                                                             @php( $sale_office_country_id = $level2Commissions && $level2Commissions[$i]->sale_office_country_id ? $level2Commissions[$i]->sale_office_country_id : null )
-                                                            {{ $sale_office_country_id }}
                                                             @foreach($countries as $id => $country)
                                                                 <option value="{{ $id }}"
                                                                         @if($id === $sale_office_country_id) selected @endif
@@ -230,10 +253,15 @@
                                                         @enderror
                                                     </div>
                                                     <div class="form-group col-md-3">
-                                                        <input type="number" class="form-control" min="0"
-                                                               name="level2-commissions[{{ $i }}][commission]"
-                                                               value="{{ old("level2commissions.$i.commission") ?? ((!empty($level2Commissions) && $level2Commissions[$i]->commission) ? $level2Commissions[$i]->commission : null) }}"
-                                                        >
+                                                        <div class="input-group">
+                                                            <input type="number" class="form-control" min="0"
+                                                                   name="level2-commissions[{{ $i }}][commission]"
+                                                                   value="{{ old("level2commissions.$i.commission") ?? ((!empty($level2Commissions) && $level2Commissions[$i]->commission) ? $level2Commissions[$i]->commission : null) }}"
+                                                            >
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">%</span>
+                                                            </div>
+                                                        </div>
                                                         @error('level2commissions.'.$i.'.commission')
                                                         <small class="form-text text-danger" role="alert">{{ $message }}</small>
                                                         @enderror

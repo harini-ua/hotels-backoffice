@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CountryCommissionUpdateRequest;
 use App\Models\Company;
+use App\Models\CountryCommission;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 
@@ -23,7 +24,13 @@ class CountryCommissionController extends Controller
         try {
             DB::beginTransaction();
 
-            // TODO: Need Implement
+            $commissions = [];
+            foreach ($request->get('countries-commissions') as $commission) {
+                $commissions[] = new CountryCommission($commission);
+            }
+
+            $company->countryCommissions()->delete();
+            $company->countryCommissions()->saveMany($commissions);
 
             DB::commit();
 

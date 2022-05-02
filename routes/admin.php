@@ -22,6 +22,7 @@ use App\Http\Controllers\CompanySaleOfficeLevel2CommissionController;
 use App\Http\Controllers\CompanyTemplateController;
 use App\Http\Controllers\CompanyThemeController;
 use App\Http\Controllers\CompanyVatController;
+use App\Http\Controllers\CountryCommissionController;
 use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\DiscountVoucherController;
 use App\Http\Controllers\DistributorController;
@@ -186,7 +187,7 @@ Route::middleware('auth')->group(function () {
             Route::prefix('commissions')->as('commissions.')->group(function () {
                 Route::get('/', [CommissionController::class, 'edit'])->name('edit');
                 Route::put('/cities/update', [CityCommissionController::class, 'update'])->name('cities.update');
-                Route::put('/companies/update', [CompanyCommissionController::class, 'update'])->name('companies.update');
+                Route::put('/countries/update', [CountryCommissionController::class, 'update'])->name('countries.update');
             });
 
             Route::prefix('company-default')->as('company-default.')->group(function () {

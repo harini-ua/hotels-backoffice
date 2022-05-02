@@ -24,8 +24,8 @@ class CityCommissionUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'company_id' => 'required|exists:companies,id',
-            'percentage' => 'required',
+            'cities-commissions.*.company_id' => 'required|exists:cities,id',
+            'cities-commissions.*.percentage' => 'required',
         ];
     }
 }

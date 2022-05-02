@@ -24,8 +24,8 @@ class CountryCommissionUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'company_id' => 'required|exists:companies,id',
-            'percentage' => 'required',
+            'countries-commissions.*.company_id' => 'required|exists:companies,id',
+            'countries-commissions.*.percentage' => 'required',
         ];
     }
 }

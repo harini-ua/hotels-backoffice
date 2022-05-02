@@ -170,6 +170,12 @@ class Menu extends Component
                     'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
                 [
+                    'name' => __('Commissions'),
+                    'href' => route('settings.commissions.edit'),
+                    'icon' => 'feather icon-percent',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
+                ],
+                [
                     'name' => __('Company Site Default'),
                     'href' => route('settings.company-default.edit'),
                     'icon' => 'feather icon-shopping-bag',
