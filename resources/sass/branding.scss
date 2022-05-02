@@ -1,0 +1,55 @@
+.horizontal-layout {
+    .navigationbar {
+        background-color: #fe8a00;
+    }
+    .accordion > .card h2 .btn-link {
+        color: #fe8a00;
+    }
+    input[type="checkbox"] {
+        accent-color: #fe8a00;
+    }
+    .form-control:focus {
+        border-color: #fe8a00;
+    }
+    .nav-pills .nav-link.active {
+        color: #ffffff;
+        background-color: #fe8a00;
+    }
+    .page-item.active .page-link {
+        color: #ffffff;
+        background-color: #fe8a00;
+        border-color: #fe8a00;
+    }
+    .btn-submit {
+        color: #ffffff;
+        background-color: #fe8a00;
+        border-color: #fe8a00;
+        box-shadow: none;
+    }
+    .btn-submit:focus, .btn-submit:hover {
+        background-color: rgba(254, 138, 0, 0.61);
+        border-color: rgba(254, 138, 0, 0.61);
+    }
+    .horizontal-nav .horizontal-menu .dropdown-menu li.active > a, .horizontal-nav .horizontal-menu .dropdown-menu li > a:hover, .horizontal-nav .horizontal-menu .dropdown-menu li > a:focus {
+        color: #fe8a00;
+    }
+    .swal2-modal .swal2-confirm {
+        background-color: #fe8a00 !important;
+        border: none;
+    }
+    .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+        background-color: #fe8a00;
+    }
+    .custom-control-input:checked ~ .custom-control-label::before {
+        color: #ffffff;
+        background-color: #fe8a00;
+        border-color: #fe8a00;
+    }
+    .reset-btn {
+        color: #fe8a00;
+    }
+    .select2-container--default .select2-results__option--highlighted[aria-selected] {
+        background-color: #fe8a00 !important;
+        color: #ffffff;
+    }
+}

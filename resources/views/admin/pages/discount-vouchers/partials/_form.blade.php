@@ -160,5 +160,5 @@
             @enderror
         </div>
     </div>
-    <button class="btn btn-primary" id="submit-btn">{{ __('Submit') }}</button>
+    <button class="btn btn-submit" id="submit-btn">{{ __('Submit') }}</button>
 </form>

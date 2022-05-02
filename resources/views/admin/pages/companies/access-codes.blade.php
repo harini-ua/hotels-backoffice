@@ -54,7 +54,7 @@
                                                    value="{{ old('access_codes') ?? ($model ? $model->access_codes : null) }}"
                                             >
                                             <div class="input-group-append">
-                                                <button class="btn btn-primary" name="update">{{ __('Update Codes') }}</button>
+                                                <button class="btn btn-submit" name="update">{{ __('Update Codes') }}</button>
                                             </div>
                                         </div>
                                     </div>

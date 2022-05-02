@@ -70,7 +70,7 @@
                                     </div>
                                 </div>
                             @endif
-                            <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                            <button type="submit" class="btn btn-submit">{{ __('Submit') }}</button>
                         </form>
                     </div>
                 </div>

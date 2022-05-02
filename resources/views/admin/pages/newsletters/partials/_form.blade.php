@@ -82,6 +82,6 @@
             @enderror
         </div>
     </div>
-    <button id="send-btn" class="btn btn-primary" name="action" value="send">{{ __('Submit') }}</button>
-    <button id="download-btn" class="btn btn-primary" name="action" value="export">{{ __('Download') }}</button>
+    <button id="send-btn" class="btn btn-submit" name="action" value="send">{{ __('Submit') }}</button>
+    <button id="download-btn" class="btn btn-submit" name="action" value="export">{{ __('Download') }}</button>
 </form>

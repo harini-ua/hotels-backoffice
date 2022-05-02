@@ -67,7 +67,7 @@
                                         <div class="col-sm-3">
                                             <button type="button"
                                                     id="default_chat"
-                                                    class="btn btn-primary-rgba"
+                                                    class="btn btn-submit-rgba"
                                                     data-default="{{ 'https://embed.tawk.to/5947c22350fd5105d0c81c75/default' }}"
                                             >{{ __('Insert Default Chat') }}</button>
                                         </div>
@@ -115,7 +115,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary">{{ __('Submit') }}</button>
+                                    <button class="btn btn-submit">{{ __('Submit') }}</button>
                                 </form>
                             </div>
                         </div>

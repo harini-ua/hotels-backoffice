@@ -164,5 +164,5 @@ Be extremely cautios when creating these users and sending the details to the co
             @enderror
         </div>
     </div>
-    <button class="btn btn-primary">{{ __('Submit') }}</button>
+    <button class="btn btn-submit">{{ __('Submit') }}</button>
 </form>

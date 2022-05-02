@@ -15,7 +15,7 @@
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <a href="{{route('home')}}" class="logo"><img src="assets/images/logo.svg" class="img-fluid" alt="logo"></a>
+                                    <a href="{{route('home')}}" class="logo"><img src="{{asset('assets/images/logo.svg')}}" class="img-fluid" alt="logo"></a>
                                 </div>
                                 <div class="form-group">
                                     <input

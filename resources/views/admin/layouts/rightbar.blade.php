@@ -10,7 +10,7 @@
                     <ul class="list-inline mb-0">
                         <li class="list-inline-item">
                             <div class="topbar-toggle-icon">
-                                <a class="topbar-toggle-hamburger" href="javascript:void();">
+                                <a class="topbar-toggle-hamburger" href="javascript:void(0);">
                                     <img src="{{asset('assets/images/svg-icon/horizontal.svg')}}" class="img-fluid menu-hamburger-horizontal" alt="horizontal">
                                     <img src="{{asset('assets/images/svg-icon/verticle.svg')}}" class="img-fluid menu-hamburger-vertical" alt="verticle">
                                  </a>
@@ -18,7 +18,7 @@
                         </li>
                         <li class="list-inline-item">
                             <div class="menubar">
-                                <a class="menu-hamburger navbar-toggle bg-transparent" href="javascript:void();" data-toggle="collapse" data-target="#navbar-menu" aria-expanded="true">
+                                <a class="menu-hamburger navbar-toggle bg-transparent" href="javascript:void(0);" data-toggle="collapse" data-target="#navbar-menu" aria-expanded="true">
                                     <img src="{{asset('assets/images/svg-icon/menu.svg')}}" class="img-fluid menu-hamburger-collapse" alt="menu">
                                     <img src="{{asset('assets/images/svg-icon/close.svg')}}" class="img-fluid menu-hamburger-close" alt="close">
                                 </a>
@@ -41,7 +41,9 @@
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item">
                                 <div class="logobar">
-                                    <a href="{{url('/')}}" class="logo logo-large"><img src="{{asset('assets/images/logo.svg')}}" class="img-fluid" alt="logo"></a>
+                                    <a href="{{url('/')}}" class="logo logo-large">
+                                        <img src="{{asset('images/admin/logo_hotels_online.png')}}" style="width: 100%" class="img-fluid" alt="logo">
+                                    </a>
                                 </div>
                             </li>
                             @if(config('admin.templation.search.enable'))
