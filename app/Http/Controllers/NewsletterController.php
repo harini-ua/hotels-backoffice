@@ -3,16 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Enums\NewsletterUserType;
-use App\Exports\DiscountVoucherCodesExport;
 use App\Exports\NewsletterUsersExport;
-use App\Http\Requests\DistributorStoreRequest;
-use App\Http\Requests\NewsletterExportRequest;
-use App\Http\Requests\NewsletterStoreRequest;
 use App\Jobs\SendNewsletterEmail;
 use App\Models\Company;
-use App\Models\Distributor;
 use App\Models\Newsletter;
-use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

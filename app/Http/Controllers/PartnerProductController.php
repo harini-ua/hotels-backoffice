@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\DataTables\PartnerProductsDataTable;
 use App\Http\Requests\PartnerProductStoreRequest;
 use App\Http\Requests\PartnerProductUpdateRequest;
-use App\Models\Company;
 use App\Models\Currency;
 use App\Models\MealPlan;
 use App\Models\Partner;

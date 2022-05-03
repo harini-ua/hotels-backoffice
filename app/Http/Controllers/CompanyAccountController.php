@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\UserRole;
 use App\Http\Requests\CompanyAccountUpdateRequest;
-use App\Http\Requests\CompanyCustomerSupportUpdateRequest;
 use App\Models\Company;
-use App\Models\CompanySupport;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;

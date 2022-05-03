@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\Level;
 use App\Models\City;
 use App\Models\CityCommission;
 use App\Models\Company;
