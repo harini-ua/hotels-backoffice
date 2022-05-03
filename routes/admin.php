@@ -30,6 +30,7 @@ use App\Http\Controllers\DistributorUserController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PartnerProductController;
+use App\Http\Controllers\PopularHotelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ReportController;
@@ -189,6 +190,8 @@ Route::middleware('auth')->group(function () {
                 Route::put('/cities/update', [CityCommissionController::class, 'update'])->name('cities.update');
                 Route::put('/countries/update', [CountryCommissionController::class, 'update'])->name('countries.update');
             });
+
+            Route::resource('popular-hotels', PopularHotelController::class)->except(['show']);
 
             Route::prefix('company-default')->as('company-default.')->group(function () {
                 Route::get('/', [CompanyDefaultController::class, 'edit'])->name('edit');

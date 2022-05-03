@@ -176,6 +176,12 @@ class Menu extends Component
                     'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
                 [
+                    'name' => __('Popular Hotels'),
+                    'href' => route('settings.popular-hotels.index'),
+                    'icon' => 'feather icon-star',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
+                ],
+                [
                     'name' => __('Company Site Default'),
                     'href' => route('settings.company-default.edit'),
                     'icon' => 'feather icon-shopping-bag',

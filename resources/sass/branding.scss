@@ -68,3 +68,7 @@ input[type="checkbox"] {
     width: 20px;
     filter: invert(0.6) sepia(1) saturate(14) hue-rotate(0deg);
 }
+.br-theme-fontawesome-stars .br-widget a.br-selected:after,
+.br-theme-fontawesome-stars .br-widget a.br-active:after{
+    color: #fe8a00;
+}
