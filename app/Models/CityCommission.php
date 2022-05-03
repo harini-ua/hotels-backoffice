@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Model;
 
-class CityCommission extends Pivot
+class CityCommission extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'city_commission';
+    protected $table = 'city_commissions';
 
     /**
      * The attributes that are mass assignable.

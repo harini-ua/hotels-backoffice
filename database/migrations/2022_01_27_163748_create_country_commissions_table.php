@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCityCommissionTable extends Migration
+class CreateCountryCommissionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateCityCommissionTable extends Migration
      */
     public function up()
     {
-        Schema::create('city_commission', function (Blueprint $table) {
+        Schema::create('country_commissions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('city_id');
-            $table->mediumInteger('commission')->default(0);
+            $table->unsignedBigInteger('country_id');
+            $table->mediumInteger('commission');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('country_id')->references('id')->on('countries');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateCityCommissionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('city_commission');
+        Schema::dropIfExists('country_commissions');
     }
 }
