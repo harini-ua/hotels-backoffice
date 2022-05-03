@@ -27,6 +27,6 @@ class CountryCommissionSeeder extends Seeder
             fclose($open);
         }
 
-        DB::table('country_commission')->insertTs($country_commissions);
+        DB::table('country_commissions')->insertTs($country_commissions);
     }
 }
