@@ -15,7 +15,7 @@
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <a href="{{route('home')}}" class="logo"><img src="{{asset('assets/images/logo.svg')}}" class="img-fluid" alt="logo"></a>
+                                    <a href="{{route('home')}}" class="logo"><img src="{{asset('images/admin/logo_hotels_online.png')}}" class="img-fluid" alt="logo"></a>
                                 </div>
                                 <div class="form-group">
                                     <input
@@ -56,7 +56,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-success btn-lg btn-block font-18">{{__('Log in')}}</button>
+                                <button type="submit" class="btn btn-submit btn-lg btn-block font-18">{{__('Log in')}}</button>
                             </form>
                         </div>
                     </div>

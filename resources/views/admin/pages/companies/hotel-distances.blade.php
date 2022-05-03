@@ -56,22 +56,27 @@
                                                name="distances[{{ $i }}][name]"
                                                value="{{ $item->name }}"
                                         >
+
                                         <div class="input-group mb-3">
-                                            <label for="{{ $item->name }}" class="col-sm-2 col-form-label">{{ \App\Enums\HotelDistanceFilters::getDescription($item->name) }}</label>
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text">
+                                            <div class="col-sm-3" style="margin: 5px 0px;">
+                                                <div class="custom-control custom-checkbox custom-control-inline">
                                                     <input type="checkbox"
+                                                           class="custom-control-input"
+                                                           id="distances[{{ $i }}][status]"
                                                            name="distances[{{ $i }}][status]"
                                                            value="1"
                                                            @if($item->status) checked @endif
                                                     >
+                                                    <label for="distances[{{ $i }}][status]" class="custom-control-label"> {{ \App\Enums\HotelDistanceFilters::getDescription($item->name) }}</label>
                                                 </div>
                                             </div>
-                                            <input type="number" min="0"
-                                                   name="distances[{{ $i }}][value]"
-                                                   class="form-control @error($item->name) is-invalid @enderror"
-                                                   value="{{ old($item->name) ?? $item->value }}"
-                                            >
+                                            <div class="col-sm-3">
+                                                <input type="number" min="0"
+                                                       name="distances[{{ $i }}][value]"
+                                                       class="form-control @error($item->name) is-invalid @enderror"
+                                                       value="{{ old($item->name) ?? $item->value }}"
+                                                >
+                                            </div>
                                             @error($item->name)
                                             <small class="form-text text-danger" role="alert">{{ $message }}</small>
                                             @enderror

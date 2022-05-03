@@ -14,13 +14,13 @@
                         <div class="card-body">
                             <form action="#">
                                 <div class="form-head">
-                                    <a href="{{url('/')}}" class="logo"><img src="assets/images/logo.svg" class="img-fluid" alt="logo"></a>
+                                    <a href="{{url('/')}}" class="logo"><img src="{{asset('images/admin/logo_hotels_online.png')}}" class="img-fluid" alt="logo"></a>
                                 </div>
                                 <h4 class="text-primary my-4">{{__('Forgot Password')}}</h4>
                                 <div class="form-group">
                                     <input type="email" class="form-control" id="email" placeholder="{{__('Email address')}}" required>
                                 </div>
-                                <button type="submit" class="btn btn-success btn-lg btn-block font-18">{{__('Send Email')}}</button>
+                                <button type="submit" class="btn btn-submit btn-lg btn-block font-18">{{__('Send Email')}}</button>
                             </form>
                             <p class="mb-0 mt-3">{{__('Remember Password?')}} <a href="{{route('login')}}">{{__('Log in')}}</a></p>
                         </div>

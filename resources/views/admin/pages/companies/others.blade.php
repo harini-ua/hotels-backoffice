@@ -67,7 +67,7 @@
                                         <div class="col-sm-3">
                                             <button type="button"
                                                     id="default_chat"
-                                                    class="btn btn-submit-rgba"
+                                                    class="btn btn-submit"
                                                     data-default="{{ 'https://embed.tawk.to/5947c22350fd5105d0c81c75/default' }}"
                                             >{{ __('Insert Default Chat') }}</button>
                                         </div>
@@ -99,7 +99,7 @@
                                         <div class="col-sm-3">
                                             <button type="button"
                                                     id="default_adobe"
-                                                    class="btn btn-primary-rgba"
+                                                    class="btn btn-submit"
                                                     data-default="{{ 'https://assets.adobedtm.com/fdd3d8394b31/69dad4fc44e1/launch-a37b8e230322.min.js' }}"
                                             >{{ __('Insert Default Chat') }}</button>
                                         </div>
