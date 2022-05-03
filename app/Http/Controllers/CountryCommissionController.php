@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CountryCommissionUpdateRequest;
-use App\Models\Company;
+use App\Models\CityCommission;
 use App\Models\CountryCommission;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 
@@ -14,23 +15,25 @@ class CountryCommissionController extends Controller
      * Update the specified resource in storage.
      *
      * @param CountryCommissionUpdateRequest $request
-     * @param Company $company
      *
      * @return RedirectResponse
      * @throws \Exception
      */
-    public function update(CountryCommissionUpdateRequest $request, Company $company)
+    public function update(CountryCommissionUpdateRequest $request)
     {
         try {
             DB::beginTransaction();
 
             $commissions = [];
-            foreach ($request->get('countries-commissions') as $commission) {
-                $commissions[] = new CountryCommission($commission);
+
+            if ($request->get('countries-commissions')) {
+                foreach ($request->get('countries-commissions') as $commission) {
+                    $commissions[] = array_merge($commission, ['created_at' => Carbon::now()]);
+                }
             }
 
-            $company->countryCommissions()->delete();
-            $company->countryCommissions()->saveMany($commissions);
+            CountryCommission::query()->delete();
+            CountryCommission::insert($commissions);
 
             DB::commit();
 
@@ -40,6 +43,6 @@ class CountryCommissionController extends Controller
             DB::rollBack();
         }
 
-        return redirect()->route('commissions.edit', $company);
+        return redirect()->route('settings.commissions.edit');
     }
 }

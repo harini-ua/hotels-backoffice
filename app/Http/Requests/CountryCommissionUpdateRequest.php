@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CountryCommissionUpdateRequest extends FormRequest
 {
@@ -24,8 +25,12 @@ class CountryCommissionUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'countries-commissions.*.company_id' => 'required|exists:companies,id',
-            'countries-commissions.*.percentage' => 'required',
+            'countries-commissions.*.country_id' => [
+                'required',
+//                Rule::unique('country_commission' , 'company_id'),
+                Rule::exists('countries', 'id')
+            ],
+            'countries-commissions.*.commission' => 'required',
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CityCommissionUpdateRequest extends FormRequest
 {
@@ -24,8 +25,12 @@ class CityCommissionUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'cities-commissions.*.company_id' => 'required|exists:cities,id',
-            'cities-commissions.*.percentage' => 'required',
+            'cities-commissions.*.city_id' => [
+                'required',
+//                Rule::unique('city_commission' , 'city_id'),
+                Rule::exists('cities', 'id')
+            ],
+            'cities-commissions.*.commission' => 'required',
         ];
     }
 }
