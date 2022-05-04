@@ -1,4 +1,4 @@
-@php($model = $popularHotel ?? null)
+@php($model = $recommendedHotel ?? null)
 <form
     id="recommended-hotels"
     method="POST"
