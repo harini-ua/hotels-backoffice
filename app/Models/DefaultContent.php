@@ -6,7 +6,7 @@ use App\Traits\ImageUpload;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CompanyDefault extends Model
+class DefaultContent extends Model
 {
     use ImageUpload, HasFactory;
 
@@ -29,7 +29,7 @@ class CompanyDefault extends Model
      *
      * @var string
      */
-    protected $table = 'company_default';
+    protected $table = 'default_content';
 
     /**
      * The attributes that are mass assignable.

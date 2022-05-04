@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CompanyDefaultUpdateRequest;
-use App\Models\CompanyDefault;
+use App\Http\Requests\DefaultContentUpdateRequest;
+use App\Models\DefaultContent;
 use App\Models\Partner;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 
-class CompanyDefaultController extends Controller
+class DefaultContentController extends Controller
 {
     /**
      * Show the form for editing the specified resource.
@@ -24,29 +24,29 @@ class CompanyDefaultController extends Controller
             ['name' => __('Company Site Default')]
         ];
 
-        $companyDefault = CompanyDefault::first();
+        $defaultContent = DefaultContent::first();
 
-        return view('admin.pages.settings.company-default.update', compact(
-            'breadcrumbs', 'companyDefault'
+        return view('admin.pages.default-content.update', compact(
+            'breadcrumbs', 'defaultContent'
         ));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param CompanyDefaultUpdateRequest $request
+     * @param DefaultContentUpdateRequest $request
      *
      * @return RedirectResponse
      * @throws \Exception
      */
-    public function update(CompanyDefaultUpdateRequest $request)
+    public function update(DefaultContentUpdateRequest $request)
     {
         try {
             DB::beginTransaction();
 
-            /** @var CompanyDefault $companyDefault */
-            $companyDefault = CompanyDefault::first();
-            $companyDefault->fill($request->except(CompanyDefault::IMAGE_FIELDS));
+            /** @var DefaultContent $companyDefault */
+            $companyDefault = DefaultContent::first();
+            $companyDefault->fill($request->except(DefaultContent::IMAGE_FIELDS));
             $companyDefault->save();
 
             $companyDefault->updateDefaultImage($request->logo, 'logo', $companyDefault->logo);
@@ -59,12 +59,12 @@ class CompanyDefaultController extends Controller
 
             DB::commit();
 
-            alert()->success(__('Success'), __('Default data updated has been successful.'));
+            alert()->success(__('Success'), __('Default content updated has been successful.'));
         } catch (\PDOException $e) {
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
         }
 
-        return redirect()->route('settings.company-default.edit');
+        return redirect()->route('default-content.edit');
     }
 }

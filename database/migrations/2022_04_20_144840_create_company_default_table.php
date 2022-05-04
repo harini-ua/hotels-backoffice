@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompanyDefaultTable extends Migration
+class CreateDefaultContentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCompanyDefaultTable extends Migration
      */
     public function up()
     {
-        Schema::create('company_default', function (Blueprint $table) {
+        Schema::create('default_content', function (Blueprint $table) {
             $table->id();
             $table->string('logo')->nullable();
             $table->text('testimonial_heading_1')->nullable();
@@ -49,6 +49,6 @@ class CreateCompanyDefaultTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_default');
+        Schema::dropIfExists('default_content');
     }
 }

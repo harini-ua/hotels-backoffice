@@ -26,6 +26,7 @@ use App\Http\Controllers\CompanyVatController;
 use App\Http\Controllers\CountryCommissionController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DashboardsController;
+use App\Http\Controllers\DefaultContentController;
 use App\Http\Controllers\DiscountVoucherController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\DistributorUserController;
@@ -209,9 +210,9 @@ Route::middleware('auth')->group(function () {
             Route::resource('special-offer-hotels', SpecialOfferHotelController::class)->except(['show']);
             Route::resource('recommended-hotels', RecommendedHotelController::class)->except(['show']);
 
-            Route::prefix('company-default')->as('company-default.')->group(function () {
-                Route::get('/', [CompanyDefaultController::class, 'edit'])->name('edit');
-                Route::put('/', [CompanyDefaultController::class, 'update'])->name('update');
+            Route::prefix('default-content')->as('default-content.')->group(function () {
+                Route::get('/', [DefaultContentController::class, 'edit'])->name('edit');
+                Route::put('/', [DefaultContentController::class, 'update'])->name('update');
             });
         });
     });

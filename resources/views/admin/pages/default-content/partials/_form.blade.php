@@ -1,5 +1,5 @@
 @php($model = $companyDefault ?? null)
-<form id="company-default" method="POST" action="{{ route('settings.company-default.update') }}" enctype="multipart/form-data">
+<form id="default-content" method="POST" action="{{ route('settings.default-content.update') }}" enctype="multipart/form-data">
     @csrf
     @if(isset($model)) @method('PUT') @endif
     <div class="form-group row">

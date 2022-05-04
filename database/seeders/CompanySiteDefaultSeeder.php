@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\CompanyDefault;
+use App\Models\DefaultContent;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
 
@@ -15,7 +15,7 @@ class CompanySiteDefaultSeeder extends Seeder
      */
     public function run()
     {
-        CompanyDefault::insert([
+        DefaultContent::insert([
             'logo' => 'logo.jpg',
             'testimonial_heading_1' => '<p><em>Booked a room in a 5 star hotel in the city center of Budapest. Really great deal, breakfast included. Compared it with the deals on the well known booking sites and the deal couldn&rsquo;t be matched by far. This booking website really does give added value!</em></p>',
             'testimonial_heading_2' => '<p><strong>Albert van den Broek, The Hague, Netherlands</strong></p>',
