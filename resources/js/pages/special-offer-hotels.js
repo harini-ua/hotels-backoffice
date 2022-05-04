@@ -1,6 +1,10 @@
 
 jQuery(document).ready(function ($) {
 
+    $('.special-offer-hotels-index-wrapper').each(function () {
+        var $this = $(this);
+    });
+
     $('.special-offer-hotels-create-wrapper, .special-offer-hotels-edit-wrapper').each(function () {
         var $this = $(this);
 
@@ -26,18 +30,15 @@ jQuery(document).ready(function ($) {
                     error: data => console.error('Error:', data)
                 });
             } else {
-                var $this = $(this);
+                var firstBinded = $this.data('binded-select');
+                $('#'+firstBinded).html('');
+                $('#'+firstBinded).prop("disabled", true);
+                $('#'+firstBinded).append('<option value="">No Avariable</option>')
 
-                var bindedSelectId = $this.data('binded-select');
-                $('#'+bindedSelectId).html('');
-                $('#'+bindedSelectId).prop("disabled", true);
-                $('#'+bindedSelectId).append('<option value="">No Avariable</option>')
-
-                var $this = $('#'+bindedSelectId)
-                var bindedSelectId = $this.data('binded-select');
-                $('#'+bindedSelectId).html('');
-                $('#'+bindedSelectId).prop("disabled", true);
-                $('#'+bindedSelectId).append('<option value="">No Avariable</option>')
+                var secondBinded = $('#'+firstBinded).data('binded-select');
+                $('#'+secondBinded).html('');
+                $('#'+secondBinded).prop("disabled", true);
+                $('#'+secondBinded).append('<option value="">No Avariable</option>')
             }
 
             const reloadOptions = (selector, options) => {
