@@ -25,7 +25,7 @@ final class SortNumber extends Enum
     const FIVE = 5;
     const SIX = 6;
     const SEVEN = 7;
-    const EIGHT = 9;
+    const EIGHT = 8;
     const NINE = 9;
     const TEN = 10;
 }

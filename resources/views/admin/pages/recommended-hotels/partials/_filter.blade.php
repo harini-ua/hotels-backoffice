@@ -1,11 +1,13 @@
 <div class="form-group filter-item col-md-3">
     <label for="country">{{ __('By Country') }}</label>
     <select
-        id="country"
+        id="country_id"
         name="country"
-        class="form-control filter-input select-filter select2 select2-single"
+        class="form-control filter-input select-filter select2-single linked"
         data-table="recommended-hotels-list-datatable"
         data-url="{{ route('settings.recommended-hotels.index') }}"
+        data-action="/countries/[id]/cities"
+        data-binded-select="city_id"
         @if(!count($countries)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
@@ -19,9 +21,10 @@
     <select
         id="city"
         name="city"
-        class="form-control filter-input select-filter select2 select2-single"
+        class="form-control filter-input select-filter select2-single"
         data-table="recommended-hotels-list-datatable"
         data-url="{{ route('settings.recommended-hotels.index') }}"
+        data-linked="country_id"
         @if(!count($cities)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
