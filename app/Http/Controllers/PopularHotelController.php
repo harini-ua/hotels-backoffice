@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\PopularHotelsDataTable;
+use App\Enums\HotelStatus;
 use App\Enums\Rating;
 use App\Http\Requests\PopularHotelStoreRequest;
 use App\Http\Requests\PopularHotelUpdateRequest;
@@ -126,12 +127,21 @@ class PopularHotelController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $cities = [];
-        $hotels = [];
+        $cities = City::all()
+            ->where('country_id', $popularHotel->country_id)
+            ->where('status', 1)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        $hotels = Hotel::all()
+            ->where('city_id', $popularHotel->city_id)
+            ->where('status', HotelStatus::Old)
+            ->sortBy('name')
+            ->pluck('name', 'id');
 
         $ratings = Rating::getValues();
 
-        return view('admin.pages.settings.popular-hotels.update', compact(
+        return view('admin.pages.popular-hotels.update', compact(
             'breadcrumbs', 'popularHotel', 'countries', 'cities', 'hotels', 'ratings'
         ));
     }

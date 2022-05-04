@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\SpecialOfferHotelsDataTable;
+use App\Enums\HotelStatus;
 use App\Enums\Rating;
 use App\Http\Requests\SpecialOfferHotelStoreRequest;
 use App\Http\Requests\SpecialOfferHotelUpdateRequest;
@@ -154,12 +155,21 @@ class SpecialOfferHotelController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $cities = [];
-        $hotels = [];
+        $cities = City::all()
+            ->where('country_id', $specialOfferHotel->country_id)
+            ->where('status', 1)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        $hotels = Hotel::all()
+            ->where('city_id', $specialOfferHotel->city_id)
+            ->where('status', HotelStatus::Old)
+            ->sortBy('name')
+            ->pluck('name', 'id');
 
         $ratings = Rating::getValues();
 
-        return view('admin.pages.settings.special-offer-hotels.update', compact(
+        return view('admin.pages.special-offer-hotels.update', compact(
             'breadcrumbs', 'specialOfferHotel', 'countries', 'cities', 'hotels', 'ratings'
         ));
     }

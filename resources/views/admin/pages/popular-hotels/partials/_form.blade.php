@@ -2,7 +2,7 @@
 <form
     id="popular-hotels"
     method="POST"
-    action="{{ isset($model) ? route('settings.popular-hotels.update', $model->id) : route('settings.popular-hotels.store') }}"
+    action="{{ isset($model) ? route('settings.popular-hotels.update', $model) : route('settings.popular-hotels.store') }}"
 >
     @csrf
     @if(isset($model)) @method('PUT') @endif
@@ -21,7 +21,10 @@
                 @else
                     <option value="">{{ '- '.__('Choice Country').' -' }}</option>
                     @foreach($countries as $id => $country)
-                        <option value="{{ $id }}" @if(old('country_id') == $id) selected @endif>{{ $country }}</option>
+                        <option value="{{ $id }}"
+                                @if(old('country_id') == $id) selected @endif
+                                @if($model && $model->country_id == $id) selected @endif
+                        >{{ $country }}</option>
                     @endforeach
                 @endif
             </select>
@@ -46,7 +49,10 @@
                 @else
                     <option value="">{{ '- '.__('Choice City').' -' }}</option>
                     @foreach($cities as $id => $city)
-                        <option value="{{ $id }}" @if(old('city_id') == $id) selected @endif>{{ $city }}</option>
+                        <option value="{{ $id }}"
+                                @if(old('city_id') == $id) selected @endif
+                                @if($model && $model->city_id == $id) selected @endif
+                        >{{ $city }}</option>
                     @endforeach
                 @endif
             </select>
@@ -69,7 +75,10 @@
                 @else
                     <option value="">{{ '- '.__('Choice Hotel').' -' }}</option>
                     @foreach($hotels as $id => $hotel)
-                        <option value="{{ $id }}" @if(old('hotel_id') == $id) selected @endif>{{ $hotel }}</option>
+                        <option value="{{ $id }}"
+                                @if(old('hotel_id') == $id) selected @endif
+                                @if($model && $model->hotel_id == $id) selected @endif
+                        >{{ $hotel }}</option>
                     @endforeach
                 @endif
             </select>
@@ -86,6 +95,7 @@
                     @foreach($ratings as $rating)
                         <option value="{{ $rating }}"
                                 @if(old('rating') == $rating) selected @endif
+                                @if($model && $model->rating == $rating) selected @endif
                         >{{ $rating }}</option>
                     @endforeach
                 </select>

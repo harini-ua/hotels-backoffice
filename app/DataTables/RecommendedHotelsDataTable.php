@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\RecommendHotel;
+use App\Models\RecommendedHotel;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -19,27 +19,27 @@ class RecommendedHotelsDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('country', function (RecommendHotel $model) {
+        $dataTable->addColumn('country', function (RecommendedHotel $model) {
             return $model->country->name;
         });
 
-        $dataTable->addColumn('city', function (RecommendHotel $model) {
+        $dataTable->addColumn('city', function (RecommendedHotel $model) {
             return $model->city->name;
         });
 
-        $dataTable->addColumn('hotel', function (RecommendHotel $model) {
+        $dataTable->addColumn('hotel', function (RecommendedHotel $model) {
             return $model->hotel->name;
         });
 
-        $dataTable->addColumn('sort', function (RecommendHotel $model) {
+        $dataTable->addColumn('sort', function (RecommendedHotel $model) {
             return $model->sort;
         });
 
-        $dataTable->addColumn('action', function (RecommendHotel $model) {
+        $dataTable->addColumn('action', function (RecommendedHotel $model) {
             return view("admin.datatables.actions", [
                 'actions' => ['edit', 'delete'],
                 'model' => $model,
-                'route' => 'settings.recommend-hotels'
+                'route' => 'settings.recommended-hotels'
             ]);
         });
 
@@ -77,10 +77,10 @@ class RecommendedHotelsDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\RecommendHotel $model
+     * @param \App\Models\RecommendedHotel $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(RecommendHotel $model)
+    public function query(RecommendedHotel $model)
     {
         return $model->newQuery()
             ->with(['country', 'city', 'hotel'])
@@ -121,7 +121,9 @@ class RecommendedHotelsDataTable extends DataTable
             Column::make('country'),
             Column::make('city'),
             Column::make('hotel'),
-            Column::make('sort'),
+            Column::make('sort')
+                ->width(100)
+                ->addClass('text-center'),
             Column::computed('action')
                 ->orderable(false)
                 ->exportable(false)

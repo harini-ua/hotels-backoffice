@@ -33,13 +33,12 @@ class SpecialOfferHotelsDataTable extends DataTable
             return $model->hotel->name;
         });
 
-        $dataTable->addColumn('rating', function (PopularHotel $model) {
+        $dataTable->addColumn('rating', function (SpecialOfferHotel $model) {
             return view('admin.pages.special-offer-hotels.partials._rating', [
                 'ratings' => Rating::getValues(),
                 'value' => $model->rating
             ]);
         });
-
 
         $dataTable->addColumn('action', function (SpecialOfferHotel $model) {
             return view("admin.datatables.actions", [
