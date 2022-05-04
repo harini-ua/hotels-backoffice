@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Enums\Rating;
 use App\Models\PopularHotel;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -32,7 +33,10 @@ class PopularHotelsDataTable extends DataTable
         });
 
         $dataTable->addColumn('rating', function (PopularHotel $model) {
-            return $model->rating;
+            return view('admin.pages.popular-hotels.partials._rating', [
+                'ratings' => Rating::getValues(),
+                'value' => $model->rating
+            ]);
         });
 
 
@@ -40,7 +44,7 @@ class PopularHotelsDataTable extends DataTable
             return view("admin.datatables.actions", [
                 'actions' => ['edit', 'delete'],
                 'model' => $model,
-                'route' => 'popular-hotels'
+                'route' => 'settings.popular-hotels'
             ]);
         });
 
@@ -52,7 +56,7 @@ class PopularHotelsDataTable extends DataTable
 
         $dataTable->filter(function ($query) {
             if ($this->request->has('country')) {
-                $query->where('company_id', $this->request->get('country'));
+                $query->where('country_id', $this->request->get('country'));
             }
             if ($this->request->has('city')) {
                 $query->where('city_id', $this->request->get('city'));
@@ -122,7 +126,9 @@ class PopularHotelsDataTable extends DataTable
             Column::make('country'),
             Column::make('city'),
             Column::make('hotel'),
-            Column::make('rating'),
+            Column::make('rating')
+                ->width(100)
+                ->addClass('text-center'),
             Column::computed('action')
                 ->orderable(false)
                 ->exportable(false)

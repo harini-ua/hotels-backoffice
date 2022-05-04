@@ -2,6 +2,8 @@
 
 namespace App\DataTables;
 
+use App\Enums\Rating;
+use App\Models\PopularHotel;
 use App\Models\SpecialOfferHotel;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -31,8 +33,11 @@ class SpecialOfferHotelsDataTable extends DataTable
             return $model->hotel->name;
         });
 
-        $dataTable->addColumn('rating', function (SpecialOfferHotel $model) {
-            return $model->rating;
+        $dataTable->addColumn('rating', function (PopularHotel $model) {
+            return view('admin.pages.special-offer-hotels.partials._rating', [
+                'ratings' => Rating::getValues(),
+                'value' => $model->rating
+            ]);
         });
 
 
@@ -40,7 +45,7 @@ class SpecialOfferHotelsDataTable extends DataTable
             return view("admin.datatables.actions", [
                 'actions' => ['edit', 'delete'],
                 'model' => $model,
-                'route' => 'special-offer-hotels'
+                'route' => 'settings.special-offer-hotels'
             ]);
         });
 
@@ -52,7 +57,7 @@ class SpecialOfferHotelsDataTable extends DataTable
 
         $dataTable->filter(function ($query) {
             if ($this->request->has('country')) {
-                $query->where('company_id', $this->request->get('country'));
+                $query->where('country_id', $this->request->get('country'));
             }
             if ($this->request->has('city')) {
                 $query->where('city_id', $this->request->get('city'));
@@ -122,7 +127,9 @@ class SpecialOfferHotelsDataTable extends DataTable
             Column::make('country'),
             Column::make('city'),
             Column::make('hotel'),
-            Column::make('rating'),
+            Column::make('rating')
+                ->width(100)
+                ->addClass('text-center'),
             Column::computed('action')
                 ->orderable(false)
                 ->exportable(false)

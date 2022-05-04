@@ -41,20 +41,12 @@ class RecommendedHotelController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $cities = City::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $hotels = Hotel::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
+        $cities = [];
 
         $sortNumbers = SortNumber::getValues();
 
         return $dataTable->render('admin.pages.recommended-hotels.index', compact(
-            'breadcrumbs', 'actions', 'countries', 'cities', 'hotels', 'sortNumbers'
+            'breadcrumbs', 'actions', 'countries', 'cities', 'sortNumbers'
         ));
     }
 
@@ -77,15 +69,8 @@ class RecommendedHotelController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $cities = City::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $hotels = Hotel::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
+        $cities = [];
+        $hotels = [];
 
         $sortNumbers = SortNumber::getValues();
 
@@ -169,15 +154,13 @@ class RecommendedHotelController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $cities = City::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
+        $cities = [];
+        $hotels = [];
 
         $sortNumbers = SortNumber::getValues();
 
         return view('admin.pages.settings.recommended-hotels.update', compact(
-            'breadcrumbs', 'recommendHotel', 'countries', 'cities', 'sortNumbers'
+            'breadcrumbs', 'recommendHotel', 'countries', 'cities', 'hotels', 'sortNumbers'
         ));
     }
 

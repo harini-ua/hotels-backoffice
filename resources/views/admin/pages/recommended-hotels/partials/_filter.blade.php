@@ -41,7 +41,7 @@
     >
         <option selected value="">{{ __('All') }}</option>
         @foreach($sortNumbers as $id => $number)
-            <option value="{{ $id }}">{{ $number }}</option>
+            <option value="{{ $number }}">{{ $number }}</option>
         @endforeach
     </select>
 </div>

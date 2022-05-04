@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\CityCommissionController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\CommissionController;
 use App\Http\Controllers\CompanyAccessCodesController;
 use App\Http\Controllers\CompanyAccountController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\CompanyTemplateController;
 use App\Http\Controllers\CompanyThemeController;
 use App\Http\Controllers\CompanyVatController;
 use App\Http\Controllers\CountryCommissionController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\DiscountVoucherController;
 use App\Http\Controllers\DistributorController;
@@ -181,6 +183,16 @@ Route::middleware('auth')->group(function () {
         /** ----- ------ ----- REPORTS */
         Route::prefix('reports')->as('reports.')->group(function () {
             Route::get('/', [ReportController::class, 'index'])->name('index');
+        });
+
+        /** ----- ------ ----- COUNTRIES */
+        Route::prefix('countries')->as('countries.')->group(function () {
+            Route::get('/{country}/cities', [CountryController::class, 'cities'])->name('cities');
+        });
+
+        /** ----- ------ ----- CITIES */
+        Route::prefix('cities')->as('cities.')->group(function () {
+            Route::get('/{city}/hotels', [CityController::class, 'hotels'])->name('hotels');
         });
 
         /** ----- ------ ----- SETTINGS */

@@ -39,7 +39,7 @@ class RecommendedHotelsDataTable extends DataTable
             return view("admin.datatables.actions", [
                 'actions' => ['edit', 'delete'],
                 'model' => $model,
-                'route' => 'recommend-hotels'
+                'route' => 'settings.recommend-hotels'
             ]);
         });
 
@@ -51,7 +51,7 @@ class RecommendedHotelsDataTable extends DataTable
 
         $dataTable->filter(function ($query) {
             if ($this->request->has('country')) {
-                $query->where('company_id', $this->request->get('country'));
+                $query->where('country_id', $this->request->get('country'));
             }
             if ($this->request->has('city')) {
                 $query->where('city_id', $this->request->get('city'));

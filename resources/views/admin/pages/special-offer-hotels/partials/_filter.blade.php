@@ -41,7 +41,7 @@
     >
         <option selected value="">{{ __('All') }}</option>
         @foreach($ratings as $id => $rating)
-            <option value="{{ $id }}">{{ $rating.' '.\Illuminate\Support\Str::plural('Star', $rating) }}</option>
+            <option value="{{ $rating }}">{{ $rating.' '.\Illuminate\Support\Str::plural('Star', $rating) }}</option>
         @endforeach
     </select>
 </div>

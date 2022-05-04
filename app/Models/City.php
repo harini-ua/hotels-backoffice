@@ -45,6 +45,15 @@ class City extends Model
     ];
 
     /**
+     * Get the hotels for the city.
+     */
+    public function hotels()
+    {
+        return $this->hasMany(Hotel::class);
+    }
+
+
+    /**
      * Get the country that owns the city.
      */
     public function country()

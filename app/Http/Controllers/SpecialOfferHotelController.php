@@ -41,20 +41,12 @@ class SpecialOfferHotelController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $cities = City::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $hotels = Hotel::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
+        $cities = [];
 
         $ratings = Rating::getValues();
 
         return $dataTable->render('admin.pages.special-offer-hotels.index', compact(
-            'breadcrumbs', 'actions', 'countries', 'cities', 'hotels', 'ratings'
+            'breadcrumbs', 'actions', 'countries', 'cities', 'ratings'
         ));
     }
 
@@ -77,15 +69,8 @@ class SpecialOfferHotelController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $cities = City::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $hotels = Hotel::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
+        $cities = [];
+        $hotels = [];
 
         $ratings = Rating::getValues();
 
@@ -169,15 +154,13 @@ class SpecialOfferHotelController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $cities = City::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
+        $cities = [];
+        $hotels = [];
 
         $ratings = Rating::getValues();
 
         return view('admin.pages.settings.special-offer-hotels.update', compact(
-            'breadcrumbs', 'specialOfferHotel', 'countries', 'cities', 'ratings'
+            'breadcrumbs', 'specialOfferHotel', 'countries', 'cities', 'hotels', 'ratings'
         ));
     }
 

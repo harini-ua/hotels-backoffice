@@ -41,20 +41,12 @@ class PopularHotelController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $cities = City::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $hotels = Hotel::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
+        $cities = [];
 
         $ratings = Rating::getValues();
 
         return $dataTable->render('admin.pages.popular-hotels.index', compact(
-            'breadcrumbs', 'actions', 'countries', 'cities', 'hotels', 'ratings'
+            'breadcrumbs', 'actions', 'countries', 'cities', 'ratings'
         ));
     }
 
@@ -77,15 +69,8 @@ class PopularHotelController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $cities = City::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $hotels = Hotel::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
+        $cities = [];
+        $hotels = [];
 
         $ratings = Rating::getValues();
 
@@ -122,6 +107,36 @@ class PopularHotelController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param PopularHotel $popularHotel
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function edit(PopularHotel $popularHotel)
+    {
+        $breadcrumbs = [
+            ['title' => __('Edit Popular Hotel')],
+            ['link' => route('home'), 'name' => __('Home')],
+            ['link' => route('settings.popular-hotels.index'), 'name' => __('All Popular Hotels')],
+            ['name' => __('Edit Popular Hotel')]
+        ];
+
+        $countries = Country::all()
+            ->where('status', 1)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        $cities = [];
+        $hotels = [];
+
+        $ratings = Rating::getValues();
+
+        return view('admin.pages.settings.popular-hotels.update', compact(
+            'breadcrumbs', 'popularHotel', 'countries', 'cities', 'hotels', 'ratings'
+        ));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param PopularHotelUpdateRequest $request
@@ -147,38 +162,6 @@ class PopularHotelController extends Controller
         }
 
         return redirect()->route('settings.popular-hotels.index');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param PopularHotel $popularHotel
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function edit(PopularHotel $popularHotel)
-    {
-        $breadcrumbs = [
-            ['title' => __('Edit Popular Hotel')],
-            ['link' => route('home'), 'name' => __('Home')],
-            ['link' => route('settings.popular-hotels.index'), 'name' => __('All Popular Hotels')],
-            ['name' => __('Edit Popular Hotel')]
-        ];
-
-        $countries = Country::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $cities = City::all()
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $ratings = Rating::getValues();
-
-        return view('admin.pages.settings.popular-hotels.update', compact(
-            'breadcrumbs', 'popularHotel', 'countries', 'cities', 'ratings'
-        ));
     }
 
     /**
