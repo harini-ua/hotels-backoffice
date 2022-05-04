@@ -35,6 +35,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SpecialOfferHotelController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\BookingUserController;
 use Illuminate\Support\Facades\Route;
@@ -192,6 +193,7 @@ Route::middleware('auth')->group(function () {
             });
 
             Route::resource('popular-hotels', PopularHotelController::class)->except(['show']);
+            Route::resource('special-offer-hotels', SpecialOfferHotelController::class)->except(['show']);
 
             Route::prefix('company-default')->as('company-default.')->group(function () {
                 Route::get('/', [CompanyDefaultController::class, 'edit'])->name('edit');

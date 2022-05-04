@@ -1,8 +1,8 @@
-@php($model = $popularHotel ?? null)
+@php($model = $specialOfferHotel ?? null)
 <form
-    id="popular-hotels"
+    id="special-offer-hotels"
     method="POST"
-    action="{{ isset($model) ? route('settings.popular-hotels.update', $model->id) : route('settings.popular-hotels.store') }}"
+    action="{{ isset($model) ? route('settings.special-offer-hotels.update', $model->id) : route('settings.special-offer-hotels.store') }}"
 >
     @csrf
     @if(isset($model)) @method('PUT') @endif
