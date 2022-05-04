@@ -38,7 +38,6 @@ class CityCommissionController extends Controller
 
             alert()->success(__('Success'), __('City commission updated has been successful.'));
         } catch (\PDOException $e) {
-            dd($e);
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
         }

@@ -42,7 +42,7 @@ class CommissionController extends Controller
         $countriesCommissions = $countriesCommissions->count() > 0 ? $countriesCommissions : [];
         $countriesCommissionsCount = $countriesCommissions ? $countriesCommissions->count() : 1;
 
-        return view('admin.pages.settings.commissions', compact(
+        return view('admin.pages.commissions.edit', compact(
             'breadcrumbs', 'company', 'cities', 'countries',
             'citiesCommissions', 'citiesCommissionsCount', 'countriesCommissions', 'countriesCommissionsCount'
         ));
