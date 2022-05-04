@@ -2,12 +2,12 @@
 
 namespace App\DataTables;
 
-use App\Models\PopularHotel;
+use App\Models\RecommendHotel;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
-class PopularHotelsDataTable extends DataTable
+class RecommendedHotelsDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -19,35 +19,34 @@ class PopularHotelsDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('country', function (PopularHotel $model) {
+        $dataTable->addColumn('country', function (RecommendHotel $model) {
             return $model->country->name;
         });
 
-        $dataTable->addColumn('city', function (PopularHotel $model) {
+        $dataTable->addColumn('city', function (RecommendHotel $model) {
             return $model->city->name;
         });
 
-        $dataTable->addColumn('hotel', function (PopularHotel $model) {
+        $dataTable->addColumn('hotel', function (RecommendHotel $model) {
             return $model->hotel->name;
         });
 
-        $dataTable->addColumn('rating', function (PopularHotel $model) {
-            return $model->rating;
+        $dataTable->addColumn('sort', function (RecommendHotel $model) {
+            return $model->sort;
         });
 
-
-        $dataTable->addColumn('action', function (PopularHotel $model) {
+        $dataTable->addColumn('action', function (RecommendHotel $model) {
             return view("admin.datatables.actions", [
                 'actions' => ['edit', 'delete'],
                 'model' => $model,
-                'route' => 'popular-hotels'
+                'route' => 'recommend-hotels'
             ]);
         });
 
         $this->setOrderColumns($dataTable);
 
         $dataTable->rawColumns([
-            'rating'
+            'sort'
         ]);
 
         $dataTable->filter(function ($query) {
@@ -57,8 +56,8 @@ class PopularHotelsDataTable extends DataTable
             if ($this->request->has('city')) {
                 $query->where('city_id', $this->request->get('city'));
             }
-            if ($this->request->has('rating')) {
-                $query->where('rating', $this->request->get('rating'));
+            if ($this->request->has('sort')) {
+                $query->where('sort', $this->request->get('sort'));
             }
         }, true);
 
@@ -78,10 +77,10 @@ class PopularHotelsDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\PopularHotel $model
+     * @param \App\Models\RecommendHotel $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(PopularHotel $model)
+    public function query(RecommendHotel $model)
     {
         return $model->newQuery()
             ->with(['country', 'city', 'hotel'])
@@ -96,7 +95,7 @@ class PopularHotelsDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('popular-hotels-list-datatable')
+            ->setTableId('recommended-hotels-list-datatable')
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
@@ -122,7 +121,7 @@ class PopularHotelsDataTable extends DataTable
             Column::make('country'),
             Column::make('city'),
             Column::make('hotel'),
-            Column::make('rating'),
+            Column::make('sort'),
             Column::computed('action')
                 ->orderable(false)
                 ->exportable(false)
@@ -140,6 +139,6 @@ class PopularHotelsDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'PopularHotels_' . date('YmdHis');
+        return 'RecommendedHotels_' . date('YmdHis');
     }
 }

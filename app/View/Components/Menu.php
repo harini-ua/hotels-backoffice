@@ -184,7 +184,13 @@ class Menu extends Component
                 [
                     'name' => __('Special Offer Hotels'),
                     'href' => route('settings.special-offer-hotels.index'),
-                    'icon' => 'feather icon-star',
+                    'icon' => 'feather icon-check-square',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
+                ],
+                [
+                    'name' => __('Recommended Hotels'),
+                    'href' => route('settings.recommended-hotels.index'),
+                    'icon' => 'feather icon-award',
                     'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
                 [

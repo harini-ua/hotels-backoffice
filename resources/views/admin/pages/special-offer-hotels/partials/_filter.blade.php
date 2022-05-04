@@ -29,7 +29,7 @@
     </select>
 </div>
 <div class="form-group filter-item col-md-2">
-    <label for="commission_type">{{ __('By Rating') }}</label>
+    <label for="rating">{{ __('By Rating') }}</label>
     <select
         id="rating"
         name="rating"
@@ -39,7 +39,7 @@
     >
         <option selected value="">{{ __('All') }}</option>
         @foreach($ratings as $id => $rating)
-            <option value="{{ $id }}">{{ $rating }}</option>
+            <option value="{{ $id }}">{{ $rating.' '.\Illuminate\Support\Str::plural('Star', $rating) }}</option>
         @endforeach
     </select>
 </div>

@@ -51,7 +51,7 @@ class SpecialOfferHotelController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $ratings = Rating::asSelectArray();
+        $ratings = Rating::getValues();
 
         return $dataTable->render('admin.pages.special-offer-hotels.index', compact(
             'breadcrumbs', 'actions', 'countries', 'cities', 'hotels', 'ratings'
@@ -174,7 +174,7 @@ class SpecialOfferHotelController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $ratings = Rating::asSelectArray();
+        $ratings = Rating::getValues();
 
         return view('admin.pages.settings.special-offer-hotels.update', compact(
             'breadcrumbs', 'specialOfferHotel', 'countries', 'cities', 'ratings'

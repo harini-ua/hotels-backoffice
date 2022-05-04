@@ -66,7 +66,7 @@
                     @endforeach
                 </select>
             </div>
-            @error('hotel_id')
+            @error('rating')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
         </div>

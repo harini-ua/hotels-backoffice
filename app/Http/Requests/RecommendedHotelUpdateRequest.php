@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Enums\Rating;
+use App\Enums\SortNumber;
 use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PopularHotelUpdateRequest extends FormRequest
+class RecommendedHotelUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,7 @@ class PopularHotelUpdateRequest extends FormRequest
         return [
             'country_id' => 'required|exists:countries,id',
             'city_id' => 'required|exists:cities,id',
-            'sort' => ['required', new EnumValue(Rating::class, false)],
+            'sort' => ['required', new EnumValue(SortNumber::class, false)],
             'hotel_id' => 'required|exists:hotels,id',
         ];
     }

@@ -4,8 +4,8 @@
         id="country"
         name="country"
         class="form-control filter-input select-filter select2 select2-single"
-        data-table="popular-hotels-list-datatable"
-        data-url="{{ route('settings.popular-hotels.index') }}"
+        data-table="recommended-hotels-list-datatable"
+        data-url="{{ route('settings.recommended-hotels.index') }}"
     >
         <option selected value="">{{ __('All') }}</option>
         @foreach($countries as $id => $country)
@@ -19,8 +19,8 @@
         id="city"
         name="city"
         class="form-control filter-input select-filter select2 select2-single"
-        data-table="popular-hotels-list-datatable"
-        data-url="{{ route('settings.popular-hotels.index') }}"
+        data-table="recommended-hotels-list-datatable"
+        data-url="{{ route('settings.recommended-hotels.index') }}"
     >
         <option selected value="">{{ __('All') }}</option>
         @foreach($cities as $id => $city)
@@ -29,17 +29,17 @@
     </select>
 </div>
 <div class="form-group filter-item col-md-2">
-    <label for="rating">{{ __('By Rating') }}</label>
+    <label for="sort">{{ __('By Sort Number') }}</label>
     <select
-        id="rating"
-        name="rating"
+        id="sort"
+        name="sort"
         class="form-control filter-input select-filter select2 custom-select"
-        data-table="popular-hotels-list-datatable"
-        data-url="{{ route('settings.popular-hotels.index') }}"
+        data-table="recommended-hotels-list-datatable"
+        data-url="{{ route('settings.recommended-hotels.index') }}"
     >
         <option selected value="">{{ __('All') }}</option>
-        @foreach($ratings as $id => $rating)
-            <option value="{{ $id }}">{{ $rating.' '.\Illuminate\Support\Str::plural('Star', $rating) }}</option>
+        @foreach($sortNumbers as $id => $number)
+            <option value="{{ $id }}">{{ $number }}</option>
         @endforeach
     </select>
 </div>

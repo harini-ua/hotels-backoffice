@@ -2,38 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\PopularHotelsDataTable;
-use App\Enums\Rating;
-use App\Http\Requests\PopularHotelStoreRequest;
-use App\Http\Requests\PopularHotelUpdateRequest;
+use App\DataTables\RecommendedHotelsDataTable;
+use App\Enums\SortNumber;
+use App\Http\Requests\RecommendedHotelStoreRequest;
+use App\Http\Requests\RecommendedHotelUpdateRequest;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Hotel;
-use App\Models\PopularHotel;
+use App\Models\RecommendHotel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
-class PopularHotelController extends Controller
+class RecommendedHotelController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @param PopularHotelsDataTable $dataTable
+     * @param RecommendedHotelsDataTable $dataTable
      * @return mixed
      */
-    public function index(PopularHotelsDataTable $dataTable)
+    public function index(RecommendedHotelsDataTable $dataTable)
     {
         $breadcrumbs = [
-            ['title' => __('Popular Hotels')],
+            ['title' => __('Recommend Hotels')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['name' => __('All Popular Hotels')]
+            ['name' => __('All Recommend Hotels')]
         ];
 
         $actions = [
-            ['href' => route('settings.popular-hotels.create'), 'icon' => 'plus', 'name' => __('Create')]
+            ['href' => route('settings.recommended-hotels.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
         $countries = Country::all()
@@ -51,10 +51,10 @@ class PopularHotelController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $ratings = Rating::getValues();
+        $sortNumbers = SortNumber::getValues();
 
-        return $dataTable->render('admin.pages.popular-hotels.index', compact(
-            'breadcrumbs', 'actions', 'countries', 'cities', 'hotels', 'ratings'
+        return $dataTable->render('admin.pages.recommended-hotels.index', compact(
+            'breadcrumbs', 'actions', 'countries', 'cities', 'hotels', 'sortNumbers'
         ));
     }
 
@@ -66,9 +66,9 @@ class PopularHotelController extends Controller
     public function create()
     {
         $breadcrumbs = [
-            ['title' => __('Create Popular Hotel')],
+            ['title' => __('Create Recommend Hotel')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['link' => route('settings.popular-hotels.index'), 'name' => __('All Popular Hotels')],
+            ['link' => route('settings.recommended-hotels.index'), 'name' => __('All Recommend Hotels')],
             ['name' => __('Create')]
         ];
 
@@ -87,81 +87,81 @@ class PopularHotelController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $ratings = Rating::getValues();
+        $sortNumbers = SortNumber::getValues();
 
-        return view('admin.pages.popular-hotels.create', compact(
-            'breadcrumbs', 'countries', 'cities', 'hotels', 'ratings'
+        return view('admin.pages.recommended-hotels.create', compact(
+            'breadcrumbs', 'countries', 'cities', 'hotels', 'sortNumbers'
         ));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param PopularHotelStoreRequest $request
+     * @param RecommendedHotelStoreRequest $request
      * @return RedirectResponse
      * @throws \Exception
      */
-    public function store(PopularHotelStoreRequest $request)
+    public function store(RecommendedHotelStoreRequest $request)
     {
         try {
             DB::beginTransaction();
 
-            $popularHotel = new PopularHotel();
-            $popularHotel->fill($request->all());
-            $popularHotel->save();
+            $recommendHotel = new RecommendHotel();
+            $recommendHotel->fill($request->all());
+            $recommendHotel->save();
 
             DB::commit();
 
-            alert()->success('Success!', __('Popular Hotel created has been successful.'));
+            alert()->success('Success!', __('Recommend Hotel created has been successful.'));
         } catch (\PDOException $e) {
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
         }
 
-        return redirect()->route('settings.popular-hotels.index');
+        return redirect()->route('settings.recommended-hotels.index');
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param PopularHotelUpdateRequest $request
-     * @param PopularHotel $popularHotel
+     * @param RecommendedHotelUpdateRequest $request
+     * @param RecommendHotel $recommendHotel
      *
      * @return RedirectResponse
      * @throws \Exception
      */
-    public function update(PopularHotelUpdateRequest $request, PopularHotel $popularHotel)
+    public function update(RecommendedHotelUpdateRequest $request, RecommendHotel $recommendHotel)
     {
         try {
             DB::beginTransaction();
 
-            $popularHotel->fill($request->all());
-            $popularHotel->save();
+            $recommendHotel->fill($request->all());
+            $recommendHotel->save();
 
             DB::commit();
 
-            alert()->success('Success!', __('Popular Hotel updated has been successful.'));
+            alert()->success('Success!', __('Recommend Hotel updated has been successful.'));
         } catch (\PDOException $e) {
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
         }
 
-        return redirect()->route('settings.popular-hotels.index');
+        return redirect()->route('settings.recommended-hotels.index');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param PopularHotel $popularHotel
+     * @param RecommendHotel $recommendHotel
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(PopularHotel $popularHotel)
+    public function edit(RecommendHotel $recommendHotel)
     {
         $breadcrumbs = [
-            ['title' => __('Edit Popular Hotel')],
+            ['title' => __('Edit Recommend Hotel')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['link' => route('settings.popular-hotels.index'), 'name' => __('All Popular Hotels')],
-            ['name' => __('Edit Popular Hotel')]
+            ['link' => route('settings.recommended-hotels.index'), 'name' => __('All Recommend Hotels')],
+            ['name' => __('Edit Recommend Hotel')]
         ];
 
         $countries = Country::all()
@@ -174,23 +174,23 @@ class PopularHotelController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $ratings = Rating::getValues();
+        $sortNumbers = SortNumber::getValues();
 
-        return view('admin.pages.settings.popular-hotels.update', compact(
-            'breadcrumbs', 'popularHotel', 'countries', 'cities', 'ratings'
+        return view('admin.pages.settings.recommended-hotels.update', compact(
+            'breadcrumbs', 'recommendHotel', 'countries', 'cities', 'sortNumbers'
         ));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param PopularHotel $popularHotel
+     * @param RecommendHotel $recommendHotel
      * @return JsonResponse
      * @throws \Exception
      */
-    public function destroy(PopularHotel $popularHotel)
+    public function destroy(RecommendHotel $recommendHotel)
     {
-        if ($popularHotel->delete()) {
+        if ($recommendHotel->delete()) {
             return response()->json(['success' => true]);
         }
 

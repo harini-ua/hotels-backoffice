@@ -1,8 +1,8 @@
-@php($model = $specialOfferHotel ?? null)
+@php($model = $popularHotel ?? null)
 <form
-    id="special-offer-hotels"
+    id="recommended-hotels"
     method="POST"
-    action="{{ isset($model) ? route('settings.special-offer-hotels.update', $model->id) : route('settings.special-offer-hotels.store') }}"
+    action="{{ isset($model) ? route('settings.recommended-hotels.update', $model->id) : route('settings.recommended-hotels.store') }}"
 >
     @csrf
     @if(isset($model)) @method('PUT') @endif
@@ -55,18 +55,18 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="rating" class="col-sm-2 col-form-label">{{ __('Rating') }} *</label>
+        <label for="sort" class="col-sm-2 col-form-label">{{ __('Sort Number') }} *</label>
         <div class="col-sm-4">
             <div class="stars stars-example-fontawesome">
-                <select id="rating" name="rating" autocomplete="off">
-                    @foreach($ratings as $rating)
-                        <option value="{{ $rating }}"
-                                @if(old('rating') == $rating) selected @endif
-                        >{{ $rating }}</option>
+                <select id="sort" name="sort" autocomplete="off">
+                    @foreach($sortNumbers as $number)
+                        <option value="{{ $number }}"
+                                @if(old('sort') == $number) selected @endif
+                        >{{ $number }}</option>
                     @endforeach
                 </select>
             </div>
-            @error('rating')
+            @error('sort')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
         </div>

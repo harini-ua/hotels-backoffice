@@ -57,8 +57,8 @@ class SpecialOfferHotelsDataTable extends DataTable
             if ($this->request->has('city')) {
                 $query->where('city_id', $this->request->get('city'));
             }
-            if ($this->request->has('hotel')) {
-                $query->where('hotel_id', $this->request->get('hotel'));
+            if ($this->request->has('rating')) {
+                $query->where('rating', $this->request->get('rating'));
             }
         }, true);
 
@@ -78,7 +78,7 @@ class SpecialOfferHotelsDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\DiscountVoucher $model
+     * @param \App\Models\SpecialOfferHotel $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(SpecialOfferHotel $model)

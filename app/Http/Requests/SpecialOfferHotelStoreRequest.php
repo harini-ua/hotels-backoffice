@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\Rating;
+use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SpecialOfferHotelStoreRequest extends FormRequest
@@ -26,7 +28,7 @@ class SpecialOfferHotelStoreRequest extends FormRequest
         return [
             'country_id' => 'required|exists:countries,id',
             'city_id' => 'required|exists:cities,id',
-            'rating' => 'required|integer',
+            'sort' => ['required', new EnumValue(Rating::class, false)],
             'hotel_id' => 'required|exists:hotels,id',
         ];
     }
