@@ -1,4 +1,4 @@
-<div class="form-group filter-item col-md-2">
+<div class="form-group filter-item col-md-3">
     <label for="company">{{ __('By Country') }}</label>
     <select
         id="country"
@@ -13,7 +13,7 @@
         @endforeach
     </select>
 </div>
-<div class="form-group filter-item col-md-2">
+<div class="form-group filter-item col-md-3">
     <label for="discount_type">{{ __('By City') }}</label>
     <select
         id="city"
@@ -33,7 +33,7 @@
     <select
         id="rating"
         name="rating"
-        class="form-control filter-input select-filter select2 select2-single"
+        class="form-control filter-input select-filter select2 custom-select"
         data-table="popular-hotels-list-datatable"
         data-url="{{ route('settings.popular-hotels.index') }}"
     >

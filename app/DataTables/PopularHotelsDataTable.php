@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\DiscountVoucher;
+use App\Models\PopularHotel;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -19,24 +19,24 @@ class PopularHotelsDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('country', function (DiscountVoucher $model) {
+        $dataTable->addColumn('country', function (PopularHotel $model) {
             return $model->country->name;
         });
 
-        $dataTable->addColumn('city', function (DiscountVoucher $model) {
+        $dataTable->addColumn('city', function (PopularHotel $model) {
             return $model->city->name;
         });
 
-        $dataTable->addColumn('hotel', function (DiscountVoucher $model) {
+        $dataTable->addColumn('hotel', function (PopularHotel $model) {
             return $model->hotel->name;
         });
 
-        $dataTable->addColumn('rating', function (DiscountVoucher $model) {
+        $dataTable->addColumn('rating', function (PopularHotel $model) {
             return $model->rating;
         });
 
 
-        $dataTable->addColumn('action', function (DiscountVoucher $model) {
+        $dataTable->addColumn('action', function (PopularHotel $model) {
             return view("admin.datatables.actions", [
                 'actions' => ['edit', 'delete'],
                 'model' => $model,
@@ -81,7 +81,7 @@ class PopularHotelsDataTable extends DataTable
      * @param \App\Models\DiscountVoucher $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(DiscountVoucher $model)
+    public function query(PopularHotel $model)
     {
         return $model->newQuery()
             ->with(['country', 'city', 'hotel'])

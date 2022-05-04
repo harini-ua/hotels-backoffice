@@ -15,7 +15,15 @@ class CreatePopularHotelsTable extends Migration
     {
         Schema::create('popular_hotels', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('country_id');
+            $table->unsignedBigInteger('city_id');
+            $table->unsignedBigInteger('hotel_id');
+            $table->integer('rating')->default(\App\Enums\Rating::ONE);
             $table->timestamps();
+
+            $table->foreign('country_id')->references('id')->on('countries');
+            $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('hotel_id')->references('id')->on('hotels');
         });
     }
 
