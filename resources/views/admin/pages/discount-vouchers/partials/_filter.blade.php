@@ -18,7 +18,7 @@
     <select
         id="voucher_type"
         name="voucher_type"
-        class="form-control filter-input select-filter select2 select2-single"
+        class="form-control filter-input select-filter custom-select"
         data-table="discount-vouchers-list-datatable"
         data-url="{{ route('discount-vouchers.index') }}"
     >
@@ -33,7 +33,7 @@
     <select
         id="commission_type"
         name="commission_type"
-        class="form-control filter-input select-filter select2 select2-single"
+        class="form-control filter-input select-filter custom-select"
         data-table="discount-vouchers-list-datatable"
         data-url="{{ route('discount-vouchers.index') }}"
     >

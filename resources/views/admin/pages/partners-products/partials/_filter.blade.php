@@ -18,7 +18,7 @@
     <select
         id="meal_plan"
         name="meal_plan"
-        class="form-control filter-input select-filter select2 select2-single"
+        class="form-control filter-input select-filter custom-select"
         data-table="partners-products-list-datatable"
         data-url="{{ route('partners.products.index') }}"
     >

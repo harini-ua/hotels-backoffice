@@ -3,7 +3,7 @@
     <select
         id="status"
         name="status"
-        class="form-control filter-input select-filter select2 select2-single"
+        class="form-control filter-input select-filter custom-select"
         data-table="companies-list-datatable"
         data-url="{{ route('companies.index') }}"
     >
@@ -18,7 +18,7 @@
     <select
         id="category"
         name="category"
-        class="form-control filter-input select-filter select2 select2-single"
+        class="form-control filter-input select-filter custom-select"
         data-table="companies-list-datatable"
         data-url="{{ route('companies.index') }}"
     >

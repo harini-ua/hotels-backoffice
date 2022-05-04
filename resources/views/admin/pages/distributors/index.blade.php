@@ -3,11 +3,11 @@
 @section('title',  __('Distributors'))
 
 @section('style')
+    <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/distributors.css') }}">
+    <link href="{{ asset('css/pages/distributors.css') }}" rel="stylesheet" type="text/css" >
 @endsection
 
 @section('rightbar-content')
@@ -33,6 +33,7 @@
 
 @section('script')
     {{ $dataTable->scripts() }}
+    <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
     <script src="{{asset('js/pages/distributors.js')}}"></script>
     <script src="{{asset('js/scripts/datatable.js')}}"></script>
     <script src="{{asset('js/scripts/filters.js')}}"></script>
