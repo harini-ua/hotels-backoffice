@@ -72,3 +72,13 @@ input[type="checkbox"] {
 .br-theme-fontawesome-stars .br-widget a.br-active:after{
     color: #fe8a00;
 }
+.topbar-mobile .mobile-togglebar a.topbar-toggle-hamburger:hover {
+    background-color: #fe8a00 !important;
+}
+.topbar-mobile .mobile-togglebar .menu-hamburger:hover {
+    background-color: #fe8a00 !important;
+}
+.horizontal-nav .horizontal-menu li a:hover {
+    color: #fe8a00;
+    background-color: transparent;
+}
