@@ -1,5 +1,5 @@
 <div class="form-group filter-item col-md-3">
-    <label for="company">{{ __('By Country') }}</label>
+    <label for="country">{{ __('By Country') }}</label>
     <select
         id="country"
         name="country"
@@ -15,7 +15,7 @@
     </select>
 </div>
 <div class="form-group filter-item col-md-3">
-    <label for="discount_type">{{ __('By City') }}</label>
+    <label for="city">{{ __('By City') }}</label>
     <select
         id="city"
         name="city"
