@@ -6,6 +6,7 @@
         class="form-control filter-input select-filter select2 select2-single"
         data-table="special-offer-hotels-list-datatable"
         data-url="{{ route('settings.special-offer-hotels.index') }}"
+        @if(!count($countries)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
         @foreach($countries as $id => $country)
@@ -21,6 +22,7 @@
         class="form-control filter-input select-filter select2 select2-single"
         data-table="special-offer-hotels-list-datatable"
         data-url="{{ route('settings.special-offer-hotels.index') }}"
+        @if(!count($cities)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
         @foreach($cities as $id => $city)

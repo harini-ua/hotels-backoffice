@@ -6,6 +6,7 @@
         class="form-control filter-input select-filter select2 select2-single"
         data-table="distributors-users-list-datatable"
         data-url="{{ route('distributors.users.index') }}"
+        @if(!count($distributors)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
         @foreach($distributors as $id => $distributor)

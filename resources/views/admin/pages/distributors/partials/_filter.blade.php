@@ -6,6 +6,7 @@
         class="form-control filter-input select-filter select2 select2-single"
         data-table="distributors-list-datatable"
         data-url="{{ route('distributors.index') }}"
+        @if(!count($companies)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
         @foreach($companies as $id => $company)
@@ -21,6 +22,7 @@
         class="form-control filter-input select-filter select2 select2-single"
         data-table="distributors-list-datatable"
         data-url="{{ route('distributors.index') }}"
+        @if(!count($countries)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
         @foreach($countries as $id => $country)
@@ -36,6 +38,7 @@
         class="form-control filter-input select-filter select2 select2-single"
         data-table="distributors-list-datatable"
         data-url="{{ route('distributors.index') }}"
+        @if(!count($languages)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
         @foreach($languages as $id => $language)

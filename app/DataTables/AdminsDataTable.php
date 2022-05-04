@@ -78,6 +78,10 @@ class AdminsDataTable extends DataTable
             ->minifiedAjax()
             ->dom('Bfrtip')
             ->orderBy(1)
+            ->language([
+                'search' => '',
+                'searchPlaceholder' => __('Search')
+            ])
             ->buttons(
                 Button::make('postExcel'),
                 Button::make('print')

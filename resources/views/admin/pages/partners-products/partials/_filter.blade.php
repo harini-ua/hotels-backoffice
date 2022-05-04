@@ -6,6 +6,7 @@
         class="form-control filter-input select-filter select2 select2-single"
         data-table="partners-products-list-datatable"
         data-url="{{ route('partners.products.index') }}"
+        @if(!count($partners)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
         @foreach($partners as $id => $partner)
@@ -36,6 +37,7 @@
         class="form-control filter-input select-filter select2 select2-single"
         data-table="partners-products-list-datatable"
         data-url="{{ route('partners.products.index') }}"
+        @if(!count($currencies)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
         @foreach($currencies as $id => $currency)
