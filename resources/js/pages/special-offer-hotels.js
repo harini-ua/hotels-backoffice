@@ -1,4 +1,3 @@
-
 jQuery(document).ready(function ($) {
 
     $('.special-offer-hotels-index-wrapper').each(function () {
