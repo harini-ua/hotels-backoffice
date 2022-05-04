@@ -1,10 +1,18 @@
-@php($model = $defaultContent ?? null)
+@php($model = $companyDefault ?? null)
 <form id="default-content" method="POST" action="{{ route('settings.default-content.update') }}" enctype="multipart/form-data">
     @csrf
     @if(isset($model)) @method('PUT') @endif
     <div class="form-group row">
         <label for="logo" class="col-sm-2 col-form-label">{{ __('Logo') }} *</label>
         <div class="col-sm-6">
+{{--            <div class="input-group mb-3">--}}
+{{--                <div class="custom-file">--}}
+{{--                    <input type="file" id="logo" name="logo" class="custom-file-input"--}}
+{{--                           value="{{ old('logo') ?? ($model ? $model->logo : null ) }}"--}}
+{{--                           class="form-control image-input @error('logo') is-invalid @enderror">--}}
+{{--                    <label class="custom-file-label" for="logo">{{ __('Choose file') }}</label>--}}
+{{--                </div>                                                                                                                                                                                                                                          --}}
+{{--            </div>--}}
             <input type="file" id="logo" name="logo"
                    value="{{ old('logo') ?? ($model ? $model->logo : null ) }}"
                    class="form-control image-input @error('logo') is-invalid @enderror">
