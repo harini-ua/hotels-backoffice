@@ -7,7 +7,7 @@
 @endsection
 
 @section('rightbar-content')
-    <div class="contentbar company-default-edit-wrapper">
+    <div class="contentbar default-content-edit-wrapper">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card m-b-30">
@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col s12">
-                                @include('admin.pages.settings.default-content.partials._form')
+                                @include('admin.pages.default-content.partials._form')
                             </div>
                         </div>
                     </div>

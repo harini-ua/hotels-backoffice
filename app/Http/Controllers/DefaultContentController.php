@@ -19,9 +19,9 @@ class DefaultContentController extends Controller
     public function edit()
     {
         $breadcrumbs = [
-            ['title' => __('Company Site Default')],
+            ['title' => __('Default Content')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['name' => __('Company Site Default')]
+            ['name' => __('Default Content')]
         ];
 
         $defaultContent = DefaultContent::first();

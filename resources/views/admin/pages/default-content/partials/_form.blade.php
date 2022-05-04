@@ -1,4 +1,4 @@
-@php($model = $companyDefault ?? null)
+@php($model = $defaultContent ?? null)
 <form id="default-content" method="POST" action="{{ route('settings.default-content.update') }}" enctype="multipart/form-data">
     @csrf
     @if(isset($model)) @method('PUT') @endif
@@ -12,7 +12,9 @@
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
             <br/>
+            @if($model)
             <img src="{{ asset('storage/company/default/'.$model->logo) }}" alt="logo" class="rounded preview">
+            @endif
         </div>
     </div>
     <div class="form-group row">
@@ -47,7 +49,9 @@
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
             <br/>
+            @if($model)
             <img src="{{ asset('storage/company/default/'.$model->main_page_picture) }}" alt="main_page_picture" class="rounded preview">
+            @endif
         </div>
     </div>
     <div class="form-group row">
@@ -93,7 +97,9 @@
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
             <br/>
+            @if($model)
             <img src="{{ asset('storage/company/default/'.$model->picture_1) }}" alt="picture_1" class="rounded preview">
+            @endif
         </div>
     </div>
     <div class="form-group row">
@@ -117,7 +123,9 @@
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
             <br/>
+            @if($model)
             <img src="{{ asset('storage/company/default/'.$model->picture_2) }}" alt="picture_2" class="rounded preview">
+            @endif
         </div>
     </div>
     <div class="form-group row">
@@ -141,7 +149,9 @@
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
             <br/>
+            @if($model)
             <img src="{{ asset('storage/company/default/'.$model->picture_3) }}" alt="picture_3" class="rounded preview">
+            @endif
         </div>
     </div>
     <div class="form-group row">
@@ -165,7 +175,9 @@
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
             <br/>
+            @if($model)
             <img src="{{ asset('storage/company/default/'.$model->picture_4) }}" alt="picture_4" class="rounded preview">
+            @endif
         </div>
     </div>
     <div class="form-group row">
@@ -189,7 +201,9 @@
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
             <br/>
+            @if($model)
             <img src="{{ asset('storage/company/default/'.$model->picture_5) }}" alt="picture_5" class="rounded preview">
+            @endif
         </div>
     </div>
     <div class="form-group row">

@@ -194,9 +194,9 @@ class Menu extends Component
                     'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
                 [
-                    'name' => __('Company Site Default'),
-                    'href' => route('settings.company-default.edit'),
-                    'icon' => 'feather icon-shopping-bag',
+                    'name' => __('Default Content'),
+                    'href' => route('settings.default-content.edit'),
+                    'icon' => 'feather icon-file-plus',
                     'guard' => $user->hasRole(UserRole::ADMIN),
                 ]
             ]

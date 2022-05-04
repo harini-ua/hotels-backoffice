@@ -4,9 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\DefaultContent;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Artisan;
 
-class CompanySiteDefaultSeeder extends Seeder
+class DefaultContentSeeder extends Seeder
 {
     /**
      * Run the database seeders.
