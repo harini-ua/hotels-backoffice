@@ -51,7 +51,7 @@
                                     <div class="carousels-repeater">
                                         <div data-repeater-list="carousels">
                                             @for($i = 0; $i < $carousels->count(); $i++)
-                                                <div class="form-row carousels-wrapper" data-repeater-item>
+                                                <div class="form-row carousels-wrapper @if($i%2 == 0) odd @endif" data-repeater-item>
                                                     <div class="form-group col-md-4">
                                                         <input type="hidden" name="carousels[{{ $i }}][id]"
                                                                value="{{ ((!empty($carousels) && $carousels[$i]->id) ? $carousels[$i]->id : null) }}"
@@ -60,7 +60,7 @@
                                                                value="{{ \App\Enums\CarouselType::Image }}"
                                                                class="carousels-type"
                                                         >
-                                                        <label for="carousels[{{ $i }}][image]">{{ __("Image") }}</label>
+                                                        <label for="carousels[{{ $i }}][image]">{{ __("Carousel Image") }}</label>
                                                         <input type="file"
                                                                id="carousels[{{ $i }}][image]"
                                                                name="carousels[{{ $i }}][image]"
@@ -78,7 +78,7 @@
                                                         >
                                                     </div>
                                                     <div class="form-group col-md-7">
-                                                        <label for="carousels[{{ $i }}][text]">{{ __("Text") }}</label>
+                                                        <label for="carousels[{{ $i }}][text]">{{ __(" Carousel Text") }}</label>
                                                         <textarea
                                                             id="carousels[{{ $i }}][text]"
                                                             name="carousels[{{ $i }}][text]"
@@ -89,6 +89,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="form-group col-md-1">
+                                                        <label style="visibility: hidden">{{ __("Actions") }}</label>
                                                         <button type="button" class="btn btn-danger" data-repeater-delete>
                                                             <i class="feather icon-trash-2"></i>
                                                         </button>
@@ -120,7 +121,7 @@
                                     <div class="teasers-repeater">
                                         <div data-repeater-list="teasers">
                                             @for($i = 0; $i < $teasers->count(); $i++)
-                                                <div class="form-row teasers-wrapper" data-repeater-item>
+                                                <div class="form-row teasers-wrapper @if($i%2 == 0) odd @endif" data-repeater-item>
                                                     <div class="form-group col-md-3">
                                                         <label for="teasers[{{ $i }}][id]">{{ __("Teaser Title") }}</label>
                                                         <input type="hidden" name="teasers[{{ $i }}][id]"
@@ -165,6 +166,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="form-group col-md-1">
+                                                        <label style="visibility: hidden">{{ __("Actions") }}</label>
                                                         <button type="button" class="btn btn-danger" data-repeater-delete>
                                                             <i class="feather icon-trash-2"></i>
                                                         </button>
