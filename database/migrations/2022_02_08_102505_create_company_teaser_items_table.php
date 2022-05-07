@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDefaultContentTable extends Migration
+class CreateCompanyTeaserItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateDefaultContentTable extends Migration
      */
     public function up()
     {
-        Schema::create('default_content', function (Blueprint $table) {
+        Schema::create('company_teaser_items', function (Blueprint $table) {
             $table->id();
-            $table->string('logo')->nullable();
-
-            $table->unsignedBigInteger('carousel_id')->nullable();
-            $table->unsignedBigInteger('teaser_id')->nullable();
-
+            $table->unsignedBigInteger('teaser_id');
+            $table->integer('type')->default(\App\Enums\TeaserType::Default);
+            $table->string('image')->nullable();
+            $table->string('title');
+            $table->text('text');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('carousel_id')->references('id')->on('company_carousels');
             $table->foreign('teaser_id')->references('id')->on('company_teasers');
         });
     }
@@ -31,11 +30,10 @@ class CreateDefaultContentTable extends Migration
     /**
      * Reverse the migrations.
      *
-     *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('default_content');
+        Schema::dropIfExists('company_teaser_items');
     }
 }

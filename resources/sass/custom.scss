@@ -58,6 +58,13 @@
         width: 100%;
         height: 40px;
     }
+
+    .form-control.image-input,
+    .form-control.image-input:focus {
+        border-color: white;
+        padding: 0px;
+        height: auto;
+    }
 }
 
 .dataTables_wrapper {

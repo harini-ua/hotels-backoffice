@@ -15,6 +15,7 @@ class CreateCompanyCarouselsTable extends Migration
     {
         Schema::create('company_carousels', function (Blueprint $table) {
             $table->id();
+            $table->boolean('default')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

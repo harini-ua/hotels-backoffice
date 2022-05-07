@@ -2,27 +2,24 @@
 
 namespace App\Models;
 
-use App\Traits\ImageUpload;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DefaultContent extends Model
+class CompanyTeaserItem extends Model
 {
-    use ImageUpload, HasFactory;
+    use HasFactory;
 
-    public const IMAGE_DIRECTORY = 'public/default/';
+    public const IMAGE_DIRECTORY = 'public/teaser/';
     public const IMAGE_EXTENSIONS = [ 'png', 'jpg', 'jpeg' ];
     public const IMAGE_KILOBYTES_SIZE = 4096;
-
-    public const FIELDS = [];
-    public const IMAGE_FIELDS = [ 'logo' ];
+    public const IMAGE_FIELDS = [ 'image' ];
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'default_content';
+    protected $table = 'company_teaser_items';
 
     /**
      * The attributes that are mass assignable.
@@ -30,19 +27,11 @@ class DefaultContent extends Model
      * @var array
      */
     protected $fillable = [
-        'logo', 'carousel_id', 'teaser_id'
+        'teaser_id', 'type', 'image', 'title', 'text',
     ];
 
     /**
-     * Get the carousel that owns the default content.
-     */
-    public function carousel()
-    {
-        return $this->belongsTo(CompanyCarousel::class);
-    }
-
-    /**
-     * Get the teaser that owns the default content.
+     * Get the teaser that owns the teaser item.
      */
     public function teaser()
     {

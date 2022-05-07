@@ -2,8 +2,13 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\CarouselType;
+use App\Enums\TeaserType;
+use App\Models\CompanyCarouselItem;
 use App\Models\DefaultContent;
+use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class DefaultContentUpdateRequest extends FormRequest
 {
@@ -25,48 +30,39 @@ class DefaultContentUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'logo' => [ 'required', 'image',
+            'logo' => [ 'nullable', 'sometimes', 'image',
                 'mimes:'.implode(',', DefaultContent::IMAGE_EXTENSIONS),
                 'max:'.DefaultContent::IMAGE_KILOBYTES_SIZE
             ],
-            'testimonial_heading_1' => 'required|string',
-            'testimonial_heading_2' => 'required|string',
-            'main_page_picture' => ['nullable', 'image',
-                'mimes:'.implode(',', DefaultContent::IMAGE_EXTENSIONS),
-                'max:'.DefaultContent::IMAGE_KILOBYTES_SIZE
+
+            'carousels.*.type' => ['required', new EnumValue(CarouselType::class, false)],
+            'carousels.*.image' => [ 'nullable', 'sometimes', 'image',
+                'mimes:'.implode(',', CompanyCarouselItem::IMAGE_EXTENSIONS),
+                'max:'.CompanyCarouselItem::IMAGE_KILOBYTES_SIZE
             ],
-            'main_page_heading_1' => 'required|string',
-            'main_page_heading_2' => 'required|string',
-            'main_page_heading_3' => 'required|string',
-            'picture_1' => [ 'nullable', 'image',
-                'mimes:'.implode(',', DefaultContent::IMAGE_EXTENSIONS),
-                'max:'.DefaultContent::IMAGE_KILOBYTES_SIZE
-            ],
-            'text_picture_1' => 'required|string',
-            'picture_2' => [ 'nullable', 'image',
-                'mimes:'.implode(',', DefaultContent::IMAGE_EXTENSIONS),
-                'max:'.DefaultContent::IMAGE_KILOBYTES_SIZE
-            ],
-            'text_picture_2' => 'required|string',
-            'picture_3' => [ 'nullable', 'image',
-                'mimes:'.implode(',', DefaultContent::IMAGE_EXTENSIONS),
-                'max:'.DefaultContent::IMAGE_KILOBYTES_SIZE
-            ],
-            'text_picture_3' => 'required|string',
-            'picture_4' => [ 'nullable', 'image',
-                'mimes:'.implode(',', DefaultContent::IMAGE_EXTENSIONS),
-                'max:'.DefaultContent::IMAGE_KILOBYTES_SIZE
-            ],
-            'text_picture_4' => 'required|string',
-            'picture_5' => [ 'nullable', 'image',
-                'mimes:'.implode(',', DefaultContent::IMAGE_EXTENSIONS),
-                'max:'.DefaultContent::IMAGE_KILOBYTES_SIZE
-            ],
-            'text_picture_5' => 'required|string',
-            'right_heading_1' => 'required|string',
-            'right_heading_message_1' => 'required|string',
-            'right_heading_2' => 'required|string',
-            'right_heading_message_2' => 'required|string',
+            'carousels.*.text' => 'nullable|string',
+
+            'teasers.*.type' => ['required', new EnumValue(TeaserType::class, false)],
+            'teasers.*.title' => 'required|string',
+            'teasers.*.text' => 'required|string',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'carousels.*.type.required' => __('The type field is required.'),
+            'carousels.*.image.required' => __('The image field is required.'),
+            'carousels.*.text.required' => __('The text field is required.'),
+
+            'teasers.*.type.required' => __('The type field is required.'),
+            'teasers.*.title.required' => __('The title field is required.'),
+            'teasers.*.text.required' => __('The text field is required.'),
         ];
     }
 }

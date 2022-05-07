@@ -19,7 +19,7 @@ class CreateCompanyHomepageOptionsTable extends Migration
             $table->unsignedBigInteger('theme_id');
             $table->string('logo');
             $table->unsignedBigInteger('carousel_id');
-            $table->unsignedBigInteger('testimonial_id');
+            $table->unsignedBigInteger('teaser_id');
 
             $table->timestamps();
             $table->softDeletes();
@@ -27,7 +27,7 @@ class CreateCompanyHomepageOptionsTable extends Migration
             $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('theme_id')->references('id')->on('company_theme');
             $table->foreign('carousel_id')->references('id')->on('company_carousels');
-            $table->foreign('testimonial_id')->references('id')->on('company_testimonials');
+            $table->foreign('teaser_id')->references('id')->on('company_teasers');
         });
     }
 

@@ -16,8 +16,9 @@ class CreateCompanyCarouselItemsTable extends Migration
         Schema::create('company_carousel_items', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('carousel_id');
+            $table->integer('type')->default(\App\Enums\CarouselType::Image);
             $table->string('image');
-            $table->text('text');
+            $table->text('text')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

@@ -31,4 +31,16 @@ trait ImageUpload
 
         return $updated;
     }
+
+    /**
+     * Delete image
+     *
+     * @param string $filename
+     */
+    public function deleteDefaultImage($filename)
+    {
+        if (Storage::exists($this::IMAGE_DIRECTORY.$filename)) {
+            Storage::delete($this::IMAGE_DIRECTORY.$filename);
+        }
+    }
 }

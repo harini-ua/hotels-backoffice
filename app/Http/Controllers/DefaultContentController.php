@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\TeaserType;
 use App\Http\Requests\DefaultContentUpdateRequest;
+use App\Models\CompanyCarouselItem;
+use App\Models\CompanyTeaserItem;
 use App\Models\DefaultContent;
 use App\Models\Partner;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class DefaultContentController extends Controller
 {
@@ -24,10 +29,20 @@ class DefaultContentController extends Controller
             ['name' => __('Default Content')]
         ];
 
-        $defaultContent = DefaultContent::first();
+        $defaultContent = DefaultContent::with([
+            'carousel.items',
+            'teaser.items',
+        ])->first();
+
+        /** @var CompanyCarouselItem[] $carousels */
+        $carousels = $defaultContent->carousel->items;
+
+        /** @var CompanyTeaserItem[] $teasers */
+        $teasers = $defaultContent->teaser->items;
+        $teaserTypes = TeaserType::asSelectArray();
 
         return view('admin.pages.default-content.update', compact(
-            'breadcrumbs', 'defaultContent'
+            'breadcrumbs', 'defaultContent', 'carousels', 'teasers', 'teaserTypes'
         ));
     }
 
@@ -44,18 +59,117 @@ class DefaultContentController extends Controller
         try {
             DB::beginTransaction();
 
-            /** @var DefaultContent $companyDefault */
-            $companyDefault = DefaultContent::first();
-            $companyDefault->fill($request->except(DefaultContent::IMAGE_FIELDS));
-            $companyDefault->save();
+            // Update default content
+            /** @var DefaultContent $defaultContent */
+            $defaultContent = DefaultContent::first();
+            $defaultContent->fill($request->only(DefaultContent::FIELDS));
+            $defaultContent->save();
 
-            $companyDefault->updateDefaultImage($request->logo, 'logo', $companyDefault->logo);
-            $companyDefault->updateDefaultImage($request->main_page_picture, 'main_page_picture', $companyDefault->main_page_picture);
-            $companyDefault->updateDefaultImage($request->picture_1, 'picture_1', $companyDefault->picture_1);
-            $companyDefault->updateDefaultImage($request->picture_2, 'picture_2', $companyDefault->picture_2);
-            $companyDefault->updateDefaultImage($request->picture_3, 'picture_3', $companyDefault->picture_3);
-            $companyDefault->updateDefaultImage($request->picture_4, 'picture_4', $companyDefault->picture_4);
-            $companyDefault->updateDefaultImage($request->picture_5, 'picture_5', $companyDefault->picture_5);
+            // Upload default content  image
+            foreach (DefaultContent::IMAGE_FIELDS as $field) {
+                if ($defaultContent->{$field}) {
+                    $imageUpload = $request->file($field);
+
+                    if (Storage::exists('public/default/'.$defaultContent->{$field})) {
+                        Storage::delete('public/default/'.$defaultContent->{$field});
+                    }
+
+                    $path = storage_path('app/public/default/');
+
+                    $fileName = \Hash::make(Carbon::now()).'.'.$imageUpload->extension();
+
+                    $imageUpload->move($path, $fileName);
+                    $defaultContent->update([ $field => $fileName ]);
+                }
+            }
+
+            DB::commit();
+
+            $carousels = $request->all()['carousels'];
+
+            // Delete carousel items
+            $carouselItemsIds = $defaultContent->carousel->items->pluck('id')->toArray();
+            $deletedCarouselItems = array_diff($carouselItemsIds, array_column($carousels, 'id'));
+
+            foreach ($deletedCarouselItems as $id) {
+                $carouselItem = CompanyCarouselItem::find($id);
+
+                foreach (CompanyCarouselItem::IMAGE_FIELDS as $field) {
+                    $carouselItem->deleteDefaultImage($carouselItem->{$field});
+
+                    if (Storage::exists('public/default/'.$carouselItem->{$field})) {
+                        Storage::delete('public/default/'.$carouselItem->{$field});
+                    }
+                }
+
+                $carouselItem->delete();
+            }
+
+            foreach ($carousels as $item) {
+                // Update
+                if (isset($item['id'])) {
+                    $carouselItem = CompanyCarouselItem::find($item['id']);
+                }
+                // Or create
+                else {
+                    $carouselItem = new CompanyCarouselItem();
+                    $carouselItem->carousel_id = $defaultContent->carousel->id;
+                }
+
+                // Build images array
+                $images = [];
+                foreach (CompanyCarouselItem::IMAGE_FIELDS as $field) {
+                    if (isset($item[$field])) {
+                        $images[$field] = $item[$field];
+                        unset($item[$field]);
+                    }
+                }
+
+                $carouselItem->fill($item);
+                $carouselItem->save();
+
+                // Upload carouse item image
+                foreach (CompanyCarouselItem::IMAGE_FIELDS as $field) {
+                    if (isset($images[$field])) {
+                        $imageUpload = $images[$field];
+
+                        if (Storage::exists('public/default/'.$carouselItem->{$field})) {
+                            Storage::delete('public/default/'.$carouselItem->{$field});
+                        }
+
+                        $path = storage_path('app/public/default/');
+
+                        $fileName = \Hash::make(Carbon::now()).'.'.$imageUpload->extension();
+
+                        $imageUpload->move($path, $fileName);
+                        $carouselItem->update([ $field => $fileName ]);
+                    }
+                }
+            }
+
+            DB::commit();
+
+            $teasers = $request->all()['teasers'];
+
+            // Delete teaser items
+            $teaserItemsIds = $defaultContent->carousel->items->pluck('id')->toArray();
+            $deletedTeaserItems = array_diff($teaserItemsIds, array_column($teasers, 'id'));
+            CompanyTeaserItem::whereIn('id', $deletedTeaserItems)->delete();
+
+            foreach ($teasers as $item) {
+                // Update
+                if (isset($item['id'])) {
+                    $teaserItem = CompanyTeaserItem::find($item['id']);
+                }
+                // Or create
+                else {
+                    $teaserItem = new CompanyTeaserItem();
+                    $teaserItem->teaser_id = $defaultContent->teaser->id;
+                }
+
+                $teaserItem->fill($item);
+                $teaserItem->save();
+            }
 
             DB::commit();
 
@@ -65,6 +179,6 @@ class DefaultContentController extends Controller
             DB::rollBack();
         }
 
-        return redirect()->route('default-content.edit');
+        return redirect()->route('settings.default-content.edit');
     }
 }

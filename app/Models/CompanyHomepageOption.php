@@ -22,7 +22,7 @@ class CompanyHomepageOption extends Model
      * @var array
      */
     protected $fillable = [
-        'company_id', 'theme_id', 'logo', 'carousel_id', 'testimonial_id',
+        'company_id', 'theme_id', 'logo', 'carousel_id', 'teaser_id',
     ];
 
     /**
@@ -50,10 +50,10 @@ class CompanyHomepageOption extends Model
     }
 
     /**
-     * Get the testimonial that owns the company homepage option.
+     * Get the teaser that owns the company homepage option.
      */
-    public function testimonial()
+    public function teaser()
     {
-        return $this->belongsTo(CompanyTestimonial::class);
+        return $this->belongsTo(CompanyTeaser::class);
     }
 }

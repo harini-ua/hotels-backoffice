@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CompanyTestimonialItem extends Model
+class CompanyTeaser extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class CompanyTestimonialItem extends Model
      *
      * @var string
      */
-    protected $table = 'company_testimonial_items';
+    protected $table = 'company_teasers';
 
     /**
      * The attributes that are mass assignable.
@@ -22,14 +22,14 @@ class CompanyTestimonialItem extends Model
      * @var array
      */
     protected $fillable = [
-        'testimonial_id', 'image', 'title', 'text',
+        'default'
     ];
 
     /**
-     * Get the testimonial that owns the testimonial item.
+     * Get the items for the teaser.
      */
-    public function testimonial()
+    public function items()
     {
-        return $this->belongsTo(CompanyTestimonial::class);
+        return $this->hasMany(CompanyTeaserItem::class, 'teaser_id');
     }
 }

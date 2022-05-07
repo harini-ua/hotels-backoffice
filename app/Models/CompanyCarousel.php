@@ -22,7 +22,7 @@ class CompanyCarousel extends Model
      * @var array
      */
     protected $fillable = [
-        //
+        'default'
     ];
 
     /**
@@ -30,6 +30,6 @@ class CompanyCarousel extends Model
      */
     public function items()
     {
-        return $this->hasMany(CompanyCarouselItem::class);
+        return $this->hasMany(CompanyCarouselItem::class, 'carousel_id');
     }
 }
