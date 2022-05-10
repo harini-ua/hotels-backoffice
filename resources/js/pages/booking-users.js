@@ -2,19 +2,34 @@ jQuery(document).ready(function ($) {
 
     $('.booking-users-create-wrapper').each(function () {
         $('form').on('change', '.linked', function() {
-            $.ajax({
-                url: this.dataset.url.replace('[id]', this.value),
-                type: "GET",
-                success: data => {
-                    if (data.length) {
-                        reloadOptions('[data-linked="'+this.id+'"]', data);
-                    }
-                },
-                error: data => console.error('Error:', data)
-            });
+            var $this = $(this);
+
+            if (this.value) {
+                $.ajax({
+                    url: this.dataset.url.replace('[id]', this.value),
+                    type: "GET",
+                    success: data => {
+                        if (data.length) {
+                            reloadOptions('[data-linked="'+this.id+'"]', data);
+                        }
+                    },
+                    error: data => console.error('Error:', data)
+                });
+            } else {
+                var firstBinded = $this.data('binded-select');
+                $('#'+firstBinded).html('');
+                $('#'+firstBinded).prop("disabled", true);
+                $('#'+firstBinded).append('<option value="">No Available</option>')
+            }
 
             const reloadOptions = (selector, options) => {
                 $(selector).html('');
+
+                $(selector).prop("disabled", false);
+                if (options.length <= 1) {
+                    $(selector).prop("disabled", true);
+                }
+
                 options.forEach(option => {
                     if (option.id) {
                         $(selector).append('<option value="'+option.id+'">'+option.name+'</option>')

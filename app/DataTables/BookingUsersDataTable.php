@@ -60,7 +60,7 @@ class BookingUsersDataTable extends DataTable
 
         $dataTable->filter(function ($query) {
             if ($this->request->has('company')) {
-                // TODO: Implement filter by company
+                $query->where('company_id', $this->request->get('company'));
             }
         }, true);
 
