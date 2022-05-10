@@ -5,14 +5,31 @@ jQuery(document).ready(function ($) {
 
         let form = {
             access_code: $this.find('#access_code'),
+            codes: $this.find('#codes'),
             access_code_last_update: $this.find('#access_code_last_update'),
             action: {
                 update_access_code: $this.find('.update_access_code').data('action'),
             },
             btn: {
-                update_access_code: $this.find('.update_access_code')
+                update_access_code: $this.find('.update_access_code'),
+                view_access_code: $this.find('.view-access-codes'),
             }
         }
+
+        form.btn.view_access_code.on('click', (e) => {
+            e.preventDefault();
+
+            $.ajax({
+                url      : form.btn.view_access_code.attr('href'),
+                type     : 'GET',
+                dataType : 'json',
+                success  : function(response) {
+                    if (response.success === true) {
+                        form.codes.html(response.codes)
+                    }
+                },
+            })
+        });
 
         form.btn.update_access_code.on('click', (e) => {
             if (form.access_code.val()) {
