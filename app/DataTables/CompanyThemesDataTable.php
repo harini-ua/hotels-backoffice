@@ -20,7 +20,7 @@ class CompanyThemesDataTable extends DataTable
         $dataTable = datatables()->eloquent($query);
 
         $dataTable->addColumn('theme_name', function (CompanyTheme $model) {
-            return $model->theme_name;
+            return !$model->default ? $model->theme_name : $model->theme_name.' ('.__('Default').')';
         });
 
         $dataTable->addColumn('theme_color', function (CompanyTheme $model) {

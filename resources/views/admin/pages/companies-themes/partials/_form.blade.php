@@ -30,5 +30,18 @@
             @enderror
         </div>
     </div>
+    <div class="form-group row">
+        <label for="default" class="col-sm-2 col-form-label">{{ __('Use as default') }}</label>
+        <div class="input-group col-sm-4">
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" id="default" name="default"
+                       value="1"
+                       @if($model && $model->default) checked @endif
+                       class="custom-control-input @error('default') is-invalid @enderror"
+                >
+                <label class="custom-control-label" for="default"></label>
+            </div>
+        </div>
+    </div>
     <button class="btn btn-submit">{{ __('Submit') }}</button>
 </form>

@@ -22,6 +22,6 @@ class CompanyTheme extends Model
      * @var array
      */
     protected $fillable = [
-        'theme_name', 'theme_color', 'theme_stylesheet',
+        'theme_name', 'theme_color', 'theme_stylesheet', 'default',
     ];
 }

@@ -67,13 +67,20 @@ class CompanyThemeController extends Controller
         try {
             DB::beginTransaction();
 
-            $companyTheme = new CompanyTheme();
-            $companyTheme->fill($request->all());
-            $companyTheme->save();
+            if ($request->has('default')) {
+                CompanyTheme::query()->update([
+                    'default' => 0
+                ]);
+            }
+
+            $theme = new CompanyTheme();
+            $theme->fill($request->all());
+            $theme->default = $request->has('default');
+            $theme->save();
 
             DB::commit();
 
-            alert()->success($companyTheme->name, __('Theme created has been successful.'));
+            alert()->success($theme->name, __('Theme created has been successful.'));
         } catch (\PDOException $e) {
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
@@ -122,7 +129,14 @@ class CompanyThemeController extends Controller
         try {
             DB::beginTransaction();
 
+            if ($request->has('default')) {
+                CompanyTheme::query()->update([
+                    'default' => 0
+                ]);
+            }
+
             $theme->fill($request->all());
+            $theme->default = $request->has('default');
             $theme->save();
 
             DB::commit();
