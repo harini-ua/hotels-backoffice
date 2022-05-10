@@ -14,11 +14,17 @@
     <div class="form-group row">
         <label for="theme_id" class="col-sm-2 col-form-label">{{ __('Theme') }} *</label>
         <div class="col-sm-4">
-            <select id="theme_id" name="theme_id" class="form-control @error('theme_id') is-invalid @enderror">
+            <select id="theme_id" name="theme_id"
+                    class="form-control @error('theme_id') is-invalid @enderror"
+                    @if(!$themes->count()) disabled @endif
+            >
+                @if(!$themes->count())
+                    <option>{{ '- '.__('No Available Theme').' -' }}</option>
+                @endif
                 @foreach($themes as $id => $name)
                     <option
                         value="{{ $id }}"
-                        @if(old('company_name') == $id) selected @endif
+                        @if(old('theme_id') == $id) selected @endif
                     >{{ $name }}</option>
                 @endforeach
             </select>
@@ -99,7 +105,11 @@
         <div class="col-sm-4">
             <select id="template_id" name="template_id"
                     class="form-control @error('template_id') is-invalid @enderror"
+                    @if(!$templates->count()) disabled @endif
             >
+                @if(!$templates->count())
+                    <option>{{ '- '.__('No Available Template').' -' }}</option>
+                @endif
                 @foreach($templates as $id => $name)
                     <option
                         value="{{ $id }}"

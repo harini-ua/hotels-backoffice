@@ -106,6 +106,7 @@ class CompanyController extends Controller
 
             $company = new Company();
             $company->fill($request->all());
+            $company->status = 1;
 
             if (AccessCodeType::FIXED === (int) $request->get('login_type')) {
                 $company->access_codes = 1;

@@ -244,10 +244,10 @@ class DistributorController extends Controller
     {
         $companies = $distributor->companies
             ->sortBy('company_name')
-            ->map(static function ($contract) {
+            ->map(static function ($company) {
                 return [
-                    'id' => $contract->id,
-                    'name' => $contract->name,
+                    'id' => $company->id,
+                    'name' => $company->company_name,
                 ];
             });
 

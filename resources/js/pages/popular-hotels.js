@@ -22,7 +22,7 @@ jQuery(document).ready(function ($) {
                                 var bindedSelectId = $('[data-linked="'+this.id+'"]').data('binded-select');
                                 $('#'+bindedSelectId).html('');
                                 $('#'+bindedSelectId).prop("disabled", true);
-                                $('#'+bindedSelectId).append('<option value="">No Avariable</option>')
+                                $('#'+bindedSelectId).append('<option value="">No Available</option>')
                             }
                         }
                     },
@@ -32,12 +32,12 @@ jQuery(document).ready(function ($) {
                 var firstBinded = $this.data('binded-select');
                 $('#'+firstBinded).html('');
                 $('#'+firstBinded).prop("disabled", true);
-                $('#'+firstBinded).append('<option value="">No Avariable</option>')
+                $('#'+firstBinded).append('<option value="">No Available</option>')
 
                 var secondBinded = $('#'+firstBinded).data('binded-select');
                 $('#'+secondBinded).html('');
                 $('#'+secondBinded).prop("disabled", true);
-                $('#'+secondBinded).append('<option value="">No Avariable</option>')
+                $('#'+secondBinded).append('<option value="">No Available</option>')
             }
 
             const reloadOptions = (selector, options) => {

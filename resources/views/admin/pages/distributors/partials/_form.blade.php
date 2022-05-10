@@ -87,7 +87,7 @@
                 @foreach($countries as $id => $country)
                     <option
                         value="{{ $id }}"
-                        @if(in_array($id, $model->countries->pluck('id')->toArray(), true)) selected @endif
+                        @if($model && in_array($id, $model->countries->pluck('id')->toArray(), true)) selected @endif
                     >{{ $country }}</option>
                 @endforeach
             </select>
@@ -110,7 +110,7 @@
                 @foreach($languages as $id => $language)
                     <option
                         value="{{ $id }}"
-                        @if(in_array($id, $model->languages->pluck('id')->toArray(), true)) selected @endif
+                        @if($model && in_array($id, $model->languages->pluck('id')->toArray(), true)) selected @endif
                     >{{ $language }}</option>
                 @endforeach
             </select>
@@ -133,7 +133,7 @@
                 @foreach($companies as $id => $company)
                     <option
                         value="{{ $id }}"
-                        @if(in_array($id, $model->companies->pluck('id')->toArray(), true)) selected @endif
+                        @if($model && in_array($id, $model->companies->pluck('id')->toArray(), true)) selected @endif
                     >{{ $company }}</option>
                 @endforeach
             </select>
