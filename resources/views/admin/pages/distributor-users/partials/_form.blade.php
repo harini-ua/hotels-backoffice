@@ -22,7 +22,10 @@
                     @else
                         <option value="">{{ __('- Choose Distributor -') }}</option>
                         @foreach($distributor as $id => $name)
-                            <option value="{{ $id }}">{{ $name }}</option>
+                            <option
+                                value="{{ $id }}"
+                                @if($model && $model->distributors->first()->id == $id) selected @endif
+                            >{{ $name }}</option>
                         @endforeach
                     @endif
                 </select>

@@ -32,6 +32,10 @@ class DistributorUsersDataTable extends DataTable
             return $model->email;
         });
 
+        $dataTable->addColumn('distributor', function (User $model) {
+            return $model->distributors->first()->name;
+        });
+
         $dataTable->addColumn('action', function (User $model) {
             return view("admin.datatables.actions", [
                 'actions' => ['edit', 'delete'],
@@ -155,6 +159,7 @@ class DistributorUsersDataTable extends DataTable
             Column::make('fullname')->title(__('Full Name')),
             Column::make('username')->title(__('User Name')),
             Column::make('email')->orderable(false),
+            Column::make('distributor')->orderable(false),
             Column::computed('action')
                 ->orderable(false)
                 ->exportable(false)
