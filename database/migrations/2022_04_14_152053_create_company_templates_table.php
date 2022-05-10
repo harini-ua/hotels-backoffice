@@ -13,7 +13,7 @@ class CreateCompanyTemplateTable extends Migration
      */
     public function up()
     {
-        Schema::create('company_template', function (Blueprint $table) {
+        Schema::create('company_templates', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('client_level');
@@ -62,6 +62,6 @@ class CreateCompanyTemplateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_template');
+        Schema::dropIfExists('company_templates');
     }
 }

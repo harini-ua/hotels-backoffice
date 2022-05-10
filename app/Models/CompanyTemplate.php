@@ -14,7 +14,7 @@ class CompanyTemplate extends Model
      *
      * @var string
      */
-    protected $table = 'company_template';
+    protected $table = 'company_templates';
 
     /**
      * The attributes that are mass assignable.

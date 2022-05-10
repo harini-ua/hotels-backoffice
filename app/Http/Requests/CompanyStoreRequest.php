@@ -30,12 +30,12 @@ class CompanyStoreRequest extends FormRequest
     {
         return [
             'company_name' => 'required|unique:companies,company_name|string',
-            'theme_id' => 'required|exists:company_theme,id',
+            'theme_id' => 'required|exists:company_themes,id',
             'category' => ['required', new EnumValue(CompanyCategory::class, false)],
             'status' => ['required', new EnumValue(CompanyStatus::class, false)],
             'admin_id' => 'required|exists:users,id',
             'country_id' => 'required|exists:countries,id',
-            'template_id' => 'required|exists:company_template,id',
+            'template_id' => 'required|exists:company_templates,id',
             'login_type' => ['required', new EnumValue(AccessCodeType::class, false)],
             'access_codes' => [
                 Rule::requiredIf(static function () {

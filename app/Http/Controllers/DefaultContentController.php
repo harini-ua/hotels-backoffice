@@ -66,7 +66,7 @@ class DefaultContentController extends Controller
             $defaultContent->fill($request->only(DefaultContent::FIELDS));
             $defaultContent->save();
 
-            // Upload default content  image
+            // Upload default content image
             foreach (DefaultContent::IMAGE_FIELDS as $field) {
                 if ($defaultContent->{$field}) {
                     $imageUpload = $request->file($field);
@@ -140,7 +140,7 @@ class DefaultContentController extends Controller
 
                         $path = storage_path('app/public/default/');
 
-                        $fileName = \Hash::make(Carbon::now()).'.'.$imageUpload->extension();
+                        $fileName = Uuid::uuid1().'.'.$imageUpload->extension();
 
                         $imageUpload->move($path, $fileName);
                         $carouselItem->update([ $field => $fileName ]);
@@ -153,7 +153,7 @@ class DefaultContentController extends Controller
             $teasers = $request->all()['teasers'];
 
             // Delete teaser items
-            $teaserItemsIds = $defaultContent->carousel->items->pluck('id')->toArray();
+            $teaserItemsIds = $defaultContent->teaser->items->pluck('id')->toArray();
             $deletedTeaserItems = array_diff($teaserItemsIds, array_column($teasers, 'id'));
             CompanyTeaserItem::whereIn('id', $deletedTeaserItems)->delete();
 

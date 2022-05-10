@@ -9,6 +9,12 @@ class CompanyHomepageOption extends Model
 {
     use HasFactory;
 
+    public const IMAGE_DIRECTORY = 'public/companies/';
+    public const IMAGE_EXTENSIONS = [ 'png', 'jpg', 'jpeg' ];
+    public const IMAGE_KILOBYTES_SIZE = 4096;
+
+    public const IMAGE_FIELDS = [ 'logo' ];
+
     /**
      * The table associated with the model.
      *

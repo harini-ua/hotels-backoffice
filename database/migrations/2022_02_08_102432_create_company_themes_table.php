@@ -13,7 +13,7 @@ class CreateCompanyThemeTable extends Migration
      */
     public function up()
     {
-        Schema::create('company_theme', function (Blueprint $table) {
+        Schema::create('company_themes', function (Blueprint $table) {
             $table->id();
             $table->string('theme_name');
             $table->string('theme_color');
@@ -30,6 +30,6 @@ class CreateCompanyThemeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_theme');
+        Schema::dropIfExists('company_themes');
     }
 }

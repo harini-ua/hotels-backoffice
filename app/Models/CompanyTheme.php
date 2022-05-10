@@ -14,7 +14,7 @@ class CompanyTheme extends Model
      *
      * @var string
      */
-    protected $table = 'company_theme';
+    protected $table = 'company_themes';
 
     /**
      * The attributes that are mass assignable.

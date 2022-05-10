@@ -29,6 +29,6 @@ class CompanyThemeSeeder extends Seeder
             fclose($open);
         }
 
-        DB::table('company_theme')->insert($themes);
+        DB::table('company_themes')->insert($themes);
     }
 }

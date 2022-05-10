@@ -12,7 +12,11 @@
         <div class="row">
             <div class="col-lg-12">
                 @php($model = $defaultContent ?? null)
-                <form id="default-content" method="POST" action="{{ route('settings.default-content.update') }}" enctype="multipart/form-data">
+                <form id="default-content"
+                      method="POST"
+                      action="{{ route('settings.default-content.update') }}"
+                      enctype="multipart/form-data"
+                >
                     @csrf
                     @if(isset($model)) @method('PUT') @endif
                     <div class="card m-b-30">
@@ -110,7 +114,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="card m-b-30">
                         <div class="card-header">
                             <h5 class="card-title">{{ __('Teaser Items') }}</h5>
