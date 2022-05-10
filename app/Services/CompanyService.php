@@ -290,6 +290,14 @@ class CompanyService
     {
         $themes = CompanyTheme::all()
             ->sortBy('theme_name')
+            ->map(static function ($theme) {
+                return [
+                    'id' => $theme->id,
+                    'theme_name' => !$theme->default
+                        ? $theme->theme_name
+                        : $theme->theme_name.' ('.__('Default').')',
+                ];
+            })
             ->pluck('theme_name', 'id');
 
         $templates = CompanyTemplate::with('language')->get()
@@ -378,6 +386,14 @@ class CompanyService
     {
         $themes = CompanyTheme::all()
             ->sortBy('theme_name')
+            ->map(static function ($theme) {
+                return [
+                    'id' => $theme->id,
+                    'theme_name' => !$theme->default
+                        ? $theme->theme_name
+                        : $theme->theme_name.' ('.__('Default').')',
+                ];
+            })
             ->pluck('theme_name', 'id');
 
         $templates = CompanyTemplate::with('language')->get()
