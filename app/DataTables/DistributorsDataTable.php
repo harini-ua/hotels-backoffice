@@ -24,15 +24,15 @@ class DistributorsDataTable extends DataTable
         });
 
         $dataTable->addColumn('company', function (Distributor $model) {
-            return '-';
+            return implode(', ', $model->companies->pluck('company_name')->toArray());
         });
 
         $dataTable->addColumn('country', function (Distributor $model) {
-            return '-';
+            return implode(', ', $model->countries->pluck('name')->toArray());
         });
 
         $dataTable->addColumn('language', function (Distributor $model) {
-            return '-';
+            return implode(', ', $model->languages->pluck('name')->toArray());
         });
 
         $dataTable->addColumn('action', function (Distributor $model) {
@@ -47,13 +47,19 @@ class DistributorsDataTable extends DataTable
 
         $dataTable->filter(function ($query) {
             if ($this->request->has('company')) {
-                // TODO: Implement filter by company
+                $query->whereHas('companies', function ($q) {
+                    $q->where('companies.id', $this->request->get('company'));
+                });
             }
             if ($this->request->has('country')) {
-                // TODO: Implement filter by country
+                $query->whereHas('countries', function ($q) {
+                    $q->where('countries.id', $this->request->get('country'));
+                });
             }
             if ($this->request->has('language')) {
-                // TODO: Implement filter by language
+                $query->whereHas('languages', function ($q) {
+                    $q->where('languages.id', $this->request->get('language'));
+                });
             }
         }, true);
 
@@ -133,9 +139,9 @@ class DistributorsDataTable extends DataTable
                 ->orderable(false),
             Column::make('company')->title(__('Company Site'))
                 ->orderable(false),
-            Column::make('country')
+            Column::make('country')->title(__('Countries'))
                 ->orderable(false),
-            Column::make('language')
+            Column::make('language')->title(__('Languages'))
                 ->orderable(false),
             Column::computed('action')
                 ->orderable(false)

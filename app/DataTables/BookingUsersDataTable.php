@@ -82,9 +82,9 @@ class BookingUsersDataTable extends DataTable
             $query->orderBy('username', $order);
         });
 
-        $dataTable->orderColumn('fullname', static function ($query, $order) {
-            $query->orderBy('fullname', $order);
-        });
+//        $dataTable->orderColumn('fullname', static function ($query, $order) {
+//            $query->orderBy('fullname', $order);
+//        });
 
         $dataTable->orderColumn('created_at', static function ($query, $order) {
             $query->orderBy('created_at', $order);

@@ -63,9 +63,9 @@ class DistributorUsersDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        $dataTable->orderColumn('fullname', static function ($query, $order) {
-            $query->orderBy('fullname', $order);
-        });
+//        $dataTable->orderColumn('fullname', static function ($query, $order) {
+//            $query->orderBy('fullname', $order);
+//        });
 
         $dataTable->orderColumn('name', static function ($query, $order) {
             $query->orderBy('name', $order);
@@ -80,7 +80,8 @@ class DistributorUsersDataTable extends DataTable
     protected function setFilterColumns($dataTable)
     {
         $dataTable->filterColumn('fullname', static function ($query, $keyword) {
-            $query->where('fullname', 'like', "%$keyword%");
+            $query->where('firstname', 'like', "%$keyword%")
+                ->orWhere('lastname', 'like', "%$keyword%");
         });
 
         $dataTable->filterColumn('username', static function ($query, $keyword) {

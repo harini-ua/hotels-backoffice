@@ -34,6 +34,9 @@ class DistributorUpdateRequest extends FormRequest
             'username' => 'required|string|min:3',
             'password' => 'nullable|string|min:8',
             'address' => 'required|string',
+            'country_ids.*' => 'required|exists:countries,id',
+            'language_ids.*' => 'required|exists:languages,id',
+            'company_ids.*' => 'required|exists:companies,id',
         ];
     }
 }

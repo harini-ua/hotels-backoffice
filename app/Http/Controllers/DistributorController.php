@@ -39,7 +39,7 @@ class DistributorController extends Controller
         ];
 
         $countries = Country::all()
-            ->where('active', 1)
+            ->where('status', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
 
@@ -77,7 +77,7 @@ class DistributorController extends Controller
         ];
 
         $countries = Country::all()
-            ->where('active', 1)
+            ->where('status', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
 
@@ -115,6 +115,10 @@ class DistributorController extends Controller
             $distributor->fill($request->only('name'));
             $distributor->status = 1; // Status active
             $distributor->save();
+
+            $distributor->countries()->attach($request->get('country_ids'));
+            $distributor->languages()->attach($request->get('language_ids'));
+            $distributor->companies()->attach($request->get('company_ids'));
 
             $user = new User();
             $user->fill($request->except('name'));
@@ -156,10 +160,12 @@ class DistributorController extends Controller
             ['href' => route('distributors.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
+        $distributor->load(['countries', 'languages', 'companies']);
+
         $master = $distributor->users()->where('master', true)->first();
 
         $countries = Country::all()
-            ->where('active', 1)
+            ->where('status', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
 
@@ -212,6 +218,10 @@ class DistributorController extends Controller
             }
 
             $master->save();
+
+            $distributor->countries()->sync($request->get('country_ids'));
+            $distributor->languages()->sync($request->get('language_ids'));
+            $distributor->companies()->sync($request->get('company_ids'));
 
             DB::commit();
 

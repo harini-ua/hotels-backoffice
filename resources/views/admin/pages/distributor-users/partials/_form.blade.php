@@ -15,11 +15,16 @@
             @else
                 <select id="distributor" name="distributor"
                         class="form-control select2 select2-single @error('distributor') is-invalid @enderror"
+                        @if(!$distributor->count()) disabled @endif
                 >
-                    <option value="">{{ __('- Choose Distributor -') }}</option>
-                    @foreach($distributor as $id => $name)
-                        <option value="{{ $id }}">{{ $name }}</option>
-                    @endforeach
+                    @if(!$distributor->count())
+                        <option>{{ '- '.__('No Available Distributor').' -' }}</option>
+                    @else
+                        <option value="">{{ __('- Choose Distributor -') }}</option>
+                        @foreach($distributor as $id => $name)
+                            <option value="{{ $id }}">{{ $name }}</option>
+                        @endforeach
+                    @endif
                 </select>
                 @error('distributor')
                 <small class="form-text text-danger" role="alert">{{ $message }}</small>
