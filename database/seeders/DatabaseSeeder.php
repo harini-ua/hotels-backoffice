@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PartnerSeeder::class);
         $this->call(PartnerProductSeeder::class);
         $this->call(PartnerEnvironmentSeeder::class);
+        $this->call(CompanyThemeSeeder::class);
         $this->call(DefaultContentSeeder::class);
 //        $this->call(CompanySeeder::class);
 

@@ -77,6 +77,7 @@ class CompanyThemesDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
+            ->orderBy(0, 'asc')
             ->dom('rtip')
             ->orderBy(1)
             ->buttons(

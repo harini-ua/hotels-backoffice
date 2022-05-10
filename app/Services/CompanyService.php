@@ -8,13 +8,20 @@ use App\Enums\CompanyStatus;
 use App\Enums\SystemType;
 use App\Models\AccessCode;
 use App\Models\Company;
+use App\Models\CompanyCarousel;
+use App\Models\CompanyMainOption;
+use App\Models\CompanyTeaser;
 use App\Models\CompanyTemplate;
 use App\Models\CompanyTheme;
 use App\Models\Country;
+use App\Models\DefaultContent;
 use App\Models\PartnerProduct;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
 class CompanyService
@@ -66,21 +73,160 @@ class CompanyService
         $newCompany->created_at = Carbon::now();
         $newCompany->save();
 
+        // Extra Night
         $extraNight = $this->company->extraNight->replicate();
         $newCompany->extraNight()->create($extraNight->toArray());
 
+        // Homepage Options
         $homepageOptions = $this->company->homepageOptions->replicate();
+
+        // Copy default logo
+        $logo = $this->company->homepageOptions->logo;
+        $fileName = Uuid::uuid1().'.'.\File::extension($logo);
+        Storage::copy(
+            'public/companies/'.$this->company->id.'/'.$logo,
+            'public/companies/'.$newCompany->id.'/'.$fileName
+        );
+        $homepageOptions->logo = $fileName;
+
+        $newCarousel = $this->company->homepageOptions->carousel->replicate();
+        $newCarousel->default = false;
+        $newCarousel->push();
+
+        foreach ($this->company->homepageOptions->carousel->items as $item) {
+            $newItem = $item->replicate();
+            $newItem->carousel_id = $newCarousel->id;
+
+            $fileName = Uuid::uuid1().'.'.\File::extension($newItem->image);
+            Storage::copy(
+                'public/companies/'.$this->company->id.'/'.$newItem->image,
+                'public/companies/'.$newCompany->id.'/'.$fileName
+            );
+
+            $newItem->image = $fileName;
+            $newItem->push();
+        }
+
+        $homepageOptions->carousel_id = $newCarousel->id;
+
+        $newTeaser = $this->company->homepageOptions->teaser->replicate();
+        $newTeaser->default = false;
+        $newTeaser->push();
+
+        foreach ($this->company->homepageOptions->teaser->items as $item) {
+            $newItem = $item->replicate();
+            $newItem->teaser_id = $newTeaser->id;
+            $newItem->push();
+        }
+
+        $homepageOptions->teaser_id = $newTeaser->id;
+
         $newCompany->homepageOptions()->create($homepageOptions->toArray());
 
+        // Main Options
         $mainOptions = $this->company->mainOptions->replicate();
         $newCompany->mainOptions()->create($mainOptions->toArray());
 
+        // Prefilled Option
         $prefilledOptions = $this->company->prefilledOption->replicate();
         $newCompany->prefilledOption()->create($prefilledOptions->toArray());
 
         // TODO: Implement duplicate all relationship
 
         return $newCompany;
+    }
+
+    /**
+     * Set Default Main Options
+     *
+     * @return void
+     */
+    public function defaultMainOptions()
+    {
+        $mainOption = new CompanyMainOption();
+        $mainOption->company_id = $this->company->id;
+        $mainOption->hotel_distances_filter = setDefaultHotelDistancesFilters();
+        $mainOption->save();
+    }
+
+    /**
+     * Set Default Homepage Options
+     *
+     * @return void
+     */
+    public function defaultHomepageOptions()
+    {
+        // Create default carousel
+        $carousel = CompanyCarousel::whereDefault(true)
+            ->with('items')->first();
+
+        $newCarousel = $carousel->replicate();
+        $newCarousel->default = false;
+        $newCarousel->push();
+
+        foreach ($carousel->items as $item) {
+            $newItem = $item->replicate();
+            $newItem->carousel_id = $newCarousel->id;
+
+            $fileName = Uuid::uuid1().'.'.\File::extension($newItem->image);
+            Storage::copy(
+                'public/default/'.$newItem->image,
+                'public/companies/'.$this->company->id.'/'.$fileName
+            );
+
+            $newItem->image = $fileName;
+            $newItem->push();
+        }
+
+        // Create default teaser
+        $teaser = CompanyTeaser::whereDefault(true)
+            ->with('items')->first();
+
+        $newTeaser = $teaser->replicate();
+        $newTeaser->default = false;
+        $newTeaser->push();
+
+        foreach ($teaser->items as $item) {
+            $newItem = $item->replicate();
+            $newItem->teaser_id = $newTeaser->id;
+            $newItem->push();
+        }
+
+        // Copy default logo
+        $logo = DefaultContent::first()->logo;
+        $fileName = Uuid::uuid1().'.'.\File::extension($logo);
+        Storage::copy(
+            'public/default/'.$logo,
+            'public/companies/'.$this->company->id.'/'.$fileName
+        );
+
+        // Create default homepage options
+        $this->company->homepageOptions()->create([
+            'theme_id' => CompanyTheme::whereDefault(true)->first()->id,
+            'logo' => $fileName,
+            'carousel_id' => $newCarousel->id,
+            'teaser_id' => $newTeaser->id,
+        ]);
+    }
+
+    /**
+     * Set Default Prefilled Option
+     *
+     * @return void
+     */
+    public function defaultPrefilledOption()
+    {
+        $this->company->prefilledOption()->create([]);
+    }
+
+    /**
+     * Set Default Extra Night
+     *
+     * @return void
+     */
+    public function defaultExtraNight()
+    {
+        $this->company->extraNight()->create([]);
     }
 
     /**

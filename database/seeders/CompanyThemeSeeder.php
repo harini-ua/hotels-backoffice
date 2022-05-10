@@ -16,8 +16,6 @@ class CompanyThemeSeeder extends Seeder
     {
         $themes = [];
 
-//        SELECT * FROM `whitelabel_theme`
-
         if (($open = fopen(storage_path('app/seed') . "/company_themes.csv", "r")) !== false) {
             while (($data = fgetcsv($open, 0, ',')) !== false) {
                 $themes[] = [

@@ -8,7 +8,11 @@ use App\Enums\CompanyCategory;
 use App\Enums\CompanyStatus;
 use App\Http\Requests\CompanyStoreRequest;
 use App\Models\Company;
+use App\Models\CompanyCarousel;
 use App\Models\CompanyMainOption;
+use App\Models\CompanyTeaser;
+use App\Models\CompanyTheme;
+use App\Models\DefaultContent;
 use App\Services\CompanyService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -118,18 +122,21 @@ class CompanyController extends Controller
 
             $company->save();
 
+            $this->companyService->setCompany($company);
+
             // Create default main options
-            $mainOption = new CompanyMainOption();
-            $mainOption->company_id = $company->id;
-            $mainOption->hotel_distances_filter = setDefaultHotelDistancesFilters();
-            $mainOption->save();
+            $this->companyService->defaultMainOptions();
+
+            // Create default homepage options
+            $this->companyService->defaultHomepageOptions();
 
             // Create default prefilled options
-            $company->prefilledOption()->create([]);
-            // Create default extra night
-            $company->extraNight()->create([]);
+            $this->companyService->defaultPrefilledOption();
 
-            $this->companyService->setCompany($company);
+            // Create default extra night
+            $this->companyService->defaultExtraNight();
+
+            // Generate access codes
             $this->companyService->genegateAccesCodes(
                 $request->get('access_codes'),
                 $request->get('login_type'),

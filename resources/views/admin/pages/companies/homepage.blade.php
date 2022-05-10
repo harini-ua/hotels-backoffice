@@ -51,7 +51,29 @@
                                 >
                                     @csrf
                                     @if(isset($model)) @method('PUT') @endif
-
+                                    <div class="form-group row">
+                                        <label for="theme_id" class="col-sm-2 col-form-label">{{ __('Theme') }} *</label>
+                                        <div class="col-sm-4">
+                                            <select id="theme_id" name="theme_id"
+                                                    class="form-control @error('theme_id') is-invalid @enderror"
+                                                    @if(!$themes->count()) disabled @endif
+                                            >
+                                                @if(!$themes->count())
+                                                    <option>{{ '- '.__('No Available Theme').' -' }}</option>
+                                                @endif
+                                                @foreach($themes as $id => $name)
+                                                    <option
+                                                        value="{{ $id }}"
+                                                        @if(old('theme_id') == $id) selected @endif
+                                                        @if($model && $model->homepageOptions->theme_id == $id) selected @endif
+                                                    >{{ $name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('theme_id')
+                                            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>

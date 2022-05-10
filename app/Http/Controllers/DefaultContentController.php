@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Ramsey\Uuid\Uuid;
 
 class DefaultContentController extends Controller
 {
@@ -76,7 +77,7 @@ class DefaultContentController extends Controller
 
                     $path = storage_path('app/public/default/');
 
-                    $fileName = \Hash::make(Carbon::now()).'.'.$imageUpload->extension();
+                    $fileName = Uuid::uuid1().'.'.$imageUpload->extension();
 
                     $imageUpload->move($path, $fileName);
                     $defaultContent->update([ $field => $fileName ]);

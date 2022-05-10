@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyHomepageUpdateRequest;
 use App\Models\Company;
+use App\Models\CompanyTheme;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 
@@ -28,8 +29,14 @@ class CompanyHomepageController extends Controller
             ['href' => route('companies.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
+        $company->load(['homepageOptions']);
+
+        $themes = CompanyTheme::all()
+            ->sortBy('theme_name')
+            ->pluck('theme_name', 'id');
+
         return view('admin.pages.companies.homepage',
-            compact('breadcrumbs', 'actions', 'company')
+            compact('breadcrumbs', 'actions', 'company', 'themes')
         );
     }
 
