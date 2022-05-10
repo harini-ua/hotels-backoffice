@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\View\Components\Menu;
+
 class SettingController extends Controller
 {
     public function index()
@@ -12,6 +14,10 @@ class SettingController extends Controller
             ['name' => __('Settings')]
         ];
 
-        return view('admin.pages.settings.index', compact('breadcrumbs'));
+        $menu = collect((new Menu())->items);
+        $settings = $menu->where('slag', 'settings')->first()['items'];
+        $settings = array_chunk($settings, 6);
+
+        return view('admin.pages.settings.index', compact('breadcrumbs', 'settings'));
     }
 }

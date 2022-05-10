@@ -150,6 +150,7 @@ class Menu extends Component
 
         $this->items[] = [
             'name' => __('Reports'),
+            'slag' => 'reports',
             'href' => route('reports.index'),
             'icon' => 'feather icon-file-text',
             'guard' => true,
@@ -159,6 +160,7 @@ class Menu extends Component
 
         $this->items[] = [
             'name' => __('Settings'),
+            'slag' => 'settings',
             'href' => route('settings.index'),
             'icon' => 'feather icon-settings',
             'guard' => $user->hasRole(UserRole::ADMIN),
