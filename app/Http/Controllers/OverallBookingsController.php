@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\OverallBookingsDataTable;
+use App\Models\Company;
 
 class OverallBookingsController extends Controller
 {
@@ -21,6 +22,13 @@ class OverallBookingsController extends Controller
             ['name' => __('Overall Bookings')]
         ];
 
-        return $dataTable->render('admin.pages.overall-bookings.index', compact('breadcrumbs'));
+        $companies = Company::all()
+            ->sortBy('name')
+            ->where('status', 1)
+            ->pluck('company_name', 'id');
+
+        return $dataTable->render('admin.pages.overall-bookings.index', compact(
+            'breadcrumbs', 'companies'
+        ));
     }
 }
