@@ -18,7 +18,37 @@ class SearchingByPeriodDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
+        $dataTable->addColumn('company_name', function (Company $model) {
+            return $model->company_name;
+        });
+
+        // ----- ----- ----- ----- ----- FIRST PERIOD  ----- ----- ----- ----- -----
+
+        $dataTable->addColumn('first_period_users', function (Company $model) {
+            return '-';
+        });
+
+        $dataTable->addColumn('first_period_bookings', function (Company $model) {
+            return '-';
+        });
+
+        // ----- ----- ----- ----- ----- SECOND PERIOD  ----- ----- ----- ----- -----
+
+        $dataTable->addColumn('second_period_users', function (Company $model) {
+            return '-';
+        });
+
+        $dataTable->addColumn('second_period_bookings', function (Company $model) {
+            return '-';
+        });
+
         $this->setOrderColumns($dataTable);
+
+        $dataTable->filter(function ($query) {
+            if ($this->request->has('company')) {
+                $query->where('id', $this->request->get('company'));
+            }
+        }, true);
 
         return $dataTable;
     }
@@ -41,7 +71,9 @@ class SearchingByPeriodDataTable extends DataTable
      */
     public function query(Company $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()
+            ->with(['users'])
+        ;
     }
 
     /**
@@ -56,12 +88,16 @@ class SearchingByPeriodDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('Bfrtip')
+            ->dom('rtip')
             ->orderBy(1)
-            ->language([
-                'search' => '',
-                'searchPlaceholder' => __('Search')
+            ->parameters([
+                'columnDefs' => [
+                    //
+                ]
             ])
+            ->drawCallback("function() {
+
+            }")
         ;
     }
 
@@ -73,7 +109,20 @@ class SearchingByPeriodDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id')->title(__('ID')),
+            Column::make('company_name')->title(__('Company Site')),
+
+            Column::make('first_period_users')
+                ->title('<i class="fa fa-users"></i> '.__('Users'))
+                ->addClass('text-center')->orderable(false),
+            Column::make('first_period_bookings')
+                ->title('<i class="fa fa-bed"></i> '.__('Bookings'))
+                ->addClass('text-center')->orderable(false),
+            Column::make('second_period_users')
+                ->title('<i class="fa fa-users"></i> '.__('Users'))
+                ->addClass('text-center')->orderable(false),
+            Column::make('second_period_bookings')
+                ->title('<i class="fa fa-bed"></i> '.__('Bookings'))
+                ->addClass('text-center')->orderable(false),
         ];
     }
 

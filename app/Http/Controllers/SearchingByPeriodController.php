@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\SearchingByPeriodDataTable;
+use App\Models\Company;
 
 class SearchingByPeriodController extends Controller
 {
@@ -21,6 +22,13 @@ class SearchingByPeriodController extends Controller
             ['name' => __('Searching By Period')]
         ];
 
-        return $dataTable->render('admin.pages.searching-period.index', compact('breadcrumbs'));
+        $companies = Company::all()
+            ->sortBy('name')
+            ->where('status', 1)
+            ->pluck('company_name', 'id');
+
+        return $dataTable->render('admin.pages.searching-period.index', compact(
+            'breadcrumbs', 'companies'
+        ));
     }
 }
