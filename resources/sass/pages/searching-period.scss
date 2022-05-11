@@ -1,0 +1,17 @@
+.searching-period-list-wrapper {
+
+    #datatable-filters {
+        .form-control.datepicker-filter[readonly] {
+            background-color: #ffffff;
+        }
+        .date-filter {
+            display: flex;
+        }
+    }
+
+    #searching-period-list-datatable {
+        .border-right {
+            border-right: 2px solid #dee2e6 !important;
+        }
+    }
+}

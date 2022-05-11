@@ -25,21 +25,21 @@ class SearchingByPeriodDataTable extends DataTable
         // ----- ----- ----- ----- ----- FIRST PERIOD  ----- ----- ----- ----- -----
 
         $dataTable->addColumn('first_period_users', function (Company $model) {
-            return '-';
+            return 23;
         });
 
         $dataTable->addColumn('first_period_bookings', function (Company $model) {
-            return '-';
+            return 60;
         });
 
         // ----- ----- ----- ----- ----- SECOND PERIOD  ----- ----- ----- ----- -----
 
         $dataTable->addColumn('second_period_users', function (Company $model) {
-            return '-';
+            return 67;
         });
 
         $dataTable->addColumn('second_period_bookings', function (Company $model) {
-            return '-';
+            return 93;
         });
 
         $this->setOrderColumns($dataTable);
@@ -60,7 +60,9 @@ class SearchingByPeriodDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        //..
+        $dataTable->orderColumn('company_name', static function ($query, $order) {
+            $query->orderBy('company_name', $order);
+        });
     }
 
     /**
@@ -89,14 +91,36 @@ class SearchingByPeriodDataTable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('rtip')
-            ->orderBy(1)
+            ->orderBy(0)
             ->parameters([
                 'columnDefs' => [
-                    //
+                    ['targets' => [0, 2], 'className' => 'border-right'],
                 ]
             ])
-            ->drawCallback("function() {
+            ->fixedHeader([
+                'header' => true,
+                'footer' => true,
+                'headerOffset' => 55
+            ])
+            ->drawCallback("function () {
+                var api = this.api();
 
+                // Remove the formatting to get integer data for summation
+                var intVal = function (i) {
+                    return typeof i === 'string' ? i.replace(/[\$,]/g, '')*1 : typeof i === 'number' ? i : 0;
+                };
+
+                total = api.column(1).data().reduce(function(a, b) { return intVal(a) + intVal(b); }, 0);
+                $(api.column(1).footer()).html('('+ total +')');
+
+                total = api.column(2).data().reduce(function(a, b) { return intVal(a) + intVal(b); }, 0);
+                $(api.column(2).footer()).html('('+ total +')');
+
+                total = api.column(3).data().reduce(function(a, b) { return intVal(a) + intVal(b); }, 0);
+                $(api.column(3).footer()).html('('+ total +')');
+
+                total = api.column(4).data().reduce(function(a, b) { return intVal(a) + intVal(b); }, 0);
+                $(api.column(4).footer()).html('('+ total +')');
             }")
         ;
     }
@@ -113,16 +137,28 @@ class SearchingByPeriodDataTable extends DataTable
 
             Column::make('first_period_users')
                 ->title('<i class="fa fa-users"></i> '.__('Users'))
-                ->addClass('text-center')->orderable(false),
+                ->titleAttr(__('Users'))
+                ->addClass('text-center')
+                ->width(150)
+                ->orderable(false),
             Column::make('first_period_bookings')
                 ->title('<i class="fa fa-bed"></i> '.__('Bookings'))
-                ->addClass('text-center')->orderable(false),
+                ->titleAttr(__('Bookings'))
+                ->addClass('text-center border-right')
+                ->width(150)
+                ->orderable(false),
             Column::make('second_period_users')
                 ->title('<i class="fa fa-users"></i> '.__('Users'))
-                ->addClass('text-center')->orderable(false),
+                ->titleAttr(__('Users'))
+                ->addClass('text-center')
+                ->width(150)
+                ->orderable(false),
             Column::make('second_period_bookings')
                 ->title('<i class="fa fa-bed"></i> '.__('Bookings'))
-                ->addClass('text-center')->orderable(false),
+                ->titleAttr(__('Bookings'))
+                ->addClass('text-center')
+                ->width(150)
+                ->orderable(false),
         ];
     }
 
