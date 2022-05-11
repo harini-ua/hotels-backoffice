@@ -38,45 +38,45 @@ class OverallBookingsDataTable extends DataTable
         // ----- ----- ----- ----- ----- CURRENT YEAR  ----- ----- ----- ----- -----
 
         $dataTable->addColumn('current_today_bookings', function (Company $model) {
-            return 0;
+            return 34;
         });
 
         $dataTable->addColumn('current_today_users', function (Company $model) {
-            return 0;
+            return 56;
         });
 
         $dataTable->addColumn('current_week_bookings', function (Company $model) {
-            return 0;
+            return 4;
         });
 
         $dataTable->addColumn('current_week_users', function (Company $model) {
-            return 0;
+            return 63;
         });
 
         $dataTable->addColumn('current_month_bookings', function (Company $model) {
-            return 0;
+            return 19;
         });
 
         $dataTable->addColumn('current_month_users', function (Company $model) {
-            return 0;
+            return 54;
         });
 
         $dataTable->addColumn('current_year_bookings', function (Company $model) {
-            return 0;
+            return 4;
         });
 
         $dataTable->addColumn('current_year_users', function (Company $model) {
-            return 0;
+            return 103;
         });
 
         // ----- ----- ----- ----- ----- PREVIOUS YEAR  ----- ----- ----- ----- -----
 
         $dataTable->addColumn('previous_today_bookings', function (Company $model) {
-            return 0;
+            return 10;
         });
 
         $dataTable->addColumn('previous_today_users', function (Company $model) {
-            return 0;
+            return 3;
         });
 
         $dataTable->addColumn('previous_week_bookings', function (Company $model) {
@@ -84,19 +84,19 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('previous_week_users', function (Company $model) {
-            return 0;
+            return 46;
         });
 
         $dataTable->addColumn('previous_month_bookings', function (Company $model) {
-            return 0;
+            return 10;
         });
 
         $dataTable->addColumn('previous_month_users', function (Company $model) {
-            return 0;
+            return 98;
         });
 
         $dataTable->addColumn('previous_year_bookings', function (Company $model) {
-            return 0;
+            return 2;
         });
 
         $dataTable->addColumn('previous_year_users', function (Company $model) {
@@ -163,7 +163,7 @@ class OverallBookingsDataTable extends DataTable
             ->orderBy(1)
             ->parameters([
                 'columnDefs' => [
-                    ['targets' => [3, 11], 'className' => 'border-right-custom'],
+                    ['targets' => [3, 11], 'className' => 'border-right'],
                 ]
             ])
             ->fixedHeader([
@@ -252,71 +252,87 @@ class OverallBookingsDataTable extends DataTable
                 ->footer('<b class="total_users">(0)</b>'),
             Column::make('total_bookings')
                 ->title(__('Total Bookings'))
-                ->addClass('text-center')
+                ->addClass('text-center border-right')
                 ->footer('<b class="total_bookings">(0)</b>'),
             Column::make('current_today_bookings')
                 ->title('<i class="fa fa-bed"></i>')
+                ->titleAttr(__('Bookings'))
                 ->footer('<b class="total_bookings">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('current_today_users')
                 ->title('<i class="fa fa-users"></i>')
+                ->titleAttr(__('Users'))
                 ->footer('<b class="current_today_users">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('current_week_bookings')
                 ->title('<i class="fa fa-bed"></i>')
+                ->titleAttr(__('Bookings'))
                 ->footer('<b class="current_week_bookings">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('current_week_users')
                 ->title('<i class="fa fa-users"></i>')
+                ->titleAttr(__('Users'))
                 ->footer('<b class="current_week_users">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('current_month_bookings')
                 ->title('<i class="fa fa-bed"></i>')
+                ->titleAttr(__('Bookings'))
                 ->footer('<b class="current_month_bookings">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('current_month_users')
                 ->title('<i class="fa fa-users"></i>')
+                ->titleAttr(__('Users'))
                 ->footer('<b class="current_month_users">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('current_year_bookings')
                 ->title('<i class="fa fa-bed"></i>')
+                ->titleAttr(__('Bookings'))
                 ->footer('<b class="current_year_bookings">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('current_year_users')
                 ->title('<i class="fa fa-users"></i>')
+                ->titleAttr(__('Users'))
                 ->footer('<b class="current_year_users">(0)</b>')
-                ->addClass('text-center')->orderable(false),
+                ->addClass('text-center border-right')->orderable(false),
 
             Column::make('previous_today_bookings')
                 ->title('<i class="fa fa-bed"></i>')
+                ->titleAttr(__('Bookings'))
                 ->footer('<b class="current_year_bookings">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('previous_today_users')
                 ->title('<i class="fa fa-users"></i>')
+                ->titleAttr(__('Users'))
                 ->footer('<b class="previous_today_users">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('previous_week_bookings')
                 ->title('<i class="fa fa-bed"></i>')
+                ->titleAttr(__('Bookings'))
                 ->footer('<b class="previous_week_bookings">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('previous_week_users')
                 ->title('<i class="fa fa-users"></i>')
+                ->titleAttr(__('Users'))
                 ->footer('<b class="previous_week_users">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('previous_month_bookings')
                 ->title('<i class="fa fa-bed"></i>')
+                ->titleAttr(__('Bookings'))
                 ->footer('<b class="previous_month_bookings">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('previous_month_users')
                 ->title('<i class="fa fa-users"></i>')
+                ->titleAttr(__('Users'))
                 ->footer('<b class="previous_month_users">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('previous_year_bookings')
                 ->title('<i class="fa fa-bed"></i>')
+                ->titleAttr(__('Bookings'))
                 ->footer('<b class="previous_year_bookings">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('previous_year_users')
                 ->title('<i class="fa fa-users"></i> ')
+                ->titleAttr(__('Users'))
                 ->footer('<b class="previous_year_users">(0)</b>')
                 ->addClass('text-center')->orderable(false),
         ];
