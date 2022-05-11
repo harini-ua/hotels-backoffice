@@ -83,3 +83,24 @@ input[type="checkbox"] {
         color: #fe8a00;
     }
 }
+.datepicker--cell.-range-from- {
+    border: 1px solid #fe8a00 !important;
+    background-color: #fe8a00 !important;
+    border-radius: 50px 0 0 50px;
+}
+
+.datepicker--cell.-range-to- {
+    border: 1px solid #fe8a00 !important;
+    background-color: #fe8a00 !important;
+    border-radius: 0 50px 50px 0;
+    color: #ffffff;
+}
+
+.datepicker--day-name {
+    color: #fe8a00 !important;
+}
+
+.datepicker--cell.-selected- {
+    color: #ffffff;
+    background: orange !important;
+}

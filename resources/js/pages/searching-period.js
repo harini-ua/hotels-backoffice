@@ -10,6 +10,7 @@ jQuery(document).ready(function ($) {
             range: true,
             autoClose: true,
             maxDate: new Date(),
+            extraClass: 'date-range-picker',
             multipleDatesSeparator: ' - ',
         });
 
@@ -20,6 +21,7 @@ jQuery(document).ready(function ($) {
             range: true,
             autoClose: true,
             maxDate: new Date(),
+            extraClass: 'date-range-picker',
             multipleDatesSeparator: ' - ',
         });
 
