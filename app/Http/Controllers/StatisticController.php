@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\View\Components\Menu;
+
 class StatisticController extends Controller
 {
     public function index()
@@ -12,6 +14,19 @@ class StatisticController extends Controller
             ['name' => __('Statistics')]
         ];
 
-        return view('admin.pages.statistics.index', compact('breadcrumbs'));
+        $menu = collect((new Menu())->items);
+
+        $statistics = $menu->where('slag', 'statistics')->first();
+
+        if (isset($statistics['items'])) {
+            $statistics = $statistics['items'];
+            $statistics = array_chunk($statistics, 6);
+        } else {
+            $statistics = [];
+        }
+
+        return view('admin.pages.statistics.index', compact(
+            'breadcrumbs', 'statistics'
+        ));
     }
 }

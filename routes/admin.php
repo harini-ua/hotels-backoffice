@@ -31,6 +31,7 @@ use App\Http\Controllers\DiscountVoucherController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\DistributorUserController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\OverallBookingsController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PartnerProductController;
 use App\Http\Controllers\PopularHotelController;
@@ -38,6 +39,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\RecommendedHotelController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\SearchingByPeriodController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SpecialOfferHotelController;
 use App\Http\Controllers\StatisticController;
@@ -178,6 +180,14 @@ Route::middleware('auth')->group(function () {
         /** ----- ------ ----- STATISTICS */
         Route::prefix('statistics')->as('statistics.')->group(function () {
             Route::get('/', [StatisticController::class, 'index'])->name('index');
+
+            Route::prefix('overall-bookings')->as('overall-bookings.')->group(function () {
+                Route::get('/', [OverallBookingsController::class, 'index'])->name('index');
+            });
+
+            Route::prefix('searching-period')->as('searching-period.')->group(function () {
+                Route::get('/', [SearchingByPeriodController::class, 'index'])->name('index');
+            });
         });
 
         /** ----- ------ ----- REPORTS */

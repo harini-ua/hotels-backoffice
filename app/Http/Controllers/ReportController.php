@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\View\Components\Menu;
+
 class ReportController extends Controller
 {
     public function index()
@@ -12,6 +14,19 @@ class ReportController extends Controller
             ['name' => __('Reports')]
         ];
 
-        return view('admin.pages.reports.index', compact('breadcrumbs'));
+        $menu = collect((new Menu())->items);
+
+        $reports = $menu->where('slag', 'reports')->first();
+
+        if (isset($reports['items'])) {
+            $reports = $reports['items'];
+            $reports = array_chunk($reports, 6);
+        } else {
+            $reports = [];
+        }
+
+        return view('admin.pages.reports.index', compact(
+            'breadcrumbs', 'reports'
+        ));
     }
 }

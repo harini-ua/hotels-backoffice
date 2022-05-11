@@ -141,9 +141,24 @@ class Menu extends Component
 
         $this->items[] = [
             'name' => __('Statistics'),
+            'slag' => 'statistics',
             'href' => route('statistics.index'),
             'icon' => 'feather icon-pie-chart',
             'guard' => true,
+            'items' => [
+                [
+                    'name' => __('Overall Bookings'),
+                    'href' => route('statistics.overall-bookings.index'),
+                    'icon' => 'feather icon-briefcase',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
+                ],
+                [
+                    'name' => __('Searching By Period'),
+                    'href' => route('statistics.searching-period.index'),
+                    'icon' => 'feather icon-calendar',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
+                ],
+            ]
         ];
 
         /** ----- Reports ----- */
