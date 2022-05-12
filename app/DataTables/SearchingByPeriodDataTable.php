@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Company;
+use Carbon\Carbon;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
@@ -47,6 +48,20 @@ class SearchingByPeriodDataTable extends DataTable
         $dataTable->filter(function ($query) {
             if ($this->request->has('company')) {
                 $query->where('id', $this->request->get('company'));
+            }
+            if ($this->request->has('period-first')) {
+                $dates = explode(' - ', $this->request->get('period-first'));
+                foreach ($dates as $key => $date) {
+                    $dates[$key] = Carbon::parse($date);
+                }
+                // TODO: Need Implement
+            }
+            if ($this->request->has('period-second')) {
+                $dates = explode(' - ', $this->request->get('period-second'));
+                foreach ($dates as $key => $date) {
+                    $dates[$key] = Carbon::parse($date);
+                }
+                // TODO: Need Implement
             }
         }, true);
 

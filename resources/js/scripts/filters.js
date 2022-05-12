@@ -63,22 +63,6 @@ $(document).ready(function () {
         });
     });
 
-    // Date filter
-    const dateFilter = $(".date-filter");
-    const route = dateFilter.attr('data-url') ? dateFilter.attr('data-url') : location.href;
-    const table = $('#' + dateFilter.attr('data-table')).DataTable();
-    dateFilter.find("input").on('change', function(e) {
-        alert(1);
-        e.preventDefault();
-        const name = this.getAttribute('name');
-        filters.set(name, this.value);
-        table.ajax.url(filters.url(route)).load();
-        $(document).trigger({
-            type: 'filterChange',
-            filters: filters
-        });
-    });
-
     $(document).on('filterChange', function(e) {
         //
     });

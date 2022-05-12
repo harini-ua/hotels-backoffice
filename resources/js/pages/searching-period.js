@@ -3,29 +3,98 @@ jQuery(document).ready(function ($) {
     $('.searching-period-list-wrapper').each(function () {
         var $this = $(this);
 
-        // https://longbill.github.io/jquery-date-range-picker/
-        $('#period-first').datepicker({
-            language: 'en',
-            dateFormat: 'dd/mm/yyyy',
-            range: true,
-            autoClose: true,
-            maxDate: new Date(),
-            extraClass: 'date-range-picker',
-            multipleDatesSeparator: ' - ',
-        });
+        const dateFilter = $(".date-filter");
+        const route = dateFilter.attr('data-url') ? dateFilter.attr('data-url') : location.href;
 
-        // https://longbill.github.io/jquery-date-range-picker/
-        $('#period-second').datepicker({
-            language: 'en',
-            dateFormat: 'dd/mm/yyyy',
-            range: true,
-            autoClose: true,
-            maxDate: new Date(),
-            extraClass: 'date-range-picker',
-            multipleDatesSeparator: ' - ',
-        });
-
+        var form = {
+            period_first: $this.find('#period-first'),
+            period_second: $this.find('#period-second'),
+        }
         var table = $this.find('#searching-period-list-datatable')
+
+        form.period_first.datepicker({
+            language: 'en',
+            dateFormat: 'dd/mm/yyyy',
+            range: true,
+            autoClose: true,
+            maxDate: new Date(),
+            extraClass: 'date-range-picker',
+            multipleDatesSeparator: ' - ',
+            onSelect: function(value, date) {
+                $(document).trigger({
+                    type: 'periodFirstChange',
+                    value: value
+                });
+            }
+        });
+
+        $(document).on('periodFirstChange', function(e) {
+            const date = e.value.split(" - ");
+            if (date.length === 2) {
+                if (form.period_second.val()) {
+                    let second = form.period_second.val()
+                    const date = second.split(" - ")
+                    if (date.length === 2) {
+                        filters.set(
+                            form.period_first.attr('name'),
+                            form.period_first.val()
+                        );
+                        filters.set(
+                            form.period_second.attr('name'),
+                            form.period_second.val()
+                        );
+                        const table = $('#' + dateFilter.attr('data-table')).DataTable();
+                        table.ajax.url(filters.url(route)).load();
+                    } else {
+                        form.period_second.focus()
+                    }
+                } else {
+                    form.period_second.focus()
+                }
+            }
+        });
+
+        form.period_second.datepicker({
+            language: 'en',
+            dateFormat: 'dd/mm/yyyy',
+            range: true,
+            autoClose: true,
+            maxDate: new Date(),
+            extraClass: 'date-range-picker',
+            multipleDatesSeparator: ' - ',
+            onSelect: function(value, date) {
+                $(document).trigger({
+                    type: 'perioSecondChange',
+                    value: value
+                });
+            }
+        });
+
+        $(document).on('perioSecondChange', function(e) {
+            const date = e.value.split(" - ");
+            if (date.length === 2) {
+                if (form.period_first.val()) {
+                    let first = form.period_first.val()
+                    const date = first.split(" - ")
+                    if (date.length === 2) {
+                        filters.set(
+                            form.period_first.attr('name'),
+                            form.period_first.val()
+                        );
+                        filters.set(
+                            form.period_second.attr('name'),
+                            form.period_second.val()
+                        );
+                        const table = $('#' + dateFilter.attr('data-table')).DataTable();
+                        table.ajax.url(filters.url(route)).load();
+                    } else {
+                        form.period_first.focus()
+                    }
+                } else {
+                    form.period_first.focus()
+                }
+            }
+        });
 
         table.find('thead').prepend('<tr>\n' +
             '    <th class="border-right"></th>\n' +
