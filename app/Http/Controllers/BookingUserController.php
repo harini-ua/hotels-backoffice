@@ -102,18 +102,18 @@ class BookingUserController extends Controller
 
             $company = Company::findOrFail($request->get('company_id'));
 
-            $user = new BookingUser();
-            $user->fill($request->except('password', 'invoice_allowed', 'send_to_email'));
-            $user->username = $user->email;
-            $user->password = Hash::make($request->get('password'));
-            $user->save();
+            $bookingUser = new BookingUser();
+            $bookingUser->fill($request->except('password', 'invoice_allowed', 'send_to_email'));
+            $bookingUser->username = $bookingUser->email;
+            $bookingUser->password = Hash::make($request->get('password'));
+            $bookingUser->save();
 
-            $user->companies()->attach($company);
+            $company->bookingUsers()->attach($bookingUser);
 
-            $user->assignRole(UserRole::BOOKING);
+            $bookingUser->assignRole(UserRole::BOOKING);
 
             if ($request->has('invoice_allowed')) {
-                $user->givePermissionTo('invoice allowed');
+                $bookingUser->givePermissionTo('invoice allowed');
             }
 
             if ($request->has('send_to_email')) {
@@ -122,7 +122,7 @@ class BookingUserController extends Controller
 
             DB::commit();
 
-            alert()->success($user->fullname, __('User created has been successful.'));
+            alert()->success($bookingUser->fullname, __('User created has been successful.'));
         } catch (\PDOException $e) {
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();

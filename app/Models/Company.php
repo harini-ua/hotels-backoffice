@@ -84,6 +84,14 @@ class Company extends Model
     }
 
     /**
+     * The users that belong to the company.
+     */
+    public function bookingUsers()
+    {
+        return $this->belongsToMany(BookingUser::class, 'company_booking_user');
+    }
+
+    /**
      * Get the country that owns the company.
      */
     public function country()

@@ -40,10 +40,9 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'booking_users',
             'hash' => false,
         ],
     ],
@@ -69,6 +68,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => \App\Models\User::class,
+        ],
+        'booking_users' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\BookingUser::class,
         ],
 
         // 'users' => [

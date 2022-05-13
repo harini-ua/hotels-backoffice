@@ -88,9 +88,31 @@ class SearchingByPeriodDataTable extends DataTable
      */
     public function query(Company $model)
     {
-        return $model->newQuery()
-            ->with(['users'])
-        ;
+        $query = $model->newQuery();
+
+        $query->select([
+            'companies.id'
+            , 'companies.company_name'
+            , 'companies.created_at'
+        ]);
+
+        $query->leftJoin('company_booking_user', 'companies.id', '=', 'company_booking_user.company_id');
+        $query->leftJoin('booking_users', 'company_booking_user.booking_user_id', '=', 'booking_users.id');
+
+        $this->addFirstPeriodSubSelect($query);
+        $this->addSecondPeriodSubSelect($query);
+
+        return $query;
+    }
+
+    private function addFirstPeriodSubSelect($query)
+    {
+
+    }
+
+    private function addSecondPeriodSubSelect($query)
+    {
+
     }
 
     /**

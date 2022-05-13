@@ -32,7 +32,7 @@ class BookingUserStoreRequest extends FormRequest
             'password' => 'required|string|min:8',
             'firstname' => 'required|string',
             'lastname' => 'required|string',
-            'address' => 'required|string',
+//            'address' => 'required|string',
             'country_id' => 'required|exists:countries,id',
             'language_id' => 'required|exists:languages,id',
         ];

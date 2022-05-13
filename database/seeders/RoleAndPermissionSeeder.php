@@ -17,18 +17,18 @@ class RoleAndPermissionSeeder extends Seeder
      */
     public function run()
     {
-        $createAdmin = Permission::create(['name' => 'create admin']);
-        $editProfile = Permission::create(['name' => 'edit profile']);
+        $createAdmin = Permission::create(['name' => 'create admin', 'guard_name' => 'web']);
+        $editProfile = Permission::create(['name' => 'edit profile', 'guard_name' => 'web']);
 
-        $admin = Role::create(['name' => UserRole::ADMIN]);
+        $admin = Role::create(['name' => UserRole::ADMIN, 'guard_name' => 'web']);
 
         $admin->syncPermissions([
             $createAdmin,
             $editProfile,
         ]);
 
-        $distributor = Role::create(['name' => UserRole::DISTRIBUTOR]);
-        $employee = Role::create(['name' => UserRole::EMPLOYEE]);
+        $distributor = Role::create(['name' => UserRole::DISTRIBUTOR, 'guard_name' => 'web']);
+        $employee = Role::create(['name' => UserRole::EMPLOYEE, 'guard_name' => 'web']);
 
         if (env('APP_ENV') === 'local') {
             $user = new User([
@@ -46,6 +46,7 @@ class RoleAndPermissionSeeder extends Seeder
             $user->assignRole($admin);
         }
 
-        $booking = Role::create(['name' => UserRole::BOOKING]);
+        $booking = Role::create(['name' => UserRole::BOOKING, 'guard_name' => 'api']);
+        Permission::create(['guard_name' => 'api', 'name' => 'invoice allowed']);
     }
 }

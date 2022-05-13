@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Permission\Traits\HasRoles;
 
 class BookingUser extends Model
 {
-    use SoftDeletes;
+    use HasRoles, SoftDeletes;
 
     public const TABLE = 'booking_users';
 
@@ -75,6 +76,14 @@ class BookingUser extends Model
     public function country()
     {
         return $this->belongsTo(Country::class);
+    }
+
+    /**
+     * Get the city that owns the user.
+     */
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 
     /**
