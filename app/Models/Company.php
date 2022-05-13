@@ -88,7 +88,8 @@ class Company extends Model
      */
     public function bookingUsers()
     {
-        return $this->belongsToMany(BookingUser::class, 'company_booking_user');
+        return $this->belongsToMany(BookingUser::class, 'company_booking_user')
+            ->withTimestamps();
     }
 
     /**

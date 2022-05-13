@@ -56,13 +56,13 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('total_bookings', function (Company $model) {
-            return 280;
+            return 0;
         });
 
         // ----- ----- ----- ----- ----- CURRENT YEAR  ----- ----- ----- ----- -----
 
         $dataTable->addColumn('current_today_bookings', function (Company $model) {
-            return 34;
+            return 0;
         });
 
         $dataTable->addColumn('current_today_users', function (Company $model) {
@@ -70,7 +70,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('current_week_bookings', function (Company $model) {
-            return 4;
+            return 0;
         });
 
         $dataTable->addColumn('current_week_users', function (Company $model) {
@@ -78,7 +78,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('current_month_bookings', function (Company $model) {
-            return 19;
+            return 0;
         });
 
         $dataTable->addColumn('current_month_users', function (Company $model) {
@@ -86,7 +86,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('current_year_bookings', function (Company $model) {
-            return 4;
+            return 0;
         });
 
         $dataTable->addColumn('current_year_users', function (Company $model) {
@@ -96,7 +96,7 @@ class OverallBookingsDataTable extends DataTable
         // ----- ----- ----- ----- ----- PREVIOUS YEAR  ----- ----- ----- ----- -----
 
         $dataTable->addColumn('previous_today_bookings', function (Company $model) {
-            return 10;
+            return 0;
         });
 
         $dataTable->addColumn('previous_today_users', function (Company $model) {
@@ -104,7 +104,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('previous_week_bookings', function (Company $model) {
-            return 10;
+            return 0;
         });
 
         $dataTable->addColumn('previous_week_users', function (Company $model) {
@@ -112,7 +112,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('previous_month_bookings', function (Company $model) {
-            return 10;
+            return 0;
         });
 
         $dataTable->addColumn('previous_month_users', function (Company $model) {
@@ -120,7 +120,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('previous_year_bookings', function (Company $model) {
-            return 2;
+            return 0;
         });
 
         $dataTable->addColumn('previous_year_users', function (Company $model) {
