@@ -22,13 +22,22 @@ class OverallBookingsController extends Controller
             ['name' => __('Overall Bookings')]
         ];
 
+        $actions = [
+            [
+                'href' => route('statistics.searching-period.index'),
+                'class' => 'btn-primary-rgba',
+                'icon' => 'calendar',
+                'name' => __('Searching Period'),
+            ]
+        ];
+
         $companies = Company::all()
             ->sortBy('name')
             ->where('status', 1)
             ->pluck('company_name', 'id');
 
         return $dataTable->render('admin.pages.overall-bookings.index', compact(
-            'breadcrumbs', 'companies'
+            'breadcrumbs', 'actions', 'companies'
         ));
     }
 }

@@ -16,10 +16,19 @@ class SearchingByPeriodController extends Controller
     public function index(SearchingByPeriodDataTable $dataTable)
     {
         $breadcrumbs = [
-            ['title' => __('Searching By Period')],
+            ['title' => __('Searching Period')],
             ['link' => route('home'), 'name' => __('Home')],
             ['link' => route('statistics.index'), 'name' => __('Statistics')],
-            ['name' => __('Searching By Period')]
+            ['name' => __('Searching Period')]
+        ];
+
+        $actions = [
+            [
+                'href' => route('statistics.overall-bookings.index'),
+                'class' => 'btn-primary-rgba',
+                'icon' => 'briefcase',
+                'name' => __('Overall Bookings'),
+            ]
         ];
 
         $companies = Company::all()
@@ -28,7 +37,7 @@ class SearchingByPeriodController extends Controller
             ->pluck('company_name', 'id');
 
         return $dataTable->render('admin.pages.searching-period.index', compact(
-            'breadcrumbs', 'companies'
+            'breadcrumbs', 'actions', 'companies'
         ));
     }
 }

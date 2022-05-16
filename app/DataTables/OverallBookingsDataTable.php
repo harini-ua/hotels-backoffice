@@ -34,13 +34,13 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('total_bookings', function (Company $model) {
-            return 0;
+            return $model->total_bookings;
         });
 
         // ----- ----- ----- ----- ----- CURRENT YEAR  ----- ----- ----- ----- -----
 
         $dataTable->addColumn('current_today_bookings', function (Company $model) {
-            return 0;
+//            return $model->current_today_bookings;
         });
 
         $dataTable->addColumn('current_today_users', function (Company $model) {
@@ -48,7 +48,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('current_week_bookings', function (Company $model) {
-            return 0;
+//            return $model->current_week_bookings;
         });
 
         $dataTable->addColumn('current_week_users', function (Company $model) {
@@ -56,7 +56,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('current_month_bookings', function (Company $model) {
-            return 0;
+//            return $model->current_month_bookings;
         });
 
         $dataTable->addColumn('current_month_users', function (Company $model) {
@@ -64,7 +64,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('current_year_bookings', function (Company $model) {
-            return 0;
+//            return $model->current_year_bookings;
         });
 
         $dataTable->addColumn('current_year_users', function (Company $model) {
@@ -74,7 +74,7 @@ class OverallBookingsDataTable extends DataTable
         // ----- ----- ----- ----- ----- PREVIOUS YEAR  ----- ----- ----- ----- -----
 
         $dataTable->addColumn('previous_today_bookings', function (Company $model) {
-            return 0;
+//            return $model->previous_today_bookings;
         });
 
         $dataTable->addColumn('previous_today_users', function (Company $model) {
@@ -82,7 +82,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('previous_week_bookings', function (Company $model) {
-            return 0;
+//            return $model->previous_week_bookings;
         });
 
         $dataTable->addColumn('previous_week_users', function (Company $model) {
@@ -90,7 +90,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('previous_month_bookings', function (Company $model) {
-            return 0;
+//            return $model->previous_month_bookings;
         });
 
         $dataTable->addColumn('previous_month_users', function (Company $model) {
@@ -98,7 +98,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('previous_year_bookings', function (Company $model) {
-            return 0;
+//            return $model->previous_year_bookings;
         });
 
         $dataTable->addColumn('previous_year_users', function (Company $model) {
@@ -109,7 +109,7 @@ class OverallBookingsDataTable extends DataTable
 
         $dataTable->filter(function ($query) {
             if ($this->request->has('company')) {
-                $query->where('id', $this->request->get('company'));
+                $query->where('companies.id', $this->request->get('company'));
             }
         }, true);
 
@@ -153,8 +153,9 @@ class OverallBookingsDataTable extends DataTable
 
         $query->leftJoin('company_booking_user', 'companies.id', '=', 'company_booking_user.company_id');
         $query->leftJoin('booking_users', 'company_booking_user.booking_user_id', '=', 'booking_users.id');
+        $query->leftJoin('bookings', 'booking_users.id', '=', 'bookings.user_id');
 
-        // Total user by company
+        // Total users by company
         $query->selectRaw('IFNULL(total_user.count, 0) AS total_users');
 
         $total_user = DB::table('company_booking_user')
@@ -165,8 +166,16 @@ class OverallBookingsDataTable extends DataTable
             $join->on('company_booking_user.company_id', '=', 'total_user.company_id');
         });
 
-        // Total booking by company
-        // TODO: Need implement
+        // Total bookings by company
+        $query->selectRaw('IFNULL(total_booking.count, 0) AS total_bookings');
+
+        $total_booking = DB::table('bookings')
+            ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
+        ;
+
+        $query->leftJoinSub($total_booking, 'total_booking', static function($join) {
+            $join->on('bookings.user_id', '=', 'total_booking.user_id');
+        });
 
         $this->addCurrentYearUserSubSelect($query);
         $this->addCurrentYearBookingSubSelect($query);

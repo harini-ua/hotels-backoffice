@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',  __('Searching By Period'))
+@section('title',  __('Searching Period'))
 
 @section('style')
     <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
