@@ -215,6 +215,12 @@ class Menu extends Component
                     'href' => route('settings.default-content.edit'),
                     'icon' => 'feather icon-file-plus',
                     'guard' => $user->hasRole(UserRole::ADMIN),
+                ],
+                [
+                    'name' => __('Promo Messages'),
+                    'href' => route('promo-messages.index'),
+                    'icon' => 'feather icon-bell',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
                 ]
             ]
         ];
