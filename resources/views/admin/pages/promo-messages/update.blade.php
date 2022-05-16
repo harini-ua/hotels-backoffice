@@ -3,7 +3,7 @@
 @section('title',  __('Update Promo Message'))
 
 @section('style')
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/partners-products.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/promo-messages.css') }}">
 @endsection
 
 @section('rightbar-content')
@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col s12">
-                                @include('admin.pages.partners-products.partials._form')
+                                @include('admin.pages.promo-messages.partials._form')
                             </div>
                         </div>
                     </div>
@@ -28,5 +28,5 @@
 @endsection
 
 @section('script')
-    <script src="{{asset('js/pages/partners-products.js')}}"></script>
+    <script src="{{asset('js/pages/promo-messages.js')}}"></script>
 @endsection
