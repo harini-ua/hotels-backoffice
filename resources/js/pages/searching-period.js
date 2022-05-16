@@ -39,10 +39,14 @@ jQuery(document).ready(function ($) {
                             form.period_first.attr('name'),
                             form.period_first.val()
                         );
+                        $('.first-period').text(form.period_first.val())
+
                         filters.set(
                             form.period_second.attr('name'),
                             form.period_second.val()
                         );
+                        $('.second-period').text(form.period_second.val())
+
                         const table = $('#' + dateFilter.attr('data-table')).DataTable();
                         table.ajax.url(filters.url(route)).load();
                     } else {
@@ -64,13 +68,13 @@ jQuery(document).ready(function ($) {
             multipleDatesSeparator: ' - ',
             onSelect: function(value, date) {
                 $(document).trigger({
-                    type: 'perioSecondChange',
+                    type: 'periodSecondChange',
                     value: value
                 });
             }
         });
 
-        $(document).on('perioSecondChange', function(e) {
+        $(document).on('periodSecondChange', function(e) {
             const date = e.value.split(" - ");
             if (date.length === 2) {
                 if (form.period_first.val()) {
@@ -81,10 +85,14 @@ jQuery(document).ready(function ($) {
                             form.period_first.attr('name'),
                             form.period_first.val()
                         );
+                        $('.first-period').text(form.period_first.val())
+
                         filters.set(
                             form.period_second.attr('name'),
                             form.period_second.val()
                         );
+                        $('.second-period').text(form.period_second.val())
+
                         const table = $('#' + dateFilter.attr('data-table')).DataTable();
                         table.ajax.url(filters.url(route)).load();
                     } else {
@@ -98,8 +106,8 @@ jQuery(document).ready(function ($) {
 
         table.find('thead').prepend('<tr>\n' +
             '    <th class="border-right"></th>\n' +
-            '    <th colspan="2" class="text-center border-right">First Period</th>\n' +
-            '    <th colspan="2" class="text-center">Second Period</th>\n' +
+            '    <th colspan="2" class="text-center first-period border-right">First Period</th>\n' +
+            '    <th colspan="2" class="text-center second-period">Second Period</th>\n' +
             '</tr>')
     });
 
