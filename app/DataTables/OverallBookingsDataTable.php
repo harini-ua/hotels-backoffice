@@ -40,7 +40,7 @@ class OverallBookingsDataTable extends DataTable
         // ----- ----- ----- ----- ----- CURRENT YEAR  ----- ----- ----- ----- -----
 
         $dataTable->addColumn('current_today_bookings', function (Company $model) {
-//            return $model->current_today_bookings;
+            return $model->current_today_bookings;
         });
 
         $dataTable->addColumn('current_today_users', function (Company $model) {
@@ -48,7 +48,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('current_week_bookings', function (Company $model) {
-//            return $model->current_week_bookings;
+            return $model->current_week_bookings;
         });
 
         $dataTable->addColumn('current_week_users', function (Company $model) {
@@ -56,7 +56,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('current_month_bookings', function (Company $model) {
-//            return $model->current_month_bookings;
+            return $model->current_month_bookings;
         });
 
         $dataTable->addColumn('current_month_users', function (Company $model) {
@@ -64,7 +64,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('current_year_bookings', function (Company $model) {
-//            return $model->current_year_bookings;
+            return $model->current_year_bookings;
         });
 
         $dataTable->addColumn('current_year_users', function (Company $model) {
@@ -74,7 +74,7 @@ class OverallBookingsDataTable extends DataTable
         // ----- ----- ----- ----- ----- PREVIOUS YEAR  ----- ----- ----- ----- -----
 
         $dataTable->addColumn('previous_today_bookings', function (Company $model) {
-//            return $model->previous_today_bookings;
+            return $model->previous_today_bookings;
         });
 
         $dataTable->addColumn('previous_today_users', function (Company $model) {
@@ -82,7 +82,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('previous_week_bookings', function (Company $model) {
-//            return $model->previous_week_bookings;
+            return $model->previous_week_bookings;
         });
 
         $dataTable->addColumn('previous_week_users', function (Company $model) {
@@ -90,7 +90,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('previous_month_bookings', function (Company $model) {
-//            return $model->previous_month_bookings;
+            return $model->previous_month_bookings;
         });
 
         $dataTable->addColumn('previous_month_users', function (Company $model) {
@@ -98,7 +98,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->addColumn('previous_year_bookings', function (Company $model) {
-//            return $model->previous_year_bookings;
+            return $model->previous_year_bookings;
         });
 
         $dataTable->addColumn('previous_year_users', function (Company $model) {
@@ -255,7 +255,66 @@ class OverallBookingsDataTable extends DataTable
 
     private function addCurrentYearBookingSubSelect($query)
     {
-        // TODO: Need implement
+        // Today in current year - total bookings by company
+
+        $query->selectRaw('IFNULL(current_today_booking.count, 0) AS current_today_bookings');
+
+        $current_today_booking = DB::table('bookings')
+            ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
+            ->whereDate('created_at', Carbon::now())
+        ;
+
+        $query->leftJoinSub($current_today_booking, 'current_today_booking', static function($join) {
+            $join->on('bookings.user_id', '=', 'current_today_booking.user_id');
+        });
+
+        // Week in current year - total bookings by company
+
+        $query->selectRaw('IFNULL(current_week_booking.count, 0) AS current_week_bookings');
+
+        $current_week_booking = DB::table('bookings')
+            ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
+            ->whereBetween('created_at', [
+                Carbon::now()->startOfWeek(),
+                Carbon::now()->endOfWeek()
+            ])
+        ;
+
+        $query->leftJoinSub($current_week_booking, 'current_week_booking', static function($join) {
+            $join->on('bookings.user_id', '=', 'current_week_booking.user_id');
+        });
+
+        // Month in current year - total bookings by company
+
+        $query->selectRaw('IFNULL(current_month_booking.count, 0) AS current_month_bookings');
+
+        $current_month_booking = DB::table('bookings')
+            ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
+            ->whereBetween('created_at', [
+                Carbon::now()->startOfMonth(),
+                Carbon::now()->endOfMonth()
+            ])
+        ;
+
+        $query->leftJoinSub($current_month_booking, 'current_month_booking', static function($join) {
+            $join->on('bookings.user_id', '=', 'current_month_booking.user_id');
+        });
+
+        // Year in current year - total bookings by company
+
+        $query->selectRaw('IFNULL(current_year_booking.count, 0) AS current_year_bookings');
+
+        $current_year_booking = DB::table('bookings')
+            ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
+            ->whereBetween('created_at', [
+                Carbon::now()->startOfYear(),
+                Carbon::now()->endOfYear()
+            ])
+        ;
+
+        $query->leftJoinSub($current_year_booking, 'current_year_booking', static function($join) {
+            $join->on('bookings.user_id', '=', 'current_year_booking.user_id');
+        });
     }
 
     private function addPreviousYearUserSubSelect($query)
@@ -324,7 +383,66 @@ class OverallBookingsDataTable extends DataTable
 
     private function addPreviousYearBookingSubSelect($query)
     {
-        // TODO: Need implement
+        // Today in previous year - total bookings by company
+
+        $query->selectRaw('IFNULL(previous_today_booking.count, 0) AS previous_today_bookings');
+
+        $previous_today_booking = DB::table('bookings')
+            ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
+            ->whereDate('created_at', Carbon::now())
+        ;
+
+        $query->leftJoinSub($previous_today_booking, 'previous_today_booking', static function($join) {
+            $join->on('bookings.user_id', '=', 'previous_today_booking.user_id');
+        });
+
+        // Week in previous year - total bookings by company
+
+        $query->selectRaw('IFNULL(previous_week_booking.count, 0) AS previous_week_bookings');
+
+        $previous_week_booking = DB::table('bookings')
+            ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
+            ->whereBetween('created_at', [
+                Carbon::now()->startOfWeek(),
+                Carbon::now()->endOfWeek()
+            ])
+        ;
+
+        $query->leftJoinSub($previous_week_booking, 'previous_week_booking', static function($join) {
+            $join->on('bookings.user_id', '=', 'previous_week_booking.user_id');
+        });
+
+        // Month in previous year - total bookings by company
+
+        $query->selectRaw('IFNULL(previous_month_booking.count, 0) AS previous_month_bookings');
+
+        $previous_month_booking = DB::table('bookings')
+            ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
+            ->whereBetween('created_at', [
+                Carbon::now()->startOfMonth(),
+                Carbon::now()->endOfMonth()
+            ])
+        ;
+
+        $query->leftJoinSub($previous_month_booking, 'previous_month_booking', static function($join) {
+            $join->on('bookings.user_id', '=', 'previous_month_booking.user_id');
+        });
+
+        // Year in previous year - total bookings by company
+
+        $query->selectRaw('IFNULL(previous_year_booking.count, 0) AS previous_year_bookings');
+
+        $previous_year_booking = DB::table('bookings')
+            ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
+            ->whereBetween('created_at', [
+                Carbon::now()->startOfYear(),
+                Carbon::now()->endOfYear()
+            ])
+        ;
+
+        $query->leftJoinSub($previous_year_booking, 'previous_year_booking', static function($join) {
+            $join->on('bookings.user_id', '=', 'previous_year_booking.user_id');
+        });
     }
 
     /**
