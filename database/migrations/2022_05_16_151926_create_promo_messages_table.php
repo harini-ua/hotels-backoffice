@@ -18,7 +18,7 @@ class CreatePromoMessagesTable extends Migration
             $table->string('headline');
             $table->string('content');
             $table->string('image')->nullable();
-            $table->string('status')->default(1);
+            $table->string('status')->default(\App\Enums\PromoMessageStatus::Inactive);
             $table->boolean('translateable');
             $table->boolean('show_all_company');
             $table->unsignedBigInteger('language_id');
