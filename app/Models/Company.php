@@ -141,6 +141,20 @@ class Company extends Model
     }
 
     /**
+     * The companies that belong to the distributor.
+     */
+    public function promoMessages()
+    {
+        return $this->belongsToMany(
+            PromoMessage::class,
+            'promo_company',
+            'company_id',
+            'promo_id',
+        );
+    }
+
+
+    /**
      * Get the discount for the company.
      */
     public function discounts()
