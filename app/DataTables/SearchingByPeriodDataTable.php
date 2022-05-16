@@ -118,8 +118,9 @@ class SearchingByPeriodDataTable extends DataTable
 
     private function addFirstPeriodSubSelect($query)
     {
-        // Get total users by first period
         if ($this->request->hasAny(['period-first', 'period-second'])) {
+
+            // Get total users by first period
             $query->selectRaw('IFNULL(first_period_user.count, 0) AS first_period_users');
 
             $first_period_user = DB::table('company_booking_user')
@@ -130,13 +131,17 @@ class SearchingByPeriodDataTable extends DataTable
             $query->leftJoinSub($first_period_user, 'first_period_user', static function($join) {
                 $join->on('company_booking_user.company_id', '=', 'first_period_user.company_id');
             });
+
+            // Get total booking by first period
+            // TODO: Need Implement
         }
     }
 
     private function addSecondPeriodSubSelect($query)
     {
-        // Get total users by second period
         if ($this->request->hasAny(['period-first', 'period-second'])) {
+
+            // Get total users by second period
             $query->selectRaw('IFNULL(second_period_user.count, 0) AS second_period_users');
 
             $second_period_user = DB::table('company_booking_user')
@@ -147,6 +152,9 @@ class SearchingByPeriodDataTable extends DataTable
             $query->leftJoinSub($second_period_user, 'second_period_user', static function($join) {
                 $join->on('company_booking_user.company_id', '=', 'second_period_user.company_id');
             });
+
+            // Get total booking by second period
+            // TODO: Need Implement
         }
     }
 
@@ -181,6 +189,9 @@ class SearchingByPeriodDataTable extends DataTable
                 var intVal = function (i) {
                     return typeof i === 'string' ? i.replace(/[\$,]/g, '')*1 : typeof i === 'number' ? i : 0;
                 };
+
+                total = api.column(0).data().reduce(function(a, b) { return a + 1; }, 0);
+                $(api.column(0).footer()).html('Total: ('+ total +')');
 
                 total = api.column(1).data().reduce(function(a, b) { return intVal(a) + intVal(b); }, 0);
                 $(api.column(1).footer()).html('('+ total +')');
