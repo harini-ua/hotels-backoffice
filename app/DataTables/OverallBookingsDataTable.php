@@ -11,28 +11,6 @@ use Yajra\DataTables\Services\DataTable;
 
 class OverallBookingsDataTable extends DataTable
 {
-
-    /**
-     * OverallBookingsDataTable constructor.
-     */
-    public function __construct()
-    {
-        $this->years = [
-            'previous' => [
-                'today' => Carbon::now(),
-                'week' => Carbon::now(),
-                'month' => Carbon::now(),
-                'year' => Carbon::now(),
-            ],
-            'current' => [
-                'today' => Carbon::now()->subYear(),
-                'week' => Carbon::now()->subYear(),
-                'month' => Carbon::now()->subYear(),
-                'year' => Carbon::now()->subYear(),
-            ],
-        ];
-    }
-
     /**
      * Build DataTable class.
      *

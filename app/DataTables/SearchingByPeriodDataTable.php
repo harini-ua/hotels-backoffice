@@ -4,11 +4,15 @@ namespace App\DataTables;
 
 use App\Models\Company;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
 class SearchingByPeriodDataTable extends DataTable
 {
+    public $firstPeriod = [];
+    public $secondPeriod = [];
+
     /**
      * Build DataTable class.
      *
@@ -26,7 +30,7 @@ class SearchingByPeriodDataTable extends DataTable
         // ----- ----- ----- ----- ----- FIRST PERIOD  ----- ----- ----- ----- -----
 
         $dataTable->addColumn('first_period_users', function (Company $model) {
-            return 23;
+            return $model->first_period_users;
         });
 
         $dataTable->addColumn('first_period_bookings', function (Company $model) {
@@ -36,7 +40,7 @@ class SearchingByPeriodDataTable extends DataTable
         // ----- ----- ----- ----- ----- SECOND PERIOD  ----- ----- ----- ----- -----
 
         $dataTable->addColumn('second_period_users', function (Company $model) {
-            return 67;
+            return $model->second_period_users;
         });
 
         $dataTable->addColumn('second_period_bookings', function (Company $model) {
@@ -47,21 +51,12 @@ class SearchingByPeriodDataTable extends DataTable
 
         $dataTable->filter(function ($query) {
             if ($this->request->has('company')) {
-                $query->where('id', $this->request->get('company'));
+                $query->where('companies.id', $this->request->get('company'));
             }
-            if ($this->request->has('period-first')) {
-                $dates = explode(' - ', $this->request->get('period-first'));
-                foreach ($dates as $key => $date) {
-                    $dates[$key] = Carbon::parse($date);
-                }
-                // TODO: Need Implement
-            }
-            if ($this->request->has('period-second')) {
-                $dates = explode(' - ', $this->request->get('period-second'));
-                foreach ($dates as $key => $date) {
-                    $dates[$key] = Carbon::parse($date);
-                }
-                // TODO: Need Implement
+
+            if (!$this->request->hasAny(['period-first', 'period-second'])){
+                // Making the result empty on purpose
+                $query->where('companies.id', 0);
             }
         }, true);
 
@@ -88,6 +83,20 @@ class SearchingByPeriodDataTable extends DataTable
      */
     public function query(Company $model)
     {
+        if ($this->request->has('period-first')) {
+            $dates = explode(' - ', $this->request->get('period-first'));
+            foreach ($dates as $key => $date) {
+                $this->firstPeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
+            }
+        }
+
+        if ($this->request->has('period-second')) {
+            $dates = explode(' - ', $this->request->get('period-second'));
+            foreach ($dates as $key => $date) {
+                $this->secondPeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
+            }
+        }
+
         $query = $model->newQuery();
 
         $query->select([
@@ -102,17 +111,43 @@ class SearchingByPeriodDataTable extends DataTable
         $this->addFirstPeriodSubSelect($query);
         $this->addSecondPeriodSubSelect($query);
 
+        $query->groupBy('companies.id');
+
         return $query;
     }
 
     private function addFirstPeriodSubSelect($query)
     {
+        // Get total users by first period
+        if ($this->request->hasAny(['period-first', 'period-second'])) {
+            $query->selectRaw('IFNULL(first_period_user.count, 0) AS first_period_users');
 
+            $first_period_user = DB::table('company_booking_user')
+                ->select(['company_id', DB::raw('COUNT(booking_user_id) AS count'), 'created_at'])
+                ->whereBetween('created_at', $this->firstPeriod)
+                ->groupBy('company_id');
+
+            $query->leftJoinSub($first_period_user, 'first_period_user', static function($join) {
+                $join->on('company_booking_user.company_id', '=', 'first_period_user.company_id');
+            });
+        }
     }
 
     private function addSecondPeriodSubSelect($query)
     {
+        // Get total users by second period
+        if ($this->request->hasAny(['period-first', 'period-second'])) {
+            $query->selectRaw('IFNULL(second_period_user.count, 0) AS second_period_users');
 
+            $second_period_user = DB::table('company_booking_user')
+                ->select(['company_id', DB::raw('COUNT(booking_user_id) AS count'), 'created_at'])
+                ->whereBetween('created_at', $this->firstPeriod)
+                ->groupBy('company_id');
+
+            $query->leftJoinSub($second_period_user, 'second_period_user', static function($join) {
+                $join->on('company_booking_user.company_id', '=', 'second_period_user.company_id');
+            });
+        }
     }
 
     /**
