@@ -132,7 +132,7 @@ class OverallBookingsDataTable extends DataTable
         });
 
         $dataTable->orderColumn('total_bookings', static function ($query, $order) {
-            // TODO: Need Implement
+            $query->orderBy('total_bookings', $order);
         });
     }
 
