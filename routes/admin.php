@@ -36,6 +36,7 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PartnerProductController;
 use App\Http\Controllers\PopularHotelController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PromoMessageController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\RecommendedHotelController;
 use App\Http\Controllers\ReportController;
@@ -204,6 +205,9 @@ Route::middleware('auth')->group(function () {
         Route::prefix('cities')->as('cities.')->group(function () {
             Route::get('/{city}/hotels', [CityController::class, 'hotels'])->name('hotels');
         });
+
+        /** ----- ------ ----- PROMO MESSAGE */
+        Route::resource('promo-messages', PromoMessageController::class)->except(['show']);
 
         /** ----- ------ ----- SETTINGS */
         Route::prefix('settings')->as('settings.')->group(function () {
