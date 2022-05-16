@@ -25,7 +25,7 @@ class SearchingByPeriodController extends Controller
         $actions = [
             [
                 'href' => route('statistics.overall-bookings.index'),
-                'class' => 'btn-primary-rgba',
+                'class' => 'btn-submit',
                 'icon' => 'briefcase',
                 'name' => __('Overall Bookings'),
             ]
