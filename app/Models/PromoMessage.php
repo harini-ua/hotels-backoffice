@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use App\Traits\ImageUpload;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class PromoMessage extends Model
 {
@@ -40,7 +40,7 @@ class PromoMessage extends Model
      * @var array
      */
     protected $casts = [
-        'expiry_date' => 'datetime',
+        'expiry_date' => 'date',
     ];
 
     /**
@@ -57,6 +57,28 @@ class PromoMessage extends Model
     }
 
     /**
+     * Get the user's first name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getFirstNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    /**
+     * Set the expiry date.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setExpiryDateAttribute($value)
+    {
+        $this->attributes['expiry_date'] = Carbon::createFromFormat('d/m/Y', $value);
+    }
+
+    /**
      * Get the language that owns the promo message.
      */
     public function language()
@@ -69,6 +91,6 @@ class PromoMessage extends Model
      */
     public function creator()
     {
-        return $this->belongsTo(User::class, 'id', 'creator_id');
+        return $this->belongsTo(User::class, 'creator_id', 'id');
     }
 }

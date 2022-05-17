@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use App\DataTables\PromoMessagesDataTable;
 use App\Http\Requests\PromoMessageStoreRequest;
 use App\Http\Requests\PromoMessageUpdateRequest;
+use App\Models\Company;
 use App\Models\Language;
 use App\Models\PromoMessage;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Ramsey\Uuid\Uuid;
 
 class PromoMessageController extends Controller
 {
@@ -53,14 +56,17 @@ class PromoMessageController extends Controller
             ['name' => __('Create')]
         ];
 
-        $languages = Language::all()
+        $languages = Language::all()->sortBy('name')->pluck('name', 'id');
+
+        $companies = Company::all()
             ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
+            ->sortBy('company_name')
+            ->pluck('company_name', 'id');
 
         return view('admin.pages.promo-messages.create', compact(
             'breadcrumbs',
             'languages',
+            'companies'
         ));
     }
 
@@ -77,8 +83,19 @@ class PromoMessageController extends Controller
             DB::beginTransaction();
 
             $promoMessage = new PromoMessage();
-            $promoMessage->fill($request->all());
+            $promoMessage->fill($request->except(PromoMessage::IMAGE_FIELDS));
+            $promoMessage->creator_id = \Auth::user()->id;
             $promoMessage->save();
+
+            foreach (PromoMessage::IMAGE_FIELDS as $field) {
+                $path = storage_path('app/public/promo/');
+
+                $imageUpload = $request->file($field);
+                $fileName = Uuid::uuid1().'.'.$imageUpload->extension();
+
+                $imageUpload->move($path, $fileName);
+                $promoMessage->update([ $field => $fileName ]);
+            }
 
             DB::commit();
 
@@ -110,15 +127,19 @@ class PromoMessageController extends Controller
             ['href' => route('promo-messages.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
-        $languages = Language::all()
+        $languages = Language::all()->sortBy('name')->pluck('name', 'id');
+
+        $companies = Company::all()
             ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
+            ->sortBy('company_name')
+            ->pluck('company_name', 'id');
 
         return view('admin.pages.promo-messages.update', compact(
             'breadcrumbs',
             'actions',
+            'promoMessage',
             'languages',
+            'companies',
         ));
     }
 
@@ -136,8 +157,26 @@ class PromoMessageController extends Controller
         try {
             DB::beginTransaction();
 
-            $promoMessage->fill($request->all());
+            $promoMessage->fill($request->except(PromoMessage::IMAGE_FIELDS));
             $promoMessage->save();
+
+            foreach (PromoMessage::IMAGE_FIELDS as $field) {
+                if ($request->file($field)) {
+                    if ($promoMessage->{$field}) {
+                        if (Storage::exists('public/promo/'.$promoMessage->{$field})) {
+                            Storage::delete('public/promo/'.$promoMessage->{$field});
+                        }
+                    }
+
+                    $path = storage_path('app/public/promo/');
+
+                    $imageUpload = $request->file($field);
+                    $fileName = Uuid::uuid1().'.'.$imageUpload->extension();
+
+                    $imageUpload->move($path, $fileName);
+                    $promoMessage->update([ $field => $fileName ]);
+                }
+            }
 
             DB::commit();
 
@@ -159,6 +198,14 @@ class PromoMessageController extends Controller
      */
     public function destroy(PromoMessage $promoMessage)
     {
+        foreach (PromoMessage::IMAGE_FIELDS as $field) {
+            if ($promoMessage->{$field}) {
+                if (Storage::exists('public/promo/'.$promoMessage->{$field})) {
+                    Storage::delete('public/promo/'.$promoMessage->{$field});
+                }
+            }
+        }
+
         if ($promoMessage->delete()) {
             return response()->json(['success' => true]);
         }

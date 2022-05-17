@@ -23,7 +23,6 @@ class HotelCommissionSeeder extends Seeder
                 $hotels_commissions[] = [
                     'hotel_id' => (int)$data[0],
                     'commission' => (int)$data[1],
-
                 ];
             }
 

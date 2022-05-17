@@ -24,12 +24,14 @@ class PromoMessagesDataTable extends DataTable
             return $model->headline;
         });
 
-        $dataTable->addColumn('content', function (PromoMessage $model) {
-            return $model->content;
-        });
-
         $dataTable->addColumn('company', function (PromoMessage $model) {
-            return '-';
+            if ($model->show_all_company === 0) {
+                return __('All');
+            }
+
+            return $model->countries ?
+                implode(', ', $model->countries->pluck('name')->toArray())
+                : '-';
         });
 
         $dataTable->addColumn('language', function (PromoMessage $model) {
@@ -37,11 +39,14 @@ class PromoMessagesDataTable extends DataTable
         });
 
         $dataTable->addColumn('status', function (PromoMessage $model) {
-            return PromoMessageStatus::getDescription($model->status);
+            return view('admin.datatables.view-status', [
+                'status' => PromoMessageStatus::getDescription((int) $model->status),
+                'class' => PromoMessageStatus::getColor($model->status, 'class'),
+            ]);
         });
 
         $dataTable->addColumn('creator', function (PromoMessage $model) {
-            return $model->user->fullname;
+            return $model->creator->fullname;
         });
 
         $dataTable->addColumn('expiry_date', function (PromoMessage $model) {
@@ -55,6 +60,10 @@ class PromoMessagesDataTable extends DataTable
                 'route' => 'promo-messages'
             ]);
         });
+
+        $dataTable->rawColumns([
+            'status',
+        ]);
 
         $this->setOrderColumns($dataTable);
         $this->setFilterColumns($dataTable);
@@ -130,17 +139,17 @@ class PromoMessagesDataTable extends DataTable
         return [
             Column::make('id')->title(__('ID')),
             Column::make('headline')->title(__('Title'))->orderable(false),
-            Column::make('content')->title(__('Content'))->orderable(false),
             Column::make('company')->title(__('Company'))->orderable(false),
             Column::make('language')->title(__('Language'))->orderable(false),
             Column::make('creator')->title(__('Creator'))->orderable(false),
+            Column::make('status')->title(__('Status'))->orderable(false),
             Column::make('expiry_date')->title(__('Expiry Date')),
             Column::computed('action')
                 ->orderable(false)
                 ->exportable(false)
                 ->printable(false)
                 ->orderable(false)
-                ->width(250)
+                ->width(150)
                 ->addClass('text-center'),
         ];
     }
