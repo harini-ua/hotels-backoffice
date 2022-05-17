@@ -29,8 +29,8 @@ class PromoMessagesDataTable extends DataTable
                 return __('All');
             }
 
-            return $model->countries ?
-                implode(', ', $model->countries->pluck('name')->toArray())
+            return $model->companies ?
+                implode(', ', $model->companies->pluck('company_name')->toArray())
                 : '-';
         });
 

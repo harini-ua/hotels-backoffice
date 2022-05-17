@@ -11,7 +11,7 @@ $(document).ready(function ($) {
                 select_all: $this.find('#select_all'),
                 select_custom: $this.find('#select_custom'),
             },
-            company: $this.find('#company_id'),
+            companies: $this.find('#company_ids'),
         };
 
         form.expiry_date.datepicker({
@@ -32,19 +32,19 @@ $(document).ready(function ($) {
         });
 
         form.show_all_company.select_all.on('click', function() {
-            form.company.attr( 'disabled', true )
+            form.companies.attr( 'disabled', true )
         })
 
         if (form.show_all_company.select_all.checked) {
-            form.company.attr( 'disabled', true )
+            form.companies.attr( 'disabled', true )
         }
 
         form.show_all_company.select_custom.on('click', function() {
-            form.company.attr( 'disabled', false )
+            form.companies.attr( 'disabled', false )
         })
 
         if (form.show_all_company.select_custom.checked) {
-            form.company.attr( 'disabled', false )
+            form.companies.attr( 'disabled', false )
         }
 
         $('input.image-input').on('change', function() {

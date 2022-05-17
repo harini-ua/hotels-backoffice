@@ -10,6 +10,7 @@ use App\Models\Language;
 use App\Models\PromoMessage;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -87,6 +88,10 @@ class PromoMessageController extends Controller
             $promoMessage->creator_id = \Auth::user()->id;
             $promoMessage->save();
 
+            DB::commit();
+
+            $promoMessage->companies()->attach($request->get('company_ids'));
+
             foreach (PromoMessage::IMAGE_FIELDS as $field) {
                 $path = storage_path('app/public/promo/');
 
@@ -159,6 +164,10 @@ class PromoMessageController extends Controller
 
             $promoMessage->fill($request->except(PromoMessage::IMAGE_FIELDS));
             $promoMessage->save();
+
+            DB::commit();
+
+            $promoMessage->companies()->attach($request->get('company_ids'));
 
             foreach (PromoMessage::IMAGE_FIELDS as $field) {
                 if ($request->file($field)) {

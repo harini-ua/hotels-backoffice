@@ -200,10 +200,10 @@
         </div>
     </fieldset>
     <div class="form-group row">
-        <label for="company_id" class="col-sm-2 col-form-label">{{ __('Company Site') }}</label>
+        <label for="company_ids[]" class="col-sm-2 col-form-label">{{ __('Company Site') }}</label>
         <div class="col-sm-4">
-            <select id="company_id" name="company_id"
-                    class="form-control select2-multi-select @error('company_id') is-invalid @enderror"
+            <select id="company_ids" name="company_ids[]"
+                    class="form-control select2-multi-select @error('company_ids') is-invalid @enderror"
                     disabled
                     multiple
             >
@@ -217,7 +217,7 @@
                     >{{ $company }}</option>
                 @endforeach
             </select>
-            @error('company_id')
+            @error('company_ids')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
         </div>

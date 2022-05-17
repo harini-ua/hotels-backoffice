@@ -39,9 +39,9 @@ class PromoMessageUpdateRequest extends FormRequest
             'show_all_company' => 'nullable|bool',
             'language_id' => 'required|exists:languages,id',
             'expiry_date' => 'required|string|date_format:d/m/Y|after:now',
-            'company_id' => [
+            'company_ids.*' => [
                 Rule::requiredIf(static function () {
-                    return (int) request()->get('show_all_company') !== 1;
+                    return (int) request()->get('show_all_company') === 1;
                 }),
                 'nullable',
                 Rule::exists('companies', 'id')
