@@ -27,6 +27,10 @@ class CountriesDataTable extends DataTable
             return $model->code;
         });
 
+        $dataTable->addColumn('region', function (Country $model) {
+            return $model->region;
+        });
+
         $dataTable->addColumn('currency', function (Country $model) {
             return $model->currency->code;
         });
@@ -49,6 +53,9 @@ class CountriesDataTable extends DataTable
         $this->setFilterColumns($dataTable);
 
         $dataTable->filter(function ($query) {
+            if ($this->request->has('region')) {
+                $query->where('region', $this->request->get('region'));
+            }
             if ($this->request->has('currency')) {
                 $query->where('currency_id', $this->request->get('currency'));
             }
@@ -73,6 +80,10 @@ class CountriesDataTable extends DataTable
 
         $dataTable->orderColumn('code', static function ($query, $order) {
             $query->orderBy('code', $order);
+        });
+
+        $dataTable->orderColumn('region', static function ($query, $order) {
+            $query->orderBy('region', $order);
         });
 
         $dataTable->orderColumn('active', static function ($query, $order) {
@@ -143,6 +154,7 @@ class CountriesDataTable extends DataTable
             Column::make('code')->title(__('Code'))
                 ->width(70)
                 ->addClass('text-center'),
+            Column::make('region')->title(__('Region')),
             Column::make('currency')->title(__('Currency'))
                 ->orderable(false),
             Column::make('language')->title(__('Language'))

@@ -29,6 +29,10 @@ class CountryController extends Controller
             ['name' => __('All Countries')]
         ];
 
+        $regions = DB::table('countries')
+            ->groupBy('region')
+            ->pluck('region', 'region');
+
         $currencies = Currency::all()
             ->sortBy('code')
             ->pluck('code', 'id');
@@ -40,6 +44,7 @@ class CountryController extends Controller
 
         return $dataTable->render('admin.pages.countries.index', compact(
             'breadcrumbs',
+            'regions',
             'currencies',
             'languages'
         ));
