@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Axiom\Rules\LocationCoordinates;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CityUpdateRequest extends FormRequest
@@ -24,7 +25,11 @@ class CityUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'active' => 'nullable|bool',
+            'position' => [
+                'nullable',
+                new LocationCoordinates
+            ],
         ];
     }
 }

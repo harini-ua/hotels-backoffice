@@ -7,8 +7,10 @@ use App\DataTables\ProvidersDataTable;
 use App\Http\Requests\CityUpdateRequest;
 use App\Models\City;
 use App\Models\Country;
+use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CityController extends Controller
@@ -71,8 +73,14 @@ class CityController extends Controller
         try {
             DB::beginTransaction();
 
-            $city->fill($request->all());
+            $city->fill($request->except('position'));
             $city->active = $request->has('active');
+
+            if ($request->filled('position')) {
+                $location = explode(',', $request->get('position'));
+                $city->position = new Point($location[0], $location[1]);
+            }
+
             $city->save();
 
             DB::commit();
