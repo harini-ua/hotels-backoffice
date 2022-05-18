@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\CountriesDataTable;
 use App\DataTables\ProvidersDataTable;
-use App\Http\Requests\ProviderUpdateRequest;
+use App\Http\Requests\CountryUpdateRequest;
 use App\Models\Country;
-use App\Models\Provider;
+use App\Models\Currency;
+use App\Models\Language;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 
@@ -17,69 +20,102 @@ class CountryController extends Controller
      * @param ProvidersDataTable $dataTable
      * @return mixed
      */
-    public function index(ProvidersDataTable $dataTable)
+    public function index(CountriesDataTable $dataTable)
     {
         $breadcrumbs = [
-            ['title' => __('Providers')],
+            ['title' => __('Countries')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['name' => __('All Providers')]
+            ['name' => __('All Countries')]
         ];
 
-        $countries = Country::all()
-            ->where('status', 1)
+        $currencies = Currency::all()
+            ->sortBy('code')
+            ->pluck('code', 'id');
+
+        $languages = Language::all()
+            ->where('active', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        return $dataTable->render('admin.pages.providers.index', compact(
-            'breadcrumbs', 'countries'
+        return $dataTable->render('admin.pages.countries.index', compact(
+            'breadcrumbs',
+            'currencies',
+            'languages'
         ));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Provider $provider
+     * @param Country $country
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(Provider $provider)
+    public function edit(Country $country)
     {
         $breadcrumbs = [
-            ['title' => __('Edit Provider')],
+            ['title' => __('Edit Country')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['link' => route('providers.index'), 'name' => __('All Providers')],
-            ['name' => $provider->name]
+            ['link' => route('countries.index'), 'name' => __('All Countries')],
+            ['name' => $country->name]
         ];
 
-        return view('admin.pages.providers.update', compact('breadcrumbs', 'provider'));
+        $currencies = Currency::all()
+            ->sortBy('code')
+            ->pluck('code', 'id');
+
+        $languages = Language::all()
+            ->where('active', 1)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        return view('admin.pages.countries.update', compact(
+            'breadcrumbs',
+            'country',
+            'currencies',
+            'languages'
+        ));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param ProviderUpdateRequest $request
-     * @param Provider $provider
+     * @param CountryUpdateRequest $request
+     * @param Country $country
      *
      * @return RedirectResponse
      * @throws \Exception
      */
-    public function update(ProviderUpdateRequest $request, Provider $provider)
+    public function update(CountryUpdateRequest $request, Country $country)
     {
         try {
             DB::beginTransaction();
 
-            $provider->fill($request->all());
-            $provider->active = $request->has('active');
-            $provider->save();
+            $country->fill($request->all());
+            $country->active = $request->has('active');
+            $country->save();
 
             DB::commit();
 
-            alert()->success($provider->name, __('Provider updated has been successful.'));
+            alert()->success($country->name, __('Country updated has been successful.'));
         } catch (\PDOException $e) {
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
         }
 
-        return redirect()->route('providers.index');
+        return redirect()->route('countries.index');
+    }
+
+    /**
+     * @param Country $country
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function active(Country $country)
+    {
+        $country->active = !$country->active;
+        $country->save();
+
+        return response()->json(['success' => true]);
     }
 
     /**

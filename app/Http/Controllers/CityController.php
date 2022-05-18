@@ -75,7 +75,7 @@ class CityController extends Controller
 
             DB::commit();
 
-            alert()->success($city->name, __('Cities updated has been successful.'));
+            alert()->success($city->name, __('City updated has been successful.'));
         } catch (\PDOException $e) {
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();

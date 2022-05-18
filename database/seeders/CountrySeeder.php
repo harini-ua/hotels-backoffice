@@ -25,7 +25,7 @@ class CountrySeeder extends Seeder
                     'name' => $data[1],
                     'region' => $data[2],
                     'code' => $data[9],
-                    'status' => $data[3]
+                    'active' => $data[3]
                 ];
             }
 

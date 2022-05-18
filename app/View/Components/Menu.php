@@ -187,6 +187,12 @@ class Menu extends Component
                     'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
                 [
+                    'name' => __('Countries'),
+                    'href' => route('countries.index'),
+                    'icon' => 'feather icon-flag',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
+                ],
+                [
                     'name' => __('Cities'),
                     'href' => route('cities.index'),
                     'icon' => 'feather icon-globe',
