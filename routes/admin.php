@@ -197,12 +197,15 @@ Route::middleware('auth')->group(function () {
         });
 
         /** ----- ------ ----- COUNTRIES */
+        Route::resource('countries', CountryController::class)->except(['show']);
         Route::prefix('countries')->as('countries.')->group(function () {
             Route::get('/{country}/cities', [CountryController::class, 'cities'])->name('cities');
         });
 
         /** ----- ------ ----- CITIES */
+        Route::resource('cities', CityController::class)->except(['show']);
         Route::prefix('cities')->as('cities.')->group(function () {
+            Route::post('/{provider}/active', [CityController::class, 'active'])->name('active');
             Route::get('/{city}/hotels', [CityController::class, 'hotels'])->name('hotels');
         });
 
@@ -227,6 +230,7 @@ Route::middleware('auth')->group(function () {
                 Route::get('/', [DefaultContentController::class, 'edit'])->name('edit');
                 Route::put('/', [DefaultContentController::class, 'update'])->name('update');
             });
+
         });
     });
 });

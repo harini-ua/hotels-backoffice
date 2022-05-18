@@ -25,6 +25,7 @@
     "/js/pages/access-codes.js": "/js/pages/access-codes.js",
     "/js/pages/admins.js": "/js/pages/admins.js",
     "/js/pages/booking-users.js": "/js/pages/booking-users.js",
+    "/js/pages/cities.js": "/js/pages/cities.js",
     "/js/pages/companies-templates.js": "/js/pages/companies-templates.js",
     "/js/pages/companies-themes.js": "/js/pages/companies-themes.js",
     "/js/pages/companies.js": "/js/pages/companies.js",

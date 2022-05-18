@@ -187,6 +187,12 @@ class Menu extends Component
                     'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
                 [
+                    'name' => __('Cities'),
+                    'href' => route('cities.index'),
+                    'icon' => 'feather icon-globe',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
+                ],
+                [
                     'name' => __('Commissions'),
                     'href' => route('settings.commissions.edit'),
                     'icon' => 'feather icon-percent',
