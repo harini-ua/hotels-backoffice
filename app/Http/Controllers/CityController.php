@@ -23,6 +23,7 @@ class CityController extends Controller
     {
         $breadcrumbs = [
             ['title' => __('Cities')],
+            ['link' => route('settings.index'), 'name' => __('Settings')],
             ['link' => route('home'), 'name' => __('Home')],
             ['name' => __('All Cities')]
         ];
@@ -48,6 +49,7 @@ class CityController extends Controller
         $breadcrumbs = [
             ['title' => __('Edit City')],
             ['link' => route('home'), 'name' => __('Home')],
+            ['link' => route('settings.index'), 'name' => __('Settings')],
             ['link' => route('cities.index'), 'name' => __('All Cities')],
             ['name' => $city->name]
         ];

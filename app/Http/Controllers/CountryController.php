@@ -25,6 +25,7 @@ class CountryController extends Controller
         $breadcrumbs = [
             ['title' => __('Countries')],
             ['link' => route('home'), 'name' => __('Home')],
+            ['link' => route('settings.index'), 'name' => __('Settings')],
             ['name' => __('All Countries')]
         ];
 
@@ -55,6 +56,7 @@ class CountryController extends Controller
         $breadcrumbs = [
             ['title' => __('Edit Country')],
             ['link' => route('home'), 'name' => __('Home')],
+            ['link' => route('settings.index'), 'name' => __('Settings')],
             ['link' => route('countries.index'), 'name' => __('All Countries')],
             ['name' => $country->name]
         ];
