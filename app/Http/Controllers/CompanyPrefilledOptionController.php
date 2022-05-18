@@ -33,7 +33,7 @@ class CompanyPrefilledOptionController extends Controller
         $prefilledOptions = $company->prefilledOption;
 
         $countries = Country::all()
-            ->where('status', 1)
+            ->where('active', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
 
