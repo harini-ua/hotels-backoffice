@@ -24,7 +24,7 @@ class CountryUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'active' => 'nullable|bool',
         ];
     }
 }
