@@ -63,6 +63,14 @@ class CitiesDataTable extends DataTable
         $dataTable->orderColumn('name', static function ($query, $order) {
             $query->orderBy('name', $order);
         });
+
+        $dataTable->orderColumn('hotels_count', static function ($query, $order) {
+            $query->orderBy('hotels_count', $order);
+        });
+
+        $dataTable->orderColumn('active', static function ($query, $order) {
+            $query->orderBy('active', $order);
+        });
     }
 
     /**
@@ -125,7 +133,8 @@ class CitiesDataTable extends DataTable
             Column::make('id')->title(__('ID'))
                 ->width(70),
             Column::make('name')->title(__('City')),
-            Column::make('country')->title(__('Country')),
+            Column::make('country')->title(__('Country'))
+                ->orderable(false),
             Column::make('hotels_count')->title(__('Hotels Count'))
                 ->width(100)
                 ->addClass('text-center'),

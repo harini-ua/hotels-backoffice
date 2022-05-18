@@ -75,16 +75,6 @@ class CountriesDataTable extends DataTable
             $query->orderBy('code', $order);
         });
 
-        $dataTable->orderColumn('currency', static function ($query, $order) {
-            $query->join('currencies', 'countries.currency_id', '=', 'currencies.id')
-                ->orderBy('currencies.name', $order);
-        });
-
-        $dataTable->orderColumn('language', static function ($query, $order) {
-            $query->join('languages', 'countries.language_id', '=', 'languages.id')
-                ->orderBy('languages.name', $order);
-        });
-
         $dataTable->orderColumn('active', static function ($query, $order) {
             $query->orderBy('active', $order);
         });
@@ -153,8 +143,10 @@ class CountriesDataTable extends DataTable
             Column::make('code')->title(__('Code'))
                 ->width(70)
                 ->addClass('text-center'),
-            Column::make('currency')->title(__('Currency')),
-            Column::make('language')->title(__('Language')),
+            Column::make('currency')->title(__('Currency'))
+                ->orderable(false),
+            Column::make('language')->title(__('Language'))
+                ->orderable(false),
             Column::make('active')
                 ->orderable('false')
                 ->width(70)
