@@ -15,6 +15,7 @@ class AddColumnsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->renameColumn('name', 'username');
+            $table->dropUnique('users_email_unique');
         });
 
         Schema::table('users', function (Blueprint $table) {

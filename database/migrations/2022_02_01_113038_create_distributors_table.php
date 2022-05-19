@@ -16,6 +16,9 @@ class CreateDistributorsTable extends Migration
         Schema::create('distributors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('email')->unique();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
             $table->tinyInteger('status')->default(1)
                 ->comment('0-inactive, 1-active');
             $table->timestamps();
