@@ -8,12 +8,21 @@ use App\Http\Requests\CountryUpdateRequest;
 use App\Models\Country;
 use App\Models\Currency;
 use App\Models\Language;
+use App\Services\IndexService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 
 class CountryController extends Controller
 {
+    /** @var IndexService $indexService */
+    public $indexService;
+
+    public function __construct(IndexService $indexService)
+    {
+        $this->indexService = $indexService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -99,15 +108,16 @@ class CountryController extends Controller
 
             $country->fill($request->all());
             $country->active = $request->has('active');
-//            $country->blacklist = $request->has('blacklist');
+            $country->blacklisted = $request->has('blacklisted');
 
             $country->save();
 
-//            if ($request->has('blacklist')) {
-//                // TODO: Remove all cities and hotels to index elasticsearch
-//            } else {
-//                // TODO: Add all cities and hotels to index elasticsearch
-//            }
+            if ($request->isDirty('blacklisted')) {
+//                $country->cities()->update([
+//                    'blacklisted' => $request->has('blacklisted')
+//                ]);
+//                $this->indexService->change($country, !$request->has('blacklisted'));
+            }
 
             DB::commit();
 
