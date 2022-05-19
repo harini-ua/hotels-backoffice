@@ -48,6 +48,6 @@ class PartnerProductSeeder extends Seeder
             fclose($open);
         }
 
-        DB::table('partner_product')->insertTs($partner_products);
+        DB::table('partner_products')->insertTs($partner_products);
     }
 }

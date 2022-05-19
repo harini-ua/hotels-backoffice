@@ -31,7 +31,7 @@ class CompanyVatController extends Controller
         ];
 
         $countries = Country::all()
-            ->where('status', 1)
+            ->where('active', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
 

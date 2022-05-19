@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use App\Enums\PromoMessageStatus;
 use App\Models\PromoMessage;
-use App\Rules\HasRole;
 use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -36,15 +35,17 @@ class PromoMessageUpdateRequest extends FormRequest
                 'max:'.PromoMessage::IMAGE_KILOBYTES_SIZE
             ],
             'status' => ['required', new EnumValue(PromoMessageStatus::class, false)],
-            'translateable' => 'nullable|boolian',
-            'show_all_company' => 'nullable|boolian',
+            'translateable' => 'nullable|bool',
+            'show_all_company' => 'nullable|bool',
             'language_id' => 'required|exists:languages,id',
-            'creator_id' => [
-                'required',
-                Rule::exists('user','id'),
-                new HasRole(\App\Enums\UserRole::ADMIN)
-            ],
-            'expiry_date' => 'required|date|after:now'
+            'expiry_date' => 'required|string|date_format:d/m/Y|after:now',
+            'company_ids.*' => [
+                Rule::requiredIf(static function () {
+                    return (int) request()->get('show_all_company') === 1;
+                }),
+                'nullable',
+                Rule::exists('companies', 'id')
+            ]
         ];
     }
 }

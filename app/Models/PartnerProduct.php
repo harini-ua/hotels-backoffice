@@ -14,7 +14,7 @@ class PartnerProduct extends Model
      *
      * @var string
      */
-    protected $table = 'partner_product';
+    protected $table = 'partner_products';
 
     /**
      * The attributes that are mass assignable.
@@ -24,7 +24,8 @@ class PartnerProduct extends Model
     protected $fillable = [
         'name', 'code', 'meal_plan_id', 'currency_id', 'partner_id', 'price', 'partner_pay_price',
         'partner_commission', 'price_filter', 'price_min', 'price_max', 'star_filter', 'star_min', 'star_max',
-        'commission_min', 'nights', 'adults', 'sold_online', 'sold_retail', 'sku', 'comment',
+        'commission_min', 'nights', 'adults', 'sold_online', 'sold_retail', 'sku', 'comment', 'include_nrf',
+        'show_all_as_nrf',
     ];
 
     /**

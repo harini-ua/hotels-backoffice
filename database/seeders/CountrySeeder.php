@@ -22,10 +22,11 @@ class CountrySeeder extends Seeder
                     'id' => $data[0],
                     'currency_id' => 1,
                     'language_id' => $data[4],
-                    'name' => $data[1],
+                    'name' => ucwords(mb_strtolower($data[1])),
                     'region' => $data[2],
                     'code' => $data[9],
-                    'status' => $data[3]
+                    'active' => $data[3],
+                    'blacklisted' => 0
                 ];
             }
 

@@ -20,7 +20,8 @@ class CreateCountriesTable extends Migration
             $table->string('name');
             $table->string('region');
             $table->string('code');
-            $table->boolean('status')->default(0);
+            $table->boolean('active')->default(1);
+            $table->boolean('blacklisted')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

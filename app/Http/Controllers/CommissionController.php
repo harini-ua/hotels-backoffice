@@ -30,7 +30,7 @@ class CommissionController extends Controller
             ->pluck('name', 'id');
 
         $countries = Country::all()
-            ->where('status', 1)
+            ->where('active', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
 

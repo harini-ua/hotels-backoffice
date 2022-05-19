@@ -28,5 +28,6 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
     <script src="{{asset('js/pages/partners-products.js')}}"></script>
 @endsection

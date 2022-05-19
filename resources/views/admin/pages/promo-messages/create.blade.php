@@ -4,11 +4,12 @@
 
 @section('style')
     <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/datepicker/datepicker.min.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/promo-messages.css') }}">
 @endsection
 
 @section('rightbar-content')
-    <div class="contentbar partners-products-create-wrapper">
+    <div class="contentbar promo-messages-create-wrapper">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card m-b-30">
@@ -29,5 +30,7 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>
     <script src="{{asset('js/pages/promo-messages.js')}}"></script>
 @endsection

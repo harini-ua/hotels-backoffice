@@ -34,7 +34,7 @@ class CompanyCustomerSupportController extends Controller
         $count = $company->supports->count() > 0 ? $company->supports->count() : 1;
 
         $countries = Country::all()
-            ->where('status', 1)
+            ->where('active', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
 

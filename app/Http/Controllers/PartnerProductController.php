@@ -70,7 +70,24 @@ class PartnerProductController extends Controller
             ['name' => __('Create')]
         ];
 
-        return view('admin.pages.partners-products.create', compact('breadcrumbs'));
+        $partners = Partner::all()
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        $mealPlans = MealPlan::all()
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        $currencies = Currency::all()
+            ->sortBy('code')
+            ->pluck('code', 'id');
+
+        return view('admin.pages.partners-products.create', compact(
+            'breadcrumbs',
+            'partners',
+            'mealPlans',
+            'currencies'
+        ));
     }
 
     /**
@@ -87,6 +104,19 @@ class PartnerProductController extends Controller
 
             $partnerProduct = new PartnerProduct();
             $partnerProduct->fill($request->all());
+
+            if(!$request->filled('partner_pay_price'))  {
+                $partnerProduct->partner_pay_price = 0;
+            }
+
+            if(!$request->filled('price_min'))  {
+                $partnerProduct->price_min = 0;
+            }
+
+            if(!$request->filled('price_max'))  {
+                $partnerProduct->price_max = 0;
+            }
+
             $partnerProduct->save();
 
             DB::commit();
@@ -141,6 +171,19 @@ class PartnerProductController extends Controller
             DB::beginTransaction();
 
             $partnerProduct->fill($request->all());
+
+            if(!$request->filled('partner_pay_price'))  {
+                $partnerProduct->partner_pay_price = 0;
+            }
+
+            if(!$request->filled('price_min'))  {
+                $partnerProduct->price_min = 0;
+            }
+
+            if(!$request->filled('price_max'))  {
+                $partnerProduct->price_max = 0;
+            }
+
             $partnerProduct->save();
 
             DB::commit();

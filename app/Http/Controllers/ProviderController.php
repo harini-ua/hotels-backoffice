@@ -22,6 +22,7 @@ class ProviderController extends Controller
         $breadcrumbs = [
             ['title' => __('Providers')],
             ['link' => route('home'), 'name' => __('Home')],
+            ['link' => route('settings.index'), 'name' => __('Settings')],
             ['name' => __('All Providers')]
         ];
 
@@ -39,6 +40,7 @@ class ProviderController extends Controller
         $breadcrumbs = [
             ['title' => __('Edit Provider')],
             ['link' => route('home'), 'name' => __('Home')],
+            ['link' => route('settings.index'), 'name' => __('Settings')],
             ['link' => route('providers.index'), 'name' => __('All Providers')],
             ['name' => $provider->name]
         ];

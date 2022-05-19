@@ -39,7 +39,7 @@ class DistributorController extends Controller
         ];
 
         $countries = Country::all()
-            ->where('status', 1)
+            ->where('active', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
 
@@ -77,7 +77,7 @@ class DistributorController extends Controller
         ];
 
         $countries = Country::all()
-            ->where('status', 1)
+            ->where('active', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
 
@@ -165,7 +165,7 @@ class DistributorController extends Controller
         $master = $distributor->users()->where('master', true)->first();
 
         $countries = Country::all()
-            ->where('status', 1)
+            ->where('active', 1)
             ->sortBy('name')
             ->pluck('name', 'id');
 

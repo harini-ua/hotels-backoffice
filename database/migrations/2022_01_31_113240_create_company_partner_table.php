@@ -23,7 +23,7 @@ class CreateCompanyPartnerTable extends Migration
 
             $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('partner_id')->references('id')->on('partners');
-            $table->foreign('partner_product_id')->references('id')->on('partner_product');
+            $table->foreign('partner_product_id')->references('id')->on('partner_products');
         });
     }
 
