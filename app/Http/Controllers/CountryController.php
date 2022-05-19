@@ -99,15 +99,15 @@ class CountryController extends Controller
 
             $country->fill($request->all());
             $country->active = $request->has('active');
-            $country->blacklist = $request->has('blacklist');
+//            $country->blacklist = $request->has('blacklist');
 
             $country->save();
 
-            if ($request->has('blacklist')) {
-                // TODO: Remove all cities and hotels to index elasticsearch
-            } else {
-                // TODO: Add all cities and hotels to index elasticsearch
-            }
+//            if ($request->has('blacklist')) {
+//                // TODO: Remove all cities and hotels to index elasticsearch
+//            } else {
+//                // TODO: Add all cities and hotels to index elasticsearch
+//            }
 
             DB::commit();
 

@@ -25,11 +25,16 @@ class CityUpdateRequest extends FormRequest
     public function rules()
     {
         return [
+            'name' => 'required|string',
+            'state' => 'nullable|string',
+            'country_id' => 'required|exists:countries,id',
             'active' => 'nullable|bool',
             'position' => [
                 'nullable',
                 new LocationCoordinates
             ],
+            'hotels_count' => 'nullable|integer',
+            'popularity' => 'nullable|integer',
         ];
     }
 }

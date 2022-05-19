@@ -56,7 +56,14 @@ class CityController extends Controller
             ['name' => $city->name]
         ];
 
-        return view('admin.pages.cities.update', compact('breadcrumbs', 'city'));
+        $countries = Country::all()
+            ->where('active', 1)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        return view('admin.pages.cities.update', compact(
+            'breadcrumbs', 'city', 'countries'
+        ));
     }
 
     /**
@@ -75,6 +82,7 @@ class CityController extends Controller
 
             $city->fill($request->except('position'));
             $city->active = $request->has('active');
+//            $city->blacklist = $request->has('blacklist');
 
             if ($request->filled('position')) {
                 $location = explode(',', $request->get('position'));
@@ -83,10 +91,17 @@ class CityController extends Controller
 
             $city->save();
 
+//            if ($request->has('blacklist')) {
+//                // TODO: Remove city and hotels to index elasticsearch
+//            } else {
+//                // TODO: Add city and hotels to index elasticsearch
+//            }
+
             DB::commit();
 
             alert()->success($city->name, __('City updated has been successful.'));
         } catch (\PDOException $e) {
+            dd($e);
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
         }
