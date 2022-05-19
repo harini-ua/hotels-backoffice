@@ -31,6 +31,10 @@ class CountriesDataTable extends DataTable
             return $model->region;
         });
 
+        $dataTable->addColumn('city_count', function (Country $model) {
+            return $model->cities->count();
+        });
+
         $dataTable->addColumn('currency', function (Country $model) {
             return $model->currency->code;
         });
@@ -155,6 +159,10 @@ class CountriesDataTable extends DataTable
                 ->width(70)
                 ->addClass('text-center'),
             Column::make('region')->title(__('Region')),
+            Column::make('city_count')->title(__('City Count'))
+                ->orderable(false)
+                ->width(70)
+                ->addClass('text-center'),
             Column::make('currency')->title(__('Currency'))
                 ->orderable(false),
             Column::make('language')->title(__('Language'))
