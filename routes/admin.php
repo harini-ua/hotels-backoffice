@@ -199,6 +199,7 @@ Route::middleware('auth')->group(function () {
         /** ----- ------ ----- COUNTRIES */
         Route::resource('countries', CountryController::class)->except(['show']);
         Route::prefix('countries')->as('countries.')->group(function () {
+            Route::post('/{country}/update/locations', [CountryController::class, 'updateLocations'])->name('update.locations');
             Route::post('/{country}/active', [CountryController::class, 'active'])->name('active');
             Route::get('/{country}/cities', [CountryController::class, 'cities'])->name('cities');
         });

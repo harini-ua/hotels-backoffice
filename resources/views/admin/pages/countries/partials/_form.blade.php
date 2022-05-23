@@ -7,8 +7,8 @@
     @csrf
     @if(isset($model)) @method('PUT') @endif
     <div class="form-group row">
-        <label for="name" class="col-sm-2 col-form-label">{{ __('Country Name') }}</label>
-        <div class="col-sm-4">
+        <label for="name" class="col-sm-4 col-form-label">{{ __('Country Name') }}</label>
+        <div class="col-sm-8">
             <input type="text" id="name" name="name"
                    value="{{ old('name') ?? ($model ? $model->name : null) }}"
                    class="form-control @error('name') is-invalid @enderror">
@@ -18,8 +18,8 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="region" class="col-sm-2 col-form-label">{{ __('Region') }}</label>
-        <div class="col-sm-4">
+        <label for="region" class="col-sm-4 col-form-label">{{ __('Region') }}</label>
+        <div class="col-sm-8">
             <input type="text" id="region" name="region"
                    value="{{ old('region') ?? ($model ? $model->region : null) }}"
                    class="form-control @error('region') is-invalid @enderror">
@@ -29,8 +29,8 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="code" class="col-sm-2 col-form-label">{{ __('Country Code') }}</label>
-        <div class="col-sm-4">
+        <label for="code" class="col-sm-4 col-form-label">{{ __('Country Code') }}</label>
+        <div class="col-sm-8">
             <input type="text" id="code" name="code"
                    value="{{ old('code') ?? ($model ? $model->code : null) }}"
                    class="form-control @error('code') is-invalid @enderror">
@@ -40,8 +40,8 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="currency_id" class="col-sm-2 col-form-label">{{ __('Currency') }} *</label>
-        <div class="col-sm-4">
+        <label for="currency_id" class="col-sm-4 col-form-label">{{ __('Currency') }} *</label>
+        <div class="col-sm-8">
             <select id="currency_id" name="currency_id"
                     class="form-control select2-single @error('currency_id') is-invalid @enderror"
             >
@@ -60,8 +60,8 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="language_id" class="col-sm-2 col-form-label">{{ __('Language') }} *</label>
-        <div class="col-sm-4">
+        <label for="language_id" class="col-sm-4 col-form-label">{{ __('Language') }} *</label>
+        <div class="col-sm-8">
             <select id="language_id" name="language_id"
                     class="form-control select2-single @error('language_id') is-invalid @enderror"
             >
@@ -80,8 +80,8 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="active" class="col-sm-2 col-form-label">{{ __('Active') }}</label>
-        <div class="input-group col-sm-4">
+        <label for="active" class="col-sm-4 col-form-label">{{ __('Active') }}</label>
+        <div class="input-group col-sm-8">
             <div class="custom-control custom-checkbox custom-control-inline">
                 <input type="checkbox" id="active" name="active"
                        value="1"
@@ -93,8 +93,8 @@
         </div>
     </div>
 {{--    <div class="form-group row">--}}
-{{--        <label for="blacklisted" class="col-sm-2 col-form-label">{{ __('Blacklist') }}</label>--}}
-{{--        <div class="input-group col-sm-4">--}}
+{{--        <label for="blacklisted" class="col-sm-4 col-form-label">{{ __('Blacklist') }}</label>--}}
+{{--        <div class="input-group col-sm-8">--}}
 {{--            <div class="custom-control custom-checkbox custom-control-inline">--}}
 {{--                <input type="checkbox" id="blacklisted" name="blacklisted"--}}
 {{--                       value="1"--}}
