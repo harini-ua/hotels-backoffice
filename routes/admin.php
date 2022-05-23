@@ -74,7 +74,9 @@ Route::middleware('auth')->group(function () {
         Route::resource('distributors', DistributorController::class)->except(['show']);
         Route::prefix('distributors')->as('distributors.')->group(function () {
             Route::get('{distributor}/companies', [DistributorController::class, 'companies'])->name('companies');
-            Route::get('/{distributor?}/users/create', [DistributorUserController::class, 'create'])->name('users.create');
+//            Route::get('{distributor}/users/create', [DistributorUserController::class, 'create'])->name('users.create');
+
+            /** ----- ------ ----- DISTRIBUTOR USERS */
             Route::resource('users', DistributorUserController::class)->except(['show']);
         });
 

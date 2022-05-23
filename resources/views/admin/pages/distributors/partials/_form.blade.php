@@ -21,7 +21,7 @@
         <label for="phone" class="col-sm-2 col-form-label">{{ __('Phone') }} *</label>
         <div class="col-sm-4">
             <input type="text" id="phone" name="phone"
-                   value="{{ old('phone') ?? ($model ? $master->phone : null ) }}"
+                   value="{{ old('phone') ?? ($model ? $model->phone : null ) }}"
                    class="form-control @error('phone') is-invalid @enderror">
             @error('phone')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
@@ -67,7 +67,7 @@
         <div class="col-sm-4">
             <textarea id="address" name="address" rows="3"
                       class="form-control @error('address') is-invalid @enderror"
-            >{{ old('address') ?? ($model ? $master->address : null ) }}</textarea>
+            >{{ old('address') ?? ($model ? $model->address : null ) }}</textarea>
             @error('address')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror

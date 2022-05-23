@@ -33,7 +33,7 @@ class DistributorUsersDataTable extends DataTable
         });
 
         $dataTable->addColumn('distributor', function (User $model) {
-            return $model->distributors->first()->name;
+            return $model->distributors->first() ? $model->distributors->first()->name : '-';
         });
 
         $dataTable->addColumn('action', function (User $model) {

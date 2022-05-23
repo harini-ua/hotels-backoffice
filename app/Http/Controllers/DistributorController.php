@@ -113,7 +113,7 @@ class DistributorController extends Controller
 
             $distributor = new Distributor();
             $distributor->fill($request->only('name'));
-            $distributor->status = 1; // Status active
+            $distributor->status = 1;
             $distributor->save();
 
             $distributor->countries()->attach($request->get('country_ids'));
@@ -211,7 +211,7 @@ class DistributorController extends Controller
             $distributor->save();
 
             $master = $distributor->users()->where('master', true)->first();
-            $master->fill($request->except('name'));
+            $master->fill($request->except(['name', 'password']));
 
             if ($request->has('password')) {
                 $master->password = Hash::make($request->get('password'));

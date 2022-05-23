@@ -136,6 +136,8 @@ class DistributorUserController extends Controller
             (\Auth::user())->distributors()->where('status', true)->first()
         ;
 
+//        dd($user);
+
         return view('admin.pages.distributor-users.update', compact(
             'breadcrumbs',
             'user',

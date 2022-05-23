@@ -5,8 +5,6 @@ namespace Database\Seeders;
 use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -19,7 +17,6 @@ class UserSeeder extends Seeder
     {
         $users = [];
 
-
         if (($open = fopen(storage_path('app/seed') . "/users.csv", "r")) !== false) {
             while (($data = fgetcsv($open, 0, ',')) !== false) {
                 $users[] = [
@@ -28,6 +25,9 @@ class UserSeeder extends Seeder
                     'password' => $data[3],
                     'email' => $data[7],
                     'role' => $data[8],
+                    'firstname' => $data[10],
+                    'lastname' => $data[11],
+                    'address' => $data[12],
                 ];
             }
 
@@ -42,6 +42,11 @@ class UserSeeder extends Seeder
                     $user->username = $user_data['username'];
                     $user->password = $user_data['password'];
                     $user->email = $user_data['email'];
+                    $user->firstname = $user_data['firstname'];
+                    $user->lastname = $user_data['lastname'];
+                    $user->address = $user_data['address'];
+
+                    $user->master = $user_data['role'] === UserRole::DISTRIBUTOR ? 1 :0;
 
                     $user->save();
                     $user->assignRole($user_data['role'] == 'super' ? UserRole::ADMIN :
@@ -49,6 +54,5 @@ class UserSeeder extends Seeder
                 }
             }
         }
-
     }
 }

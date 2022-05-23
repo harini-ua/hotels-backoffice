@@ -37,7 +37,7 @@ class DistributorsDataTable extends DataTable
 
         $dataTable->addColumn('action', function (Distributor $model) {
             return view("admin.datatables.actions", [
-                'actions' => ['edit', 'delete', 'create_distributor_user'],
+                'actions' => ['edit', 'delete'],
                 'model' => $model
             ]);
         });
@@ -148,7 +148,7 @@ class DistributorsDataTable extends DataTable
                 ->exportable(false)
                 ->printable(false)
                 ->orderable(false)
-                ->width(250)
+                ->width(150)
                 ->addClass('text-center'),
         ];
     }
