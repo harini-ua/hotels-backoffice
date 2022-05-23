@@ -116,7 +116,7 @@ class CountryController extends Controller
 
             $country->save();
 
-            if ($request->isDirty('blacklisted')) {
+            if ($country->isDirty('blacklisted')) {
 //                $country->cities()->update([
 //                    'blacklisted' => $request->has('blacklisted')
 //                ]);
