@@ -27,7 +27,7 @@ class CountryUpdateRequest extends FormRequest
         return [
             'name' => 'required|string',
             'region' => 'required|string',
-            'code' => [ 'required', Rule::unique('countries')->ignore($this->city) ],
+            'code' => [ 'required', Rule::unique('countries')->ignore($this->country) ],
             'currency_id' => 'required|exists:currencies,id',
             'language_id' => 'required|exists:languages,id',
             'active' => 'nullable|bool',
