@@ -223,6 +223,12 @@ class Menu extends Component
                     'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
                 [
+                    'name' => __('Hotel Badges'),
+                    'href' => route('settings.hotel-badges.index'),
+                    'icon' => 'feather icon-bookmark',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
+                ],
+                [
                     'name' => __('Default Content'),
                     'href' => route('settings.default-content.edit'),
                     'icon' => 'feather icon-file-plus',

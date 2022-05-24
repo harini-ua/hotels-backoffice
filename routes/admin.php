@@ -30,6 +30,7 @@ use App\Http\Controllers\DefaultContentController;
 use App\Http\Controllers\DiscountVoucherController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\DistributorUserController;
+use App\Http\Controllers\HotelBadgeController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\OverallBookingsController;
 use App\Http\Controllers\PartnerController;
@@ -220,21 +221,30 @@ Route::middleware('auth')->group(function () {
         Route::prefix('settings')->as('settings.')->group(function () {
             Route::get('/', [SettingController::class, 'index'])->name('index');
 
+            /** ----- ------ ----- COMMISSIONS */
             Route::prefix('commissions')->as('commissions.')->group(function () {
                 Route::get('/', [CommissionController::class, 'edit'])->name('edit');
                 Route::put('/cities/update', [CityCommissionController::class, 'update'])->name('cities.update');
                 Route::put('/countries/update', [CountryCommissionController::class, 'update'])->name('countries.update');
             });
 
+            /** ----- ------ ----- POPULAR HOTELS */
             Route::resource('popular-hotels', PopularHotelController::class)->except(['show']);
+
+            /** ----- ------ ----- SPECIAL OFFER HOTELS */
             Route::resource('special-offer-hotels', SpecialOfferHotelController::class)->except(['show']);
+
+            /** ----- ------ ----- RECOMMENDED HOTELS */
             Route::resource('recommended-hotels', RecommendedHotelController::class)->except(['show']);
 
+            /** ----- ------ ----- DEFAULT CONTENT */
             Route::prefix('default-content')->as('default-content.')->group(function () {
                 Route::get('/', [DefaultContentController::class, 'edit'])->name('edit');
                 Route::put('/', [DefaultContentController::class, 'update'])->name('update');
             });
 
+            /** ----- ------ ----- HOTEL BADGES */
+            Route::resource('hotel-badges', HotelBadgeController::class)->except(['create', 'store', 'show', 'destroy']);
         });
     });
 });
