@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\RecommendedHotel;
+use App\Models\Hotel;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -19,23 +19,23 @@ class RecommendedHotelsDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('country', function (RecommendedHotel $model) {
-            return $model->country->name;
+        $dataTable->addColumn('country', function (Hotel $model) {
+            return $model->city->country->name;
         });
 
-        $dataTable->addColumn('city', function (RecommendedHotel $model) {
+        $dataTable->addColumn('city', function (Hotel $model) {
             return $model->city->name;
         });
 
-        $dataTable->addColumn('hotel', function (RecommendedHotel $model) {
-            return $model->hotel->name;
+        $dataTable->addColumn('hotel', function (Hotel $model) {
+            return $model->name;
         });
 
-        $dataTable->addColumn('sort', function (RecommendedHotel $model) {
-            return $model->sort;
+        $dataTable->addColumn('sort', function (Hotel $model) {
+            return $model->recommended;
         });
 
-        $dataTable->addColumn('action', function (RecommendedHotel $model) {
+        $dataTable->addColumn('action', function (Hotel $model) {
             return view("admin.datatables.actions", [
                 'actions' => ['edit', 'delete'],
                 'model' => $model,
@@ -50,12 +50,12 @@ class RecommendedHotelsDataTable extends DataTable
         ]);
 
         $dataTable->filter(function ($query) {
-            if ($this->request->has('country')) {
-                $query->where('country_id', $this->request->get('country'));
-            }
-            if ($this->request->has('city')) {
-                $query->where('city_id', $this->request->get('city'));
-            }
+//            if ($this->request->has('country')) {
+//                $query->where('country_id', $this->request->get('country'));
+//            }
+//            if ($this->request->has('city')) {
+//                $query->where('city_id', $this->request->get('city'));
+//            }
             if ($this->request->has('sort')) {
                 $query->where('sort', $this->request->get('sort'));
             }
@@ -77,13 +77,14 @@ class RecommendedHotelsDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\RecommendedHotel $model
+     * @param \App\Models\Hotel $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(RecommendedHotel $model)
+    public function query(Hotel $model)
     {
         return $model->newQuery()
-            ->with(['country', 'city', 'hotel'])
+            ->with(['city.country'])
+            ->where('recommended', '>', 0)
         ;
     }
 
@@ -100,7 +101,7 @@ class RecommendedHotelsDataTable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('rtip')
-            ->orderBy(1)
+            ->orderBy(2)
             ->buttons(
                 Button::make('postExcel'),
                 Button::make('print'),
@@ -117,7 +118,6 @@ class RecommendedHotelsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id')->title(__('ID')),
             Column::make('country'),
             Column::make('city'),
             Column::make('hotel'),

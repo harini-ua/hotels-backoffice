@@ -229,7 +229,7 @@ Route::middleware('auth')->group(function () {
             });
 
             /** ----- ------ ----- POPULAR HOTELS */
-            Route::resource('popular-hotels', PopularHotelController::class)->except(['show']);
+            Route::resource('popular-hotels', PopularHotelController::class)->except(['edit', 'update', 'show']);
 
             /** ----- ------ ----- SPECIAL OFFER HOTELS */
             Route::resource('special-offer-hotels', SpecialOfferHotelController::class)->except(['show']);

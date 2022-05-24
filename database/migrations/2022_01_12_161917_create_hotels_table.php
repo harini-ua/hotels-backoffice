@@ -21,9 +21,12 @@ class CreateHotelsTable extends Migration
             $table->boolean('blacklisted')
                 ->comment('0-active, 1-blacklisted');
             $table->smallInteger('rating')->default(0);
+
+            // TODO: Need to be clarified
             $table->smallInteger('popularity')->default(0);
             $table->smallInteger('recommended')->default(0);
             $table->smallInteger('special_offer')->default(0);
+            // $table->smallInteger('commission')->default(0);
 
             $table->string('name', 1000);
             $table->longText('description');

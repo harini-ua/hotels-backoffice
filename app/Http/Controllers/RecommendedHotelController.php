@@ -92,9 +92,9 @@ class RecommendedHotelController extends Controller
         try {
             DB::beginTransaction();
 
-            $recommendedHotel = new RecommendedHotel();
-            $recommendedHotel->fill($request->all());
-            $recommendedHotel->save();
+            $hotel = Hotel::find($request->get('hotel_id'));
+            $hotel->recommended = $request->get('recommended');
+            $hotel->save();
 
             DB::commit();
 
@@ -108,21 +108,62 @@ class RecommendedHotelController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Hotel $hotel
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function edit(Hotel $hotel)
+    {
+        $breadcrumbs = [
+            ['title' => __('Edit Recommend Hotel')],
+            ['link' => route('home'), 'name' => __('Home')],
+            ['link' => route('settings.recommended-hotels.index'), 'name' => __('All Recommend Hotels')],
+            ['name' => __('Edit Recommend Hotel')]
+        ];
+
+        $hotel->load(['city.country']);
+
+        $countries = Country::all()
+            ->where('active', 1)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        $cities = City::all()
+            ->where('country_id', $hotel->city->country->id)
+            ->where('status', 1)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        $hotels = Hotel::all()
+            ->where('city_id', $hotel->city->id)
+            ->where('status', HotelStatus::Old)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        $sortNumbers = SortNumber::getValues();
+
+        return view('admin.pages.recommended-hotels.update', compact(
+            'breadcrumbs', 'hotel', 'countries', 'cities', 'hotels', 'sortNumbers'
+        ));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param RecommendedHotelUpdateRequest $request
-     * @param RecommendedHotel $recommendedHotel
+     * @param Hotel $hotel
      *
      * @return RedirectResponse
      * @throws \Exception
      */
-    public function update(RecommendedHotelUpdateRequest $request, RecommendedHotel $recommendedHotel)
+    public function update(RecommendedHotelUpdateRequest $request, Hotel $hotel)
     {
         try {
             DB::beginTransaction();
 
-            $recommendedHotel->fill($request->all());
-            $recommendedHotel->save();
+            $hotel->recommended = $request->get('recommended');
+            $hotel->save();
 
             DB::commit();
 
@@ -136,54 +177,18 @@ class RecommendedHotelController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param RecommendedHotel $recommendedHotel
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function edit(RecommendedHotel $recommendedHotel)
-    {
-        $breadcrumbs = [
-            ['title' => __('Edit Recommend Hotel')],
-            ['link' => route('home'), 'name' => __('Home')],
-            ['link' => route('settings.recommended-hotels.index'), 'name' => __('All Recommend Hotels')],
-            ['name' => __('Edit Recommend Hotel')]
-        ];
-
-        $countries = Country::all()
-            ->where('active', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $cities = City::all()
-            ->where('country_id', $recommendedHotel->country_id)
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $hotels = Hotel::all()
-            ->where('city_id', $recommendedHotel->city_id)
-            ->where('status', HotelStatus::Old)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $sortNumbers = SortNumber::getValues();
-
-        return view('admin.pages.recommended-hotels.update', compact(
-            'breadcrumbs', 'recommendedHotel', 'countries', 'cities', 'hotels', 'sortNumbers'
-        ));
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
-     * @param RecommendedHotel $recommendedHotel
+     * @param Hotel $hotel
      * @return JsonResponse
      * @throws \Exception
      */
-    public function destroy(RecommendedHotel $recommendedHotel)
+    public function destroy(Hotel $hotel)
     {
-        if ($recommendedHotel->delete()) {
+        $hotel->recommended = 0;
+        $hotel->save();
+
+        if ($hotel->save()) {
             return response()->json(['success' => true]);
         }
 

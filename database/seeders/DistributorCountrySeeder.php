@@ -18,7 +18,6 @@ class DistributorCountrySeeder extends Seeder
         if (($open = fopen(storage_path('app/seed') . "/distributors.csv", "r")) !== false) {
             while (($data = fgetcsv($open, 0, ',')) !== false) {
                 $country_names = array_filter(explode('|', $data[6]));
-                var_dump(array_values($country_names));
                 $countries_ids = DB::table('countries')
                     ->select('id')
                     ->whereIn('name', array_values($country_names))

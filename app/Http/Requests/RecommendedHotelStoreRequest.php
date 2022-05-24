@@ -28,8 +28,8 @@ class RecommendedHotelStoreRequest extends FormRequest
         return [
             'country_id' => 'required|exists:countries,id',
             'city_id' => 'required|exists:cities,id',
-            'sort' => ['required', new EnumValue(SortNumber::class, false)],
             'hotel_id' => 'required|exists:hotels,id',
+            'recommended' => ['required', new EnumValue(SortNumber::class, false)],
         ];
     }
 }
