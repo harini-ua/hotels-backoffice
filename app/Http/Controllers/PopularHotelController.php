@@ -73,10 +73,8 @@ class PopularHotelController extends Controller
         $cities = [];
         $hotels = [];
 
-        $ratings = Rating::getValues();
-
         return view('admin.pages.popular-hotels.create', compact(
-            'breadcrumbs', 'countries', 'cities', 'hotels', 'ratings'
+            'breadcrumbs', 'countries', 'cities', 'hotels'
         ));
     }
 
@@ -138,8 +136,6 @@ class PopularHotelController extends Controller
             ->where('status', HotelStatus::Old)
             ->sortBy('name')
             ->pluck('name', 'id');
-
-        $ratings = Rating::getValues();
 
         return view('admin.pages.popular-hotels.update', compact(
             'breadcrumbs', 'popularHotel', 'countries', 'cities', 'hotels', 'ratings'

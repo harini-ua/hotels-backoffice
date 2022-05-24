@@ -35,14 +35,14 @@ class PopularHotelsDataTable extends DataTable
         $dataTable->addColumn('rating', function (PopularHotel $model) {
             return view('admin.pages.popular-hotels.partials._rating', [
                 'ratings' => Rating::getValues(),
-                'value' => $model->rating
+                'value' => $model->hotel->rating
             ]);
         });
 
 
         $dataTable->addColumn('action', function (PopularHotel $model) {
             return view("admin.datatables.actions", [
-                'actions' => ['edit', 'delete'],
+                'actions' => ['delete'],
                 'model' => $model,
                 'route' => 'settings.popular-hotels'
             ]);

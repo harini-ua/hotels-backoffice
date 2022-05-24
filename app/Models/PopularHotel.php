@@ -22,7 +22,7 @@ class PopularHotel extends Model
      * @var array
      */
     protected $fillable = [
-        'country_id', 'city_id', 'hotel_id', 'rating'
+        'country_id', 'city_id', 'hotel_id'
     ];
 
     /**
