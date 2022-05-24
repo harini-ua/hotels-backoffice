@@ -90,9 +90,9 @@ class PopularHotelController extends Controller
         try {
             DB::beginTransaction();
 
-            $popularHotel = new PopularHotel();
-            $popularHotel->fill($request->all());
-            $popularHotel->save();
+            $hotel = Hotel::find($request->get('hotel_id'));
+            $hotel->popularity = 1;
+            $hotel->save();
 
             DB::commit();
 
@@ -106,80 +106,18 @@ class PopularHotelController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param PopularHotel $popularHotel
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function edit(PopularHotel $popularHotel)
-    {
-        $breadcrumbs = [
-            ['title' => __('Edit Popular Hotel')],
-            ['link' => route('home'), 'name' => __('Home')],
-            ['link' => route('settings.popular-hotels.index'), 'name' => __('All Popular Hotels')],
-            ['name' => __('Edit Popular Hotel')]
-        ];
-
-        $countries = Country::all()
-            ->where('active', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $cities = City::all()
-            ->where('country_id', $popularHotel->country_id)
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $hotels = Hotel::all()
-            ->where('city_id', $popularHotel->city_id)
-            ->where('status', HotelStatus::Old)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        return view('admin.pages.popular-hotels.update', compact(
-            'breadcrumbs', 'popularHotel', 'countries', 'cities', 'hotels', 'ratings'
-        ));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param PopularHotelUpdateRequest $request
-     * @param PopularHotel $popularHotel
-     *
-     * @return RedirectResponse
-     * @throws \Exception
-     */
-    public function update(PopularHotelUpdateRequest $request, PopularHotel $popularHotel)
-    {
-        try {
-            DB::beginTransaction();
-
-            $popularHotel->fill($request->all());
-            $popularHotel->save();
-
-            DB::commit();
-
-            alert()->success('Success!', __('Popular Hotel updated has been successful.'));
-        } catch (\PDOException $e) {
-            alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
-            DB::rollBack();
-        }
-
-        return redirect()->route('settings.popular-hotels.index');
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
-     * @param PopularHotel $popularHotel
+     * @param Hotel $hotel
      * @return JsonResponse
      * @throws \Exception
      */
-    public function destroy(PopularHotel $popularHotel)
+    public function destroy(Hotel $hotel)
     {
-        if ($popularHotel->delete()) {
+        $hotel->popularity = 0;
+        $hotel->save();
+
+        if ($hotel->save()) {
             return response()->json(['success' => true]);
         }
 
