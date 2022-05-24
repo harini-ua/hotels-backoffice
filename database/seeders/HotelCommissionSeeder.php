@@ -31,10 +31,10 @@ class HotelCommissionSeeder extends Seeder
 
         if (count($hotels_commissions) > 1000) {
             foreach (array_chunk($hotels_commissions, 1000) as $hotel_datas) {
-                DB::table('hotel_commission')->insertTs($hotel_datas);
+                DB::table('hotel_commissions')->insertTs($hotel_datas);
             }
         } else {
-            DB::table('hotel_commission')->insertTs($hotels_commissions);
+            DB::table('hotel_commissions')->insertTs($hotels_commissions);
         }
     }
 }

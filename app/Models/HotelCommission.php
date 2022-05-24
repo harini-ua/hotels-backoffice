@@ -11,7 +11,7 @@ class HotelCommission extends Pivot
      *
      * @var string
      */
-    protected $table = 'hotel_commission';
+    protected $table = 'hotel_commissions';
 
     /**
      * The attributes that are mass assignable.

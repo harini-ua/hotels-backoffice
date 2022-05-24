@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHotelCommissionTable extends Migration
+class CreateHotelCommissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateHotelCommissionTable extends Migration
      */
     public function up()
     {
-        Schema::create('hotel_commission', function (Blueprint $table) {
+        Schema::create('hotel_commissions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('hotel_id');
             $table->mediumInteger('commission')->default(0);
@@ -31,6 +31,6 @@ class CreateHotelCommissionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hotel_commission');
+        Schema::dropIfExists('hotel_commissions');
     }
 }
