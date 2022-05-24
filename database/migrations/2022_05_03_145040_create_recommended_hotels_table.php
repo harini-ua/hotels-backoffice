@@ -18,7 +18,7 @@ class CreateRecommendedHotelsTable extends Migration
             $table->unsignedBigInteger('country_id');
             $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('hotel_id');
-            $table->integer('sort')->default(\App\Enums\SortNumber::ONE);
+            $table->integer('sort')->default(\App\Enums\SortNumber::SORT_1);
             $table->timestamps();
 
             $table->foreign('country_id')->references('id')->on('countries');
