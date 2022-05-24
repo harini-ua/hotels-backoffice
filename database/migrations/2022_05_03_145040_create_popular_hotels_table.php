@@ -18,7 +18,6 @@ class CreatePopularHotelsTable extends Migration
             $table->unsignedBigInteger('country_id');
             $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('hotel_id');
-            $table->integer('rating')->default(\App\Enums\Rating::ONE);
             $table->timestamps();
 
             $table->foreign('country_id')->references('id')->on('countries');
