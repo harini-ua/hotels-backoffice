@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Country;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,19 +15,18 @@ class CountryCommissionSeeder extends Seeder
      */
     public function run()
     {
-        $country_commissions = [];
-
         if (($open = fopen(storage_path('app/seed') . "/country_commissions.csv", "r")) !== false) {
             while (($data = fgetcsv($open, 0, ',')) !== false) {
-                $country_commissions[] = [
-                    'country_id' => (int)$data[4],
-                    'commission' => (int)$data[2],
-                ];
+                $country = Country::find((int)$data[4]);
+
+                if ($country) {
+                    $country->update([
+                        'commission' => (int)$data[2]
+                    ]);
+                }
             }
 
             fclose($open);
         }
-
-        DB::table('country_commissions')->insertTs($country_commissions);
     }
 }

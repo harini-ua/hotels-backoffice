@@ -31,6 +31,10 @@ class CitiesDataTable extends DataTable
             return $model->hotels_count;
         });
 
+        $dataTable->addColumn('commission', function (City $model) {
+            return $model->commission;
+        });
+
         $dataTable->addColumn('active', function (City $model) {
             return view("admin.pages.cities.partials._active-switch", compact('model'));
         });
@@ -66,6 +70,10 @@ class CitiesDataTable extends DataTable
 
         $dataTable->orderColumn('hotels_count', static function ($query, $order) {
             $query->orderBy('hotels_count', $order);
+        });
+
+        $dataTable->orderColumn('commission', static function ($query, $order) {
+            $query->orderBy('commission', $order);
         });
 
         $dataTable->orderColumn('active', static function ($query, $order) {
@@ -136,6 +144,9 @@ class CitiesDataTable extends DataTable
             Column::make('country')->title(__('Country'))
                 ->orderable(false),
             Column::make('hotels_count')->title(__('Hotels Count'))
+                ->width(100)
+                ->addClass('text-center'),
+            Column::make('commission')->title(__('Commission'))
                 ->width(100)
                 ->addClass('text-center'),
             Column::make('active')

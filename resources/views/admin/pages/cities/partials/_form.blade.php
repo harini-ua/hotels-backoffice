@@ -28,26 +28,6 @@
             @enderror
         </div>
     </div>
-{{--    <div class="form-group row">--}}
-{{--        <label for="country_id" class="col-sm-2 col-form-label">{{ __('Country') }} *</label>--}}
-{{--        <div class="col-sm-4">--}}
-{{--            <select id="country_id" name="country_id"--}}
-{{--                    class="form-control select2-single @error('country_id') is-invalid @enderror"--}}
-{{--            >--}}
-{{--                <option value="">-- {{ __('Select Country') }} --</option>--}}
-{{--                @foreach($countries as $id => $country)--}}
-{{--                    <option--}}
-{{--                        value="{{ $id }}"--}}
-{{--                        @if(old('country_id') == $id) selected @endif--}}
-{{--                        @if($model && $model->country_id == $id) selected @endif--}}
-{{--                    >{{ $country }}</option>--}}
-{{--                @endforeach--}}
-{{--            </select>--}}
-{{--            @error('country_id')--}}
-{{--            <small class="form-text text-danger" role="alert">{{ $message }}</small>--}}
-{{--            @enderror--}}
-{{--        </div>--}}
-{{--    </div>--}}
     <div class="form-group row">
         <label for="country" class="col-sm-2 col-form-label">{{ __('Country') }} *</label>
         <div class="col-sm-4">
@@ -57,19 +37,6 @@
                    class="form-control"
                    disabled
             >
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="active" class="col-sm-2 col-form-label">{{ __('Active') }}</label>
-        <div class="input-group col-sm-4">
-            <div class="custom-control custom-checkbox custom-control-inline">
-                <input type="checkbox" id="active" name="active"
-                       value="1"
-                       @if($model->active) checked @endif
-                       class="custom-control-input @error('active') is-invalid @enderror"
-                >
-                <label class="custom-control-label" for="active"></label>
-            </div>
         </div>
     </div>
     <div class="form-group row">
@@ -84,7 +51,7 @@
             @enderror
         </div>
     </div>
-{{--    <a target="_blank" href="http://www.google.com/maps/place/{{ $model->position->getLat().','.$model->position->getLng() }}">Map</a>--}}
+    {{--    <a target="_blank" href="http://www.google.com/maps/place/{{ $model->position->getLat().','.$model->position->getLng() }}">Map</a>--}}
     <div class="form-group row">
         <label for="hotels_count" class="col-sm-2 col-form-label">{{ __('Hotels Count') }}</label>
         <div class="col-sm-4">
@@ -109,6 +76,33 @@
             @error('popularity')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="commission" class="col-sm-4 col-form-label">{{ __('Commission') }}</label>
+        <div class="form-group col-sm-8">
+            <div class="input-group">
+                <input type="number" id="commission" name="commission" min="1" max="100"
+                       class="form-control @error('commission') is-invalid @enderror"
+                       value="{{ old('commission') ?? ($model ? $model->commission : 0 ) }}"
+                >
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="active" class="col-sm-2 col-form-label">{{ __('Active') }}</label>
+        <div class="input-group col-sm-4">
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" id="active" name="active"
+                       value="1"
+                       @if($model->active) checked @endif
+                       class="custom-control-input @error('active') is-invalid @enderror"
+                >
+                <label class="custom-control-label" for="active"></label>
+            </div>
         </div>
     </div>
     <button class="btn btn-submit">{{ __('Submit') }}</button>

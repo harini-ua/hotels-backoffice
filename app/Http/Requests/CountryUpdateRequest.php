@@ -31,6 +31,7 @@ class CountryUpdateRequest extends FormRequest
             'currency_id' => 'required|exists:currencies,id',
             'language_id' => 'required|exists:languages,id',
             'active' => 'nullable|bool',
+            'commission' => 'nullable|integer',
         ];
     }
 }

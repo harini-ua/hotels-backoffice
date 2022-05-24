@@ -80,6 +80,20 @@
         </div>
     </div>
     <div class="form-group row">
+        <label for="commission" class="col-sm-4 col-form-label">{{ __('Commission') }}</label>
+        <div class="form-group col-sm-8">
+            <div class="input-group">
+                <input type="number" id="commission" name="commission" min="1" max="100"
+                       class="form-control @error('commission') is-invalid @enderror"
+                       value="{{ old('commission') ?? ($model ? $model->commission : 0 ) }}"
+                >
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
         <label for="active" class="col-sm-4 col-form-label">{{ __('Active') }}</label>
         <div class="input-group col-sm-8">
             <div class="custom-control custom-checkbox custom-control-inline">

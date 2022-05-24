@@ -198,12 +198,12 @@ class Menu extends Component
                     'icon' => 'feather icon-globe',
                     'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
-                [
-                    'name' => __('Commissions'),
-                    'href' => route('settings.commissions.edit'),
-                    'icon' => 'feather icon-percent',
-                    'guard' => $user->hasRole(UserRole::ADMIN),
-                ],
+//                [
+//                    'name' => __('Commissions'),
+//                    'href' => route('settings.commissions.edit'),
+//                    'icon' => 'feather icon-percent',
+//                    'guard' => $user->hasRole(UserRole::ADMIN),
+//                ],
                 [
                     'name' => __('Popular Hotels'),
                     'href' => route('settings.popular-hotels.index'),

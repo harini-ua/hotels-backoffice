@@ -35,6 +35,10 @@ class CountriesDataTable extends DataTable
             return $model->cities->count();
         });
 
+        $dataTable->addColumn('commission', function (Country $model) {
+            return $model->commission;
+        });
+
         $dataTable->addColumn('currency', function (Country $model) {
             return $model->currency->code;
         });
@@ -88,6 +92,10 @@ class CountriesDataTable extends DataTable
 
         $dataTable->orderColumn('region', static function ($query, $order) {
             $query->orderBy('region', $order);
+        });
+
+        $dataTable->orderColumn('commission', static function ($query, $order) {
+            $query->orderBy('commission', $order);
         });
 
         $dataTable->orderColumn('active', static function ($query, $order) {
@@ -162,6 +170,9 @@ class CountriesDataTable extends DataTable
             Column::make('city_count')->title(__('City Count'))
                 ->orderable(false)
                 ->width(70)
+                ->addClass('text-center'),
+            Column::make('commission')->title(__('Commission'))
+                ->width(100)
                 ->addClass('text-center'),
             Column::make('currency')->title(__('Currency'))
                 ->orderable(false),

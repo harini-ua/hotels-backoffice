@@ -35,6 +35,7 @@ class CityUpdateRequest extends FormRequest
             ],
             'hotels_count' => 'nullable|integer',
             'popularity' => 'nullable|integer',
+            'commission' => 'nullable|integer',
         ];
     }
 }

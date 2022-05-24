@@ -7,14 +7,22 @@ use App\DataTables\ProvidersDataTable;
 use App\Http\Requests\CityUpdateRequest;
 use App\Models\City;
 use App\Models\Country;
+use App\Services\IndexService;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CityController extends Controller
 {
+    /** @var IndexService $indexService */
+    public $indexService;
+
+    public function __construct(IndexService $indexService)
+    {
+        $this->indexService = $indexService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -82,7 +90,7 @@ class CityController extends Controller
 
             $city->fill($request->except('position'));
             $city->active = $request->has('active');
-//            $city->blacklist = $request->has('blacklist');
+            $city->blacklisted = $request->has('blacklisted');
 
             if ($request->filled('position')) {
                 $location = explode(',', $request->get('position'));
@@ -91,17 +99,14 @@ class CityController extends Controller
 
             $city->save();
 
-//            if ($request->has('blacklist')) {
-//                // TODO: Remove city and hotels to index elasticsearch
-//            } else {
-//                // TODO: Add city and hotels to index elasticsearch
-//            }
+            if ($request->isDirty('blacklisted')) {
+                $this->indexService->change($city, !$request->has('blacklisted'));
+            }
 
             DB::commit();
 
             alert()->success($city->name, __('City updated has been successful.'));
         } catch (\PDOException $e) {
-            dd($e);
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
         }

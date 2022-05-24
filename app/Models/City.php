@@ -23,7 +23,7 @@ class City extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'state', 'status', 'position', 'hotels_count', 'popularity'
+        'name', 'state', 'active', 'blacklisted', 'position', 'hotels_count', 'popularity', 'commission'
     ];
 
     /**

@@ -22,6 +22,7 @@ class CreateCountriesTable extends Migration
             $table->string('code');
             $table->boolean('active')->default(1);
             $table->boolean('blacklisted')->default(0);
+            $table->mediumInteger('commission')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

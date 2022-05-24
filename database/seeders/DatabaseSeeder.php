@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CurrencySeeder::class);
         $this->call(LanguageSeeder::class);
         $this->call(CountrySeeder::class);
+        $this->call(CountryCommissionSeeder::class);
         $this->call(CitySeeder::class);
         $this->call(CityProviderCodeSeeder::class);
         $this->call(HotelSeeder::class);
@@ -29,8 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call(FacilityVariantSeeder::class);
         $this->call(HotelFacilitySeeder::class);
         $this->call(HotelImageSeeder::class);
-        $this->call(CountryCommissionSeeder::class);
-        $this->call(CityCommissionSeeder::class);
         $this->call(HotelCommissionSeeder::class);
         $this->call(PartnerSeeder::class);
         $this->call(PartnerProductSeeder::class);
