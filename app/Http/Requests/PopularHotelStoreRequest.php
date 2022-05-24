@@ -28,7 +28,6 @@ class PopularHotelStoreRequest extends FormRequest
         return [
             'country_id' => 'required|exists:countries,id',
             'city_id' => 'required|exists:cities,id',
-            'rating' => ['required', new EnumValue(Rating::class, false)],
             'hotel_id' => 'required|exists:hotels,id',
         ];
     }
