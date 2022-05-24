@@ -1,4 +1,4 @@
-@php($model = $recommendedHotel ?? null)
+@php($model = $hotel ?? null)
 <form
     id="recommended-hotels"
     method="POST"
@@ -23,7 +23,7 @@
                     @foreach($countries as $id => $country)
                         <option value="{{ $id }}"
                                 @if(old('country_id') == $id) selected @endif
-                                @if($model && $model->country_id == $id) selected @endif
+                                @if($model && $model->city->country->id == $id) selected @endif
                         >{{ $country }}</option>
                     @endforeach
                 @endif
@@ -51,7 +51,7 @@
                     @foreach($cities as $id => $city)
                         <option value="{{ $id }}"
                                 @if(old('city_id') == $id) selected @endif
-                                @if($model && $model->city_id == $id) selected @endif
+                                @if($model && $model->city->id == $id) selected @endif
                         >{{ $city }}</option>
                     @endforeach
                 @endif
@@ -77,7 +77,7 @@
                     @foreach($hotels as $id => $hotel)
                         <option value="{{ $id }}"
                                 @if(old('hotel_id') == $id) selected @endif
-                                @if($model && $model->hotel_id == $id) selected @endif
+                                @if($model && $model->id == $id) selected @endif
                         >{{ $hotel }}</option>
                     @endforeach
                 @endif
@@ -88,20 +88,19 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="sort" class="col-sm-2 col-form-label">{{ __('Sort Number') }} *</label>
+        <label for="recommended" class="col-sm-2 col-form-label">{{ __('Sort Number') }} *</label>
         <div class="col-sm-1">
-            <select id="sort"
-                    name="sort"
-                    class="form-control custom-select @error('hotel_id') is-invalid @enderror"
+            <select id="recommended" name="recommended"
+                    class="form-control custom-select @error('recommended') is-invalid @enderror"
             >
                 @foreach($sortNumbers as $number)
                     <option value="{{ $number }}"
-                            @if(old('sort') == $number) selected @endif
-                            @if($model && $model->sort == $number) selected @endif
+                            @if(old('recommended') == $number) selected @endif
+                            @if($model && $model->recommended == $number) selected @endif
                     >{{ $number }}</option>
                 @endforeach
             </select>
-            @error('sort')
+            @error('recommended')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
         </div>

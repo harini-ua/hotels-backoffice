@@ -104,10 +104,10 @@ class SpecialOfferHotelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Hotel $hotel
+     * @param Hotel $specialOfferHotel
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(Hotel $hotel)
+    public function edit(Hotel $specialOfferHotel)
     {
         $breadcrumbs = [
             ['title' => __('Edit Special Offer Hotel')],
@@ -116,6 +116,7 @@ class SpecialOfferHotelController extends Controller
             ['name' => __('Edit Special Offer Hotel')]
         ];
 
+        $hotel = $specialOfferHotel;
         $hotel->load(['city.country']);
 
         $countries = Country::all()
@@ -144,16 +145,17 @@ class SpecialOfferHotelController extends Controller
      * Update the specified resource in storage.
      *
      * @param SpecialOfferHotelUpdateRequest $request
-     * @param Hotel $hotel
+     * @param Hotel $specialOfferHotel
      *
      * @return RedirectResponse
      * @throws \Exception
      */
-    public function update(SpecialOfferHotelUpdateRequest $request, Hotel $hotel)
+    public function update(SpecialOfferHotelUpdateRequest $request, Hotel $specialOfferHotel)
     {
         try {
             DB::beginTransaction();
 
+            $hotel = $specialOfferHotel;
             $hotel->special_offer = $request->get('special_offer');
             $hotel->save();
 
@@ -171,12 +173,13 @@ class SpecialOfferHotelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Hotel $hotel
+     * @param Hotel $specialOfferHotel
      * @return JsonResponse
      * @throws \Exception
      */
-    public function destroy(Hotel $hotel)
+    public function destroy(Hotel $specialOfferHotel)
     {
+        $hotel = $specialOfferHotel;
         $hotel->special_offer = 0;
         $hotel->save();
 

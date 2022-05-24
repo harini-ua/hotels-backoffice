@@ -10,7 +10,6 @@ use App\Http\Requests\RecommendedHotelUpdateRequest;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Hotel;
-use App\Models\RecommendedHotel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -110,10 +109,10 @@ class RecommendedHotelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Hotel $hotel
+     * @param Hotel $recommendedHotel
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(Hotel $hotel)
+    public function edit(Hotel $recommendedHotel)
     {
         $breadcrumbs = [
             ['title' => __('Edit Recommend Hotel')],
@@ -121,6 +120,8 @@ class RecommendedHotelController extends Controller
             ['link' => route('settings.recommended-hotels.index'), 'name' => __('All Recommend Hotels')],
             ['name' => __('Edit Recommend Hotel')]
         ];
+
+        $hotel = $recommendedHotel;
 
         $hotel->load(['city.country']);
 
@@ -157,11 +158,12 @@ class RecommendedHotelController extends Controller
      * @return RedirectResponse
      * @throws \Exception
      */
-    public function update(RecommendedHotelUpdateRequest $request, Hotel $hotel)
+    public function update(RecommendedHotelUpdateRequest $request, Hotel $recommendedHotel)
     {
         try {
             DB::beginTransaction();
 
+            $hotel = $recommendedHotel;
             $hotel->recommended = $request->get('recommended');
             $hotel->save();
 
@@ -179,12 +181,13 @@ class RecommendedHotelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Hotel $hotel
+     * @param Hotel $recommendedHotel
      * @return JsonResponse
      * @throws \Exception
      */
-    public function destroy(Hotel $hotel)
+    public function destroy(Hotel $recommendedHotel)
     {
+        $hotel = $recommendedHotel;
         $hotel->recommended = 0;
         $hotel->save();
 

@@ -108,12 +108,13 @@ class PopularHotelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Hotel $hotel
+     * @param Hotel $popularHotel
      * @return JsonResponse
      * @throws \Exception
      */
-    public function destroy(Hotel $hotel)
+    public function destroy(Hotel $popularHotel)
     {
+        $hotel = $popularHotel;
         $hotel->popularity = 0;
         $hotel->save();
 

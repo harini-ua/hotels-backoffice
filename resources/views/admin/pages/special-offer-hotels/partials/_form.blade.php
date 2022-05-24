@@ -1,4 +1,4 @@
-@php($model = $specialOfferHotel ?? null)
+@php($model = $hotel ?? null)
 <form
     id="special-offer-hotels"
     method="POST"
@@ -23,7 +23,7 @@
                     @foreach($countries as $id => $country)
                         <option value="{{ $id }}"
                                 @if(old('country_id') == $id) selected @endif
-                                @if($model && $model->country_id == $id) selected @endif
+                                @if($model && $model->city->country->id == $id) selected @endif
                         >{{ $country }}</option>
                     @endforeach
                 @endif
@@ -51,7 +51,7 @@
                     @foreach($cities as $id => $city)
                         <option value="{{ $id }}"
                                 @if(old('city_id') == $id) selected @endif
-                                @if($model && $model->city_id == $id) selected @endif
+                                @if($model && $model->city->id == $id) selected @endif
                         >{{ $city }}</option>
                     @endforeach
                 @endif
@@ -77,7 +77,7 @@
                     @foreach($hotels as $id => $hotel)
                         <option value="{{ $id }}"
                                 @if(old('hotel_id') == $id) selected @endif
-                                @if($model && $model->hotel_id == $id) selected @endif
+                                @if($model && $model->id == $id) selected @endif
                         >{{ $hotel }}</option>
                     @endforeach
                 @endif
@@ -88,13 +88,13 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="price" class="col-sm-2 col-form-label">{{ __('Special Price') }} *</label>
+        <label for="special_offer" class="col-sm-2 col-form-label">{{ __('Special Price') }} *</label>
         <div class="col-sm-4">
-            <input type="text" id="price" name="price"
-                   class="form-control @error('price') is-invalid @enderror"
-                   value="{{ old('price') ?? ($model ? $model->price : null) }}"
+            <input type="text" id="special_offer" name="special_offer"
+                   class="form-control @error('special_offer') is-invalid @enderror"
+                   value="{{ old('special_offer') ?? ($model ? $model->special_offer : null) }}"
             >
-            @error('price')
+            @error('special_offer')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
         </div>

@@ -82,7 +82,7 @@ class SpecialOfferHotelsDataTable extends DataTable
     {
         return $model->newQuery()
             ->with(['city.country'])
-            ->where('recommended', '>', 0)
+            ->where('special_offer', '>', 0)
         ;
     }
 
@@ -119,7 +119,7 @@ class SpecialOfferHotelsDataTable extends DataTable
             Column::make('country'),
             Column::make('city'),
             Column::make('hotel'),
-            Column::make('price')
+            Column::make('special_offer')->title(__('Price'))
                 ->width(100)
                 ->addClass('text-center'),
             Column::computed('action')
