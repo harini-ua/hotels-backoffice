@@ -22,6 +22,30 @@ class HotelBadgesDataTable extends DataTable
             return $model->name;
         });
 
+        $dataTable->addColumn('blacklisting', function (Hotel $model) {
+            return '-';
+        });
+
+        $dataTable->addColumn('popular_hotel_rating', function (Hotel $model) {
+            return '-';
+        });
+
+        $dataTable->addColumn('recommend_rating', function (Hotel $model) {
+            return '-';
+        });
+
+        $dataTable->addColumn('special_price_rating', function (Hotel $model) {
+            return '-';
+        });
+
+        $dataTable->addColumn('other_rating', function (Hotel $model) {
+            return '-';
+        });
+
+        $dataTable->addColumn('hotel_commission', function (Hotel $model) {
+            return '-';
+        });
+
         $dataTable->addColumn('action', function (Hotel $model) {
             return view("admin.datatables.actions", [
                 'actions' => ['edit'],
@@ -30,6 +54,7 @@ class HotelBadgesDataTable extends DataTable
             ]);
         });
 
+        $this->setFilterColumns($dataTable);
         $this->setOrderColumns($dataTable);
 
         $dataTable->filter(function ($query) {
@@ -49,13 +74,27 @@ class HotelBadgesDataTable extends DataTable
     }
 
     /**
+     * Set filter columns
+     *
+     * @param $dataTable
+     */
+    protected function setFilterColumns($dataTable)
+    {
+        $dataTable->filterColumn('name', static function ($query, $keyword) {
+            $query->where('name', 'like', "%$keyword%");
+        });
+    }
+
+    /**
      * Set order columns
      *
      * @param $dataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        //
+        $dataTable->orderColumn('name', static function ($query, $order) {
+            $query->orderBy('name', $order);
+        });
     }
 
     /**
@@ -96,8 +135,31 @@ class HotelBadgesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id')->title(__('ID')),
-            Column::make('hotel'),
+            Column::make('hotel')->title(__('Hotel Name')),
+            Column::make('blacklisting')->title(__('Blacklisting'))
+                ->orderable(false)
+                ->width(70)
+                ->addClass('text-center'),
+            Column::make('popular_hotel_rating')->title(__('Popular Hotel Rating'))
+                ->orderable(false)
+                ->width(130)
+                ->addClass('text-center'),
+            Column::make('recommend_rating')->title(__('Recommend Rating'))
+                ->orderable(false)
+                ->width(120)
+                ->addClass('text-center'),
+            Column::make('special_price_rating')->title(__('Special Price Rating'))
+                ->orderable(false)
+                ->width(120)
+                ->addClass('text-center'),
+            Column::make('other_rating')->title(__('Other Rating'))
+                ->orderable(false)
+                ->width(90)
+                ->addClass('text-center'),
+            Column::make('hotel_commission')->title(__('Hotel Commission'))
+                ->orderable(false)
+                ->width(110)
+                ->addClass('text-center'),
             Column::computed('action')
                 ->orderable(false)
                 ->exportable(false)
