@@ -33,18 +33,3 @@
         @endforeach
     </select>
 </div>
-<div class="form-group filter-item col-md-2">
-    <label for="rating">{{ __('By Rating') }}</label>
-    <select
-        id="rating"
-        name="rating"
-        class="form-control filter-input select-filter custom-select"
-        data-table="special-offer-hotels-list-datatable"
-        data-url="{{ route('settings.special-offer-hotels.index') }}"
-    >
-        <option selected value="">{{ __('All') }}</option>
-        @foreach($ratings as $id => $rating)
-            <option value="{{ $rating }}">{{ $rating.' '.\Illuminate\Support\Str::plural('Star', $rating) }}</option>
-        @endforeach
-    </select>
-</div>

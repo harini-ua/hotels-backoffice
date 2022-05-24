@@ -88,19 +88,13 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="rating" class="col-sm-2 col-form-label">{{ __('Rating') }} *</label>
+        <label for="price" class="col-sm-2 col-form-label">{{ __('Special Price') }} *</label>
         <div class="col-sm-4">
-            <div class="stars stars-example-fontawesome">
-                <select id="rating" name="rating" autocomplete="off">
-                    @foreach($ratings as $rating)
-                        <option value="{{ $rating }}"
-                                @if(old('rating') == $rating) selected @endif
-                                @if($model && $model->rating == $rating) selected @endif
-                        >{{ $rating }}</option>
-                    @endforeach
-                </select>
-            </div>
-            @error('rating')
+            <input type="text" id="price" name="price"
+                   class="form-control @error('price') is-invalid @enderror"
+                   value="{{ old('price') ?? ($model ? $model->price : null) }}"
+            >
+            @error('price')
             <small class="form-text text-danger" role="alert">{{ $message }}</small>
             @enderror
         </div>

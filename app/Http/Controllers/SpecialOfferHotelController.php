@@ -44,10 +44,8 @@ class SpecialOfferHotelController extends Controller
 
         $cities = [];
 
-        $ratings = Rating::getValues();
-
         return $dataTable->render('admin.pages.special-offer-hotels.index', compact(
-            'breadcrumbs', 'actions', 'countries', 'cities', 'ratings'
+            'breadcrumbs', 'actions', 'countries', 'cities'
         ));
     }
 
@@ -73,10 +71,8 @@ class SpecialOfferHotelController extends Controller
         $cities = [];
         $hotels = [];
 
-        $ratings = Rating::getValues();
-
         return view('admin.pages.special-offer-hotels.create', compact(
-            'breadcrumbs', 'countries', 'cities', 'hotels', 'ratings'
+            'breadcrumbs', 'countries', 'cities', 'hotels'
         ));
     }
 
@@ -167,10 +163,8 @@ class SpecialOfferHotelController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
-        $ratings = Rating::getValues();
-
         return view('admin.pages.special-offer-hotels.update', compact(
-            'breadcrumbs', 'specialOfferHotel', 'countries', 'cities', 'hotels', 'ratings'
+            'breadcrumbs', 'specialOfferHotel', 'countries', 'cities', 'hotels'
         ));
     }
 
