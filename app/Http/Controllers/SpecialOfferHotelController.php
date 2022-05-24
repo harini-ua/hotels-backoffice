@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use App\DataTables\SpecialOfferHotelsDataTable;
 use App\Enums\HotelStatus;
-use App\Enums\Rating;
 use App\Http\Requests\SpecialOfferHotelStoreRequest;
 use App\Http\Requests\SpecialOfferHotelUpdateRequest;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Hotel;
-use App\Models\SpecialOfferHotel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -88,9 +86,9 @@ class SpecialOfferHotelController extends Controller
         try {
             DB::beginTransaction();
 
-            $specialOfferHotel = new SpecialOfferHotel();
-            $specialOfferHotel->fill($request->all());
-            $specialOfferHotel->save();
+            $hotel = Hotel::find($request->get('hotel_id'));
+            $hotel->special_offer = $request->get('special_offer');
+            $hotel->save();
 
             DB::commit();
 
@@ -104,21 +102,60 @@ class SpecialOfferHotelController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Hotel $hotel
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function edit(Hotel $hotel)
+    {
+        $breadcrumbs = [
+            ['title' => __('Edit Special Offer Hotel')],
+            ['link' => route('home'), 'name' => __('Home')],
+            ['link' => route('settings.special-offer-hotels.index'), 'name' => __('All Special Offer Hotels')],
+            ['name' => __('Edit Special Offer Hotel')]
+        ];
+
+        $hotel->load(['city.country']);
+
+        $countries = Country::all()
+            ->where('active', 1)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        $cities = City::all()
+            ->where('country_id', $hotel->city->country->id)
+            ->where('status', 1)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        $hotels = Hotel::all()
+            ->where('city_id', $hotel->city->id)
+            ->where('status', HotelStatus::Old)
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        return view('admin.pages.special-offer-hotels.update', compact(
+            'breadcrumbs', 'hotel', 'countries', 'cities', 'hotels'
+        ));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param SpecialOfferHotelUpdateRequest $request
-     * @param SpecialOfferHotel $specialOfferHotel
+     * @param Hotel $hotel
      *
      * @return RedirectResponse
      * @throws \Exception
      */
-    public function update(SpecialOfferHotelUpdateRequest $request, SpecialOfferHotel $specialOfferHotel)
+    public function update(SpecialOfferHotelUpdateRequest $request, Hotel $hotel)
     {
         try {
             DB::beginTransaction();
 
-            $specialOfferHotel->fill($request->all());
-            $specialOfferHotel->save();
+            $hotel->special_offer = $request->get('special_offer');
+            $hotel->save();
 
             DB::commit();
 
@@ -132,52 +169,18 @@ class SpecialOfferHotelController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param SpecialOfferHotel $specialOfferHotel
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function edit(SpecialOfferHotel $specialOfferHotel)
-    {
-        $breadcrumbs = [
-            ['title' => __('Edit Special Offer Hotel')],
-            ['link' => route('home'), 'name' => __('Home')],
-            ['link' => route('settings.special-offer-hotels.index'), 'name' => __('All Special Offer Hotels')],
-            ['name' => __('Edit Special Offer Hotel')]
-        ];
-
-        $countries = Country::all()
-            ->where('active', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $cities = City::all()
-            ->where('country_id', $specialOfferHotel->country_id)
-            ->where('status', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        $hotels = Hotel::all()
-            ->where('city_id', $specialOfferHotel->city_id)
-            ->where('status', HotelStatus::Old)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
-        return view('admin.pages.special-offer-hotels.update', compact(
-            'breadcrumbs', 'specialOfferHotel', 'countries', 'cities', 'hotels'
-        ));
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
-     * @param SpecialOfferHotel $specialOfferHotel
+     * @param Hotel $hotel
      * @return JsonResponse
      * @throws \Exception
      */
-    public function destroy(SpecialOfferHotel $specialOfferHotel)
+    public function destroy(Hotel $hotel)
     {
-        if ($specialOfferHotel->delete()) {
+        $hotel->special_offer = 0;
+        $hotel->save();
+
+        if ($hotel->save()) {
             return response()->json(['success' => true]);
         }
 

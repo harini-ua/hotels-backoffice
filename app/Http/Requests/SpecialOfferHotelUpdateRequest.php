@@ -29,7 +29,7 @@ class SpecialOfferHotelUpdateRequest extends FormRequest
             'country_id' => 'required|exists:countries,id',
             'city_id' => 'required|exists:cities,id',
             'hotel_id' => 'required|exists:hotels,id',
-            'price' => 'required|numeric',
+            'special_offer' => 'required|numeric',
         ];
     }
 }
