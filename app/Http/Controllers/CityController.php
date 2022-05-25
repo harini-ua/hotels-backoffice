@@ -100,7 +100,7 @@ class CityController extends Controller
             $city->save();
 
             if ($request->isDirty('blacklisted')) {
-                $this->indexService->change($city, !$request->has('blacklisted'));
+//                $this->indexService->change($city, !$request->has('blacklisted'));
             }
 
             DB::commit();

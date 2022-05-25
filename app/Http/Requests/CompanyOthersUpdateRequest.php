@@ -25,7 +25,7 @@ class CompanyOthersUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'chat_enabled' => 'boolean',
+            'chat_enabled' => 'nullable|boolean',
             'chat_script' => [
                 Rule::requiredIf(static function () {
                     return request()->has('chat_enabled');
@@ -33,7 +33,7 @@ class CompanyOthersUpdateRequest extends FormRequest
                 'nullable',
                 'string'
             ],
-            'adobe_enabled' => 'boolean',
+            'adobe_enabled' => 'nullable|boolean',
             'adobe_script' => [
                 Rule::requiredIf(static function () {
                     return request()->has('adobe_enabled');

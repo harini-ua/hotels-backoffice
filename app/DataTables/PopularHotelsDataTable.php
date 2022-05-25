@@ -134,7 +134,7 @@ class PopularHotelsDataTable extends DataTable
                 ->exportable(false)
                 ->printable(false)
                 ->orderable(false)
-                ->width(200)
+                ->width(100)
                 ->addClass('text-center'),
         ];
     }

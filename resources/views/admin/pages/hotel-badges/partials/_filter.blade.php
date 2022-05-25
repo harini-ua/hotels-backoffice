@@ -4,8 +4,8 @@
         id="country_id"
         name="country"
         class="form-control filter-input select-filter select2-single linked"
-        data-table="popular-hotels-list-datatable"
-        data-url="{{ route('settings.popular-hotels.index') }}"
+        data-table="hotel-badges-list-datatable"
+        data-url="{{ route('settings.hotel-badges.index') }}"
         data-action="/countries/[id]/cities"
         data-binded-select="city_id"
         @if(!count($countries)) disabled @endif
@@ -22,8 +22,8 @@
         id="city"
         name="city"
         class="form-control filter-input select-filter select2-single"
-        data-table="popular-hotels-list-datatable"
-        data-url="{{ route('settings.popular-hotels.index') }}"
+        data-table="hotel-badges-list-datatable"
+        data-url="{{ route('settings.hotel-badges.index') }}"
         data-linked="country_id"
         @if(!count($cities)) disabled @endif
     >

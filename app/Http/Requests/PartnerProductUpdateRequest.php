@@ -40,22 +40,22 @@ class PartnerProductUpdateRequest extends FormRequest
             'currency_id' => 'nullable|exists:currencies,id',
             'min_commission' => 'nullable|integer',
 
-            'price_filter' => 'nullable|bool',
+            'price_filter' => 'nullable|boolean',
             'price_min' => 'nullable|required_if:price_filter,1|numeric',
             'price_max' => 'nullable|required_if:price_filter,1|numeric',
 
-            'star_filter' => 'nullable|bool',
+            'star_filter' => 'nullable|boolean',
             'star_min' => 'nullable|required_if:star_filter,1|numeric',
             'star_max' => 'nullable|required_if:star_filter,1|numeric',
 
             'nights' => 'nullable|integer',
             'adults' => 'nullable|integer',
-            'sold_online' => 'nullable|bool',
-            'sold_retail' => 'nullable|bool',
+            'sold_online' => 'nullable|boolean',
+            'sold_retail' => 'nullable|boolean',
             'sku' => 'nullable|string',
             'comment' => 'nullable|string',
-            'include_nrf' => 'nullable|bool',
-            'show_all_as_nrf' => 'nullable|bool',
+            'include_nrf' => 'nullable|boolean',
+            'show_all_as_nrf' => 'nullable|boolean',
         ];
     }
 }

@@ -26,7 +26,7 @@ class CompanyThemeUpdateRequest extends FormRequest
         return [
             'theme_name' => 'required|string',
             'theme_color' => 'required|regex:/(#[a-zA-Z0-9]{6})/i',
-            'default' => 'boolean'
+            'default' => 'nullable|boolean'
         ];
     }
 }

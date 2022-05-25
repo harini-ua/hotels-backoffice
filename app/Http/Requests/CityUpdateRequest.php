@@ -28,7 +28,7 @@ class CityUpdateRequest extends FormRequest
             'name' => 'required|string',
             'state' => 'nullable|string',
             'country_id' => 'required|exists:countries,id',
-            'active' => 'nullable|bool',
+            'active' => 'nullable|boolean',
             'position' => [
                 'nullable',
                 new LocationCoordinates

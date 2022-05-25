@@ -244,7 +244,11 @@ Route::middleware('auth')->group(function () {
             });
 
             /** ----- ------ ----- HOTEL BADGES */
-            Route::resource('hotel-badges', HotelBadgeController::class)->except(['create', 'store', 'show', 'destroy']);
+            Route::prefix('hotel-badges')->as('hotel-badges.')->group(function () {
+                Route::get('/', [HotelBadgeController::class, 'index'])->name('index');
+                Route::get('{hotel}/edit', [HotelBadgeController::class, 'edit'])->name('edit');
+                Route::put('{hotel}', [HotelBadgeController::class, 'update'])->name('update');
+            });
         });
     });
 });

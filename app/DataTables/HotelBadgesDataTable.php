@@ -18,32 +18,32 @@ class HotelBadgesDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('hotel', function (Hotel $model) {
-            return $model->name;
+        $dataTable->addColumn('hotel_name', function (Hotel $model) {
+            return $model->hotel_name;
         });
 
         $dataTable->addColumn('blacklisting', function (Hotel $model) {
-            return '-';
+            return $model->blacklisted;
         });
 
-        $dataTable->addColumn('popular_hotel_rating', function (Hotel $model) {
-            return '-';
+        $dataTable->addColumn('priority_rating', function (Hotel $model) {
+            return $model->priority_rating;
         });
 
         $dataTable->addColumn('recommend_rating', function (Hotel $model) {
-            return '-';
+            return $model->recommended;
         });
 
         $dataTable->addColumn('special_price_rating', function (Hotel $model) {
-            return '-';
+            return $model->special_offer;
         });
 
         $dataTable->addColumn('other_rating', function (Hotel $model) {
-            return '-';
+            return $model->other_rating;
         });
 
         $dataTable->addColumn('hotel_commission', function (Hotel $model) {
-            return '-';
+            return $model->commission;
         });
 
         $dataTable->addColumn('action', function (Hotel $model) {
@@ -58,12 +58,14 @@ class HotelBadgesDataTable extends DataTable
         $this->setOrderColumns($dataTable);
 
         $dataTable->filter(function ($query) {
-            if (!$this->request->hasAny(['country', 'city'])) {
+            if (!$this->request->has(['country', 'city'])) {
                 // Making the result empty on purpose
-                $query->where('hotels.id', 0);
+                $query->where('h.id', 0);
             }
             if ($this->request->has('country')) {
-                $query->where('country_id', $this->request->get('country'));
+                $query->join('cities', 'cities.id', '=', 'h.city_id');
+                $query->join('countries', 'countries.id', '=', 'cities.country_id');
+                $query->where('countries.id', $this->request->get('country'));
             }
             if ($this->request->has('city')) {
                 $query->where('city_id', $this->request->get('city'));
@@ -80,8 +82,8 @@ class HotelBadgesDataTable extends DataTable
      */
     protected function setFilterColumns($dataTable)
     {
-        $dataTable->filterColumn('name', static function ($query, $keyword) {
-            $query->where('name', 'like', "%$keyword%");
+        $dataTable->filterColumn('hotel_name', static function ($query, $keyword) {
+            $query->where('h.name', 'like', "%$keyword%");
         });
     }
 
@@ -92,8 +94,8 @@ class HotelBadgesDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        $dataTable->orderColumn('name', static function ($query, $order) {
-            $query->orderBy('name', $order);
+        $dataTable->orderColumn('hotel_name', static function ($query, $order) {
+            $query->orderBy('h.name', $order);
         });
     }
 
@@ -106,7 +108,10 @@ class HotelBadgesDataTable extends DataTable
     public function query(Hotel $model)
     {
         return $model->newQuery()
-            ->with([])
+            ->selectRaw('h.name AS hotel_name')
+            ->selectRaw('h.*')
+            ->from('hotels as h')
+            ->with(['city.country'])
             ;
     }
 
@@ -135,12 +140,12 @@ class HotelBadgesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('hotel')->title(__('Hotel Name')),
+            Column::make('hotel_name')->title(__('Hotel Name')),
             Column::make('blacklisting')->title(__('Blacklisting'))
                 ->orderable(false)
                 ->width(70)
                 ->addClass('text-center'),
-            Column::make('popular_hotel_rating')->title(__('Popular Hotel Rating'))
+            Column::make('priority_rating')->title(__('Priority Rating'))
                 ->orderable(false)
                 ->width(130)
                 ->addClass('text-center'),

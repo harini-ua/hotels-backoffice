@@ -30,7 +30,7 @@ class CountryUpdateRequest extends FormRequest
             'code' => [ 'required', Rule::unique('countries')->ignore($this->country) ],
             'currency_id' => 'required|exists:currencies,id',
             'language_id' => 'required|exists:languages,id',
-            'active' => 'nullable|bool',
+            'active' => 'nullable|boolean',
             'commission' => 'nullable|integer',
         ];
     }

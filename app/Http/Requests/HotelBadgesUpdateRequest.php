@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\SortNumber;
+use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 
 class HotelBadgesUpdateRequest extends FormRequest
@@ -24,7 +26,12 @@ class HotelBadgesUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'priority_rating' => ['nullable', new EnumValue(SortNumber::class, false)],
+            'recommended' => ['nullable', new EnumValue(SortNumber::class, false)],
+            'other_rating' => ['nullable', new EnumValue(SortNumber::class, false)],
+            'special_offer' => 'nullable|numeric',
+            'commission' => 'nullable|integer',
+            'blacklisted' => 'nullable|boolean',
         ];
     }
 }

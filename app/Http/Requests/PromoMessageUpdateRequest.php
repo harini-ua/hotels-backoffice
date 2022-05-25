@@ -35,8 +35,8 @@ class PromoMessageUpdateRequest extends FormRequest
                 'max:'.PromoMessage::IMAGE_KILOBYTES_SIZE
             ],
             'status' => ['required', new EnumValue(PromoMessageStatus::class, false)],
-            'translateable' => 'nullable|bool',
-            'show_all_company' => 'nullable|bool',
+            'translateable' => 'nullable|boolean',
+            'show_all_company' => 'nullable|boolean',
             'language_id' => 'required|exists:languages,id',
             'expiry_date' => 'required|string|date_format:d/m/Y|after:now',
             'company_ids.*' => [

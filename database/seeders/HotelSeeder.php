@@ -39,9 +39,12 @@ class HotelSeeder extends Seeder
                     'address' => $data[8],
                     'postal_code' => $data[9],
                     'position' => DB::raw("(ST_GeomFromText('POINT($data[11] $data[10])'))"),
+                    'priority_rating' => 0, // TODO: Need migrate column from hotel table
                     'popularity' => (int)$data[12] > 0 ? 1 : 0,
                     'recommended' => (int)$data[13],
                     'special_offer' => (int)$data[14],
+                    'other_rating' => 0, // TODO: Need migrate column from hotel_additional_data table
+                    'commission' => 0, // TODO: Need migrate column from hotel table
                 ];
             }
 

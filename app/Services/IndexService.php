@@ -10,10 +10,10 @@ class IndexService
 {
     /**
      * @param City|Country $model
-     * @param $index
+     * @param bool $index
      * @return void
      */
-    public function change($model, $index = true)
+    public function change($model, bool $index = true)
     {
         switch (true) {
             case $model instanceof Country:
@@ -35,7 +35,7 @@ class IndexService
      * @param bool $index
      * @return void
      */
-    protected function country(Country $country, $index = true)
+    protected function country(Country $country, bool $index = true)
     {
         $cities = $country->load('cities');
 
@@ -55,7 +55,7 @@ class IndexService
      * @param bool $index
      * @return void
      */
-    protected function city(City $city, $index = true)
+    protected function city(City $city, bool $index = true)
     {
         if ($index) {
             // TODO: Need Implement add to index
@@ -71,7 +71,7 @@ class IndexService
      * @param bool $index
      * @return void
      */
-    protected function hotel(Hotel $hotel, $index = true)
+    protected function hotel(Hotel $hotel, bool $index = true)
     {
         if ($index) {
             // TODO: Need Implement add to index

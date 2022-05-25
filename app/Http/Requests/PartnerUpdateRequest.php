@@ -25,7 +25,7 @@ class PartnerUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'internal' => 'boolean',
+            'internal' => 'nullable|boolean',
         ];
     }
 }

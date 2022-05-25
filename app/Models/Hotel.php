@@ -24,8 +24,8 @@ class Hotel extends Model
      * @var array
      */
     protected $fillable = [
-        'city_id', 'status', 'blacklisted', 'rating', 'popularity', 'recommended', 'special_offer', 'name',
-        'description', 'address', 'postal_code', 'position',
+        'city_id', 'status', 'blacklisted', 'rating', 'priority_rating', 'popularity', 'recommended', 'special_offer',
+        'other_rating', 'commission', 'name', 'description', 'address', 'postal_code', 'position',
     ];
 
     /**
