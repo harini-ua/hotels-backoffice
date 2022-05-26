@@ -6,6 +6,11 @@ use App\View\Components\Menu;
 
 class ReportController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return mixed
+     */
     public function index()
     {
         $breadcrumbs = [

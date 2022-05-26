@@ -168,7 +168,15 @@ class Menu extends Component
             'slag' => 'reports',
             'href' => route('reports.index'),
             'icon' => 'feather icon-file-text',
-            'guard' => true,
+            'guard' => $user->hasRole(UserRole::ADMIN),
+            'items' => [
+                [
+                    'name' => __('Hotels Summary'),
+                    'href' => route('reports.hotels.summary.index'),
+                    'icon' => 'feather icon-home',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
+                ],
+            ]
         ];
 
         /** ----- Settings ----- */
