@@ -16,10 +16,10 @@ class OverallBookingsController extends Controller
     public function index(OverallBookingsDataTable $dataTable)
     {
         $breadcrumbs = [
-            ['title' => __('Overall Bookings')],
+            ['title' => __('Overall BookingSeeder')],
             ['link' => route('home'), 'name' => __('Home')],
             ['link' => route('statistics.index'), 'name' => __('Statistics')],
-            ['name' => __('Overall Bookings')]
+            ['name' => __('Overall BookingSeeder')]
         ];
 
         $actions = [

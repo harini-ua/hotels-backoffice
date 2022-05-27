@@ -55,7 +55,7 @@ class Menu extends Component
                     'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
                 [
-                    'name' => __('Bookings'),
+                    'name' => __('BookingSeeder'),
                     'href' => route('booking-users.index'),
                     'icon' => 'feather icon-user',
                     'guard' => true,
@@ -147,7 +147,7 @@ class Menu extends Component
             'guard' => true,
             'items' => [
                 [
-                    'name' => __('Overall Bookings'),
+                    'name' => __('Overall BookingSeeder'),
                     'href' => route('statistics.overall-bookings.index'),
                     'icon' => 'feather icon-briefcase',
                     'guard' => $user->hasRole(UserRole::ADMIN),

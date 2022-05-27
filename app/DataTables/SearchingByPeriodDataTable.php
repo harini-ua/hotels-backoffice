@@ -242,8 +242,8 @@ class SearchingByPeriodDataTable extends DataTable
                 ->width(150)
                 ->orderable(false),
             Column::make('first_period_bookings')
-                ->title('<i class="fa fa-bed"></i> '.__('Bookings'))
-                ->titleAttr(__('Bookings'))
+                ->title('<i class="fa fa-bed"></i> '.__('BookingSeeder'))
+                ->titleAttr(__('BookingSeeder'))
                 ->addClass('text-center border-right')
                 ->width(150)
                 ->orderable(false),
@@ -254,8 +254,8 @@ class SearchingByPeriodDataTable extends DataTable
                 ->width(150)
                 ->orderable(false),
             Column::make('second_period_bookings')
-                ->title('<i class="fa fa-bed"></i> '.__('Bookings'))
-                ->titleAttr(__('Bookings'))
+                ->title('<i class="fa fa-bed"></i> '.__('BookingSeeder'))
+                ->titleAttr(__('BookingSeeder'))
                 ->addClass('text-center')
                 ->width(150)
                 ->orderable(false),

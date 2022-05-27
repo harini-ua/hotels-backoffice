@@ -35,6 +35,7 @@ class CreateHotelsTable extends Migration
             $table->string('address');
             $table->string('postal_code');
             $table->point('position');
+            $table->mediumInteger('commission')->default(0);
 
             $table->timestamps();
             $table->softDeletes();
