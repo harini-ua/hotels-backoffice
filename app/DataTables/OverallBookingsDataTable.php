@@ -549,12 +549,12 @@ class OverallBookingsDataTable extends DataTable
                 ->addClass('text-center')
                 ->footer('<b class="total_users">(0)</b>'),
             Column::make('total_bookings')
-                ->title(__('Total Bookings'))
+                ->title(__('Total BookingSeeder'))
                 ->addClass('text-center border-right')
                 ->footer('<b class="total_bookings">(0)</b>'),
             Column::make('current_today_bookings')
                 ->title('<i class="fa fa-bed"></i>')
-                ->titleAttr(__('Bookings'))
+                ->titleAttr(__('BookingSeeder'))
                 ->footer('<b class="total_bookings">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('current_today_users')
@@ -564,7 +564,7 @@ class OverallBookingsDataTable extends DataTable
                 ->addClass('text-center')->orderable(false),
             Column::make('current_week_bookings')
                 ->title('<i class="fa fa-bed"></i>')
-                ->titleAttr(__('Bookings'))
+                ->titleAttr(__('BookingSeeder'))
                 ->footer('<b class="current_week_bookings">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('current_week_users')
@@ -574,7 +574,7 @@ class OverallBookingsDataTable extends DataTable
                 ->addClass('text-center')->orderable(false),
             Column::make('current_month_bookings')
                 ->title('<i class="fa fa-bed"></i>')
-                ->titleAttr(__('Bookings'))
+                ->titleAttr(__('BookingSeeder'))
                 ->footer('<b class="current_month_bookings">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('current_month_users')
@@ -584,7 +584,7 @@ class OverallBookingsDataTable extends DataTable
                 ->addClass('text-center')->orderable(false),
             Column::make('current_year_bookings')
                 ->title('<i class="fa fa-bed"></i>')
-                ->titleAttr(__('Bookings'))
+                ->titleAttr(__('BookingSeeder'))
                 ->footer('<b class="current_year_bookings">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('current_year_users')
@@ -595,7 +595,7 @@ class OverallBookingsDataTable extends DataTable
 
             Column::make('previous_today_bookings')
                 ->title('<i class="fa fa-bed"></i>')
-                ->titleAttr(__('Bookings'))
+                ->titleAttr(__('BookingSeeder'))
                 ->footer('<b class="current_year_bookings">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('previous_today_users')
@@ -605,7 +605,7 @@ class OverallBookingsDataTable extends DataTable
                 ->addClass('text-center')->orderable(false),
             Column::make('previous_week_bookings')
                 ->title('<i class="fa fa-bed"></i>')
-                ->titleAttr(__('Bookings'))
+                ->titleAttr(__('BookingSeeder'))
                 ->footer('<b class="previous_week_bookings">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('previous_week_users')
@@ -615,7 +615,7 @@ class OverallBookingsDataTable extends DataTable
                 ->addClass('text-center')->orderable(false),
             Column::make('previous_month_bookings')
                 ->title('<i class="fa fa-bed"></i>')
-                ->titleAttr(__('Bookings'))
+                ->titleAttr(__('BookingSeeder'))
                 ->footer('<b class="previous_month_bookings">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('previous_month_users')
@@ -625,7 +625,7 @@ class OverallBookingsDataTable extends DataTable
                 ->addClass('text-center')->orderable(false),
             Column::make('previous_year_bookings')
                 ->title('<i class="fa fa-bed"></i>')
-                ->titleAttr(__('Bookings'))
+                ->titleAttr(__('BookingSeeder'))
                 ->footer('<b class="previous_year_bookings">(0)</b>')
                 ->addClass('text-center')->orderable(false),
             Column::make('previous_year_users')

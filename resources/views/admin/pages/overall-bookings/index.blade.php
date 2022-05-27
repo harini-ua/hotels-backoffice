@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title',  __('Overall Bookings'))
+@section('title',  __('Overall BookingSeeder'))
 
 @section('style')
     <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />

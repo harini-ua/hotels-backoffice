@@ -27,7 +27,7 @@ class SearchingByPeriodController extends Controller
                 'href' => route('statistics.overall-bookings.index'),
                 'class' => 'btn-submit',
                 'icon' => 'briefcase',
-                'name' => __('Overall Bookings'),
+                'name' => __('Overall BookingSeeder'),
             ]
         ];
 
