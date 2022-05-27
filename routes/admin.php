@@ -43,6 +43,7 @@ use App\Http\Controllers\RecommendedHotelController;
 use App\Http\Controllers\ReportBookingController;
 use App\Http\Controllers\ReportCommissionController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ReportHotelsNewestController;
 use App\Http\Controllers\ReportHotelsSummaryController;
 use App\Http\Controllers\ReportInvoiceReportController;
 use App\Http\Controllers\ReportVatController;
@@ -203,10 +204,9 @@ Route::middleware('auth')->group(function () {
         Route::prefix('reports')->as('reports.')->group(function () {
             Route::get('/', [ReportController::class, 'index'])->name('index');
 
-            /** ----- ------ ----- BOOKING */
-
             Route::prefix('hotels')->as('hotels.')->group(function () {
                 Route::get('summary', [ReportHotelsSummaryController::class, 'index'])->name('summary.index');
+                Route::get('newest', [ReportHotelsNewestController::class, 'index'])->name('newest.index');
             });
         });
 

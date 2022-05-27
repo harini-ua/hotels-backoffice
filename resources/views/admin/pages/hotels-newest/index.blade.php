@@ -4,16 +4,22 @@
 
 @section('style')
     <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/datepicker/datepicker.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+
     <link href="{{ asset('css/pages/hotels-newest.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('rightbar-content')
     <div class="contentbar hotels-newest-list-datatable">
         <div class="row">
-            <br />
+            <div class="col-lg-12">
+                <x-filter>
+                    @include('admin.pages.hotels-newest.partials._filter')
+                </x-filter>
+            </div>
             <div class="col-lg-12">
                 <div class="card m-b-30">
                     <div class="card-body">
@@ -30,6 +36,8 @@
 @section('script')
     {{ $dataTable->scripts() }}
     <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datepicker/i18n/datepicker.en.js') }}"></script>
     <script src="{{asset('js/scripts/datatable.js')}}"></script>
     <script src="{{asset('js/scripts/filters.js')}}"></script>
     <script src="{{asset('js/pages/hotels-newest.js')}}"></script>

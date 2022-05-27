@@ -218,6 +218,6 @@ class HotelsSummaryDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Counties_' . date('YmdHis');
+        return 'HotelsSummary_' . date('YmdHis');
     }
 }
