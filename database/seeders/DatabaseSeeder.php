@@ -36,12 +36,17 @@ class DatabaseSeeder extends Seeder
         $this->call(PartnerEnvironmentSeeder::class);
         $this->call(CompanyThemeSeeder::class);
         $this->call(DefaultContentSeeder::class);
-//        $this->call(CompanySeeder::class);
 
         $this->call(RoleAndPermissionSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(DistributorSeeder::class);
         $this->call(DistributorUserSeeder::class);
         $this->call(DistributorCountrySeeder::class);
+        $this->call(DistributorLanguageSeeder::class);
+        $this->call(CompanySeeder::class);
+        $this->call(BookingUserSeeder::class);
+        $this->call(DiscountVoucherSeeder::class);
+        $this->call(DiscountVoucherCodeSeeder::class);
+        $this->call(BookingSeeder::class);
     }
 }

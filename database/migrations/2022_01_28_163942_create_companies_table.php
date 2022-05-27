@@ -23,7 +23,7 @@ class CreateCompaniesTable extends Migration
             $table->unsignedBigInteger('admin_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('holder_name')->nullable();
-            $table->string('email')->unique()->nullable();
+            $table->string('email')->nullable();
             $table->text('address')->nullable();
             $table->string('phone')->nullable();
             $table->text('comment')->nullable();
@@ -37,8 +37,6 @@ class CreateCompaniesTable extends Migration
             $table->integer('access_codes')->default(0);
             $table->timestamps();
             $table->softDeletes();
-
-            $table->unique('email', 'unique_email');
 
             $table->foreign('country_id')->references('id')->on('countries');
             $table->foreign('city_id')->references('id')->on('cities');
