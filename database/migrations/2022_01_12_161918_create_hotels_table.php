@@ -28,14 +28,13 @@ class CreateHotelsTable extends Migration
             $table->smallInteger('recommended')->default(0);
             $table->smallInteger('special_offer')->default(0);
             $table->smallInteger('other_rating')->default(0);
-            $table->smallInteger('commission')->default(0);
+            $table->mediumInteger('commission')->default(0);
 
             $table->string('name', 1000);
             $table->longText('description');
             $table->string('address');
             $table->string('postal_code');
             $table->point('position');
-            $table->mediumInteger('commission')->default(0);
 
             $table->timestamps();
             $table->softDeletes();

@@ -30,13 +30,11 @@ class DatabaseSeeder extends Seeder
         $this->call(FacilityVariantSeeder::class);
         $this->call(HotelFacilitySeeder::class);
         $this->call(HotelImageSeeder::class);
-        $this->call(HotelCommissionSeeder::class);
         $this->call(PartnerSeeder::class);
         $this->call(PartnerProductSeeder::class);
         $this->call(PartnerEnvironmentSeeder::class);
         $this->call(CompanyThemeSeeder::class);
         $this->call(DefaultContentSeeder::class);
-
         $this->call(RoleAndPermissionSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(DistributorSeeder::class);
