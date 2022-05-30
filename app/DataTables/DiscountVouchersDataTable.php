@@ -181,8 +181,12 @@ class DiscountVouchersDataTable extends DataTable
                 ->orderable(false),
             Column::make('voucher_codes_count')->title(__('Total codes'))
                 ->addClass('text-center'),
-            Column::make('amount')->title(__('Amount')),
-            Column::make('min_price')->title(__('Minimum Price')),
+            Column::make('amount')->title(__('Amount'))
+                ->width(70)
+                ->addClass('text-center'),
+            Column::make('min_price')->title(__('Minimum Price'))
+                ->width(70)
+                ->addClass('text-center'),
             Column::make('commission')->title(__('Commission'))
                 ->orderable(false),
             Column::make('expiry')->title(__('Expiry')),
@@ -195,7 +199,7 @@ class DiscountVouchersDataTable extends DataTable
                 ->exportable(false)
                 ->printable(false)
                 ->orderable(false)
-                ->width(200)
+                ->width(150)
                 ->addClass('text-center'),
         ];
     }
