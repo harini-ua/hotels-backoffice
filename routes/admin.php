@@ -10,7 +10,6 @@ use App\Http\Controllers\CompanyBookingCommissionController;
 use App\Http\Controllers\CompanyCommissionController;
 use App\Http\Controllers\CompanyContactController;
 use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\CompanyDefaultController;
 use App\Http\Controllers\CompanyExtraNightController;
 use App\Http\Controllers\CompanyGeneralController;
 use App\Http\Controllers\CompanyHomepageController;
@@ -41,18 +40,15 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PromoMessageController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\RecommendedHotelController;
-use App\Http\Controllers\ReportBookingController;
-use App\Http\Controllers\ReportCommissionController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ReportHotelsNewestController;
 use App\Http\Controllers\ReportHotelsSummaryController;
-use App\Http\Controllers\ReportInvoiceReportController;
-use App\Http\Controllers\ReportVatController;
 use App\Http\Controllers\SearchingByPeriodController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SpecialOfferHotelController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\BookingUserController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
@@ -62,6 +58,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [DashboardsController::class, 'index'])->name('home');
         Route::get('dashboard', [DashboardsController::class, 'index'])->name('index');
         Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
+
+        /** ----- ------ ----- USERS */
+        Route::prefix('users')->as('users.')->group(function () {
+            Route::get('/', [UserController::class, 'index'])->name('index');
+        });
 
         /** ----- ------ ----- BOOKING USERS */
         Route::resource('booking-users', BookingUserController::class)->except(['edit', 'update']);

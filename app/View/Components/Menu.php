@@ -40,6 +40,8 @@ class Menu extends Component
         $this->items[] = [
             'name' => __('Users'),
             'icon' => 'feather icon-users',
+            'slag' => 'users',
+            'href' => route('users.index'),
             'guard' => true,
             'items' => [
                 [
