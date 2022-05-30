@@ -17,21 +17,13 @@
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
-        <div class="col-lg-12 col-xl-2 widget-link-wrapper">
-            <a class="btn btn-submit link" href="{{ route('statistics.index') }}" role="button">
-                <i class="feather icon-file-text"></i> {{ __('Booking Report') }}
-            </a>
-        </div>
-        <div class="col-lg-12 col-xl-2 widget-link-wrapper">
-            <a class="btn btn-submit link" href="{{ route('statistics.index') }}" role="button">
-                <i class="feather icon-file-text"></i> {{ __('Commission Report') }}
-            </a>
-        </div>
-        <div class="col-lg-12 col-xl-2 widget-link-wrapper">
-            <a class="btn btn-submit link" href="{{ route('booking-users.index') }}" role="button">
-                <i class="feather icon-users"></i> {{ __('Booking Users') }}
-            </a>
-        </div>
+        @foreach($widgets as $widget)
+            <div class="col-lg-12 col-xl-2 widget-link-wrapper">
+                <a class="btn btn-submit link" href="{{ $widget['route'] }}" role="button">
+                    <i class="{{ $widget['icon'] }}"></i> {{ $widget['name'] }}
+                </a>
+            </div>
+        @endforeach
     </div>
     <!-- End row -->
 </div>

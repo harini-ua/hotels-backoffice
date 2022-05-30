@@ -8,14 +8,14 @@ class DashboardsController extends Controller
     {
         $breadcrumbs = [
             ['title' => __('Dashboard')],
-//            ['link' => route('home'), 'name' => __('Home')],
-//            ['name' => __('Dashboard')]
         ];
 
-        $actions = [
-//            ['icon' => 'plus', 'name' => __('Actions')]
+        $widgets = [
+            ['name' => __('Statistics'), 'route' => route('statistics.index'), 'icon' => 'feather icon-pie-chart'],
+            ['name' => __('Booking Users'), 'route' => route('booking-users.index'), 'icon' => 'feather icon-user'],
+            ['name' => __('IP Filter'), 'route' => route('settings.ip-filter.index'), 'icon' => 'feather icon-file-text'],
         ];
 
-        return view('admin.index', compact('breadcrumbs', 'actions'));
+        return view('admin.index', compact('breadcrumbs', 'widgets'));
     }
 }

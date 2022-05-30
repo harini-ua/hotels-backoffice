@@ -43,19 +43,19 @@ class Menu extends Component
             'guard' => true,
             'items' => [
                 [
-                    'name' => __('Admins'),
+                    'name' => __('Admin Users'),
                     'href' => route('admins.index'),
                     'icon' => 'feather icon-user',
                     'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
                 [
-                    'name' => __('Distributors'),
+                    'name' => __('Distributor Users'),
                     'href' => route('distributors.users.index'),
                     'icon' => 'feather icon-user',
                     'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
                 [
-                    'name' => __('BookingSeeder'),
+                    'name' => __('Booking Users'),
                     'href' => route('booking-users.index'),
                     'icon' => 'feather icon-user',
                     'guard' => true,
