@@ -31,6 +31,7 @@ use App\Http\Controllers\DiscountVoucherController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\DistributorUserController;
 use App\Http\Controllers\HotelBadgeController;
+use App\Http\Controllers\IpFilterController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\OverallBookingsController;
 use App\Http\Controllers\PartnerController;
@@ -260,6 +261,9 @@ Route::middleware('auth')->group(function () {
                 Route::get('{hotel}/edit', [HotelBadgeController::class, 'edit'])->name('edit');
                 Route::put('{hotel}', [HotelBadgeController::class, 'update'])->name('update');
             });
+
+            /** ----- ------ ----- IP WHITE LIST */
+            Route::resource('ip-filter', IpFilterController::class)->except(['show']);
         });
     });
 });

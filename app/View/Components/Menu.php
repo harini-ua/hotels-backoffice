@@ -206,6 +206,12 @@ class Menu extends Component
                     'icon' => 'feather icon-globe',
                     'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
+                [
+                    'name' => __('IP Filter'),
+                    'href' => route('settings.ip-filter.index'),
+                    'icon' => 'feather icon-filter',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
+                ],
 //                [
 //                    'name' => __('Commissions'),
 //                    'href' => route('settings.commissions.edit'),

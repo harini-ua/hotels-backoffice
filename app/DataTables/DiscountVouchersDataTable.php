@@ -161,7 +161,6 @@ class DiscountVouchersDataTable extends DataTable
             ->buttons(
                 Button::make('postExcel'),
                 Button::make('print'),
-                Button::make('reload')
             )
         ;
     }
