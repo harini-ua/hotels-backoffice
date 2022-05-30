@@ -5,9 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title> {{config('admin.templation.title.prefix')}} {{config('admin.templation.title.separator')}} @yield('title') </title>
+        @if(config('admin.templation.title.modify'))
+            <title>{{config('admin.templation.title.prefix')}} {{config('admin.templation.title.separator')}} @yield('title')</title>
+        @else
+            <title>@yield('title')</title>
+        @endif
         <!-- Favicon -->
-        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
         <!-- Start CSS -->
         @include('admin.panels.styles')
         <!-- End CSS -->
