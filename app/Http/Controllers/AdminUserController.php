@@ -27,7 +27,8 @@ class AdminUserController extends Controller
         $breadcrumbs = [
             ['title' => __('List Admin Users')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['name' => __('Admins')]
+            ['link' => route('users.index'), 'name' => __('Users')],
+            ['link' => route('admins.index'), 'name' => __('Admin Users')]
         ];
 
         $actions = [
@@ -50,7 +51,8 @@ class AdminUserController extends Controller
         $breadcrumbs = [
             ['title' => __('Create Admin')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['link' => route('admins.index'), 'name' => __('Admins')],
+            ['link' => route('users.index'), 'name' => __('Users')],
+            ['link' => route('admins.index'), 'name' => __('Admin Users')],
             ['name' => __('Create')]
         ];
 

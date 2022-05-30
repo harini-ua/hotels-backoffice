@@ -28,7 +28,8 @@ class DistributorUserController extends Controller
         $breadcrumbs = [
             ['title' => __('List Distributor Users')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['name' => __('Users')]
+            ['link' => route('users.index'), 'name' => __('Users')],
+            ['name' => __('Distributor Users')]
         ];
 
         $actions = [
@@ -57,7 +58,8 @@ class DistributorUserController extends Controller
         $breadcrumbs = [
             ['title' => __('Create Distributor User')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['link' => route('distributors.index'), 'name' => __('Distributors User')],
+            ['link' => route('users.index'), 'name' => __('Users')],
+            ['link' => route('distributors.index'), 'name' => __('Distributor User')],
             ['name' => __('Create User')]
         ];
 
@@ -123,7 +125,8 @@ class DistributorUserController extends Controller
         $breadcrumbs = [
             ['title' => __('Update Distributor User')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['link' => route('distributors.users.index'), 'name' => __('Distributors Users')],
+            ['link' => route('users.index'), 'name' => __('Users')],
+            ['link' => route('distributors.users.index'), 'name' => __('Distributor Users')],
             ['name' => $user->fullname]
         ];
 

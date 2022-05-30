@@ -40,7 +40,7 @@ class BookingUsersDataTable extends DataTable
         });
 
         $dataTable->addColumn('city', function (BookingUser $model) {
-            return isset($model->city) ? $model->city->name : '-';
+//            return isset($model->city) ? $model->city->name : '-';
         });
 
         $dataTable->addColumn('country', function (BookingUser $model) {

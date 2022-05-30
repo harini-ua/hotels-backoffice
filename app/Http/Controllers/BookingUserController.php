@@ -32,7 +32,8 @@ class BookingUserController extends Controller
         $breadcrumbs = [
             ['title' => __('List Booking Users')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['name' => __('Users')]
+            ['link' => route('users.index'), 'name' => __('Users')],
+            ['name' => __('Booking Users')]
         ];
 
         $actions = [
@@ -61,6 +62,7 @@ class BookingUserController extends Controller
         $breadcrumbs = [
             ['title' => __('Create Booking User')],
             ['link' => route('home'), 'name' => __('Home')],
+            ['link' => route('users.index'), 'name' => __('Users')],
             ['link' => route('booking-users.index'), 'name' => __('Booking Users')],
             ['name' => __('Create')]
         ];
@@ -142,6 +144,7 @@ class BookingUserController extends Controller
         $breadcrumbs = [
             ['title' => $user->fullname],
             ['link' => route('home'), 'name' => __('Home')],
+            ['link' => route('users.index'), 'name' => __('Users')],
             ['link' => route('booking-users.index'), 'name' => __('Booking Users')],
             ['name' => __('Show')]
         ];

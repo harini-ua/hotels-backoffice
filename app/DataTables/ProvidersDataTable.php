@@ -102,18 +102,19 @@ class ProvidersDataTable extends DataTable
             Column::make('id')->title(__('ID')),
             Column::make('name')->title(__('Provider Name')),
             Column::make('email')
-                ->orderable('false'),
+                ->orderable(false),
             Column::make('support_phone')
-                ->orderable('false'),
+                ->orderable(false),
             Column::make('active')
-                ->orderable('false')
+                ->orderable(false)
+                ->width(70)
                 ->addClass('text-center'),
             Column::computed('action')
                 ->orderable(false)
                 ->exportable(false)
                 ->printable(false)
                 ->orderable(false)
-                ->width(200)
+                ->width(70)
                 ->addClass('text-center'),
         ];
     }
