@@ -21,7 +21,7 @@ jQuery(document).ready(function ($) {
 
         form.ip.inputmask("ip");
 
-        if (form.is_expiry.checked) {
+        if (form.is_expiry.val() == 1) {
             form.expiry.closest('.form-group').show();
         }
 
