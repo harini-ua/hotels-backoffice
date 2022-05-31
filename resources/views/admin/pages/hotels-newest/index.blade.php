@@ -34,6 +34,7 @@
 @endsection
 
 @section('script')
+    @include('admin.datatables.datatable-scripts')
     {{ $dataTable->scripts() }}
     <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>

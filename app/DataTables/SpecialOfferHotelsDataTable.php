@@ -101,7 +101,7 @@ class SpecialOfferHotelsDataTable extends DataTable
             ->dom('rtip')
             ->orderBy(2)
             ->buttons(
-                Button::make('postExcel'),
+                Button::make('excel'),
                 Button::make('print'),
                 Button::make('reload')
             )

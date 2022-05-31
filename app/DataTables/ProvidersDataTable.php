@@ -81,12 +81,12 @@ class ProvidersDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('rtip')
+            ->dom('Brtip')
             ->orderBy(1)
+            ->responsive(true)
             ->buttons(
-                Button::make('postExcel'),
+                Button::make('excel'),
                 Button::make('print'),
-                Button::make('reload')
             )
         ;
     }
@@ -99,7 +99,9 @@ class ProvidersDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id')->title(__('ID')),
+            Column::make('id')->title(__('ID'))
+                ->width(50)
+                ->addClass('text-center'),
             Column::make('name')->title(__('Provider Name')),
             Column::make('email')
                 ->orderable(false),

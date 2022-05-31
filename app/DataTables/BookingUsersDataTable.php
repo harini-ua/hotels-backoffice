@@ -149,7 +149,7 @@ class BookingUsersDataTable extends DataTable
                 'searchPlaceholder' => __('Search')
             ])
             ->buttons(
-                Button::make('postExcel'),
+                Button::make('excel'),
                 Button::make('print')
             )
         ;

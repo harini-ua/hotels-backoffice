@@ -27,6 +27,7 @@
 @endsection
 
 @section('script')
+    @include('admin.datatables.datatable-scripts')
     {{ $dataTable->scripts() }}
     <script src="{{asset('js/scripts/datatable.js')}}"></script>
     <script src="{{asset('js/pages/providers.js')}}"></script>

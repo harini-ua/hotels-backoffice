@@ -81,7 +81,7 @@ class CompanyThemesDataTable extends DataTable
             ->dom('rtip')
             ->orderBy(1)
             ->buttons(
-                Button::make('postExcel'),
+                Button::make('excel'),
                 Button::make('print'),
                 Button::make('reload')
             )

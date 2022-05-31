@@ -1,6 +1,6 @@
-@section('title') 
+@section('title')
 Soyuz - Datatable
-@endsection 
+@endsection
 @extends('layouts.main')
 @section('style')
 <!-- DataTables css -->
@@ -8,9 +8,9 @@ Soyuz - Datatable
 <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 <!-- Responsive Datatable css -->
 <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
@@ -26,13 +26,13 @@ Soyuz - Datatable
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">                
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
@@ -1017,7 +1017,7 @@ Soyuz - Datatable
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Datatable js -->
 <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
@@ -1033,4 +1033,4 @@ Soyuz - Datatable
 <script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom/custom-table-datatable.js') }}"></script>
-@endsection 
+@endsection

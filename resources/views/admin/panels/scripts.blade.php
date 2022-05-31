@@ -13,6 +13,5 @@
 <script src="{{ asset('assets/js/core.js') }}"></script>
 <!-- End JS -->
 <script src="{{ mix('/js/app.js') }}"></script>
-<script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
 <script src="{{asset('js/scripts/custom.js')}}"></script>
 @yield('script')

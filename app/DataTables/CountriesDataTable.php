@@ -141,12 +141,13 @@ class CountriesDataTable extends DataTable
             ->minifiedAjax()
             ->dom('Bfrtip')
             ->orderBy(1)
+            ->responsive(true)
             ->language([
                 'search' => '',
                 'searchPlaceholder' => __('Search')
             ])
             ->buttons(
-                Button::make('postExcel'),
+                Button::make('excel'),
                 Button::make('print')
             )
         ;

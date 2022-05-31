@@ -32,23 +32,8 @@
     </div>
 @endsection
 
-{{--<tr>--}}
-{{--    <th colspan="4" rowspan="2"></th>--}}
-{{--    <th colspan="8" class="text-center">Current Year</th>--}}
-{{--    <th colspan="8" class="text-center">Previous Year</th>--}}
-{{--</tr>--}}
-{{--<tr>--}}
-{{--    <th colspan="2" class="text-center">Today</th>--}}
-{{--    <th colspan="2" class="text-center">This Week</th>--}}
-{{--    <th colspan="2" class="text-center">This Month</th>--}}
-{{--    <th colspan="2" class="text-center">This Year</th>--}}
-{{--    <th colspan="2" class="text-center">Same Day</th>--}}
-{{--    <th colspan="2" class="text-center">Same Week</th>--}}
-{{--    <th colspan="2" class="text-center">Same Month</th>--}}
-{{--    <th colspan="2" class="text-center">Same Year</th>--}}
-{{--</tr>--}}
-
 @section('script')
+    @include('admin.datatables.datatable-scripts')
     {{ $dataTable->scripts() }}
     <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
     <script src="{{asset('js/scripts/datatable.js')}}"></script>
