@@ -8,7 +8,7 @@ use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
-class HotelsNewestDataTable extends DataTable
+class ReportHotelsNewestDataTable extends DataTable
 {
     /**
      * @var array $period

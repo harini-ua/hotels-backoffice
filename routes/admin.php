@@ -41,6 +41,7 @@ use App\Http\Controllers\PromoMessageController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\RecommendedHotelController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ReportCountryBookingController;
 use App\Http\Controllers\ReportHotelsNewestController;
 use App\Http\Controllers\ReportHotelsSummaryController;
 use App\Http\Controllers\SearchingByPeriodController;
@@ -205,6 +206,8 @@ Route::middleware('auth')->group(function () {
         /** ----- ------ ----- REPORTS */
         Route::prefix('reports')->as('reports.')->group(function () {
             Route::get('/', [ReportController::class, 'index'])->name('index');
+
+            Route::get('/country-booking', [ReportCountryBookingController::class, 'index'])->name('country-booking.index');
 
             Route::prefix('hotels')->as('hotels.')->group(function () {
                 Route::get('summary', [ReportHotelsSummaryController::class, 'index'])->name('summary.index');

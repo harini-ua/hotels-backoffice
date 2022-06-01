@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\HotelsNewestDataTable;
+use App\DataTables\ReportHotelsNewestDataTable;
 
 class ReportHotelsNewestController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @param HotelsNewestDataTable $dataTable
+     * @param ReportHotelsNewestDataTable $dataTable
      * @return mixed
      */
-    public function index(HotelsNewestDataTable $dataTable)
+    public function index(ReportHotelsNewestDataTable $dataTable)
     {
         $breadcrumbs = [
             ['title' => __('Hotels Newest')],

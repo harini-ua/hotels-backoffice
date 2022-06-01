@@ -173,6 +173,12 @@ class Menu extends Component
             'guard' => $user->hasRole(UserRole::ADMIN),
             'items' => [
                 [
+                    'name' => __('Country Booking'),
+                    'href' => route('reports.country-booking.index'),
+                    'icon' => 'feather icon-globe',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
+                ],
+                [
                     'name' => __('Hotels Summary'),
                     'href' => route('reports.hotels.summary.index'),
                     'icon' => 'feather icon-home',
@@ -199,7 +205,7 @@ class Menu extends Component
                 [
                     'name' => __('Countries'),
                     'href' => route('countries.index'),
-                    'icon' => 'feather icon-flag',
+                    'icon' => 'feather icon-globe',
                     'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
                 [
