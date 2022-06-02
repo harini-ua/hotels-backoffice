@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ReportCountryBookingDataTable;
+use App\Enums\BookingDateType;
+use App\Enums\BookingPlatform;
+use App\Enums\BookingStatus;
+use App\Models\Booking;
 use App\Models\Company;
 use App\Models\Country;
 use App\Models\Provider;
+use Illuminate\Support\Facades\DB;
 
 class ReportCountryBookingController extends Controller
 {
@@ -42,8 +47,21 @@ class ReportCountryBookingController extends Controller
             ->sortBy('name')
             ->pluck('name', 'id');
 
+        $statuses = BookingStatus::asSelectArray();
+        $dataTypes = BookingDateType::asSelectArray();
+        $platforms = BookingPlatform::asSelectArray();
+
+        // TODO: platform_version
+        $devices = DB::table('bookings')
+            ->select('customer_name')
+            ->where('customer_name', '!=', '')
+            ->whereNotNull('customer_name')
+            ->distinct()->get()
+            ->pluck('customer_name', 'customer_name');
+
         return $dataTable->render('admin.pages.country-booking.index', compact(
-            'breadcrumbs', 'companies', 'countries', 'cities', 'hotels', 'providers',
+            'breadcrumbs', 'companies', 'countries', 'cities', 'hotels', 'providers', 'statuses',
+            'dataTypes', 'platforms', 'devices'
         ));
     }
 }
