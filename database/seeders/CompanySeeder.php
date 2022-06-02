@@ -21,7 +21,7 @@ class CompanySeeder extends Seeder
 //SELECT w.whtid, c.id as country_id, hc.id as city_id, l.langid as lang_id, w.wht_name, w.company_name, w.category,
 // w.address, w.email, w.mobile, w.status, w.clientlevel, w.vat, w.newsletter, w.comments,
 // (IF(w.wht_cht_id != '0', 1 + (SELECT COUNT(*) FROM tblaccesscodes ac WHERE ac.whtid = w.whtid),
-// (SELECT COUNT(*) FROM tblaccesscodes ac WHERE ac.whtid = w.whtid))) as access_codes_count_total, w.hei as admin_id
+// (SELECT COUNT(*) FROM tblaccesscodes ac WHERE ac.whtid = w.whtid))) as access_codes_count_total, w.hei as admin_id, w.sub_white_labels
 // FROM white_profile_details w
 // LEFT JOIN hei_country c ON w.country = c.country
 // LEFT JOIN hei_city hc ON w.city = hc.city AND w.country = hc.country_name
@@ -63,6 +63,7 @@ class CompanySeeder extends Seeder
                     'newsletter' => $data[13] == 'yes' ? 1 : 0,
                     'login_type' => $data[15] == 0 ? 2 : ($data[15] == 1 ? 1 : 0),
                     'access_codes' => $data[15],
+                    'sub_companies' => (int)$data[17],
                 ];
             }
 

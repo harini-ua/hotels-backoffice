@@ -39,6 +39,7 @@ class CreateBookingUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->unsignedBigInteger('distributor_id')->nullable();
             $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('sub_company_id')->nullable();
             $table->unsignedBigInteger('country_id');
             $table->string('city')->nullable();
             $table->unsignedBigInteger('language_id');
@@ -51,6 +52,7 @@ class CreateBookingUsersTable extends Migration
 
             $table->foreign('distributor_id')->references('id')->on('distributors');
             $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('sub_company_id')->references('id')->on('sub_companies');
             $table->foreign('country_id')->references('id')->on('countries');
             $table->foreign('language_id')->references('id')->on('languages');
             $table->foreign('currency_id')->references('id')->on('currencies');

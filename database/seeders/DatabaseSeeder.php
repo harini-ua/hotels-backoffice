@@ -42,6 +42,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DistributorCountrySeeder::class);
         $this->call(DistributorLanguageSeeder::class);
         $this->call(CompanySeeder::class);
+        $this->call(SubCompanySeeder::class);
         $this->call(BookingUserSeeder::class);
         $this->call(DiscountVoucherSeeder::class);
         $this->call(DiscountVoucherCodeSeeder::class);

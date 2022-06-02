@@ -30,6 +30,7 @@ class Booking extends Model
         'payment_reference',
     ];
 
+    public $timestamps = true;
     /**
      * Get the provider that owns the booking.
      */
