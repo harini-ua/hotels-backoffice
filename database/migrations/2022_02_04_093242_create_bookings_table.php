@@ -47,6 +47,11 @@ class CreateBookingsTable extends Migration
             $table->unsignedBigInteger('discount_voucher_code_id')->nullable()->unsigned();
             $table->string('room_rate_key', 1000)->nullable();
             $table->string('payment_reference', 1000)->nullable();
+            $table->tinyInteger('platform_type')->default(2)
+                ->comment('1-mobile app, 2-web browser, 3-mobile browser, 4-mac browser');
+            $table->string('platform_version')->nullable()
+                ->comment('Platform version info such as browser version, mobile os version etc');
+            $table->mediumText('platform_details')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

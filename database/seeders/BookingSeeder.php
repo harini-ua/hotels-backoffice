@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\DiscountVoucherCode;
 use App\Models\Hotel;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -22,7 +23,7 @@ class BookingSeeder extends Seeder
 //b.itemcode, b.check_in, b.check_out, b.hei_hotel_code, b.room_type, b.roomNumber, b.nights, b.trans_cancellation_date,
 //b.trans_cancellation_time, b.cancellation_policy, b.refundablestatus, b.euserid, b.inoffcode, b.adult_count, b.child_count,
 //b.remark, b.customer_name, b.customer_email, b.phone, b.amount, b.bookingcommission, b.final_amount, c.id as currency_id,
-//b.conv_rate_payment_to_user_prices, d.id as discount_voucher_code_id, b.hotelbed_rate_key, b.payment_reference, b.cancelled_date
+//b.conv_rate_payment_to_user_prices, d.id as discount_voucher_code_id, b.hotelbed_rate_key, b.payment_reference, b.cancelled_date, b.platform_type, b.platform_version_info, b.platform_details
 //FROM customer_booking b
 //LEFT JOIN tblcurrencyname c ON c.currencyname = b.selectedcurrency
 //LEFT JOIN discount_codes d ON d.code = b.discount_code
@@ -85,7 +86,11 @@ class BookingSeeder extends Seeder
                         'discount_voucher_code_id' => !(int)$data[31] ? NULL : (int)$data[31],
                         'room_rate_key' => $data[32],
                         'payment_reference' => $data[33],
-                        'created_at' => date('Y-m-d H:i:s', strtotime($data[2])),
+                        //'created_at' => date('Y-m-d H:i:s', strtotime($data[2])),
+                        'created_at' => Carbon::parse($data[2]),
+                        'platform_type' => !(int)$data[35] || (int)$data[35] > 4 ? 2 : (int)$data[35],
+                        'platform_version' => $data[36],
+                        'platform_details' => $data[37],
                     ];
                 }
             }
@@ -94,7 +99,7 @@ class BookingSeeder extends Seeder
         }
 
         foreach (array_chunk($bookings, 1000) as $booking) {
-            DB::table('bookings')->insertTs($booking);
+            DB::table('bookings')->insert($booking);
         }
     }
 }
