@@ -35,7 +35,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
         $this->mapAdminRoutes();
-        $this->mapWebRoutes();
+        //$this->mapWebRoutes();
     }
 
     /**
@@ -53,8 +53,12 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/admin.php'));
         } else {
-            Route::prefix(env('ADMIN_PREFIX'))
-                ->middleware('web')
+//            Route::prefix(env('ADMIN_PREFIX'))
+//                ->middleware('web')
+//                ->namespace($this->namespace)
+//                ->group(base_path('routes/admin.php'));
+
+            Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/admin.php'));
         }
