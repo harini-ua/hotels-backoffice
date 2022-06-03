@@ -47,10 +47,17 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapAdminRoutes()
     {
-        Route::domain(env('ADMIN_SUBDOMAIN') . '.' . env('APP_URL'))
-             ->middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/admin.php'));
+        if (env('ADMIN_USE_SUBDOMAIN')) {
+            Route::domain(env('ADMIN_PREFIX') . '.' . env('APP_URL'))
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/admin.php'));
+        } else {
+            Route::prefix(env('ADMIN_PREFIX'))
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/admin.php'));
+        }
     }
 
     /**
