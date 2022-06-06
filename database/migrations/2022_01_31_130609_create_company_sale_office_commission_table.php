@@ -17,7 +17,7 @@ class CreateCompanySaleOfficeCommissionTable extends Migration
             $table->id();
             $table->unsignedBigInteger('company_id');
             $table->smallInteger('level')->default(\App\Enums\Level::First);
-            $table->unsignedBigInteger('sale_office_country_id');
+            $table->unsignedBigInteger('sale_office_country_id')->nullable();
             $table->mediumInteger('commission');
             $table->timestamps();
             $table->softDeletes();

@@ -49,5 +49,9 @@ class DatabaseSeeder extends Seeder
         $this->call(BookingSeeder::class);
         $this->call(BookingGuestSeeder::class);
         $this->call(HotelDistanceSeeder::class);
+        $this->call(CompanyExtraNightSeeder::class);
+        $this->call(CompanyPartnerSeeder::class);
+        $this->call(CompanyBookingCommissionSeeder::class);
+        $this->call(CompanyHomepageOptionSeeder::class);
     }
 }

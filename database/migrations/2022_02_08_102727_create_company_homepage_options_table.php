@@ -17,9 +17,10 @@ class CreateCompanyHomepageOptionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('theme_id');
-            $table->string('logo');
-            $table->unsignedBigInteger('carousel_id');
-            $table->unsignedBigInteger('teaser_id');
+            $table->string('logo')->nullable();
+            $table->string('mobile_background_image')->nullable();
+            $table->unsignedBigInteger('carousel_id')->nullable();
+            $table->unsignedBigInteger('teaser_id')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

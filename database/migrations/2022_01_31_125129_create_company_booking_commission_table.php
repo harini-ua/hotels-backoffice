@@ -20,7 +20,8 @@ class CreateCompanyBookingCommissionTable extends Migration
             $table->mediumInteger('booking_commission');
             $table->mediumInteger('payback_to_client');
             $table->double('minimal_commission', 8, 2);
-            $table->boolean('use_minimal_commission')->default(0);
+            $table->boolean('use_minimal_commission')->default(0)->comment('0-do not use
+            minimal_commission, 1- use minimal_commission');
             $table->timestamps();
             $table->softDeletes();
 
