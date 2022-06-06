@@ -47,5 +47,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DiscountVoucherSeeder::class);
         $this->call(DiscountVoucherCodeSeeder::class);
         $this->call(BookingSeeder::class);
+        $this->call(BookingGuestSeeder::class);
+        $this->call(HotelDistanceSeeder::class);
     }
 }

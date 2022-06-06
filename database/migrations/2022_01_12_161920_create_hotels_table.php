@@ -30,11 +30,15 @@ class CreateHotelsTable extends Migration
             $table->smallInteger('other_rating')->default(0);
             $table->mediumInteger('commission')->default(0);
 
-            $table->string('name', 1000);
-            $table->longText('description');
-            $table->string('address');
-            $table->string('postal_code');
-            $table->point('position');
+            $table->bigInteger('trip_advisor_rating_id')->default(0);
+            $table->bigInteger('trip_advisor_rating_count')->default(0);
+            $table->string('trip_advisor_rating_url')->nullable();
+
+            $table->string('name', 1000)->nullable();
+            $table->longText('description')->nullable();
+            $table->string('address')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->point('position')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

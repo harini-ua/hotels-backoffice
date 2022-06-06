@@ -15,11 +15,13 @@ class CreateHotelDistancesTable extends Migration
     {
         Schema::create('hotel_distances', function (Blueprint $table) {
             $table->id();
-            $table->integer('hotel_code');
+            $table->unsignedBigInteger('hotel_id');
             $table->string('place');
             $table->string('unit');
-            $table->integer('distance');
+            $table->mediumInteger('distance');
             $table->timestamps();
+
+            $table->foreign('hotel_id')->references('id')->on('hotels');
         });
     }
 
