@@ -27,7 +27,6 @@
                                         required
                                         autocomplete="email"
                                         autofocus
-                                        value="admin@example.com"
                                     >
                                     @error('username')<small class="red-text" role="alert">{{ $message }}</small>@enderror
                                 </div>
@@ -39,7 +38,6 @@
                                         name="password"
                                         placeholder="{{__('Password')}}"
                                         required
-                                        value="123321"
                                     >
                                     @error('password')<small class="red-text" role="alert">{{ $message }}</small>@enderror
                                 </div>
