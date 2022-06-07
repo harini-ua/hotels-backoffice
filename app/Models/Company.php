@@ -36,6 +36,14 @@ class Company extends Model
     }
 
     /**
+     * Get the sub companies for the company.
+     */
+    public function subCompanies()
+    {
+        return $this->hasMany(SubCompany::class);
+    }
+
+    /**
      * Get the homepage options associated with the company.
      */
     public function homepageOptions()

@@ -49,6 +49,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SpecialOfferHotelController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\BookingUserController;
+use App\Http\Controllers\SubCompaniesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -142,6 +143,11 @@ Route::middleware('auth')->group(function () {
             Route::prefix('{company}/hotel-distances')->as('hotel-distances.')->group(function () {
                 Route::get('/edit', [CompanyHotelDistanceController::class, 'edit'])->name('edit');
                 Route::put('/update', [CompanyHotelDistanceController::class, 'update'])->name('update');
+            });
+
+            Route::prefix('{company}/sub-companies')->as('sub-companies.')->group(function () {
+                Route::get('/edit', [SubCompaniesController::class, 'edit'])->name('edit');
+                Route::put('/update', [SubCompaniesController::class, 'update'])->name('update');
             });
 
             Route::prefix('{company}/account')->as('account.')->group(function () {

@@ -50,6 +50,7 @@ class CompanyOthersController extends Controller
             DB::beginTransaction();
 
             $company->mainOptions()->update([
+                'sub_companies' => $request->has('sub_companies'),
                 'chat_enabled' => $request->has('chat_enabled'),
                 'chat_script' => $request->get('chat_script'),
                 'adobe_enabled' => $request->has('adobe_enabled'),

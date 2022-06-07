@@ -23,6 +23,7 @@
                             <a class="nav-link mb-2" href="{{ route('companies.homepage.edit', $model) }}">{{ __('Homepage') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.extra-nights.edit', $model) }}">{{ __('Extra Nights') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.prefilled-options.edit', $model) }}">{{ __('Pre Filled Options') }}</a>
+                            @if($model->mainOption->sub_companies)<a class="nav-link mb-2" href="{{ route('companies.sub-companies.edit', $model) }}">{{ __('Sub Companies') }}</a>@endif
                             <a class="nav-link mb-2" href="{{ route('companies.hotel-distances.edit', $model) }}">{{ __('Hotel Distances') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.customer-supports.edit', $model) }}">{{ __('Customer Supports') }}</a>
                             <a class="nav-link mb-2 active" href="{{ route('companies.commissions.edit', $model) }}">{{ __('Commissions') }}</a>
@@ -155,10 +156,10 @@
                                             @csrf
                                             @if(isset($model)) @method('PUT') @endif
                                             <div class="form-row">
-                                                <div class="form-group col-md-3">
+                                                <div class="form-group col-md-5">
                                                     <label for="inputCity">{{ __('Country') }}</label>
                                                 </div>
-                                                <div class="form-group col-md-3">
+                                                <div class="form-group col-md-5">
                                                     <label for="inputState">{{ __('Commission') }}</label>
                                                 </div>
                                             </div>
@@ -166,7 +167,7 @@
                                                 <div data-repeater-list="level1-commissions">
                                                     @for($i = 0; $i < $level1CommissionsCount; $i++)
                                                         <div class="form-row level1-commissions-wrapper" data-repeater-item>
-                                                            <div class="form-group col-md-3">
+                                                            <div class="form-group col-md-5">
                                                                 <select name="level1-commissions[{{ $i }}][sale_office_country_id]"
                                                                         class="form-control select2-single @error('sale_office_country_id') is-invalid @enderror"
                                                                 >
@@ -183,7 +184,7 @@
                                                                 <small class="form-text text-danger" role="alert">{{ $message }}</small>
                                                                 @enderror
                                                             </div>
-                                                            <div class="form-group col-md-3">
+                                                            <div class="form-group col-md-5">
                                                                 <div class="input-group">
                                                                     <input type="number" class="form-control" min="0"
                                                                            name="level1-commissions[{{ $i }}][commission]"
@@ -206,7 +207,7 @@
                                                     @endfor
                                                 </div>
                                                 <div class="form-row">
-                                                    <div class="form-group offset-md-6 col-md-1">
+                                                    <div class="form-group offset-md-10 col-md-1">
                                                         <button type="button" class="btn btn-success" data-repeater-create>
                                                             <i class="feather icon-plus"></i>
                                                         </button>
@@ -232,10 +233,10 @@
                                             @csrf
                                             @if(isset($model)) @method('PUT') @endif
                                             <div class="form-row">
-                                                <div class="form-group col-md-3">
+                                                <div class="form-group col-md-5">
                                                     <label for="inputCity">{{ __('Country') }}</label>
                                                 </div>
-                                                <div class="form-group col-md-3">
+                                                <div class="form-group col-md-5">
                                                     <label for="inputState">{{ __('Commission') }}</label>
                                                 </div>
                                             </div>
@@ -243,7 +244,7 @@
                                                 <div data-repeater-list="level2-commissions">
                                                     @for($i = 0; $i < $level2CommissionsCount; $i++)
                                                         <div class="form-row level2-commissions-wrapper" data-repeater-item>
-                                                            <div class="form-group col-md-3">
+                                                            <div class="form-group col-md-5">
                                                                 <select name="level2-commissions[{{ $i }}][sale_office_country_id]"
                                                                         class="form-control select2-single @error('sale_office_country_id') is-invalid @enderror"
                                                                 >
@@ -260,7 +261,7 @@
                                                                 <small class="form-text text-danger" role="alert">{{ $message }}</small>
                                                                 @enderror
                                                             </div>
-                                                            <div class="form-group col-md-3">
+                                                            <div class="form-group col-md-5">
                                                                 <div class="input-group">
                                                                     <input type="number" class="form-control" min="0"
                                                                            name="level2-commissions[{{ $i }}][commission]"
@@ -283,7 +284,7 @@
                                                     @endfor
                                                 </div>
                                                 <div class="form-row">
-                                                    <div class="form-group offset-md-6 col-md-1">
+                                                    <div class="form-group offset-md-10 col-md-1">
                                                         <button type="button" class="btn btn-success" data-repeater-create>
                                                             <i class="feather icon-plus"></i>
                                                         </button>

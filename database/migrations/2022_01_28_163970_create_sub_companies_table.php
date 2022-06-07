@@ -15,9 +15,9 @@ class CreateSubCompaniesTable extends Migration
     {
         Schema::create('sub_companies', function (Blueprint $table) {
             $table->id();
-            $table->string('company_name')->unique();
             $table->unsignedBigInteger('company_id');
-            $table->integer('commission');
+            $table->string('company_name')->unique();
+            $table->mediumInteger('commission')->default(0);
             $table->tinyInteger('status')->default(1)
                 ->comment('0-inactive, 1-active');
             $table->timestamps();

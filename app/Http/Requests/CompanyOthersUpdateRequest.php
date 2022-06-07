@@ -25,6 +25,7 @@ class CompanyOthersUpdateRequest extends FormRequest
     public function rules()
     {
         return [
+            'sub_companies' => 'nullable|boolean',
             'chat_enabled' => 'nullable|boolean',
             'chat_script' => [
                 Rule::requiredIf(static function () {

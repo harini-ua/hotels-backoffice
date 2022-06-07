@@ -42,6 +42,7 @@ class CreateCompanyMainOptionsTable extends Migration
             $table->boolean('show_all_rooms_non_refundable')->default(0);
             $table->boolean('invoice_payment')->default(0);
             $table->boolean('allow_package')->default(0);
+            $table->boolean('sub_companies')->default(0);
             $table->tinyInteger('spa_pool_filter')
                 ->default(\App\Enums\SpaPoolFilter::NoFiltersApplied);
             $table->boolean('chat_enabled')->default(0);
