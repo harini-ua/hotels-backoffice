@@ -1,20 +1,20 @@
-@section('title') 
+@section('title')
 Soyuz - Modals
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 <!-- Animate css -->
-<link href="{{ asset('assets/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css" />
-@endsection 
+<link href="{{ asset('demo/assets/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Modals</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Modals</li>
                 </ol>
@@ -23,12 +23,12 @@ Soyuz - Modals
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -39,7 +39,7 @@ Soyuz - Modals
                     <h5 class="card-title">Modal components</h5>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-subtitle">Below is a <em>static</em> modal example (meaning its <code class="highlighter-rouge">position</code> and <code class="highlighter-rouge">display</code> have been overridden). Included are the modal header, modal body (required for <code class="highlighter-rouge">padding</code>), and modal footer (optional). We ask that you include modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.</h6>                      
+                    <h6 class="card-subtitle">Below is a <em>static</em> modal example (meaning its <code class="highlighter-rouge">position</code> and <code class="highlighter-rouge">display</code> have been overridden). Included are the modal header, modal body (required for <code class="highlighter-rouge">padding</code>), and modal footer (optional). We ask that you include modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.</h6>
                     <div class="modal-1 example-modal" tabindex="-1" role="dialog">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -69,7 +69,7 @@ Soyuz - Modals
                 <div class="card-header">
                     <h5 class="card-title">Optional Sizes</h5>
                 </div>
-                <div class="card-body">                                
+                <div class="card-body">
                     <h6 class="card-subtitle">Modals have two optional sizes, available via modifier classes to be placed on a <code class="highlighter-rouge">.modal-dialog</code>. These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.</h6>
                     <!-- Large modal -->
                     <button type="button" class="btn btn-primary mt-1" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
@@ -151,7 +151,7 @@ Soyuz - Modals
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6">
@@ -160,7 +160,7 @@ Soyuz - Modals
                     <h5 class="card-title">Scrolling Long Content Modal</h5>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-subtitle">When modals become too long for the user’s viewport or device, they scroll independent of the page itself. Try the demo below to see what we mean.</h6>                               
+                    <h6 class="card-subtitle">When modals become too long for the user’s viewport or device, they scroll independent of the page itself. Try the demo below to see what we mean.</h6>
                    <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
                       Scrolling Long Content Modal
@@ -213,7 +213,7 @@ Soyuz - Modals
                     <h5 class="card-title">Vertically Centered Modal</h5>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-subtitle">Add <code class="highlighter-rouge">.modal-dialog-centered</code> to <code class="highlighter-rouge">.modal-dialog</code> to vertically center the modal.</h6>                                
+                    <h6 class="card-subtitle">Add <code class="highlighter-rouge">.modal-dialog-centered</code> to <code class="highlighter-rouge">.modal-dialog</code> to vertically center the modal.</h6>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                       Vertically Centered Modal
@@ -249,7 +249,7 @@ Soyuz - Modals
                     <h5 class="card-title">Tooltips and Popovers Modal</h5>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-subtitle"><a href="/docs/4.1/components/tooltips/">Tooltips</a> and <a href="/docs/4.1/components/popovers/">popovers</a> can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automatically dismissed.</h6>                                
+                    <h6 class="card-subtitle"><a href="/docs/4.1/components/tooltips/">Tooltips</a> and <a href="/docs/4.1/components/popovers/">popovers</a> can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automatically dismissed.</h6>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalPopovers">
                       Tooltips and Popovers Modal
@@ -289,7 +289,7 @@ Soyuz - Modals
                     <h5 class="card-title">Using the Grid Modal</h5>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-subtitle">Utilize the Bootstrap grid system within a modal by nesting <code class="highlighter-rouge">.container-fluid</code> within the <code class="highlighter-rouge">.modal-body</code>. Then, use the normal grid system classes as you would anywhere else.</h6>                                
+                    <h6 class="card-subtitle">Utilize the Bootstrap grid system within a modal by nesting <code class="highlighter-rouge">.container-fluid</code> within the <code class="highlighter-rouge">.modal-body</code>. Then, use the normal grid system classes as you would anywhere else.</h6>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#gridSystemModal">
                       Using the Grid Modal
@@ -396,7 +396,7 @@ Soyuz - Modals
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">List of various animation model.</h6>
-                    <div class="row">                                    
+                    <div class="row">
                         <div class="col-12">
                             <button type="button" class="btn btn-primary mt-1 model-animation-btn" data-animation="slideInUp" data-toggle="modal" data-target="#exampleModalLong-1">
                                 SlideIn (Up)
@@ -415,7 +415,7 @@ Soyuz - Modals
                             </button>
                             <button type="button" class="btn btn-primary mt-1 model-animation-btn" data-animation="zoomInUp" data-toggle="modal" data-target="#exampleModalLong-1">
                             ZoomIn (Up)
-                            </button>                                        
+                            </button>
                             <button type="button" class="btn btn-primary mt-1 model-animation-btn" data-animation="zoomInLeft" data-toggle="modal" data-target="#exampleModalLong-1">
                                 ZoomIn (Left)
                             </button>
@@ -449,14 +449,14 @@ Soyuz - Modals
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
         <!-- End col -->
     </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Model js -->
-<script src="{{ asset('assets/js/custom/custom-model.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/js/custom/custom-model.js') }}"></script>
+@endsection

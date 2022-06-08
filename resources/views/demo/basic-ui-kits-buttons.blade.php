@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Buttons
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Buttons</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Buttons</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Buttons
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -340,7 +340,7 @@ Soyuz - Buttons
                 <div class="card-body">
                     <h6 class="card-subtitle">Buttons will appear pressed (with a darker background, darker border, and inset shadow) when active. <strong>There’s no need to add a class to <code class="highlighter-rouge">&lt;button&gt;</code>s as they use a pseudo-class</strong>. However, you can still force the same active appearance with <code class="highlighter-rouge">.active</code> (and include the <code>aria-pressed="true"</code> attribute) should you need to replicate the state programmatically.</h6>
                     <div class="button-list">
-                        <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Primary link</a>    
+                        <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Primary link</a>
                         <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Link</a>
                     </div>
                 </div>
@@ -424,11 +424,11 @@ Soyuz - Buttons
             </div>
         </div>
         <!-- End col -->
-    </div>   
+    </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

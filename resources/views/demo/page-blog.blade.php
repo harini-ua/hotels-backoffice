@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Blog
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Blog</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Blog</li>
@@ -23,13 +23,13 @@ Soyuz - Blog
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">                
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
@@ -39,7 +39,7 @@ Soyuz - Blog
                 <div class="card-body">
                     <p class="text-center mb-3"><span class="badge badge-success text-uppercase">Tech</span></p>
                     <h5 class="card-title font-18">Top 10 UI Design Trends to use in your next web design project</h5>
-                    <p class="card-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>                                
+                    <p class="card-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
                 </div>
                 <div class="card-footer">
                     <div class="row align-items-center">
@@ -56,9 +56,9 @@ Soyuz - Blog
                                     <li class="list-inline-item">by <a href="#">Admin</a></li>
                                 </ul>
                             </div>
-                        </div>    
+                        </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@ Soyuz - Blog
                 <div class="card-body">
                     <p class="text-center mb-3"><span class="badge badge-danger text-uppercase">Marketing</span></p>
                     <h5 class="card-title font-18">Ideas to implement for successful Marketing Driven business</h5>
-                    <p class="card-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>                                
+                    <p class="card-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
                 </div>
                 <div class="card-footer">
                     <div class="row align-items-center">
@@ -87,9 +87,9 @@ Soyuz - Blog
                                     <li class="list-inline-item">by <a href="#">Admin</a></li>
                                 </ul>
                             </div>
-                        </div>    
+                        </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -101,7 +101,7 @@ Soyuz - Blog
                 <div class="card-body">
                     <p class="text-center mb-3"><span class="badge badge-info text-uppercase">Business</span></p>
                     <h5 class="card-title font-18">Top 10 money making tips from millionaires around the world</h5>
-                    <p class="card-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>                                
+                    <p class="card-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
                 </div>
                 <div class="card-footer">
                     <div class="row align-items-center">
@@ -118,9 +118,9 @@ Soyuz - Blog
                                     <li class="list-inline-item">by <a href="#">Admin</a></li>
                                 </ul>
                             </div>
-                        </div>    
+                        </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -132,7 +132,7 @@ Soyuz - Blog
                 <div class="card-body">
                     <p class="text-center mb-3"><span class="badge badge-success text-uppercase">Development</span></p>
                     <h5 class="card-title font-18">The Ultimate Guide To Building Scalable Web with core CSS and HTML</h5>
-                    <p class="card-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>                                
+                    <p class="card-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
                 </div>
                 <div class="card-footer">
                     <div class="row align-items-center">
@@ -149,9 +149,9 @@ Soyuz - Blog
                                     <li class="list-inline-item">by <a href="#">Admin</a></li>
                                 </ul>
                             </div>
-                        </div>    
+                        </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -163,7 +163,7 @@ Soyuz - Blog
                 <div class="card-body">
                     <p class="text-center mb-3"><span class="badge badge-primary text-uppercase">Designing</span></p>
                     <h5 class="card-title font-18">Yarn Workspaces: Organize Your Project’s Codebase Like A Pro</h5>
-                    <p class="card-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>                                
+                    <p class="card-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
                 </div>
                 <div class="card-footer">
                     <div class="row align-items-center">
@@ -180,9 +180,9 @@ Soyuz - Blog
                                     <li class="list-inline-item">by <a href="#">Admin</a></li>
                                 </ul>
                             </div>
-                        </div>    
+                        </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -194,7 +194,7 @@ Soyuz - Blog
                 <div class="card-body">
                     <p class="text-center mb-3"><span class="badge badge-success text-uppercase">Business</span></p>
                     <h5 class="card-title font-18">Most popular and creative web templates of HTML for core developers</h5>
-                    <p class="card-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>                                
+                    <p class="card-text mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
                 </div>
                 <div class="card-footer">
                     <div class="row align-items-center">
@@ -211,9 +211,9 @@ Soyuz - Blog
                                     <li class="list-inline-item">by <a href="#">Admin</a></li>
                                 </ul>
                             </div>
-                        </div>    
+                        </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -222,7 +222,7 @@ Soyuz - Blog
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

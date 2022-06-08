@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Hospital Appointment
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Appointment</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Hospital</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Appointment</li>
                 </ol>
@@ -39,7 +39,7 @@ Soyuz - Hospital Appointment
                                         <div class="form-group col-md-12">
                                             <label for="appointno">No</label>
                                             <input type="text" class="form-control" id="appointno">
-                                        </div>                                                    
+                                        </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
@@ -49,7 +49,7 @@ Soyuz - Hospital Appointment
                                         <div class="form-group col-md-6">
                                             <label for="appointdoctor">Doctor Name</label>
                                             <input type="text" class="form-control" id="appointdoctor">
-                                        </div>                                                    
+                                        </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
@@ -59,7 +59,7 @@ Soyuz - Hospital Appointment
                                         <div class="form-group col-md-6">
                                             <label for="appointtime">Time</label>
                                             <input type="time" class="form-control" id="appointtime">
-                                        </div>                                                    
+                                        </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
@@ -97,15 +97,15 @@ Soyuz - Hospital Appointment
                         </div>
                     </div>
                 </div>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">                
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
-    <div class="row">                    
+    <div class="row">
         <!-- Start col -->
         <div class="col-lg-12">
             <div class="card m-b-30">
@@ -204,19 +204,19 @@ Soyuz - Hospital Appointment
                                         <a href="#" class="text-primary mr-2"><i class="feather icon-edit-2"></i></a>
                                         <a href="#" class="text-danger"><i class="feather icon-trash"></i></a>
                                     </td>
-                                </tr>                                                                                             
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End col -->                    
+        <!-- End col -->
     </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

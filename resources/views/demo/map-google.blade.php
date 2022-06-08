@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Google Map
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Google</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Maps</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Google</li>
                 </ol>
@@ -24,10 +24,10 @@ Soyuz - Google Map
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
             </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -104,13 +104,13 @@ Soyuz - Google Map
                                <div class="input-group-append">
                                 <button class="btn btn-primary">Search Location</button>
                                </div>
-                         </div>                                 
+                         </div>
                     </form>
                  <div id="mapGeo" class="gmaps"></div>
              </div>
             </div>
         </div>
-        <!-- End col -->                    
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-12">
             <div class="card m-b-30">
@@ -123,14 +123,14 @@ Soyuz - Google Map
             </div>
         </div>
         <!-- End col -->
-    </div> 
+    </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Google Maps JS -->
 <script src="http://maps.google.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI"></script>
-<script src="{{ asset('assets/plugins/gmaps/gmaps.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-gmaps.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/gmaps/gmaps.min.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-gmaps.js') }}"></script>
+@endsection

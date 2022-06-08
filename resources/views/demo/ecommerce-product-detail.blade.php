@@ -1,22 +1,22 @@
-@section('title') 
+@section('title')
 Soyuz - Product Detail
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 <!-- Summernote css -->
-<link href="{{ asset('assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('demo/assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
 <!-- Dropzone css -->
-<link href="{{ asset('assets/plugins/dropzone/dist/dropzone.css') }}" rel="stylesheet" type="text/css" />
-@endsection 
+<link href="{{ asset('demo/assets/plugins/dropzone/dist/dropzone.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Product Detail</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">eCommerce</a></li>
                     <li class="breadcrumb-item"><a href="#">Back End</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Product Detail</li>
@@ -26,12 +26,12 @@ Soyuz - Product Detail
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary">Publish</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -48,7 +48,7 @@ Soyuz - Product Detail
                             <div class="col-sm-12">
                                 <input type="text" class="form-control font-20" id="productTitle" placeholder="Title">
                             </div>
-                        </div>                                     
+                        </div>
                         <div class="form-group row">
                             <label class="col-sm-12 col-form-label">Description</label>
                             <div class="col-sm-12">
@@ -155,7 +155,7 @@ Soyuz - Product Detail
                         </div>
                     </div>
                 </div>
-            </div>                  
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -238,7 +238,7 @@ Soyuz - Product Detail
                             <a href="#" class="badge badge-light">Trending</a>
                             <a href="#" class="badge badge-light">Sale</a>
                         </div>
-                    </div>                                
+                    </div>
                 </div>
                 <div class="card-footer">
                     <div class="add-product-tags">
@@ -266,7 +266,7 @@ Soyuz - Product Detail
                     </div>
                     <div class="d-inline-block mb-1">
                         <img src="assets/images/ecommerce/product_gallery_03.jpg" alt="Rounded Image" class="img-fluid rounded">
-                    </div>                                
+                    </div>
                 </div>
                 <div class="card-footer">
                     <button type="button" class="btn btn-primary-rgba btn-lg btn-block">Add Gallery</button>
@@ -278,12 +278,12 @@ Soyuz - Product Detail
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Summernote js -->
-<script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <!-- Dropzone js -->
-<script src="{{ asset('assets/plugins/dropzone/dist/dropzone.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/dropzone/dist/dropzone.js') }}"></script>
 <!-- eCommerce Page js -->
-<script src="{{ asset('assets/js/custom/custom-ecommerce-product-detail-page.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/js/custom/custom-ecommerce-product-detail-page.js') }}"></script>
+@endsection

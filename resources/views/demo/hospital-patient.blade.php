@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Hospital Patient
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Patients</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Hospital</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Patients</li>
                 </ol>
@@ -39,7 +39,7 @@ Soyuz - Hospital Patient
                                         <div class="form-group col-md-12">
                                             <label for="patientid">ID</label>
                                             <input type="text" class="form-control" id="patientid">
-                                        </div>                                                    
+                                        </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
@@ -49,7 +49,7 @@ Soyuz - Hospital Patient
                                         <div class="form-group col-md-6">
                                             <label for="patientadd">Address</label>
                                             <input type="text" class="form-control" id="patintadd">
-                                        </div>                                                    
+                                        </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
@@ -59,7 +59,7 @@ Soyuz - Hospital Patient
                                         <div class="form-group col-md-6">
                                             <label for="patienttreatment">Treatment</label>
                                             <input type="text" class="form-control" id="patienttreatment">
-                                        </div>                                                    
+                                        </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
@@ -93,13 +93,13 @@ Soyuz - Hospital Patient
                         </div>
                     </div>
                 </div>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">                
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
@@ -107,7 +107,7 @@ Soyuz - Hospital Patient
             <div class="card m-b-30">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-borderless mb-0">                                        
+                        <table class="table table-borderless mb-0">
                             <tbody>
                                 <tr>
                                     <td><h5 class="my-0 font-16">1</h5></td>
@@ -144,20 +144,20 @@ Soyuz - Hospital Patient
                                         <a href="#" class="text-primary mr-2"><i class="feather icon-edit-2"></i></a>
                                         <a href="#" class="text-danger"><i class="feather icon-trash"></i></a>
                                     </td>
-                                </tr>                     
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-borderless mb-0">                                        
+                        <table class="table table-borderless mb-0">
                             <tbody>
                                 <tr>
                                     <td><h5 class="my-0 font-16">2</h5></td>
@@ -194,20 +194,20 @@ Soyuz - Hospital Patient
                                         <a href="#" class="text-primary mr-2"><i class="feather icon-edit-2"></i></a>
                                         <a href="#" class="text-danger"><i class="feather icon-trash"></i></a>
                                     </td>
-                                </tr>                      
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-borderless mb-0">                                        
+                        <table class="table table-borderless mb-0">
                             <tbody>
                                 <tr>
                                     <td><h5 class="my-0 font-16">3</h5></td>
@@ -244,20 +244,20 @@ Soyuz - Hospital Patient
                                         <a href="#" class="text-primary mr-2"><i class="feather icon-edit-2"></i></a>
                                         <a href="#" class="text-danger"><i class="feather icon-trash"></i></a>
                                     </td>
-                                </tr>                      
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-borderless mb-0">                                        
+                        <table class="table table-borderless mb-0">
                             <tbody>
                                 <tr>
                                     <td><h5 class="my-0 font-16">4</h5></td>
@@ -294,7 +294,7 @@ Soyuz - Hospital Patient
                                         <a href="#" class="text-primary mr-2"><i class="feather icon-edit-2"></i></a>
                                         <a href="#" class="text-danger"><i class="feather icon-trash"></i></a>
                                     </td>
-                                </tr>                      
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -307,7 +307,7 @@ Soyuz - Hospital Patient
             <div class="card m-b-30">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-borderless mb-0">                                        
+                        <table class="table table-borderless mb-0">
                             <tbody>
                                 <tr>
                                     <td><h5 class="my-0 font-16">5</h5></td>
@@ -344,19 +344,19 @@ Soyuz - Hospital Patient
                                         <a href="#" class="text-primary mr-2"><i class="feather icon-edit-2"></i></a>
                                         <a href="#" class="text-danger"><i class="feather icon-trash"></i></a>
                                     </td>
-                                </tr>                      
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
     </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

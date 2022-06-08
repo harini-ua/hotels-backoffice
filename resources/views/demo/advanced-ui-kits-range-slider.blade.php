@@ -1,20 +1,20 @@
-@section('title') 
+@section('title')
 Soyuz - Range Slider
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 <!-- Range Slider css -->
-<link href="{{ asset('assets/plugins/ion-rangeSlider/ion.rangeSlider.css') }}" rel="stylesheet" type="text/css" />
-@endsection 
+<link href="{{ asset('demo/assets/plugins/ion-rangeSlider/ion.rangeSlider.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Range Slider</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Advanced UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Range Slider</li>
                 </ol>
@@ -23,12 +23,12 @@ Soyuz - Range Slider
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -40,9 +40,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Start without params</h6>
-                    <input id="range-slider-basic">    
+                    <input id="range-slider-basic">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -53,9 +53,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Set min value, max value and start point</h6>
-                    <input id="range-slider-min-max">    
+                    <input id="range-slider-min-max">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -66,9 +66,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Set type to double and specify range, also showing grid and adding prefix "$"</h6>
-                    <input id="range-slider-prefix">    
+                    <input id="range-slider-prefix">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -79,9 +79,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Set up range with negative values</h6>
-                    <input id="range-slider-range">    
+                    <input id="range-slider-range">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -92,9 +92,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Using step 250</h6>
-                    <input id="range-slider-step">    
+                    <input id="range-slider-step">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -105,9 +105,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Set up range with fractional values, using fractional step</h6>
-                    <input id="range-slider-fractional-step">    
+                    <input id="range-slider-fractional-step">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -118,9 +118,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Set up you own numbers</h6>
-                    <input id="range-slider-own-numbers">    
+                    <input id="range-slider-own-numbers">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -131,9 +131,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Using any strings as your values</h6>
-                    <input id="range-slider-string-value">    
+                    <input id="range-slider-string-value">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -144,9 +144,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Big numbers are ugly and unreadable</h6>
-                    <input id="range-slider-no-prettify">    
+                    <input id="range-slider-no-prettify">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -157,9 +157,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Prettify enabled. Much better!</h6>
-                    <input id="range-slider-prettify">    
+                    <input id="range-slider-prettify">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -170,9 +170,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Don't like space as separator? Use anything you like!</h6>
-                    <input id="range-slider-seperator">    
+                    <input id="range-slider-seperator">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -183,9 +183,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">You don't like default prettify function? Use your own!</h6>
-                    <input id="range-slider-own-prettify-function">    
+                    <input id="range-slider-own-prettify-function">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -196,9 +196,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Using postfixes</h6>
-                    <input id="range-slider-postfixes">    
+                    <input id="range-slider-postfixes">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -209,9 +209,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Want to show that max number is not the biggest one?</h6>
-                    <input id="range-slider-max-postfixes">    
+                    <input id="range-slider-max-postfixes">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -222,9 +222,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Want to show that max number is not the biggest one?</h6>
-                    <input id="range-slider-both-decoration">    
+                    <input id="range-slider-both-decoration">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -235,9 +235,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Remove double decoration</h6>
-                    <input id="range-slider-remove-decoration">    
+                    <input id="range-slider-remove-decoration">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -248,9 +248,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Use your own separator symbol with values_separator option. Like →</h6>
-                    <input id="range-slider-own-value-separator">    
+                    <input id="range-slider-own-value-separator">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -261,9 +261,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Or " to ":</h6>
-                    <input id="range-slider-value-separator-to">    
+                    <input id="range-slider-value-separator-to">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -274,9 +274,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">You can disable all the sliders visual details, if you wish. Like this:</h6>
-                    <input id="range-slider-hide-visual-details">    
+                    <input id="range-slider-hide-visual-details">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -287,9 +287,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Or hide any part you wish</h6>
-                    <input id="range-slider-hide-any-detail">    
+                    <input id="range-slider-hide-any-detail">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -300,9 +300,9 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">And some more</h6>
-                    <input id="range-slider-hide-from-to-details">    
+                    <input id="range-slider-hide-from-to-details">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -313,18 +313,18 @@ Soyuz - Range Slider
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">And some more</h6>
-                    <input id="range-slider-hide-min-max-grid-details">    
+                    <input id="range-slider-hide-min-max-grid-details">
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
     </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Range Slider js -->
-<script src="{{ asset('assets/plugins/ion-rangeSlider/ion.rangeSlider.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-range-slider.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/ion-rangeSlider/ion.rangeSlider.min.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-range-slider.js') }}"></script>
+@endsection

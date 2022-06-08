@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Simple Line Icons
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Simple Line</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Icons</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Simple Line</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Simple Line Icons
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -39,7 +39,7 @@ Soyuz - Simple Line Icons
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Usage <code>&lt;i class="sl-icon-user"&gt;&lt;/i&gt;</code>.</h6>
-                    <div class="row icon-box-list">                                    
+                    <div class="row icon-box-list">
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="sl-icon-user"></i>sl-icon-user</p>
                         </div>
@@ -48,7 +48,7 @@ Soyuz - Simple Line Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="sl-icon-user-female"></i>sl-icon-user-female</p>
-                        </div>                                    
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="sl-icon-user-follow"></i>sl-icon-user-follow</p>
                         </div>
@@ -555,7 +555,7 @@ Soyuz - Simple Line Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="sl-icon-social-facebook"></i>sl-icon-social-facebook</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="sl-icon-social-instagram"></i>sl-icon-social-instagram</p>
                         </div>
@@ -608,15 +608,15 @@ Soyuz - Simple Line Icons
                             <p><i class="sl-icon-social-steam"></i>sl-icon-social-steam</p>
                         </div>
                     </div>
-                </div>     
-            </div>                  
+                </div>
+            </div>
         </div>
         <!-- End col -->
     </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

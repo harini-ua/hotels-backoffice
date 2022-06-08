@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Tabs
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Tabs</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Tabs</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Tabs
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -266,7 +266,7 @@ Soyuz - Tabs
                                 </div>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -279,7 +279,7 @@ Soyuz - Tabs
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Work with vertical pills right.</h6>
-                    <div class="row">                                              
+                    <div class="row">
                         <div class="col-6 col-sm-8">
                             <div class="tab-content" id="v-pills-tabContent-right">
                                 <div class="tab-pane fade show active" id="v-pills-home-right" role="tabpanel" aria-labelledby="v-pills-home-right-tab">
@@ -304,16 +304,16 @@ Soyuz - Tabs
                                 <a class="nav-link" id="v-pills-settings-right-tab" data-toggle="pill" href="#v-pills-settings-right" role="tab" aria-controls="v-pills-settings-right" aria-selected="false">Settings</a>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
         <!-- End col -->
-    </div>   
+    </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

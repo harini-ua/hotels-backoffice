@@ -1,11 +1,11 @@
-@section('title') 
+@section('title')
 Soyuz - jQuery Confirm
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 <!-- jQuery Confirm css -->
-<link href="{{ asset('assets/plugins/jquery-confirm/css/jquery-confirm.css') }}" rel="stylesheet" type="text/css" />
-@endsection 
+<link href="{{ asset('demo/assets/plugins/jquery-confirm/css/jquery-confirm.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
@@ -14,7 +14,7 @@ Soyuz - jQuery Confirm
             <h4 class="page-title">jQuery Confirm</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Advanced UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">jQuery Confirm</li>
                 </ol>
@@ -23,12 +23,12 @@ Soyuz - jQuery Confirm
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -190,9 +190,9 @@ Soyuz - jQuery Confirm
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- jQuery Confirm js -->
-<script src="{{ asset('assets/plugins/jquery-confirm/js/jquery-confirm.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-jquery-confirm.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/jquery-confirm/js/jquery-confirm.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-jquery-confirm.js') }}"></script>
+@endsection

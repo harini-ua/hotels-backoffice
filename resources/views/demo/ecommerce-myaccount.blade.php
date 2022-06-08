@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - My Account
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">My Account</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">eCommerce</a></li>
                     <li class="breadcrumb-item"><a href="#">Front End</a></li>
                     <li class="breadcrumb-item active" aria-current="page">My Account</li>
@@ -23,19 +23,19 @@ Soyuz - My Account
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">                
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
         <div class="col-lg-5 col-xl-3">
             <div class="card m-b-30">
-                <div class="card-header">                                
+                <div class="card-header">
                     <h5 class="card-title mb-0">My Account</h5>
                 </div>
                 <div class="card-body">
@@ -60,7 +60,7 @@ Soyuz - My Account
                 <!-- Dashboard Start -->
                 <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
                     <div class="card m-b-30">
-                        <div class="card-header">                                
+                        <div class="card-header">
                             <h5 class="card-title mb-0">Dashboard</h5>
                         </div>
                         <div class="card-body">
@@ -131,14 +131,14 @@ Soyuz - My Account
                             </div>
                         </div>
                         <!-- End col -->
-                    </div>  
+                    </div>
                     <!-- End row -->
                 </div>
                 <!-- Dashboard End -->
                 <!-- My Orders Start -->
                 <div class="tab-pane fade" id="v-pills-order" role="tabpanel" aria-labelledby="v-pills-order-tab">
                     <div class="card m-b-30">
-                        <div class="card-header">                                
+                        <div class="card-header">
                             <h5 class="card-title mb-0">My Orders</h5>
                         </div>
                         <div class="card-body">
@@ -159,7 +159,7 @@ Soyuz - My Account
                                             <table class="table table-borderless">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">#</th>    
+                                                        <th scope="col">#</th>
                                                         <th scope="col">Photo</th>
                                                         <th scope="col">Product</th>
                                                         <th scope="col">Qty</th>
@@ -217,7 +217,7 @@ Soyuz - My Account
                                             <table class="table table-borderless">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">#</th>    
+                                                        <th scope="col">#</th>
                                                         <th scope="col">Photo</th>
                                                         <th scope="col">Product</th>
                                                         <th scope="col">Qty</th>
@@ -257,7 +257,7 @@ Soyuz - My Account
                 <!-- My Addresses Start -->
                 <div class="tab-pane fade" id="v-pills-addresses" role="tabpanel" aria-labelledby="v-pills-addresses-tab">
                     <div class="card m-b-30">
-                        <div class="card-header">                                
+                        <div class="card-header">
                             <h5 class="card-title mb-0">My Addresses</h5>
                         </div>
                         <div class="card-body">
@@ -273,7 +273,7 @@ Soyuz - My Account
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">                                            
+                            <div class="row">
                                 <div class="col-lg-12 col-xl-6">
                                     <div class="address-box">
                                         <div class="card border m-b-30">
@@ -324,7 +324,7 @@ Soyuz - My Account
                 <!-- My Wishlist Start -->
                 <div class="tab-pane fade" id="v-pills-wishlist" role="tabpanel" aria-labelledby="v-pills-wishlist-tab">
                     <div class="card m-b-30">
-                        <div class="card-header">                                
+                        <div class="card-header">
                             <h5 class="card-title mb-0">My Wishlist</h5>
                         </div>
                         <div class="card-body">
@@ -333,18 +333,18 @@ Soyuz - My Account
                                     <table class="table table-borderless">
                                         <thead>
                                             <tr>
-                                                <th scope="col">#</th>                            
+                                                <th scope="col">#</th>
                                                 <th scope="col">Photo</th>
                                                 <th scope="col">Product</th>
                                                 <th scope="col">Qty</th>
                                                 <th scope="col">Price</th>
                                                 <th scope="col">Total</th>
-                                                <th scope="col">Action</th> 
+                                                <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">1</th>                
+                                                <th scope="row">1</th>
                                                 <td><img src="assets/images/ecommerce/product_01.svg" class="img-fluid" width="35" alt="product"></td>
                                                 <td>Electronic Kettle</td>
                                                 <td>
@@ -402,7 +402,7 @@ Soyuz - My Account
                 <!-- My Wallet Start -->
                 <div class="tab-pane fade" id="v-pills-wallet" role="tabpanel" aria-labelledby="v-pills-wallet-tab">
                     <div class="card m-b-30">
-                        <div class="card-header">                                
+                        <div class="card-header">
                             <h5 class="card-title mb-0">My Wallet</h5>
                         </div>
                         <div class="card-body">
@@ -420,11 +420,11 @@ Soyuz - My Account
                                         <p class="mb-0"><button class="btn btn-success-rgba font-16"><i class="feather icon-plus mr-2"></i>Add Money</button></p>
                                     </div>
                                 </div>
-                            </div>                                        
+                            </div>
                         </div>
                     </div>
                     <div class="card m-b-30">
-                        <div class="card-header">                                
+                        <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col-8">
                                     <h5 class="card-title mb-0">Transactions</h5>
@@ -432,7 +432,7 @@ Soyuz - My Account
                                 <div class="col-4">
                                     <ul class="list-inline-group text-right mb-0 pl-0">
                                         <li class="list-inline-item mr-0 font-12"><button type="button" class="btn btn-sm btn-primary-rgba px-2">Export</button></li>
-                                    </ul>                                        
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -442,17 +442,17 @@ Soyuz - My Account
                                     <table class="table table-borderless">
                                         <thead>
                                             <tr>
-                                                <th scope="col">ID</th>     
+                                                <th scope="col">ID</th>
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Withdraw</th>
                                                 <th scope="col">Deposit</th>
                                                 <th scope="col">Status</th>
-                                                <th scope="col">Comment</th> 
+                                                <th scope="col">Comment</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">1</th>              
+                                                <th scope="row">1</th>
                                                 <td>Google Corp.</td>
                                                 <td>$1,50,000</td>
                                                 <td>-</td>
@@ -460,7 +460,7 @@ Soyuz - My Account
                                                 <td>Transaction ID : 9966338855</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">2</th>                
+                                                <th scope="row">2</th>
                                                 <td>Facebook Inc.</td>
                                                 <td>-</td>
                                                 <td>$1,25,000</td>
@@ -468,7 +468,7 @@ Soyuz - My Account
                                                 <td>Bank Transaction ID : 9988776655</td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">3</th>                
+                                                <th scope="row">3</th>
                                                 <td>Amazon</td>
                                                 <td>$75,000</td>
                                                 <td>-</td>
@@ -478,7 +478,7 @@ Soyuz - My Account
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>                                        
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -486,7 +486,7 @@ Soyuz - My Account
                 <!-- My Chat Start -->
                 <div class="tab-pane fade" id="v-pills-chat" role="tabpanel" aria-labelledby="v-pills-chat-tab">
                     <div class="card m-b-30">
-                        <div class="card-header">                                
+                        <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col-8">
                                     <h5 class="card-title mb-0">My Chat</h5>
@@ -503,7 +503,7 @@ Soyuz - My Account
                                                 </select>
                                             </div>
                                         </li>
-                                    </ul>                                        
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -512,7 +512,7 @@ Soyuz - My Account
                                 <div class="chat-body">
                                     <div class="chat-day text-center mb-3">
                                         <span class="badge badge-secondary">Today</span>
-                                    </div>                                
+                                    </div>
                                     <div class="chat-message chat-message-right">
                                         <div class="chat-message-text">
                                             <span>Hello! please, let me know the status about project after school.</span>
@@ -592,7 +592,7 @@ Soyuz - My Account
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <button class="btn btn-round btn-secondary-rgba" type="button" id="button-addonmic"><i class="feather icon-mic"></i></button>
-                                                </div>  
+                                                </div>
                                                 <input type="text" class="form-control" placeholder="Type a message..." aria-label="Text">
                                                 <div class="input-group-append">
                                                     <button class="btn btn-round btn-secondary-rgba" type="submit" id="button-addonlink"><i class="feather icon-link"></i></button>
@@ -610,7 +610,7 @@ Soyuz - My Account
                 <!-- My Notifications Start -->
                 <div class="tab-pane fade" id="v-pills-notifications" role="tabpanel" aria-labelledby="v-pills-notifications-tab">
                     <div class="card m-b-30">
-                        <div class="card-header">                                
+                        <div class="card-header">
                             <h5 class="card-title mb-0">Notifications</h5>
                         </div>
                         <div class="card-body">
@@ -665,7 +665,7 @@ Soyuz - My Account
                 <!-- My Profile Start -->
                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                     <div class="card m-b-30">
-                        <div class="card-header">                                
+                        <div class="card-header">
                             <h5 class="card-title mb-0">My Profile</h5>
                         </div>
                         <div class="card-body">
@@ -685,7 +685,7 @@ Soyuz - My Account
                         </div>
                     </div>
                     <div class="card m-b-30">
-                        <div class="card-header">                                
+                        <div class="card-header">
                             <h5 class="card-title mb-0">Edit Profile Informations</h5>
                         </div>
                         <div class="card-body">
@@ -739,8 +739,8 @@ Soyuz - My Account
                 <!-- My Logout Start -->
                 <div class="tab-pane fade" id="v-pills-logout" role="tabpanel" aria-labelledby="v-pills-logout-tab">
                     <div class="card m-b-30">
-                        <div class="card-header">                                
-                            <h5 class="card-title mb-0">Logout</h5>                                       
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Logout</h5>
                         </div>
                         <div class="card-body">
                             <div class="row justify-content-center">
@@ -759,16 +759,16 @@ Soyuz - My Account
                         </div>
                     </div>
                 </div>
-                <!-- My Logout End -->                            
-            </div>                        
+                <!-- My Logout End -->
+            </div>
         </div>
         <!-- End col -->
     </div>
-    <!-- End row -->                  
+    <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- eCommerce My Account Page js -->
-<script src="{{ asset('assets/js/custom/custom-ecommerce-myaccount.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/js/custom/custom-ecommerce-myaccount.js') }}"></script>
+@endsection

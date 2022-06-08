@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - CRM Projects
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Projects</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">CRM</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Projects</li>
                 </ol>
@@ -32,13 +32,13 @@ Soyuz - CRM Projects
                         <a class="nav-link" id="pills-aborted-tab-justified" data-toggle="pill" href="#pills-aborted-justified" role="tab" aria-selected="false">Aborted</a>
                     </li>
                 </ul>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">                
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
     <div class="row">
          <!-- Start col -->
@@ -140,10 +140,10 @@ Soyuz - CRM Projects
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Piety Chart js -->
-<script src="{{ asset('assets/plugins/peity/jquery.peity.min.js') }}"></script>
-<!-- Custom CRM Project js --> 
-<script src="{{ asset('assets/js/custom/custom-crm-projects.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/peity/jquery.peity.min.js') }}"></script>
+<!-- Custom CRM Project js -->
+<script src="{{ asset('demo/assets/js/custom/custom-crm-projects.js') }}"></script>
+@endsection

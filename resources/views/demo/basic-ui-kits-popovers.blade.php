@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Popovers
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Popovers</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Popovers</li>
                 </ol>
@@ -22,16 +22,16 @@ Soyuz - Popovers
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
-    <div class="row">                    
-        <!-- Start col -->                                    
+    <div class="row">
+        <!-- Start col -->
         <div class="col-lg-6">
             <div class="card m-b-30">
                 <div class="card-header">
@@ -48,7 +48,7 @@ Soyuz - Popovers
             </div>
         </div>
         <!-- End col -->
-        <!-- Start col -->                                    
+        <!-- Start col -->
         <div class="col-lg-6">
             <div class="card m-b-30">
                 <div class="card-header">
@@ -65,7 +65,7 @@ Soyuz - Popovers
             </div>
         </div>
         <!-- End col -->
-        <!-- Start col -->                                     
+        <!-- Start col -->
         <div class="col-lg-6">
             <div class="card m-b-30">
                 <div class="card-header">
@@ -82,7 +82,7 @@ Soyuz - Popovers
             </div>
         </div>
         <!-- End col -->
-        <!-- Start col -->                                    
+        <!-- Start col -->
         <div class="col-lg-6">
             <div class="card m-b-30">
                 <div class="card-header">
@@ -99,7 +99,7 @@ Soyuz - Popovers
             </div>
         </div>
         <!-- End col -->
-        <!-- Start col -->                                     
+        <!-- Start col -->
         <div class="col-lg-6">
             <div class="card m-b-30">
                 <div class="card-header">
@@ -116,7 +116,7 @@ Soyuz - Popovers
             </div>
         </div>
         <!-- End col -->
-        <!-- Start col -->                                     
+        <!-- Start col -->
         <div class="col-lg-6">
             <div class="card m-b-30">
                 <div class="card-header">
@@ -132,10 +132,10 @@ Soyuz - Popovers
         </div>
         <!-- End col -->
     </div>
-    <!-- End row --> 
+    <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

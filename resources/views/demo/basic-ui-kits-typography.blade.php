@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Typography
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Typography</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Typography</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Typography
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -42,7 +42,7 @@ Soyuz - Typography
                     <h1 class="display-1">Display 1</h1>
                     <h1 class="display-2">Display 2</h1>
                     <h1 class="display-3">Display 3</h1>
-                    <h1 class="display-4">Display 4</h1>                                
+                    <h1 class="display-4">Display 4</h1>
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@ Soyuz - Typography
                     <h6>h6. Bootstrap heading</h6>
                 </div>
             </div>
-        </div>                                 
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6">
@@ -80,10 +80,10 @@ Soyuz - Typography
                     <p><u>This line of text will render as underlined</u></p>
                     <p><small>This line of text is meant to be treated as fine print.</small></p>
                     <p><strong>This line rendered as bold text.</strong></p>
-                    <p><em>This line rendered as italicized text.</em></p>                                
+                    <p><em>This line rendered as italicized text.</em></p>
                 </div>
             </div>
-        </div>                                
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6">
@@ -95,7 +95,7 @@ Soyuz - Typography
                     <h6 class="card-subtitle">For quoting blocks of content from another source within your document. Wrap <code class="highlighter-rouge">&lt;blockquote class="blockquote"&gt;</code> around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote.</h6>
                     <blockquote class="blockquote">
                       <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                    </blockquote>                                
+                    </blockquote>
                 </div>
             </div>
         </div>
@@ -111,7 +111,7 @@ Soyuz - Typography
                     <blockquote class="blockquote">
                       <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
                       <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-                    </blockquote>                                
+                    </blockquote>
                 </div>
             </div>
         </div>
@@ -125,7 +125,7 @@ Soyuz - Typography
                 <div class="card-body">
                     <h6 class="card-subtitle">Stylized implementation of HTML’s <code class="highlighter-rouge">&lt;abbr&gt;</code> element for abbreviations and acronyms to show the expanded version on hover. Abbreviations have a default underline and gain a help cursor to provide additional context on hover and to users of assistive technologies.</h6>
                     <p><abbr title="attribute">attr</abbr></p>
-                    <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr></p>                                
+                    <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr></p>
                 </div>
             </div>
         </div>
@@ -178,7 +178,7 @@ Soyuz - Typography
                         <li>Faucibus porta lacus fringilla vel</li>
                         <li>Aenean sit amet erat nunc</li>
                         <li>Eget porttitor lorem</li>
-                    </ul>                                
+                    </ul>
                 </div>
             </div>
         </div>
@@ -207,7 +207,7 @@ Soyuz - Typography
                         <li>Faucibus porta lacus fringilla vel</li>
                         <li>Aenean sit amet erat nunc</li>
                         <li>Eget porttitor lorem</li>
-                    </ol>                                
+                    </ol>
                 </div>
             </div>
         </div>
@@ -224,13 +224,13 @@ Soyuz - Typography
                       <li>Lorem ipsum dolor sit amet</li>
                       <li>Nulla volutpat aliquam velit
                         <ul>
-                          <li>Purus sodales ultricies</li>  
+                          <li>Purus sodales ultricies</li>
                           <li>Ac tristique libero volutpat at</li>
                         </ul>
                       </li>
                       <li>Faucibus porta lacus fringilla vel</li>
                       <li>Aenean sit amet erat nunc</li>
-                    </ul>                                
+                    </ul>
                     <h5 class="card-title m-t-30 font-16">Inline</h5>
                     <h6 class="card-subtitle">Remove a list’s bullets and apply some light <code class="highlighter-rouge">margin</code> with a combination of two classes, <code class="highlighter-rouge">.list-inline</code> and <code class="highlighter-rouge">.list-inline-item</code>.</h6>
                     <hr>
@@ -279,7 +279,7 @@ Soyuz - Typography
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

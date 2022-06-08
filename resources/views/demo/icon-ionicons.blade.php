@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Ion Icons
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Ion</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Icons</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Ion</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Ion Icons
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -39,8 +39,8 @@ Soyuz - Ion Icons
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Usage <code>&lt;i class="dripicons-zoom-out"&gt;&lt;/i&gt;</code>.</h6>
-                    <div class="row icon-box-list">                                    
-                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">   
+                    <div class="row icon-box-list">
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="ion ion-ios-add-circle-outline"></i>ion ion-ios-add-circle-outline</p>
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
@@ -993,7 +993,7 @@ Soyuz - Ion Icons
                         </div>
 
 
-                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">   
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="ion ion-md-add-circle-outline"></i>ion ion-md-add-circle-outline</p>
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
@@ -2129,17 +2129,17 @@ Soyuz - Ion Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="ion ion-logo-youtube"></i>ion ion-logo-youtube</p>
-                        </div>                                    
+                        </div>
                     </div>
-                </div>    
-            </div>                    
+                </div>
+            </div>
         </div>
         <!-- End col -->
     </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

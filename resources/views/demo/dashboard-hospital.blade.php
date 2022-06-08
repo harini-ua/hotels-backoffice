@@ -1,20 +1,20 @@
-@section('title') 
+@section('title')
 Soyuz - Hospital
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 <!-- Apex css -->
-<link href="{{ asset('assets/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css" />
-@endsection 
+<link href="{{ asset('demo/assets/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar --> 
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Hospital</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Hospital</li>
                 </ol>
@@ -23,19 +23,19 @@ Soyuz - Hospital
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
-</div>    
+    </div>
+</div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">              
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
             <div class="card m-b-30">
-                <div class="card-body">                                
+                <div class="card-body">
                     <h5 class="card-title mt-0 font-16">Appointments</h5>
                     <div class="row align-items-center mb-2">
                         <div class="col-8">
@@ -47,13 +47,13 @@ Soyuz - Hospital
                     </div>
                     <div id="apex-line1-chart"></div>
                 </div>
-            </div>            
+            </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
             <div class="card m-b-30">
-                <div class="card-body">                                
+                <div class="card-body">
                     <h5 class="card-title mt-0 font-16">Consultations</h5>
                     <div class="row align-items-center mb-2">
                         <div class="col-8">
@@ -65,13 +65,13 @@ Soyuz - Hospital
                     </div>
                     <div id="apex-line2-chart"></div>
                 </div>
-            </div>            
+            </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
             <div class="card m-b-30">
-                <div class="card-body">                                
+                <div class="card-body">
                     <h5 class="card-title mt-0 font-16">Total Billing</h5>
                     <div class="row align-items-center mb-2">
                         <div class="col-8">
@@ -83,13 +83,13 @@ Soyuz - Hospital
                     </div>
                     <div id="apex-line3-chart"></div>
                 </div>
-            </div>            
+            </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
             <div class="card m-b-30">
-                <div class="card-body">                                
+                <div class="card-body">
                     <h5 class="card-title mt-0 font-16">On Duty Doctors</h5>
                     <div class="row align-items-center mb-2">
                         <div class="col-8">
@@ -101,9 +101,9 @@ Soyuz - Hospital
                     </div>
                     <div id="apex-line4-chart"></div>
                 </div>
-            </div>            
+            </div>
         </div>
-        <!-- End col -->                    
+        <!-- End col -->
     </div>
     <!-- End row -->
     <!-- Start row -->
@@ -111,10 +111,10 @@ Soyuz - Hospital
         <!-- Start col -->
         <div class="col-lg-12 col-xl-3">
             <div class="card m-b-30">
-                <div class="card-header">                                
+                <div class="card-header">
                     <h5 class="card-title mb-0">Best Doctor</h5>
                 </div>
-                <div class="card-body">                                
+                <div class="card-body">
                     <div class="media">
                         <img class="align-self-center mr-3 rounded-circle" src="assets/images/users/boy.svg" alt="Generic placeholder image">
                         <div class="media-body">
@@ -163,22 +163,22 @@ Soyuz - Hospital
                                 <div class="col-8 text-center">
                                     <h5 class="card-title text-primary mb-1">+1 9876543210</h5>
                                     <p class="mb-0 text-primary font-14">Emergency Contact</p>
-                                </div>                                            
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>                            
-            </div>            
+                </div>
+            </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-12 col-xl-9">
             <!-- Start row -->
-            <div class="row"> 
+            <div class="row">
                 <!-- Start col -->
                 <div class="col-lg-12 col-xl-8">
                     <div class="card m-b-30">
-                        <div class="card-header">                                
+                        <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col-9">
                                     <h5 class="card-title mb-0">Revenue Stats</h5>
@@ -197,7 +197,7 @@ Soyuz - Hospital
                 <!-- Start col -->
                 <div class="col-lg-12 col-xl-4">
                     <div class="card m-b-30">
-                        <div class="card-header">                                
+                        <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col-9">
                                     <h5 class="card-title mb-0">Patient by Age</h5>
@@ -218,11 +218,11 @@ Soyuz - Hospital
                         </div>
                     </div>
                 </div>
-                <!-- End col --> 
+                <!-- End col -->
                 <!-- Start col -->
                 <div class="col-lg-12 col-xl-12">
                     <div class="card m-b-30">
-                        <div class="card-header">                                
+                        <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col-9">
                                     <h5 class="card-title mb-0">Stats by Department</h5>
@@ -309,26 +309,26 @@ Soyuz - Hospital
                                             <td>Dr. Lauren Gotbil</td>
                                             <td>Dialysis</td>
                                             <td><span class="badge badge-secondary-inverse">Operation</span></td>
-                                        </tr>                                                
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End col --> 
+                <!-- End col -->
             </div>
-            <!-- End col --> 
+            <!-- End col -->
         </div>
-        <!-- End col --> 
+        <!-- End col -->
     </div>
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Apex js -->
-<script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/apexcharts/irregular-data-series.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/apexcharts/irregular-data-series.js') }}"></script>
 <!-- Dashboard js -->
-<script src="{{ asset('assets/js/custom/custom-dashboard-hospital.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/js/custom/custom-dashboard-hospital.js') }}"></script>
+@endsection

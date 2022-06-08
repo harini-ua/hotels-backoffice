@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Cards
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Cards</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Cards</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Cards
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -40,12 +40,12 @@ Soyuz - Cards
                     <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
-            </div> 
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-md-6 col-lg-6 col-xl-3">
-            <div class="card m-b-30">                            
+            <div class="card m-b-30">
                 <div class="card-body">
                     <h5 class="card-title font-18">Card title</h5>
                     <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -58,7 +58,7 @@ Soyuz - Cards
         <!-- Start col -->
         <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="card m-b-30">
-                <img class="card-img-top" src="assets/images/ui-cards/ui-cards-3.jpg" alt="Card image cap">  
+                <img class="card-img-top" src="assets/images/ui-cards/ui-cards-3.jpg" alt="Card image cap">
                 <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
@@ -68,7 +68,7 @@ Soyuz - Cards
         <!-- Start col -->
         <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="card m-b-30">
-                <img class="card-img-top" src="assets/images/ui-cards/ui-cards-4.jpg" alt="Card image cap">  
+                <img class="card-img-top" src="assets/images/ui-cards/ui-cards-4.jpg" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title font-18">Card title</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -78,7 +78,7 @@ Soyuz - Cards
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                 </div>
-            </div> 
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -92,7 +92,7 @@ Soyuz - Cards
                     <p class="card-text">With supporting text below as a natural lead-in to additional content. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
-            </div>  
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -111,7 +111,7 @@ Soyuz - Cards
         </div>
         <!-- End col -->
         <!-- Start col -->
-        <div class="col-md-6 col-lg-6 col-xl-4">  
+        <div class="col-md-6 col-lg-6 col-xl-4">
             <div class="card m-b-30">
                 <div class="card-header bg-primary-rgba">
                     <h5 class="card-title text-primary">Featured</h5>
@@ -124,7 +124,7 @@ Soyuz - Cards
                 <div class="card-footer bg-primary-rgba text-primary">
                     2 days ago
                 </div>
-            </div> 
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -163,7 +163,7 @@ Soyuz - Cards
         <!-- Start col -->
         <div class="col-md-12 col-lg-6 col-xl-4">
             <div class="card m-b-30">
-                <div class="card-header">                                
+                <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-4">
                             <h5 class="card-title card-title font-18">Title</h5>
@@ -177,10 +177,10 @@ Soyuz - Cards
                                     <li class="nav-item">
                                         <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-selected="false">Link</a>
                                     </li>
-                                </ul>  
+                                </ul>
                             </div>
                         </div>
-                    </div>                                
+                    </div>
                 </div>
                 <div class="card-body">
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -192,7 +192,7 @@ Soyuz - Cards
         <!-- Start col -->
         <div class="col-md-12 col-lg-6 col-xl-4">
             <div class="card m-b-30">
-                <div class="card-header pb-0">                                
+                <div class="card-header pb-0">
                     <div class="row align-items-center">
                         <div class="col-4">
                             <h5 class="card-title font-18">Title</h5>
@@ -206,11 +206,11 @@ Soyuz - Cards
                                     <li class="nav-item">
                                         <a class="nav-link px-2 font-14" id="nav-profile-tab" data-toggle="pill" href="#nav-profile" role="tab" aria-selected="false">Link</a>
                                     </li>
-                                </ul>  
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div class="card-body">
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -256,8 +256,8 @@ Soyuz - Cards
                 <div class="card-img-overlay">
                     <h5 class="card-title text-white font-18">Card title</h5>
                     <p class="card-text text-white">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text text-white"><small>Last updated 3 mins ago</small></p>                    
-                </div>                            
+                    <p class="card-text text-white"><small>Last updated 3 mins ago</small></p>
+                </div>
             </div>
         </div>
         <!-- End col -->
@@ -291,7 +291,7 @@ Soyuz - Cards
                     <h5 class="card-title text-white">Success card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-            </div> 
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -302,7 +302,7 @@ Soyuz - Cards
                     <h5 class="card-title text-white">Danger card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-            </div> 
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -335,7 +335,7 @@ Soyuz - Cards
                     <h5 class="card-title">Light card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-            </div> 
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -379,7 +379,7 @@ Soyuz - Cards
                     <h5 class="card-title text-success">Success card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-            </div> 
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -412,7 +412,7 @@ Soyuz - Cards
                     <h5 class="card-title text-info">Info card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-            </div> 
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -446,7 +446,7 @@ Soyuz - Cards
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
                 <div class="card-footer bg-transparent border-primary">Footer</div>
-            </div>  
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -458,7 +458,7 @@ Soyuz - Cards
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
                 <div class="card-footer bg-transparent border-secondary">Footer</div>
-            </div> 
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -470,7 +470,7 @@ Soyuz - Cards
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
                 <div class="card-footer bg-transparent border-success">Footer</div>
-            </div> 
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -494,7 +494,7 @@ Soyuz - Cards
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
                 <div class="card-footer bg-transparent border-warning">Footer</div>
-            </div> 
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -506,7 +506,7 @@ Soyuz - Cards
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
                 <div class="card-footer bg-transparent border-info">Footer</div>
-            </div> 
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -518,7 +518,7 @@ Soyuz - Cards
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
                 <div class="card-footer bg-transparent border-light">Footer</div>
-            </div>  
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -530,7 +530,7 @@ Soyuz - Cards
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
                 <div class="card-footer bg-transparent border-dark">Footer</div>
-            </div> 
+            </div>
         </div>
         <!-- End col -->
     </div>
@@ -600,8 +600,8 @@ Soyuz - Cards
                         <small class="text-muted">Last updated 3 mins ago</small>
                     </div>
                 </div>
-            </div>                                    
-        </div> 
+            </div>
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-12">
@@ -630,8 +630,8 @@ Soyuz - Cards
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
               </div>
-            </div>                                    
-        </div> 
+            </div>
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-12">
@@ -698,14 +698,14 @@ Soyuz - Cards
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
               </div>
-            </div>                                    
-        </div> 
+            </div>
+        </div>
         <!-- End col -->
-    </div>  
+    </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

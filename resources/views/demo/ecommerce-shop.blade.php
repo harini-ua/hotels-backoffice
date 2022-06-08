@@ -1,20 +1,20 @@
-@section('title') 
+@section('title')
 Soyuz - Shop
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 <!-- Range Slider css -->
-<link href="{{ asset('assets/plugins/ion-rangeSlider/ion.rangeSlider.css') }}" rel="stylesheet" type="text/css">
-@endsection 
+<link href="{{ asset('demo/assets/plugins/ion-rangeSlider/ion.rangeSlider.css') }}" rel="stylesheet" type="text/css">
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Shop</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">eCommerce</a></li>
                     <li class="breadcrumb-item"><a href="#">Front End</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Shop</li>
@@ -24,19 +24,19 @@ Soyuz - Shop
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">                
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
         <div class="col-lg-4 col-xl-3">
             <div class="card m-b-30">
-                <div class="card-header">                                
+                <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-9">
                             <h5 class="card-title mb-0">Categories</h5>
@@ -44,7 +44,7 @@ Soyuz - Shop
                         <div class="col-3">
                             <ul class="list-inline-group text-right mb-0 pl-0">
                                 <li class="list-inline-item mr-0 font-12"><a href="#"><i class="feather icon-refresh-cw font-16 text-primary ml-1"></i></a></li>
-                            </ul>                                        
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@ Soyuz - Shop
                 </div>
             </div>
             <div class="card m-b-30">
-                <div class="card-header">                                
+                <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-9">
                             <h5 class="card-title mb-0">Price</h5>
@@ -80,7 +80,7 @@ Soyuz - Shop
                         <div class="col-3">
                             <ul class="list-inline-group text-right mb-0 pl-0">
                                 <li class="list-inline-item mr-0 font-12"><a href="#"><i class="feather icon-refresh-cw font-16 text-primary ml-1"></i></a></li>
-                            </ul>                                        
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@ Soyuz - Shop
                 </div>
             </div>
             <div class="card m-b-30">
-                <div class="card-header">                                
+                <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-9">
                             <h5 class="card-title mb-0">Colors</h5>
@@ -97,7 +97,7 @@ Soyuz - Shop
                         <div class="col-3">
                             <ul class="list-inline-group text-right mb-0 pl-0">
                                 <li class="list-inline-item mr-0 font-12"><a href="#"><i class="feather icon-refresh-cw font-16 text-primary ml-1"></i></a></li>
-                            </ul>                                        
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -139,7 +139,7 @@ Soyuz - Shop
                 </div>
             </div>
             <div class="card m-b-30">
-                <div class="card-header">                                
+                <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-9">
                             <h5 class="card-title mb-0">Warranty Type</h5>
@@ -147,7 +147,7 @@ Soyuz - Shop
                         <div class="col-3">
                             <ul class="list-inline-group text-right mb-0 pl-0">
                                 <li class="list-inline-item mr-0 font-12"><a href="#"><i class="feather icon-refresh-cw font-16 text-primary ml-1"></i></a></li>
-                            </ul>                                        
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -167,7 +167,7 @@ Soyuz - Shop
                 </div>
             </div>
             <div class="card m-b-30">
-                <div class="card-header">                                
+                <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-9">
                             <h5 class="card-title mb-0">Tags</h5>
@@ -175,7 +175,7 @@ Soyuz - Shop
                         <div class="col-3">
                             <ul class="list-inline-group text-right mb-0 pl-0">
                                 <li class="list-inline-item mr-0 font-12"><a href="#"><i class="feather icon-refresh-cw font-16 text-primary ml-1"></i></a></li>
-                            </ul>                                        
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -202,7 +202,7 @@ Soyuz - Shop
                     <!-- Start row -->
                     <div class="row align-items-center ecommerce-sortby">
                         <!-- Start col -->
-                        <div class="col-md-12 col-lg-12 col-xl-4">                                       
+                        <div class="col-md-12 col-lg-12 col-xl-4">
                             <select class="form-control" id="productSortBy">
                                 <option>Price - Low to High</option>
                                 <option>Price - High to Low</option>
@@ -220,7 +220,7 @@ Soyuz - Shop
                             </div>
                         </div>
                          <!-- End col -->
-                    </div> 
+                    </div>
                     <!-- End row -->
                     <!-- Start row -->
                     <div class="row">
@@ -228,9 +228,9 @@ Soyuz - Shop
                         <div class="col-lg-6 col-xl-4">
                             <div class="product-bar m-b-30">
                                 <div class="product-head">
-                                    <a href="{{url('/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_01.jpg" class="img-fluid" alt="product"></a>
+                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_01.jpg" class="img-fluid" alt="product"></a>
                                     <p><span class="badge badge-success font-14">20% off</span></p>
-                                </div>                                            
+                                </div>
                                 <div class="product-body py-3">
                                     <div class="row align-items-center">
                                         <div class="col-12">
@@ -271,9 +271,9 @@ Soyuz - Shop
                         <div class="col-lg-6 col-xl-4">
                             <div class="product-bar m-b-30">
                                 <div class="product-head">
-                                    <a href="{{url('/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_02.jpg" class="img-fluid" alt="product"></a>
+                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_02.jpg" class="img-fluid" alt="product"></a>
                                     <p><span class="badge badge-primary font-14">New</span></p>
-                                </div>                                            
+                                </div>
                                 <div class="product-body py-3">
                                     <div class="row align-items-center">
                                         <div class="col-12">
@@ -314,9 +314,9 @@ Soyuz - Shop
                         <div class="col-lg-6 col-xl-4">
                             <div class="product-bar m-b-30">
                                 <div class="product-head">
-                                    <a href="{{url('/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_03.jpg" class="img-fluid" alt="product"></a>
+                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_03.jpg" class="img-fluid" alt="product"></a>
                                     <p><span class="badge badge-danger font-14">Price Down</span></p>
-                                </div>                                            
+                                </div>
                                 <div class="product-body py-3">
                                     <div class="row align-items-center">
                                         <div class="col-12">
@@ -357,9 +357,9 @@ Soyuz - Shop
                         <div class="col-lg-6 col-xl-4">
                             <div class="product-bar m-b-30">
                                 <div class="product-head">
-                                    <a href="{{url('/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_04.jpg" class="img-fluid" alt="product"></a>
-                                    <p><span class="badge badge-success font-14">Sale</span></p>  
-                                </div>                                            
+                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_04.jpg" class="img-fluid" alt="product"></a>
+                                    <p><span class="badge badge-success font-14">Sale</span></p>
+                                </div>
                                 <div class="product-body py-3">
                                     <div class="row align-items-center">
                                         <div class="col-12">
@@ -400,9 +400,9 @@ Soyuz - Shop
                         <div class="col-lg-6 col-xl-4">
                             <div class="product-bar m-b-30">
                                 <div class="product-head">
-                                    <a href="{{url('/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_05.jpg" class="img-fluid" alt="product"></a>
-                                    <p><span class="badge badge-warning font-14">Trending</span></p>   
-                                </div>                                            
+                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_05.jpg" class="img-fluid" alt="product"></a>
+                                    <p><span class="badge badge-warning font-14">Trending</span></p>
+                                </div>
                                 <div class="product-body py-3">
                                     <div class="row align-items-center">
                                         <div class="col-12">
@@ -443,9 +443,9 @@ Soyuz - Shop
                         <div class="col-lg-6 col-xl-4">
                             <div class="product-bar m-b-30">
                                 <div class="product-head">
-                                    <a href="{{url('/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_06.jpg" class="img-fluid" alt="product"></a>
+                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_06.jpg" class="img-fluid" alt="product"></a>
                                     <p><span class="badge badge-info font-14">Popular</span></p>
-                                </div>                                            
+                                </div>
                                 <div class="product-body py-3">
                                     <div class="row align-items-center">
                                         <div class="col-12">
@@ -502,7 +502,7 @@ Soyuz - Shop
                               </ul>
                             </nav>
                         </div>
-                    </div>                                
+                    </div>
                 </div>
             </div>
         </div>
@@ -511,10 +511,10 @@ Soyuz - Shop
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Range Slider js -->
-<script src="{{ asset('assets/plugins/ion-rangeSlider/ion.rangeSlider.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/ion-rangeSlider/ion.rangeSlider.min.js') }}"></script>
 <!-- eCommerce Shop Page js -->
-<script src="{{ asset('assets/js/custom/custom-ecommerce-shop-page.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/js/custom/custom-ecommerce-shop-page.js') }}"></script>
+@endsection

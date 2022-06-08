@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Downloads
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Dropdowns</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Dropdowns</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Downloads
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -134,7 +134,7 @@ Soyuz - Downloads
                     </div>
                 </div>
             </div>
-        </div>     
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6">
@@ -178,14 +178,14 @@ Soyuz - Downloads
                     </div>
                 </div>
             </div>
-        </div>     
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6">
             <div class="card m-b-30">
                 <div class="card-header">
                     <h5 class="card-title">Split Dropdown</h5>
-                </div>                    
+                </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Similarly, create split button dropdowns with virtually the same markup as single button dropdowns, but with the addition of <code class="highlighter-rouge">.dropdown-toggle-split</code> for proper spacing around the dropdown caret.</h6>
                     <div class="dropdown-list">
@@ -335,7 +335,7 @@ Soyuz - Downloads
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Separated link</a>
                           </div>
-                        </div>                                          
+                        </div>
                     </div>
                 </div>
 
@@ -435,8 +435,8 @@ Soyuz - Downloads
                     <h5 class="card-title">Menu Alignment Left</h5>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-subtitle">By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent.</h6>   
-                    <div class="dropdown-list">                             
+                    <h6 class="card-subtitle">By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent.</h6>
+                    <div class="dropdown-list">
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Left-aligned menu
@@ -445,7 +445,7 @@ Soyuz - Downloads
                                 <span class="dropdown-item-text">Dropdown item text</span>
                                 <a class="dropdown-item active" href="#">Active link</a>
                                 <a class="dropdown-item disabled" href="#">Disabled link</a>
-                                <a class="dropdown-item" href="#">Regular link text here</a>                                                
+                                <a class="dropdown-item" href="#">Regular link text here</a>
                             </div>
                         </div>
                     </div>
@@ -491,7 +491,7 @@ Soyuz - Downloads
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Separated link</a>    
+                                <a class="dropdown-item" href="#">Separated link</a>
                             </div>
                         </div>
                         <!-- Split dropup button -->
@@ -506,7 +506,7 @@ Soyuz - Downloads
                                 <a class="dropdown-item" href="#">Separated link</a>
                             </div>
                         </div>
-                    </div>                                
+                    </div>
                 </div>
             </div>
         </div>
@@ -518,7 +518,7 @@ Soyuz - Downloads
                     <h5 class="card-title">Dropup</h5>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-subtitle">Trigger dropdown menus above elements by adding <code class="highlighter-rouge">.dropup</code> to the parent element.</h6>                                
+                    <h6 class="card-subtitle">Trigger dropdown menus above elements by adding <code class="highlighter-rouge">.dropup</code> to the parent element.</h6>
                     <div class="dropdown-list">
                         <div class="btn-group dropup">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropup </button>
@@ -554,7 +554,7 @@ Soyuz - Downloads
                     <h5 class="card-title">Dropright</h5>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-subtitle">Trigger dropdown menus at the right of the elements by adding <code class="highlighter-rouge">.dropright</code> to the parent element.</h6>                                
+                    <h6 class="card-subtitle">Trigger dropdown menus at the right of the elements by adding <code class="highlighter-rouge">.dropright</code> to the parent element.</h6>
                     <div class="dropdown-list">
                         <div class="btn-group dropright">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropright</button>
@@ -590,7 +590,7 @@ Soyuz - Downloads
                     <h5 class="card-title">Dropleft</h5>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-subtitle">Trigger dropdown menus at the left of the elements by adding <code class="highlighter-rouge">.dropleft</code> to the parent element.</h6>                              
+                    <h6 class="card-subtitle">Trigger dropdown menus at the left of the elements by adding <code class="highlighter-rouge">.dropleft</code> to the parent element.</h6>
                     <div class="dropdown-list">
                         <div class="btn-group dropleft">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropleft</button>
@@ -625,7 +625,7 @@ Soyuz - Downloads
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

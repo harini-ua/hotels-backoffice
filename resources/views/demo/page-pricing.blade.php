@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Pricing
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Pricing</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Pricing</li>
@@ -23,13 +23,13 @@ Soyuz - Pricing
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">                
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
     <div class="row align-items-center justify-content-center">
         <!-- Start col -->
@@ -59,7 +59,7 @@ Soyuz - Pricing
                                 <button type="button" class="btn btn-success font-16">Purchase</button>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@ Soyuz - Pricing
                 <div class="card-body p-0">
                     <div class="pricing text-center">
                         <p class="text-center text-white mb-0"><span class="badge badge-primary text-uppercase rounded-top-0 font-16">Popular</span></p>
-                        <div class="pricing-top">                                        
+                        <div class="pricing-top">
                             <h3 class="text-primary mb-0">Standard</h3>
                             <img src="assets/images/pricing/pricing-premium.svg" class="img-fluid price-pro-image my-4" alt="premium pricing">
                             <div class="pricing-amount">
@@ -87,16 +87,16 @@ Soyuz - Pricing
                               <li class="list-group-item"><i class="feather icon-x mr-2"></i>24/7 Support</li>
                             </ul>
                         </div>
-                        <div class="pricing-bottom pricing-bottom-professional">                                        
+                        <div class="pricing-bottom pricing-bottom-professional">
                             <div class="pricing-btn">
                                 <button type="button" class="btn btn-primary font-16">Purchase</button>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- End col -->                    
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="card m-b-30">
@@ -119,12 +119,12 @@ Soyuz - Pricing
                               <li class="list-group-item"><i class="feather icon-check mr-2"></i>24/7 Support</li>
                             </ul>
                         </div>
-                        <div class="pricing-bottom pricing-bottom-enterprise">                                        
+                        <div class="pricing-bottom pricing-bottom-enterprise">
                             <div class="pricing-btn">
                                 <button type="button" class="btn btn-warning font-16">Purchase</button>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -133,7 +133,7 @@ Soyuz - Pricing
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

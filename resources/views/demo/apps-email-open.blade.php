@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Email Open
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Open</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Apps</a></li>
                     <li class="breadcrumb-item"><a href="#">Email</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Open</li>
@@ -23,12 +23,12 @@ Soyuz - Email Open
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -37,25 +37,25 @@ Soyuz - Email Open
             <div class="email-leftbar">
                 <div class="card m-b-30">
                     <div class="card-header text-center">
-                        <a href="{{url('/apps-email-compose')}}" class="btn btn-danger-rgba btn-lg btn-block py-2 px-0 font-18"><i class="feather icon-plus mr-2"></i>Compose</a>
+                        <a href="{{url('/demo/apps-email-compose')}}" class="btn btn-danger-rgba btn-lg btn-block py-2 px-0 font-18"><i class="feather icon-plus mr-2"></i>Compose</a>
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
                           <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="{{url('/apps-email-inbox')}}" class="active"><i class="feather icon-inbox mr-2"></i>Inbox</a>
+                            <a href="{{url('/demo/apps-email-inbox')}}" class="active"><i class="feather icon-inbox mr-2"></i>Inbox</a>
                             <span class="badge badge-primary-inverse text-primary">9</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="#"><i class="feather icon-star mr-2"></i>Starred</a>
-                            <span class="badge badge-secondary-inverse">2</span>                                        
+                            <span class="badge badge-secondary-inverse">2</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="#"><i class="feather icon-clock mr-2"></i>Snoozed</a>
-                            <span class="badge badge-secondary-inverse">3</span>                                        
+                            <span class="badge badge-secondary-inverse">3</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="#"><i class="feather icon-send mr-2"></i>Sent</a>
-                            <span class="badge badge-secondary-inverse">4</span>                                        
+                            <span class="badge badge-secondary-inverse">4</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="#"><i class="feather icon-file mr-2"></i>Drafts</a>
@@ -90,7 +90,7 @@ Soyuz - Email Open
                             <li class="list-inline-item float-right"><a href="#"><i class="feather icon-printer font-20"></i></a></li>
                         </ul>
                     </div>
-                    <div class="card-body">                                    
+                    <div class="card-body">
                         <div class="row m-b-30">
                             <div class="col-md-5">
                                 <div class="media">
@@ -142,7 +142,7 @@ Soyuz - Email Open
                     </div>
                     <div class="card-footer">
                         <div class="open-email-footer">
-                            
+
                             <div class="row text-right">
                                 <div class="col-md-12">
                                     <button type="button" class="btn btn-primary-rgba my-1"><i class="feather icon-corner-up-left mr-2"></i>Reply</button>
@@ -159,7 +159,7 @@ Soyuz - Email Open
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

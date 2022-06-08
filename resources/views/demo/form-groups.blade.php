@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Form Groups
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Groups</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Forms</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Groups</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Form Groups
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -86,7 +86,7 @@ Soyuz - Form Groups
                             <span class="input-group-text">With textarea</span>
                         </div>
                         <textarea class="form-control" aria-label="With textarea"></textarea>
-                    </div>                                                                                                                 
+                    </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">First and last name</span>
@@ -120,7 +120,7 @@ Soyuz - Form Groups
                 <div class="card-header">
                     <h5 class="card-title">Buttons with dropdowns</h5>
                 </div>
-                <div class="card-body">     
+                <div class="card-body">
                     <h6 class="card-subtitle">List of buttons with dropdowns</h6>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -318,7 +318,7 @@ Soyuz - Form Groups
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

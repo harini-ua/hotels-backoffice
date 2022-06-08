@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Soyuz Icons
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">SVG Icons</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Icons</a></li>
                     <li class="breadcrumb-item active" aria-current="page">SVG Icons</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Soyuz Icons
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -69,7 +69,7 @@ Soyuz - Soyuz Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/crm.svg" class="img-fluid icon-svg" alt="crm"></span>crm.svg</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/customers.svg" class="img-fluid icon-svg" alt="customers"></span>customers.svg</p>
                         </div>
@@ -81,13 +81,13 @@ Soyuz - Soyuz Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/ecommerce.svg" class="img-fluid icon-svg" alt="ecommerce"></span>ecommerce.svg</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/email.svg" class="img-fluid icon-svg" alt="email"></span>email.svg</p>
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/forms.svg" class="img-fluid icon-svg" alt="forms"></span>forms.svg</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/frontend.svg" class="img-fluid icon-svg" alt="frontend"></span>frontend.svg</p>
                         </div>
@@ -102,7 +102,7 @@ Soyuz - Soyuz Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/logout.svg" class="img-fluid icon-svg" alt="logout"></span>logout.svg</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/maps.svg" class="img-fluid icon-svg" alt="maps"></span>maps.svg</p>
                         </div>
@@ -111,41 +111,41 @@ Soyuz - Soyuz Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/notifications.svg" class="img-fluid icon-svg" alt="notifications"></span>notifications.svg</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/pages.svg" class="img-fluid icon-svg" alt="pages"></span>pages.svg</p>
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/reports.svg" class="img-fluid icon-svg" alt="reports"></span>reports.svg</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/search.svg" class="img-fluid icon-svg" alt="search"></span>search.svg</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/settings.svg" class="img-fluid icon-svg" alt="settings"></span>settings.svg</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/tables.svg" class="img-fluid icon-svg" alt="tables"></span>tables.svg</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/ui-kits.svg" class="img-fluid icon-svg" alt="ui-kits"></span>ui-kits.svg</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/verticle.svg" class="img-fluid icon-svg" alt="verticle"></span>verticle.svg</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><span><img src="assets/images/svg-icon/widgets.svg" class="img-fluid icon-svg" alt="widgets"></span>widgets.svg</p>
                         </div>
                     </div>
-                </div>     
-            </div>                     
+                </div>
+            </div>
         </div>
         <!-- End col -->
     </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

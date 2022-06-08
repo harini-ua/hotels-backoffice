@@ -1,20 +1,20 @@
-@section('title') 
+@section('title')
 Soyuz - Toolbar
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
  <!-- Toolbar css -->
-<link href="{{ asset('assets/plugins/toolbar/jquery.toolbar.css') }}" rel="stylesheet" type="text/css" />
-@endsection 
+<link href="{{ asset('demo/assets/plugins/toolbar/jquery.toolbar.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Toolbar</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Advanced UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Toolbar</li>
                 </ol>
@@ -23,15 +23,15 @@ Soyuz - Toolbar
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
-    <div class="row">  
+    <div class="row">
         <!-- Start col -->
         <div class="col-lg-6">
             <div class="card m-b-30">
@@ -42,16 +42,16 @@ Soyuz - Toolbar
                     <div id="primary-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-primary btn-toolbar-primary" id="primary-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-primary btn-toolbar-primary" id="primary-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
-        </div>  
-        <!-- End col -->  
-        <!-- Start col -->                
+        </div>
+        <!-- End col -->
+        <!-- Start col -->
         <div class="col-lg-6">
             <div class="card m-b-30">
                 <div class="card-header">
@@ -61,11 +61,11 @@ Soyuz - Toolbar
                     <div id="secondary-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-secondary btn-toolbar-secondary" id="secondary-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-secondary btn-toolbar-secondary" id="secondary-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
@@ -80,11 +80,11 @@ Soyuz - Toolbar
                     <div id="success-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-success btn-toolbar-success" id="success-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-success btn-toolbar-success" id="success-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
@@ -99,11 +99,11 @@ Soyuz - Toolbar
                     <div id="danger-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-danger btn-toolbar-danger" id="danger-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-danger btn-toolbar-danger" id="danger-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
@@ -118,11 +118,11 @@ Soyuz - Toolbar
                     <div id="warning-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-warning btn-toolbar-warning" id="warning-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-warning btn-toolbar-warning" id="warning-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
@@ -137,11 +137,11 @@ Soyuz - Toolbar
                     <div id="info-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-info btn-toolbar-info" id="info-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-info btn-toolbar-info" id="info-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
@@ -156,11 +156,11 @@ Soyuz - Toolbar
                     <div id="light-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-light btn-toolbar-light" id="light-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-light btn-toolbar-light" id="light-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
@@ -175,16 +175,16 @@ Soyuz - Toolbar
                     <div id="dark-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-dark btn-toolbar-dark" id="dark-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-dark btn-toolbar-dark" id="dark-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
         <!-- End col -->
-        <!-- Start col -->                 
+        <!-- Start col -->
         <div class="col-lg-6">
             <div class="card m-b-30">
                 <div class="card-header">
@@ -194,11 +194,11 @@ Soyuz - Toolbar
                     <div id="top-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-primary btn-toolbar-primary" id="top-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-primary btn-toolbar-primary" id="top-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
@@ -213,11 +213,11 @@ Soyuz - Toolbar
                     <div id="right-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-success btn-toolbar-success" id="right-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-success btn-toolbar-success" id="right-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
@@ -232,11 +232,11 @@ Soyuz - Toolbar
                     <div id="bottom-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-danger btn-toolbar-danger" id="bottom-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-danger btn-toolbar-danger" id="bottom-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
@@ -251,11 +251,11 @@ Soyuz - Toolbar
                     <div id="left-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-warning btn-toolbar-warning" id="left-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-warning btn-toolbar-warning" id="left-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
@@ -270,11 +270,11 @@ Soyuz - Toolbar
                     <div id="onclick-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
                     </div>
-                    <div data-toolbar="user-options" class="btn-toolbar btn-info btn-toolbar-info" id="onclick-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    <div data-toolbar="user-options" class="btn-toolbar btn-info btn-toolbar-info" id="onclick-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
@@ -289,11 +289,11 @@ Soyuz - Toolbar
                     <div id="standard-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-primary btn-toolbar-primary" id="standard-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-primary btn-toolbar-primary" id="standard-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
@@ -308,11 +308,11 @@ Soyuz - Toolbar
                     <div id="flip-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-success btn-toolbar-success" id="flip-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-success btn-toolbar-success" id="flip-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
@@ -327,11 +327,11 @@ Soyuz - Toolbar
                     <div id="grow-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-danger btn-toolbar-danger" id="grow-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-danger btn-toolbar-danger" id="grow-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
@@ -346,11 +346,11 @@ Soyuz - Toolbar
                     <div id="flyin-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-warning btn-toolbar-warning" id="flyin-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-warning btn-toolbar-warning" id="flyin-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
@@ -365,11 +365,11 @@ Soyuz - Toolbar
                     <div id="bounce-toolbar-options" class="hidden">
                         <a href="#"><i class="feather icon-wifi"></i></a>
                         <a href="#"><i class="feather icon-mic"></i></a>
-                        <a href="#"><i class="feather icon-camera"></i></a>                                    
+                        <a href="#"><i class="feather icon-camera"></i></a>
                         <a href="#"><i class="feather icon-heart"></i></a>
                         <a href="#"><i class="feather icon-search"></i></a>
-                    </div>   
-                    <div data-toolbar="user-options" class="btn-toolbar btn-info btn-toolbar-info" id="bounce-toolbar"><i class="feather icon-sliders"></i></div>                              
+                    </div>
+                    <div data-toolbar="user-options" class="btn-toolbar btn-info btn-toolbar-info" id="bounce-toolbar"><i class="feather icon-sliders"></i></div>
                 </div>
             </div>
         </div>
@@ -378,9 +378,9 @@ Soyuz - Toolbar
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Toolbar js -->
-<script src="{{ asset('assets/plugins/toolbar/jquery.toolbar.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-toolbar.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/toolbar/jquery.toolbar.min.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-toolbar.js') }}"></script>
+@endsection

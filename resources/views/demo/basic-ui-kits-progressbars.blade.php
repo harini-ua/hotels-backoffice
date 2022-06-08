@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Progressbars
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Progress Bars</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Progress Bars</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Progressbars
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -87,7 +87,7 @@ Soyuz - Progressbars
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6">
@@ -125,7 +125,7 @@ Soyuz - Progressbars
                     <h5 class="card-title">Animated Stripped Progressbar</h5>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-subtitle">The striped gradient can also be animated. Add <code class="highlighter-rouge">.progress-bar-animated</code> to <code class="highlighter-rouge">.progress-bar</code> to animate the stripes right to left via CSS3 animations.</h6>        
+                    <h6 class="card-subtitle">The striped gradient can also be animated. Add <code class="highlighter-rouge">.progress-bar-animated</code> to <code class="highlighter-rouge">.progress-bar</code> to animate the stripes right to left via CSS3 animations.</h6>
                     <div class="progressbar-list">
                         <div class="progress m-b-30">
                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
@@ -154,7 +154,7 @@ Soyuz - Progressbars
                     <h5 class="card-title">Sizing Progressbar</h5>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-subtitle">We only set a <code class="highlighter-rouge">height</code> value on the <code class="highlighter-rouge">.progress</code>, so if you change that value the inner <code class="highlighter-rouge">.progress-bar</code> will automatically resize accordingly.</h6>  
+                    <h6 class="card-subtitle">We only set a <code class="highlighter-rouge">height</code> value on the <code class="highlighter-rouge">.progress</code>, so if you change that value the inner <code class="highlighter-rouge">.progress-bar</code> will automatically resize accordingly.</h6>
                     <div class="progressbar-list">
                         <div class="progress m-b-30" style="height: 1px;">
                             <div class="progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -206,7 +206,7 @@ Soyuz - Progressbars
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

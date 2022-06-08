@@ -1,20 +1,20 @@
-@section('title') 
+@section('title')
 Soyuz - CRM Lead Status
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 <!-- Dragula css -->
-<link href="{{ asset('assets/plugins/dragula/dragula.min.css') }}" rel="stylesheet" type="text/css" />
-@endsection 
+<link href="{{ asset('demo/assets/plugins/dragula/dragula.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Lead Status</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">CRM</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Lead Status</li>
                 </ol>
@@ -23,15 +23,15 @@ Soyuz - CRM Lead Status
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
-    <div class="row"> 
+    <div class="row">
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
             <div class="card m-b-30">
@@ -118,8 +118,8 @@ Soyuz - CRM Lead Status
                     <button type="button" class="btn btn-primary-rgba btn-block btn-lg font-16"><i class="feather icon-plus mr-2"></i>Add Leads</button>
                 </div>
             </div>
-        </div> 
-        <!-- End col --> 
+        </div>
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
             <div class="card m-b-30">
@@ -280,7 +280,7 @@ Soyuz - CRM Lead Status
                     <button type="button" class="btn btn-success-rgba btn-block btn-lg font-16"><i class="feather icon-plus mr-2"></i>Add Appointment</button>
                 </div>
             </div>
-        </div> 
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
@@ -400,12 +400,12 @@ Soyuz - CRM Lead Status
                                     </div>
                                 </div>
                             </div>
-                        </div>                                    
+                        </div>
                     </div>
                     <button type="button" class="btn btn-warning-rgba btn-block btn-lg font-16"><i class="feather icon-plus mr-2"></i>Add Quote</button>
                 </div>
             </div>
-        </div> 
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
@@ -451,21 +451,21 @@ Soyuz - CRM Lead Status
                                     </div>
                                 </div>
                             </div>
-                        </div>                                   
+                        </div>
                     </div>
                     <button type="button" class="btn btn-secondary-rgba btn-block btn-lg font-16"><i class="feather icon-plus mr-2"></i>Add Project</button>
                 </div>
             </div>
-        </div> 
-        <!-- End col -->                  
+        </div>
+        <!-- End col -->
     </div>
-    <!-- End row --> 
+    <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Dragula js -->
-<script src="{{ asset('assets/plugins/dragula/dragula.min.js') }}"></script>
-<!-- Custom CRM Lead js -->   
-<script src="{{ asset('assets/js/custom/custom-crm-lead.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/dragula/dragula.min.js') }}"></script>
+<!-- Custom CRM Lead js -->
+<script src="{{ asset('demo/assets/js/custom/custom-crm-lead.js') }}"></script>
+@endsection

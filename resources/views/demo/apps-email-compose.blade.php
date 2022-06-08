@@ -1,20 +1,20 @@
-@section('title') 
+@section('title')
 Soyuz - Email Compose
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 <!-- Summernote css -->
-<link href="{{ asset('assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
-@endsection 
+<link href="{{ asset('demo/assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Compose</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Apps</a></li>
                     <li class="breadcrumb-item"><a href="#">Email</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Compose</li>
@@ -24,12 +24,12 @@ Soyuz - Email Compose
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -38,25 +38,25 @@ Soyuz - Email Compose
             <div class="email-leftbar">
                 <div class="card m-b-30">
                     <div class="card-header text-center">
-                        <a href="{{url('/apps-email-compose')}}" class="btn btn-danger-rgba btn-lg btn-block py-2 px-0 font-18"><i class="feather icon-plus mr-2"></i>Compose</a>
+                        <a href="{{url('/demo/apps-email-compose')}}" class="btn btn-danger-rgba btn-lg btn-block py-2 px-0 font-18"><i class="feather icon-plus mr-2"></i>Compose</a>
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
                           <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="{{url('/apps-email-inbox')}}" class="active"><i class="feather icon-inbox mr-2"></i>Inbox</a>
+                            <a href="{{url('/demo/apps-email-inbox')}}" class="active"><i class="feather icon-inbox mr-2"></i>Inbox</a>
                             <span class="badge badge-primary-inverse text-primary">9</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="#"><i class="feather icon-star mr-2"></i>Starred</a>
-                            <span class="badge badge-secondary-inverse">2</span>                                        
+                            <span class="badge badge-secondary-inverse">2</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="#"><i class="feather icon-clock mr-2"></i>Snoozed</a>
-                            <span class="badge badge-secondary-inverse">3</span>                                        
+                            <span class="badge badge-secondary-inverse">3</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="#"><i class="feather icon-send mr-2"></i>Sent</a>
-                            <span class="badge badge-secondary-inverse">4</span>                                        
+                            <span class="badge badge-secondary-inverse">4</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="#"><i class="feather icon-file mr-2"></i>Drafts</a>
@@ -87,7 +87,7 @@ Soyuz - Email Compose
                     <div class="card-header">
                         <h5 class="card-title">New Message</h5>
                     </div>
-                    <div class="card-body">                                    
+                    <div class="card-body">
                         <form>
                             <div class="form-group row">
                                 <label for="emailTo" class="col-sm-2 col-form-label">To</label>
@@ -112,7 +112,7 @@ Soyuz - Email Compose
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="emailSubject" placeholder="Subject">
                                 </div>
-                            </div>                                      
+                            </div>
                             <div class="form-group row">
                                 <label for="emailSubject" class="col-sm-2 col-form-label">Message</label>
                                 <div class="col-sm-10">
@@ -136,9 +136,9 @@ Soyuz - Email Compose
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Summernote js -->
-<script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-email.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-email.js') }}"></script>
+@endsection

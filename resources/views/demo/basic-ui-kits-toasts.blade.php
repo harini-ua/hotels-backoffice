@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Toasts
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Toasts</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Toasts</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Toasts
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -42,7 +42,7 @@ Soyuz - Toasts
                     <div aria-live="polite" aria-atomic="true">
                         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 30px; right: 30px;" id="simple-toasts">
                             <div class="toast-header">
-                                <i class="feather icon-alert-triangle text-danger mr-2"></i>  
+                                <i class="feather icon-alert-triangle text-danger mr-2"></i>
                                 <span class="toast-title mr-auto">Bootstrap</span>
                                 <small>11 mins ago</small>
                             </div>
@@ -66,7 +66,7 @@ Soyuz - Toasts
                     <div aria-live="polite" aria-atomic="true">
                         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 30px; right: 30px;" id="top-right-toasts">
                             <div class="toast-header">
-                                <i class="feather icon-alert-triangle text-danger mr-2"></i>  
+                                <i class="feather icon-alert-triangle text-danger mr-2"></i>
                                 <span class="toast-title mr-auto">Bootstrap</span>
                                 <small>11 mins ago</small>
                                 <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
@@ -93,7 +93,7 @@ Soyuz - Toasts
                     <div aria-live="polite" aria-atomic="true">
                         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; bottom: 30px; right: 30px;" id="bottom-right-toasts">
                             <div class="toast-header">
-                                <i class="feather icon-alert-triangle text-danger mr-2"></i>  
+                                <i class="feather icon-alert-triangle text-danger mr-2"></i>
                                 <span class="toast-title mr-auto">Bootstrap</span>
                                 <small>11 mins ago</small>
                                 <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
@@ -120,7 +120,7 @@ Soyuz - Toasts
                     <div aria-live="polite" aria-atomic="true">
                         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; bottom: 30px; left: 30px; z-index:999;" id="bottom-left-toasts">
                             <div class="toast-header">
-                                <i class="feather icon-alert-triangle text-danger mr-2"></i>  
+                                <i class="feather icon-alert-triangle text-danger mr-2"></i>
                                 <span class="toast-title mr-auto">Bootstrap</span>
                                 <small>11 mins ago</small>
                                 <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
@@ -147,7 +147,7 @@ Soyuz - Toasts
                     <div aria-live="polite" aria-atomic="true">
                         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 30px; left: 30px; z-index:999;" id="top-left-toasts">
                         <div class="toast-header">
-                            <i class="feather icon-alert-triangle text-danger mr-2"></i>  
+                            <i class="feather icon-alert-triangle text-danger mr-2"></i>
                             <span class="toast-title mr-auto">Bootstrap</span>
                             <small>11 mins ago</small>
                             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
@@ -174,7 +174,7 @@ Soyuz - Toasts
                     <div aria-live="polite" aria-atomic="true">
                         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; left: 0; right: 0; margin: 0 auto; top: 45%; bottom: auto; z-index:999;" id="center-toasts">
                             <div class="toast-header">
-                                <i class="feather icon-alert-triangle text-danger mr-2"></i>  
+                                <i class="feather icon-alert-triangle text-danger mr-2"></i>
                                 <span class="toast-title mr-auto">Bootstrap</span>
                                 <small>11 mins ago</small>
                                 <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
@@ -194,8 +194,8 @@ Soyuz - Toasts
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Toasts js -->
-<script src="{{ asset('assets/js/custom/custom-toasts.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/js/custom/custom-toasts.js') }}"></script>
+@endsection

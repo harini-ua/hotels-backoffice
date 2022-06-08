@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Carousel
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Carousel</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Carousel</li>
                 </ol>
@@ -22,9 +22,9 @@ Soyuz - Carousel
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
 <!-- Start Contentbar -->
@@ -84,7 +84,7 @@ Soyuz - Carousel
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
-                    </div>                                
+                    </div>
                 </div>
             </div>
         </div>
@@ -122,7 +122,7 @@ Soyuz - Carousel
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
-                    </div>                               
+                    </div>
                 </div>
             </div>
         </div>
@@ -172,7 +172,7 @@ Soyuz - Carousel
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
-                    </div>                             
+                    </div>
                 </div>
             </div>
         </div>
@@ -205,7 +205,7 @@ Soyuz - Carousel
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
-                    </div>                                                            
+                    </div>
                 </div>
             </div>
         </div>
@@ -238,7 +238,7 @@ Soyuz - Carousel
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
-                    </div>                                                           
+                    </div>
                 </div>
             </div>
         </div>
@@ -247,7 +247,7 @@ Soyuz - Carousel
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

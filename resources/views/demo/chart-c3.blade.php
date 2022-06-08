@@ -1,20 +1,20 @@
-@section('title') 
+@section('title')
 Soyuz - C3 Chart
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 <!-- C3 Charts css -->
-<link href="{{ asset('assets/plugins/c3/c3.min.css') }}" rel="stylesheet" type="text/css" />
-@endsection 
+<link href="{{ asset('demo/assets/plugins/c3/c3.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">C3</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Charts</a></li>
                     <li class="breadcrumb-item active" aria-current="page">C3</li>
                 </ol>
@@ -23,12 +23,12 @@ Soyuz - C3 Chart
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -180,10 +180,10 @@ Soyuz - C3 Chart
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- C3 Chart js -->
-<script src="{{ asset('assets/plugins/d3/d3.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/c3/c3.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-chart-c3.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/d3/d3.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/c3/c3.min.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-chart-c3.js') }}"></script>
+@endsection

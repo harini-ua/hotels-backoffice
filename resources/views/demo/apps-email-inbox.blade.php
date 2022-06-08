@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Email Inbox
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Inbox</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Apps</a></li>
                     <li class="breadcrumb-item"><a href="#">Email</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Inbox</li>
@@ -23,12 +23,12 @@ Soyuz - Email Inbox
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -37,25 +37,25 @@ Soyuz - Email Inbox
             <div class="email-leftbar">
                 <div class="card m-b-30">
                     <div class="card-header text-center">
-                        <a href="{{url('/apps-email-compose')}}" class="btn btn-danger-rgba btn-lg btn-block py-2 px-0 font-18"><i class="feather icon-plus mr-2"></i>Compose</a>
+                        <a href="{{url('/demo/apps-email-compose')}}" class="btn btn-danger-rgba btn-lg btn-block py-2 px-0 font-18"><i class="feather icon-plus mr-2"></i>Compose</a>
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
                           <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="{{url('/apps-email-inbox')}}" class="active"><i class="feather icon-inbox mr-2"></i>Inbox</a>
+                            <a href="{{url('/demo/apps-email-inbox')}}" class="active"><i class="feather icon-inbox mr-2"></i>Inbox</a>
                             <span class="badge badge-primary-inverse text-primary">9</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="#"><i class="feather icon-star mr-2"></i>Starred</a>
-                            <span class="badge badge-secondary-inverse">2</span>                                        
+                            <span class="badge badge-secondary-inverse">2</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="#"><i class="feather icon-clock mr-2"></i>Snoozed</a>
-                            <span class="badge badge-secondary-inverse">3</span>                                        
+                            <span class="badge badge-secondary-inverse">3</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="#"><i class="feather icon-send mr-2"></i>Sent</a>
-                            <span class="badge badge-secondary-inverse">4</span>                                        
+                            <span class="badge badge-secondary-inverse">4</span>
                           </li>
                           <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="#"><i class="feather icon-file mr-2"></i>Drafts</a>
@@ -96,11 +96,11 @@ Soyuz - Email Inbox
                             <li class="list-inline-item float-right"><a href="#"><i class="feather icon-settings font-20"></i></a></li>
                         </ul>
                     </div>
-                    <div class="card-body">                                    
+                    <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-hover table-borderless">                                            
+                            <table class="table table-hover table-borderless">
                                 <tbody>
-                                    <tr class="email-unread">                                                    
+                                    <tr class="email-unread">
                                         <td>
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="emailCheck1">
@@ -108,7 +108,7 @@ Soyuz - Email Inbox
                                             </div>
                                         </td>
                                         <td><i class="feather icon-star font-18"></i></td>
-                                        <td><a href="{{url('/apps-email-open')}}">Yes Bank Limited</a></td>                             
+                                        <td><a href="{{url('/demo/apps-email-open')}}">Yes Bank Limited</a></td>
                                         <td><span class="badge badge-success-inverse mr-2">New</span>One Time Password for EVC signature
                                             <p class="mt-1 mb-0 font-14">This mail is in reference to the Returns & GSTR3B. Your One Time Password (OTP)  </p></td>
                                         <td>02:05 PM</td>
@@ -121,7 +121,7 @@ Soyuz - Email Inbox
                                             </div>
                                         </td>
                                         <td><i class="feather icon-star font-18"></i></td>
-                                        <td><a href="{{url('/apps-email-open')}}">Google</a></td>                                 
+                                        <td><a href="{{url('/demo/apps-email-open')}}">Google</a></td>
                                         <td>Welcome to Google - Thank you for beign part of us <p class="mt-1 mb-0 font-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p></td>
                                         <td>08:20 AM</td>
                                     </tr>
@@ -133,7 +133,7 @@ Soyuz - Email Inbox
                                             </div>
                                         </td>
                                         <td><i class="feather icon-star font-18"></i></td>
-                                        <td><a href="{{url('/apps-email-open')}}">Amazon</a></td>                                 
+                                        <td><a href="{{url('/demo/apps-email-open')}}">Amazon</a></td>
                                         <td>Register Now and Start Selling on Amazon.in</td>
                                         <td>Sep 05</td>
                                     </tr>
@@ -145,7 +145,7 @@ Soyuz - Email Inbox
                                             </div>
                                         </td>
                                         <td><i class="feather icon-star font-18"></i></td>
-                                        <td><a href="{{url('/apps-email-open')}}">Twitter</a></td>                                 
+                                        <td><a href="{{url('/demo/apps-email-open')}}">Twitter</a></td>
                                         <td>Welcome to Twitter - Thank you for beign part of us</td>
                                         <td>Sep 03</td>
                                     </tr>
@@ -157,11 +157,11 @@ Soyuz - Email Inbox
                                             </div>
                                         </td>
                                         <td><i class="feather icon-star-on font-18"></i></td>
-                                        <td><a href="{{url('/apps-email-open')}}">Youtube</a></td>                                 
+                                        <td><a href="{{url('/demo/apps-email-open')}}">Youtube</a></td>
                                         <td><span class="badge badge-primary-inverse mr-2">Social</span> Welcome to Youtube - Thank you for beign part of us</td>
                                         <td>Sep 02</td>
                                     </tr>
-                                    <tr>                                                    
+                                    <tr>
                                         <td>
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="emailCheck6">
@@ -169,7 +169,7 @@ Soyuz - Email Inbox
                                             </div>
                                         </td>
                                         <td><i class="feather icon-star font-18"></i></td>
-                                        <td><a href="{{url('/apps-email-open')}}">MaxBupa </a></td>                                 
+                                        <td><a href="{{url('/demo/apps-email-open')}}">MaxBupa </a></td>
                                         <td>Health Coverage upto 1 Crore.!</td>
                                         <td>Aug 26</td>
                                     </tr>
@@ -181,7 +181,7 @@ Soyuz - Email Inbox
                                             </div>
                                         </td>
                                         <td><i class="feather icon-star font-18"></i></td>
-                                        <td><a href="{{url('/apps-email-open')}}">KredX </a></td>                                 
+                                        <td><a href="{{url('/demo/apps-email-open')}}">KredX </a></td>
                                         <td>Introducing A Hassle-Free Working Capital Solution For Your Business</td>
                                         <td>Aug 09</td>
                                     </tr>
@@ -193,7 +193,7 @@ Soyuz - Email Inbox
                                             </div>
                                         </td>
                                         <td><i class="feather icon-star-on font-18"></i></td>
-                                        <td><a href="{{url('/apps-email-open')}}">Swiggy</a></td>                                 
+                                        <td><a href="{{url('/demo/apps-email-open')}}">Swiggy</a></td>
                                         <td>What’s Sunday without biryani? 😋</td>
                                         <td>July 22</td>
                                     </tr>
@@ -205,7 +205,7 @@ Soyuz - Email Inbox
                                             </div>
                                         </td>
                                         <td><i class="feather icon-star font-18"></i></td>
-                                        <td><a href="{{url('/apps-email-open')}}">Instant Approval</a></td>                                 
+                                        <td><a href="{{url('/demo/apps-email-open')}}">Instant Approval</a></td>
                                         <td><span class="badge badge-danger-inverse mr-2">Support</span> Need Quick Money? Get Loan up to 2 Lacs Today
                                             </td>
                                         <td>July 03</td>
@@ -218,7 +218,7 @@ Soyuz - Email Inbox
                                             </div>
                                         </td>
                                         <td><i class="feather icon-star font-18"></i></td>
-                                        <td><a href="{{url('/apps-email-open')}}">Pinterest </a></td>                                 
+                                        <td><a href="{{url('/demo/apps-email-open')}}">Pinterest </a></td>
                                         <td>Save your ideas about Business Trip</td>
                                         <td>June 20</td>
                                     </tr>
@@ -256,12 +256,12 @@ Soyuz - Email Inbox
                 </div>
             </div>
         </div>
-        <!-- End col -->                    
+        <!-- End col -->
     </div>
     <!-- Start row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

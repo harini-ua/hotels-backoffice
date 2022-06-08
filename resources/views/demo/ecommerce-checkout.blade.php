@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Checkout
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Checkout</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">eCommerce</a></li>
                     <li class="breadcrumb-item"><a href="#">Front End</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Checkout</li>
@@ -23,13 +23,13 @@ Soyuz - Checkout
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">                
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
@@ -173,7 +173,7 @@ Soyuz - Checkout
                                                     <div class="text-center">
                                                         <button type="submit" class="btn btn-primary btn-lg btn-block py-2 font-18">Pay Now</button>
                                                     </div>
-                                                </form>                                                            
+                                                </form>
                                             </div>
                                             <div class="tab-pane fade" id="pills-paypal-button" role="tabpanel" aria-labelledby="pills-paypal-tab-button">
                                                 <button type="button" class="btn btn-primary btn-lg btn-block py-2 mt-5 font-18">Pay via Paypal</button>
@@ -181,9 +181,9 @@ Soyuz - Checkout
                                         </div>
                                     </section>
                                 </div>
-                            </div>  
-                        </div>  
-                    </div>                             
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -192,12 +192,12 @@ Soyuz - Checkout
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Form Step js -->
-<script src="{{ asset('assets/plugins/jquery-step/jquery.steps.min.js') }}"></script>    
-<script src="{{ asset('assets/js/custom/custom-form-wizard.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/jquery-step/jquery.steps.min.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-form-wizard.js') }}"></script>
 <!-- Card js -->
-<script src="{{ asset('assets/plugins/creditcard/card.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-creditcard.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/creditcard/card.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-creditcard.js') }}"></script>
+@endsection

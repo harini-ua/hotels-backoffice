@@ -1,20 +1,20 @@
-@section('title') 
+@section('title')
 Soyuz - Form Color Picker
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 <!-- Color Picker css -->
-<link href="{{ asset('assets/plugins/colorpicker/bootstrap-colorpicker.css') }}" rel="stylesheet" type="text/css">
-@endsection 
+<link href="{{ asset('demo/assets/plugins/colorpicker/bootstrap-colorpicker.css') }}" rel="stylesheet" type="text/css">
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Color Picker</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Forms</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Color Picker</li>
                 </ol>
@@ -23,12 +23,12 @@ Soyuz - Form Color Picker
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -43,7 +43,7 @@ Soyuz - Form Color Picker
                     <input id="default-color" type="text" class="form-control input-lg" value="#506fe4"/>
                 </div>
             </div>
-        </div>  
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6">
@@ -56,7 +56,7 @@ Soyuz - Form Color Picker
                     <input id="rgb-color" type="text" class="form-control input-lg" value="#506fe4"/>
                 </div>
             </div>
-        </div>  
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6">
@@ -74,7 +74,7 @@ Soyuz - Form Color Picker
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6">
@@ -92,7 +92,7 @@ Soyuz - Form Color Picker
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6">
@@ -110,7 +110,7 @@ Soyuz - Form Color Picker
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6">
@@ -128,15 +128,15 @@ Soyuz - Form Color Picker
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
         <!-- End col -->
-    </div> 
+    </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Color Picker js -->
-<script src="{{ asset('assets/plugins/colorpicker/bootstrap-colorpicker.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-form-colorpicker.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/colorpicker/bootstrap-colorpicker.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-form-colorpicker.js') }}"></script>
+@endsection

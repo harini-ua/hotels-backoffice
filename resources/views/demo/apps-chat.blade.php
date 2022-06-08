@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Chat
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Chat</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Apps</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Chat</li>
                 </ol>
@@ -22,16 +22,16 @@ Soyuz - Chat
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
-        <!-- Start col -->                       
+        <!-- Start col -->
         <div class="col-lg-5 col-xl-4">
             <div class="chat-list">
                 <div class="chat-search">
@@ -121,8 +121,8 @@ Soyuz - Chat
             </div>
         </div>
         <!-- End col -->
-        <!-- Start col -->                       
-        <div class="col-lg-7 col-xl-8">       
+        <!-- Start col -->
+        <div class="col-lg-7 col-xl-8">
             <div class="chat-detail">
                 <div class="chat-head">
                     <ul class="list-unstyled mb-0">
@@ -138,7 +138,7 @@ Soyuz - Chat
                 <div class="chat-body">
                     <div class="chat-day text-center mb-3">
                         <span class="badge badge-secondary">Today</span>
-                    </div>                                
+                    </div>
                     <div class="chat-message chat-message-right">
                         <div class="chat-message-text">
                             <span>Hello! please, let me know the status about project after school.</span>
@@ -218,7 +218,7 @@ Soyuz - Chat
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <button class="btn btn-round btn-secondary-rgba" type="button" id="button-addonmic"><i class="feather icon-mic"></i></button>
-                                </div>  
+                                </div>
                                 <input type="text" class="form-control" placeholder="Type a message..." aria-label="Text">
                                 <div class="input-group-append">
                                     <button class="btn btn-round btn-secondary-rgba" type="submit" id="button-addonlink"><i class="feather icon-link"></i></button>
@@ -235,8 +235,8 @@ Soyuz - Chat
     <!-- End row -->
 </div>
 <!-- End contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Chat js -->
-<script src="{{ asset('assets/js/custom/custom-chat.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/js/custom/custom-chat.js') }}"></script>
+@endsection

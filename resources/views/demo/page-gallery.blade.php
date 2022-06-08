@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Gallery
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Gallery</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Gallery</li>
@@ -23,13 +23,13 @@ Soyuz - Gallery
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">                
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
@@ -37,7 +37,7 @@ Soyuz - Gallery
             <div class="card m-b-30">
                 <div class="card-body">
                     <div class="gallery-filter-box text-center m-b-30">
-                        <div class="gallery-filter">  
+                        <div class="gallery-filter">
                             <ul class="list-inline mb-0">
                                 <li class="list-inline-item"><a class="filter-item current" data-filter="*">All</a></li>
                                 <li class="list-inline-item"><a class="filter-item" data-filter=".latest">Latest</a></li>
@@ -59,7 +59,7 @@ Soyuz - Gallery
                                         <div class="gallery-content">
                                             <p>latest</p>
                                             <h5><a href="#">T-Shirt</a></h5>
-                                        </div>      
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 fashion">
@@ -70,7 +70,7 @@ Soyuz - Gallery
                                         <div class="gallery-content">
                                             <p>fashion</p>
                                             <h5><a href="#">Jeans</a></h5>
-                                        </div>      
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 popular">
@@ -81,7 +81,7 @@ Soyuz - Gallery
                                         <div class="gallery-content">
                                             <p>popular</p>
                                             <h5><a href="#">Shirt</a></h5>
-                                        </div>      
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 trending">
@@ -92,7 +92,7 @@ Soyuz - Gallery
                                         <div class="gallery-content">
                                             <p>trending</p>
                                             <h5><a href="#">Dress</a></h5>
-                                        </div>      
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 sale">
@@ -103,7 +103,7 @@ Soyuz - Gallery
                                         <div class="gallery-content">
                                             <p>sale</p>
                                             <h5><a href="#">Saari</a></h5>
-                                        </div>      
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 latest">
@@ -114,7 +114,7 @@ Soyuz - Gallery
                                         <div class="gallery-content">
                                             <p>latest</p>
                                             <h5><a href="#">Shoes</a></h5>
-                                        </div>      
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 fashion">
@@ -125,7 +125,7 @@ Soyuz - Gallery
                                         <div class="gallery-content">
                                             <p>fashion</p>
                                             <h5><a href="#">Belt</a></h5>
-                                        </div>      
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 popular">
@@ -136,7 +136,7 @@ Soyuz - Gallery
                                         <div class="gallery-content">
                                             <p>popular</p>
                                             <h5><a href="#">Goggals</a></h5>
-                                        </div>      
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 trending">
@@ -147,7 +147,7 @@ Soyuz - Gallery
                                         <div class="gallery-content">
                                             <p>trending</p>
                                             <h5><a href="#">Watch</a></h5>
-                                        </div>      
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 sale">
@@ -158,7 +158,7 @@ Soyuz - Gallery
                                         <div class="gallery-content">
                                             <p>sale</p>
                                             <h5><a href="#">Bracelet</a></h5>
-                                        </div>      
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 fashion">
@@ -169,7 +169,7 @@ Soyuz - Gallery
                                         <div class="gallery-content">
                                             <p>fashion</p>
                                             <h5><a href="#">Ring</a></h5>
-                                        </div>      
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 sale">
@@ -180,7 +180,7 @@ Soyuz - Gallery
                                         <div class="gallery-content">
                                             <p>sale</p>
                                             <h5><a href="#">Chain</a></h5>
-                                        </div>      
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -194,9 +194,9 @@ Soyuz - Gallery
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Isotope js -->
-<script src="{{ asset('assets/plugins/isotope/isotope.pkgd.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-gallery.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/isotope/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-gallery.js') }}"></script>
+@endsection

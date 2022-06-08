@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Feather Icons
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Feather</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Icons</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Feather</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Feather Icons
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -639,7 +639,7 @@ Soyuz - Feather Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="feather icon-umbrella"></i>feather icon-umbrella</p>
-                        </div>  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="feather icon-upload-cloud"></i>feather icon-upload-cloud</p>
                         </div>
@@ -666,7 +666,7 @@ Soyuz - Feather Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="feather icon-video-off"></i>feather icon-video-off</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="feather icon-video"></i>feather icon-video</p>
                         </div>
@@ -693,7 +693,7 @@ Soyuz - Feather Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="feather icon-x-square"></i>feather icon-x-square</p>
-                        </div>  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="feather icon-wind"></i>feather icon-wind</p>
                         </div>
@@ -720,7 +720,7 @@ Soyuz - Feather Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="feather icon-hash"></i>feather icon-hash</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="feather icon-headphones"></i>feather icon-headphones</p>
                         </div>
@@ -774,10 +774,10 @@ Soyuz - Feather Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="feather icon-arrow-left-circle"></i>feather icon-arrow-left-circle</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="feather icon-arrow-right-circle"></i>feather icon-arrow-right-circle</p>
-                        </div>  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="feather icon-bar-chart-line-"></i>feather icon-bar-chart-line-</p>
                         </div>
@@ -804,10 +804,10 @@ Soyuz - Feather Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="feather icon-folder-minus"></i>feather icon-folder-minus</p>
-                        </div>  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="feather icon-git-commit"></i>feather icon-git-commit</p>
-                        </div>  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="feather icon-git-branch"></i>feather icon-git-branch</p>
                         </div>
@@ -854,15 +854,15 @@ Soyuz - Feather Icons
                             <p><i class="feather icon-youtube"></i>feather icon-youtube</p>
                         </div>
                     </div>
-                </div>     
-            </div>                     
+                </div>
+            </div>
         </div>
         <!-- End col -->
     </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

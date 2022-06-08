@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Flag Icons
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Flag</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Icons</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Flag</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Flag Icons
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -639,7 +639,7 @@ Soyuz - Flag Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="flag flag-icon-si flag-icon-squared"></i>flag flag-icon-si</p>
-                        </div>  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="flag flag-icon-sj flag-icon-squared"></i>flag flag-icon-sj</p>
                         </div>
@@ -666,7 +666,7 @@ Soyuz - Flag Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="flag flag-icon-st flag-icon-squared"></i>flag flag-icon-st</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="flag flag-icon-sv flag-icon-squared"></i>flag flag-icon-sv</p>
                         </div>
@@ -693,7 +693,7 @@ Soyuz - Flag Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="flag flag-icon-th flag-icon-squared"></i>flag flag-icon-th</p>
-                        </div>  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="flag flag-icon-tj flag-icon-squared"></i>flag flag-icon-tj</p>
                         </div>
@@ -720,7 +720,7 @@ Soyuz - Flag Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="flag flag-icon-tv flag-icon-squared"></i>flag flag-icon-tv</p>
-                        </div> 
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="flag flag-icon-tw flag-icon-squared"></i>flag flag-icon-tw</p>
                         </div>
@@ -774,7 +774,7 @@ Soyuz - Flag Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="flag flag-icon-ye flag-icon-squared"></i>flag flag-icon-ye</p>
-                        </div>  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="flag flag-icon-yt flag-icon-squared"></i>flag flag-icon-yt</p>
                         </div>
@@ -804,20 +804,20 @@ Soyuz - Flag Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="flag flag-icon-gb-wls flag-icon-squared"></i>flag flag-icon-gb-wls</p>
-                        </div>  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="flag flag-icon-un flag-icon-squared"></i>flag flag-icon-un</p>
-                        </div>                                    
+                        </div>
                     </div>
-                </div>    
-            </div>                     
+                </div>
+            </div>
         </div>
         <!-- End col -->
     </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

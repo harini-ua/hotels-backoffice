@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Line Awesome Icons
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Line Awesome</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Icons</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Line Awesome</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Line Awesome Icons
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -354,25 +354,25 @@ Soyuz - Line Awesome Icons
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-caret-square-o-down"></i>la la-caret-square-o-down</p>
-                    </div> 
+                    </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-toggle-down"></i>la la-toggle-down</p>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-caret-square-o-left"></i>la la-caret-square-o-left</p>
-                    </div> 
+                    </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-toggle-left"></i>la la-toggle-left</p>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-caret-square-o-right"></i>la la-caret-square-o-right</p>
-                    </div> 
+                    </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-toggle-right"></i>la la-toggle-right</p>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-caret-square-o-up"></i>la la-caret-square-o-up</p>
-                    </div> 
+                    </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-toggle-up"></i>la la-toggle-up</p>
                     </div>
@@ -645,7 +645,7 @@ Soyuz - Line Awesome Icons
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-empire"></i>la la-empire</p>
-                    </div> 
+                    </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-ge"></i>la la-ge</p>
                     </div>
@@ -702,7 +702,7 @@ Soyuz - Line Awesome Icons
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-facebook"></i>la la-facebook</p>
-                    </div> 
+                    </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-facebook-f"></i>la la-facebook-f</p>
                     </div>
@@ -1338,13 +1338,13 @@ Soyuz - Line Awesome Icons
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-paper-plane"></i>la la-paper-plane</p>
-                    </div> 
+                    </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-send"></i>la la-send</p>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-paper-plane-o"></i>la la-paper-plane-o</p>
-                    </div> 
+                    </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-send-o"></i>la la-send-o</p>
                     </div>
@@ -1521,7 +1521,7 @@ Soyuz - Line Awesome Icons
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-rss"></i>la la-rss</p>
-                    </div> 
+                    </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-feed"></i>la la-feed</p>
                     </div>
@@ -2059,8 +2059,8 @@ Soyuz - Line Awesome Icons
                     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <p><i class="la la-youtube-square"></i>la la-youtube-square</p>
                     </div>
-                </div>    
-            </div>                    
+                </div>
+            </div>
         </div>
         <!-- End col -->
     </div>
@@ -2068,7 +2068,7 @@ Soyuz - Line Awesome Icons
 </div>
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

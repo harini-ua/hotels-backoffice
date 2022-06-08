@@ -1,20 +1,20 @@
-@section('title') 
+@section('title')
 Soyuz - Pnotify
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 <!-- Pnotify css -->
-<link href="{{ asset('assets/plugins/pnotify/css/pnotify.custom.min.css') }}" rel="stylesheet" type="text/css" />
-@endsection 
+<link href="{{ asset('demo/assets/plugins/pnotify/css/pnotify.custom.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Pnotify</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Advanced UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Pnotify</li>
                 </ol>
@@ -23,12 +23,12 @@ Soyuz - Pnotify
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -41,9 +41,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-primary"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -55,9 +55,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-success" id="pnotify-success"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -69,9 +69,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-danger" id="pnotify-danger"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -83,9 +83,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-info" id="pnotify-info"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -97,9 +97,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-desktop-primary"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -111,9 +111,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-success" id="pnotify-desktop-success"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -125,11 +125,11 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-danger" id="pnotify-desktop-danger"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
-        <!-- End col -->                    
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-4">
             <div class="card m-b-30">
@@ -139,9 +139,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-info" id="pnotify-desktop-info"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -153,15 +153,15 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-warning" id="pnotify-desktop-warning"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
     </div>
-    <!-- End row --> 
-    <!-- Start row --> 
-    <div class="row">                    
+    <!-- End row -->
+    <!-- Start row -->
+    <div class="row">
         <!-- Start col -->
         <div class="col-md-12 col-lg-12">
             <h5 class="card-title font-18">Options</h5>
@@ -176,9 +176,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-translucent"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -190,9 +190,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-no-shadow-notice"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -204,9 +204,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-simple"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -218,9 +218,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-number"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -232,9 +232,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-no-mouse-reset"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -246,9 +246,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-fast-fading"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -260,9 +260,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-no-effect"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -274,9 +274,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-forms"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -288,9 +288,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-click-on-it"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -302,9 +302,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-click-to-close"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -316,9 +316,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-huge"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -330,9 +330,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-rich-text"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -344,9 +344,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-keep-it-safe"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -358,9 +358,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-dynamic"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -372,18 +372,18 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-custom-styles"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
     </div>
-    <!-- End row --> 
-    <!-- Start row --> 
-    <div class="row">                    
+    <!-- End row -->
+    <!-- Start row -->
+    <div class="row">
         <!-- Start col -->
         <div class="col-md-12 col-lg-12">
-            <h5 class="card-title font-18">Confirm Module</h5> 
+            <h5 class="card-title font-18">Confirm Module</h5>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -395,9 +395,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-confirm-dialog"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -409,9 +409,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-modal-confirm-dialog"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -423,9 +423,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-custom-button"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -437,9 +437,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-alert-style-button"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -451,9 +451,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-prompt-dialog"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -465,9 +465,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-multi-line-prompt-dialog"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
     </div>
@@ -476,7 +476,7 @@ Soyuz - Pnotify
     <div class="row">
         <!-- Start col -->
         <div class="col-md-12 col-lg-12">
-            <h5 class="card-title font-18">Callback Module</h5> 
+            <h5 class="card-title font-18">Callback Module</h5>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -488,9 +488,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-notice-with-callback"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -502,9 +502,9 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-notice-to-error-to-success-to-info"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -516,18 +516,18 @@ Soyuz - Pnotify
                 <div class="card-body">
                     <div class="pnotify">
                         <button type="button" class="btn btn-primary" id="pnotify-progress-loader"><i class="feather icon-bell"></i> Click here!</button>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
     </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Pnotify js -->
-<script src="{{ asset('assets/plugins/pnotify/js/pnotify.custom.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-pnotify.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/pnotify/js/pnotify.custom.min.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-pnotify.js') }}"></script>
+@endsection

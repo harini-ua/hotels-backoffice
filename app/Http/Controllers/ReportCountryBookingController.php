@@ -42,11 +42,6 @@ class ReportCountryBookingController extends Controller
         $cities = [];
         $hotels = [];
 
-        $providers = Provider::all()
-            ->where('active', 1)
-            ->sortBy('name')
-            ->pluck('name', 'id');
-
         $statuses = BookingStatus::asSelectArray();
         $dataTypes = BookingDateType::asSelectArray();
         $platforms = BookingPlatform::asSelectArray();
@@ -60,7 +55,7 @@ class ReportCountryBookingController extends Controller
             ->pluck('customer_name', 'customer_name');
 
         return $dataTable->render('admin.pages.country-booking.index', compact(
-            'breadcrumbs', 'companies', 'countries', 'cities', 'hotels', 'providers', 'statuses',
+            'breadcrumbs', 'companies', 'countries', 'cities', 'hotels', 'statuses',
             'dataTypes', 'platforms', 'devices'
         ));
     }

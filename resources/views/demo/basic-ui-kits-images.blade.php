@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Images
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Images</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Images</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Images
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -52,7 +52,7 @@ Soyuz - Images
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">In addition to our border-radius utilities, you can use <code class="highlighter-rouge">.rounded</code> to give an image a rounded 1px border appearance.</h6>
-                    <img src="assets/images/ui-images/image-rounded.jpg" alt="Rounded Image" class="rounded">                               
+                    <img src="assets/images/ui-images/image-rounded.jpg" alt="Rounded Image" class="rounded">
                 </div>
             </div>
         </div>
@@ -126,7 +126,7 @@ Soyuz - Images
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

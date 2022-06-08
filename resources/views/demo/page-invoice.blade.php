@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Invoice
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Invoice</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Pages</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Invoice</li>
@@ -23,13 +23,13 @@ Soyuz - Invoice
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">                
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- End row -->
     <div class="row justify-content-center">
         <!-- Start col -->
@@ -56,7 +56,7 @@ Soyuz - Invoice
                                     </div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                         <div class="invoice-billing">
                             <div class="row">
                                 <div class="col-sm-6 col-md-4 col-lg-4">
@@ -64,9 +64,9 @@ Soyuz - Invoice
                                         <h6 class="mb-3">Bill to</h6>
                                         <h6 class="text-muted">John Doe</h6>
                                         <ul class="list-unstyled">
-                                            <li>5101 Public Work Drive, 24th Street, Near Oklahoma Building, Cleveland, Tennessee, USA.</li>  
-                                            <li>+1-9876543210</li>  
-                                            <li>demo@example.com</li>  
+                                            <li>5101 Public Work Drive, 24th Street, Near Oklahoma Building, Cleveland, Tennessee, USA.</li>
+                                            <li>+1-9876543210</li>
+                                            <li>demo@example.com</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -75,9 +75,9 @@ Soyuz - Invoice
                                         <h6 class="mb-3">Shipped to</h6>
                                         <h6 class="text-muted">John Doe</h6>
                                         <ul class="list-unstyled">
-                                            <li>5101 Public Work Drive, 24th Street, Near Oklahoma Building, Cleveland, Tennessee, USA.</li>  
-                                            <li>+1-9876543210</li>  
-                                            <li>demo@example.com</li>  
+                                            <li>5101 Public Work Drive, 24th Street, Near Oklahoma Building, Cleveland, Tennessee, USA.</li>
+                                            <li>+1-9876543210</li>
+                                            <li>demo@example.com</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -93,13 +93,13 @@ Soyuz - Invoice
                                     </div>
                                 </div>
                             </div>
-                        </div>  
+                        </div>
                         <div class="invoice-summary">
                             <div class="table-responsive ">
                                 <table class="table table-borderless">
                                     <thead>
                                         <tr>
-                                            <th scope="col">ID</th>                       
+                                            <th scope="col">ID</th>
                                             <th scope="col">Photo</th>
                                             <th scope="col">Product</th>
                                             <th scope="col">Qty</th>
@@ -125,7 +125,7 @@ Soyuz - Invoice
                                             <td class="text-right">$100</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">3</th>                          
+                                            <th scope="row">3</th>
                                             <td><img src="assets/images/ecommerce/product_03.svg" class="img-fluid" width="35" alt="product"></td>
                                             <td>iPhone XR</td>
                                             <td>10</td>
@@ -177,9 +177,9 @@ Soyuz - Invoice
                                     <div class="invoice-meta-box">
                                         <h6 class="mb-3">Terms & Conditions</h6>
                                         <ul class="pl-3">
-                                            <li>Goods once sold will not be taken back.</li>  
-                                            <li>We are responsible for Courier Damage.</li>  
-                                            <li>Subjects to NY Jurisdiction.</li>  
+                                            <li>Goods once sold will not be taken back.</li>
+                                            <li>We are responsible for Courier Damage.</li>
+                                            <li>Subjects to NY Jurisdiction.</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -187,9 +187,9 @@ Soyuz - Invoice
                                     <div class="invoice-meta-box">
                                         <h6 class="mb-3">Contact Us</h6>
                                         <ul class="list-unstyled">
-                                            <li><i class="feather icon-aperture mr-2"></i>www.example.com</li>  
-                                            <li><i class="feather icon-mail mr-2"></i>demo@example.com</li>  
-                                            <li><i class="feather icon-phone mr-2"></i>+1-9876543210</li>  
+                                            <li><i class="feather icon-aperture mr-2"></i>www.example.com</li>
+                                            <li><i class="feather icon-mail mr-2"></i>demo@example.com</li>
+                                            <li><i class="feather icon-phone mr-2"></i>+1-9876543210</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -201,7 +201,7 @@ Soyuz - Invoice
                                     </div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                         <div class="invoice-footer">
                             <div class="row align-items-center">
                                 <div class="col-md-6">
@@ -214,7 +214,7 @@ Soyuz - Invoice
                                     </div>
                                 </div>
                             </div>
-                        </div>                                   
+                        </div>
                     </div>
                 </div>
             </div>
@@ -224,7 +224,7 @@ Soyuz - Invoice
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

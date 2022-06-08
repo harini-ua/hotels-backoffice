@@ -1,23 +1,23 @@
-@section('title') 
+@section('title')
 Soyuz - Crypto
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 <!-- Apex css -->
-<link href="{{ asset('assets/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('demo/assets/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css" />
 <!-- Slick css -->
-<link href="{{ asset('assets/plugins/slick/slick.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/plugins/slick/slick-theme.css') }}" rel="stylesheet" type="text/css" />
-@endsection 
+<link href="{{ asset('demo/assets/plugins/slick/slick.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('demo/assets/plugins/slick/slick-theme.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar --> 
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Crypto</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Crypto</li>
                 </ol>
@@ -26,13 +26,13 @@ Soyuz - Crypto
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
-</div>    
+    </div>
+</div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">              
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
@@ -42,15 +42,15 @@ Soyuz - Crypto
                     <div class="media">
                         <img class="mr-3 rounded-circle" src="assets/images/crypto/bitcoin.png" alt="Generic placeholder image">
                         <div class="media-body">
-                            <h5 class="mb-2">Bitcoin</h5> 
-                            <p class="mb-0">1 BTC = 49 USD</p>                                                             
+                            <h5 class="mb-2">Bitcoin</h5>
+                            <p class="mb-0">1 BTC = 49 USD</p>
                         </div>
                         <img class="action-bg rounded-circle" src="assets/images/crypto/1.png" alt="Generic placeholder image">
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
             <div class="card m-b-30">
@@ -58,13 +58,13 @@ Soyuz - Crypto
                     <div class="media">
                         <img class="mr-3 rounded-circle" src="assets/images/crypto/ethereum.png" alt="Generic placeholder image">
                         <div class="media-body">
-                            <h5 class="mb-2">Ethereum</h5> 
-                            <p class="mb-0">1 ETC = 5.69 USD</p>                                                             
+                            <h5 class="mb-2">Ethereum</h5>
+                            <p class="mb-0">1 ETC = 5.69 USD</p>
                         </div>
                         <img class="action-bg rounded-circle" src="assets/images/crypto/2.png" alt="Generic placeholder image">
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -74,15 +74,15 @@ Soyuz - Crypto
                     <div class="media">
                         <img class="mr-3 rounded-circle" src="assets/images/crypto/ripple.png" alt="Generic placeholder image">
                         <div class="media-body">
-                            <h5 class="mb-2">Ripple</h5> 
-                            <p class="mb-0">1 RPC = 0.96 USD</p>                                                             
+                            <h5 class="mb-2">Ripple</h5>
+                            <p class="mb-0">1 RPC = 0.96 USD</p>
                         </div>
                         <img class="action-bg rounded-circle" src="assets/images/crypto/3.png" alt="Generic placeholder image">
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
             <div class="card m-b-30">
@@ -90,15 +90,15 @@ Soyuz - Crypto
                     <div class="media">
                         <img class="mr-3 rounded-circle" src="assets/images/crypto/bcc.png" alt="Generic placeholder image">
                         <div class="media-body">
-                            <h5 class="mb-2">Bitcoin Cash</h5> 
-                            <p class="mb-0">1 BCC = 58.85 USD</p>                                                             
+                            <h5 class="mb-2">Bitcoin Cash</h5>
+                            <p class="mb-0">1 BCC = 58.85 USD</p>
                         </div>
                         <img class="action-bg rounded-circle" src="assets/images/crypto/4.png" alt="Generic placeholder image">
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
     </div>
     <!-- End row -->
     <!-- Start row -->
@@ -106,7 +106,7 @@ Soyuz - Crypto
         <!-- Start col -->
         <div class="col-lg-12 col-xl-6">
             <div class="card m-b-30">
-                <div class="card-header">                                
+                <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-9">
                             <h5 class="card-title mb-0">ATC Live Statistics</h5>
@@ -127,11 +127,11 @@ Soyuz - Crypto
                 </div>
             </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
             <div class="card m-b-30">
-                <div class="card-header">                                
+                <div class="card-header">
                     <h5 class="card-title mb-0">Buy ATC</h5>
                 </div>
                 <div class="card-body">
@@ -158,13 +158,13 @@ Soyuz - Crypto
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
             <div class="card m-b-30">
-                <div class="card-header">  
+                <div class="card-header">
                     <h5 class="card-title mb-0">Sell ATC</h5>
                 </div>
                 <div class="card-body">
@@ -180,7 +180,7 @@ Soyuz - Crypto
                         <div class="input-group-append">
                             <span class="input-group-text" id="basic-addon4">USD</span>
                         </div>
-                    </div>                                
+                    </div>
                     <button type="button" class="btn btn-danger btn-lg btn-block my-4">Sell</button>
                     <div class="row">
                         <div class="col-8">
@@ -191,29 +191,29 @@ Soyuz - Crypto
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
     </div>
     <!-- End row -->
     <!-- Start row -->
-    <div class="row">                    
+    <div class="row">
         <!-- Start col -->
         <div class="col-lg-12 col-xl-4">
             <div class="card m-b-30">
-                <div class="card-header text-center">  
+                <div class="card-header text-center">
                     <h5 class="card-title mb-0">Investment Stats</h5>
                 </div>
                 <div class="card-body p-0">
                     <div id="apex-circle-chart"></div>
                 </div>
-            </div>            
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-12 col-xl-8">
             <div class="card m-b-30 dash-widget">
-                <div class="card-header">                                
+                <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-5">
                             <h5 class="card-title mb-0">Earning</h5>
@@ -317,22 +317,22 @@ Soyuz - Crypto
                                     <td>$598.69</td>
                                     <td><span class="badge badge-success-inverse">Success</span></td>
                                 </tr>
-                                
+
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
     </div>
     <!-- End row -->
     <!-- Start row -->
-    <div class="row">                    
+    <div class="row">
         <!-- Start col -->
         <div class="col-lg-12 col-xl-6">
             <div class="card m-b-30">
-                <div class="card-header">                                
+                <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-9">
                             <h5 class="card-title mb-0">All Activity</h5>
@@ -386,13 +386,13 @@ Soyuz - Crypto
                         </li>
                     </ul>
                 </div>
-            </div>            
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-12 col-xl-6">
             <div class="card m-b-30">
-                <div class="card-header">                                
+                <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-9">
                             <h5 class="card-title mb-0">Investment Stack Currency Wise</h5>
@@ -413,18 +413,18 @@ Soyuz - Crypto
                 </div>
             </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
     </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Apex js -->
-<script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/apexcharts/irregular-data-series.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/apexcharts/irregular-data-series.js') }}"></script>
 <!-- Slick js -->
-<script src="{{ asset('assets/plugins/slick/slick.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/slick/slick.min.js') }}"></script>
 <!-- Dashboard js -->
-<script src="{{ asset('assets/js/custom/custom-dashboard-crypto.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/js/custom/custom-dashboard-crypto.js') }}"></script>
+@endsection

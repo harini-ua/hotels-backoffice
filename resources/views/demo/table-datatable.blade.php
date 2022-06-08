@@ -1,13 +1,13 @@
 @section('title')
 Soyuz - Datatable
 @endsection
-@extends('layouts.main')
+@extends('demo.layouts.main')
 @section('style')
 <!-- DataTables css -->
-<link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('demo/assets/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('demo/assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 <!-- Responsive Datatable css -->
-<link href="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('demo/assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -17,7 +17,7 @@ Soyuz - Datatable
             <h4 class="page-title">Datatable</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Tables</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Datatable</li>
                 </ol>
@@ -1020,17 +1020,17 @@ Soyuz - Datatable
 @endsection
 @section('script')
 <!-- Datatable js -->
-<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/jszip.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/pdfmake.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/vfs_fonts.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/buttons.print.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/buttons.colVis.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-table-datatable.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/datatables/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/datatables/jszip.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/datatables/pdfmake.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/datatables/vfs_fonts.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/datatables/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/datatables/buttons.print.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/datatables/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-table-datatable.js') }}"></script>
 @endsection

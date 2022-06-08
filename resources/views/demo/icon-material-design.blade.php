@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Material Design Icons
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Material Design</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Icons</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Material Design</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Material Design Icons
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -120,7 +120,7 @@ Soyuz - Material Design Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="mdi mdi-account-multiple-plus-outline"></i>mdi mdi-account-multiple-plus-outline</p>
-                        </div>  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="mdi mdi-account-network"></i>mdi mdi-account-network</p>
                         </div>
@@ -168,10 +168,10 @@ Soyuz - Material Design Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="mdi mdi-adjust"></i>mdi mdi-adjust</p>
-                        </div>  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="mdi mdi-adobe"></i>mdi mdi-adobe</p>
-                        </div>                                  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="mdi mdi-air-conditioner"></i>mdi mdi-air-conditioner</p>
                         </div>
@@ -6158,7 +6158,7 @@ Soyuz - Material Design Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="mdi mdi-play-protected-content"></i>mdi mdi-play-protected-content</p>
-                        </div>  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="mdi mdi-play-speed"></i>mdi mdi-play-speed</p>
                         </div>
@@ -6206,10 +6206,10 @@ Soyuz - Material Design Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="mdi mdi-plus-network"></i>mdi mdi-plus-network</p>
-                        </div>  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="mdi mdi-plus-one"></i>mdi mdi-plus-one</p>
-                        </div>                                  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="mdi mdi-plus-outline"></i>mdi mdi-plus-outline</p>
                         </div>
@@ -7046,7 +7046,7 @@ Soyuz - Material Design Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="mdi mdi-sim"></i>mdi mdi-sim</p>
-                        </div>  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="mdi mdi-sim-alert"></i>mdi mdi-sim-alert</p>
                         </div>
@@ -7094,10 +7094,10 @@ Soyuz - Material Design Icons
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="mdi mdi-slack"></i>mdi mdi-slack</p>
-                        </div>  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="mdi mdi-slackware"></i>mdi mdi-slackware</p>
-                        </div>                                  
+                        </div>
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
                             <p><i class="mdi mdi-sleep"></i>mdi mdi-sleep</p>
                         </div>
@@ -8695,15 +8695,15 @@ Soyuz - Material Design Icons
                             <p><i class="mdi mdi-blank"></i>mdi mdi-blank</p>
                         </div>
                     </div>
-                </div>     
-            </div>               
+                </div>
+            </div>
         </div>
         <!-- End col -->
     </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

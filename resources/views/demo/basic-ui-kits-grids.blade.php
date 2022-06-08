@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Grids
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Grids</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Grids</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Grids
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start cow -->
     <div class="row">
@@ -116,8 +116,8 @@ Soyuz - Grids
                 <div class="card-header">
                     <h5 class="card-title">Grid Example</h5>
                 </div>
-                <div class="card-body">    
-                    <h6 class="card-subtitle">Using a single set of <code>.col-md-*</code> grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns within any <code>.row</code>.</h6>                            
+                <div class="card-body">
+                    <h6 class="card-subtitle">Using a single set of <code>.col-md-*</code> grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns within any <code>.row</code>.</h6>
                     <div class="example-row">
                         <div class="grid-example">
                             <div class="row">
@@ -132,7 +132,7 @@ Soyuz - Grids
                                 <div class="col-sm-1">.col-sm-1</div>
                                 <div class="col-sm-1">.col-sm-1</div>
                                 <div class="col-sm-1">.col-sm-1</div>
-                                <div class="col-sm-1">.col-sm-1</div>                                    
+                                <div class="col-sm-1">.col-sm-1</div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-2">.col-sm-2</div>
@@ -140,25 +140,25 @@ Soyuz - Grids
                                 <div class="col-sm-2">.col-sm-2</div>
                                 <div class="col-sm-2">.col-sm-2</div>
                                 <div class="col-sm-2">.col-sm-2</div>
-                                <div class="col-sm-2">.col-sm-2</div>                                   
+                                <div class="col-sm-2">.col-sm-2</div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-3">.col-sm-3</div>
                                 <div class="col-sm-3">.col-sm-3</div>
                                 <div class="col-sm-3">.col-sm-3</div>
-                                <div class="col-sm-3">.col-sm-3</div>                                  
+                                <div class="col-sm-3">.col-sm-3</div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-4">.col-sm-4</div>
                                 <div class="col-sm-4">.col-sm-4</div>
-                                <div class="col-sm-4">.col-sm-4</div>                                
+                                <div class="col-sm-4">.col-sm-4</div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">.col-sm-6</div>
-                                <div class="col-sm-6">.col-sm-6</div>                              
+                                <div class="col-sm-6">.col-sm-6</div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-12">.col-sm-12</div>                            
+                                <div class="col-sm-12">.col-sm-12</div>
                             </div>
                         </div>
                     </div>
@@ -232,7 +232,7 @@ Soyuz - Grids
                                 <div class="col order-1">
                                   Third, but first
                                 </div>
-                              </div>                                                    
+                              </div>
                         </div>
                     </div>
                     <h6 class="card-subtitle">There are also responsive <code class="highlighter-rouge">.order-first</code> and <code class="highlighter-rouge">.order-last</code> classes that change the <code class="highlighter-rouge">order</code> of an element by applying <code class="highlighter-rouge">order: -1</code> and <code class="highlighter-rouge">order: 13</code> (<code class="highlighter-rouge">order: $columns + 1</code>), respectively. These classes can also be intermixed with the numbered <code class="highlighter-rouge">.order-*</code> classes as needed.</h6>
@@ -248,7 +248,7 @@ Soyuz - Grids
                                 <div class="col order-first">
                                   Third, but first
                                 </div>
-                              </div>                                                    
+                              </div>
                         </div>
                     </div>
                 </div>
@@ -259,7 +259,7 @@ Soyuz - Grids
     <!-- End row -->
     <!-- Start row -->
     <div class="row">
-        <!-- Start col -->    
+        <!-- Start col -->
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
@@ -279,7 +279,7 @@ Soyuz - Grids
                             </div>
                             <div class="row">
                               <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3</div>
-                            </div>                                                   
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -372,7 +372,7 @@ Soyuz - Grids
                                 <div class="col-4">
                                   One of two columns
                                 </div>
-                              </div>                                                     
+                              </div>
                         </div>
                     </div>
                 </div>
@@ -436,7 +436,7 @@ Soyuz - Grids
                                 <div class="col align-self-end">
                                   One of three columns
                                 </div>
-                            </div>                                                      
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -447,7 +447,7 @@ Soyuz - Grids
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Bootstrap Table
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Bootstrap</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Tables</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Bootstrap</li>
                 </ol>
@@ -22,13 +22,13 @@ Soyuz - Bootstrap Table
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">                
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
@@ -114,7 +114,7 @@ Soyuz - Bootstrap Table
                                     <td>@twitter</td>
                                 </tr>
                             </tbody>
-                        </table>                                            
+                        </table>
                     </div>
                 </div>
             </div>
@@ -190,7 +190,7 @@ Soyuz - Bootstrap Table
                                     <td>@twitter</td>
                                 </tr>
                             </tbody>
-                        </table>          
+                        </table>
                     </div>
                 </div>
             </div>
@@ -531,7 +531,7 @@ Soyuz - Bootstrap Table
                                     <td>@twitter</td>
                                 </tr>
                             </tbody>
-                        </table>                   
+                        </table>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-sm table-dark">
@@ -595,7 +595,7 @@ Soyuz - Bootstrap Table
                                     <th scope="row">Default</th>
                                     <td>Cell</td>
                                     <td>Cell</td>
-                                </tr>                                        
+                                </tr>
                                 <tr class="table-primary">
                                     <th scope="row">Primary</th>
                                     <td>Cell</td>
@@ -707,7 +707,7 @@ Soyuz - Bootstrap Table
                                     <td>Cell</td>
                                 </tr>
                             </tbody>
-                        </table>                                            
+                        </table>
                     </div>
                 </div>
             </div>
@@ -799,7 +799,7 @@ Soyuz - Bootstrap Table
                                     <td>Cell</td>
                                 </tr>
                             </tbody>
-                        </table>            
+                        </table>
                     </div>
                 </div>
             </div>
@@ -809,7 +809,7 @@ Soyuz - Bootstrap Table
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

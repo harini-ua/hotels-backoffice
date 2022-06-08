@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Alerts
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Alerts</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Alerts</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Alerts
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -35,7 +35,7 @@ Soyuz - Alerts
         <div class="col-lg-6">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Examples</h5>                                
+                    <h5 class="card-title">Examples</h5>
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use one of the eight <strong>required</strong> contextual classes (e.g., <code class="highlighter-rouge">.alert-success</code>). For inline dismissal, use the alerts jQuery plugin.</h6>
@@ -63,7 +63,7 @@ Soyuz - Alerts
                         </div>
                         <div class="alert alert-dark" role="alert">
                           A simple dark alert—check it out!
-                        </div>                                    
+                        </div>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@ Soyuz - Alerts
         <div class="col-lg-6">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Link color</h5>                                
+                    <h5 class="card-title">Link color</h5>
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Use the <code class="highlighter-rouge">.alert-link</code> utility class to quickly provide matching colored links within any alert.</h6>
@@ -101,7 +101,7 @@ Soyuz - Alerts
                         </div>
                         <div class="alert alert-dark" role="alert">
                           A simple dark alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-                        </div>                                    
+                        </div>
                     </div>
                 </div>
             </div>
@@ -111,9 +111,9 @@ Soyuz - Alerts
         <div class="col-lg-6">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Additional content</h5>                                
+                    <h5 class="card-title">Additional content</h5>
                 </div>
-                <div class="card-body">  
+                <div class="card-body">
                     <h6 class="card-subtitle">Alerts can also contain additional HTML elements like headings, paragraphs and dividers.</h6>
                     <div class="alert-list">
                         <div class="alert alert-success" role="alert">
@@ -121,7 +121,7 @@ Soyuz - Alerts
                           <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
                           <hr>
                           <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-                        </div>                                    
+                        </div>
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@ Soyuz - Alerts
         <div class="col-lg-6">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Dismissing</h5>                                
+                    <h5 class="card-title">Dismissing</h5>
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Add a dismiss button and the <code class="highlighter-rouge">.alert-dismissible</code> class, which adds extra padding to the right of the alert and positions the <code class="highlighter-rouge">.close</code> button.</h6>
@@ -141,19 +141,19 @@ Soyuz - Alerts
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
-                        </div>  
+                        </div>
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
                           <strong>Holy guacamole!</strong> You should check in on some of those fields below.
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
-                        </div> 
+                        </div>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                           <strong>Ohh no!</strong> You should check in on some of those fields below.
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
-                        </div>                                   
+                        </div>
                     </div>
                 </div>
             </div>
@@ -163,7 +163,7 @@ Soyuz - Alerts
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

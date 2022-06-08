@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Order Detail
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Order Detail</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">eCommerce</a></li>
                     <li class="breadcrumb-item"><a href="#">Back End</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Order Detail</li>
@@ -23,29 +23,29 @@ Soyuz - Order Detail
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary">Update Now</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
         <div class="col-lg-7 col-xl-8">
             <div class="card m-b-30">
-                <div class="card-header">                                
+                <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-7">
                             <h5 class="card-title mb-0">Order No : #986953</h5>
                         </div>
                         <div class="col-5 text-right">
-                            <span class="badge badge-success-inverse">Completed</span>                                             
+                            <span class="badge badge-success-inverse">Completed</span>
                         </div>
                     </div>
                 </div>
-                <div class="card-body">                                
+                <div class="card-body">
                     <div class="row mb-5">
                         <div class="col-md-6 col-lg-6 col-xl-3">
                             <div class="order-primary-detail mb-4">
@@ -71,7 +71,7 @@ Soyuz - Order Detail
                             <p class="mb-0">+1 9876543210</p>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                     <div class="row">
                         <div class="col-md-6 col-lg-6 col-xl-6 ">
                             <div class="order-primary-detail mb-4">
@@ -87,9 +87,9 @@ Soyuz - Order Detail
                             <p class="mb-0">+1 987 654 3210</p>
                             </div>
                         </div>
-                    </div>                                
+                    </div>
                 </div>
-            </div> 
+            </div>
             <div class="card m-b-30">
                 <div class="card-header">
                     <h5 class="card-title">Order Items</h5>
@@ -100,7 +100,7 @@ Soyuz - Order Detail
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Action</th>                                                
+                                    <th scope="col">Action</th>
                                     <th scope="col">Photo</th>
                                     <th scope="col">Product</th>
                                     <th scope="col">Qty</th>
@@ -129,7 +129,7 @@ Soyuz - Order Detail
                                 </tr>
                                 <tr>
                                     <th scope="row">3</th>
-                                    <td><a href="#" class="text-success mr-2"><i class="feather icon-edit-2"></i></a><a href="#" class="text-danger"><i class="feather icon-trash"></i></a></td>                                                
+                                    <td><a href="#" class="text-success mr-2"><i class="feather icon-edit-2"></i></a><a href="#" class="text-danger"><i class="feather icon-trash"></i></a></td>
                                     <td><img src="assets/images/ecommerce/product_03.svg" class="img-fluid" width="35" alt="product"></td>
                                     <td>iPhone XR</td>
                                     <td>10</td>
@@ -180,7 +180,7 @@ Soyuz - Order Detail
                 </div>
             </div>
             <div class="card m-b-30">
-                <div class="card-header">                                
+                <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-7">
                             <h5 class="card-title mb-0">Invoice PDF Details</h5>
@@ -198,13 +198,13 @@ Soyuz - Order Detail
                         <p class="mb-0">Purchase GST : 5231WMNKJIU007</p>
                     </div>
                 </div>
-            </div>                  
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-5 col-xl-4">
             <div class="card m-b-30">
-                <div class="card-header">                                
+                <div class="card-header">
                     <div class="row align-items-center">
                         <div class="col-4">
                             <h5 class="card-title mb-0">Via</h5>
@@ -218,10 +218,10 @@ Soyuz - Order Detail
                                   <li class="nav-item">
                                     <a class="nav-link" id="pills-sms-tab" data-toggle="pill" href="#pills-sms" role="tab" aria-selected="false">SMS</a>
                                   </li>
-                                </ul>  
+                                </ul>
                             </div>
                         </div>
-                    </div>                                
+                    </div>
                 </div>
                 <div class="card-body">
                     <form>
@@ -253,7 +253,7 @@ Soyuz - Order Detail
                         <div class="chat-body">
                             <div class="chat-day text-center mb-3">
                                 <span class="badge badge-secondary">Today</span>
-                            </div>                                
+                            </div>
                             <div class="chat-message chat-message-right">
                                 <div class="chat-message-text">
                                     <span>Hello!</span>
@@ -333,7 +333,7 @@ Soyuz - Order Detail
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <button class="btn btn-secondary-rgba" type="button" id="button-addonmic"><i class="feather icon-mic"></i></button>
-                                        </div>  
+                                        </div>
                                         <input type="text" class="form-control" placeholder="Type a message..." aria-label="Text">
                                         <div class="input-group-append">
                                             <button class="btn btn-secondary-rgba" type="submit" id="button-addonlink"><i class="feather icon-link"></i></button>
@@ -373,8 +373,8 @@ Soyuz - Order Detail
 <!-- End Rightbar -->
 </div>
 <!-- End Containerbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- eCommerce Order Detail Page js -->
-<script src="{{ asset('assets/js/custom/custom-ecommerce-order-detail-page.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/js/custom/custom-ecommerce-order-detail-page.js') }}"></script>
+@endsection

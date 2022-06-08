@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Badges
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Badges</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Basic UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Badges</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Badges
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -35,7 +35,7 @@ Soyuz - Badges
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Examples</h5>                                
+                    <h5 class="card-title">Examples</h5>
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Badges scale to match the size of the immediate parent element by using relative font sizing and <code
@@ -63,11 +63,11 @@ Soyuz - Badges
                     <div class="badge-list">
                         <button type="button" class="btn btn-primary">
                           Notifications <span class="badge badge-light">4</span>
-                        </button> 
+                        </button>
                         <button type="button" class="btn btn-primary">
                           Profile <span class="badge badge-light">9</span>
                           <span class="sr-only">unread messages</span>
-                        </button>                                  
+                        </button>
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@ Soyuz - Badges
                         <span class="badge badge-warning">Warning</span>
                         <span class="badge badge-info">Info</span>
                         <span class="badge badge-light">Light</span>
-                        <span class="badge badge-dark">Dark</span>                                    
+                        <span class="badge badge-dark">Dark</span>
                     </div>
                 </div>
             </div>
@@ -136,17 +136,17 @@ Soyuz - Badges
                         <a href="#" class="badge badge-warning">Warning</a>
                         <a href="#" class="badge badge-info">Info</a>
                         <a href="#" class="badge badge-light">Light</a>
-                        <a href="#" class="badge badge-dark">Dark</a>                                    
-                    </div>                                
+                        <a href="#" class="badge badge-dark">Dark</a>
+                    </div>
                 </div>
             </div>
         </div>
         <!-- End col -->
-    </div>   
+    </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

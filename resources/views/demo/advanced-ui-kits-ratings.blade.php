@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Ratings
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Ratings</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Advanced UI</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Ratings</li>
                 </ol>
@@ -22,12 +22,12 @@ Soyuz - Ratings
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -51,9 +51,9 @@ Soyuz - Ratings
                             <option value="9">9</option>
                             <option value="10">10</option>
                         </select>
-                    </div>    
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -69,10 +69,10 @@ Soyuz - Ratings
                             <option value="Mediocre">Mediocre</option>
                             <option value="Good" selected="selected">Good</option>
                             <option value="Awesome">Awesome</option>
-                        </select>                                   
-                    </div>    
+                        </select>
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -89,10 +89,10 @@ Soyuz - Ratings
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
-                        </select>                                   
-                    </div>    
+                        </select>
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -110,10 +110,10 @@ Soyuz - Ratings
                             <option value="D">D</option>
                             <option value="E">E</option>
                             <option value="F">F</option>
-                        </select>                                   
-                    </div>    
+                        </select>
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -130,10 +130,10 @@ Soyuz - Ratings
                             <option value="Neither Agree or Disagree" selected="selected">Neither Agree or Disagree</option>
                             <option value="Disagree">Disagree</option>
                             <option value="Strongly Disagree">Strongly Disagree</option>
-                        </select>                                                                      
-                    </div>    
+                        </select>
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -155,10 +155,10 @@ Soyuz - Ratings
                             <option value="3">3</option>
                             <option value="2">2</option>
                             <option value="1" selected="selected">1</option>
-                        </select>                                                                      
-                    </div>    
+                        </select>
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -176,9 +176,9 @@ Soyuz - Ratings
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
-                    </div>   
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -208,9 +208,9 @@ Soyuz - Ratings
                         Your rating: <span class="value"></span>&nbsp;
                         <a href="#" class="clear-rating"><i class="fa fa-times-circle"></i></a>
                         </span>
-                    </div>   
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
@@ -228,18 +228,18 @@ Soyuz - Ratings
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
-                    </div>   
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
         <!-- End col -->
     </div>
-    <!-- End row --> 
+    <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- jQuery Bar Rating js -->
-<script src="{{ asset('assets/plugins/jquery-bar-rating/jquery.barrating.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-barrating.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/jquery-bar-rating/jquery.barrating.min.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-barrating.js') }}"></script>
+@endsection

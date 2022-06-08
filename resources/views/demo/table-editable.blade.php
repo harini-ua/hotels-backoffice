@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Editable
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Editable</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Tables</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Editable</li>
                 </ol>
@@ -22,13 +22,13 @@ Soyuz - Editable
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">                
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
@@ -47,7 +47,7 @@ Soyuz - Editable
                                 <th>Name</th>
                                 <th>Position</th>
                                 <th>Email ID</th>
-                                <th>Phone</th>                                                   
+                                <th>Phone</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -56,21 +56,21 @@ Soyuz - Editable
                                   <td>Mark</td>
                                   <td>CEO</td>
                                   <td>demo@example.com</td>
-                                  <td>9898989898</td>                               
+                                  <td>9898989898</td>
                               </tr>
                               <tr>
                                   <td>2</td>
                                   <td>Larry</td>
                                   <td>Manager</td>
                                   <td>demo@example.com</td>
-                                  <td>9797979797</td>                                 
+                                  <td>9797979797</td>
                               </tr>
                               <tr>
                                   <td>3</td>
                                   <td>John</td>
                                   <td>Employee</td>
                                   <td>demo@example.com</td>
-                                  <td>9696969696</td>                                 
+                                  <td>9696969696</td>
                               </tr>
                             </tbody>
                         </table>
@@ -96,7 +96,7 @@ Soyuz - Editable
                                     <th>Name</th>
                                     <th>Position</th>
                                     <th>Email ID</th>
-                                    <th>Phone</th>                                    
+                                    <th>Phone</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -105,21 +105,21 @@ Soyuz - Editable
                                   <td>Mark</td>
                                   <td>CEO</td>
                                   <td>demo@example.com</td>
-                                  <td>9898989898</td>                               
+                                  <td>9898989898</td>
                               </tr>
                               <tr>
                                   <td>2</td>
                                   <td>Larry</td>
                                   <td>Manager</td>
                                   <td>demo@example.com</td>
-                                  <td>9797979797</td>                                 
+                                  <td>9797979797</td>
                               </tr>
                               <tr>
                                   <td>3</td>
                                   <td>John</td>
                                   <td>Employee</td>
                                   <td>demo@example.com</td>
-                                  <td>9696969696</td>                                 
+                                  <td>9696969696</td>
                               </tr>
                             </tbody>
                         </table>
@@ -132,9 +132,9 @@ Soyuz - Editable
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Tabledit js -->
-<script src="{{ asset('assets/plugins/tabledit/jquery.tabledit.js') }}"></script>     
-<script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/tabledit/jquery.tabledit.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-table-editable.js') }}"></script>
+@endsection

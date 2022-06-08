@@ -1,21 +1,21 @@
-@section('title') 
+@section('title')
 Soyuz - Single Product
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 <!-- Slick css -->
-<link href="{{ asset('assets/plugins/slick/slick.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('assets/plugins/slick/slick-theme.css') }}" rel="stylesheet" type="text/css">
-@endsection 
+<link href="{{ asset('demo/assets/plugins/slick/slick.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('demo/assets/plugins/slick/slick-theme.css') }}" rel="stylesheet" type="text/css">
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Single Product</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">eCommerce</a></li>
                     <li class="breadcrumb-item"><a href="#">Front End</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Single Product</li>
@@ -25,13 +25,13 @@ Soyuz - Single Product
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">                
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
@@ -99,7 +99,7 @@ Soyuz - Single Product
                                 <span class="ml-2">51 Ratings</span>
                             </p>
                             <p class="text-primary font-26 f-w-7 my-3"><sup class="font-16">$</sup>75</p>
-                            <p class="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>                                        
+                            <p class="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                             <div class="custom-radio-button mt-3">
                                 <h6>Select Color</h6>
                                 <div class="form-check-inline radio-primary">
@@ -214,7 +214,7 @@ Soyuz - Single Product
                                 <li class="media">
                                     <img src="assets/images/users/girl.svg" class="img-fluid mr-3" alt="user">
                                     <div class="media-body">
-                                        <h5 class="font-16 mt-0 mb-1">Denzel Page</h5>  
+                                        <h5 class="font-16 mt-0 mb-1">Denzel Page</h5>
                                         <p class="text-muted font-14">
                                             <i class="feather icon-star text-success"></i>
                                             <i class="feather icon-star text-success"></i>
@@ -249,7 +249,7 @@ Soyuz - Single Product
                     </div>
                 </div>
             </div>
-        </div>                    
+        </div>
         <!-- End col -->
     </div>
     <!-- End row -->
@@ -262,14 +262,14 @@ Soyuz - Single Product
                 </div>
                 <div class="card-body">
                     <!-- Start row -->
-                    <div class="row">                                    
+                    <div class="row">
                         <!-- Start col -->
                         <div class="col-lg-6 col-xl-3">
                             <div class="product-bar m-b-30">
                                 <div class="product-head">
-                                    <a href="{{url('/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_02.jpg" class="img-fluid" alt="product"></a>
+                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_02.jpg" class="img-fluid" alt="product"></a>
                                     <p><span class="badge badge-primary font-14">New</span></p>
-                                </div>                                            
+                                </div>
                                 <div class="product-body py-3">
                                     <div class="row align-items-center">
                                         <div class="col-12">
@@ -310,9 +310,9 @@ Soyuz - Single Product
                         <div class="col-lg-6 col-xl-3">
                             <div class="product-bar m-b-30">
                                 <div class="product-head">
-                                    <a href="{{url('/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_03.jpg" class="img-fluid" alt="product"></a>
+                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_03.jpg" class="img-fluid" alt="product"></a>
                                     <p><span class="badge badge-danger font-14">Price Down</span></p>
-                                </div>                                            
+                                </div>
                                 <div class="product-body py-3">
                                     <div class="row align-items-center">
                                         <div class="col-12">
@@ -353,9 +353,9 @@ Soyuz - Single Product
                         <div class="col-lg-6 col-xl-3">
                             <div class="product-bar m-b-30">
                                 <div class="product-head">
-                                    <a href="{{url('/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_04.jpg" class="img-fluid" alt="product"></a>
-                                    <p><span class="badge badge-success font-14">Sale</span></p>  
-                                </div>                                            
+                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_04.jpg" class="img-fluid" alt="product"></a>
+                                    <p><span class="badge badge-success font-14">Sale</span></p>
+                                </div>
                                 <div class="product-body py-3">
                                     <div class="row align-items-center">
                                         <div class="col-12">
@@ -396,9 +396,9 @@ Soyuz - Single Product
                         <div class="col-lg-6 col-xl-3">
                             <div class="product-bar m-b-30">
                                 <div class="product-head">
-                                    <a href="{{url('/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_05.jpg" class="img-fluid" alt="product"></a>
-                                    <p><span class="badge badge-warning font-14">Trending</span></p>   
-                                </div>                                            
+                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_05.jpg" class="img-fluid" alt="product"></a>
+                                    <p><span class="badge badge-warning font-14">Trending</span></p>
+                                </div>
                                 <div class="product-body py-3">
                                     <div class="row align-items-center">
                                         <div class="col-12">
@@ -435,7 +435,7 @@ Soyuz - Single Product
                             </div>
                         </div>
                         <!-- End col -->
-                    </div>                    
+                    </div>
                     <!-- End row -->
                 </div>
             </div>
@@ -444,9 +444,9 @@ Soyuz - Single Product
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Slick js -->
-<script src="{{ asset('assets/plugins/slick/slick.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-ecommerce-single-product.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/slick/slick.min.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-ecommerce-single-product.js') }}"></script>
+@endsection

@@ -1,23 +1,23 @@
-@section('title') 
+@section('title')
 Soyuz - Form Selects
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 <!-- Select2 css -->
-<link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('demo/assets/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
 <!-- Tagsinput css -->
-<link href="{{ asset('assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.css') }}" rel="stylesheet" type="text/css" />
-@endsection 
+<link href="{{ asset('demo/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('demo/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Selects</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Forms</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Selects</li>
                 </ol>
@@ -26,12 +26,12 @@ Soyuz - Form Selects
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
+<!-- Start Contentbar -->
 <div class="contentbar">
     <!-- Start row -->
     <div class="row">
@@ -107,7 +107,7 @@ Soyuz - Form Selects
                     </select>
                 </div>
             </div>
-        </div>  
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6">
@@ -180,7 +180,7 @@ Soyuz - Form Selects
                     </select>
                 </div>
             </div>
-        </div>  
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6">
@@ -192,7 +192,7 @@ Soyuz - Form Selects
                     <input type="text" id="tagsinput-default" class="form-control" value="Amsterdam,Washington,Sydney" data-role="tagsinput" />
                 </div>
             </div>
-        </div>  
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6">
@@ -204,7 +204,7 @@ Soyuz - Form Selects
                     <input type="text" id="tagsinput-typehead" class="form-control"  value="Amsterdam,Washington" data-role="tagsinput" />
                 </div>
             </div>
-        </div>  
+        </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6">
@@ -216,18 +216,18 @@ Soyuz - Form Selects
                     <input type="text" id="tagsinput-category" class="form-control"  value="Amsterdam,Washington" data-role="tagsinput" />
                 </div>
             </div>
-        </div>  
+        </div>
         <!-- End col -->
-    </div> 
+    </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Select2 js -->
-<script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>    
+<script src="{{ asset('demo/assets/plugins/select2/select2.min.js') }}"></script>
 <!-- Tagsinput js -->
-<script src="{{ asset('assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/bootstrap-tagsinput/typeahead.bundle.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-form-select.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/bootstrap-tagsinput/typeahead.bundle.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-form-select.js') }}"></script>
+@endsection

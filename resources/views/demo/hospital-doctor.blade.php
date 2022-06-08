@@ -1,19 +1,19 @@
-@section('title') 
+@section('title')
 Soyuz - Hospital Doctor
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
 
-@endsection 
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Doctors</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Hospital</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Doctors</li>
                 </ol>
@@ -39,17 +39,17 @@ Soyuz - Hospital Doctor
                                         <div class="form-group col-md-12">
                                             <label for="doctorid">ID</label>
                                             <input type="text" class="form-control" id="doctorid">
-                                        </div>                                                    
+                                        </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="doctorname">Doctor Name</label>
                                             <input type="text" class="form-control" id="doctorname">
-                                        </div> 
+                                        </div>
                                         <div class="form-group col-md-6">
                                             <label for="doctordegree">Degree</label>
                                             <input type="text" class="form-control" id="doctordegree">
-                                        </div>                                                                                                 
+                                        </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
@@ -66,7 +66,7 @@ Soyuz - Hospital Doctor
                                             <label for="doctorpic">Picture</label>
                                             <input type="file" class="form-control" id="doctorpic">
                                         </div>
-                                    </div>                                                
+                                    </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
@@ -75,13 +75,13 @@ Soyuz - Hospital Doctor
                         </div>
                     </div>
                 </div>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">                
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
@@ -93,7 +93,7 @@ Soyuz - Hospital Doctor
                     <div class="doctor-detail">
                         <p class="mb-1">M.D (Cardiac), Heart Surgeon</p>
                         <p>University of South Carolina</p>
-                    </div>                                
+                    </div>
                     <p class="mb-0"><span class="badge badge-primary-inverse">CARDIOLOGIST</span></p>
                 </div>
                 <div class="card-footer text-center">
@@ -110,7 +110,7 @@ Soyuz - Hospital Doctor
                 </div>
             </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
             <div class="card doctor-box m-b-30">
@@ -120,7 +120,7 @@ Soyuz - Hospital Doctor
                     <div class="doctor-detail">
                         <p class="mb-1">M.D (Ortho), Knee Specialist</p>
                         <p>University of Colorado</p>
-                    </div>                                
+                    </div>
                     <p class="mb-0"><span class="badge badge-success-inverse">ORTHOPEDICS</span></p>
                 </div>
                 <div class="card-footer text-center">
@@ -137,7 +137,7 @@ Soyuz - Hospital Doctor
                 </div>
             </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
             <div class="card doctor-box m-b-30">
@@ -147,7 +147,7 @@ Soyuz - Hospital Doctor
                     <div class="doctor-detail">
                         <p class="mb-1">M.D (Ped.), NICU-PICU</p>
                         <p>South Medical Institute</p>
-                    </div>                                
+                    </div>
                     <p class="mb-0"><span class="badge badge-warning-inverse">PEDIATRICIAN</span></p>
                 </div>
                 <div class="card-footer text-center">
@@ -164,7 +164,7 @@ Soyuz - Hospital Doctor
                 </div>
             </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
             <div class="card doctor-box m-b-30">
@@ -174,7 +174,7 @@ Soyuz - Hospital Doctor
                     <div class="doctor-detail">
                         <p class="mb-1">M.D (Gynec), IVF Specialist</p>
                         <p>University of Simmer, Sola</p>
-                    </div>                                
+                    </div>
                     <p class="mb-0"><span class="badge badge-danger-inverse">GYNECOLOGIST</span></p>
                 </div>
                 <div class="card-footer text-center">
@@ -191,7 +191,7 @@ Soyuz - Hospital Doctor
                 </div>
             </div>
         </div>
-        <!-- End col -->  
+        <!-- End col -->
 
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
@@ -202,7 +202,7 @@ Soyuz - Hospital Doctor
                     <div class="doctor-detail">
                         <p class="mb-1">M.D (CardioVasl), Vacular Surgeon</p>
                         <p>NY Medical Science Institute</p>
-                    </div>                                
+                    </div>
                     <p class="mb-0"><span class="badge badge-primary-inverse">CARDIOVASCULAR</span></p>
                 </div>
                 <div class="card-footer text-center">
@@ -219,7 +219,7 @@ Soyuz - Hospital Doctor
                 </div>
             </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
             <div class="card doctor-box m-b-30">
@@ -229,7 +229,7 @@ Soyuz - Hospital Doctor
                     <div class="doctor-detail">
                         <p class="mb-1">M.D (Oto), Eye Surgeon</p>
                         <p>University of Nevada</p>
-                    </div>                                
+                    </div>
                     <p class="mb-0"><span class="badge badge-success-inverse">OTOLARYNGOLOGIST</span></p>
                 </div>
                 <div class="card-footer text-center">
@@ -246,7 +246,7 @@ Soyuz - Hospital Doctor
                 </div>
             </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
             <div class="card doctor-box m-b-30">
@@ -256,7 +256,7 @@ Soyuz - Hospital Doctor
                     <div class="doctor-detail">
                         <p class="mb-1">M.D (Cosmet), Skin Care Specialist</p>
                         <p>University of Memphis</p>
-                    </div>                                
+                    </div>
                     <p class="mb-0"><span class="badge badge-warning-inverse">SKIN SPECIALIST</span></p>
                 </div>
                 <div class="card-footer text-center">
@@ -273,7 +273,7 @@ Soyuz - Hospital Doctor
                 </div>
             </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-6 col-xl-3">
             <div class="card doctor-box m-b-30">
@@ -283,7 +283,7 @@ Soyuz - Hospital Doctor
                     <div class="doctor-detail">
                         <p class="mb-1">M.D (Gastro), Stomach Specialist</p>
                         <p>University of Florida</p>
-                    </div>                                
+                    </div>
                     <p class="mb-0"><span class="badge badge-danger-inverse">GASTROLOGIST</span></p>
                 </div>
                 <div class="card-footer text-center">
@@ -300,12 +300,12 @@ Soyuz - Hospital Doctor
                 </div>
             </div>
         </div>
-        <!-- End col -->                    
+        <!-- End col -->
     </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 
-@endsection 
+@endsection

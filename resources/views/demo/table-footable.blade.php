@@ -1,20 +1,20 @@
-@section('title') 
+@section('title')
 Soyuz - Footable
-@endsection 
-@extends('layouts.main')
+@endsection
+@extends('demo.layouts.main')
 @section('style')
-<!-- Footabel css --> 
-<link href="{{ asset('assets/plugins/footable/css/footable.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-@endsection 
+<!-- Footabel css -->
+<link href="{{ asset('demo/assets/plugins/footable/css/footable.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 @section('rightbar-content')
-<!-- Start Breadcrumbbar -->                    
+<!-- Start Breadcrumbbar -->
 <div class="breadcrumbbar">
     <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">Foo</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/demo')}}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Tables</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Foo</li>
                 </ol>
@@ -23,13 +23,13 @@ Soyuz - Footable
         <div class="col-md-4 col-lg-4">
             <div class="widgetbar">
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
+            </div>
         </div>
-    </div>          
+    </div>
 </div>
 <!-- End Breadcrumbbar -->
-<!-- Start Contentbar -->    
-<div class="contentbar">                
+<!-- Start Contentbar -->
+<div class="contentbar">
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
@@ -222,7 +222,7 @@ Soyuz - Footable
                 </div>
             </div>
         </div>
-        <!-- End col --> 
+        <!-- End col -->
         <!-- Start col -->
         <div class="col-lg-12">
             <div class="card m-b-30">
@@ -236,15 +236,15 @@ Soyuz - Footable
                 </div>
             </div>
         </div>
-        <!-- End col -->                   
+        <!-- End col -->
     </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-@endsection 
+@endsection
 @section('script')
 <!-- Footable js -->
-<script src="{{ asset('assets/plugins/moment/moment.js') }}"></script>     
-<script src="{{ asset('assets/plugins/footable/js/footable.min.js') }}"></script>     
-<script src="{{ asset('assets/js/custom/custom-table-footable.js') }}"></script>
-@endsection 
+<script src="{{ asset('demo/assets/plugins/moment/moment.js') }}"></script>
+<script src="{{ asset('demo/assets/plugins/footable/js/footable.min.js') }}"></script>
+<script src="{{ asset('demo/assets/js/custom/custom-table-footable.js') }}"></script>
+@endsection

@@ -1,5 +1,5 @@
 <div class="form-group filter-item col-md-3">
-    <label for="company">{{ __('By Company Site') }}</label>
+    <label for="company">{{ __('Company Site') }}</label>
     <select
         id="company"
         name="company"
@@ -15,7 +15,7 @@
     </select>
 </div>
 <div class="form-group filter-item col-md-3">
-    <label for="country">{{ __('By Country') }}</label>
+    <label for="country">{{ __('Country') }}</label>
     <select
         id="country_id"
         name="country"
@@ -33,7 +33,7 @@
     </select>
 </div>
 <div class="form-group filter-item col-md-3">
-    <label for="city">{{ __('By City') }}</label>
+    <label for="city">{{ __('City') }}</label>
     <select
         id="city_id"
         name="city"
@@ -52,7 +52,7 @@
     </select>
 </div>
 <div class="form-group filter-item col-md-3">
-    <label for="hotel">{{ __('By Hotel') }}</label>
+    <label for="hotel">{{ __('Hotel') }}</label>
     <select
         id="hotel"
         name="hotel"
@@ -69,23 +69,7 @@
     </select>
 </div>
 <div class="form-group filter-item col-md-2">
-    <label for="provider">{{ __('By Provider') }}</label>
-    <select
-        id="provider"
-        name="provider"
-        class="form-control filter-input select-filter select2-single"
-        data-table="country-booking-list-datatable"
-        data-url="{{ route('reports.country-booking.index') }}"
-        @if(!count($providers)) disabled @endif
-    >
-        <option selected value="">{{ __('All') }}</option>
-        @foreach($providers as $id => $provider)
-            <option value="{{ $id }}">{{ $provider }}</option>
-        @endforeach
-    </select>
-</div>
-<div class="form-group filter-item col-md-2">
-    <label for="status">{{ __('By Status') }}</label>
+    <label for="status">{{ __('Booking Status') }}</label>
     <select
         id="status"
         name="status"
@@ -101,7 +85,7 @@
     </select>
 </div>
 <div class="form-group filter-item col-md-2">
-    <label for="platform">{{ __('By Booking Source') }}</label>
+    <label for="platform">{{ __('Booking Source') }}</label>
     <select
         id="platform"
         name="platform"
@@ -116,8 +100,8 @@
         @endforeach
     </select>
 </div>
-<div class="form-group filter-item col-md-2">
-    <label for="device">{{ __('By Device Version') }}</label>
+<div class="form-group filter-item col-md-4">
+    <label for="device">{{ __('Device Version') }}</label>
     <select
         id="device"
         name="device"
@@ -132,8 +116,9 @@
         @endforeach
     </select>
 </div>
+<div class="form-group filter-item col-md-4"></div>
 <div class="form-group filter-item col-md-2">
-    <label for="date_type">{{ __('By Date Type') }}</label>
+    <label for="date_type">{{ __('Date Type') }}</label>
     <select
         id="date_type"
         name="date_type"
@@ -148,7 +133,7 @@
     </select>
 </div>
 <div class="form-group filter-item mr-1 col-md-3">
-    <label for="period">{{ __('By Period') }}</label>
+    <label for="period">{{ __('Date Period') }}</label>
     <div class="input-group">
         <input type="text"
                id="period"
@@ -166,5 +151,5 @@
     </div>
 </div>
 <div class="form-group filter-item mr-1">
-    <button class="btn btn-submit" id="submit-btn" style="margin-top: 33px">{{ __('Search') }}</button>
+    <button class="btn btn-submit" id="submit-btn" style="margin-top: 33px"><i class="feather icon-calendar"></i>{{ __('Search') }}</button>
 </div>
