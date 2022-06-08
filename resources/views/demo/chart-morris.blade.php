@@ -4,7 +4,7 @@ Soyuz - Morris Chart
 @extends('demo.layouts.main')
 @section('style')
 <!-- Morris Chart css -->
-<link href="{{ asset('demo/assets/plugins/morris/morris.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/morris/morris.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -224,7 +224,7 @@ Soyuz - Morris Chart
 @endsection
 @section('script')
 <!-- Morris Chart js -->
-<script src="{{ asset('demo/assets/plugins/morris/morris.min.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/raphael/raphael-min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-chart-morris.js') }}"></script>
+<script src="{{ asset('assets/plugins/morris/morris.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/raphael/raphael-min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-chart-morris.js') }}"></script>
 @endsection

@@ -4,7 +4,7 @@ Soyuz - Form Date Picker
 @extends('demo.layouts.main')
 @section('style')
 <!-- Datepicker css -->
-<link href="{{ asset('demo/assets/plugins/datepicker/datepicker.min.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/plugins/datepicker/datepicker.min.css') }}" rel="stylesheet" type="text/css">
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -175,7 +175,7 @@ Soyuz - Form Date Picker
 @endsection
 @section('script')
 <!-- Datepicker JS -->
-<script src="{{ asset('demo/assets/plugins/datepicker/datepicker.min.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/datepicker/i18n/datepicker.en.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-form-datepicker.js') }}"></script>
+<script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datepicker/i18n/datepicker.en.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-form-datepicker.js') }}"></script>
 @endsection

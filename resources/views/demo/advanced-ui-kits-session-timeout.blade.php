@@ -52,6 +52,6 @@ Soyuz - Session Timeout
 @endsection
 @section('script')
 <!-- Session Timeout js -->
-<script src="{{ asset('demo/assets/plugins/bootstrap-session-timeout/js/bootstrap-session-timeout.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-session-timeout.js') }}"></script>
+<script src="{{ asset('assets/plugins/bootstrap-session-timeout/js/bootstrap-session-timeout.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-session-timeout.js') }}"></script>
 @endsection

@@ -4,7 +4,7 @@ Soyuz - Tour
 @extends('demo.layouts.main')
 @section('style')
 <!-- Product Tour css -->
-<link href="{{ asset('demo/assets/plugins/product-tour/product-tour.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/product-tour/product-tour.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -93,7 +93,7 @@ Soyuz - Tour
         <!-- Start col -->
         <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="card m-b-30" id="tour-card">
-                <img class="card-img-top" src="assets/images/ui-cards/ui-cards-1.jpg" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-1.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title font-18">Card title</h5>
                     <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -110,14 +110,14 @@ Soyuz - Tour
                     <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
-                <img class="card-img-top" src="assets/images/ui-cards/ui-cards-2.jpg" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-2.jpg') }}" alt="Card image cap">
             </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="card m-b-30">
-                <img class="card-img-top" src="assets/images/ui-cards/ui-cards-3.jpg" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-3.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
@@ -127,7 +127,7 @@ Soyuz - Tour
         <!-- Start col -->
         <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="card m-b-30">
-                <img class="card-img-top" src="assets/images/ui-cards/ui-cards-4.jpg" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title font-18">Card title</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -226,8 +226,8 @@ Soyuz - Tour
 @endsection
 @section('script')
 <!-- Dropzone JS -->
-<script src="{{ asset('demo/assets/plugins/dropzone/dist/dropzone.js') }}"></script>
+<script src="{{ asset('assets/plugins/dropzone/dist/dropzone.js') }}"></script>
 <!-- Product Tour js -->
-<script src="{{ asset('demo/assets/plugins/product-tour/product-tour.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-tour.js') }}"></script>
+<script src="{{ asset('assets/plugins/product-tour/product-tour.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-tour.js') }}"></script>
 @endsection

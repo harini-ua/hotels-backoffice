@@ -197,5 +197,5 @@ Soyuz - Toasts
 @endsection
 @section('script')
 <!-- Toasts js -->
-<script src="{{ asset('demo/assets/js/custom/custom-toasts.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-toasts.js') }}"></script>
 @endsection

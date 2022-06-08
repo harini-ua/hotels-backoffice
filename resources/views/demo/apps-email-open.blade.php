@@ -94,7 +94,7 @@ Soyuz - Email Open
                         <div class="row m-b-30">
                             <div class="col-md-5">
                                 <div class="media">
-                                  <img class="align-self-center mr-3" src="assets/images/users/men.svg" alt="Generic placeholder image">
+                                  <img class="align-self-center mr-3" src="{{ asset('assets/images/users/men.svg') }}" alt="Generic placeholder image">
                                   <div class="media-body">
                                     <h6 class="mt-0">John Doe</h6>
                                     <p class="text-muted mb-0">johndoe@email.com</p>
@@ -124,7 +124,7 @@ Soyuz - Email Open
                         <div class="row mt-3">
                             <div class="col-md-3">
                                 <div class="card">
-                                    <img class="card-img-top" src="./assets/images/email/file-attached-1.jpg" alt="Generic placeholder image">
+                                    <img class="card-img-top" src="./assets/images/email/file-attached-1.jpg') }}" alt="Generic placeholder image">
                                     <div class="card-body text-center">
                                         <button type="button" class="btn btn-secondary-rgba">Download</button>
                                     </div>
@@ -132,7 +132,7 @@ Soyuz - Email Open
                             </div>
                             <div class="col-md-3">
                                 <div class="card">
-                                    <img class="card-img-top" src="./assets/images/email/file-attached-2.jpg" alt="Generic placeholder image">
+                                    <img class="card-img-top" src="./assets/images/email/file-attached-2.jpg') }}" alt="Generic placeholder image">
                                     <div class="card-body text-center">
                                     <button type="button" class="btn btn-secondary-rgba">Download</button>
                                     </div>

@@ -134,6 +134,6 @@ Soyuz - Piety Chart
 @endsection
 @section('script')
 <!-- Piety Chart js -->
-<script src="{{ asset('demo/assets/plugins/peity/jquery.peity.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-chart-piety.js') }}"></script>
+<script src="{{ asset('assets/plugins/peity/jquery.peity.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-chart-piety.js') }}"></script>
 @endsection

@@ -4,7 +4,7 @@ Soyuz - jQuery Confirm
 @extends('demo.layouts.main')
 @section('style')
 <!-- jQuery Confirm css -->
-<link href="{{ asset('demo/assets/plugins/jquery-confirm/css/jquery-confirm.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/jquery-confirm/css/jquery-confirm.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -193,6 +193,6 @@ Soyuz - jQuery Confirm
 @endsection
 @section('script')
 <!-- jQuery Confirm js -->
-<script src="{{ asset('demo/assets/plugins/jquery-confirm/js/jquery-confirm.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-jquery-confirm.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery-confirm/js/jquery-confirm.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-jquery-confirm.js') }}"></script>
 @endsection

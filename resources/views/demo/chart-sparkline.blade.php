@@ -146,6 +146,6 @@ Soyuz - Sparkline Chart
 @endsection
 @section('script')
 <!-- Sparkline Chart JS -->
-<script src="{{ asset('demo/assets/plugins/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-chart-sparkline.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-chart-sparkline.js') }}"></script>
 @endsection

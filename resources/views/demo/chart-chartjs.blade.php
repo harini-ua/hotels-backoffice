@@ -266,7 +266,7 @@ Soyuz - Chart Chart
 @endsection
 @section('script')
 <!-- Chart js -->
-<script src="{{ asset('demo/assets/plugins/chart.js/chart.min.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/chart.js/chart-bundle.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-chart-chartjs.js') }}"></script>
+<script src="{{ asset('assets/plugins/chart.js/chart.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/chart.js/chart-bundle.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-chart-chartjs.js') }}"></script>
 @endsection

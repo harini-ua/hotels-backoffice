@@ -42,13 +42,13 @@ Soyuz - Carousel
                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                       <div class="carousel-inner">
                         <div class="carousel-item active">
-                          <img src="assets/images/ui-carousel/ui-carousel-1.jpg" class="d-block w-100" alt="First slide">
+                          <img src="{{ asset('assets/images/ui-carousel/ui-carousel-1.jpg') }}" class="d-block w-100" alt="First slide">
                         </div>
                         <div class="carousel-item">
-                          <img src="assets/images/ui-carousel/ui-carousel-2.jpg" class="d-block w-100" alt="Second slide">
+                          <img src="{{ asset('assets/images/ui-carousel/ui-carousel-2.jpg') }}" class="d-block w-100" alt="Second slide">
                         </div>
                         <div class="carousel-item">
-                          <img src="assets/images/ui-carousel/ui-carousel-3.jpg" class="d-block w-100" alt="Third slide">
+                          <img src="{{ asset('assets/images/ui-carousel/ui-carousel-3.jpg') }}" class="d-block w-100" alt="Third slide">
                         </div>
                       </div>
                     </div>
@@ -67,13 +67,13 @@ Soyuz - Carousel
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="assets/images/ui-carousel/ui-carousel-4.jpg" class="d-block w-100" alt="First slide">
+                                <img src="{{ asset('assets/images/ui-carousel/ui-carousel-4.jpg') }}" class="d-block w-100" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                                <img src="assets/images/ui-carousel/ui-carousel-5.jpg" class="d-block w-100" alt="Second slide">
+                                <img src="{{ asset('assets/images/ui-carousel/ui-carousel-5.jpg') }}" class="d-block w-100" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                                <img src="assets/images/ui-carousel/ui-carousel-6.jpg" class="d-block w-100" alt="Third slide">
+                                <img src="{{ asset('assets/images/ui-carousel/ui-carousel-6.jpg') }}" class="d-block w-100" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -105,13 +105,13 @@ Soyuz - Carousel
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="assets/images/ui-carousel/ui-carousel-7.jpg" class="d-block w-100" alt="First slide">
+                                <img src="{{ asset('assets/images/ui-carousel/ui-carousel-7.jpg') }}" class="d-block w-100" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                                <img src="assets/images/ui-carousel/ui-carousel-8.jpg" class="d-block w-100" alt="Second slide">
+                                <img src="{{ asset('assets/images/ui-carousel/ui-carousel-8.jpg') }}" class="d-block w-100" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                                <img src="assets/images/ui-carousel/ui-carousel-9.jpg" class="d-block w-100" alt="Third slide">
+                                <img src="{{ asset('assets/images/ui-carousel/ui-carousel-9.jpg') }}" class="d-block w-100" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -143,21 +143,21 @@ Soyuz - Carousel
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="assets/images/ui-carousel/ui-carousel-10.jpg" class="d-block w-100" alt="First slide">
+                                <img src="{{ asset('assets/images/ui-carousel/ui-carousel-10.jpg') }}" class="d-block w-100" alt="First slide">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>First slide label</h5>
                                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="assets/images/ui-carousel/ui-carousel-11.jpg" class="d-block w-100" alt="Second slide">
+                                <img src="{{ asset('assets/images/ui-carousel/ui-carousel-11.jpg') }}" class="d-block w-100" alt="Second slide">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>Second slide label</h5>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="assets/images/ui-carousel/ui-carousel-12.jpg" class="d-block w-100" alt="Third slide" >
+                                <img src="{{ asset('assets/images/ui-carousel/ui-carousel-12.jpg') }}" class="d-block w-100" alt="Third slide" >
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>Third slide label</h5>
                                     <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -188,13 +188,13 @@ Soyuz - Carousel
                     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="assets/images/ui-carousel/ui-carousel-13.jpg" class="d-block w-100" alt="First slide">
+                                <img src="{{ asset('assets/images/ui-carousel/ui-carousel-13.jpg') }}" class="d-block w-100" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                                <img src="assets/images/ui-carousel/ui-carousel-14.jpg" class="d-block w-100" alt="Second slide">
+                                <img src="{{ asset('assets/images/ui-carousel/ui-carousel-14.jpg') }}" class="d-block w-100" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                                <img src="assets/images/ui-carousel/ui-carousel-15.jpg" class="d-block w-100" alt="Third slide">
+                                <img src="{{ asset('assets/images/ui-carousel/ui-carousel-15.jpg') }}" class="d-block w-100" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
@@ -221,13 +221,13 @@ Soyuz - Carousel
                     <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-interval="10000">
-                                <img src="assets/images/ui-carousel/ui-carousel-16.jpg" class="d-block w-100" alt="First slide">
+                                <img src="{{ asset('assets/images/ui-carousel/ui-carousel-16.jpg') }}" class="d-block w-100" alt="First slide">
                             </div>
                             <div class="carousel-item" data-interval="2000">
-                                <img src="assets/images/ui-carousel/ui-carousel-17.jpg" class="d-block w-100" alt="Second slide">
+                                <img src="{{ asset('assets/images/ui-carousel/ui-carousel-17.jpg') }}" class="d-block w-100" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                                <img src="assets/images/ui-carousel/ui-carousel-18.jpg" class="d-block w-100" alt="Third slide">
+                                <img src="{{ asset('assets/images/ui-carousel/ui-carousel-18.jpg') }}" class="d-block w-100" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">

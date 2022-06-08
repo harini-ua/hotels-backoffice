@@ -4,7 +4,7 @@ Soyuz - Nestable
 @extends('demo.layouts.main')
 @section('style')
 <!-- Nestable css -->
-<link href="{{ asset('demo/assets/plugins/nestable/jquery.nestable.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/nestable/jquery.nestable.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -201,6 +201,6 @@ Soyuz - Nestable
 @endsection
 @section('script')
 <!-- Nestable js -->
-<script src="{{ asset('demo/assets/plugins/nestable/jquery.nestable.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-nestable.js') }}"></script>
+<script src="{{ asset('assets/plugins/nestable/jquery.nestable.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-nestable.js') }}"></script>
 @endsection

@@ -39,7 +39,7 @@ Soyuz - Images
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">In addition to our border-radius utilities, you can use <code class="highlighter-rouge">.img-thumbnail</code> to give an image a rounded 1px border appearance.</h6>
-                    <img src="assets/images/ui-images/image-thumbnail.jpg" alt="Thumbnail Image" class="img-thumbnail">
+                    <img src="{{ asset('assets/images/ui-images/image-thumbnail.jpg') }}" alt="Thumbnail Image" class="img-thumbnail">
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@ Soyuz - Images
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">In addition to our border-radius utilities, you can use <code class="highlighter-rouge">.rounded</code> to give an image a rounded 1px border appearance.</h6>
-                    <img src="assets/images/ui-images/image-rounded.jpg" alt="Rounded Image" class="rounded">
+                    <img src="{{ asset('assets/images/ui-images/image-rounded.jpg') }}" alt="Rounded Image" class="rounded">
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@ Soyuz - Images
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">In addition to our border-radius utilities, you can use <code class="highlighter-rouge">.rounded-circle</code> to give an image a rounded 1px border appearance.</h6>
-                    <img src="assets/images/ui-images/image-circle.jpg" alt="Rounded Image" class="rounded-circle">
+                    <img src="{{ asset('assets/images/ui-images/image-circle.jpg') }}" alt="Rounded Image" class="rounded-circle">
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@ Soyuz - Images
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Align images with the helper float classes. <code class="highlighter-rouge">.float-left or .float-right</code></h6>
-                    <img src="assets/images/ui-images/image-left.jpg" alt="Rounded Image" class="rounded float-left">
+                    <img src="{{ asset('assets/images/ui-images/image-left.jpg') }}" alt="Rounded Image" class="rounded float-left">
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@ Soyuz - Images
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">In addition to our image position utilities, you can use <code class="highlighter-rouge">.mx-auto & .d-block</code>.</h6>
-                    <img src="assets/images/ui-images/image-center.jpg" alt="Rounded Image" class="rounded mx-auto d-block">
+                    <img src="{{ asset('assets/images/ui-images/image-center.jpg') }}" alt="Rounded Image" class="rounded mx-auto d-block">
                 </div>
             </div>
         </div>
@@ -104,7 +104,7 @@ Soyuz - Images
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Align images with the helper float classes. <code class="highlighter-rouge">.float-left or .float-right</code></h6>
-                    <img src="assets/images/ui-images/image-right.jpg" alt="Rounded Image" class="rounded float-right">
+                    <img src="{{ asset('assets/images/ui-images/image-right.jpg') }}" alt="Rounded Image" class="rounded float-right">
                 </div>
             </div>
         </div>
@@ -117,7 +117,7 @@ Soyuz - Images
                 </div>
                 <div class="card-body">
                     <h6 class="card-subtitle">Images in Bootstrap are made responsive with <code class="highlighter-rouge">.img-fluid</code>. <code class="highlighter-rouge">max-width: 100%;</code> and <code class="highlighter-rouge">height: auto;</code> are applied to the image so that it scales with the parent element.</h6>
-                    <img src="assets/images/ui-images/image-responsive.jpg" class="img-fluid" alt="Responsive image">
+                    <img src="{{ asset('assets/images/ui-images/image-responsive.jpg') }}" class="img-fluid" alt="Responsive image">
                 </div>
             </div>
         </div>

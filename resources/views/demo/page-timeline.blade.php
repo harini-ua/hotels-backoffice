@@ -4,7 +4,7 @@ Soyuz - Timeline
 @extends('demo.layouts.main')
 @section('style')
 <!-- Vertical Timeline css -->
-<link href="{{ asset('demo/assets/plugins/vertical-timeline/vertical-timeline.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/vertical-timeline/vertical-timeline.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -90,5 +90,5 @@ Soyuz - Timeline
 @endsection
 @section('script')
 <!-- Timeline js -->
-<script src="{{ asset('demo/assets/plugins/vertical-timeline/vertical-timeline.js') }}"></script>
+<script src="{{ asset('assets/plugins/vertical-timeline/vertical-timeline.js') }}"></script>
 @endsection

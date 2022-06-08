@@ -4,7 +4,7 @@ Soyuz - RWD Table
 @extends('demo.layouts.main')
 @section('style')
 <!-- RWD Table css -->
-<link href="{{ asset('demo/assets/plugins/rwd-table-patterns/rwd-table.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/rwd-table-patterns/rwd-table.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -507,6 +507,6 @@ Soyuz - RWD Table
 @endsection
 @section('script')
 <!-- RWD Table js -->
-<script src="{{ asset('demo/assets/plugins/rwd-table-patterns/rwd-table.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-table-rwd.js') }}"></script>
+<script src="{{ asset('assets/plugins/rwd-table-patterns/rwd-table.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-table-rwd.js') }}"></script>
 @endsection

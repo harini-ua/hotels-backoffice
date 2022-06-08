@@ -471,8 +471,8 @@ Soyuz - Form Validations
 @endsection
 @section('script')
 <!-- Parsley js -->
-<script src="{{ asset('demo/assets/plugins/validatejs/validate.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/validatejs/validate.min.js') }}"></script>
 <!-- Validate js -->
-<script src="{{ asset('demo/assets/js/custom/custom-validate.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-form-validation.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-validate.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-form-validation.js') }}"></script>
 @endsection

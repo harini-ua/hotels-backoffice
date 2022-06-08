@@ -103,6 +103,6 @@ Soyuz - Form Max Length
 @endsection
 @section('script')
 <!-- MaxLength js -->
-<script src="{{ asset('demo/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-form-maxlength.js') }}"></script>
+<script src="{{ asset('assets/plugins/bootstrap-maxlength/bootstrap-maxlength.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-form-maxlength.js') }}"></script>
 @endsection

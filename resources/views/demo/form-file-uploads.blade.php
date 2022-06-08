@@ -4,7 +4,7 @@ Soyuz - Form Uploads
 @extends('demo.layouts.main')
 @section('style')
 <!-- Dropzone css -->
-<link href="{{ asset('demo/assets/plugins/dropzone/dist/dropzone.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/plugins/dropzone/dist/dropzone.css') }}" rel="stylesheet" type="text/css">
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -58,5 +58,5 @@ Soyuz - Form Uploads
 @endsection
 @section('script')
 <!-- Dropzone js -->
-<script src="{{ asset('demo/assets/plugins/dropzone/dist/dropzone.js') }}"></script>
+<script src="{{ asset('assets/plugins/dropzone/dist/dropzone.js') }}"></script>
 @endsection

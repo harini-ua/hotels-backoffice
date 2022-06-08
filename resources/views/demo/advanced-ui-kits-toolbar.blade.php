@@ -4,7 +4,7 @@ Soyuz - Toolbar
 @extends('demo.layouts.main')
 @section('style')
  <!-- Toolbar css -->
-<link href="{{ asset('demo/assets/plugins/toolbar/jquery.toolbar.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/toolbar/jquery.toolbar.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -381,6 +381,6 @@ Soyuz - Toolbar
 @endsection
 @section('script')
 <!-- Toolbar js -->
-<script src="{{ asset('demo/assets/plugins/toolbar/jquery.toolbar.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-toolbar.js') }}"></script>
+<script src="{{ asset('assets/plugins/toolbar/jquery.toolbar.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-toolbar.js') }}"></script>
 @endsection

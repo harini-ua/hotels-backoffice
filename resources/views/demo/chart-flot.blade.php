@@ -159,24 +159,24 @@ Soyuz - Flot Chart
 @endsection
 @section('script')
 <!-- Flot Chart JS -->
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.min.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.tooltip.min.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.colorhelpers.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.categories.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.errorbars.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.fillbetween.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.image.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.navigate.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.orderBars.min.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.pie.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.resize.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.selection.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.stack.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.symbol.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.threshold.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.time.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.canvas.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/curvedLines.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/flot-chart/jquery.flot.crosshair.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-chart-flot.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.tooltip.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.colorhelpers.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.categories.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.errorbars.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.fillbetween.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.image.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.navigate.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.orderBars.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.pie.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.resize.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.selection.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.stack.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.symbol.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.threshold.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.time.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.canvas.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/curvedLines.js') }}"></script>
+<script src="{{ asset('assets/plugins/flot-chart/jquery.flot.crosshair.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-chart-flot.js') }}"></script>
 @endsection

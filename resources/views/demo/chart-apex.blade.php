@@ -4,7 +4,7 @@ Soyuz - Apex Chart
 @extends('demo.layouts.main')
 @section('style')
 <!-- Apex css -->
-<link href="{{ asset('demo/assets/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -188,7 +188,7 @@ Soyuz - Apex Chart
 @endsection
 @section('script')
 <!-- Apex js -->
-<script src="{{ asset('demo/assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/apexcharts/irregular-data-series.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-chart-apex.js') }}"></script>
+<script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/apexcharts/irregular-data-series.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-chart-apex.js') }}"></script>
 @endsection

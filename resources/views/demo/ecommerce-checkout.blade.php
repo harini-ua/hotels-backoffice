@@ -195,9 +195,9 @@ Soyuz - Checkout
 @endsection
 @section('script')
 <!-- Form Step js -->
-<script src="{{ asset('demo/assets/plugins/jquery-step/jquery.steps.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-form-wizard.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery-step/jquery.steps.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-form-wizard.js') }}"></script>
 <!-- Card js -->
-<script src="{{ asset('demo/assets/plugins/creditcard/card.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-creditcard.js') }}"></script>
+<script src="{{ asset('assets/plugins/creditcard/card.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-creditcard.js') }}"></script>
 @endsection

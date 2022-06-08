@@ -135,6 +135,6 @@ Soyuz - Editable
 @endsection
 @section('script')
 <!-- Tabledit js -->
-<script src="{{ asset('demo/assets/plugins/tabledit/jquery.tabledit.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-table-editable.js') }}"></script>
+<script src="{{ asset('assets/plugins/tabledit/jquery.tabledit.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script>
 @endsection

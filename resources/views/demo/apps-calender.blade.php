@@ -4,7 +4,7 @@ Soyuz - Calender
 @extends('demo.layouts.main')
 @section('style')
 <!-- Calendar css -->
-<link href="{{ asset('demo/assets/plugins/fullcalendar/css/fullcalendar.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/fullcalendar/css/fullcalendar.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -77,9 +77,9 @@ Soyuz - Calender
 @endsection
 @section('script')
 <!-- jQuery UI -->
-<script src="{{ asset('demo/assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/moment/moment.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/moment/moment.js') }}"></script>
 <!-- Events js -->
-<script src="{{ asset('demo/assets/plugins/fullcalendar/js/fullcalendar.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-calender.js') }}"></script>
+<script src="{{ asset('assets/plugins/fullcalendar/js/fullcalendar.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-calender.js') }}"></script>
 @endsection

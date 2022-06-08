@@ -143,5 +143,5 @@ Soyuz - Switchery
 @endsection
 @section('script')
 <!-- Custom Switchery js -->
-<script src="{{ asset('demo/assets/js/custom/custom-switchery.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-switchery.js') }}"></script>
 @endsection

@@ -60,7 +60,7 @@ Soyuz - Cart
                                                 <tr>
                                                     <th scope="row">1</th>
                                                     <td><a href="#" class="text-danger"><i class="feather icon-trash"></i></a></td>
-                                                    <td><img src="assets/images/ecommerce/product_01.svg" class="img-fluid" width="35" alt="product"></td>
+                                                    <td><img src="{{ asset('assets/images/ecommerce/product_01.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                                     <td>Electronic Kettle</td>
                                                     <td>
                                                         <div class="form-group mb-0">
@@ -73,7 +73,7 @@ Soyuz - Cart
                                                 <tr>
                                                     <th scope="row">2</th>
                                                     <td><a href="#" class="text-danger"><i class="feather icon-trash"></i></a></td>
-                                                    <td><img src="assets/images/ecommerce/product_02.svg" class="img-fluid" width="35" alt="product"></td>
+                                                    <td><img src="{{ asset('assets/images/ecommerce/product_02.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                                     <td>Fitness Band</td>
                                                     <td>
                                                         <div class="form-group mb-0">
@@ -86,7 +86,7 @@ Soyuz - Cart
                                                 <tr>
                                                     <th scope="row">3</th>
                                                     <td><a href="#" class="text-danger"><i class="feather icon-trash"></i></a></td>
-                                                    <td><img src="assets/images/ecommerce/product_03.svg" class="img-fluid" width="35" alt="product"></td>
+                                                    <td><img src="{{ asset('assets/images/ecommerce/product_03.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                                     <td>iPhone XR</td>
                                                     <td>
                                                         <div class="form-group mb-0">

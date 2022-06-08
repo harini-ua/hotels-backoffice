@@ -155,7 +155,7 @@ Soyuz - Knob Chart
 @endsection
 @section('script')
 <!-- Knob Chart js -->
-<script src="{{ asset('demo/assets/plugins/jquery-knob/excanvas.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-chart-knob.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery-knob/excanvas.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-chart-knob.js') }}"></script>
 @endsection

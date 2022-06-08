@@ -4,7 +4,7 @@ Soyuz - Tree View
 @extends('demo.layouts.main')
 @section('style')
 <!-- JS Tree css -->
-<link href="{{ asset('demo/assets/plugins/jstree/jstree.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/jstree/jstree.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -87,6 +87,6 @@ Soyuz - Tree View
 @endsection
 @section('script')
 <!-- JS Tree js -->
-<script src="{{ asset('demo/assets/plugins/jstree/jstree.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-jstree.js') }}"></script>
+<script src="{{ asset('assets/plugins/jstree/jstree.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-jstree.js') }}"></script>
 @endsection

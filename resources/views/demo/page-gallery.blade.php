@@ -54,7 +54,7 @@ Soyuz - Gallery
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 latest">
                                     <div class="gallery-box">
                                         <div class="gallery-preview">
-                                            <img src="assets/images/gallery/gallery-1.jpg" class="img-fluid" alt="gallery image"/>
+                                            <img src="{{ asset('assets/images/gallery/gallery-1.jpg') }}" class="img-fluid" alt="gallery image"/>
                                         </div>
                                         <div class="gallery-content">
                                             <p>latest</p>
@@ -65,7 +65,7 @@ Soyuz - Gallery
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 fashion">
                                     <div class="gallery-box">
                                         <div class="gallery-preview">
-                                            <img src="assets/images/gallery/gallery-2.jpg" class="img-fluid" alt="gallery image"/>
+                                            <img src="{{ asset('assets/images/gallery/gallery-2.jpg') }}" class="img-fluid" alt="gallery image"/>
                                         </div>
                                         <div class="gallery-content">
                                             <p>fashion</p>
@@ -76,7 +76,7 @@ Soyuz - Gallery
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 popular">
                                     <div class="gallery-box">
                                         <div class="gallery-preview">
-                                            <img src="assets/images/gallery/gallery-3.jpg" class="img-fluid" alt="gallery image"/>
+                                            <img src="{{ asset('assets/images/gallery/gallery-3.jpg') }}" class="img-fluid" alt="gallery image"/>
                                         </div>
                                         <div class="gallery-content">
                                             <p>popular</p>
@@ -87,7 +87,7 @@ Soyuz - Gallery
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 trending">
                                     <div class="gallery-box">
                                         <div class="gallery-preview">
-                                            <img src="assets/images/gallery/gallery-4.jpg" class="img-fluid" alt="gallery image"/>
+                                            <img src="{{ asset('assets/images/gallery/gallery-4.jpg') }}" class="img-fluid" alt="gallery image"/>
                                         </div>
                                         <div class="gallery-content">
                                             <p>trending</p>
@@ -98,7 +98,7 @@ Soyuz - Gallery
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 sale">
                                     <div class="gallery-box">
                                         <div class="gallery-preview">
-                                            <img src="assets/images/gallery/gallery-5.jpg" class="img-fluid" alt="gallery image"/>
+                                            <img src="{{ asset('assets/images/gallery/gallery-5.jpg') }}" class="img-fluid" alt="gallery image"/>
                                         </div>
                                         <div class="gallery-content">
                                             <p>sale</p>
@@ -109,7 +109,7 @@ Soyuz - Gallery
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 latest">
                                     <div class="gallery-box">
                                         <div class="gallery-preview">
-                                            <img src="assets/images/gallery/gallery-6.jpg" class="img-fluid" alt="gallery image"/>
+                                            <img src="{{ asset('assets/images/gallery/gallery-6.jpg') }}" class="img-fluid" alt="gallery image"/>
                                         </div>
                                         <div class="gallery-content">
                                             <p>latest</p>
@@ -120,7 +120,7 @@ Soyuz - Gallery
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 fashion">
                                     <div class="gallery-box">
                                         <div class="gallery-preview">
-                                            <img src="assets/images/gallery/gallery-7.jpg" class="img-fluid" alt="gallery image"/>
+                                            <img src="{{ asset('assets/images/gallery/gallery-7.jpg') }}" class="img-fluid" alt="gallery image"/>
                                         </div>
                                         <div class="gallery-content">
                                             <p>fashion</p>
@@ -131,7 +131,7 @@ Soyuz - Gallery
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 popular">
                                     <div class="gallery-box">
                                         <div class="gallery-preview">
-                                            <img src="assets/images/gallery/gallery-8.jpg" class="img-fluid" alt="gallery image"/>
+                                            <img src="{{ asset('assets/images/gallery/gallery-8.jpg') }}" class="img-fluid" alt="gallery image"/>
                                         </div>
                                         <div class="gallery-content">
                                             <p>popular</p>
@@ -142,7 +142,7 @@ Soyuz - Gallery
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 trending">
                                     <div class="gallery-box">
                                         <div class="gallery-preview">
-                                            <img src="assets/images/gallery/gallery-9.jpg" class="img-fluid" alt="gallery image"/>
+                                            <img src="{{ asset('assets/images/gallery/gallery-9.jpg') }}" class="img-fluid" alt="gallery image"/>
                                         </div>
                                         <div class="gallery-content">
                                             <p>trending</p>
@@ -153,7 +153,7 @@ Soyuz - Gallery
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 sale">
                                     <div class="gallery-box">
                                         <div class="gallery-preview">
-                                            <img src="assets/images/gallery/gallery-10.jpg" class="img-fluid" alt="gallery image"/>
+                                            <img src="{{ asset('assets/images/gallery/gallery-10.jpg') }}" class="img-fluid" alt="gallery image"/>
                                         </div>
                                         <div class="gallery-content">
                                             <p>sale</p>
@@ -164,7 +164,7 @@ Soyuz - Gallery
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 fashion">
                                     <div class="gallery-box">
                                         <div class="gallery-preview">
-                                            <img src="assets/images/gallery/gallery-11.jpg" class="img-fluid" alt="gallery image"/>
+                                            <img src="{{ asset('assets/images/gallery/gallery-11.jpg') }}" class="img-fluid" alt="gallery image"/>
                                         </div>
                                         <div class="gallery-content">
                                             <p>fashion</p>
@@ -175,7 +175,7 @@ Soyuz - Gallery
                                 <div class="grid-item col-sm-6 col-md-6 col-lg-4 col-xl-3 sale">
                                     <div class="gallery-box">
                                         <div class="gallery-preview">
-                                            <img src="assets/images/gallery/gallery-12.jpg" class="img-fluid" alt="gallery image"/>
+                                            <img src="{{ asset('assets/images/gallery/gallery-12.jpg') }}" class="img-fluid" alt="gallery image"/>
                                         </div>
                                         <div class="gallery-content">
                                             <p>sale</p>
@@ -197,6 +197,6 @@ Soyuz - Gallery
 @endsection
 @section('script')
 <!-- Isotope js -->
-<script src="{{ asset('demo/assets/plugins/isotope/isotope.pkgd.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-gallery.js') }}"></script>
+<script src="{{ asset('assets/plugins/isotope/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-gallery.js') }}"></script>
 @endsection

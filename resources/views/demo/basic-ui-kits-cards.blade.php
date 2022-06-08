@@ -34,7 +34,7 @@ Soyuz - Cards
         <!-- Start col -->
         <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="card m-b-30">
-                <img class="card-img-top" src="assets/images/ui-cards/ui-cards-1.jpg" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-1.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title font-18">Card title</h5>
                     <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -51,14 +51,14 @@ Soyuz - Cards
                     <p class="card-text mb-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
-                <img class="card-img-top" src="assets/images/ui-cards/ui-cards-2.jpg" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-2.jpg') }}" alt="Card image cap">
             </div>
         </div>
         <!-- End col -->
         <!-- Start col -->
         <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="card m-b-30">
-                <img class="card-img-top" src="assets/images/ui-cards/ui-cards-3.jpg" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-3.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
@@ -68,7 +68,7 @@ Soyuz - Cards
         <!-- Start col -->
         <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="card m-b-30">
-                <img class="card-img-top" src="assets/images/ui-cards/ui-cards-4.jpg" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-4.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title font-18">Card title</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -235,7 +235,7 @@ Soyuz - Cards
             <div class="card m-b-30">
               <div class="row no-gutters">
                 <div class="col-md-6">
-                  <img src="assets/images/ui-cards/ui-cards-5.jpg" class="card-img h-100" alt="Card image">
+                  <img src="{{ asset('assets/images/ui-cards/ui-cards-5.jpg') }}" class="card-img h-100" alt="Card image">
                 </div>
                 <div class="col-md-6">
                   <div class="card-body">
@@ -252,7 +252,7 @@ Soyuz - Cards
         <!-- Start col -->
         <div class="col-md-12 col-lg-12 col-xl-4">
             <div class="card m-b-30">
-                <img class="card-img-top" src="assets/images/ui-cards/ui-cards-6.jpg" alt="Card image">
+                <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-6.jpg') }}" alt="Card image">
                 <div class="card-img-overlay">
                     <h5 class="card-title text-white font-18">Card title</h5>
                     <p class="card-text text-white">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -541,7 +541,7 @@ Soyuz - Cards
         <div class="col-lg-12">
             <div class="card-group m-b-30">
                 <div class="card">
-                    <img class="card-img-top" src="assets/images/ui-cards/ui-cards-7.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-7.jpg') }}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title font-18">Card title</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -549,7 +549,7 @@ Soyuz - Cards
                     </div>
                 </div>
                 <div class="card">
-                    <img class="card-img-top" src="assets/images/ui-cards/ui-cards-8.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-8.jpg') }}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title font-18">Card title</h5>
                         <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -557,7 +557,7 @@ Soyuz - Cards
                     </div>
                 </div>
                 <div class="card">
-                    <img class="card-img-top" src="assets/images/ui-cards/ui-cards-9.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-9.jpg') }}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title font-18">Card title</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -571,7 +571,7 @@ Soyuz - Cards
         <div class="col-lg-12">
             <div class="card-group m-b-30">
                 <div class="card">
-                    <img class="card-img-top" src="assets/images/ui-cards/ui-cards-10.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-10.jpg') }}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title font-18">Card title</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -581,7 +581,7 @@ Soyuz - Cards
                     </div>
                 </div>
                 <div class="card">
-                    <img class="card-img-top" src="assets/images/ui-cards/ui-cards-11.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-11.jpg') }}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title font-18">Card title</h5>
                         <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -591,7 +591,7 @@ Soyuz - Cards
                     </div>
                 </div>
                 <div class="card">
-                    <img class="card-img-top" src="assets/images/ui-cards/ui-cards-12.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-12.jpg') }}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title font-18">Card title</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -607,7 +607,7 @@ Soyuz - Cards
         <div class="col-lg-12">
             <div class="card-deck m-b-30">
               <div class="card">
-                <img class="card-img-top" src="assets/images/ui-cards/ui-cards-13.jpg" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-13.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title font-18">Card title</h5>
                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -615,7 +615,7 @@ Soyuz - Cards
                 </div>
               </div>
               <div class="card">
-                <img class="card-img-top" src="assets/images/ui-cards/ui-cards-14.jpg" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-14.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title font-18">Card title</h5>
                     <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -623,7 +623,7 @@ Soyuz - Cards
                 </div>
               </div>
               <div class="card">
-                <img class="card-img-top" src="assets/images/ui-cards/ui-cards-15.jpg" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-15.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title font-18">Card title</h5>
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -637,7 +637,7 @@ Soyuz - Cards
         <div class="col-lg-12">
             <div class="card-columns m-b-30">
                 <div class="card">
-                    <img class="card-img-top" src="assets/images/ui-cards/ui-cards-16.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-16.jpg') }}" alt="Card image cap">
                     <div class="card-body">
                       <h5 class="card-title font-18">Card title that wraps to a new line</h5>
                       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -654,7 +654,7 @@ Soyuz - Cards
                     </blockquote>
                 </div>
                 <div class="card">
-                    <img class="card-img-top" src="assets/images/ui-cards/ui-cards-17.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-17.jpg') }}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title font-18">Card title</h5>
                         <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -679,7 +679,7 @@ Soyuz - Cards
                     </div>
                 </div>
                 <div class="card">
-                    <img class="card-img-top" src="assets/images/ui-cards/ui-cards-18.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="{{ asset('assets/images/ui-cards/ui-cards-18.jpg') }}" alt="Card image cap">
                 </div>
                 <div class="card p-3 text-right">
                     <blockquote class="blockquote mb-0">

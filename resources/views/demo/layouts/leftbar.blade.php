@@ -6,36 +6,36 @@
             <div class="vertical-menu-icon">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <div class="logobar">
-                        <a href="{{url('/demo')}}" class="logo logo-small"><img src="assets/images/small_logo.svg" class="img-fluid" alt="logo"></a>
+                        <a href="{{url('/demo')}}" class="logo logo-small"><img src="{{ asset('assets/images/small_logo.svg') }}" class="img-fluid" alt="logo"></a>
                     </div>
-                    <a class="nav-link active" id="v-pills-crm-tab" data-toggle="pill" href="#v-pills-crm" role="tab" aria-controls="v-pills-crm" aria-selected="true"><img src="assets/images/svg-icon/crm.svg" class="img-fluid" alt="CRM" data-toggle="tooltip" data-placement="top" title="CRM"></a>
-                    <a class="nav-link" id="v-pills-ecommerce-tab" data-toggle="pill" href="#v-pills-ecommerce" role="tab" aria-controls="v-pills-ecommerce" aria-selected="false"><img src="assets/images/svg-icon/ecommerce.svg" class="img-fluid" alt="eCommerce" data-toggle="tooltip" data-placement="top" title="eCommerce"></a>
-                    <a class="nav-link" id="v-pills-hospital-tab" data-toggle="pill" href="#v-pills-hospital" role="tab" aria-controls="v-pills-hospital" aria-selected="false"><img src="assets/images/svg-icon/hospital.svg" class="img-fluid" alt="Hospital" data-toggle="tooltip" data-placement="top" title="Hospital"></a>
-                    <a class="nav-link" id="v-pills-uikits-tab" data-toggle="pill" href="#v-pills-uikits" role="tab" aria-controls="v-pills-uikits" aria-selected="false"><img src="assets/images/svg-icon/ui-kits.svg" class="img-fluid" alt="UI Kits" data-toggle="tooltip" data-placement="top" title="UI Kits"></a>
-                    <a class="nav-link" id="v-pills-pages-tab" data-toggle="pill" href="#v-pills-pages" role="tab" aria-controls="v-pills-pages" aria-selected="false"><img src="assets/images/svg-icon/pages.svg" class="img-fluid" alt="Pages" data-toggle="tooltip" data-placement="top" title="Pages"></a>
+                    <a class="nav-link active" id="v-pills-crm-tab" data-toggle="pill" href="#v-pills-crm" role="tab" aria-controls="v-pills-crm" aria-selected="true"><img src="{{ asset('assets/images/svg-icon/crm.svg') }}" class="img-fluid" alt="CRM" data-toggle="tooltip" data-placement="top" title="CRM"></a>
+                    <a class="nav-link" id="v-pills-ecommerce-tab" data-toggle="pill" href="#v-pills-ecommerce" role="tab" aria-controls="v-pills-ecommerce" aria-selected="false"><img src="{{ asset('assets/images/svg-icon/ecommerce.svg') }}" class="img-fluid" alt="eCommerce" data-toggle="tooltip" data-placement="top" title="eCommerce"></a>
+                    <a class="nav-link" id="v-pills-hospital-tab" data-toggle="pill" href="#v-pills-hospital" role="tab" aria-controls="v-pills-hospital" aria-selected="false"><img src="{{ asset('assets/images/svg-icon/hospital.svg') }}" class="img-fluid" alt="Hospital" data-toggle="tooltip" data-placement="top" title="Hospital"></a>
+                    <a class="nav-link" id="v-pills-uikits-tab" data-toggle="pill" href="#v-pills-uikits" role="tab" aria-controls="v-pills-uikits" aria-selected="false"><img src="{{ asset('assets/images/svg-icon/ui-kits.svg') }}" class="img-fluid" alt="UI Kits" data-toggle="tooltip" data-placement="top" title="UI Kits"></a>
+                    <a class="nav-link" id="v-pills-pages-tab" data-toggle="pill" href="#v-pills-pages" role="tab" aria-controls="v-pills-pages" aria-selected="false"><img src="{{ asset('assets/images/svg-icon/pages.svg') }}" class="img-fluid" alt="Pages" data-toggle="tooltip" data-placement="top" title="Pages"></a>
                 </div>
             </div>
             <div class="vertical-menu-detail">
                 <div class="logobar">
-                    <a href="{{url('/demo')}}" class="logo logo-large"><img src="assets/images/logo.svg" class="img-fluid" alt="logo"></a>
+                    <a href="{{url('/demo')}}" class="logo logo-large"><img src="{{ asset('assets/images/logo.svg') }}" class="img-fluid" alt="logo"></a>
                 </div>
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-crm" role="tabpanel" aria-labelledby="v-pills-crm-tab">
                         <ul class="vertical-menu">
                             <li><h5 class="menu-title">CRM</h5></li>
-                            <li><a href="{{url('/demo')}}"><img src="assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard">Dashboard</a></li>
-                            <li><a href="{{url('/demo/crm-projects')}}"><img src="assets/images/svg-icon/reports.svg" class="img-fluid" alt="projects">Projects</a></li>
-                            <li><a href="{{url('/demo/crm-lead-status')}}"><img src="assets/images/svg-icon/charts.svg" class="img-fluid" alt="leads">Lead Status</a></li>
-                            <li><a href="{{url('/demo/crm-clients')}}"><img src="assets/images/svg-icon/customers.svg" class="img-fluid" alt="clients">Clients</a></li>
+                            <li><a href="{{url('/demo')}}"><img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard">Dashboard</a></li>
+                            <li><a href="{{url('/demo/crm-projects')}}"><img src="{{ asset('assets/images/svg-icon/reports.svg') }}" class="img-fluid" alt="projects">Projects</a></li>
+                            <li><a href="{{url('/demo/crm-lead-status')}}"><img src="{{ asset('assets/images/svg-icon/charts.svg') }}" class="img-fluid" alt="leads">Lead Status</a></li>
+                            <li><a href="{{url('/demo/crm-clients')}}"><img src="{{ asset('assets/images/svg-icon/customers.svg') }}" class="img-fluid" alt="clients">Clients</a></li>
                         </ul>
                     </div>
                     <div class="tab-pane fade" id="v-pills-ecommerce" role="tabpanel" aria-labelledby="v-pills-ecommerce-tab">
                         <ul class="vertical-menu">
                             <li><h5 class="menu-title">eCommerce</h5></li>
-                            <li><a href="{{url('/demo/dashboard-ecommerce')}}"><img src="assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard">Dashboard</a></li>
+                            <li><a href="{{url('/demo/dashboard-ecommerce')}}"><img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard">Dashboard</a></li>
                             <li>
                                 <a href="javaScript:void();">
-                                  <img src="assets/images/svg-icon/frontend.svg" class="img-fluid" alt="frontend"><span>Front End</span><i class="feather icon-chevron-right"></i>
+                                  <img src="{{ asset('assets/images/svg-icon/frontend.svg') }}" class="img-fluid" alt="frontend"><span>Front End</span><i class="feather icon-chevron-right"></i>
                                 </a>
                                 <ul class="vertical-submenu">
                                     <li><a href="{{url('/demo/ecommerce-shop')}}">Shop</a></li>
@@ -48,7 +48,7 @@
                             </li>
                             <li>
                                 <a href="javaScript:void();">
-                                  <img src="assets/images/svg-icon/backend.svg" class="img-fluid" alt="backend"><span>Back End</span><i class="feather icon-chevron-right"></i>
+                                  <img src="{{ asset('assets/images/svg-icon/backend.svg') }}" class="img-fluid" alt="backend"><span>Back End</span><i class="feather icon-chevron-right"></i>
                                 </a>
                                 <ul class="vertical-submenu">
                                     <li><a href="{{url('/demo/ecommerce-product-list')}}">Product List</a></li>
@@ -62,10 +62,10 @@
                     <div class="tab-pane fade" id="v-pills-hospital" role="tabpanel" aria-labelledby="v-pills-hospital-tab">
                         <ul class="vertical-menu">
                             <li><h5 class="menu-title">Hospital</h5></li>
-                            <li><a href="{{url('/demo/dashboard-hospital')}}"><img src="assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard">Dashboard</a></li>
-                            <li><a href="{{url('/demo/hospital-appointment')}}"><img src="assets/images/svg-icon/calender.svg" class="img-fluid" alt="appointments">Appointments</a></li>
-                            <li><a href="{{url('/demo/hospital-doctor')}}"><img src="assets/images/svg-icon/doctor.svg" class="img-fluid" alt="doctors">Doctors</a></li>
-                            <li><a href="{{url('/demo/hospital-patient')}}"><img src="assets/images/svg-icon/customers.svg" class="img-fluid" alt="patients">Patients</a></li>
+                            <li><a href="{{url('/demo/dashboard-hospital')}}"><img src="{{ asset('assets/images/svg-icon/dashboard.svg') }}" class="img-fluid" alt="dashboard">Dashboard</a></li>
+                            <li><a href="{{url('/demo/hospital-appointment')}}"><img src="{{ asset('assets/images/svg-icon/calender.svg') }}" class="img-fluid" alt="appointments">Appointments</a></li>
+                            <li><a href="{{url('/demo/hospital-doctor')}}"><img src="{{ asset('assets/images/svg-icon/doctor.svg') }}" class="img-fluid" alt="doctors">Doctors</a></li>
+                            <li><a href="{{url('/demo/hospital-patient')}}"><img src="{{ asset('assets/images/svg-icon/customers.svg') }}" class="img-fluid" alt="patients">Patients</a></li>
                         </ul>
                     </div>
                     <div class="tab-pane fade" id="v-pills-uikits" role="tabpanel" aria-labelledby="v-pills-uikits-tab">
@@ -73,7 +73,7 @@
                             <li><h5 class="menu-title">UI Kits</h5></li>
                             <li>
                                 <a href="javaScript:void();">
-                                  <img src="assets/images/svg-icon/basic.svg" class="img-fluid" alt="basic"><span>Basic UI</span><i class="feather icon-chevron-right"></i>
+                                  <img src="{{ asset('assets/images/svg-icon/basic.svg') }}" class="img-fluid" alt="basic"><span>Basic UI</span><i class="feather icon-chevron-right"></i>
                                 </a>
                                 <ul class="vertical-submenu">
                                     <li><a href="{{url('/demo/basic-ui-kits-alerts')}}">Alerts</a></li>
@@ -100,7 +100,7 @@
                             </li>
                             <li>
                                 <a href="javaScript:void();">
-                                  <img src="assets/images/svg-icon/advanced.svg" class="img-fluid" alt="advanced"><span>Advanced UI</span><i class="feather icon-chevron-right"></i>
+                                  <img src="{{ asset('assets/images/svg-icon/advanced.svg') }}" class="img-fluid" alt="advanced"><span>Advanced UI</span><i class="feather icon-chevron-right"></i>
                                 </a>
                                 <ul class="vertical-submenu">
                                     <li><a href="{{url('/demo/advanced-ui-kits-image-crop')}}">Image Crop</a></li>
@@ -119,7 +119,7 @@
                             </li>
                             <li>
                                 <a href="javaScript:void();">
-                                  <img src="assets/images/svg-icon/apps.svg" class="img-fluid" alt="apps"><span>Apps</span><i class="feather icon-chevron-right"></i>
+                                  <img src="{{ asset('assets/images/svg-icon/apps.svg') }}" class="img-fluid" alt="apps"><span>Apps</span><i class="feather icon-chevron-right"></i>
                                 </a>
                                 <ul class="vertical-submenu">
                                     <li><a href="{{url('/demo/apps-calender')}}">Calender</a></li>
@@ -138,7 +138,7 @@
                             </li>
                             <li>
                                 <a href="javaScript:void();">
-                                    <img src="assets/images/svg-icon/forms.svg" class="img-fluid" alt="forms"><span>Forms</span><i class="feather icon-chevron-right"></i>
+                                    <img src="{{ asset('assets/images/svg-icon/forms.svg') }}" class="img-fluid" alt="forms"><span>Forms</span><i class="feather icon-chevron-right"></i>
                                 </a>
                                 <ul class="vertical-submenu">
                                     <li><a href="{{url('/demo/form-inputs')}}">Basic Elements</a></li>
@@ -159,7 +159,7 @@
                             </li>
                             <li>
                                 <a href="javaScript:void();">
-                                    <img src="assets/images/svg-icon/charts.svg" class="img-fluid" alt="charts"><span>Charts</span><i class="feather icon-chevron-right"></i>
+                                    <img src="{{ asset('assets/images/svg-icon/charts.svg') }}" class="img-fluid" alt="charts"><span>Charts</span><i class="feather icon-chevron-right"></i>
                                 </a>
                                 <ul class="vertical-submenu">
                                     <li><a href="{{url('/demo/chart-apex')}}">Apex</a></li>
@@ -175,7 +175,7 @@
                             </li>
                             <li>
                                 <a href="javaScript:void();">
-                                    <img src="assets/images/svg-icon/icons.svg" class="img-fluid" alt="icons"><span>Icons</span><i class="feather icon-chevron-right"></i>
+                                    <img src="{{ asset('assets/images/svg-icon/icons.svg') }}" class="img-fluid" alt="icons"><span>Icons</span><i class="feather icon-chevron-right"></i>
                                 </a>
                                 <ul class="vertical-submenu">
                                     <li><a href="{{url('/demo/icon-svg')}}">SVG</a></li>
@@ -194,7 +194,7 @@
                             </li>
                             <li>
                                 <a href="javaScript:void();">
-                                    <img src="assets/images/svg-icon/tables.svg" class="img-fluid" alt="tables"><span>Tables</span><i class="feather icon-chevron-right"></i>
+                                    <img src="{{ asset('assets/images/svg-icon/tables.svg') }}" class="img-fluid" alt="tables"><span>Tables</span><i class="feather icon-chevron-right"></i>
                                 </a>
                                 <ul class="vertical-submenu">
                                     <li><a href="{{url('/demo/table-bootstrap')}}">Bootstrap</a></li>
@@ -206,7 +206,7 @@
                             </li>
                             <li>
                                 <a href="javaScript:void();">
-                                    <img src="assets/images/svg-icon/maps.svg" class="img-fluid" alt="maps"><span>Maps</span><i class="feather icon-chevron-right"></i>
+                                    <img src="{{ asset('assets/images/svg-icon/maps.svg') }}" class="img-fluid" alt="maps"><span>Maps</span><i class="feather icon-chevron-right"></i>
                                 </a>
                                 <ul class="vertical-submenu">
                                     <li><a href="{{url('/demo/map-google')}}">Google</a></li>
@@ -215,7 +215,7 @@
                             </li>
                             <li>
                                 <a href="{{url('/demo/widgets')}}">
-                                    <img src="assets/images/svg-icon/widgets.svg" class="img-fluid" alt="widgets"><span>Widgets</span><span class="badge badge-success pull-right">New</span>
+                                    <img src="{{ asset('assets/images/svg-icon/widgets.svg') }}" class="img-fluid" alt="widgets"><span>Widgets</span><span class="badge badge-success pull-right">New</span>
                                 </a>
                             </li>
                         </ul>
@@ -225,7 +225,7 @@
                             <li><h5 class="menu-title">Pages</h5></li>
                             <li>
                                 <a href="javaScript:void();">
-                                  <img src="assets/images/svg-icon/basic_page.svg" class="img-fluid" alt="basic_page"><span>Basic</span><i class="feather icon-chevron-right"></i>
+                                  <img src="{{ asset('assets/images/svg-icon/basic_page.svg') }}" class="img-fluid" alt="basic_page"><span>Basic</span><i class="feather icon-chevron-right"></i>
                                 </a>
                                 <ul class="vertical-submenu">
                                     <li><a href="{{url('/demo/page-starter')}}">Starter</a></li>
@@ -239,7 +239,7 @@
                             </li>
                             <li>
                                 <a href="javaScript:void();">
-                                  <img src="assets/images/svg-icon/authentication.svg" class="img-fluid" alt="authentication"><span>Authentications</span><i class="feather icon-chevron-right"></i>
+                                  <img src="{{ asset('assets/images/svg-icon/authentication.svg') }}" class="img-fluid" alt="authentication"><span>Authentications</span><i class="feather icon-chevron-right"></i>
                                 </a>
                                 <ul class="vertical-submenu">
                                     <li><a href="{{url('/demo/user-login')}}">Login</a></li>

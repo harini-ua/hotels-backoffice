@@ -131,6 +131,6 @@ Soyuz - Google Map
 @section('script')
 <!-- Google Maps JS -->
 <script src="http://maps.google.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI"></script>
-<script src="{{ asset('demo/assets/plugins/gmaps/gmaps.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-gmaps.js') }}"></script>
+<script src="{{ asset('assets/plugins/gmaps/gmaps.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-gmaps.js') }}"></script>
 @endsection

@@ -4,7 +4,7 @@ Soyuz - Email Compose
 @extends('demo.layouts.main')
 @section('style')
 <!-- Summernote css -->
-<link href="{{ asset('demo/assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -139,6 +139,6 @@ Soyuz - Email Compose
 @endsection
 @section('script')
 <!-- Summernote js -->
-<script src="{{ asset('demo/assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-email.js') }}"></script>
+<script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-email.js') }}"></script>
 @endsection

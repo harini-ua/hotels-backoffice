@@ -37,7 +37,7 @@ Soyuz - CRM Clients
                 <div class="card-body py-5">
                     <div class="row">
                         <div class="col-lg-3 text-center">
-                            <img src="assets/images/users/boy.svg" class="img-fluid mb-3" alt="user">
+                            <img src="{{ asset('assets/images/users/boy.svg') }}" class="img-fluid mb-3" alt="user">
                         </div>
                         <div class="col-lg-9">
                             <h4>John Doe</h4>
@@ -80,7 +80,7 @@ Soyuz - CRM Clients
                 <div class="card-body py-5">
                     <div class="row">
                         <div class="col-lg-3 text-center">
-                            <img src="assets/images/users/girl.svg" class="img-fluid mb-3" alt="user">
+                            <img src="{{ asset('assets/images/users/girl.svg') }}" class="img-fluid mb-3" alt="user">
                         </div>
                         <div class="col-lg-9">
                             <h4>Mark Wood</h4>
@@ -123,7 +123,7 @@ Soyuz - CRM Clients
                 <div class="card-body py-5">
                     <div class="row">
                         <div class="col-lg-3 text-center">
-                            <img src="assets/images/users/men.svg" class="img-fluid mb-3" alt="user">
+                            <img src="{{ asset('assets/images/users/men.svg') }}" class="img-fluid mb-3" alt="user">
                         </div>
                         <div class="col-lg-9">
                             <h4>Kate Perry</h4>
@@ -166,7 +166,7 @@ Soyuz - CRM Clients
                 <div class="card-body py-5">
                     <div class="row">
                         <div class="col-lg-3 text-center">
-                            <img src="assets/images/users/women.svg" class="img-fluid mb-3" alt="user">
+                            <img src="{{ asset('assets/images/users/women.svg') }}" class="img-fluid mb-3" alt="user">
                         </div>
                         <div class="col-lg-9">
                             <h4>Slevenka Rajaswki</h4>

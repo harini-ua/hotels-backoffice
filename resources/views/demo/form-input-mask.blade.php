@@ -182,6 +182,6 @@ Soyuz - Form Input Mask
 @endsection
 @section('script')
 <!-- Input Mask js -->
-<script src="{{ asset('demo/assets/plugins/bootstrap-inputmask/jquery.inputmask.bundle.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-form-inputmask.js') }}"></script>
+<script src="{{ asset('assets/plugins/bootstrap-inputmask/jquery.inputmask.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-form-inputmask.js') }}"></script>
 @endsection

@@ -10,21 +10,21 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title> @yield('title') </title>
         <!-- Fevicon -->
-        <link rel="shortcut icon" href="{{ asset('demo/assets/images/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
         <!-- Start CSS -->
         @yield('style')
-        <link href="{{ asset('demo/assets/plugins/switchery/switchery.min.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ asset('demo/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ asset('demo/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ asset('demo/assets/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ asset('demo/assets/css/style.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/plugins/switchery/switchery.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
         <!-- End CSS -->
     </head>
     <body class="horizontal-layout">
         <!-- Start Infobar Setting Sidebar -->
         <div id="infobar-settings-sidebar" class="infobar-settings-sidebar">
             <div class="infobar-settings-sidebar-head d-flex w-100 justify-content-between">
-                <h4>Settings</h4><a href="javascript:void(0)" id="infobar-settings-close" class="infobar-settings-close"><img src="assets/images/svg-icon/close.svg" class="img-fluid menu-hamburger-close" alt="close"></a>
+                <h4>Settings</h4><a href="javascript:void(0)" id="infobar-settings-close" class="infobar-settings-close"><img src="{{ asset('assets/images/svg-icon/close.svg') }}" class="img-fluid menu-hamburger-close" alt="close"></a>
             </div>
             <div class="infobar-settings-sidebar-body">
                 <div class="custom-mode-setting">
@@ -68,21 +68,21 @@
                         </div>
                         <div class="col-6">
                             <div class="account-box active">
-                                <img src="assets/images/users/boy.svg" class="img-fluid" alt="user">
+                                <img src="{{ asset('assets/images/users/boy.svg') }}" class="img-fluid" alt="user">
                                 <h5>John</h5>
                                 <p>CEO</p>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="account-box">
-                                <img src="assets/images/users/women.svg" class="img-fluid" alt="user">
+                                <img src="{{ asset('assets/images/users/women.svg') }}" class="img-fluid" alt="user">
                                 <h5>Kate</h5>
                                 <p>COO</p>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="account-box">
-                                <img src="assets/images/users/men.svg" class="img-fluid" alt="user">
+                                <img src="{{ asset('assets/images/users/men.svg') }}" class="img-fluid" alt="user">
                                 <h5>Mark</h5>
                                 <p>MD</p>
                             </div>
@@ -112,17 +112,17 @@
         </div>
         <!-- End Containerbar -->
         <!-- Start JS -->
-        <script src="{{ asset('demo/assets/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('demo/assets/js/popper.min.js') }}"></script>
-        <script src="{{ asset('demo/assets/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('demo/assets/js/modernizr.min.js') }}"></script>
-        <script src="{{ asset('demo/assets/js/detect.js') }}"></script>
-        <script src="{{ asset('demo/assets/js/jquery.slimscroll.js') }}"></script>
-        <script src="{{ asset('demo/assets/js/horizontal-menu.js') }}"></script>
-        <script src="{{ asset('demo/assets/plugins/switchery/switchery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
+        <script src="{{ asset('assets/js/detect.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
+        <script src="{{ asset('assets/js/horizontal-menu.js') }}"></script>
+        <script src="{{ asset('assets/plugins/switchery/switchery.min.js') }}"></script>
         @yield('script')
         <!-- Core JS -->
-        <script src="{{ asset('demo/assets/js/core.js') }}"></script>
+        <script src="{{ asset('assets/js/core.js') }}"></script>
         <!-- End JS -->
     </body>
 </html>

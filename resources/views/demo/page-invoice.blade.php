@@ -41,7 +41,7 @@ Soyuz - Invoice
                             <div class="row">
                                 <div class="col-12 col-md-7 col-lg-7">
                                     <div class="invoice-logo">
-                                        <img src="assets/images/logo.svg" class="img-fluid" alt="invoice-logo">
+                                        <img src="{{ asset('assets/images/logo.svg') }}" class="img-fluid" alt="invoice-logo">
                                     </div>
                                     <h4>Soyuz Design Inc.</h4>
                                     <p>The Complete Web Solutions Partner</p>
@@ -110,7 +110,7 @@ Soyuz - Invoice
                                     <tbody>
                                         <tr>
                                             <th scope="row">1</th>
-                                            <td><img src="assets/images/ecommerce/product_01.svg" class="img-fluid" width="35" alt="product"></td>
+                                            <td><img src="{{ asset('assets/images/ecommerce/product_01.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                             <td>Electronic Kettle</td>
                                             <td>1</td>
                                             <td>$75</td>
@@ -118,7 +118,7 @@ Soyuz - Invoice
                                         </tr>
                                         <tr>
                                             <th scope="row">2</th>
-                                            <td><img src="assets/images/ecommerce/product_02.svg" class="img-fluid" width="35" alt="product"></td>
+                                            <td><img src="{{ asset('assets/images/ecommerce/product_02.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                             <td>Fitness Band</td>
                                             <td>2</td>
                                             <td>$50</td>
@@ -126,7 +126,7 @@ Soyuz - Invoice
                                         </tr>
                                         <tr>
                                             <th scope="row">3</th>
-                                            <td><img src="assets/images/ecommerce/product_03.svg" class="img-fluid" width="35" alt="product"></td>
+                                            <td><img src="{{ asset('assets/images/ecommerce/product_03.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                             <td>iPhone XR</td>
                                             <td>10</td>
                                             <td>$99</td>
@@ -196,7 +196,7 @@ Soyuz - Invoice
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <div class="invoice-meta-box text-right">
                                         <h6 class="mb-0">Authorized Signatory</h6>
-                                        <img src="assets/images/general/signature.svg" class="img-fluid my-3" alt="signature">
+                                        <img src="{{ asset('assets/images/general/signature.svg') }}" class="img-fluid my-3" alt="signature">
                                         <p class="mb-0">Agatha C</p>
                                     </div>
                                 </div>

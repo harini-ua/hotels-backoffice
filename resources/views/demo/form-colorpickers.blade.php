@@ -4,7 +4,7 @@ Soyuz - Form Color Picker
 @extends('demo.layouts.main')
 @section('style')
 <!-- Color Picker css -->
-<link href="{{ asset('demo/assets/plugins/colorpicker/bootstrap-colorpicker.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/plugins/colorpicker/bootstrap-colorpicker.css') }}" rel="stylesheet" type="text/css">
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -137,6 +137,6 @@ Soyuz - Form Color Picker
 @endsection
 @section('script')
 <!-- Color Picker js -->
-<script src="{{ asset('demo/assets/plugins/colorpicker/bootstrap-colorpicker.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-form-colorpicker.js') }}"></script>
+<script src="{{ asset('assets/plugins/colorpicker/bootstrap-colorpicker.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-form-colorpicker.js') }}"></script>
 @endsection

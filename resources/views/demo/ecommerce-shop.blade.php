@@ -4,7 +4,7 @@ Soyuz - Shop
 @extends('demo.layouts.main')
 @section('style')
 <!-- Range Slider css -->
-<link href="{{ asset('demo/assets/plugins/ion-rangeSlider/ion.rangeSlider.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/plugins/ion-rangeSlider/ion.rangeSlider.css') }}" rel="stylesheet" type="text/css">
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -228,7 +228,7 @@ Soyuz - Shop
                         <div class="col-lg-6 col-xl-4">
                             <div class="product-bar m-b-30">
                                 <div class="product-head">
-                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_01.jpg" class="img-fluid" alt="product"></a>
+                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="{{ asset('assets/images/ecommerce/product_img_01.jpg') }}" class="img-fluid" alt="product"></a>
                                     <p><span class="badge badge-success font-14">20% off</span></p>
                                 </div>
                                 <div class="product-body py-3">
@@ -271,7 +271,7 @@ Soyuz - Shop
                         <div class="col-lg-6 col-xl-4">
                             <div class="product-bar m-b-30">
                                 <div class="product-head">
-                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_02.jpg" class="img-fluid" alt="product"></a>
+                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="{{ asset('assets/images/ecommerce/product_img_02.jpg') }}" class="img-fluid" alt="product"></a>
                                     <p><span class="badge badge-primary font-14">New</span></p>
                                 </div>
                                 <div class="product-body py-3">
@@ -314,7 +314,7 @@ Soyuz - Shop
                         <div class="col-lg-6 col-xl-4">
                             <div class="product-bar m-b-30">
                                 <div class="product-head">
-                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_03.jpg" class="img-fluid" alt="product"></a>
+                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="{{ asset('assets/images/ecommerce/product_img_03.jpg') }}" class="img-fluid" alt="product"></a>
                                     <p><span class="badge badge-danger font-14">Price Down</span></p>
                                 </div>
                                 <div class="product-body py-3">
@@ -357,7 +357,7 @@ Soyuz - Shop
                         <div class="col-lg-6 col-xl-4">
                             <div class="product-bar m-b-30">
                                 <div class="product-head">
-                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_04.jpg" class="img-fluid" alt="product"></a>
+                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="{{ asset('assets/images/ecommerce/product_img_04.jpg') }}" class="img-fluid" alt="product"></a>
                                     <p><span class="badge badge-success font-14">Sale</span></p>
                                 </div>
                                 <div class="product-body py-3">
@@ -400,7 +400,7 @@ Soyuz - Shop
                         <div class="col-lg-6 col-xl-4">
                             <div class="product-bar m-b-30">
                                 <div class="product-head">
-                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_05.jpg" class="img-fluid" alt="product"></a>
+                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="{{ asset('assets/images/ecommerce/product_img_05.jpg') }}" class="img-fluid" alt="product"></a>
                                     <p><span class="badge badge-warning font-14">Trending</span></p>
                                 </div>
                                 <div class="product-body py-3">
@@ -443,7 +443,7 @@ Soyuz - Shop
                         <div class="col-lg-6 col-xl-4">
                             <div class="product-bar m-b-30">
                                 <div class="product-head">
-                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="assets/images/ecommerce/product_img_06.jpg" class="img-fluid" alt="product"></a>
+                                    <a href="{{url('/demo/ecommerce-single-product')}}"><img src="{{ asset('assets/images/ecommerce/product_img_06.jpg') }}" class="img-fluid" alt="product"></a>
                                     <p><span class="badge badge-info font-14">Popular</span></p>
                                 </div>
                                 <div class="product-body py-3">
@@ -514,7 +514,7 @@ Soyuz - Shop
 @endsection
 @section('script')
 <!-- Range Slider js -->
-<script src="{{ asset('demo/assets/plugins/ion-rangeSlider/ion.rangeSlider.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/ion-rangeSlider/ion.rangeSlider.min.js') }}"></script>
 <!-- eCommerce Shop Page js -->
-<script src="{{ asset('demo/assets/js/custom/custom-ecommerce-shop-page.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-ecommerce-shop-page.js') }}"></script>
 @endsection

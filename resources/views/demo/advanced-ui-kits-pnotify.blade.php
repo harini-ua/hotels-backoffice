@@ -4,7 +4,7 @@ Soyuz - Pnotify
 @extends('demo.layouts.main')
 @section('style')
 <!-- Pnotify css -->
-<link href="{{ asset('demo/assets/plugins/pnotify/css/pnotify.custom.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/pnotify/css/pnotify.custom.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -528,6 +528,6 @@ Soyuz - Pnotify
 @endsection
 @section('script')
 <!-- Pnotify js -->
-<script src="{{ asset('demo/assets/plugins/pnotify/js/pnotify.custom.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-pnotify.js') }}"></script>
+<script src="{{ asset('assets/plugins/pnotify/js/pnotify.custom.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-pnotify.js') }}"></script>
 @endsection

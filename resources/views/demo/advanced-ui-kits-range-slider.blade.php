@@ -4,7 +4,7 @@ Soyuz - Range Slider
 @extends('demo.layouts.main')
 @section('style')
 <!-- Range Slider css -->
-<link href="{{ asset('demo/assets/plugins/ion-rangeSlider/ion.rangeSlider.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/ion-rangeSlider/ion.rangeSlider.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -325,6 +325,6 @@ Soyuz - Range Slider
 @endsection
 @section('script')
 <!-- Range Slider js -->
-<script src="{{ asset('demo/assets/plugins/ion-rangeSlider/ion.rangeSlider.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-range-slider.js') }}"></script>
+<script src="{{ asset('assets/plugins/ion-rangeSlider/ion.rangeSlider.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-range-slider.js') }}"></script>
 @endsection

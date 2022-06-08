@@ -4,7 +4,7 @@ Soyuz - Hospital
 @extends('demo.layouts.main')
 @section('style')
 <!-- Apex css -->
-<link href="{{ asset('demo/assets/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -116,7 +116,7 @@ Soyuz - Hospital
                 </div>
                 <div class="card-body">
                     <div class="media">
-                        <img class="align-self-center mr-3 rounded-circle" src="assets/images/users/boy.svg" alt="Generic placeholder image">
+                        <img class="align-self-center mr-3 rounded-circle" src="{{ asset('assets/images/users/boy.svg') }}" alt="Generic placeholder image">
                         <div class="media-body">
                             <h5 class="mt-0">Dr. Sansa Smith</h5>
                             <p class="mb-0 font-14">MD (Surgeon)</p>
@@ -158,7 +158,7 @@ Soyuz - Hospital
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-4">
-                                    <img src="assets/images/general/doctor.svg" class="img-fluid " alt="doctor">
+                                    <img src="{{ asset('assets/images/general/doctor.svg') }}" class="img-fluid " alt="doctor">
                                 </div>
                                 <div class="col-8 text-center">
                                     <h5 class="card-title text-primary mb-1">+1 9876543210</h5>
@@ -327,8 +327,8 @@ Soyuz - Hospital
 @endsection
 @section('script')
 <!-- Apex js -->
-<script src="{{ asset('demo/assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/apexcharts/irregular-data-series.js') }}"></script>
+<script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/apexcharts/irregular-data-series.js') }}"></script>
 <!-- Dashboard js -->
-<script src="{{ asset('demo/assets/js/custom/custom-dashboard-hospital.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-dashboard-hospital.js') }}"></script>
 @endsection

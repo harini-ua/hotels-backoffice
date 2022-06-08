@@ -4,7 +4,7 @@ Soyuz - Sweet Alerts
 @extends('demo.layouts.main')
 @section('style')
 <!-- Sweet Alert css -->
-<link href="{{ asset('demo/assets/plugins/sweet-alert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/sweet-alert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -207,6 +207,6 @@ Soyuz - Sweet Alerts
 @endsection
 @section('script')
 <!-- Sweet-Alert js -->
-<script src="{{ asset('demo/assets/plugins/sweet-alert2/sweetalert2.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-sweet-alert.js') }}"></script>
+<script src="{{ asset('assets/plugins/sweet-alert2/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-sweet-alert.js') }}"></script>
 @endsection

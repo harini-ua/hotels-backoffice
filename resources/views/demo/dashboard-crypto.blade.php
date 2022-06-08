@@ -4,10 +4,10 @@ Soyuz - Crypto
 @extends('demo.layouts.main')
 @section('style')
 <!-- Apex css -->
-<link href="{{ asset('demo/assets/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css" />
 <!-- Slick css -->
-<link href="{{ asset('demo/assets/plugins/slick/slick.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('demo/assets/plugins/slick/slick-theme.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/slick/slick.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/slick/slick-theme.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -40,12 +40,12 @@ Soyuz - Crypto
             <div class="card m-b-30">
                 <div class="card-body">
                     <div class="media">
-                        <img class="mr-3 rounded-circle" src="assets/images/crypto/bitcoin.png" alt="Generic placeholder image">
+                        <img class="mr-3 rounded-circle" src="{{ asset('assets/images/crypto/bitcoin.png" alt="Generic placeholder image">
                         <div class="media-body">
                             <h5 class="mb-2">Bitcoin</h5>
                             <p class="mb-0">1 BTC = 49 USD</p>
                         </div>
-                        <img class="action-bg rounded-circle" src="assets/images/crypto/1.png" alt="Generic placeholder image">
+                        <img class="action-bg rounded-circle" src="{{ asset('assets/images/crypto/1.png" alt="Generic placeholder image">
                     </div>
                 </div>
             </div>
@@ -56,12 +56,12 @@ Soyuz - Crypto
             <div class="card m-b-30">
                 <div class="card-body">
                     <div class="media">
-                        <img class="mr-3 rounded-circle" src="assets/images/crypto/ethereum.png" alt="Generic placeholder image">
+                        <img class="mr-3 rounded-circle" src="{{ asset('assets/images/crypto/ethereum.png" alt="Generic placeholder image">
                         <div class="media-body">
                             <h5 class="mb-2">Ethereum</h5>
                             <p class="mb-0">1 ETC = 5.69 USD</p>
                         </div>
-                        <img class="action-bg rounded-circle" src="assets/images/crypto/2.png" alt="Generic placeholder image">
+                        <img class="action-bg rounded-circle" src="{{ asset('assets/images/crypto/2.png" alt="Generic placeholder image">
                     </div>
                 </div>
             </div>
@@ -72,12 +72,12 @@ Soyuz - Crypto
             <div class="card m-b-30">
                 <div class="card-body">
                     <div class="media">
-                        <img class="mr-3 rounded-circle" src="assets/images/crypto/ripple.png" alt="Generic placeholder image">
+                        <img class="mr-3 rounded-circle" src="{{ asset('assets/images/crypto/ripple.png" alt="Generic placeholder image">
                         <div class="media-body">
                             <h5 class="mb-2">Ripple</h5>
                             <p class="mb-0">1 RPC = 0.96 USD</p>
                         </div>
-                        <img class="action-bg rounded-circle" src="assets/images/crypto/3.png" alt="Generic placeholder image">
+                        <img class="action-bg rounded-circle" src="{{ asset('assets/images/crypto/3.png" alt="Generic placeholder image">
                     </div>
                 </div>
             </div>
@@ -88,12 +88,12 @@ Soyuz - Crypto
             <div class="card m-b-30">
                 <div class="card-body">
                     <div class="media">
-                        <img class="mr-3 rounded-circle" src="assets/images/crypto/bcc.png" alt="Generic placeholder image">
+                        <img class="mr-3 rounded-circle" src="{{ asset('assets/images/crypto/bcc.png" alt="Generic placeholder image">
                         <div class="media-body">
                             <h5 class="mb-2">Bitcoin Cash</h5>
                             <p class="mb-0">1 BCC = 58.85 USD</p>
                         </div>
-                        <img class="action-bg rounded-circle" src="assets/images/crypto/4.png" alt="Generic placeholder image">
+                        <img class="action-bg rounded-circle" src="{{ asset('assets/images/crypto/4.png" alt="Generic placeholder image">
                     </div>
                 </div>
             </div>
@@ -247,7 +247,7 @@ Soyuz - Crypto
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td><img class="w-25 rounded-circle" src="assets/images/crypto/bitcoin_small.png" alt="Generic placeholder image"></td>
+                                    <td><img class="w-25 rounded-circle" src="{{ asset('assets/images/crypto/bitcoin_small.png" alt="Generic placeholder image"></td>
                                     <td>bitcoin.com</td>
                                     <td>johncb@gmail.com</td>
                                     <td>BCC98F59</td>
@@ -256,7 +256,7 @@ Soyuz - Crypto
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td><img class="w-25 rounded-circle" src="assets/images/crypto/ethereum_small.png" alt="Generic placeholder image"></td>
+                                    <td><img class="w-25 rounded-circle" src="{{ asset('assets/images/crypto/ethereum_small.png" alt="Generic placeholder image"></td>
                                     <td>cashitnow.com</td>
                                     <td>jameson911@gmail.com</td>
                                     <td>CITN456546</td>
@@ -265,7 +265,7 @@ Soyuz - Crypto
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td><img class="w-25 rounded-circle" src="assets/images/crypto/ripple_small.png" alt="Generic placeholder image"></td>
+                                    <td><img class="w-25 rounded-circle" src="{{ asset('assets/images/crypto/ripple_small.png" alt="Generic placeholder image"></td>
                                     <td>miningtrend.com</td>
                                     <td>will2go@gmail.com</td>
                                     <td>MGT584@F</td>
@@ -274,7 +274,7 @@ Soyuz - Crypto
                                 </tr>
                                 <tr>
                                     <td>4</td>
-                                    <td><img class="w-25 rounded-circle" src="assets/images/crypto/bcc_small.png" alt="Generic placeholder image"></td>
+                                    <td><img class="w-25 rounded-circle" src="{{ asset('assets/images/crypto/bcc_small.png" alt="Generic placeholder image"></td>
                                     <td>getprofit.com</td>
                                     <td>dakota@gmail.com</td>
                                     <td>BCD94F769</td>
@@ -283,7 +283,7 @@ Soyuz - Crypto
                                 </tr>
                                 <tr>
                                     <td>5</td>
-                                    <td><img class="w-25 rounded-circle" src="assets/images/crypto/bitcoin_small.png" alt="Generic placeholder image"></td>
+                                    <td><img class="w-25 rounded-circle" src="{{ asset('assets/images/crypto/bitcoin_small.png" alt="Generic placeholder image"></td>
                                     <td>bitcoin.com</td>
                                     <td>johncb@gmail.com</td>
                                     <td>BCC98F59</td>
@@ -292,7 +292,7 @@ Soyuz - Crypto
                                 </tr>
                                 <tr>
                                     <td>6</td>
-                                    <td><img class="w-25 rounded-circle" src="assets/images/crypto/ethereum_small.png" alt="Generic placeholder image"></td>
+                                    <td><img class="w-25 rounded-circle" src="{{ asset('assets/images/crypto/ethereum_small.png" alt="Generic placeholder image"></td>
                                     <td>whatiscrypto.uk</td>
                                     <td>whatis@gmail.com</td>
                                     <td>MTB005TC</td>
@@ -301,7 +301,7 @@ Soyuz - Crypto
                                 </tr>
                                 <tr>
                                     <td>7</td>
-                                    <td><img class="w-25 rounded-circle" src="assets/images/crypto/ripple_small.png" alt="Generic placeholder image"></td>
+                                    <td><img class="w-25 rounded-circle" src="{{ asset('assets/images/crypto/ripple_small.png" alt="Generic placeholder image"></td>
                                     <td>bitcoin.com</td>
                                     <td>johncb@gmail.com</td>
                                     <td>BCC98F59</td>
@@ -310,7 +310,7 @@ Soyuz - Crypto
                                 </tr>
                                 <tr>
                                     <td>8</td>
-                                    <td><img class="w-25 rounded-circle" src="assets/images/crypto/bcc_small.png" alt="Generic placeholder image"></td>
+                                    <td><img class="w-25 rounded-circle" src="{{ asset('assets/images/crypto/bcc_small.png" alt="Generic placeholder image"></td>
                                     <td>bitcoin.com</td>
                                     <td>johncb@gmail.com</td>
                                     <td>BCC98F59</td>
@@ -357,28 +357,28 @@ Soyuz - Crypto
                     </div>
                     <ul class="list-unstyled">
                         <li class="media">
-                            <img class="mr-3 rounded-circle" src="assets/images/crypto/bitcoin_small.png" alt="Generic placeholder image">
+                            <img class="mr-3 rounded-circle" src="{{ asset('assets/images/crypto/bitcoin_small.png" alt="Generic placeholder image">
                             <div class="media-body">
                                 <h5 class="mt-0 mb-1 font-16">Bitcoin (BTC)<span class="float-right text-success font-14 mt-1">+BTC 5.26</span></h5>
                                 <p class="mb-0"><i class="feather icon-arrow-left mr-2"></i>Bought - Today, 15:32<span class="float-right text-muted font-12 mt-1">= $20.89</span></p>
                             </div>
                         </li>
                         <li class="media my-4">
-                            <img class="mr-3 rounded-circle" src="assets/images/crypto/ethereum_small.png" alt="Generic placeholder image">
+                            <img class="mr-3 rounded-circle" src="{{ asset('assets/images/crypto/ethereum_small.png" alt="Generic placeholder image">
                             <div class="media-body">
                                 <h5 class="mt-0 mb-1 font-16">ETH to RPH<span class="float-right text-success font-14 mt-1">+RPH 15.52</span></h5>
                                 <p class="mb-0"><i class="feather icon-arrow-left mr-2"></i>Exchanged - Yesterday, 09:42<span class="float-right text-muted font-12 mt-1">= $15</span></p>
                             </div>
                         </li>
                         <li class="media">
-                            <img class="mr-3 rounded-circle" src="assets/images/crypto/ripple_small.png" alt="Generic placeholder image">
+                            <img class="mr-3 rounded-circle" src="{{ asset('assets/images/crypto/ripple_small.png" alt="Generic placeholder image">
                             <div class="media-body">
                                 <h5 class="mt-0 mb-1 font-16">Ripple<span class="float-right text-success font-14 mt-1">+Ripple 3.28</span></h5>
                                 <p class="mb-0"><i class="feather icon-arrow-left mr-2"></i>Bought - Yesterday, 18:20<span class="float-right text-muted font-12 mt-1">= $20.89</span></p>
                             </div>
                         </li>
                         <li class="media my-4">
-                            <img class="mr-3 rounded-circle" src="assets/images/crypto/bcc_small.png" alt="Generic placeholder image">
+                            <img class="mr-3 rounded-circle" src="{{ asset('assets/images/crypto/bcc_small.png" alt="Generic placeholder image">
                             <div class="media-body">
                                 <h5 class="mt-0 mb-1 font-16">Bitcoin Cash<span class="float-right text-success font-14 mt-1">+BTC 1.63</span></h5>
                                 <p class="mb-0"><i class="feather icon-arrow-left mr-2"></i>Exchanged - 21 Feb, 04:25<span class="float-right text-muted font-12 mt-1">= $33.72</span></p>
@@ -421,10 +421,10 @@ Soyuz - Crypto
 @endsection
 @section('script')
 <!-- Apex js -->
-<script src="{{ asset('demo/assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/apexcharts/irregular-data-series.js') }}"></script>
+<script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/apexcharts/irregular-data-series.js') }}"></script>
 <!-- Slick js -->
-<script src="{{ asset('demo/assets/plugins/slick/slick.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/slick/slick.min.js') }}"></script>
 <!-- Dashboard js -->
-<script src="{{ asset('demo/assets/js/custom/custom-dashboard-crypto.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-dashboard-crypto.js') }}"></script>
 @endsection

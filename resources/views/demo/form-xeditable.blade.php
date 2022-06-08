@@ -4,7 +4,7 @@ Soyuz - Form Xeditable
 @extends('demo.layouts.main')
 @section('style')
 <!-- X-editable css -->
-<link href="{{ asset('demo/assets/plugins/bootstrap-xeditable/css/bootstrap-editable.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/bootstrap-xeditable/css/bootstrap-editable.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -135,7 +135,7 @@ Soyuz - Form Xeditable
 @endsection
 @section('script')
 <!-- X-editable js -->
-<script src="{{ asset('demo/assets/plugins/bootstrap-xeditable/js/bootstrap-editable.min.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/moment/moment.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-form-xeditable.js') }}"></script>
+<script src="{{ asset('assets/plugins/bootstrap-xeditable/js/bootstrap-editable.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/moment/moment.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-form-xeditable.js') }}"></script>
 @endsection

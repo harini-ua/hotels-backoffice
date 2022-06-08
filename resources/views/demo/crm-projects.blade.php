@@ -143,7 +143,7 @@ Soyuz - CRM Projects
 @endsection
 @section('script')
 <!-- Piety Chart js -->
-<script src="{{ asset('demo/assets/plugins/peity/jquery.peity.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/peity/jquery.peity.min.js') }}"></script>
 <!-- Custom CRM Project js -->
-<script src="{{ asset('demo/assets/js/custom/custom-crm-projects.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-crm-projects.js') }}"></script>
 @endsection

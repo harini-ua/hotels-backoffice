@@ -4,9 +4,9 @@ Soyuz - Product Detail
 @extends('demo.layouts.main')
 @section('style')
 <!-- Summernote css -->
-<link href="{{ asset('demo/assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet" type="text/css" />
 <!-- Dropzone css -->
-<link href="{{ asset('demo/assets/plugins/dropzone/dist/dropzone.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/dropzone/dist/dropzone.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -259,13 +259,13 @@ Soyuz - Product Detail
                 </div>
                 <div class="card-body">
                     <div class="d-inline-block mb-1">
-                        <img src="assets/images/ecommerce/product_gallery_01.jpg" alt="Rounded Image" class="img-fluid rounded">
+                        <img src="{{ asset('assets/images/ecommerce/product_gallery_01.jpg') }}" alt="Rounded Image" class="img-fluid rounded">
                     </div>
                     <div class="d-inline-block mb-1">
-                        <img src="assets/images/ecommerce/product_gallery_02.jpg" alt="Rounded Image" class="img-fluid rounded">
+                        <img src="{{ asset('assets/images/ecommerce/product_gallery_02.jpg') }}" alt="Rounded Image" class="img-fluid rounded">
                     </div>
                     <div class="d-inline-block mb-1">
-                        <img src="assets/images/ecommerce/product_gallery_03.jpg" alt="Rounded Image" class="img-fluid rounded">
+                        <img src="{{ asset('assets/images/ecommerce/product_gallery_03.jpg') }}" alt="Rounded Image" class="img-fluid rounded">
                     </div>
                 </div>
                 <div class="card-footer">
@@ -281,9 +281,9 @@ Soyuz - Product Detail
 @endsection
 @section('script')
 <!-- Summernote js -->
-<script src="{{ asset('demo/assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <!-- Dropzone js -->
-<script src="{{ asset('demo/assets/plugins/dropzone/dist/dropzone.js') }}"></script>
+<script src="{{ asset('assets/plugins/dropzone/dist/dropzone.js') }}"></script>
 <!-- eCommerce Page js -->
-<script src="{{ asset('demo/assets/js/custom/custom-ecommerce-product-detail-page.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-ecommerce-product-detail-page.js') }}"></script>
 @endsection

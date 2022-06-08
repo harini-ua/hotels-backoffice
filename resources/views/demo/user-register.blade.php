@@ -10,12 +10,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Soyuz - Register</title>
     <!-- Fevicon -->
-    <link rel="shortcut icon" href="{{ asset('demo/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
     <!-- Start CSS -->
-    <link href="{{ asset('demo/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('demo/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('demo/assets/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('demo/assets/css/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
     <!-- End CSS -->
 </head>
 <body class="vertical-layout">
@@ -34,7 +34,7 @@
                                 <div class="card-body">
                                     <form action="#">
                                         <div class="form-head">
-                                            <a href="{{url('/demo')}}" class="logo"><img src="assets/images/logo.svg" class="img-fluid" alt="logo"></a>
+                                            <a href="{{url('/demo')}}" class="logo"><img src="{{ asset('assets/images/logo.svg') }}" class="img-fluid" alt="logo"></a>
                                         </div>
                                         <h4 class="text-primary my-4">Sign Up !</h4>
                                         <div class="form-group">
@@ -74,12 +74,12 @@
     </div>
     <!-- End Containerbar -->
     <!-- Start JS -->
-    <script src="{{ asset('demo/assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('demo/assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('demo/assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('demo/assets/js/modernizr.min.js') }}"></script>
-    <script src="{{ asset('demo/assets/js/detect.js') }}"></script>
-    <script src="{{ asset('demo/assets/js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
+    <script src="{{ asset('assets/js/detect.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
     <!-- End js -->
 </body>
 </html>

@@ -65,7 +65,7 @@ Soyuz - My Account
                         </div>
                         <div class="card-body">
                             <div class="profilebox py-4 text-center">
-                                <img src="assets/images/users/profile.svg" class="img-fluid mb-3" alt="profile">
+                                <img src="{{ asset('assets/images/users/profile.svg') }}" class="img-fluid mb-3" alt="profile">
                                 <div class="profilename">
                                     <h5>John Doe</h5>
                                     <p class="text-muted my-3"><a href="my-account.html"><i class="feather icon-edit-2 mr-2"></i>Edit Profile</a></p>
@@ -170,7 +170,7 @@ Soyuz - My Account
                                                 <tbody>
                                                     <tr>
                                                         <th scope="row">1</th>
-                                                        <td><img src="assets/images/ecommerce/product_01.svg" class="img-fluid" width="35" alt="product"></td>
+                                                        <td><img src="{{ asset('assets/images/ecommerce/product_01.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                                         <td>Electronic Kettle</td>
                                                         <td>1</td>
                                                         <td>$75</td>
@@ -178,7 +178,7 @@ Soyuz - My Account
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">2</th>
-                                                        <td><img src="assets/images/ecommerce/product_02.svg" class="img-fluid" width="35" alt="product"></td>
+                                                        <td><img src="{{ asset('assets/images/ecommerce/product_02.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                                         <td>Fitness Band</td>
                                                         <td>2</td>
                                                         <td>$50</td>
@@ -228,7 +228,7 @@ Soyuz - My Account
                                                 <tbody>
                                                     <tr>
                                                         <th scope="row">1</th>
-                                                        <td><img src="assets/images/ecommerce/product_01.svg" class="img-fluid" width="35" alt="product"></td>
+                                                        <td><img src="{{ asset('assets/images/ecommerce/product_01.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                                         <td>iPhone XR</td>
                                                         <td>1</td>
                                                         <td>$99</td>
@@ -345,7 +345,7 @@ Soyuz - My Account
                                         <tbody>
                                             <tr>
                                                 <th scope="row">1</th>
-                                                <td><img src="assets/images/ecommerce/product_01.svg" class="img-fluid" width="35" alt="product"></td>
+                                                <td><img src="{{ asset('assets/images/ecommerce/product_01.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                                 <td>Electronic Kettle</td>
                                                 <td>
                                                     <div class="form-group mb-0">
@@ -361,7 +361,7 @@ Soyuz - My Account
                                             </tr>
                                             <tr>
                                                 <th scope="row">2</th>
-                                                <td><img src="assets/images/ecommerce/product_02.svg" class="img-fluid" width="35" alt="product"></td>
+                                                <td><img src="{{ asset('assets/images/ecommerce/product_02.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                                 <td>Fitness Band</td>
                                                 <td>
                                                     <div class="form-group mb-0">
@@ -377,7 +377,7 @@ Soyuz - My Account
                                             </tr>
                                             <tr>
                                                 <th scope="row">3</th>
-                                                <td><img src="assets/images/ecommerce/product_03.svg" class="img-fluid" width="35" alt="product"></td>
+                                                <td><img src="{{ asset('assets/images/ecommerce/product_03.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                                 <td>iPhone XR</td>
                                                 <td>
                                                     <div class="form-group mb-0">
@@ -408,7 +408,7 @@ Soyuz - My Account
                         <div class="card-body">
                             <div class="row justify-content-center">
                                 <div class="col-sm-6 col-md-6 col-lg-4">
-                                    <img src="assets/images/ecommerce/wallet.svg" class="img-fluid" alt="wallet">
+                                    <img src="{{ asset('assets/images/ecommerce/wallet.svg') }}" class="img-fluid" alt="wallet">
                                 </div>
                             </div>
                             <div class="wallet-box">
@@ -675,7 +675,7 @@ Soyuz - My Account
                                         <a href="#" class="btn btn-success-rgba font-18"><i class="feather icon-edit"></i></a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <img src="assets/images/users/profile.svg" class="img-fluid" alt="profile">
+                                        <img src="{{ asset('assets/images/users/profile.svg') }}" class="img-fluid" alt="profile">
                                     </li>
                                     <li class="list-inline-item">
                                         <a href="#" class="btn btn-danger-rgba font-18"><i class="feather icon-trash"></i></a>
@@ -746,7 +746,7 @@ Soyuz - My Account
                             <div class="row justify-content-center">
                                 <div class="col-lg-6 col-xl-4">
                                     <div class="logout-content text-center my-5">
-                                        <img src="assets/images/ecommerce/logout.svg" class="img-fluid mb-5" alt="logout">
+                                        <img src="{{ asset('assets/images/ecommerce/logout.svg') }}" class="img-fluid mb-5" alt="logout">
                                         <h2 class="text-success">Logout ?</h2>
                                         <p class="my-4">Are you sure to want to Log out? You will miss your instant checkout deal.</p>
                                         <div class="button-list">
@@ -770,5 +770,5 @@ Soyuz - My Account
 @endsection
 @section('script')
 <!-- eCommerce My Account Page js -->
-<script src="{{ asset('demo/assets/js/custom/custom-ecommerce-myaccount.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-ecommerce-myaccount.js') }}"></script>
 @endsection

@@ -75,7 +75,7 @@ Soyuz - Product List
                             <tbody>
                                 <tr>
                                     <th scope="row">#1</th>
-                                    <td><img src="assets/images/ecommerce/product_01.svg" class="img-fluid" width="35" alt="product"></td>
+                                    <td><img src="{{ asset('assets/images/ecommerce/product_01.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                     <td>Electronic Kettle</td>
                                     <td class="text-success">In Stock</td>
                                     <td>$75</td>
@@ -92,7 +92,7 @@ Soyuz - Product List
                                 </tr>
                                 <tr>
                                     <th scope="row">#2</th>
-                                    <td><img src="assets/images/ecommerce/product_02.svg" class="img-fluid" width="35" alt="product"></td>
+                                    <td><img src="{{ asset('assets/images/ecommerce/product_02.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                     <td>Fitness Band</td>
                                     <td class="text-success">In Stock</td>
                                     <td>$50</td>
@@ -109,7 +109,7 @@ Soyuz - Product List
                                 </tr>
                                 <tr>
                                     <th scope="row">#3</th>
-                                    <td><img src="assets/images/ecommerce/product_03.svg" class="img-fluid" width="35" alt="product"></td>
+                                    <td><img src="{{ asset('assets/images/ecommerce/product_03.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                     <td>iPhone XR</td>
                                     <td class="text-danger">Out of Stock</td>
                                     <td>$99</td>
@@ -126,7 +126,7 @@ Soyuz - Product List
                                 </tr>
                                 <tr>
                                     <th scope="row">#4</th>
-                                    <td><img src="assets/images/ecommerce/product_04.svg" class="img-fluid" width="35" alt="product"></td>
+                                    <td><img src="{{ asset('assets/images/ecommerce/product_04.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                     <td>Office Stapler</td>
                                     <td class="text-success">In Stock</td>
                                     <td>$79</td>
@@ -143,7 +143,7 @@ Soyuz - Product List
                                 </tr>
                                 <tr>
                                     <th scope="row">#5</th>
-                                    <td><img src="assets/images/ecommerce/product_01.svg" class="img-fluid" width="35" alt="product"></td>
+                                    <td><img src="{{ asset('assets/images/ecommerce/product_01.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                     <td>Shooting Camera</td>
                                     <td class="text-success">In Stock</td>
                                     <td>$29</td>
@@ -160,7 +160,7 @@ Soyuz - Product List
                                 </tr>
                                 <tr>
                                     <th scope="row">#6</th>
-                                    <td><img src="assets/images/ecommerce/product_02.svg" class="img-fluid" width="35" alt="product"></td>
+                                    <td><img src="{{ asset('assets/images/ecommerce/product_02.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                     <td>Wireless buds</td>
                                     <td class="text-danger">Out of Stock</td>
                                     <td>$89</td>

@@ -4,7 +4,7 @@ Soyuz - Footable
 @extends('demo.layouts.main')
 @section('style')
 <!-- Footabel css -->
-<link href="{{ asset('demo/assets/plugins/footable/css/footable.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/footable/css/footable.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -244,7 +244,7 @@ Soyuz - Footable
 @endsection
 @section('script')
 <!-- Footable js -->
-<script src="{{ asset('demo/assets/plugins/moment/moment.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/footable/js/footable.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-table-footable.js') }}"></script>
+<script src="{{ asset('assets/plugins/moment/moment.js') }}"></script>
+<script src="{{ asset('assets/plugins/footable/js/footable.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-table-footable.js') }}"></script>
 @endsection

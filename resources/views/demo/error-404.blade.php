@@ -10,12 +10,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Soyuz - 404</title>
     <!-- Fevicon -->
-    <link rel="shortcut icon" href="{{ asset('demo/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
     <!-- Start CSS -->
-    <link href="{{ asset('demo/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('demo/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('demo/assets/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('demo/assets/css/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
     <!-- End CSS -->
 </head>
 <body class="vertical-layout">
@@ -29,8 +29,8 @@
                     <!-- Start col -->
                     <div class="col-md-8 col-lg-6">
                         <div class="text-center">
-                            <img src="assets/images/logo.svg" class="img-fluid error-logo" alt="logo">
-                            <img src="assets/images/error/404.svg" class="img-fluid error-image" alt="404">
+                            <img src="{{ asset('assets/images/logo.svg') }}" class="img-fluid error-logo" alt="logo">
+                            <img src="{{ asset('assets/images/error/404.svg') }}" class="img-fluid error-image" alt="404">
                             <h4 class="error-subtitle mb-4">Oops! Page not Found</h4>
                             <p class="mb-4">We did not find the page you are looking for. Please return to previous page or visit home page. </p>
                             <a href="{{url('/demo')}}" class="btn btn-primary font-16"><i class="feather icon-home mr-2"></i> Go back to Dashboard</a>
@@ -45,12 +45,12 @@
     </div>
     <!-- End Containerbar -->
     <!-- Start JS -->
-    <script src="{{ asset('demo/assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('demo/assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('demo/assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('demo/assets/js/modernizr.min.js') }}"></script>
-    <script src="{{ asset('demo/assets/js/detect.js') }}"></script>
-    <script src="{{ asset('demo/assets/js/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
+    <script src="{{ asset('assets/js/detect.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
     <!-- End js -->
 </body>
 </html>

@@ -4,8 +4,8 @@ Soyuz - Image Crop
 @extends('demo.layouts.main')
 @section('style')
 <!-- Cropper css -->
-<link href="{{ asset('demo/assets/plugins/cropperjs/cropper.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('demo/assets/plugins/cropperjs/main.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/cropperjs/cropper.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/cropperjs/main.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -41,7 +41,7 @@ Soyuz - Image Crop
                 </div>
                 <div class="card-body">
                     <div class="img-container">
-                      <img src="assets/images/general/image-crop.jpg" id="image" class="cropper-hidden" alt="Picture">
+                      <img src="{{ asset('assets/images/general/image-crop.jpg') }}" id="image" class="cropper-hidden" alt="Picture">
                     </div>
                 </div>
             </div>
@@ -193,7 +193,7 @@ Soyuz - Image Crop
                               <div class="modal-body"></div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-danger-rgba" data-dismiss="modal">Close</button>
-                                <a class="btn btn-primary-rgba" id="download" href="javascript:void(0);" download="cropped.jpg">Download</a>
+                                <a class="btn btn-primary-rgba" id="download" href="javascript:void(0);" download="cropped.jpg') }}">Download</a>
                               </div>
                             </div>
                           </div>
@@ -518,6 +518,6 @@ Soyuz - Image Crop
 @endsection
 @section('script')
 <!-- Cropper js -->
-<script src="{{ asset('demo/assets/plugins/cropperjs/cropper.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/cropperjs/main.js') }}"></script>
+<script src="{{ asset('assets/plugins/cropperjs/cropper.js') }}"></script>
+<script src="{{ asset('assets/plugins/cropperjs/main.js') }}"></script>
 @endsection

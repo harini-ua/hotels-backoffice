@@ -4,8 +4,8 @@ Soyuz - Onboarding Screen
 @extends('demo.layouts.main')
 @section('style')
 <!-- Slick css -->
-<link href="{{ asset('demo/assets/plugins/slick/slick.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('demo/assets/plugins/slick/slick-theme.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/slick/slick.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/slick/slick-theme.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -43,7 +43,7 @@ Soyuz - Onboarding Screen
                     <div class="row justify-content-center">
                         <div class="col-lg-4">
                             <div class="onboard-content text-center my-5">
-                                <img src="assets/images/ui-onboard/unboard.svg" class="img-fluid mb-5" alt="onboard">
+                                <img src="{{ asset('assets/images/ui-onboard/unboard.svg') }}" class="img-fluid mb-5" alt="onboard">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#onboardingScreens">Click to Start !!!</button>
                             </div>
                         </div>
@@ -61,22 +61,22 @@ Soyuz - Onboarding Screen
                         <div class="modal-body border-0">
                             <div id="onboard-screen" class="onboard-screen">
                                 <div class="onboard-screen-list">
-                                    <img src="assets/images/ui-onboard/responsive.svg" class="img-fluid" alt="onboard">
+                                    <img src="{{ asset('assets/images/ui-onboard/responsive.svg') }}" class="img-fluid" alt="onboard">
                                     <h5 class="card-title my-4">Highly Responsive</h5>
                                     <p class="text-muted">Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
                                 </div>
                                 <div class="onboard-screen-list">
-                                    <img src="assets/images/ui-onboard/customisable.svg" class="img-fluid" alt="onboard">
+                                    <img src="{{ asset('assets/images/ui-onboard/customisable.svg') }}" class="img-fluid" alt="onboard">
                                     <h5 class="card-title my-4">Customisable</h5>
                                     <p class="text-muted">Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
                                 </div>
                                 <div class="onboard-screen-list">
-                                    <img src="assets/images/ui-onboard/easily-editable-code.svg" class="img-fluid" alt="onboard">
+                                    <img src="{{ asset('assets/images/ui-onboard/easily-editable-code.svg') }}" class="img-fluid" alt="onboard">
                                     <h5 class="card-title my-4">Easily Editable Code</h5>
                                     <p class="text-muted">Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
                                 </div>
                                 <div class="onboard-screen-list">
-                                    <img src="assets/images/ui-onboard/unique-widgets.svg" class="img-fluid" alt="onboard">
+                                    <img src="{{ asset('assets/images/ui-onboard/unique-widgets.svg') }}" class="img-fluid" alt="onboard">
                                     <h5 class="card-title my-4">Unique Widgets</h5>
                                     <p class="text-muted">Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
                                 </div>
@@ -94,7 +94,7 @@ Soyuz - Onboarding Screen
 @endsection
 @section('script')
 <!-- Slick js -->
-<script src="{{ asset('demo/assets/plugins/slick/slick.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/slick/slick.min.js') }}"></script>
 <!-- Onboarding Screens js -->
-<script src="{{ asset('demo/assets/js/custom/custom-onboarding-screens.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-onboarding-screens.js') }}"></script>
 @endsection

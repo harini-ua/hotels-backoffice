@@ -112,7 +112,7 @@ Soyuz - Order Detail
                                 <tr>
                                     <th scope="row">1</th>
                                     <td><a href="#" class="text-success mr-2"><i class="feather icon-edit-2"></i></a><a href="#" class="text-danger"><i class="feather icon-trash"></i></a></td>
-                                    <td><img src="assets/images/ecommerce/product_01.svg" class="img-fluid" width="35" alt="product"></td>
+                                    <td><img src="{{ asset('assets/images/ecommerce/product_01.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                     <td>Electronic Kettle</td>
                                     <td>1</td>
                                     <td>$75</td>
@@ -121,7 +121,7 @@ Soyuz - Order Detail
                                 <tr>
                                     <th scope="row">2</th>
                                     <td><a href="#" class="text-success mr-2"><i class="feather icon-edit-2"></i></a><a href="#" class="text-danger"><i class="feather icon-trash"></i></a></td>
-                                    <td><img src="assets/images/ecommerce/product_02.svg" class="img-fluid" width="35" alt="product"></td>
+                                    <td><img src="{{ asset('assets/images/ecommerce/product_02.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                     <td>Fitness Band</td>
                                     <td>2</td>
                                     <td>$50</td>
@@ -130,7 +130,7 @@ Soyuz - Order Detail
                                 <tr>
                                     <th scope="row">3</th>
                                     <td><a href="#" class="text-success mr-2"><i class="feather icon-edit-2"></i></a><a href="#" class="text-danger"><i class="feather icon-trash"></i></a></td>
-                                    <td><img src="assets/images/ecommerce/product_03.svg" class="img-fluid" width="35" alt="product"></td>
+                                    <td><img src="{{ asset('assets/images/ecommerce/product_03.svg') }}" class="img-fluid" width="35" alt="product"></td>
                                     <td>iPhone XR</td>
                                     <td>10</td>
                                     <td>$99</td>
@@ -376,5 +376,5 @@ Soyuz - Order Detail
 @endsection
 @section('script')
 <!-- eCommerce Order Detail Page js -->
-<script src="{{ asset('demo/assets/js/custom/custom-ecommerce-order-detail-page.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-ecommerce-order-detail-page.js') }}"></script>
 @endsection

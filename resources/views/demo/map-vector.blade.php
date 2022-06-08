@@ -4,7 +4,7 @@ Soyuz - Vector Map
 @extends('demo.layouts.main')
 @section('style')
 <!-- jvectormap css -->
-<link href="{{ asset('demo/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -123,14 +123,14 @@ Soyuz - Vector Map
 @endsection
 @section('script')
 <!-- Vector Maps js -->
-<script src="{{ asset('demo/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/jvectormap/gdp-data.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/jvectormap/jquery-jvectormap-us-aea-en.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/jvectormap/jquery-jvectormap-in-mill.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/jvectormap/jquery-jvectormap-au-mill.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/jvectormap/jquery-jvectormap-ar-mill.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/jvectormap/jquery-jvectormap-ru-mill.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/jvectormap/jquery-jvectormap-za-mill.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-jvectormap.js') }}"></script>
+<script src="{{ asset('assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+<script src="{{ asset('assets/plugins/jvectormap/gdp-data.js') }}"></script>
+<script src="{{ asset('assets/plugins/jvectormap/jquery-jvectormap-us-aea-en.js') }}"></script>
+<script src="{{ asset('assets/plugins/jvectormap/jquery-jvectormap-in-mill.js') }}"></script>
+<script src="{{ asset('assets/plugins/jvectormap/jquery-jvectormap-au-mill.js') }}"></script>
+<script src="{{ asset('assets/plugins/jvectormap/jquery-jvectormap-ar-mill.js') }}"></script>
+<script src="{{ asset('assets/plugins/jvectormap/jquery-jvectormap-ru-mill.js') }}"></script>
+<script src="{{ asset('assets/plugins/jvectormap/jquery-jvectormap-za-mill.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-jvectormap.js') }}"></script>
 @endsection

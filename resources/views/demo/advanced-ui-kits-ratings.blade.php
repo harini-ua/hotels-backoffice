@@ -240,6 +240,6 @@ Soyuz - Ratings
 @endsection
 @section('script')
 <!-- jQuery Bar Rating js -->
-<script src="{{ asset('demo/assets/plugins/jquery-bar-rating/jquery.barrating.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-barrating.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery-bar-rating/jquery.barrating.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-barrating.js') }}"></script>
 @endsection

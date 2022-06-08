@@ -4,7 +4,7 @@ Soyuz - Modals
 @extends('demo.layouts.main')
 @section('style')
 <!-- Animate css -->
-<link href="{{ asset('demo/assets/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/animate/animate.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -458,5 +458,5 @@ Soyuz - Modals
 @endsection
 @section('script')
 <!-- Model js -->
-<script src="{{ asset('demo/assets/js/custom/custom-model.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-model.js') }}"></script>
 @endsection

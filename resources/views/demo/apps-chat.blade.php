@@ -47,70 +47,70 @@ Soyuz - Chat
                 <div class="chat-user-list">
                     <ul class="list-unstyled mb-0">
                         <li class="media">
-                            <img class="align-self-center rounded-circle" src="assets/images/users/girl.svg" alt="Generic placeholder image">
+                            <img class="align-self-center rounded-circle" src="{{ asset('assets/images/users/girl.svg') }}" alt="Generic placeholder image">
                             <div class="media-body">
                                 <h5>John Doe<span class="badge badge-success ml-2">3</span> <span class="timing">25 Jan</span></h5>
                                 <p>Admin</p>
                             </div>
                         </li>
                         <li class="media">
-                            <img class="align-self-center rounded-circle" src="assets/images/users/boy.svg" alt="Generic placeholder image">
+                            <img class="align-self-center rounded-circle" src="{{ asset('assets/images/users/boy.svg') }}" alt="Generic placeholder image">
                             <div class="media-body">
                                 <h5>Mark Wood<span class="badge badge-success ml-2">1</span> <span class="timing">19 Jan</span></h5>
                                 <p>Web Developer</p>
                             </div>
                         </li>
                         <li class="media">
-                            <img class="align-self-center rounded-circle" src="assets/images/users/men.svg" alt="Generic placeholder image">
+                            <img class="align-self-center rounded-circle" src="{{ asset('assets/images/users/men.svg') }}" alt="Generic placeholder image">
                             <div class="media-body">
                                 <h5>Carey Smith<span class="badge badge-success ml-2">2</span> <span class="timing">09 Jan</span></h5>
                                 <p>Web Designer</p>
                             </div>
                         </li>
                         <li class="media">
-                            <img class="align-self-center rounded-circle" src="assets/images/users/women.svg" alt="Generic placeholder image">
+                            <img class="align-self-center rounded-circle" src="{{ asset('assets/images/users/women.svg') }}" alt="Generic placeholder image">
                             <div class="media-body">
                                 <h5>David Mathews<span class="badge badge-success ml-2">3</span> <span class="timing">01 Jan</span></h5>
                                 <p>Social Marketing</p>
                             </div>
                         </li>
                         <li class="media">
-                            <img class="align-self-center rounded-circle" src="assets/images/users/girl.svg" alt="Generic placeholder image">
+                            <img class="align-self-center rounded-circle" src="{{ asset('assets/images/users/girl.svg') }}" alt="Generic placeholder image">
                             <div class="media-body">
                                 <h5>Kate Perry<span class="badge badge-success ml-2">1</span> <span class="timing">28 Dec</span></h5>
                                 <p>UI Designer</p>
                             </div>
                         </li>
                         <li class="media">
-                            <img class="align-self-center rounded-circle" src="assets/images/users/boy.svg" alt="Generic placeholder image">
+                            <img class="align-self-center rounded-circle" src="{{ asset('assets/images/users/boy.svg') }}" alt="Generic placeholder image">
                             <div class="media-body">
                                 <h5>Angelina Miller<span class="badge badge-success ml-2">3</span> <span class="timing">20 Dec</span></h5>
                                 <p>Tester</p>
                             </div>
                         </li>
                         <li class="media">
-                            <img class="align-self-center rounded-circle" src="assets/images/users/men.svg" alt="Generic placeholder image">
+                            <img class="align-self-center rounded-circle" src="{{ asset('assets/images/users/men.svg') }}" alt="Generic placeholder image">
                             <div class="media-body">
                                 <h5>Dany Smith<span class="badge badge-success ml-2">2</span> <span class="timing">10 Dec</span></h5>
                                 <p>HR</p>
                             </div>
                         </li>
                         <li class="media">
-                            <img class="align-self-center rounded-circle" src="assets/images/users/women.svg" alt="Generic placeholder image">
+                            <img class="align-self-center rounded-circle" src="{{ asset('assets/images/users/women.svg') }}" alt="Generic placeholder image">
                             <div class="media-body">
                                 <h5>John Stark<span class="badge badge-success ml-2">3</span> <span class="timing">02 Dec</span></h5>
                                 <p>Marketing Head</p>
                             </div>
                         </li>
                         <li class="media">
-                            <img class="align-self-center rounded-circle" src="assets/images/users/boy.svg" alt="Generic placeholder image">
+                            <img class="align-self-center rounded-circle" src="{{ asset('assets/images/users/boy.svg') }}" alt="Generic placeholder image">
                             <div class="media-body">
                                 <h5>Adam Brue<span class="badge badge-success ml-2">2</span> <span class="timing">29 Nov</span></h5>
                                 <p>Product Head</p>
                             </div>
                         </li>
                         <li class="media">
-                            <img class="align-self-center rounded-circle" src="assets/images/users/girl.svg" alt="Generic placeholder image">
+                            <img class="align-self-center rounded-circle" src="{{ asset('assets/images/users/girl.svg') }}" alt="Generic placeholder image">
                             <div class="media-body">
                                 <h5>Colin Perry<span class="badge badge-success ml-2">1</span> <span class="timing">21 Nov</span></h5>
                                 <p>Manager</p>
@@ -127,7 +127,7 @@ Soyuz - Chat
                 <div class="chat-head">
                     <ul class="list-unstyled mb-0">
                         <li class="media">
-                            <img class="align-self-center mr-3 rounded-circle" src="assets/images/users/girl.svg" alt="Generic placeholder image">
+                            <img class="align-self-center mr-3 rounded-circle" src="{{ asset('assets/images/users/girl.svg') }}" alt="Generic placeholder image">
                             <div class="media-body">
                                 <h5 class="font-18">John Doe</h5>
                                 <p class="mb-0">Online</p>
@@ -238,5 +238,5 @@ Soyuz - Chat
 @endsection
 @section('script')
 <!-- Chat js -->
-<script src="{{ asset('demo/assets/js/custom/custom-chat.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-chat.js') }}"></script>
 @endsection

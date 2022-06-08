@@ -88,7 +88,7 @@ Soyuz - Hospital Doctor
         <div class="col-lg-6 col-xl-3">
             <div class="card doctor-box m-b-30">
                 <div class="card-body text-center">
-                    <img src="assets/images/users/boy.svg" class="img-fluid" alt="doctor">
+                    <img src="{{ asset('assets/images/users/boy.svg') }}" class="img-fluid" alt="doctor">
                     <h5>Dr. John Doe</h5>
                     <div class="doctor-detail">
                         <p class="mb-1">M.D (Cardiac), Heart Surgeon</p>
@@ -115,7 +115,7 @@ Soyuz - Hospital Doctor
         <div class="col-lg-6 col-xl-3">
             <div class="card doctor-box m-b-30">
                 <div class="card-body text-center">
-                    <img src="assets/images/users/girl.svg" class="img-fluid" alt="doctor">
+                    <img src="{{ asset('assets/images/users/girl.svg') }}" class="img-fluid" alt="doctor">
                     <h5>Dr. Rodney Macneal</h5>
                     <div class="doctor-detail">
                         <p class="mb-1">M.D (Ortho), Knee Specialist</p>
@@ -142,7 +142,7 @@ Soyuz - Hospital Doctor
         <div class="col-lg-6 col-xl-3">
             <div class="card doctor-box m-b-30">
                 <div class="card-body text-center">
-                    <img src="assets/images/users/women.svg" class="img-fluid" alt="doctor">
+                    <img src="{{ asset('assets/images/users/women.svg') }}" class="img-fluid" alt="doctor">
                     <h5>Dr. Meghan Abo</h5>
                     <div class="doctor-detail">
                         <p class="mb-1">M.D (Ped.), NICU-PICU</p>
@@ -169,7 +169,7 @@ Soyuz - Hospital Doctor
         <div class="col-lg-6 col-xl-3">
             <div class="card doctor-box m-b-30">
                 <div class="card-body text-center">
-                    <img src="assets/images/users/men.svg" class="img-fluid" alt="doctor">
+                    <img src="{{ asset('assets/images/users/men.svg') }}" class="img-fluid" alt="doctor">
                     <h5>Dr. Kristie Aamdot</h5>
                     <div class="doctor-detail">
                         <p class="mb-1">M.D (Gynec), IVF Specialist</p>
@@ -197,7 +197,7 @@ Soyuz - Hospital Doctor
         <div class="col-lg-6 col-xl-3">
             <div class="card doctor-box m-b-30">
                 <div class="card-body text-center">
-                    <img src="assets/images/users/boy.svg" class="img-fluid" alt="doctor">
+                    <img src="{{ asset('assets/images/users/boy.svg') }}" class="img-fluid" alt="doctor">
                     <h5>Dr. Neil Aaron</h5>
                     <div class="doctor-detail">
                         <p class="mb-1">M.D (CardioVasl), Vacular Surgeon</p>
@@ -224,7 +224,7 @@ Soyuz - Hospital Doctor
         <div class="col-lg-6 col-xl-3">
             <div class="card doctor-box m-b-30">
                 <div class="card-body text-center">
-                    <img src="assets/images/users/girl.svg" class="img-fluid" alt="doctor">
+                    <img src="{{ asset('assets/images/users/girl.svg') }}" class="img-fluid" alt="doctor">
                     <h5>Dr. John Aase</h5>
                     <div class="doctor-detail">
                         <p class="mb-1">M.D (Oto), Eye Surgeon</p>
@@ -251,7 +251,7 @@ Soyuz - Hospital Doctor
         <div class="col-lg-6 col-xl-3">
             <div class="card doctor-box m-b-30">
                 <div class="card-body text-center">
-                    <img src="assets/images/users/women.svg" class="img-fluid" alt="doctor">
+                    <img src="{{ asset('assets/images/users/women.svg') }}" class="img-fluid" alt="doctor">
                     <h5>Dr. Naomi Wattson</h5>
                     <div class="doctor-detail">
                         <p class="mb-1">M.D (Cosmet), Skin Care Specialist</p>
@@ -278,7 +278,7 @@ Soyuz - Hospital Doctor
         <div class="col-lg-6 col-xl-3">
             <div class="card doctor-box m-b-30">
                 <div class="card-body text-center">
-                    <img src="assets/images/users/men.svg" class="img-fluid" alt="doctor">
+                    <img src="{{ asset('assets/images/users/men.svg') }}" class="img-fluid" alt="doctor">
                     <h5>Dr. Mark Wahlberg</h5>
                     <div class="doctor-detail">
                         <p class="mb-1">M.D (Gastro), Stomach Specialist</p>

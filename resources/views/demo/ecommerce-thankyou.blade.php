@@ -42,7 +42,7 @@ Soyuz - Thank You
                     <div class="row justify-content-center">
                         <div class="col-lg-4">
                             <div class="thankyou-content text-center my-5">
-                                <img src="assets/images/ecommerce/thankyou.svg" class="img-fluid mb-5" alt="thankyou">
+                                <img src="{{ asset('assets/images/ecommerce/thankyou.svg') }}" class="img-fluid mb-5" alt="thankyou">
                                 <h2 class="text-success">Thank You !!!</h2>
                                 <p class="my-4">Your Order has been successfully placed. Your Order ID is #592981</p>
                                 <div class="button-list">

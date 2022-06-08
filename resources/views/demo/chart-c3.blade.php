@@ -4,7 +4,7 @@ Soyuz - C3 Chart
 @extends('demo.layouts.main')
 @section('style')
 <!-- C3 Charts css -->
-<link href="{{ asset('demo/assets/plugins/c3/c3.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/c3/c3.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -183,7 +183,7 @@ Soyuz - C3 Chart
 @endsection
 @section('script')
 <!-- C3 Chart js -->
-<script src="{{ asset('demo/assets/plugins/d3/d3.min.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/c3/c3.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-chart-c3.js') }}"></script>
+<script src="{{ asset('assets/plugins/d3/d3.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/c3/c3.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-chart-c3.js') }}"></script>
 @endsection

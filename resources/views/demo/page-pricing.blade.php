@@ -39,7 +39,7 @@ Soyuz - Pricing
                     <div class="pricing text-center">
                         <div class="pricing-top">
                             <h4 class="text-success mb-0">Economy</h4>
-                            <img src="assets/images/pricing/pricing-starter.svg" class="img-fluid my-4" alt="starter pricing">
+                            <img src="{{ asset('assets/images/pricing/pricing-starter.svg') }}" class="img-fluid my-4" alt="starter pricing">
                             <div class="pricing-amount">
                                 <h3 class="text-success mb-0"><sup>$</sup>49</h3>
                                 <h6 class="pricing-duration">Per Year</h6>
@@ -72,7 +72,7 @@ Soyuz - Pricing
                         <p class="text-center text-white mb-0"><span class="badge badge-primary text-uppercase rounded-top-0 font-16">Popular</span></p>
                         <div class="pricing-top">
                             <h3 class="text-primary mb-0">Standard</h3>
-                            <img src="assets/images/pricing/pricing-premium.svg" class="img-fluid price-pro-image my-4" alt="premium pricing">
+                            <img src="{{ asset('assets/images/pricing/pricing-premium.svg') }}" class="img-fluid price-pro-image my-4" alt="premium pricing">
                             <div class="pricing-amount">
                                 <h2 class="text-primary mb-0"><sup>$</sup>199</h2>
                                 <h5 class="pricing-duration">Per Year</h5>
@@ -104,7 +104,7 @@ Soyuz - Pricing
                     <div class="pricing text-center">
                         <div class="pricing-top pricing-top-enterprise">
                             <h4 class="text-warning mb-0">Enterprise</h4>
-                            <img src="assets/images/pricing/pricing-ultimate.svg" class="img-fluid my-4" alt="ultimate pricing">
+                            <img src="{{ asset('assets/images/pricing/pricing-ultimate.svg') }}" class="img-fluid my-4" alt="ultimate pricing">
                             <div class="pricing-amount">
                                 <h3 class="text-warning mb-0"><sup>$</sup>399</h3>
                                 <h6 class="pricing-duration">Per Year</h6>

@@ -4,7 +4,7 @@ Soyuz - Chartist Chart
 @extends('demo.layouts.main')
 @section('style')
 <!-- Chartist Chart css -->
-<link href="{{ asset('demo/assets/plugins/chartist-js/chartist.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/chartist-js/chartist.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -707,7 +707,7 @@ Soyuz - Chartist Chart
 @endsection
 @section('script')
 <!-- Chartist Chart JS -->
-<script src="{{ asset('demo/assets/plugins/chartist-js/chartist.min.js') }}"></script>
-<script src="{{ asset('demo/assets/plugins/chartist-js/chartist-plugin-tooltip.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-chart-chartistjs.js') }}"></script>
+<script src="{{ asset('assets/plugins/chartist-js/chartist.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/chartist-js/chartist-plugin-tooltip.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-chart-chartistjs.js') }}"></script>
 @endsection

@@ -4,7 +4,7 @@ Soyuz - Form Touch Spin
 @extends('demo.layouts.main')
 @section('style')
 <!-- Touchspin css -->
-<link href="{{ asset('demo/assets/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -135,6 +135,6 @@ Soyuz - Form Touch Spin
 @endsection
 @section('script')
 <!-- Touchspin js -->
-<script src="{{ asset('demo/assets/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-form-touchspin.js') }}"></script>
+<script src="{{ asset('assets/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-form-touchspin.js') }}"></script>
 @endsection

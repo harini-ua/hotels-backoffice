@@ -4,7 +4,7 @@ Soyuz - Kanban Board
 @extends('demo.layouts.main')
 @section('style')
 <!-- Dragula css -->
-<link href="{{ asset('demo/assets/plugins/dragula/dragula.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/dragula/dragula.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('rightbar-content')
 <!-- Start Breadcrumbbar -->
@@ -465,6 +465,6 @@ Soyuz - Kanban Board
 @endsection
 @section('script')
 <!-- Dragula js -->
-<script src="{{ asset('demo/assets/plugins/dragula/dragula.min.js') }}"></script>
-<script src="{{ asset('demo/assets/js/custom/custom-kanban.js') }}"></script>
+<script src="{{ asset('assets/plugins/dragula/dragula.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-kanban.js') }}"></script>
 @endsection
