@@ -52,6 +52,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CompanyExtraNightSeeder::class);
         $this->call(CompanyPartnerSeeder::class);
         $this->call(CompanyBookingCommissionSeeder::class);
-//        $this->call(CompanyHomepageOptionSeeder::class);
+        $this->call(CompanyHomepageOptionSeeder::class);
     }
 }

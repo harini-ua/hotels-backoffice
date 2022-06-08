@@ -95,7 +95,7 @@
                                                                 <div class="input-group">
                                                                     <div class="custom-control custom-checkbox custom-control-inline">
                                                                         <input type="checkbox"
-                                                                               name="sub-companies[{{ $i }}][status}"
+                                                                               name="sub-companies[{{ $i }}][status] "
                                                                                value="1"
                                                                                @if(((!empty($subCompanies) && $subCompanies[$i]->status) ? $subCompanies[$i]->status : null)) checked @endif
                                                                                class="custom-control-input @error('sub-companies.'.$i.'.status') is-invalid @enderror"
