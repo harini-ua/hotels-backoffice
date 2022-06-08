@@ -23,7 +23,7 @@
                             <a class="nav-link mb-2" href="{{ route('companies.homepage.edit', $model) }}">{{ __('Homepage') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.extra-nights.edit', $model) }}">{{ __('Extra Nights') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.prefilled-options.edit', $model) }}">{{ __('Pre Filled Options') }}</a>
-                            @if($model->mainOption->sub_companies)<a class="nav-link mb-2" href="{{ route('companies.sub-companies.edit', $model) }}">{{ __('Sub Companies') }}</a>@endif
+                            @if($model->sub_companies)<a class="nav-link mb-2" href="{{ route('companies.sub-companies.edit', $model) }}">{{ __('Sub Companies') }}</a>@endif
                             <a class="nav-link mb-2" href="{{ route('companies.hotel-distances.edit', $model) }}">{{ __('Hotel Distances') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.customer-supports.edit', $model) }}">{{ __('Customer Supports') }}</a>
                             <a class="nav-link mb-2" href="{{ route('companies.commissions.edit', $model) }}">{{ __('Commissions') }}</a>
@@ -52,20 +52,6 @@
                                 >
                                     @csrf
                                     @if(isset($model)) @method('PUT') @endif
-                                    <div class="form-group row">
-                                        <label for="sub_companies" class="col-sm-2 col-form-label">{{ __('Have Sub Companies') }}</label>
-                                        <div class="input-group col-sm-4">
-                                            <div class="custom-control custom-checkbox custom-control-inline">
-                                                <input type="checkbox" id="sub_companies" name="sub_companies"
-                                                       value="1"
-                                                       @if(old('sub_companies')) checked @endif
-                                                       @if($mainOptions && $mainOptions->sub_companies) checked @endif
-                                                       class="custom-control-input @error('sub_companies') is-invalid @enderror"
-                                                >
-                                                <label class="custom-control-label" for="sub_companies"></label>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="form-group row">
                                         <label for="chat_enabled" class="col-sm-2 col-form-label">{{ __('Enable Chat') }}</label>
                                         <div class="input-group col-sm-1">

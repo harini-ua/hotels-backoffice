@@ -29,10 +29,11 @@ class SubCompaniesController extends Controller
             ['href' => route('companies.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
-        $subCompanies = $company->subCompanies;
+        $subCompanies = $company->subCompanies->count() > 0 ? $company->subCompanies : [];
+        $count = $company->subCompanies->count() > 0 ? $company->subCompanies->count() : 1;
 
-        return view('admin.pages.companies.commissions', compact(
-            'breadcrumbs', 'actions', 'company', 'subCompanies'
+        return view('admin.pages.companies.sub-companies', compact(
+            'breadcrumbs', 'actions', 'company', 'subCompanies', 'count'
         ));
     }
 

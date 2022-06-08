@@ -24,7 +24,8 @@ class Company extends Model
      */
     protected $fillable = [
         'holder_name', 'company_name', 'category', 'country_id', 'city_id', 'language_id', 'admin_id', 'user_id',
-        'address', 'email', 'phone', 'comment', 'status', 'level', 'vat', 'newsletter', 'login_type', 'access_codes'
+        'address', 'email', 'phone', 'comment', 'status', 'level', 'sub_companies', 'vat', 'newsletter', 'login_type',
+        'access_codes'
     ];
 
     /**

@@ -55,7 +55,9 @@ class CompanyGeneralController extends Controller
         try {
             DB::beginTransaction();
 
-            // TODO: Need implement
+            $company->fill($request->except(['sub_companies']));
+            $company->sub_companies = $request->has('sub_companies');
+            $company->save();
 
             DB::commit();
 
