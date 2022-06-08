@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\App;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -30,7 +31,7 @@ class RoleAndPermissionSeeder extends Seeder
         $distributor = Role::create(['name' => UserRole::DISTRIBUTOR, 'guard_name' => 'web']);
         $employee = Role::create(['name' => UserRole::EMPLOYEE, 'guard_name' => 'web']);
 
-        if (env('APP_ENV') === 'local') {
+        if (App::environment(['local', 'staging'])) {
             $user = new User([
                 'username' => 'admin',
                 'title' => 'Administrator',
