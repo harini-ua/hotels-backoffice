@@ -44,19 +44,19 @@ class ReportCountryBookingController extends Controller
 
         $statuses = BookingStatus::asSelectArray();
         $dataTypes = BookingDateType::asSelectArray();
-        $platforms = BookingPlatform::asSelectArray();
+        $platformTypes = BookingPlatform::asSelectArray();
 
-        // TODO: platform_version
-        $devices = DB::table('bookings')
-            ->select('customer_name')
-            ->where('customer_name', '!=', '')
-            ->whereNotNull('customer_name')
+        $platformVersion = DB::table('bookings')
+            ->select('platform_version')
+            ->where('platform_version', '!=', '')
+            ->whereNotNull('platform_version')
+            ->orderBy('platform_version')
             ->distinct()->get()
-            ->pluck('customer_name', 'customer_name');
+            ->pluck('platform_version', 'platform_version');
 
         return $dataTable->render('admin.pages.country-booking.index', compact(
             'breadcrumbs', 'companies', 'countries', 'cities', 'hotels', 'statuses',
-            'dataTypes', 'platforms', 'devices'
+            'dataTypes', 'platformTypes', 'platformVersion'
         ));
     }
 }

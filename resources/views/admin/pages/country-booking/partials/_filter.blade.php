@@ -85,34 +85,34 @@
     </select>
 </div>
 <div class="form-group filter-item col-md-2">
-    <label for="platform">{{ __('Booking Source') }}</label>
+    <label for="platform_type">{{ __('Booking Source') }}</label>
     <select
-        id="platform"
-        name="platform"
+        id="platform_type"
+        name="platform_type"
         class="form-control filter-input select-filter select2-single"
         data-table="country-booking-list-datatable"
         data-url="{{ route('reports.country-booking.index') }}"
-        @if(!count($platforms)) disabled @endif
+        @if(!count($platformTypes)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
-        @foreach($platforms as $id => $platform)
+        @foreach($platformTypes as $id => $platform)
             <option value="{{ $id }}">{{ $platform }}</option>
         @endforeach
     </select>
 </div>
 <div class="form-group filter-item col-md-4">
-    <label for="device">{{ __('Device Version') }}</label>
+    <label for="platform_version">{{ __('Device Version') }}</label>
     <select
-        id="device"
-        name="device"
+        id="platform_version"
+        name="platform_version"
         class="form-control filter-input select-filter select2-single"
         data-table="country-booking-list-datatable"
         data-url="{{ route('reports.country-booking.index') }}"
-        @if(!count($devices)) disabled @endif
+        @if(!count($platformVersion)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
-        @foreach($devices as $id => $device)
-            <option value="{{ $id }}">{{ $device }}</option>
+        @foreach($platformVersion as $id => $platform)
+            <option value="{{ $id }}">{{ $platform }}</option>
         @endforeach
     </select>
 </div>
@@ -151,5 +151,10 @@
     </div>
 </div>
 <div class="form-group filter-item mr-1">
-    <button class="btn btn-submit" id="submit-btn" style="margin-top: 33px"><i class="feather icon-calendar"></i>{{ __('Search') }}</button>
+    <button class="btn btn-submit"
+            id="submit-btn"
+            data-table="country-booking-list-datatable"
+            data-url="{{ route('reports.country-booking.index') }}"
+            style="margin-top: 33px"><i class="feather icon-search"></i> {{ __('Search') }}
+    </button>
 </div>

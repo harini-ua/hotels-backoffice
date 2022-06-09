@@ -39,8 +39,6 @@ jQuery(document).ready(function ($) {
                     form.period.val()
                 );
 
-                console.log(1);
-
                 const table = $('#' + dataTable).DataTable();
                 console.log('#' + dataTable);
                 table.ajax.url(filters.url(route)).load();

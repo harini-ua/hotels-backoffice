@@ -30,13 +30,44 @@ class Booking extends Model
         'payment_reference',
     ];
 
-    public $timestamps = true;
     /**
      * Get the provider that owns the booking.
      */
     public function provider()
     {
         return $this->belongsTo(Provider::class);
+    }
+
+    /**
+     * Get the company that owns the booking.
+     */
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    /**
+     * Get the sub company that owns the booking.
+     */
+    public function subCompany()
+    {
+        return $this->belongsTo(SubCompany::class);
+    }
+
+    /**
+     * Get the country that owns the booking.
+     */
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    /**
+     * Get the city that owns the booking.
+     */
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 
     /**
@@ -48,11 +79,19 @@ class Booking extends Model
     }
 
     /**
-     * Get the meal plan variant that owns the booking.
+     * Get the booking user that owns the booking.
      */
-    public function mealPlanVariant()
+    public function bookingUser()
     {
-        return $this->belongsTo(MealPlanVariant::class);
+        return $this->belongsTo(BookingUser::class);
+    }
+
+    /**
+     * Get the currency that owns the booking.
+     */
+    public function currency()
+    {
+        return $this->belongsTo(Currency::class);
     }
 
     /**
@@ -61,6 +100,14 @@ class Booking extends Model
     public function discountCode()
     {
         return $this->belongsTo(DiscountVoucherCode::class);
+    }
+
+    /**
+     * Get the meal plan variant that owns the booking.
+     */
+    public function mealPlanVariant()
+    {
+        return $this->belongsTo(MealPlanVariant::class);
     }
 
     /**
@@ -85,29 +132,5 @@ class Booking extends Model
     public function paymentTypes()
     {
         return $this->hasMany(BookingPaymentType::class);
-    }
-
-    /**
-     * Get the user that owns the booking.
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Get the city that owns the booking.
-     */
-    public function city()
-    {
-        return $this->belongsTo(City::class);
-    }
-
-    /**
-     * Get the currency that owns the booking.
-     */
-    public function currency()
-    {
-        return $this->belongsTo(Currency::class);
     }
 }
