@@ -9,7 +9,7 @@ use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
-class ReportInvoiceDataTable extends DataTable
+class ReportBookingCommissionDataTable extends DataTable
 {
     /**
      * @var array $checkInPeriod
@@ -101,7 +101,7 @@ class ReportInvoiceDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('report-invoice-list-datatable')
+            ->setTableId('report-booking-commission-list-datatable')
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
@@ -116,7 +116,7 @@ class ReportInvoiceDataTable extends DataTable
                 Button::make('excel'),
                 Button::make('print')
             )
-        ;
+            ;
     }
 
     /**
@@ -141,6 +141,6 @@ class ReportInvoiceDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'ReportInvoice_' . date('YmdHis');
+        return 'ReportBookingCommission_' . date('YmdHis');
     }
 }

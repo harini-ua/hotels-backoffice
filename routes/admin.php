@@ -40,6 +40,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PromoMessageController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\RecommendedHotelController;
+use App\Http\Controllers\ReportBookingCommissionController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ReportCountryBookingController;
 use App\Http\Controllers\ReportHotelsNewestController;
@@ -214,8 +215,8 @@ Route::middleware('auth')->group(function () {
         Route::prefix('reports')->as('reports.')->group(function () {
             Route::get('/', [ReportController::class, 'index'])->name('index');
 
+            Route::get('/booking-commission', [ReportBookingCommissionController::class, 'index'])->name('booking-commission.index');
             Route::get('/invoice', [ReportInvoiceController::class, 'index'])->name('invoice.index');
-
             Route::get('/country-booking', [ReportCountryBookingController::class, 'index'])->name('country-booking.index');
 
             Route::prefix('hotels')->as('hotels.')->group(function () {

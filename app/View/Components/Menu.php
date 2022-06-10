@@ -173,6 +173,12 @@ class Menu extends Component
             'guard' => $user->hasRole(UserRole::ADMIN),
             'items' => [
                 [
+                    'name' => __('Booking Commission'),
+                    'href' => route('reports.booking-commission.index'),
+                    'icon' => 'feather icon-percent',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
+                ],
+                [
                     'name' => __('Invoice Report'),
                     'href' => route('reports.invoice.index'),
                     'icon' => 'feather icon-file-text',
