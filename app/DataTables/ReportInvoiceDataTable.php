@@ -4,6 +4,7 @@ namespace App\DataTables;
 
 use App\Models\Booking;
 use App\Models\Country;
+use Carbon\Carbon;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -11,9 +12,14 @@ use Yajra\DataTables\Services\DataTable;
 class ReportInvoiceDataTable extends DataTable
 {
     /**
-     * @var array $period
+     * @var array $checkInPeriod
      */
-    public $period = [];
+    public $checkInPeriod = [];
+
+    /**
+     * @var array $voucherDatePeriod
+     */
+    public $voucherDatePeriod = [];
 
     /**
      * Build DataTable class.
@@ -69,6 +75,20 @@ class ReportInvoiceDataTable extends DataTable
     {
         $query = $model->newQuery();
         $query->where('country_id', 0);
+
+        if ($this->request->has('check_in')) {
+            $dates = explode(' - ', $this->request->get('check_in'));
+            foreach ($dates as $key => $date) {
+                $this->checkInPeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
+            }
+        }
+
+        if ($this->request->has('voucher_date')) {
+            $dates = explode(' - ', $this->request->get('voucher_date'));
+            foreach ($dates as $key => $date) {
+                $this->voucherDatePeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
+            }
+        }
 
         return $query;
     }
