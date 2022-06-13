@@ -1,9 +1,3 @@
-{{--<div class="form-group filter-item col-md-2">--}}
-{{--    <label for="booking_type">{{ __('Search Type') }}</label>--}}
-{{--    <div class="input-group">--}}
-{{--        <input class="form-control-plaintext font-weight-bold" value="{{ __('Advanced Search') }}:">--}}
-{{--    </div>--}}
-{{--</div>--}}
 <div class="form-group filter-item mr-1 col-md-2">
     <label for="order_id">{{ __('Order ID') }}</label>
     <input type="text"

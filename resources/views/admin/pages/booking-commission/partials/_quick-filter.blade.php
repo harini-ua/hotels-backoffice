@@ -1,9 +1,3 @@
-{{--<div class="form-group filter-item col-md-2">--}}
-{{--    <label for="booking_type">{{ __('Search Type') }}</label>--}}
-{{--    <div class="input-group">--}}
-{{--        <input class="form-control-plaintext font-weight-bold" value="{{ __('Quick Search') }}:">--}}
-{{--    </div>--}}
-{{--</div>--}}
 <div class="form-group filter-item col-md-2">
     <label for="booking_type">{{ __('Booking Type') }}</label>
     <select
@@ -25,8 +19,8 @@
         id="company"
         name="company"
         class="form-control filter-input select-filter select2 select2-single"
-        data-table="report-booking-customer-list-datatable"
-        data-url="{{ route('reports.booking-customer.index') }}"
+        data-table="report-booking-commission-list-datatable"
+        data-url="{{ route('reports.booking-commission.index') }}"
         @if(!count($companies)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
@@ -44,8 +38,8 @@
                class="form-control datepicker-filter"
                placeholder="{{ __('Choice Period Date') }}"
                aria-describedby="basic-addon7"
-               data-table="report-booking-customer-list-datatable"
-               data-url="{{ route('reports.booking-customer.index') }}"
+               data-table="report-booking-commission-list-datatable"
+               data-url="{{ route('reports.booking-commission.index') }}"
                value=""
         >
         <div class="input-group-append">
@@ -57,8 +51,8 @@
     <button class="btn btn-submit"
             id="quick-submit-btn"
             data-type="quick"
-            data-table="report-booking-customer-list-datatable"
-            data-url="{{ route('reports.booking-customer.index') }}"
+            data-table="report-booking-commission-list-datatable"
+            data-url="{{ route('reports.booking-commission.index') }}"
             style="margin-top: 33px"><i class="feather icon-search"></i> {{ __('Search') }}
     </button>
 </div>

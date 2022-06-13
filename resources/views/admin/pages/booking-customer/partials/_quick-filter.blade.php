@@ -1,17 +1,11 @@
-{{--<div class="form-group filter-item col-md-2">--}}
-{{--    <label for="booking_type">{{ __('Search Type') }}</label>--}}
-{{--    <div class="input-group">--}}
-{{--        <input class="form-control-plaintext font-weight-bold" value="{{ __('Quick Search') }}:">--}}
-{{--    </div>--}}
-{{--</div>--}}
 <div class="form-group filter-item col-md-2">
     <label for="booking_type">{{ __('Booking Type') }}</label>
     <select
         id="booking_type"
         name="booking_type"
         class="form-control filter-input select-filter"
-        data-table="report-booking-commission-list-datatable"
-        data-url="{{ route('reports.booking-commission.index') }}"
+        data-table="report-booking-customer-list-datatable"
+        data-url="{{ route('reports.booking-customer.index') }}"
         @if(!count($bookingTypes)) disabled @endif
     >
         @foreach($bookingTypes as $id => $type)
