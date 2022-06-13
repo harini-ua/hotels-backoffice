@@ -13,7 +13,7 @@
 @endsection
 
 @section('rightbar-content')
-    <div class="contentbar report-booking-commission-list-datatable">
+    <div class="contentbar report-booking-customer-list-datatable">
         <div class="row">
             <div class="col-lg-12">
                 <x-filter
