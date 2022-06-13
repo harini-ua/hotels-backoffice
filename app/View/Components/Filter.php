@@ -7,14 +7,22 @@ use function view;
 
 class Filter extends Component
 {
+    /** @var string $title */
+    public string $title;
+
+    /** @var bool $collapse */
+    public bool $collapse;
+
     /**
      * Create a new component instance.
      *
-     * @return void
+     * @param string $title
+     * @param bool $collapse
      */
-    public function __construct()
+    public function __construct(string $title = 'Filters', bool $collapse = true)
     {
-        //
+        $this->title = $title ?? __($title);
+        $this->collapse = $collapse;
     }
 
     /**

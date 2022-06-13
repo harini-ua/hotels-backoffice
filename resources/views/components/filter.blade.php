@@ -1,18 +1,19 @@
+@php($uniq = uniqid())
 <div class="accordion" id="datatable-filters">
     <div class="card m-b-10">
-        <div class="card-header" id="headingOne">
+        <div class="card-header" id="{{ 'heading-'.$uniq }}">
             <h2 class="mb-0">
                 <button
                     class="btn btn-link collapse-filters"
                     type="button"
                     data-toggle="collapse"
-                    data-target="#collapseFilters"
+                    data-target="{{ '#collapse-'.$uniq }}"
                     aria-expanded="true"
-                    aria-controls="collapseFilters"
-                ><i class="feather icon-filter mr-2"></i>{{ __('Filters') }}</button>
+                    aria-controls="{{ 'collapse-'.$uniq }}"
+                ><i class="feather icon-filter mr-2"></i>{{ __($title) }}</button>
             </h2>
         </div>
-        <div id="collapseFilters" class="collapse" aria-labelledby="headingOne" data-parent="#datatable-filters" style="">
+        <div id="{{ 'collapse-'.$uniq }}" class="collapse @if(!$collapse) show @endif" aria-labelledby="{{ 'heading-'.$uniq }}" data-parent="#datatable-filters" style="">
             <div class="card-body">
                 <div class="form-row filter-items-wrapper">
                     {{ $slot }}

@@ -173,6 +173,12 @@ class Menu extends Component
             'guard' => $user->hasRole(UserRole::ADMIN),
             'items' => [
                 [
+                    'name' => __('Booking Customer'),
+                    'href' => route('reports.booking-customer.index'),
+                    'icon' => 'feather icon-file-text',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
+                ],
+                [
                     'name' => __('Booking VAT'),
                     'href' => route('reports.booking-vat.index'),
                     'icon' => 'feather icon-file-text',
