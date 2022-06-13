@@ -6,8 +6,6 @@ jQuery(document).ready(function ($) {
         const dateFilter = $(".date-filter");
         const route = dateFilter.attr('data-url') ? dateFilter.attr('data-url') : location.href;
 
-        $( ".collapse-filters").trigger( "click" );
-
         var form = {
             company: $this.find('#company'),
             country: $this.find('#country_id'),

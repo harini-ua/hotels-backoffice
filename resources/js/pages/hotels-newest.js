@@ -3,8 +3,6 @@ jQuery(document).ready(function ($) {
     $('.hotels-newest-list-datatable').each(function () {
         var $this = $(this);
 
-        $( ".collapse-filters").trigger( "click" );
-
         const dateFilter = $(".date-filter");
 
         var form = {

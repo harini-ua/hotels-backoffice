@@ -16,7 +16,7 @@
     <div class="contentbar hotels-newest-list-datatable">
         <div class="row">
             <div class="col-lg-12">
-                <x-filter>
+                <x-filter :collapse="false">
                     @include('admin.pages.hotels-newest.partials._filter')
                 </x-filter>
             </div>

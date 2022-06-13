@@ -3,8 +3,6 @@ jQuery(document).ready(function ($) {
     $('.report-invoice-list-datatable').each(function () {
         const $this = $(this);
 
-        $( ".collapse-filters").trigger( "click" );
-
         const forms = {
             quick: {
                 booking_type: $this.find('#booking_type'),

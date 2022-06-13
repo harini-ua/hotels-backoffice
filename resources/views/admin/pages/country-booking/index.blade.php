@@ -16,7 +16,7 @@
     <div class="contentbar country-booking-list-datatable">
         <div class="row">
             <div class="col-lg-12">
-                <x-filter>
+                <x-filter :collapse="false">
                     @include('admin.pages.country-booking.partials._filter')
                 </x-filter>
             </div>

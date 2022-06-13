@@ -16,8 +16,18 @@
     <div class="contentbar report-invoice-list-datatable">
         <div class="row">
             <div class="col-lg-12">
-                <x-filter>
-                    @include('admin.pages.report-invoice.partials._filter')
+                <x-filter
+                    title="{{ __('Quick Filter') }}"
+                    :collapse="false"
+                >
+                    @include('admin.pages.booking-customer.partials._quick-filter')
+                </x-filter>
+            </div>
+            <div class="col-lg-12">
+                <x-filter
+                    title="{{ __('Advanced Filter') }}"
+                >
+                    @include('admin.pages.booking-customer.partials._advanced-filter')
                 </x-filter>
             </div>
             <div class="col-lg-12">

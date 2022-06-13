@@ -16,7 +16,7 @@
     <div class="contentbar searching-period-list-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <x-filter>
+                <x-filter :collapse="false">
                     @include('admin.pages.searching-period.partials._filter')
                 </x-filter>
             </div>

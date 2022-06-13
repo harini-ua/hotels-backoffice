@@ -3,8 +3,6 @@ jQuery(document).ready(function ($) {
     $('.searching-period-list-wrapper').each(function () {
         var $this = $(this);
 
-        $( ".collapse-filters").trigger( "click" );
-
         const dateFilter = $(".date-filter");
         const route = dateFilter.attr('data-url') ? dateFilter.attr('data-url') : location.href;
 
