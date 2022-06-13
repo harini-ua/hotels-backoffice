@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ReportBookingCustomerDataTable;
+use App\Enums\BookingDateType;
+use App\Enums\BookingStatus;
 use App\Enums\BookingType;
 use App\Models\Company;
 
@@ -30,8 +32,11 @@ class ReportBookingCustomerController extends Controller
             ->sortBy('company_name')
             ->pluck('company_name', 'id');
 
+        $statuses = BookingStatus::asSelectArray();
+        $dataTypes = BookingDateType::asSelectArray();
+
         return $dataTable->render('admin.pages.booking-customer.index', compact(
-            'breadcrumbs', 'bookingTypes', 'companies'
+            'breadcrumbs', 'bookingTypes', 'companies', 'statuses', 'dataTypes'
         ));
     }
 }

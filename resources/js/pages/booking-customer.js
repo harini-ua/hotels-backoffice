@@ -11,9 +11,15 @@ jQuery(document).ready(function ($) {
                 submit: $this.find('#quick-submit-btn'),
             },
             advanced: {
+                booking_type: $this.find('#booking_type'),
                 order_id: $this.find('#order_id'),
                 booking_id: $this.find('#booking_id'),
-                voucher_date: $this.find('#voucher_date'),
+                booking_status: $this.find('#status'),
+                giftcard: $this.find('#giftcard'),
+                guest_name: $this.find('#guest_name'),
+                guest_email: $this.find('#guest_email'),
+                date_type: $this.find('#date_type'),
+                period: $this.find('#period'),
                 submit: $this.find('#advanced-submit-btn'),
             }
         };
@@ -34,7 +40,7 @@ jQuery(document).ready(function ($) {
             }
         });
 
-        forms.advanced.voucher_date.datepicker({
+        forms.advanced.period.datepicker({
             language: 'en',
             dateFormat: 'dd/mm/yyyy',
             range: true,
@@ -44,13 +50,13 @@ jQuery(document).ready(function ($) {
             multipleDatesSeparator: ' - ',
             onSelect: function(value, date) {
                 $(document).trigger({
-                    type: 'periodVoucherDateChange',
+                    type: 'periodChange',
                     value: value
                 });
             }
         });
 
-        $(document).on('periodCheckInChange', function(e) {
+        $(document).on('periodChange', function(e) {
             const date = e.value.split(" - ");
             if (date.length === 2) {
                 //
@@ -92,7 +98,7 @@ jQuery(document).ready(function ($) {
                 let url = forms.advanced.submit.attr('data-url');
                 table.ajax.url(filters.url(url)).load();
             } else {
-                swal('Oops!', 'Select a voucher date period of data to search', 'error');
+                swal('Oops!', 'Select date period to search', 'error');
             }
         });
     });

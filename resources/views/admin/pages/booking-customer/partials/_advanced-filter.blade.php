@@ -1,4 +1,19 @@
-<div class="form-group filter-item mr-1 col-md-2">
+<div class="form-group filter-item col-md-2">
+    <label for="booking_type">{{ __('Booking Type') }}</label>
+    <select
+        id="booking_type"
+        name="booking_type"
+        class="form-control filter-input select-filter"
+        data-table="report-booking-customer-list-datatable"
+        data-url="{{ route('reports.booking-customer.index') }}"
+        @if(!count($bookingTypes)) disabled @endif
+    >
+        @foreach($bookingTypes as $id => $type)
+            <option value="{{ $id }}">{{ $type }}</option>
+        @endforeach
+    </select>
+</div>
+<div class="form-group filter-item col-md-2">
     <label for="order_id">{{ __('Order ID') }}</label>
     <input type="text"
            id="order_id"
@@ -8,7 +23,7 @@
            class="form-control"
     >
 </div>
-<div class="form-group filter-item mr-1 col-md-2">
+<div class="form-group filter-item col-md-2">
     <label for="booking_id">{{ __('Booking ID') }}</label>
     <input type="text"
            id="booking_id"
@@ -18,17 +33,79 @@
            class="form-control"
     >
 </div>
+<div class="form-group filter-item col-md-2">
+    <label for="status">{{ __('Booking Status') }}</label>
+    <select
+        id="status"
+        name="status"
+        class="form-control filter-input select-filter select2-single"
+        data-table="report-booking-customer-list-datatable"
+        data-url="{{ route('reports.country-booking.index') }}"
+        @if(!count($statuses)) disabled @endif
+    >
+        <option selected value="">{{ __('All') }}</option>
+        @foreach($statuses as $id => $status)
+            <option value="{{ $id }}">{{ $status }}</option>
+        @endforeach
+    </select>
+</div>
+<div class="form-group filter-item col-md-2">
+    <label for="booking_id">{{ __('Giftcard').'/'.__('Discount') }}</label>
+    <input type="text"
+           id="giftcard"
+           name="giftcard"
+           data-table="report-booking-customer-list-datatable"
+           data-url="{{ route('reports.booking-customer.index') }}"
+           class="form-control"
+    >
+</div>
+<div class="form-group filter-item col-md-2"></div>
+<div class="form-group filter-item col-md-2">
+    <label for="booking_id">{{ __('Guest Name') }}</label>
+    <input type="text"
+           id="guest_name"
+           name="guest_name"
+           data-table="report-booking-customer-list-datatable"
+           data-url="{{ route('reports.booking-customer.index') }}"
+           class="form-control"
+    >
+</div>
+<div class="form-group filter-item col-md-2">
+    <label for="booking_id">{{ __('Guest Email') }}</label>
+    <input type="text"
+           id="guest_email"
+           name="guest_email"
+           data-table="report-booking-customer-list-datatable"
+           data-url="{{ route('reports.booking-customer.index') }}"
+           class="form-control"
+    >
+</div>
+<div class="form-group filter-item col-md-2">
+    <label for="date_type">{{ __('Date Type') }}</label>
+    <select
+        id="date_type"
+        name="date_type"
+        class="form-control filter-input select-filter select2-single"
+        data-table="report-booking-customer-list-datatable"
+        data-url="{{ route('reports.country-booking.index') }}"
+        @if(!count($dataTypes)) disabled @endif
+    >
+        @foreach($dataTypes as $id => $type)
+            <option value="{{ $id }}">{{ $type }}</option>
+        @endforeach
+    </select>
+</div>
 <div class="form-group filter-item mr-1 col-md-3">
-    <label for="voucher_date">{{ __('Voucher Date') }}</label>
+    <label for="period">{{ __('Date Period') }}</label>
     <div class="input-group">
         <input type="text"
-               id="voucher_date"
-               name="voucher_date"
+               id="period"
+               name="period"
                class="form-control datepicker-filter"
-               placeholder="{{ __('Choice Period Date') }}"
+               placeholder="{{ __('Choice First Period') }}"
                aria-describedby="basic-addon7"
                data-table="report-booking-customer-list-datatable"
-               data-url="{{ route('reports.booking-customer.index') }}"
+               data-url="{{ route('reports.country-booking.index') }}"
                value=""
         >
         <div class="input-group-append">
