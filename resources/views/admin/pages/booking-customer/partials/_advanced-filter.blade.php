@@ -40,7 +40,7 @@
         name="status"
         class="form-control filter-input select-filter select2-single"
         data-table="report-booking-customer-list-datatable"
-        data-url="{{ route('reports.country-booking.index') }}"
+        data-url="{{ route('reports.booking-customer.index') }}"
         @if(!count($statuses)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
@@ -87,7 +87,7 @@
         name="date_type"
         class="form-control filter-input select-filter select2-single"
         data-table="report-booking-customer-list-datatable"
-        data-url="{{ route('reports.country-booking.index') }}"
+        data-url="{{ route('reports.booking-customer.index') }}"
         @if(!count($dataTypes)) disabled @endif
     >
         @foreach($dataTypes as $id => $type)
@@ -105,7 +105,7 @@
                placeholder="{{ __('Choice First Period') }}"
                aria-describedby="basic-addon7"
                data-table="report-booking-customer-list-datatable"
-               data-url="{{ route('reports.country-booking.index') }}"
+               data-url="{{ route('reports.booking-customer.index') }}"
                value=""
         >
         <div class="input-group-append">
