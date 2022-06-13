@@ -39,22 +39,6 @@ class Booking extends Model
     }
 
     /**
-     * Get the company that owns the booking.
-     */
-    public function company()
-    {
-        return $this->belongsTo(Company::class);
-    }
-
-    /**
-     * Get the sub company that owns the booking.
-     */
-    public function subCompany()
-    {
-        return $this->belongsTo(SubCompany::class);
-    }
-
-    /**
      * Get the country that owns the booking.
      */
     public function country()

@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Enums\AllowedCurrency;
 use App\Enums\BookingStatus;
 use App\Models\Booking;
 use App\Models\Country;
@@ -34,7 +35,7 @@ class ReportBookingVatDataTable extends DataTable
         $dataTable = datatables()->eloquent($query);
 
         $dataTable->addColumn('booking_id', function (Booking $model) {
-            return ($model->inn_off_code) ? $model->inn_off_code.'-'.$model->booking_reference : $model->booking_reference;
+            return (trim($model->inoffcode) !== "") ? $model->inn_off_code.'-'.$model->booking_reference : $model->booking_reference;
         });
 
         $dataTable->addColumn('hei_id', function (Booking $model) {
@@ -59,6 +60,11 @@ class ReportBookingVatDataTable extends DataTable
 
         $dataTable->addColumn('hotel', function (Booking $model) {
             return $model->hotel->name;
+        });
+
+        $dataTable->addColumn('currency', function (Booking $model) {
+            $isAllowedCurrency = in_array($model->currency->code, AllowedCurrency::getValues(), true);
+            return  $model->currency->code;
         });
 
         $dataTable->addColumn('status', function (Booking $model) {
@@ -109,9 +115,13 @@ class ReportBookingVatDataTable extends DataTable
     {
         $query = $model->newQuery();
 
+        $query->with('provider');
         $query->with('city');
         $query->with('country');
         $query->with('hotel');
+        $query->with('bookingUser');
+        $query->with('currency');
+        $query->with('discountCode');
 
         $query->where('country_id', 0);
 
@@ -171,6 +181,7 @@ class ReportBookingVatDataTable extends DataTable
             Column::make('city')->title(__('City')),
             Column::make('country')->title(__('Country')),
             Column::make('hotel')->title(__('Hotel')),
+            Column::make('currency')->title(__('Currency')),
             Column::make('status')->title(__('Status')),
         ];
     }

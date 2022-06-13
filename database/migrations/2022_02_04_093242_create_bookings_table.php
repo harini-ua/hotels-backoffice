@@ -23,8 +23,6 @@ class CreateBookingsTable extends Migration
             $table->string('item_code', 100)->nullable();
             $table->date('checkin');
             $table->date('checkout');
-            $table->unsignedBigInteger('company_id')->nullable();
-            $table->unsignedBigInteger('sub_company_id')->nullable();
             $table->unsignedBigInteger('country_id')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->unsignedBigInteger('hotel_id');
