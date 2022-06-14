@@ -34,6 +34,14 @@ class Country extends Model
     }
 
     /**
+     * Get the currency rate that owns the country.
+     */
+    public function currencyRate()
+    {
+        return $this->belongsTo(CurrencyRate::class);
+    }
+
+    /**
      * Get the language that owns the country.
      */
     public function language()

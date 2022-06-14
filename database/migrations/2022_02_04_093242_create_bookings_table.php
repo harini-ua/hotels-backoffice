@@ -58,8 +58,6 @@ class CreateBookingsTable extends Migration
             $table->softDeletes();
 
             $table->foreign('provider_id')->references('id')->on('providers');
-            $table->foreign('company_id')->references('id')->on('companies');
-            $table->foreign('sub_company_id')->references('id')->on('sub_companies');
             $table->foreign('country_id')->references('id')->on('countries');
             $table->foreign('city_id')->references('id')->on('cities');
             $table->foreign('hotel_id')->references('id')->on('hotels');
