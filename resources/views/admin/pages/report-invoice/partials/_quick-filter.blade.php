@@ -20,7 +20,7 @@
         name="status"
         class="form-control filter-input select-filter select2-single"
         data-table="country-booking-list-datatable"
-        data-url="{{ route('reports.country-booking.index') }}"
+        data-url="{{ route('reports.invoice.index') }}"
         @if(!count($statuses)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
