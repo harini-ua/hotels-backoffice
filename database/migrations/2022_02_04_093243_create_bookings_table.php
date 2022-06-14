@@ -34,6 +34,8 @@ class CreateBookingsTable extends Migration
             $table->text('cancellation_policy')->nullable();
             $table->boolean('refundable_status')->default(0)->comment('0-non refundable, 1-refundable');
             $table->unsignedBigInteger('booking_user_id')->nullable();
+            $table->unsignedBigInteger('company_id')->nullable();
+            $table->unsignedBigInteger('sub_company_id')->nullable();
             $table->string('inn_off_code')->nullable();
             $table->tinyInteger('adults');
             $table->tinyInteger('children')->nullable();
@@ -62,6 +64,8 @@ class CreateBookingsTable extends Migration
             $table->foreign('city_id')->references('id')->on('cities');
             $table->foreign('hotel_id')->references('id')->on('hotels');
             $table->foreign('booking_user_id')->references('id')->on('booking_users');
+            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('sub_company_id')->references('id')->on('sub_companies');
             $table->foreign('currency_id')->references('id')->on('currencies');
             $table->foreign('discount_voucher_code_id')->references('id')->on('discount_voucher_codes');
         });
