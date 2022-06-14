@@ -90,6 +90,12 @@ class ReportInvoiceDataTable extends DataTable
             if ($this->request->has('company')) {
                 $query->where('company_id', $this->request->get('company'));
             }
+            if ($this->request->has('order_id')) {
+                $query->where('booking_reference', $this->request->get('order_id'));
+            }
+            if ($this->request->has('booking_id')) {
+                $query->where('id', $this->request->get('booking_id'));
+            }
         }, true);
 
         return $dataTable;
