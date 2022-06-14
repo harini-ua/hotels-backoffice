@@ -14,6 +14,22 @@
     </select>
 </div>
 <div class="form-group filter-item col-md-2">
+    <label for="status">{{ __('Booking Status') }}</label>
+    <select
+        id="status"
+        name="status"
+        class="form-control filter-input select-filter select2-single"
+        data-table="country-booking-list-datatable"
+        data-url="{{ route('reports.country-booking.index') }}"
+        @if(!count($statuses)) disabled @endif
+    >
+        <option selected value="">{{ __('All') }}</option>
+        @foreach($statuses as $id => $status)
+            <option value="{{ $id }}">{{ $status }}</option>
+        @endforeach
+    </select>
+</div>
+<div class="form-group filter-item col-md-2">
     <label for="company">{{ __('Company Site') }}</label>
     <select
         id="company"

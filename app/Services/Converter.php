@@ -2,16 +2,23 @@
 
 namespace App\Services;
 
+use App\Models\Currency;
+
 class Converter
 {
     /**
      * @param string $value
-     * @param $custom_currency
-     * @param $new_currency
+     * @param $oldCurrency
+     * @param $newCurrency
      * @return string
      */
-    public static function price(string $value, $custom_currency, $new_currency): string
+    public static function price(string $value, $oldCurrency, $newCurrency): string
     {
-        // TODO: Need Implement
+        $oldCurrency = Currency::whereCode($oldCurrency)->first();
+
+        $rates = \DB::table('country_currency_rates')
+            ->select('rates->'.$newCurrency)
+            ->where('currency_id', $oldCurrency->code)
+            ->get();
     }
 }

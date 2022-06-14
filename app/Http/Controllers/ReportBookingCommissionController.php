@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ReportBookingCommissionDataTable;
+use App\Enums\BookingStatus;
 use App\Enums\BookingType;
 use App\Models\Company;
 
@@ -24,6 +25,7 @@ class ReportBookingCommissionController extends Controller
         ];
 
         $bookingTypes = BookingType::asSelectArray();
+        $statuses = BookingStatus::asSelectArray();
 
         $companies = Company::all()
             ->where('status', 1)
@@ -31,7 +33,7 @@ class ReportBookingCommissionController extends Controller
             ->pluck('company_name', 'id');
 
         return $dataTable->render('admin.pages.booking-commission.index', compact(
-            'breadcrumbs', 'bookingTypes', 'companies'
+            'breadcrumbs', 'bookingTypes', 'statuses', 'companies'
         ));
     }
 }
