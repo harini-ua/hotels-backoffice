@@ -76,6 +76,7 @@ jQuery(document).ready(function ($) {
             filters.set(forms.quick.booking_type.attr('name'), forms.quick.booking_type.find(':selected').val());
             filters.set(forms.quick.company.attr('name'), forms.quick.company.find(':selected').val());
             filters.set(forms.quick.check_in.attr('name'), forms.quick.check_in.val());
+            filters.set(forms.quick.submit.attr('name'), true);
 
             if (forms.quick.check_in.val()) {
                 const table = $('#' + forms.quick.submit.attr('data-table')).DataTable();
@@ -92,6 +93,7 @@ jQuery(document).ready(function ($) {
             filters.set(forms.advanced.order_id.attr('name'), forms.advanced.order_id.find(':selected').val());
             filters.set(forms.advanced.booking_id.attr('name'), forms.advanced.booking_id.find(':selected').val());
             filters.set(forms.advanced.voucher_date.attr('name'), forms.advanced.voucher_date.val());
+            filters.set(forms.advanced.submit.attr('name'), true);
 
             if (forms.advanced.voucher_date.val()) {
                 const table = $('#' + forms.advanced.submit.attr('data-table')).DataTable();

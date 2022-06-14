@@ -116,6 +116,7 @@
 <div class="form-group filter-item mr-1">
     <button class="btn btn-submit"
             id="advanced-submit-btn"
+            name="advanced_filter"
             data-type="quick"
             data-table="report-booking-customer-list-datatable"
             data-url="{{ route('reports.booking-customer.index') }}"
