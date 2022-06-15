@@ -55,9 +55,7 @@ class CountryCurrencyRateSeeder extends Seeder
                 foreach ($data as $key => $rate_data) {
                     if ($key > 2) {
                         $rate_data = explode('=', $rate_data);
-                        $rates[] = [
-                            $rate_data[0] => (float)$rate_data[1]
-                        ];
+                        $rates[$rate_data[0]] = (float)$rate_data[1];
                     }
                 }
 
