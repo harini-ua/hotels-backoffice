@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Rennokki\QueryCache\Traits\QueryCacheable;
 
 class Currency extends Model
 {
-    use HasFactory;
+    use HasFactory, QueryCacheable;
+
+    protected $cacheFor = 84400; // 1 day
 
     /**
      * The table associated with the model.
