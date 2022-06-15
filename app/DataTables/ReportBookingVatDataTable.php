@@ -5,7 +5,6 @@ namespace App\DataTables;
 use App\Enums\AllowedCurrency;
 use App\Enums\BookingStatus;
 use App\Models\Booking;
-use App\Models\Country;
 use App\Services\Formatter;
 use Carbon\Carbon;
 use Yajra\DataTables\Html\Button;
@@ -35,11 +34,7 @@ class ReportBookingVatDataTable extends DataTable
         $dataTable = datatables()->eloquent($query);
 
         $dataTable->addColumn('booking_id', function (Booking $model) {
-            $bookingId = $model->booking_reference;
-            if (trim($model->in_off_code) !== "") {
-                $bookingId = $model->inn_off_code.'-'.$model->booking_reference;
-            }
-            return $bookingId;
+            return view('admin.datatables.view-voucher', ['model' => $model]);
         });
 
         $dataTable->addColumn('hei_id', function (Booking $model) {

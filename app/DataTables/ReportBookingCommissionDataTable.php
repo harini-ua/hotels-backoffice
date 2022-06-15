@@ -33,11 +33,7 @@ class ReportBookingCommissionDataTable extends DataTable
         $dataTable = datatables()->eloquent($query);
 
         $dataTable->addColumn('booking_id', function (Booking $model) {
-            $bookingId = $model->booking_reference;
-            if (trim($model->in_off_code) !== "") {
-                $bookingId = $model->inn_off_code.'-'.$model->booking_reference;
-            }
-            return $bookingId;
+            return view('admin.datatables.view-voucher', ['model' => $model]);
         });
 
         $dataTable->addColumn('hei_id', function (Booking $model) {

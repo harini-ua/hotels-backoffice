@@ -36,6 +36,7 @@ use App\Http\Controllers\OverallBookingsController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PartnerProductController;
 use App\Http\Controllers\PopularHotelController;
+use App\Http\Controllers\PrintController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PromoMessageController;
 use App\Http\Controllers\ProviderController;
@@ -227,6 +228,12 @@ Route::middleware('auth')->group(function () {
                 Route::get('summary', [ReportHotelsSummaryController::class, 'index'])->name('summary.index');
                 Route::get('newest', [ReportHotelsNewestController::class, 'index'])->name('newest.index');
             });
+        });
+
+        /** ----- ------ ----- PRINT */
+        Route::prefix('print')->as('print.')->group(function () {
+            Route::get('/voucher/{id}', [PrintController::class, 'voucher'])->name('voucher');
+            Route::get('/receipt/{id}', [PrintController::class, 'receipt'])->name('receipt');
         });
 
         /** ----- ------ ----- COUNTRIES */
