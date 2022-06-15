@@ -1,11 +1,9 @@
-<div class="form-group filter-item col-md-2">
+<div class="form-group filter-item col-md-2 hide">
     <label for="booking_type">{{ __('Booking Type') }}</label>
     <select
         id="booking_type"
         name="booking_type"
         class="form-control filter-input select-filter"
-        data-table="report-invoice-list-datatable"
-        data-url="{{ route('reports.invoice.index') }}"
         @if(!count($bookingTypes)) disabled @endif
     >
         @foreach($bookingTypes as $id => $type)
@@ -19,8 +17,6 @@
         id="status"
         name="status"
         class="form-control filter-input select-filter select2-single"
-        data-table="country-booking-list-datatable"
-        data-url="{{ route('reports.invoice.index') }}"
         @if(!count($statuses)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
@@ -35,8 +31,6 @@
         id="company"
         name="company"
         class="form-control filter-input select-filter select2 select2-single"
-        data-table="report-invoice-list-datatable"
-        data-url="{{ route('reports.invoice.index') }}"
         @if(!count($companies)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
@@ -54,8 +48,6 @@
                class="form-control datepicker-filter"
                placeholder="{{ __('Choice Period Date') }}"
                aria-describedby="basic-addon7"
-               data-table="report-invoice-list-datatable"
-               data-url="{{ route('reports.invoice.index') }}"
                value=""
         >
         <div class="input-group-append">

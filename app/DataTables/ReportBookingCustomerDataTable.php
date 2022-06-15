@@ -154,8 +154,8 @@ class ReportBookingCustomerDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('Brti')
-            ->pageLength(Country::all()->count())
+            ->dom('rtip')
+            ->pageLength(50)
             ->orderBy(0, 'desc')
             ->language([
                 'search' => '',

@@ -35,11 +35,15 @@ class ReportBookingVatDataTable extends DataTable
         $dataTable = datatables()->eloquent($query);
 
         $dataTable->addColumn('booking_id', function (Booking $model) {
-            return (trim($model->inoffcode) !== "") ? $model->inn_off_code.'-'.$model->booking_reference : $model->booking_reference;
+            $bookingId = $model->booking_reference;
+            if (trim($model->in_off_code) !== "") {
+                $bookingId = $model->inn_off_code.'-'.$model->booking_reference;
+            }
+            return $bookingId;
         });
 
         $dataTable->addColumn('hei_id', function (Booking $model) {
-            return $model->id;
+            return 'HEI'.$model->id;
         });
 
         $dataTable->addColumn('checkin', function (Booking $model) {
@@ -51,28 +55,50 @@ class ReportBookingVatDataTable extends DataTable
         });
 
         $dataTable->addColumn('city', function (Booking $model) {
-            return $model->city->name;
+            return $model->city ? $model->city->name : '-';
         });
 
         $dataTable->addColumn('country', function (Booking $model) {
-            return $model->country->name;
+            return $model->country ? $model->country->name : '-';
         });
 
         $dataTable->addColumn('hotel', function (Booking $model) {
             return $model->hotel->name;
         });
 
-        $dataTable->addColumn('currency', function (Booking $model) {
-            $isAllowedCurrency = in_array($model->currency->code, AllowedCurrency::getValues(), true);
-            return  $model->currency->code;
+        $dataTable->addColumn('client_name', function (Booking $model) {
+            return $model->customer_name;
+        });
+
+        $dataTable->addColumn('client_country', function (Booking $model) {
+            return $model->bookingUser->country->name;
         });
 
         $dataTable->addColumn('status', function (Booking $model) {
             return BookingStatus::getDescription($model->status);
         });
 
+        $dataTable->addColumn('payment', function (Booking $model) {
+            return __('Paid');
+        });
+
         $this->setOrderColumns($dataTable);
         $this->setFilterColumns($dataTable);
+
+        $dataTable->filter(function ($query) {
+            if ($this->request->has('status')) {
+                $query->where('status', $this->request->get('status'));
+            }
+            if ($this->request->has('company')) {
+                $query->where('company_id', $this->request->get('company'));
+            }
+            if ($this->request->has('order_id')) {
+                $query->where('booking_reference', $this->request->get('order_id'));
+            }
+            if ($this->request->has('booking_id')) {
+                $query->where('id', $this->request->get('booking_id'));
+            }
+        }, true);
 
         return $dataTable;
     }
@@ -84,8 +110,24 @@ class ReportBookingVatDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        $dataTable->orderColumn('id', static function ($query, $order) {
+        $dataTable->orderColumn('hei_id', static function ($query, $order) {
             $query->orderBy('id', $order);
+        });
+
+        $dataTable->orderColumn('checkin', static function ($query, $order) {
+            $query->orderBy('checkin', $order);
+        });
+
+        $dataTable->orderColumn('checkout', static function ($query, $order) {
+            $query->orderBy('checkout', $order);
+        });
+
+        $dataTable->orderColumn('client_name', static function ($query, $order) {
+            $query->orderBy('client_name', $order);
+        });
+
+        $dataTable->orderColumn('client_country', static function ($query, $order) {
+            $query->orderBy('client_country', $order);
         });
 
         $dataTable->orderColumn('status', static function ($query, $order) {
@@ -101,7 +143,7 @@ class ReportBookingVatDataTable extends DataTable
     protected function setFilterColumns($dataTable)
     {
         $dataTable->filterColumn('name', static function ($query, $keyword) {
-
+            // TODO: Need Implement
         });
     }
 
@@ -119,24 +161,31 @@ class ReportBookingVatDataTable extends DataTable
         $query->with('city');
         $query->with('country');
         $query->with('hotel');
-        $query->with('bookingUser');
-        $query->with('currency');
+        $query->with('bookingUser.country');
         $query->with('discountCode');
 
-        $query->where('country_id', 0);
-
-        if ($this->request->has('check_in')) {
-            $dates = explode(' - ', $this->request->get('check_in'));
-            foreach ($dates as $key => $date) {
-                $this->checkInPeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
+        if ($this->request->has('quick_filter')) {
+            if ($this->request->has('check_in')) {
+                $dates = explode(' - ', $this->request->get('check_in'));
+                foreach ($dates as $key => $date) {
+                    $this->checkInPeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
+                }
             }
+
+            $query->whereDate('checkin', '>=', $this->checkInPeriod[0]);
+            $query->whereDate('checkout', '<=', $this->checkInPeriod[1]);
         }
-
-        if ($this->request->has('voucher_date')) {
-            $dates = explode(' - ', $this->request->get('voucher_date'));
-            foreach ($dates as $key => $date) {
-                $this->voucherDatePeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
+        elseif ($this->request->has('advanced_filter')) {
+            if ($this->request->has('voucher_date')) {
+                $dates = explode(' - ', $this->request->get('voucher_date'));
+                foreach ($dates as $key => $date) {
+                    $this->voucherDatePeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
+                }
             }
+
+            $query->whereBetween('created_at', $this->voucherDatePeriod);
+        } else {
+            $query->where('id', 0);
         }
 
         return $query;
@@ -154,8 +203,8 @@ class ReportBookingVatDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('Brti')
-            ->pageLength(Country::all()->count())
+            ->dom('rtip')
+            ->pageLength(50)
             ->orderBy(0, 'desc')
             ->language([
                 'search' => '',
@@ -176,13 +225,33 @@ class ReportBookingVatDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('booking_id')->title(__('Booking ID')),
-            Column::make('hei_id')->title(__('HEI ID')),
-            Column::make('city')->title(__('City')),
-            Column::make('country')->title(__('Country')),
-            Column::make('hotel')->title(__('Hotel')),
-            Column::make('currency')->title(__('Currency')),
-            Column::make('status')->title(__('Status')),
+            Column::make('booking_id')->title(__('Booking ID'))
+                ->width(150)
+                ->orderable(false),
+            Column::make('hei_id')->title(__('HEI ID'))->addClass('text-center'),
+            Column::make('checkin')->title(__('Arrival Date'))
+                ->addClass('text-center'),
+            Column::make('checkout')->title(__('Departure Date'))
+                ->addClass('text-center'),
+            Column::make('city')->title(__('City'))
+                ->orderable(false)
+                ->addClass('text-center'),
+            Column::make('country')->title(__('Country'))
+                ->orderable(false)
+                ->addClass('text-center'),
+            Column::make('hotel')->title(__('Hotel'))
+                ->orderable(false)
+                ->addClass('text-center'),
+            Column::make('client_name')->title(__('Client Name'))
+                ->orderable(false)
+                ->addClass('text-center'),
+            Column::make('client_country')->title(__('Client Country'))
+                ->orderable(false)
+                ->addClass('text-center'),
+            Column::make('status')->title(__('Status'))
+                ->addClass('text-center'),
+            Column::make('payment')->title(__('Payment'))
+                ->addClass('text-center'),
         ];
     }
 

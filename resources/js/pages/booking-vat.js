@@ -84,8 +84,8 @@ jQuery(document).ready(function ($) {
         forms.advanced.submit.on('click', (e) => {
             e.preventDefault();
 
-            filters.set(forms.advanced.order_id.attr('name'), forms.advanced.order_id.find(':selected').val());
-            filters.set(forms.advanced.booking_id.attr('name'), forms.advanced.booking_id.find(':selected').val());
+            filters.set(forms.advanced.order_id.attr('name'), forms.advanced.order_id.val());
+            filters.set(forms.advanced.booking_id.attr('name'), forms.advanced.booking_id.val());
             filters.set(forms.advanced.voucher_date.attr('name'), forms.advanced.voucher_date.val());
             filters.set(forms.advanced.submit.attr('name'), true);
 

@@ -1,22 +1,24 @@
 <div class="form-group filter-item mr-1 col-md-2">
     <label for="order_id">{{ __('Order ID') }}</label>
-    <input type="text"
-           id="order_id"
-           name="order_id"
-           data-table="report-invoice-list-datatable"
-           data-url="{{ route('reports.invoice.index') }}"
-           class="form-control"
-    >
+    <input type="text" id="order_id" name="order_id" class="form-control">
 </div>
 <div class="form-group filter-item mr-1 col-md-2">
     <label for="booking_id">{{ __('Booking ID') }}</label>
-    <input type="text"
-           id="booking_id"
-           name="booking_id"
-           data-table="report-invoice-list-datatable"
-           data-url="{{ route('reports.invoice.index') }}"
-           class="form-control"
+    <input type="text" id="booking_id" name="booking_id" class="form-control">
+</div>
+<div class="form-group filter-item col-md-2">
+    <label for="status">{{ __('Booking Status') }}</label>
+    <select
+        id="status"
+        name="status"
+        class="form-control filter-input select-filter select2-single"
+        @if(!count($statuses)) disabled @endif
     >
+        <option selected value="">{{ __('All') }}</option>
+        @foreach($statuses as $id => $status)
+            <option value="{{ $id }}">{{ $status }}</option>
+        @endforeach
+    </select>
 </div>
 <div class="form-group filter-item mr-1 col-md-3">
     <label for="voucher_date">{{ __('Voucher Date') }}</label>
@@ -27,8 +29,6 @@
                class="form-control datepicker-filter"
                placeholder="{{ __('Choice Period Date') }}"
                aria-describedby="basic-addon7"
-               data-table="report-invoice-list-datatable"
-               data-url="{{ route('reports.invoice.index') }}"
                value=""
         >
         <div class="input-group-append">

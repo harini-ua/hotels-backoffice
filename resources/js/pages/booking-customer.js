@@ -6,6 +6,7 @@ jQuery(document).ready(function ($) {
         const forms = {
             quick: {
                 booking_type: $this.find('#booking_type'),
+                status: $this.find('#status'),
                 company: $this.find('#company'),
                 check_in: $this.find('#check_in'),
                 submit: $this.find('#quick-submit-btn'),
@@ -14,7 +15,7 @@ jQuery(document).ready(function ($) {
                 booking_type: $this.find('#booking_type'),
                 order_id: $this.find('#order_id'),
                 booking_id: $this.find('#booking_id'),
-                booking_status: $this.find('#status'),
+                status: $this.find('#status'),
                 giftcard: $this.find('#giftcard'),
                 guest_name: $this.find('#guest_name'),
                 guest_email: $this.find('#guest_email'),
@@ -74,6 +75,7 @@ jQuery(document).ready(function ($) {
             e.preventDefault();
 
             filters.set(forms.quick.booking_type.attr('name'), forms.quick.booking_type.find(':selected').val());
+            filters.set(forms.quick.status.attr('name'), forms.quick.status.find(':selected').val());
             filters.set(forms.quick.company.attr('name'), forms.quick.company.find(':selected').val());
             filters.set(forms.quick.check_in.attr('name'), forms.quick.check_in.val());
             filters.set(forms.quick.submit.attr('name'), true);
@@ -90,9 +92,15 @@ jQuery(document).ready(function ($) {
         forms.advanced.submit.on('click', (e) => {
             e.preventDefault();
 
-            filters.set(forms.advanced.order_id.attr('name'), forms.advanced.order_id.find(':selected').val());
-            filters.set(forms.advanced.booking_id.attr('name'), forms.advanced.booking_id.find(':selected').val());
-            filters.set(forms.advanced.voucher_date.attr('name'), forms.advanced.voucher_date.val());
+            filters.set(forms.advanced.booking_type.attr('name'), forms.advanced.booking_type.find(':selected').val());
+            filters.set(forms.advanced.order_id.attr('name'), forms.advanced.order_id.val());
+            filters.set(forms.advanced.booking_id.attr('name'), forms.advanced.booking_id.val());
+            filters.set(forms.advanced.status.attr('name'), forms.advanced.status.find(':selected').val());
+            filters.set(forms.advanced.giftcard.attr('name'), forms.advanced.giftcard.val());
+            filters.set(forms.advanced.guest_name.attr('name'), forms.advanced.guest_name.val());
+            filters.set(forms.advanced.guest_email.attr('name'), forms.advanced.guest_email.val());
+            filters.set(forms.advanced.date_type.attr('name'), forms.advanced.date_type.find(':selected').val());
+            filters.set(forms.advanced.period.attr('name'), forms.advanced.period.val());
             filters.set(forms.advanced.submit.attr('name'), true);
 
             if (forms.advanced.voucher_date.val()) {
