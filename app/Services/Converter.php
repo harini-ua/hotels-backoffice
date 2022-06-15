@@ -10,15 +10,20 @@ class Converter
      * @param string $value
      * @param $oldCurrency
      * @param $newCurrency
-     * @return string
+     * @return mixed
      */
-    public static function price(string $value, $oldCurrency, $newCurrency): string
+    public static function price(string $value, $oldCurrency, $newCurrency): mixed
     {
-        $oldCurrency = Currency::whereCode($oldCurrency)->first();
+        $oldCurrency = Currency::where('code', $oldCurrency)->first();
 
-        $rates = \DB::table('country_currency_rates')
-            ->select('rates->'.$newCurrency)
-            ->where('currency_id', $oldCurrency->code)
-            ->get();
+        $rate = \DB::table('country_currency_rates')
+            ->select(
+                \DB::raw('json_extract(rates, "$.'.$newCurrency.'") AS value')
+            )
+            ->where('currency_id', $oldCurrency->id)
+            ->first()
+            ->value;
+
+        return round($rate / 1000 * $value, 2);
     }
 }
