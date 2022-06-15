@@ -17,7 +17,10 @@
     >
         <option selected value="">{{ __('All') }}</option>
         @foreach($statuses as $id => $status)
-            <option value="{{ $id }}">{{ $status }}</option>
+            <option
+                value="{{ $id }}"
+                {{  App::environment() !== 'local' && \App\Enums\BookingStatus::CONFIRMED == $id ? 'selected' : '' }}
+            >{{ $status }}</option>
         @endforeach
     </select>
 </div>

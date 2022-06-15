@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 
@@ -13,9 +14,11 @@ class PrintController extends Controller
      */
     public function receipt($id)
     {
+        $booking = Booking::findOrFail($id);
+
         // TODO: Need Implement
 
-        return view('admin.print.receipt');
+        return view('admin.print.receipt', compact('booking'));
     }
 
     /**
@@ -24,8 +27,10 @@ class PrintController extends Controller
      */
     public function voucher($id)
     {
+        $booking = Booking::findOrFail($id);
+
         // TODO: Need Implement
 
-        return view('admin.print.voucher');
+        return view('admin.print.voucher', compact('booking'));
     }
 }

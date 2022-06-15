@@ -1,5 +1,5 @@
 @php($uniq = uniqid())
-<div class="accordion" id="{{ 'datatable-filters-'.$uniq }}">
+<div class="accordion filters" id="{{ 'datatable-filters-'.$uniq }}">
     <div class="card m-b-10">
         <div class="card-header" id="{{ 'heading-'.$uniq }}">
             <h2 class="mb-0">

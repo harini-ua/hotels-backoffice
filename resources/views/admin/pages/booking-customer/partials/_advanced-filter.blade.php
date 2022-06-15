@@ -31,7 +31,10 @@
     >
         <option selected value="">{{ __('All') }}</option>
         @foreach($statuses as $id => $status)
-            <option value="{{ $id }}">{{ $status }}</option>
+            <option
+                value="{{ $id }}"
+                {{  App::environment() !== 'local' && \App\Enums\BookingStatus::CONFIRMED == $id ? 'selected' : '' }}
+            >{{ $status }}</option>
         @endforeach
     </select>
 </div>
@@ -39,7 +42,6 @@
     <label for="booking_id">{{ __('Giftcard').'/'.__('Discount') }}</label>
     <input type="text" id="giftcard" name="giftcard" class="form-control">
 </div>
-<div class="form-group filter-item col-md-2"></div>
 <div class="form-group filter-item col-md-2">
     <label for="booking_id">{{ __('Guest Name') }}</label>
     <input type="text" id="guest_name" name="guest_name" class="form-control">
