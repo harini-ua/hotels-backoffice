@@ -51,6 +51,12 @@ class CreateBookingsTable extends Migration
             $table->unsignedBigInteger('discount_voucher_code_id')->nullable()->unsigned();
             $table->string('room_rate_key', 1000)->nullable();
             $table->string('payment_reference', 1000)->nullable();
+            $table->double('partner_amount', 10, 4)->nullable()->comment('booking amount on booking with partner price grid');
+            $table->unsignedBigInteger('partner_currency_id')->nullable()->comment('booking currency id on booking with partner price grid');
+            $table->double('vat', 10, 4)->nullable();
+            $table->double('pay_to_client', 10, 4)->nullable();
+            $table->double('hei', 10, 4)->nullable();
+
             $table->tinyInteger('platform_type')->default(2)
                 ->comment('1-mobile app, 2-web browser, 3-mobile browser, 4-mac browser');
             $table->string('platform_version')->nullable()
@@ -67,6 +73,7 @@ class CreateBookingsTable extends Migration
             $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('sub_company_id')->references('id')->on('sub_companies');
             $table->foreign('currency_id')->references('id')->on('currencies');
+            $table->foreign('partner_currency_id')->references('id')->on('currencies');
             $table->foreign('discount_voucher_code_id')->references('id')->on('discount_voucher_codes');
         });
     }
