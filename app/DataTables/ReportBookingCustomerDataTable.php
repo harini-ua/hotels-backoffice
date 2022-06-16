@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Enums\AllowedCurrency;
 use App\Enums\BookingPlatform;
 use App\Enums\BookingStatus;
 use App\Models\Booking;
@@ -68,14 +69,6 @@ class ReportBookingCustomerDataTable extends DataTable
             ]);
         });
 
-        if ((\Auth::user())->hasRole('admin')) {
-            // TODO: View columns only admin
-        }
-
-        $dataTable->addColumn('partner', function (Booking $model) {
-            return __('No');
-        });
-
         $dataTable->addColumn('cancelled_date', function (Booking $model) {
             return Formatter::date($model->cancelled_date);
         });
@@ -87,6 +80,94 @@ class ReportBookingCustomerDataTable extends DataTable
         $dataTable->addColumn('status', function (Booking $model) {
             return BookingStatus::getDescription($model->status);
         });
+
+        $dataTable->addColumn('partner', function (Booking $model) {
+            return __('No');
+        });
+
+        if ((\Auth::user())->hasRole('admin')) {
+            $dataTable->addColumn('total_price', function (Booking $model) {
+                $totalPrice = 0;
+                if ($model->amount > 0) {
+                    $isAllowedCurrency = in_array($model->currency->code, AllowedCurrency::getValues(), true);
+                    if ($isAllowedCurrency) {
+                        $totalPrice = $model->amount / $model->conversion_rate;
+                        $currency = $model->currency->code; // TODO: selectedcurrency
+                    } else {
+                        $totalPrice = $model->amount;
+                        $currency = $model->currency->code; // TODO: currency_type
+                    }
+
+                    if ($model->company->partner) {
+                        if ($model->company->mainOptions) {
+                            $totalPrice = $model->company->mainOptions->max_price_filter;
+                            $currency = $model->company->mainOptions->currencyFilter->code;
+                        }
+                    }
+
+                    $totalPrice = round($totalPrice, 2);
+                }
+
+                return $totalPrice;
+            });
+
+            $dataTable->addColumn('currency', function (Booking $model) {
+                if ($model->amount > 0) {
+                    $isAllowedCurrency = in_array($model->currency->code, AllowedCurrency::getValues(), true);
+
+                    if ($isAllowedCurrency) {
+                        $currency = $model->currency->code; // TODO: selectedcurrency
+                    } else {
+                        $currency = $model->currency->code; // TODO: currency_type
+                    }
+
+                    if ($model->company->partner) {
+                        if ($model->company->mainOptions) {
+                            $currency = $model->company->mainOptions->currencyFilter->code;
+                        }
+                    }
+                }
+
+                // TODO: $model->partner_currency_type ?? $currency
+                return $currency;
+            });
+        }
+
+        $dataTable->addColumn('commission', function (Booking $model) {
+            return $model->commission ?? 0;
+        });
+
+        $dataTable->addColumn('currency_for_commission', function (Booking $model) {
+            return $model->currency->code;
+        });
+
+        if ((\Auth::user())->hasRole('admin')) {
+            $dataTable->addColumn('vat', function (Booking $model) {
+                return $model->vat ?? 0;
+            });
+
+            $dataTable->addColumn('currency_for_vat', function (Booking $model) {
+                return $model->currency->code;
+            });
+        }
+
+        $dataTable->addColumn('pay_to_client', function (Booking $model) {
+            return $model->pay_to_client ?? 0;
+        });
+
+        $dataTable->addColumn('currency_for_pay_to_client', function (Booking $model) {
+            return $model->currency->code;
+        });
+
+        if ((\Auth::user())->hasRole('admin')) {
+            $dataTable->addColumn('sales_office_commission', function (Booking $model) {
+                return $model->sales_office_commission ?? 0;
+            });
+
+            $dataTable->addColumn('currency_for_sales_office_commission', function (Booking $model) {
+                return $model->currency->code;
+            });
+        }
 
         $dataTable->addColumn('payment', function (Booking $model) {
             return __('Paid');
@@ -262,6 +343,30 @@ class ReportBookingCustomerDataTable extends DataTable
                 ->addClass('text-center'),
             Column::make('status')->title(__('Status'))
                 ->addClass('text-center'),
+
+            Column::make('total_price')->title(__('Total Price'))
+                ->addClass('text-center')
+                ->visible((\Auth::user())->hasRole('admin')),
+            Column::make('currency')->title(__('Currency'))
+                ->addClass('text-center')
+                ->visible((\Auth::user())->hasRole('admin')),
+            Column::make('commission')->title(__('Booking Commission'))
+                ->addClass('text-center'),
+            Column::make('currency_for_commission')->title(__('Currency'))
+                ->addClass('text-center'),
+            Column::make('vat')->title(__('Booking VAT'))
+                ->addClass('text-center'),
+            Column::make('currency_for_vat')->title(__('Currency'))
+                ->addClass('text-center'),
+            Column::make('pay_to_client')->title(__('Pay To Client'))
+                ->addClass('text-center'),
+            Column::make('currency_for_pay_to_client')->title(__('Currency'))
+                ->addClass('text-center'),
+            Column::make('sales_office_commission')->title(__('Sales Office Commissions'))
+                ->addClass('text-center'),
+            Column::make('currency_for_sales_office_commission')->title(__('Currency'))
+                ->addClass('text-center'),
+
             Column::make('payment')->title(__('Payment'))
                 ->addClass('text-center'),
         ];

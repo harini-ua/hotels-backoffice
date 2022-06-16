@@ -51,7 +51,7 @@ class CompanyMainOption extends Model
     /**
      * Get the price filter currency that owns the company homepage option.
      */
-    public function priceFilter()
+    public function currencyFilter()
     {
         return $this->belongsTo(Currency::class);
     }

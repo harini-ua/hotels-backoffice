@@ -29,6 +29,36 @@ class Company extends Model
     ];
 
     /**
+     * Get the car's owner.
+     */
+    public function partner()
+    {
+        return $this->hasOneThrough(
+            Partner::class,
+            CompanyPartner::class,
+            'company_id',
+            'id',
+            'id',
+            'partner_id',
+        );
+    }
+
+    /**
+     * Get the car's owner.
+     */
+    public function partnerProduct()
+    {
+        return $this->hasOneThrough(
+            PartnerProduct::class,
+            CompanyPartner::class,
+            'company_id',
+            'partner_id',
+            'id',
+            'id',
+        );
+    }
+
+    /**
      * Get the supports for the company.
      */
     public function supports()
