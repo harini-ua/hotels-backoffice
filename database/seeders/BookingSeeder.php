@@ -100,7 +100,7 @@ class BookingSeeder extends Seeder
                         'partner_currency_id' => !(float)$data[43] ? null : (float)$data[43],
                         'vat' => !(float)$data[44] ? null : (float)$data[44],
                         'pay_to_client' => !(float)$data[45] ? null : (float)$data[45],
-                        'hei' => !(float)$data[46] ? null : (float)$data[46],
+                        'sales_office_commission' => !(float)$data[46] ? null : (float)$data[46],
                     ];
                 }
             }

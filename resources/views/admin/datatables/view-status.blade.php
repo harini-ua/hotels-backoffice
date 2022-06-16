@@ -1,1 +1,1 @@
-<h4><span class="badge badge-{{ $class }}">{{ $status }}</span></h4>
+<h4><span class="badge badge-{{ $class ?? 'success' }}">{{ $status }}</span></h4>

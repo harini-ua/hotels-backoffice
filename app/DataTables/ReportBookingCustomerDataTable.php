@@ -143,7 +143,7 @@ class ReportBookingCustomerDataTable extends DataTable
 
         if ((\Auth::user())->hasRole('admin')) {
             $dataTable->addColumn('vat', function (Booking $model) {
-                return $model->vat ?? 0;
+                return $model->vat ? round($model->vat, 2) : 0;
             });
 
             $dataTable->addColumn('currency_for_vat', function (Booking $model) {
@@ -152,7 +152,7 @@ class ReportBookingCustomerDataTable extends DataTable
         }
 
         $dataTable->addColumn('pay_to_client', function (Booking $model) {
-            return $model->pay_to_client ?? 0;
+            return $model->pay_to_client ? round($model->pay_to_client, 2) : 0;
         });
 
         $dataTable->addColumn('currency_for_pay_to_client', function (Booking $model) {
@@ -161,7 +161,7 @@ class ReportBookingCustomerDataTable extends DataTable
 
         if ((\Auth::user())->hasRole('admin')) {
             $dataTable->addColumn('sales_office_commission', function (Booking $model) {
-                return $model->sales_office_commission ?? 0;
+                return $model->sales_office_commission ? round($model->sales_office_commission, 2) : 0;
             });
 
             $dataTable->addColumn('currency_for_sales_office_commission', function (Booking $model) {
@@ -169,8 +169,26 @@ class ReportBookingCustomerDataTable extends DataTable
             });
         }
 
+
         $dataTable->addColumn('payment', function (Booking $model) {
-            return __('Paid');
+            // TODO: $model->full_discount
+            if (true && $model->amount > 0) {
+                return view("admin.datatables.actions", [
+                    'actions' => ['payment'],
+                    'model' => $model,
+                    'route' => route('payment.booking', $model),
+                ]);
+            }
+
+            return view("admin.datatables.actions", [
+                'actions' => ['payment'],
+                'model' => $model,
+                'route' => route('payment.booking', $model),
+            ]);
+
+            return view("admin.datatables.view-status", [
+                'status' => __('Paid'),
+            ]);
         });
 
         $this->setOrderColumns($dataTable);
@@ -368,7 +386,9 @@ class ReportBookingCustomerDataTable extends DataTable
                 ->addClass('text-center'),
 
             Column::make('payment')->title(__('Payment'))
-                ->addClass('text-center'),
+                ->width(200)
+                ->addClass('text-center')
+                ->orderable(false),
         ];
     }
 

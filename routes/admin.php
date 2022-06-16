@@ -35,6 +35,7 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\OverallBookingsController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PartnerProductController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PopularHotelController;
 use App\Http\Controllers\PrintController;
 use App\Http\Controllers\ProfileController;
@@ -235,6 +236,9 @@ Route::middleware('auth')->group(function () {
             Route::get('/voucher/{id}', [PrintController::class, 'voucher'])->name('voucher');
             Route::get('/receipt/{id}', [PrintController::class, 'receipt'])->name('receipt');
         });
+
+        /** ----- ------ ----- PAYMENT */
+        Route::post('/payment/{id}', [PaymentController::class, 'booking'])->name('payment.booking');
 
         /** ----- ------ ----- COUNTRIES */
         Route::resource('countries', CountryController::class)->except(['show']);

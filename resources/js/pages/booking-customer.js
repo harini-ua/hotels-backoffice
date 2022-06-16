@@ -111,6 +111,54 @@ jQuery(document).ready(function ($) {
                 swal('Oops!', 'Select date period to search', 'error');
             }
         });
+
+        $('.dataTable').on('click', '.payment-link', function(e) {
+            e.preventDefault();
+
+            var $this = $(this);
+
+            swal({
+                title: 'Payment?',
+                text: 'Booking will be id!',
+                type: 'success',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, payment!',
+                cancelButtonText: 'No, keep it'
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        url      : $(this).data('payment'),
+                        type     : 'POST',
+                        dataType : 'json',
+                        data     : { _method: 'POST' },
+                        success  : function(response) {
+                            if (response.success === true) {
+                                var dataTable = $('.dataTable').DataTable();
+                                var row = $this.parents('tr');
+
+                                if ($(row).hasClass('child')) {
+                                    dataTable.row($(row).prev('tr')).remove().draw();
+                                } else {
+                                    dataTable.row($(this).parents('tr')).remove().draw();
+                                }
+                            }
+                            swal({
+                                title : response.success === false ? 'Error!' : 'Successfully!',
+                                text  : response.message,
+                                type  : response.success === false ? 'error' : 'success',
+                            }).then((value) => {});
+                        },
+                        error    : function(data) {
+                            swal('Error!', 'Booking has not been paid!', 'error');
+                        }
+                    }).always(function (data) {
+                        $('#clients-list-datatable').DataTable().draw(false);
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    return false;
+                }
+            })
+        })
     });
 
 });

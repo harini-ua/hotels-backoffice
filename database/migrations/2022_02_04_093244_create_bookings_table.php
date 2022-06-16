@@ -54,8 +54,8 @@ class CreateBookingsTable extends Migration
             $table->double('partner_amount', 10, 4)->nullable()->comment('booking amount on booking with partner price grid');
             $table->unsignedBigInteger('partner_currency_id')->nullable()->comment('booking currency id on booking with partner price grid');
             $table->double('vat', 10, 4)->nullable();
-            $table->double('pay_to_client', 10, 4)->nullable();
-            $table->double('hei', 10, 4)->nullable();
+            $table->double('pay_to_client', 10, 4)->nullable()->comment('pay back to client');
+            $table->double('sales_office_commission', 10, 4)->nullable()->comment('sales office commission in EUR');
 
             $table->tinyInteger('platform_type')->default(2)
                 ->comment('1-mobile app, 2-web browser, 3-mobile browser, 4-mac browser');
