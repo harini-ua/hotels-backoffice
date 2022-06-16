@@ -31,6 +31,14 @@ class Booking extends Model
     ];
 
     /**
+     * Get the company that owns the booking.
+     */
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    /**
      * Get the provider that owns the booking.
      */
     public function provider()
