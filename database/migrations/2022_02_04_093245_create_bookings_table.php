@@ -44,6 +44,7 @@ class CreateBookingsTable extends Migration
             $table->string('customer_email', 100);
             $table->string('customer_phone', 100);
             $table->double('amount', 10, 4)->comment('start booking amount in EUR');
+            $table->double('amount_conversion', 10, 4)->comment('start booking amount in selected currency');
             $table->double('commission', 10, 4)->comment('booking commission in EUR');
             $table->double('final_amount', 10, 4)->comment('final booking amount with commission and discount in EUR');
             $table->unsignedBigInteger('currency_id')->comment('selected currency');

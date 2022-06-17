@@ -22,12 +22,13 @@ class BookingSeeder extends Seeder
 //        SELECT b.booking_no, a.api_id, b.voucher_date, b.booking_ref_no, b.booking_reference_cancel_grn, b.full_discount, b.status,
 //b.itemcode, b.check_in, b.check_out, b.hei_hotel_code, b.room_type, b.roomNumber, b.nights, b.trans_cancellation_date,
 //b.trans_cancellation_time, b.cancellation_policy, b.refundablestatus, b.euserid, b.inoffcode, b.adult_count, b.child_count,
-//b.remark, b.customer_name, b.customer_email, b.phone, b.amount, b.bookingcommission, b.final_amount, c.id as currency_id,
+//b.remark, b.customer_name, b.customer_email, b.phone, b.original_cost, b.bookingcommission, b.final_amount, c.id as currency_id,
 //b.conv_rate_payment_to_user_prices, d.id as discount_voucher_code_id, b.hotelbed_rate_key, b.payment_reference, b.cancelled_date,
-// b.platform_type, b.platform_version_info, b.platform_details, hc.id, b.cityid, b.whtid, b.sub_wht_id, b.partner_amount, c.id,
-// b.vat, b.paytoclient, b.hei
+// b.platform_type, b.platform_version_info, b.platform_details, hc.id, b.cityid, b.whtid, b.sub_wht_id, b.partner_amount,
+// (SELECT c.id FROM tblcurrencyname c WHERE c.currencyname = b.partner_currency_type) as partner_currency_type_id,
+// b.vat, b.paytoclient, b.hei, b.original_cost_paid_currency
 //FROM customer_booking b
-//LEFT JOIN tblcurrencyname c ON c.currencyname = b.selectedcurrency AND c.currencyname = b.partner_currency_type
+//LEFT JOIN tblcurrencyname c ON c.currencyname = b.selectedcurrency
 //LEFT JOIN discount_codes d ON d.code = b.discount_code
 //LEFT JOIN api_control a ON a.api_name = b.api
 //LEFT JOIN hei_country hc ON hc.country = b.countryName
@@ -81,6 +82,7 @@ class BookingSeeder extends Seeder
                         'customer_email' => $data[24],
                         'customer_phone' => $data[25],
                         'amount' => (float)$data[26],
+                        'amount_conversion' => (float)$data[47],
                         'commission' => (float)$data[27],
                         'final_amount' => (float)$data[28],
                         'currency_id' => !(int)$data[29] ? 1 : (int)$data[29],
@@ -97,7 +99,7 @@ class BookingSeeder extends Seeder
                         'company_id' => !(int)$data[40] ? null : (int)$data[40],
                         'sub_company_id' => (int)$data[41] == 0 ? null : (int)$data[41],
                         'partner_amount' => !(float)$data[42] ? null : (float)$data[42],
-                        'partner_currency_id' => !(float)$data[43] ? null : (float)$data[43],
+                        'partner_currency_id' => (int)$data[43] == 0 ? null : (int)$data[43],
                         'vat' => !(float)$data[44] ? null : (float)$data[44],
                         'pay_to_client' => !(float)$data[45] ? null : (float)$data[45],
                         'sales_office_commission' => !(float)$data[46] ? null : (float)$data[46],
