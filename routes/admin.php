@@ -51,6 +51,7 @@ use App\Http\Controllers\ReportHotelsNewestController;
 use App\Http\Controllers\ReportHotelsSummaryController;
 use App\Http\Controllers\ReportInvoiceController;
 use App\Http\Controllers\SearchingByPeriodController;
+use App\Http\Controllers\SendController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SpecialOfferHotelController;
 use App\Http\Controllers\StatisticController;
@@ -239,6 +240,11 @@ Route::middleware('auth')->group(function () {
 
         /** ----- ------ ----- PAYMENT */
         Route::post('/payment/{id}', [PaymentController::class, 'booking'])->name('payment.booking');
+
+        /** ----- ------ ----- SEND */
+        Route::prefix('send')->as('send.')->group(function () {
+            Route::get('/booking/{id}/voucher_receipt', [SendController::class, 'bookingVoucherReceipt'])->name('booking.voucher_receipt');
+        });
 
         /** ----- ------ ----- COUNTRIES */
         Route::resource('countries', CountryController::class)->except(['show']);

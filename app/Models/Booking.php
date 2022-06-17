@@ -83,7 +83,15 @@ class Booking extends Model
      */
     public function currency()
     {
-        return $this->belongsTo(Currency::class);
+        return $this->belongsTo(Currency::class, 'currency_id');
+    }
+
+    /**
+     * Get the original currency that owns the booking.
+     */
+    public function original_currency()
+    {
+        return $this->belongsTo(Currency::class, 'original_currency_id');
     }
 
     /**

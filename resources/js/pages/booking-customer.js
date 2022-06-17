@@ -103,7 +103,7 @@ jQuery(document).ready(function ($) {
             filters.set(forms.advanced.period.attr('name'), forms.advanced.period.val());
             filters.set(forms.advanced.submit.attr('name'), true);
 
-            if (forms.advanced.voucher_date.val()) {
+            if (forms.advanced.period.val()) {
                 const table = $('#' + forms.advanced.submit.attr('data-table')).DataTable();
                 let url = forms.advanced.submit.attr('data-url');
                 table.ajax.url(filters.url(url)).load();
@@ -158,6 +158,12 @@ jQuery(document).ready(function ($) {
                     return false;
                 }
             })
+        })
+
+        $('.dataTable').on('click', '.send-link', function(e) {
+            e.preventDefault();
+
+            var $this = $(this);
         })
     });
 
