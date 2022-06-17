@@ -99,7 +99,7 @@ class CompanyHomepageOptionSeeder extends Seeder
                     'teaser_id' => isset($teaser) ? $teaser->id : null,
                 ];
 
-                $this->downloadImages($data);
+//                $this->downloadImages($data);
             }
 
             fclose($open);

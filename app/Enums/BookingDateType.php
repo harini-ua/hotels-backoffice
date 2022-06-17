@@ -23,7 +23,7 @@ final class BookingDateType extends Enum
     public static function getDescription($value): string
     {
         if ($value === self::CONFIRMATION) {
-            return __('Confirmation');
+            return __('Confirmation / Voucher Date');
         }
         if ($value === self::CHECK) {
             return __('Check In / Check Out');

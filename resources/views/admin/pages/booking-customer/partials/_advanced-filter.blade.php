@@ -50,7 +50,7 @@
     <label for="booking_id">{{ __('Guest Email') }}</label>
     <input type="text" id="guest_email" name="guest_email" class="form-control">
 </div>
-<div class="form-group filter-item col-md-2">
+<div class="form-group filter-item col-md-3">
     <label for="date_type">{{ __('Date Type') }}</label>
     <select
         id="date_type"

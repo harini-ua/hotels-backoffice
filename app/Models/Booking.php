@@ -24,10 +24,10 @@ class Booking extends Model
     protected $fillable = [
         'provider_id', 'booking_reference', 'item_code', 'checkin', 'checkout', 'hotel_id', 'room_type',
         'meal_plan_variant_id', 'rooms', 'nights', 'cancellation_date', 'refundable_status', 'user_id', 'city_id',
-        'inn_off_code', 'adults', 'children', 'remarks', 'customer_email', 'customer_phone', 'amount', 'commission',
-        'final_amount', 'currency_id', 'conversion_rate', 'discount_voucher_code_id',
+        'inn_off_code', 'adults', 'children', 'remarks', 'customer_email', 'customer_phone', 'amount',
+        'amount_conversion', 'commission', 'final_amount', 'currency_id', 'conversion_rate', 'discount_voucher_code_id',
         'discount_voucher_conversion_rate', 'discount_voucher_amount', 'booking_payment_type_id', 'room_rate_key',
-        'payment_reference',
+        'payment_reference', 'partner_amount', 'partner_currency_id', 'vat', 'pay_to_client', 'sales_office_commission'
     ];
 
     /**
