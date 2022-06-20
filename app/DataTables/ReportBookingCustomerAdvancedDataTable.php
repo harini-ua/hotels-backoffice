@@ -98,7 +98,7 @@ class ReportBookingCustomerAdvancedDataTable extends DataTable
                 $dataTable->addColumn('total_price', function (Booking $model) {
                     $total = 0;
                     if ($model->amount > 0) {
-                        $isAllowedCurrency = in_array($model->currency->code, AllowedCurrency::getValues(), true);
+                        $isAllowedCurrency = in_array($model->selected_currency->code, AllowedCurrency::getValues(), true);
                         $total = $isAllowedCurrency ? $model->amount_conversion : $model->amount;
 
                         // If isset partner set max price
@@ -117,10 +117,10 @@ class ReportBookingCustomerAdvancedDataTable extends DataTable
                 });
 
                 $dataTable->addColumn('currency', function (Booking $model) {
-                    $currency = $model->currency->code;
+                    $currency = $model->selected_currency->code;
                     if ($model->amount > 0) {
-                        $isAllowedCurrency = in_array($model->currency->code, AllowedCurrency::getValues(), true);
-                        $currency = $isAllowedCurrency ? $model->currency->code : $model->original_currency->code;
+                        $isAllowedCurrency = in_array($model->selected_currency->code, AllowedCurrency::getValues(), true);
+                        $currency = $isAllowedCurrency ? $model->selected_currency->code : $model->original_currency->code;
 
                         // If isset partner set currency filter
                         if ($model->company->partner) {
@@ -240,7 +240,7 @@ class ReportBookingCustomerAdvancedDataTable extends DataTable
             });
 
             $dataTable->addColumn('currency_for_total_price', function (Booking $model) {
-                return $model->currency->code;
+                return $model->selected_currency->code;
             });
 
             $dataTable->addColumn('extra_nights', function (Booking $model) {

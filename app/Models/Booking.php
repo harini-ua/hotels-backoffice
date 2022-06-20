@@ -79,9 +79,9 @@ class Booking extends Model
     }
 
     /**
-     * Get the currency that owns the booking.
+     * Get the selected currency that owns the booking.
      */
-    public function currency()
+    public function selected_currency()
     {
         return $this->belongsTo(Currency::class, 'selected_currency_id');
     }

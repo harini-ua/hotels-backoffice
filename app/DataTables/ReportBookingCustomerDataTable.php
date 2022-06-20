@@ -94,7 +94,7 @@ class ReportBookingCustomerDataTable extends DataTable
             $dataTable->addColumn('total_price', function (Booking $model) {
                 $total = 0;
                 if ($model->amount > 0) {
-                    $isAllowedCurrency = in_array($model->currency->code, AllowedCurrency::getValues(), true);
+                    $isAllowedCurrency = in_array($model->selected_currency->code, AllowedCurrency::getValues(), true);
                     $total = $isAllowedCurrency ? $model->amount_conversion : $model->amount;
 
                     // If isset partner set max price
@@ -113,10 +113,10 @@ class ReportBookingCustomerDataTable extends DataTable
             });
 
             $dataTable->addColumn('currency', function (Booking $model) {
-                $currency = $model->currency->code;
+                $currency = $model->selected_currency->code;
                 if ($model->amount > 0) {
-                    $isAllowedCurrency = in_array($model->currency->code, AllowedCurrency::getValues(), true);
-                    $currency = $isAllowedCurrency ? $model->currency->code : $model->original_currency->code;
+                    $isAllowedCurrency = in_array($model->selected_currency->code, AllowedCurrency::getValues(), true);
+                    $currency = $isAllowedCurrency ? $model->selected_currency->code : $model->original_currency->code;
 
                     // If isset partner set currency filter
                     if ($model->company->partner) {
@@ -142,7 +142,7 @@ class ReportBookingCustomerDataTable extends DataTable
         });
 
         $dataTable->addColumn('commission', function (Booking $model) {
-            return $model->commission ?? 0;
+            return $model->commission ;
         });
 
         $dataTable->addColumn('currency_for_commission', function (Booking $model) {
@@ -219,7 +219,65 @@ class ReportBookingCustomerDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        // TODO: Implement Quick Order Columns
+        $dataTable->orderColumn('booking_id', static function ($query, $order) {
+            $query->orderBy('booking_reference', $order);
+        });
+
+        $dataTable->orderColumn('hei_id', static function ($query, $order) {
+            $query->orderBy('id', $order);
+        });
+
+        $dataTable->orderColumn('booking_source', static function ($query, $order) {
+            $query->orderBy('platform_type', $order);
+        });
+
+        $dataTable->orderColumn('checkin', static function ($query, $order) {
+            $query->orderBy('checkin', $order);
+        });
+
+        $dataTable->orderColumn('checkout', static function ($query, $order) {
+            $query->orderBy('checkout', $order);
+        });
+
+        $dataTable->orderColumn('partner', static function ($query, $order) {
+            $query->orderByRaw('IF (`partner_currency_id`, 1, 0) '.$order);
+        });
+
+        $dataTable->orderColumn('status', static function ($query, $order) {
+            $query->orderBy('status', $order);
+        });
+
+        $dataTable->orderColumn('cancelled_date', static function ($query, $order) {
+            $query->orderBy('cancelled_date', $order);
+        });
+
+        $dataTable->orderColumn('created', static function ($query, $order) {
+            $query->orderBy('created_at', $order);
+        });
+
+        $dataTable->orderColumn('amount_conversion', static function ($query, $order) {
+            $query->orderBy('amount_conversion', $order);
+        });
+
+        $dataTable->orderColumn('commission', static function ($query, $order) {
+            $query->orderBy('commission', $order);
+        });
+
+        if ((\Auth::user())->hasRole('admin')) {
+            $dataTable->orderColumn('vat', static function ($query, $order) {
+                $query->orderBy('vat', $order);
+            });
+        }
+
+        $dataTable->orderColumn('pay_to_client', static function ($query, $order) {
+            $query->orderBy('pay_to_client', $order);
+        });
+
+        if ((\Auth::user())->hasRole('admin')) {
+            $dataTable->orderColumn('sales_office_commission', static function ($query, $order) {
+                $query->orderBy('sales_office_commission', $order);
+            });
+        }
     }
 
     /**
@@ -229,8 +287,12 @@ class ReportBookingCustomerDataTable extends DataTable
      */
     protected function setFilterColumns($dataTable)
     {
-        $dataTable->filterColumn('name', static function ($query, $keyword) {
-            // TODO: Need Implement
+        $dataTable->filterColumn('booking_id', static function ($query, $keyword) {
+            $query->where('booking_reference', 'like', "%$keyword%");
+        });
+
+        $dataTable->filterColumn('hei_id', static function ($query, $keyword) {
+            $query->where('id', 'like', "%$keyword%");
         });
     }
 
@@ -249,7 +311,7 @@ class ReportBookingCustomerDataTable extends DataTable
         $query->with('city');
         $query->with('country');
         $query->with('hotel');
-        $query->with('currency');
+        $query->with('selected_currency');
         $query->with('original_currency');
         $query->with('bookingUser.country');
         $query->with('discountCode.discount');
@@ -329,18 +391,21 @@ class ReportBookingCustomerDataTable extends DataTable
                 ->orderable(false),
             Column::make('hei_id')->title(__('HEI ID'))
                 ->addClass('text-center'),
+            Column::make('send')->title(__('Re Send'))
+                ->addClass('text-center')
+                ->orderable(false),
+            Column::make('booking_source')->title(__('Booking Source'))
+                ->addClass('text-center'),
             Column::make('checkin')->title(__('Arrival Date'))
                 ->addClass('text-center'),
             Column::make('checkout')->title(__('Departure Date'))
                 ->addClass('text-center'),
-            Column::make('send')->title(__('Re Send'))
-                ->addClass('text-center'),
-            Column::make('booking_source')->title(__('Booking Source'))
-                ->addClass('text-center'),
-            Column::make('company')->title(__('Company'))
-                ->addClass('text-center'),
             Column::make('booking_user')->title(__('Booking User'))
-                ->addClass('text-center'),
+                ->addClass('text-center')
+                ->orderable(false),
+            Column::make('company')->title(__('Company'))
+                ->addClass('text-center')
+                ->orderable(false),
             Column::make('partner')->title(__('Partners Booking'))
                 ->addClass('text-center'),
             Column::make('cancelled_date')->title(__('Charges Deadline'))
@@ -351,30 +416,37 @@ class ReportBookingCustomerDataTable extends DataTable
                 ->addClass('text-center'),
             Column::make('total_price')->title(__('Total Price'))
                 ->addClass('text-center')
+                ->orderable(false)
                 ->visible((\Auth::user())->hasRole('admin')),
             Column::make('currency')->title(__('Currency'))
                 ->addClass('text-center')
+                ->orderable(false)
                 ->visible((\Auth::user())->hasRole('admin')),
             Column::make('amount_conversion')->title(__('Original Cost'))
                 ->addClass('text-center'),
             Column::make('currency_for_amount_conversion')->title(__('Currency'))
-                ->addClass('text-center'),
+                ->addClass('text-center')
+                ->orderable(false),
             Column::make('commission')->title(__('Booking Commission'))
                 ->addClass('text-center'),
             Column::make('currency_for_commission')->title(__('Currency'))
-                ->addClass('text-center'),
+                ->addClass('text-center')
+                ->orderable(false),
             Column::make('vat')->title(__('Booking VAT'))
                 ->addClass('text-center'),
             Column::make('currency_for_vat')->title(__('Currency'))
-                ->addClass('text-center'),
+                ->addClass('text-center')
+                ->orderable(false),
             Column::make('pay_to_client')->title(__('Pay To Client'))
                 ->addClass('text-center'),
             Column::make('currency_for_pay_to_client')->title(__('Currency'))
-                ->addClass('text-center'),
+                ->addClass('text-center')
+                ->orderable(false),
             Column::make('sales_office_commission')->title(__('Sales Office Commissions'))
                 ->addClass('text-center'),
             Column::make('currency_for_sales_office_commission')->title(__('Currency'))
-                ->addClass('text-center'),
+                ->addClass('text-center')
+                ->orderable(false),
             Column::make('payment')->title(__('Payment'))
                 ->width(200)
                 ->addClass('text-center')
