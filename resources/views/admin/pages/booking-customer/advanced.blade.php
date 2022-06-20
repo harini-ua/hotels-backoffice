@@ -17,10 +17,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <x-filter
-                    title="{{ __('Quick Filter') }}"
+                    title="{{ __('Advanced Filter') }}"
                     :collapse="false"
                 >
-                    @include('admin.pages.booking-customer.partials._quick-filter')
+                    @include('admin.pages.booking-customer.partials._advanced-filter')
                 </x-filter>
             </div>
             <div class="col-lg-12">

@@ -32,292 +32,165 @@ class ReportBookingCustomerDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        // Default Quick Search
-        if (!$this->request->has('advanced_filter'))
-        {
-            $dataTable->addColumn('booking_id', function (Booking $model) {
-                return view('admin.datatables.view-voucher', ['model' => $model]);
-            });
+        $dataTable->addColumn('booking_id', function (Booking $model) {
+            return view('admin.datatables.view-voucher', ['model' => $model]);
+        });
 
-            $dataTable->addColumn('hei_id', function (Booking $model) {
-                return 'HEI'.$model->id;
-            });
+        $dataTable->addColumn('hei_id', function (Booking $model) {
+            return 'HEI'.$model->id;
+        });
 
-            $dataTable->addColumn('send', function (Booking $model) {
-                return view('admin.datatables.send-action', [
-                    'model' => $model,
-                    'route' => route('send.booking.voucher_receipt', $model)
-                ]);
-            });
+        $dataTable->addColumn('send', function (Booking $model) {
+            return view('admin.datatables.send-action', [
+                'model' => $model,
+                'route' => route('send.booking.voucher_receipt', $model)
+            ]);
+        });
 
-            $dataTable->addColumn('booking_source', function (Booking $model) {
-                return BookingPlatform::getDescription($model->platform_type);
-            });
+        $dataTable->addColumn('booking_source', function (Booking $model) {
+            return BookingPlatform::getDescription($model->platform_type);
+        });
 
-            $dataTable->addColumn('checkin', function (Booking $model) {
-                return Formatter::date($model->checkin);
-            });
+        $dataTable->addColumn('checkin', function (Booking $model) {
+            return Formatter::date($model->checkin);
+        });
 
-            $dataTable->addColumn('checkout', function (Booking $model) {
-                return Formatter::date($model->checkout);
-            });
+        $dataTable->addColumn('checkout', function (Booking $model) {
+            return Formatter::date($model->checkout);
+        });
 
-            $dataTable->addColumn('booking_user', function (Booking $model) {
-                return view('admin.datatables.view-link', [
-                    'model' => $model->bookingUser,
-                    'title' => $model->bookingUser->fullname,
-                ]);
-            });
+        $dataTable->addColumn('booking_user', function (Booking $model) {
+            return view('admin.datatables.view-link', [
+                'model' => $model->bookingUser,
+                'title' => $model->bookingUser->fullname,
+            ]);
+        });
 
-            $dataTable->addColumn('company', function (Booking $model) {
-                return view('admin.datatables.view-link', [
-                    'model' => $model->company,
-                    'title' => $model->company->company_name,
-                    'action' => 'edit'
-                ]);
-            });
+        $dataTable->addColumn('company', function (Booking $model) {
+            return view('admin.datatables.view-link', [
+                'model' => $model->company,
+                'title' => $model->company->company_name,
+                'action' => 'edit'
+            ]);
+        });
 
-            $dataTable->addColumn('partner', function (Booking $model) {
-                return $model->partner_amount && $model->partner_currency_id
-                    ? __('YES') : __('NO');
-            });
+        $dataTable->addColumn('partner', function (Booking $model) {
+            return $model->partner_amount && $model->partner_currency_id
+                ? __('YES') : __('NO');
+        });
 
-            $dataTable->addColumn('status', function (Booking $model) {
-                return BookingStatus::getDescription($model->status);
-            });
+        $dataTable->addColumn('status', function (Booking $model) {
+            return BookingStatus::getDescription($model->status);
+        });
 
-            $dataTable->addColumn('cancelled_date', function (Booking $model) {
-                return Formatter::date($model->cancelled_date);
-            });
+        $dataTable->addColumn('cancelled_date', function (Booking $model) {
+            return Formatter::date($model->cancelled_date);
+        });
 
-            $dataTable->addColumn('created', function (Booking $model) {
-                return Formatter::date($model->created_at);
-            });
+        $dataTable->addColumn('created', function (Booking $model) {
+            return Formatter::date($model->created_at);
+        });
 
-            if ((\Auth::user())->hasRole('admin')) {
-                $dataTable->addColumn('total_price', function (Booking $model) {
-                    $total = 0;
-                    if ($model->amount > 0) {
-                        $isAllowedCurrency = in_array($model->currency->code, AllowedCurrency::getValues(), true);
-                        $total = $isAllowedCurrency ? $model->amount_conversion : $model->amount;
-
-                        // If isset partner set max price
-                        if ($model->company->partner) {
-                            if ($model->company->mainOptions) {
-                                $total = $model->company->mainOptions->max_price_filter ?? $total;
-                            }
-                        }
-
-                        // If set partner amount
-                        $total = $model->partner_amount ?? $total;
-                        $total = round($total, 2);
-                    }
-
-                    return $total;
-                });
-
-                $dataTable->addColumn('currency', function (Booking $model) {
-                    $currency = $model->currency->code;
-                    if ($model->amount > 0) {
-                        $isAllowedCurrency = in_array($model->currency->code, AllowedCurrency::getValues(), true);
-                        $currency = $isAllowedCurrency ? $model->currency->code : $model->original_currency->code;
-
-                        // If isset partner set currency filter
-                        if ($model->company->partner) {
-                            if ($model->company->mainOptions) {
-                                $currency = $model->company->mainOptions->currencyFilter->code;
-                            }
-                        }
-                    }
-
-                    // If set partner currency
-                    $currency = $model->partner_currency_id ?? $currency;
-
-                    return $currency;
-                });
-            }
-
-            $dataTable->addColumn('amount_conversion', function (Booking $model) {
-                return $model->amount_conversion;
-            });
-
-            $dataTable->addColumn('currency_for_amount_conversion', function (Booking $model) {
-                return $model->original_currency->code;
-            });
-
-            $dataTable->addColumn('commission', function (Booking $model) {
-                return $model->commission ?? 0;
-            });
-
-            $dataTable->addColumn('currency_for_commission', function (Booking $model) {
-                return $model->original_currency->code;
-            });
-
-            if ((\Auth::user())->hasRole('admin')) {
-                $dataTable->addColumn('vat', function (Booking $model) {
-                    return $model->vat ? round($model->vat, 2) : 0;
-                });
-
-                $dataTable->addColumn('currency_for_vat', function (Booking $model) {
-                    return $model->original_currency->code;
-                });
-            }
-
-            $dataTable->addColumn('pay_to_client', function (Booking $model) {
-                return $model->pay_to_client ? round($model->pay_to_client, 2) : 0;
-            });
-
-            $dataTable->addColumn('currency_for_pay_to_client', function (Booking $model) {
-                return $model->original_currency->code;
-            });
-
-            if ((\Auth::user())->hasRole('admin')) {
-                $dataTable->addColumn('sales_office_commission', function (Booking $model) {
-                    return $model->sales_office_commission ? round($model->sales_office_commission, 2) : 0;
-                });
-
-                $dataTable->addColumn('currency_for_sales_office_commission', function (Booking $model) {
-                    return $model->original_currency->code;
-                });
-            }
-
-            $dataTable->addColumn('payment', function (Booking $model) {
-                if ($model->amount > 0 && $model->payment_type == PaymentType::DISCOUNT) {
-                    return view("admin.datatables.actions", [
-                        'actions' => ['payment'],
-                        'model' => $model,
-                        'route' => route('payment.booking', $model),
-                    ]);
-                }
-
-                return view("admin.datatables.view-status", [
-                    'status' => __('Paid'),
-                ]);
-            });
-        }
-        // Advanced Search
-        else {
-            $dataTable->addColumn('booking_id', function (Booking $model) {
-                return view('admin.datatables.view-voucher', ['model' => $model]);
-            });
-
-            $dataTable->addColumn('hei_id', function (Booking $model) {
-                return 'HEI'.$model->id;
-            });
-
-            $dataTable->addColumn('send', function (Booking $model) {
-                return view('admin.datatables.send-action', [
-                    'model' => $model,
-                    'route' => route('send.booking.voucher_receipt', $model)
-                ]);
-            });
-
-            $dataTable->addColumn('booking_source', function (Booking $model) {
-                return BookingPlatform::getDescription($model->platform_type);
-            });
-
-            $dataTable->addColumn('checkin', function (Booking $model) {
-                return Formatter::date($model->checkin);
-            });
-
-            $dataTable->addColumn('booking_user', function (Booking $model) {
-                return view('admin.datatables.view-link', [
-                    'model' => $model->bookingUser,
-                    'title' => $model->bookingUser->fullname,
-                ]);
-            });
-
-            $dataTable->addColumn('company', function (Booking $model) {
-                return view('admin.datatables.view-link', [
-                    'model' => $model->company,
-                    'title' => $model->company->company_name,
-                    'action' => 'edit'
-                ]);
-            });
-
+        if ((\Auth::user())->hasRole('admin')) {
             $dataTable->addColumn('total_price', function (Booking $model) {
-                return '-';
+                $total = 0;
+                if ($model->amount > 0) {
+                    $isAllowedCurrency = in_array($model->currency->code, AllowedCurrency::getValues(), true);
+                    $total = $isAllowedCurrency ? $model->amount_conversion : $model->amount;
+
+                    // If isset partner set max price
+                    if ($model->company->partner) {
+                        if ($model->company->mainOptions) {
+                            $total = $model->company->mainOptions->max_price_filter ?? $total;
+                        }
+                    }
+
+                    // If set partner amount
+                    $total = $model->partner_amount ?? $total;
+                    $total = round($total, 2);
+                }
+
+                return $total;
             });
 
-            $dataTable->addColumn('currency_for_total_price', function (Booking $model) {
-                return $model->currency->code;
-            });
+            $dataTable->addColumn('currency', function (Booking $model) {
+                $currency = $model->currency->code;
+                if ($model->amount > 0) {
+                    $isAllowedCurrency = in_array($model->currency->code, AllowedCurrency::getValues(), true);
+                    $currency = $isAllowedCurrency ? $model->currency->code : $model->original_currency->code;
 
-            $dataTable->addColumn('extra_nights', function (Booking $model) {
-                return $model->extra_nights ?? '-';
-            });
-
-            $dataTable->addColumn('discount', function (Booking $model) {
-                $discount = '-';
-                if ($model->discountCode) {
-                    $voucher = $model->discountCode->discount;
-                    $discount = $voucher->amount;
-
-                    if (DiscountAmountType::Percent === (int) $voucher->amount_type) {
-                        $discount .= '%';
+                    // If isset partner set currency filter
+                    if ($model->company->partner) {
+                        if ($model->company->mainOptions) {
+                            $currency = $model->company->mainOptions->currencyFilter->code;
+                        }
                     }
                 }
 
-                return $discount;
+                // If set partner currency
+                $currency = $model->partner_currency_id ?? $currency;
+
+                return $currency;
             });
-
-            $dataTable->addColumn('discount_type', function (Booking $model) {
-                $type = '-';
-                if ($model->discountCode) {
-                    $voucher = $model->discountCode->discount;
-
-                    switch ((int) $voucher->amount_type) {
-                        case DiscountAmountType::Percent:
-                            $type = '%';
-                            break;
-                        case DiscountAmountType::Fixed:
-                            $type = $voucher->curency->code;
-                            break;
-                    }
-                }
-
-                return $type;
-            });
-
-            $dataTable->addColumn('discount_code', function (Booking $model) {
-                return $model->discountCode->code ?? '-';
-            });
-
-            $dataTable->addColumn('partner', function (Booking $model) {
-                return $model->partner_amount && $model->partner_currency_id
-                    ? __('YES') : __('NO');
-            });
-
-            $dataTable->addColumn('status', function (Booking $model) {
-                return BookingStatus::getDescription($model->status);
-            });
-
-            $dataTable->addColumn('commission', function (Booking $model) {
-                return $model->commission ?? view('admin.datatables.view-icon', [
-                    'icon' => 'feather icon-alert-octagon',
-                    'title' => __('This booking is without any commission'),
-                    'class' => 'danger'
-                ]);
-            });
-
-            $dataTable->addColumn('cancel_till_date', function (Booking $model) {
-                return Formatter::date($model->cancel_till_date);
-            });
-
-            $dataTable->addColumn('created', function (Booking $model) {
-                return Formatter::date($model->created_at);
-            });
-
-            $dataTable->addColumn('provider', function (Booking $model) {
-                if ((\Auth::user())->hasRole('admin')) {
-                    return $model->provider->name ?? '-';
-                }
-
-                return __('Provider') .' '. $model->provider->id;
-            });
-
-            // TODO: Implement Advanced
         }
+
+        $dataTable->addColumn('amount_conversion', function (Booking $model) {
+            return $model->amount_conversion;
+        });
+
+        $dataTable->addColumn('currency_for_amount_conversion', function (Booking $model) {
+            return $model->original_currency->code;
+        });
+
+        $dataTable->addColumn('commission', function (Booking $model) {
+            return $model->commission ?? 0;
+        });
+
+        $dataTable->addColumn('currency_for_commission', function (Booking $model) {
+            return $model->original_currency->code;
+        });
+
+        if ((\Auth::user())->hasRole('admin')) {
+            $dataTable->addColumn('vat', function (Booking $model) {
+                return $model->vat ? round($model->vat, 2) : 0;
+            });
+
+            $dataTable->addColumn('currency_for_vat', function (Booking $model) {
+                return $model->original_currency->code;
+            });
+        }
+
+        $dataTable->addColumn('pay_to_client', function (Booking $model) {
+            return $model->pay_to_client ? round($model->pay_to_client, 2) : 0;
+        });
+
+        $dataTable->addColumn('currency_for_pay_to_client', function (Booking $model) {
+            return $model->original_currency->code;
+        });
+
+        if ((\Auth::user())->hasRole('admin')) {
+            $dataTable->addColumn('sales_office_commission', function (Booking $model) {
+                return $model->sales_office_commission ? round($model->sales_office_commission, 2) : 0;
+            });
+
+            $dataTable->addColumn('currency_for_sales_office_commission', function (Booking $model) {
+                return $model->original_currency->code;
+            });
+        }
+
+        $dataTable->addColumn('payment', function (Booking $model) {
+            if ($model->amount > 0 && $model->payment_type == PaymentType::DISCOUNT) {
+                return view("admin.datatables.actions", [
+                    'actions' => ['payment'],
+                    'model' => $model,
+                    'route' => route('payment.booking', $model),
+                ]);
+            }
+
+            return view("admin.datatables.view-status", [
+                'status' => __('Paid'),
+            ]);
+        });
 
         $this->setOrderColumns($dataTable);
         $this->setFilterColumns($dataTable);
@@ -347,15 +220,7 @@ class ReportBookingCustomerDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        // Default Quick Search
-        if (!$this->request->has('advanced_filter'))
-        {
-            // TODO: Implement Quick
-        }
-        // Advanced Search
-        else {
-            // TODO: Implement Advanced
-        }
+        // TODO: Implement Quick Order Columns
     }
 
     /**
@@ -459,109 +324,63 @@ class ReportBookingCustomerDataTable extends DataTable
      */
     protected function getColumns()
     {
-        // Default Quick Search
-        if (!$this->request->has('advanced_filter'))
-        {
-            return [
-                Column::make('booking_id')->title(__('Booking ID'))
-                    ->width(150)
-                    ->orderable(false),
-                Column::make('hei_id')->title(__('HEI ID'))
-                    ->addClass('text-center'),
-                Column::make('checkin')->title(__('Arrival Date'))
-                    ->addClass('text-center'),
-                Column::make('checkout')->title(__('Departure Date'))
-                    ->addClass('text-center'),
-                Column::make('send')->title(__('Re Send'))
-                    ->addClass('text-center'),
-                Column::make('booking_source')->title(__('Booking Source'))
-                    ->addClass('text-center'),
-                Column::make('company')->title(__('Company'))
-                    ->addClass('text-center'),
-                Column::make('booking_user')->title(__('Booking User'))
-                    ->addClass('text-center'),
-                Column::make('partner')->title(__('Partners Booking'))
-                    ->addClass('text-center'),
-                Column::make('cancelled_date')->title(__('Charges Deadline'))
-                    ->addClass('text-center'),
-                Column::make('created')->title(__('Created'))
-                    ->addClass('text-center'),
-                Column::make('status')->title(__('Status'))
-                    ->addClass('text-center'),
-                Column::make('total_price')->title(__('Total Price'))
-                    ->addClass('text-center')
-                    ->visible((\Auth::user())->hasRole('admin')),
-                Column::make('currency')->title(__('Currency'))
-                    ->addClass('text-center')
-                    ->visible((\Auth::user())->hasRole('admin')),
-                Column::make('amount_conversion')->title(__('Original Cost'))
-                    ->addClass('text-center'),
-                Column::make('currency_for_amount_conversion')->title(__('Currency'))
-                    ->addClass('text-center'),
-                Column::make('commission')->title(__('Booking Commission'))
-                    ->addClass('text-center'),
-                Column::make('currency_for_commission')->title(__('Currency'))
-                    ->addClass('text-center'),
-                Column::make('vat')->title(__('Booking VAT'))
-                    ->addClass('text-center'),
-                Column::make('currency_for_vat')->title(__('Currency'))
-                    ->addClass('text-center'),
-                Column::make('pay_to_client')->title(__('Pay To Client'))
-                    ->addClass('text-center'),
-                Column::make('currency_for_pay_to_client')->title(__('Currency'))
-                    ->addClass('text-center'),
-                Column::make('sales_office_commission')->title(__('Sales Office Commissions'))
-                    ->addClass('text-center'),
-                Column::make('currency_for_sales_office_commission')->title(__('Currency'))
-                    ->addClass('text-center'),
-                Column::make('payment')->title(__('Payment'))
-                    ->width(200)
-                    ->addClass('text-center')
-                    ->orderable(false),
-            ];
-        }
-        // Advanced Search
-        else {
-            return [
-                Column::make('booking_id')->title(__('Booking ID'))
-                    ->width(150)
-                    ->orderable(false),
-                Column::make('hei_id')->title(__('HEI ID'))
-                    ->addClass('text-center'),
-                Column::make('send')->title(__('Re Send'))
-                    ->addClass('text-center'),
-                Column::make('booking_source')->title(__('Booking Source'))
-                    ->addClass('text-center'),
-                Column::make('checkin')->title(__('Start Date'))
-                    ->addClass('text-center'),
-                Column::make('booking_user')->title(__('Booking User'))
-                    ->addClass('text-center'),
-                Column::make('company')->title(__('Company'))
-                    ->addClass('text-center'),
-                Column::make('currency_for_total_price')->title(__('Total Price'))
-                    ->addClass('text-center'),
-                Column::make('currency_for_total_price')->title(__('Currency'))
-                    ->addClass('text-center'),
-                Column::make('extra_nights')->title(__('Extra Nights'))
-                    ->addClass('text-center'),
-                Column::make('discount')->title(__('Discount'))
-                    ->addClass('text-center'),
-                Column::make('discount_type')->title(__('Discount Type'))
-                    ->addClass('text-center'),
-                Column::make('discount_code')->title(__('Discount Code'))
-                    ->addClass('text-center'),
-                Column::make('partner')->title(__('Partners Booking'))
-                    ->addClass('text-center'),
-                Column::make('status')->title(__('Status'))
-                    ->addClass('text-center'),
-                Column::make('cancel_till_date')->title(__('Charges Deadline'))
-                    ->addClass('text-center'),
-                Column::make('created')->title(__('Requested Date'))
-                    ->addClass('text-center'),
-                Column::make('provider')->title(__('Provider'))
-                    ->addClass('text-center'),
-            ];
-        }
+        return [
+            Column::make('booking_id')->title(__('Booking ID'))
+                ->width(150)
+                ->orderable(false),
+            Column::make('hei_id')->title(__('HEI ID'))
+                ->addClass('text-center'),
+            Column::make('checkin')->title(__('Arrival Date'))
+                ->addClass('text-center'),
+            Column::make('checkout')->title(__('Departure Date'))
+                ->addClass('text-center'),
+            Column::make('send')->title(__('Re Send'))
+                ->addClass('text-center'),
+            Column::make('booking_source')->title(__('Booking Source'))
+                ->addClass('text-center'),
+            Column::make('company')->title(__('Company'))
+                ->addClass('text-center'),
+            Column::make('booking_user')->title(__('Booking User'))
+                ->addClass('text-center'),
+            Column::make('partner')->title(__('Partners Booking'))
+                ->addClass('text-center'),
+            Column::make('cancelled_date')->title(__('Charges Deadline'))
+                ->addClass('text-center'),
+            Column::make('created')->title(__('Created'))
+                ->addClass('text-center'),
+            Column::make('status')->title(__('Status'))
+                ->addClass('text-center'),
+            Column::make('total_price')->title(__('Total Price'))
+                ->addClass('text-center')
+                ->visible((\Auth::user())->hasRole('admin')),
+            Column::make('currency')->title(__('Currency'))
+                ->addClass('text-center')
+                ->visible((\Auth::user())->hasRole('admin')),
+            Column::make('amount_conversion')->title(__('Original Cost'))
+                ->addClass('text-center'),
+            Column::make('currency_for_amount_conversion')->title(__('Currency'))
+                ->addClass('text-center'),
+            Column::make('commission')->title(__('Booking Commission'))
+                ->addClass('text-center'),
+            Column::make('currency_for_commission')->title(__('Currency'))
+                ->addClass('text-center'),
+            Column::make('vat')->title(__('Booking VAT'))
+                ->addClass('text-center'),
+            Column::make('currency_for_vat')->title(__('Currency'))
+                ->addClass('text-center'),
+            Column::make('pay_to_client')->title(__('Pay To Client'))
+                ->addClass('text-center'),
+            Column::make('currency_for_pay_to_client')->title(__('Currency'))
+                ->addClass('text-center'),
+            Column::make('sales_office_commission')->title(__('Sales Office Commissions'))
+                ->addClass('text-center'),
+            Column::make('currency_for_sales_office_commission')->title(__('Currency'))
+                ->addClass('text-center'),
+            Column::make('payment')->title(__('Payment'))
+                ->width(200)
+                ->addClass('text-center')
+                ->orderable(false),
+        ];
     }
 
     /**
