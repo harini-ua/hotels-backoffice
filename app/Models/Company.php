@@ -226,6 +226,14 @@ class Company extends Model
     }
 
     /**
+     * Get the country VAT for the company.
+     */
+    public function vat($country_id)
+    {
+        return $this->hasOne(CompanyVat::class)->where('country_id', $country_id);
+    }
+
+    /**
      * Get the city commissions for the company.
      */
     public function cityCommissions()
