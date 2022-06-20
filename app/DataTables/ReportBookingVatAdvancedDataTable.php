@@ -164,7 +164,7 @@ class ReportBookingVatAdvancedDataTable extends DataTable
                     $this->datePeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
                 }
 
-                $query->whereBetween('created_at', $this->voucherDatePeriod);
+                $query->whereBetween('created_at', $this->datePeriod);
             }
         }, true);
 

@@ -155,8 +155,8 @@ class ReportBookingCommissionDataTable extends DataTable
                     $this->datePeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
                 }
 
-                $query->whereDate('checkin', '>=', $this->checkInPeriod[0]);
-                $query->whereDate('checkout', '<=', $this->checkInPeriod[1]);
+                $query->whereDate('checkin', '>=', $this->datePeriod[0]);
+                $query->whereDate('checkout', '<=', $this->datePeriod[1]);
             }
         }, true);
 
