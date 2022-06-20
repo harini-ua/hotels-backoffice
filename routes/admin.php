@@ -224,8 +224,13 @@ Route::middleware('auth')->group(function () {
             Route::get('/booking-customer/advanced', [ReportBookingCustomerController::class, 'advanced'])->name('booking-customer.advanced.index');
 
             Route::get('/booking-vat', [ReportBookingVatController::class, 'index'])->name('booking-vat.index');
+            Route::get('/booking-vat/advanced', [ReportBookingVatController::class, 'advanced'])->name('booking-vat.advanced.index');
+
             Route::get('/booking-commission', [ReportBookingCommissionController::class, 'index'])->name('booking-commission.index');
+            Route::get('/booking-commission/advanced', [ReportBookingCommissionController::class, 'advanced'])->name('booking-commission.advanced.index');
+
             Route::get('/invoice', [ReportInvoiceController::class, 'index'])->name('invoice.index');
+            Route::get('/invoice/advanced', [ReportInvoiceController::class, 'advanced'])->name('invoice.advanced.index');
 
             Route::get('/country-booking', [ReportCountryBookingController::class, 'index'])->name('country-booking.index');
 
