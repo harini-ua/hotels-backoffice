@@ -4,6 +4,7 @@
         id="booking_type"
         name="booking_type"
         class="form-control filter-input select-filter"
+        data-url="{{ route('reports.booking-customer.index') }}"
         @if(!count($bookingTypes)) disabled @endif
     >
         @foreach($bookingTypes as $id => $type)
@@ -17,6 +18,7 @@
         id="status"
         name="status"
         class="form-control filter-input select-filter select2-single"
+        data-url="{{ route('reports.booking-customer.index') }}"
         @if(!count($statuses)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
@@ -34,6 +36,7 @@
         id="company"
         name="company"
         class="form-control filter-input select-filter select2 select2-single"
+        data-url="{{ route('reports.booking-customer.index') }}"
         @if(!count($companies)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
@@ -51,6 +54,7 @@
                class="form-control datepicker-filter"
                placeholder="{{ __('Choice Period Date') }}"
                aria-describedby="basic-addon7"
+               data-url="{{ route('reports.booking-customer.index') }}"
                value=""
         >
         <div class="input-group-append">

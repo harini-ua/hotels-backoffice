@@ -468,7 +468,7 @@ class ReportBookingCustomerAdvancedDataTable extends DataTable
                 ->addClass('text-center'),
             Column::make('company')->title(__('Company'))
                 ->addClass('text-center'),
-            Column::make('currency_for_total_price')->title(__('Total Price'))
+            Column::make('total_price')->title(__('Total Price'))
                 ->addClass('text-center'),
             Column::make('currency_for_total_price')->title(__('Currency'))
                 ->addClass('text-center'),

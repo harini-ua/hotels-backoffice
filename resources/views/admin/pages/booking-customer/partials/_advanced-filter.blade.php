@@ -5,7 +5,7 @@
         name="booking_type"
         class="form-control filter-input select-filter"
         data-table="report-booking-customer-list-datatable"
-        data-url="{{ route('reports.booking-customer.index') }}"
+        data-url="{{ route('reports.booking-customer.advanced.index') }}"
         @if(!count($bookingTypes)) disabled @endif
     >
         @foreach($bookingTypes as $id => $type)
@@ -15,11 +15,13 @@
 </div>
 <div class="form-group filter-item col-md-2">
     <label for="order_id">{{ __('Order ID') }}</label>
-    <input type="text" id="order_id" name="order_id" class="form-control">
+    <input type="text" id="order_id" name="order_id" class="form-control"
+           data-url="{{ route('reports.booking-customer.advanced.index') }}">
 </div>
 <div class="form-group filter-item col-md-2">
     <label for="booking_id">{{ __('Booking ID') }}</label>
-    <input type="text" id="booking_id" name="booking_id" class="form-control">
+    <input type="text" id="booking_id" name="booking_id" class="form-control"
+           data-url="{{ route('reports.booking-customer.advanced.index') }}">
 </div>
 <div class="form-group filter-item col-md-2">
     <label for="status">{{ __('Booking Status') }}</label>
@@ -27,6 +29,7 @@
         id="status"
         name="status"
         class="form-control filter-input select-filter select2-single"
+        data-url="{{ route('reports.booking-customer.advanced.index') }}"
         @if(!count($statuses)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
@@ -40,15 +43,18 @@
 </div>
 <div class="form-group filter-item col-md-2">
     <label for="booking_id">{{ __('Giftcard').'/'.__('Discount') }}</label>
-    <input type="text" id="giftcard" name="giftcard" class="form-control">
+    <input type="text" id="giftcard" name="giftcard" class="form-control"
+           data-url="{{ route('reports.booking-customer.advanced.index') }}">
 </div>
 <div class="form-group filter-item col-md-2">
     <label for="booking_id">{{ __('Guest Name') }}</label>
-    <input type="text" id="guest_name" name="guest_name" class="form-control">
+    <input type="text" id="guest_name" name="guest_name" class="form-control"
+           data-url="{{ route('reports.booking-customer.advanced.index') }}">
 </div>
 <div class="form-group filter-item col-md-2">
     <label for="booking_id">{{ __('Guest Email') }}</label>
-    <input type="text" id="guest_email" name="guest_email" class="form-control">
+    <input type="text" id="guest_email" name="guest_email" class="form-control"
+           data-url="{{ route('reports.booking-customer.advanced.index') }}">
 </div>
 <div class="form-group filter-item col-md-3">
     <label for="date_type">{{ __('Date Type') }}</label>
@@ -56,6 +62,7 @@
         id="date_type"
         name="date_type"
         class="form-control filter-input select-filter select2-single"
+        data-url="{{ route('reports.booking-customer.advanced.index') }}"
         @if(!count($dataTypes)) disabled @endif
     >
         @foreach($dataTypes as $id => $type)
@@ -73,6 +80,7 @@
                placeholder="{{ __('Choice First Period') }}"
                aria-describedby="basic-addon7"
                value=""
+               data-url="{{ route('reports.booking-customer.advanced.index') }}"
         >
         <div class="input-group-append">
             <span class="input-group-text" id="basic-addon7"><i class="feather icon-calendar"></i></span>
@@ -85,7 +93,7 @@
             name="advanced_filter"
             data-type="quick"
             data-table="report-booking-customer-list-datatable"
-            data-url="{{ route('reports.booking-customer.index') }}"
+            data-url="{{ route('reports.booking-customer.advanced.index') }}"
             style="margin-top: 33px"><i class="feather icon-search"></i> {{ __('Search') }}
     </button>
 </div>

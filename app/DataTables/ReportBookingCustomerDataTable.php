@@ -6,7 +6,6 @@ use App\Enums\AllowedCurrency;
 use App\Enums\BookingDateType;
 use App\Enums\BookingPlatform;
 use App\Enums\BookingStatus;
-use App\Enums\DiscountAmountType;
 use App\Enums\PaymentType;
 use App\Models\Booking;
 use App\Services\Formatter;
