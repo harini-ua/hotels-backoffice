@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Enums\AllowedCurrency;
 use App\Enums\BookingStatus;
 use App\Models\Booking;
 use App\Services\Formatter;
@@ -13,14 +14,9 @@ use Yajra\DataTables\Services\DataTable;
 class ReportBookingCommissionDataTable extends DataTable
 {
     /**
-     * @var array $checkInPeriod
+     * @var array $datePeriod
      */
-    public $checkInPeriod = [];
-
-    /**
-     * @var array $voucherDatePeriod
-     */
-    public $voucherDatePeriod = [];
+    public $datePeriod = [];
 
     /**
      * Build DataTable class.
@@ -60,73 +56,80 @@ class ReportBookingCommissionDataTable extends DataTable
             return $model->hotel->name;
         });
 
-        $dataTable->addColumn('client_name', function (Booking $model) {
-            return $model->customer_name;
+        $dataTable->addColumn('agent_ref', function (Booking $model) {
+            // TODO: Or $model->customer_name
+            return $model->agent_ref ?? '-';
         });
 
         $dataTable->addColumn('client_country', function (Booking $model) {
             return $model->bookingUser->country->name;
         });
 
-//        $dataTable->addColumn('amount_charged', function (Booking $model) {
-//            return '?';
-//        });
-//
-//        $dataTable->addColumn('partners_booking', function (Booking $model) {
-//            return '?';
-//        });
-//
-//        $dataTable->addColumn('fixed_amount', function (Booking $model) {
-//            return '?';
-//        });
-//
-//        $dataTable->addColumn('total_commission', function (Booking $model) {
-//            return '?';
-//        });
-//
-//        $dataTable->addColumn('company_commission', function (Booking $model) {
-//            return '?';
-//        });
-//
-//        $dataTable->addColumn('sub_company_commission', function (Booking $model) {
-//            return '?';
-//        });
-//
-//        $dataTable->addColumn('vat', function (Booking $model) {
-//            return '?';
-//        });
-//
-//        $dataTable->addColumn('commission_level_1_1', function (Booking $model) {
-//            return '?';
-//        });
-//
-//        $dataTable->addColumn('commission_level_1_2', function (Booking $model) {
-//            return '?';
-//        });
-//
-//        $dataTable->addColumn('commission_level_2_1', function (Booking $model) {
-//            return '?';
-//        });
-//
-//        $dataTable->addColumn('commission_level_2_2', function (Booking $model) {
-//            return '?';
-//        });
-//
-//        $dataTable->addColumn('currency', function (Booking $model) {
-//            $isAllowedCurrency = in_array($model->currency->code, AllowedCurrency::getValues(), true);
-//
-////            if ($isAllowedCurrency) {
-////                $userCurrency = $model->currency->code;
-////                $rowAmount = 0;
-////                $providerPrice = 0;
-////            } else {
-////                $userCurrency = $model->provider->currency->code;
-////                $rowAmount = 0;
-////                $providerPrice = 0;
-////            }
-//
-//            return  $model->currency->code;
-//        });
+        $dataTable->addColumn('total_amount', function (Booking $model) {
+            return $model->partner_amount ?? $model->amount;
+        });
+
+        $dataTable->addColumn('currency_for_total_amount', function (Booking $model) {
+            $currency = $model->selected_currency->code;
+            if ($model->amount > 0) {
+                $isAllowedCurrency = in_array($model->selected_currency->code, AllowedCurrency::getValues(), true);
+                $currency = $isAllowedCurrency ? $model->selected_currency->code : $model->original_currency->code;
+            }
+
+            // If set partner currency
+            return $model->partner_currency_id ?? $currency;
+        });
+
+        $dataTable->addColumn('partner', function (Booking $model) {
+            return $model->partner_amount && $model->partner_currency_id
+                ? __('YES') : __('NO');
+        });
+
+        $dataTable->addColumn('fixed_amount', function (Booking $model) {
+            return '?'; // TODO: Need Implement
+        });
+
+        $dataTable->addColumn('commission', function (Booking $model) {
+            return $model->commission;
+        });
+
+        $dataTable->addColumn('company_commission', function (Booking $model) {
+            return '?'; // TODO: Need Implement
+        });
+
+        $dataTable->addColumn('sub_company_commission', function (Booking $model) {
+            return '?'; // TODO: Need Implement
+        });
+
+        $dataTable->addColumn('vat', function (Booking $model) {
+            return '?'; // TODO: Need Implement
+        });
+
+        $dataTable->addColumn('commission_level_1_1', function (Booking $model) {
+            return '?'; // TODO: Need Implement
+        });
+
+        $dataTable->addColumn('commission_level_1_2', function (Booking $model) {
+            return '?'; // TODO: Need Implement
+        });
+
+        $dataTable->addColumn('commission_level_2_1', function (Booking $model) {
+            return '?'; // TODO: Need Implement
+        });
+
+        $dataTable->addColumn('commission_level_2_2', function (Booking $model) {
+            return '?'; // TODO: Need Implement
+        });
+
+        $dataTable->addColumn('total_currency', function (Booking $model) {
+            $currency = $model->selected_currency->code;
+            if ($model->amount > 0) {
+                $isAllowedCurrency = in_array($model->selected_currency->code, AllowedCurrency::getValues(), true);
+                $currency = $isAllowedCurrency ? $model->selected_currency->code : $model->original_currency->code;
+            }
+
+            return $currency;
+        });
 
         $dataTable->addColumn('status', function (Booking $model) {
             return BookingStatus::getDescription($model->status);
@@ -146,11 +149,14 @@ class ReportBookingCommissionDataTable extends DataTable
             if ($this->request->has('company')) {
                 $query->where('company_id', $this->request->get('company'));
             }
-            if ($this->request->has('order_id')) {
-                $query->where('booking_reference', $this->request->get('order_id'));
-            }
-            if ($this->request->has('booking_id')) {
-                $query->where('id', $this->request->get('booking_id'));
+            if ($this->request->has('check_in')) {
+                $dates = explode(' - ', $this->request->get('check_in'));
+                foreach ($dates as $key => $date) {
+                    $this->datePeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
+                }
+
+                $query->whereDate('checkin', '>=', $this->checkInPeriod[0]);
+                $query->whereDate('checkout', '<=', $this->checkInPeriod[1]);
             }
         }, true);
 
@@ -176,57 +182,13 @@ class ReportBookingCommissionDataTable extends DataTable
             $query->orderBy('checkout', $order);
         });
 
-        $dataTable->orderColumn('client_name', static function ($query, $order) {
-            $query->orderBy('client_name', $order);
+        $dataTable->orderColumn('partner', static function ($query, $order) {
+            $query->orderByRaw('IF (`partner_currency_id`, 1, 0) '.$order);
         });
 
-        $dataTable->orderColumn('client_country', static function ($query, $order) {
-            $query->orderBy('client_country', $order);
+        $dataTable->orderColumn('commission', static function ($query, $order) {
+            $query->orderBy('commission', $order);
         });
-
-//        $dataTable->orderColumn('amount_charged', static function ($query, $order) {
-//            $query->orderBy('amount_charged', $order);
-//        });
-//
-//        $dataTable->orderColumn('partners_booking', static function ($query, $order) {
-//            $query->orderBy('partners_booking', $order);
-//        });
-//
-//        $dataTable->orderColumn('fixed_amount', static function ($query, $order) {
-//            $query->orderBy('fixed_amount', $order);
-//        });
-//
-//        $dataTable->orderColumn('total_commission', static function ($query, $order) {
-//            $query->orderBy('total_commission', $order);
-//        });
-//
-//        $dataTable->orderColumn('company_commission', static function ($query, $order) {
-//            $query->orderBy('company_commission', $order);
-//        });
-//
-//        $dataTable->orderColumn('sub_company_commission', static function ($query, $order) {
-//            $query->orderBy('sub_company_commission', $order);
-//        });
-//
-//        $dataTable->orderColumn('vat', static function ($query, $order) {
-//            $query->orderBy('vat', $order);
-//        });
-//
-//        $dataTable->orderColumn('commission_level_1_1', static function ($query, $order) {
-//            $query->orderBy('commission_level_1_1', $order);
-//        });
-//
-//        $dataTable->orderColumn('commission_level_1_2', static function ($query, $order) {
-//            $query->orderBy('commission_level_1_2', $order);
-//        });
-//
-//        $dataTable->orderColumn('commission_level_2_1', static function ($query, $order) {
-//            $query->orderBy('commission_level_2_1', $order);
-//        });
-//
-//        $dataTable->orderColumn('commission_level_2_2', static function ($query, $order) {
-//            $query->orderBy('commission_level_2_2', $order);
-//        });
 
         $dataTable->orderColumn('status', static function ($query, $order) {
             $query->orderBy('status', $order);
@@ -240,8 +202,12 @@ class ReportBookingCommissionDataTable extends DataTable
      */
     protected function setFilterColumns($dataTable)
     {
-        $dataTable->filterColumn('name', static function ($query, $keyword) {
-            // TODO: Need Implement
+        $dataTable->filterColumn('booking_id', static function ($query, $keyword) {
+            $query->where('booking_reference', 'like', "%$keyword%");
+        });
+
+        $dataTable->filterColumn('hei_id', static function ($query, $keyword) {
+            $query->where('id', 'like', "%$keyword%");
         });
     }
 
@@ -262,27 +228,7 @@ class ReportBookingCommissionDataTable extends DataTable
         $query->with('bookingUser.country');
         $query->with('discountCode');
 
-        if ($this->request->has('quick_filter')) {
-            if ($this->request->has('check_in')) {
-                $dates = explode(' - ', $this->request->get('check_in'));
-                foreach ($dates as $key => $date) {
-                    $this->checkInPeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
-                }
-            }
-
-            $query->whereDate('checkin', '>=', $this->checkInPeriod[0]);
-            $query->whereDate('checkout', '<=', $this->checkInPeriod[1]);
-        }
-        elseif ($this->request->has('advanced_filter')) {
-            if ($this->request->has('voucher_date')) {
-                $dates = explode(' - ', $this->request->get('voucher_date'));
-                foreach ($dates as $key => $date) {
-                    $this->voucherDatePeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
-                }
-            }
-
-            $query->whereBetween('created_at', $this->voucherDatePeriod);
-        } else {
+        if (!$this->request->has('quick_filter')) {
             $query->where('id', 0);
         }
 
@@ -326,7 +272,8 @@ class ReportBookingCommissionDataTable extends DataTable
             Column::make('booking_id')->title(__('Booking ID'))
                 ->width(150)
                 ->orderable(false),
-            Column::make('hei_id')->title(__('HEI ID'))->addClass('text-center'),
+            Column::make('hei_id')->title(__('HEI ID'))
+                ->addClass('text-center'),
             Column::make('checkin')->title(__('Arrival Date'))
                 ->addClass('text-center'),
             Column::make('checkout')->title(__('Departure Date'))
@@ -340,24 +287,40 @@ class ReportBookingCommissionDataTable extends DataTable
             Column::make('hotel')->title(__('Hotel'))
                 ->orderable(false)
                 ->addClass('text-center'),
+            Column::make('agent_ref')->title(__('Client Name'))
+                ->orderable(false)
+                ->addClass('text-center'),
             Column::make('client_name')->title(__('Client Name'))
                 ->orderable(false)
                 ->addClass('text-center'),
             Column::make('client_country')->title(__('Client Country'))
                 ->orderable(false)
                 ->addClass('text-center'),
-//            Column::make('amount_charged')->title(__('Total Amount Charged')),
-//            Column::make('partners_booking')->title(__('Partners Booking')),
-//            Column::make('fixed_amount')->title(__('Fixed Amount')),
-//            Column::make('total_commission')->title(__('Total Comm.')),
-//            Column::make('company_commission')->title(__('Comm. Company')),
-//            Column::make('sub_company_commission')->title(__('Comm. Sub-Company')),
-//            Column::make('vat')->title(__('VAT')),
-//            Column::make('commission_level_1_1')->title(__('Comm. Level 1-1')),
-//            Column::make('commission_level_1_2')->title(__('Comm. Level 1-2')),
-//            Column::make('commission_level_2_1')->title(__('Comm. Level 2-1')),
-//            Column::make('commission_level_2_2')->title(__('Comm. Level 2-2')),
-//            Column::make('currency')->title(__('Currency')),
+            Column::make('total_amount')->title(__('Total Amount Charged'))
+                ->addClass('text-center'),
+            Column::make('currency_for_total_amount')->title(__('Currency'))
+                ->orderable(false)
+                ->addClass('text-center'),
+            Column::make('partner')->title(__('Partners Booking'))
+                ->addClass('text-center')
+                ->orderable(false),
+            Column::make('fixed_amount')->title(__('Fixed Amount'))
+                ->addClass('text-center'),
+            Column::make('commission')->title(__('Total Comm.'))
+                ->addClass('text-center'),
+            Column::make('currency_for_commission')->title(__('Currency'))
+                ->orderable(false)
+                ->addClass('text-center'),
+            Column::make('company_commission')->title(__('Comm. Company')),
+            Column::make('sub_company_commission')->title(__('Comm. Sub-Company')),
+            Column::make('vat')->title(__('VAT')),
+            Column::make('commission_level_1_1')->title(__('Comm. Level 1-1')),
+            Column::make('commission_level_1_2')->title(__('Comm. Level 1-2')),
+            Column::make('commission_level_2_1')->title(__('Comm. Level 2-1')),
+            Column::make('commission_level_2_2')->title(__('Comm. Level 2-2')),
+            Column::make('total_currency')->title(__('Currency'))
+                ->orderable(false)
+                ->addClass('text-center'),
             Column::make('status')->title(__('Status'))
                 ->addClass('text-center'),
             Column::make('payment')->title(__('Payment'))

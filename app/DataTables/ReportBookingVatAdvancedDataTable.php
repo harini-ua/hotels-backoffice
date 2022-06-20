@@ -14,14 +14,9 @@ use Yajra\DataTables\Services\DataTable;
 class ReportBookingVatAdvancedDataTable extends DataTable
 {
     /**
-     * @var array $checkInPeriod
+     * @var array $datePeriod
      */
-    public $checkInPeriod = [];
-
-    /**
-     * @var array $voucherDatePeriod
-     */
-    public $voucherDatePeriod = [];
+    public $datePeriod = [];
 
     /**
      * Build DataTable class.
@@ -119,7 +114,7 @@ class ReportBookingVatAdvancedDataTable extends DataTable
         });
 
         $dataTable->addColumn('commission', function (Booking $model) {
-            return $model->commission ;
+            return $model->commission;
         });
 
         $dataTable->addColumn('currency_for_commission', function (Booking $model) {
@@ -166,7 +161,7 @@ class ReportBookingVatAdvancedDataTable extends DataTable
             if ($this->request->has('voucher_date')) {
                 $dates = explode(' - ', $this->request->get('voucher_date'));
                 foreach ($dates as $key => $date) {
-                    $this->voucherDatePeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
+                    $this->datePeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
                 }
 
                 $query->whereBetween('created_at', $this->voucherDatePeriod);
@@ -196,7 +191,7 @@ class ReportBookingVatAdvancedDataTable extends DataTable
         });
 
         $dataTable->orderColumn('total_price', static function ($query, $order) {
-            $query->orderBy('total_price', $order);
+            $query->orderBy('amount', $order);
         });
 
         $dataTable->orderColumn('status', static function ($query, $order) {
@@ -382,6 +377,6 @@ class ReportBookingVatAdvancedDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'ReportBookingVat_' . date('YmdHis');
+        return 'ReportBookingVatAdvanced_' . date('YmdHis');
     }
 }

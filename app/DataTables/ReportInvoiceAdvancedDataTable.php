@@ -256,6 +256,6 @@ class ReportInvoiceAdvancedDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'ReportInvoice_' . date('YmdHis');
+        return 'ReportInvoiceAdvanced_' . date('YmdHis');
     }
 }

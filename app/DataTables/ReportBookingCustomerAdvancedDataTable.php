@@ -572,6 +572,6 @@ class ReportBookingCustomerAdvancedDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'ReportBookingCustomer_' . date('YmdHis');
+        return 'ReportBookingCustomerAdvanced_' . date('YmdHis');
     }
 }

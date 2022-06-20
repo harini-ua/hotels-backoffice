@@ -13,14 +13,9 @@ use Yajra\DataTables\Services\DataTable;
 class ReportBookingVatDataTable extends DataTable
 {
     /**
-     * @var array $checkInPeriod
+     * @var array $datePeriod
      */
-    public $checkInPeriod = [];
-
-    /**
-     * @var array $voucherDatePeriod
-     */
-    public $voucherDatePeriod = [];
+    public $datePeriod = [];
 
     /**
      * Build DataTable class.
@@ -163,7 +158,7 @@ class ReportBookingVatDataTable extends DataTable
             if ($this->request->has('check_in')) {
                 $dates = explode(' - ', $this->request->get('check_in'));
                 foreach ($dates as $key => $date) {
-                    $this->checkInPeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
+                    $this->datePeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
                 }
 
                 $query->whereDate('checkin', '>=', $this->checkInPeriod[0]);
@@ -303,7 +298,8 @@ class ReportBookingVatDataTable extends DataTable
             Column::make('booking_id')->title(__('Booking ID'))
                 ->width(150)
                 ->orderable(false),
-            Column::make('hei_id')->title(__('HEI ID'))->addClass('text-center'),
+            Column::make('hei_id')->title(__('HEI ID'))
+                ->addClass('text-center'),
             Column::make('checkin')->title(__('Check In'))
                 ->addClass('text-center'),
             Column::make('checkout')->title(__('Check Out'))
@@ -315,6 +311,9 @@ class ReportBookingVatDataTable extends DataTable
                 ->orderable(false)
                 ->addClass('text-center'),
             Column::make('hotel')->title(__('Hotel'))
+                ->orderable(false)
+                ->addClass('text-center'),
+            Column::make('agent_ref')->title(__('Client Name'))
                 ->orderable(false)
                 ->addClass('text-center'),
             Column::make('company')->title(__('Company'))
