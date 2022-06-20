@@ -13,14 +13,9 @@ use Yajra\DataTables\Services\DataTable;
 class ReportInvoiceAdvancedDataTable extends DataTable
 {
     /**
-     * @var array $checkInPeriod
+     * @var array $datePeriod
      */
-    public $checkInPeriod = [];
-
-    /**
-     * @var array $voucherDatePeriod
-     */
-    public $voucherDatePeriod = [];
+    public $datePeriod = [];
 
     /**
      * Build DataTable class.
@@ -80,17 +75,19 @@ class ReportInvoiceAdvancedDataTable extends DataTable
         $this->setFilterColumns($dataTable);
 
         $dataTable->filter(function ($query) {
-            if ($this->request->has('status')) {
-                $query->where('status', $this->request->get('status'));
-            }
-            if ($this->request->has('company')) {
-                $query->where('company_id', $this->request->get('company'));
-            }
             if ($this->request->has('order_id')) {
                 $query->where('booking_reference', $this->request->get('order_id'));
             }
             if ($this->request->has('booking_id')) {
                 $query->where('id', $this->request->get('booking_id'));
+            }
+            if ($this->request->has('voucher_date')) {
+                $dates = explode(' - ', $this->request->get('voucher_date'));
+                foreach ($dates as $key => $date) {
+                    $this->datePeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
+                }
+
+                $query->whereBetween('created_at', $this->datePeriod);
             }
         }, true);
 
@@ -136,8 +133,12 @@ class ReportInvoiceAdvancedDataTable extends DataTable
      */
     protected function setFilterColumns($dataTable)
     {
-        $dataTable->filterColumn('name', static function ($query, $keyword) {
-            // TODO: Need Implement
+        $dataTable->filterColumn('booking_id', static function ($query, $keyword) {
+            $query->where('booking_reference', 'like', "%$keyword%");
+        });
+
+        $dataTable->filterColumn('hei_id', static function ($query, $keyword) {
+            $query->where('id', 'like', "%$keyword%");
         });
     }
 
@@ -158,27 +159,7 @@ class ReportInvoiceAdvancedDataTable extends DataTable
         $query->with('bookingUser.country');
         $query->with('discountCode');
 
-        if ($this->request->has('quick_filter')) {
-            if ($this->request->has('check_in')) {
-                $dates = explode(' - ', $this->request->get('check_in'));
-                foreach ($dates as $key => $date) {
-                    $this->checkInPeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
-                }
-            }
-
-            $query->whereDate('checkin', '>=', $this->checkInPeriod[0]);
-            $query->whereDate('checkout', '<=', $this->checkInPeriod[1]);
-        }
-        elseif ($this->request->has('advanced_filter')) {
-            if ($this->request->has('voucher_date')) {
-                $dates = explode(' - ', $this->request->get('voucher_date'));
-                foreach ($dates as $key => $date) {
-                    $this->voucherDatePeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
-                }
-            }
-
-            $query->whereBetween('created_at', $this->voucherDatePeriod);
-        } else {
+        if (!$this->request->has('advanced_filter')) {
             $query->where('id', 0);
         }
 
