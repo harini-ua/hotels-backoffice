@@ -26,7 +26,8 @@ class BookingUser extends Model
      */
     protected $fillable = [
         'username', 'firstname', 'lastname', 'email', 'password', 'status', 'company_name', 'address', 'phone',
-        'distributor_id', 'company_id', 'city', 'country_id', 'language_id',
+        'distributor_id', 'company_id', 'sub_company_id', 'city', 'country_id', 'language_id', 'partner_gitfcard_id',
+        'partner_gitfcard_code'
     ];
 
     /**
