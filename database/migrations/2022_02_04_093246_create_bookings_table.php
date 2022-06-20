@@ -47,7 +47,9 @@ class CreateBookingsTable extends Migration
             $table->double('amount_conversion', 10, 4)->comment('start booking amount in selected currency');
             $table->double('commission', 10, 4)->comment('booking commission in EUR');
             $table->double('final_amount', 10, 4)->comment('final booking amount with commission and discount in EUR');
-            $table->unsignedBigInteger('currency_id')->comment('selected currency');
+            $table->double('final_amount_conversion', 10, 4)->comment('final booking amount with commission and discount in selected currency');
+            $table->unsignedBigInteger('original_currency_id')->comment('original booking currency');
+            $table->unsignedBigInteger('selected_currency_id')->comment('selected currency by user');
             $table->double('conversion_rate', 8, 6)->comment('conversion rate from EUR to selected currency');
             $table->unsignedBigInteger('discount_voucher_code_id')->nullable()->unsigned();
             $table->string('room_rate_key', 1000)->nullable();
@@ -57,6 +59,8 @@ class CreateBookingsTable extends Migration
             $table->double('vat', 10, 4)->nullable();
             $table->double('pay_to_client', 10, 4)->nullable()->comment('pay back to client');
             $table->double('sales_office_commission', 10, 4)->nullable()->comment('sales office commission in EUR');
+            $table->tinyInteger('mail_flag')->default(0)->comment('email sending status to user');
+            $table->tinyInteger('extra_nights')->default(0)->comment('booking with Extra nights option');
 
             $table->tinyInteger('platform_type')->default(2)
                 ->comment('1-mobile app, 2-web browser, 3-mobile browser, 4-mac browser');
@@ -73,7 +77,8 @@ class CreateBookingsTable extends Migration
             $table->foreign('booking_user_id')->references('id')->on('booking_users');
             $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('sub_company_id')->references('id')->on('sub_companies');
-            $table->foreign('currency_id')->references('id')->on('currencies');
+            $table->foreign('original_currency_id')->references('id')->on('currencies');
+            $table->foreign('selected_currency_id')->references('id')->on('currencies');
             $table->foreign('partner_currency_id')->references('id')->on('currencies');
             $table->foreign('discount_voucher_code_id')->references('id')->on('discount_voucher_codes');
         });
