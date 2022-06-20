@@ -3,7 +3,6 @@
 namespace App\DataTables;
 
 use App\Enums\AllowedCurrency;
-use App\Enums\BookingDateType;
 use App\Enums\BookingPlatform;
 use App\Enums\BookingStatus;
 use App\Enums\PaymentType;
@@ -201,11 +200,14 @@ class ReportBookingCustomerDataTable extends DataTable
             if ($this->request->has('company')) {
                 $query->where('company_id', $this->request->get('company'));
             }
-            if ($this->request->has('order_id')) {
-                $query->where('booking_reference', $this->request->get('order_id'));
-            }
-            if ($this->request->has('booking_id')) {
-                $query->where('id', $this->request->get('booking_id'));
+            if ($this->request->has('check_in')) {
+                $dates = explode(' - ', $this->request->get('check_in'));
+                foreach ($dates as $key => $date) {
+                    $this->datePeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
+                }
+
+                $query->whereDate('checkin', '>=', $this->datePeriod[0]);
+                $query->whereDate('checkout', '<=', $this->datePeriod[1]);
             }
         }, true);
 
@@ -316,36 +318,7 @@ class ReportBookingCustomerDataTable extends DataTable
         $query->with('bookingUser.country');
         $query->with('discountCode.discount');
 
-        if ($this->request->has('quick_filter')) {
-            if ($this->request->has('check_in')) {
-                $dates = explode(' - ', $this->request->get('check_in'));
-                foreach ($dates as $key => $date) {
-                    $this->datePeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
-                }
-            }
-
-            $query->whereDate('checkin', '>=', $this->datePeriod[0]);
-            $query->whereDate('checkout', '<=', $this->datePeriod[1]);
-        }
-        elseif ($this->request->has('advanced_filter')) {
-            if ($this->request->has('period')) {
-                $dates = explode(' - ', $this->request->get('period'));
-                foreach ($dates as $key => $date) {
-                    $this->datePeriod[$key] = Carbon::createFromFormat('d/m/Y', $date);
-                }
-            }
-
-            switch ($this->request->has('date_type')) {
-                case BookingDateType::CONFIRMATION:
-                    $query->whereBetween('created_at', $this->datePeriod);
-                    break;
-                case BookingDateType::CHECK:
-                default:
-                    $query->whereDate('checkin', '>=', $this->datePeriod[0]);
-                    $query->whereDate('checkout', '<=', $this->datePeriod[1]);
-                    break;
-            }
-        } else {
+        if (!$this->request->has('quick_filter')) {
             $query->where('id', 0);
         }
 
