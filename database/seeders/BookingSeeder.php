@@ -26,7 +26,7 @@ class BookingSeeder extends Seeder
 //b.conv_rate_payment_to_user_prices, d.id as discount_voucher_code_id, b.hotelbed_rate_key, b.payment_reference, b.cancelled_date,
 // b.platform_type, b.platform_version_info, b.platform_details, hc.id, b.cityid, b.whtid, b.sub_wht_id, b.partner_amount,
 // (SELECT c.id FROM tblcurrencyname c WHERE c.currencyname = b.partner_currency_type) as partner_currency_type_id,
-// b.vat, b.paytoclient, b.hei, b.original_cost_paid_currency
+// b.vat, b.paytoclient, b.hei, b.original_cost_paid_currency, b.mail_flag, b.extra_nights
 //FROM customer_booking b
 //LEFT JOIN tblcurrencyname c ON c.currencyname = b.selectedcurrency
 //LEFT JOIN discount_codes d ON d.code = b.discount_code
@@ -39,6 +39,7 @@ class BookingSeeder extends Seeder
 //        600023392,600024749,600032297,600036688,600039605,600045873,600046760,600053428,600053487,600064311,600066380,600069547,600074864,600080065,600081104,600084312,600084313,
 //        600084315,600092227,600093592,600094840,600095569,600102896,600102900,600102989,600103502,600103729,600105276,600109136,600111782,600115113,600126230,600127008,600130797,600136958,60013838)
 //    AND b.cityid IN(3629,14229,14314,23474,73417,23,8234,14851,74412,74583,11643,22242,29796,36967,72407,2792,20613,20771,20823,20473,21366,26365,68218,74445,3584,25732,33910,74559,76081)
+//ORDER BY `b`.`extra_nights`  DESC
         $bookings = [];
 
         if (($open = fopen(storage_path('app/seed') . "/bookings.csv", "r")) !== false) {
@@ -85,7 +86,9 @@ class BookingSeeder extends Seeder
                         'amount_conversion' => (float)$data[47],
                         'commission' => (float)$data[27],
                         'final_amount' => (float)$data[28],
-                        'currency_id' => !(int)$data[29] ? 1 : (int)$data[29],
+                        'final_amount_conversion' => (float)$data[28]*(float)$data[30],
+                        'original_currency_id' => 1,
+                        'selected_currency_id' => !(int)$data[29] ? 1 : (int)$data[29],
                         'conversion_rate' => (float)$data[30],
                         'discount_voucher_code_id' => !(int)$data[31] ? null : (int)$data[31],
                         'room_rate_key' => $data[32],
@@ -103,6 +106,8 @@ class BookingSeeder extends Seeder
                         'vat' => !(float)$data[44] ? null : (float)$data[44],
                         'pay_to_client' => !(float)$data[45] ? null : (float)$data[45],
                         'sales_office_commission' => !(float)$data[46] ? null : (float)$data[46],
+                        'mail_flag' => (int)$data[48],
+                        'extra_nights' => (int)$data[49],
                     ];
                 }
             }
