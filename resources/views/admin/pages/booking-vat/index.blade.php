@@ -24,13 +24,6 @@
                 </x-filter>
             </div>
             <div class="col-lg-12">
-                <x-filter
-                    title="{{ __('Advanced Filter') }}"
-                >
-                    @include('admin.pages.booking-vat.partials._advanced-filter')
-                </x-filter>
-            </div>
-            <div class="col-lg-12">
                 <div class="card m-b-30">
                     <div class="card-body">
                         <div class="table-responsive">

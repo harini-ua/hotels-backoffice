@@ -1,10 +1,12 @@
 <div class="form-group filter-item mr-1 col-md-2">
     <label for="order_id">{{ __('Order ID') }}</label>
-    <input type="text" id="order_id" name="order_id" class="form-control">
+    <input type="text" id="order_id" name="order_id" class="form-control"
+           data-url="{{ route('reports.booking-commission.advanced.index') }}">
 </div>
 <div class="form-group filter-item mr-1 col-md-2">
     <label for="booking_id">{{ __('Booking ID') }}</label>
-    <input type="text" id="booking_id" name="booking_id" class="form-control">
+    <input type="text" id="booking_id" name="booking_id" class="form-control"
+           data-url="{{ route('reports.booking-commission.advanced.index') }}">
 </div>
 <div class="form-group filter-item col-md-2">
     <label for="status">{{ __('Booking Status') }}</label>
@@ -12,6 +14,7 @@
         id="status"
         name="status"
         class="form-control filter-input select-filter select2-single"
+        data-url="{{ route('reports.booking-commission.advanced.index') }}"
         @if(!count($statuses)) disabled @endif
     >
         <option selected value="">{{ __('All') }}</option>
@@ -33,6 +36,7 @@
                placeholder="{{ __('Choice Period Date') }}"
                aria-describedby="basic-addon7"
                value=""
+               data-url="{{ route('reports.booking-commission.advanced.index') }}"
         >
         <div class="input-group-append">
             <span class="input-group-text" id="basic-addon7"><i class="feather icon-calendar"></i></span>
@@ -45,7 +49,7 @@
             name="advanced_filter"
             data-type="quick"
             data-table="report-booking-commission-list-datatable"
-            data-url="{{ route('reports.booking-commission.index') }}"
+            data-url="{{ route('reports.booking-commission.advanced.index') }}"
             style="margin-top: 33px"><i class="feather icon-search"></i> {{ __('Search') }}
     </button>
 </div>

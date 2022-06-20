@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\ReportBookingVatAdvancedDataTable;
 use App\DataTables\ReportBookingVatDataTable;
+use App\Enums\BookingStatus;
 use App\Enums\BookingType;
 use App\Models\Company;
 
@@ -34,6 +35,7 @@ class ReportBookingVatController extends Controller
         ];
 
         $bookingTypes = BookingType::asSelectArray();
+        $statuses = BookingStatus::asSelectArray();
 
         $companies = Company::all()
             ->where('status', 1)
@@ -41,7 +43,7 @@ class ReportBookingVatController extends Controller
             ->pluck('company_name', 'id');
 
         return $dataTable->render('admin.pages.booking-vat.index', compact(
-            'breadcrumbs', 'actions', 'bookingTypes', 'companies'
+            'breadcrumbs', 'actions', 'bookingTypes', 'statuses', 'companies'
         ));
     }
 
@@ -70,6 +72,7 @@ class ReportBookingVatController extends Controller
         ];
 
         $bookingTypes = BookingType::asSelectArray();
+        $statuses = BookingStatus::asSelectArray();
 
         $companies = Company::all()
             ->where('status', 1)
@@ -77,7 +80,7 @@ class ReportBookingVatController extends Controller
             ->pluck('company_name', 'id');
 
         return $dataTable->render('admin.pages.booking-vat.advanced', compact(
-            'breadcrumbs', 'actions', 'bookingTypes', 'companies'
+            'breadcrumbs', 'actions', 'bookingTypes', 'statuses', 'companies'
         ));
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\ReportInvoiceAdvancedDataTable;
 use App\DataTables\ReportInvoiceDataTable;
+use App\Enums\BookingStatus;
 use App\Enums\BookingType;
 use App\Models\Company;
 
@@ -33,8 +34,8 @@ class ReportInvoiceController extends Controller
             ]
         ];
 
-
         $bookingTypes = BookingType::asSelectArray();
+        $statuses = BookingStatus::asSelectArray();
 
         $companies = Company::all()
             ->where('status', 1)
@@ -42,7 +43,7 @@ class ReportInvoiceController extends Controller
             ->pluck('company_name', 'id');
 
         return $dataTable->render('admin.pages.report-invoice.index', compact(
-            'breadcrumbs', 'actions', 'bookingTypes', 'companies'
+            'breadcrumbs', 'actions', 'bookingTypes', 'statuses', 'companies'
         ));
     }
 
@@ -71,6 +72,7 @@ class ReportInvoiceController extends Controller
         ];
 
         $bookingTypes = BookingType::asSelectArray();
+        $statuses = BookingStatus::asSelectArray();
 
         $companies = Company::all()
             ->where('status', 1)
@@ -78,7 +80,7 @@ class ReportInvoiceController extends Controller
             ->pluck('company_name', 'id');
 
         return $dataTable->render('admin.pages.report-invoice.advanced', compact(
-            'breadcrumbs', 'actions', 'bookingTypes', 'companies'
+            'breadcrumbs', 'actions', 'bookingTypes', 'statuses', 'companies'
         ));
     }
 }
