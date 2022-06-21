@@ -55,12 +55,76 @@ class ReportInvoiceDataTable extends DataTable
             return $model->hotel->name;
         });
 
-        $dataTable->addColumn('client_name', function (Booking $model) {
-            return $model->customer_name;
+        $dataTable->addColumn('agent_ref', function (Booking $model) {
+            // TODO: Or $model->customer_name
+            return $model->agent_ref ?? '-';
         });
-
         $dataTable->addColumn('client_country', function (Booking $model) {
             return $model->bookingUser->country->name;
+        });
+
+        $dataTable->addColumn('total_amount', function (Booking $model) {
+            return $model->partner_amount ?? $model->amount;
+        });
+
+        $dataTable->addColumn('currency_for_total_amount', function (Booking $model) {
+            return $model->original_currency->code;
+        });
+
+        $dataTable->addColumn('fixed_amount', function (Booking $model) {
+            return '?'; // TODO: Need Implement
+        });
+
+        if ((\Auth::user())->hasRole('admin')) {
+            $dataTable->addColumn('commission', function (Booking $model) {
+                return $model->commission;
+            });
+        }
+
+        $dataTable->addColumn('company_commission', function (Booking $model) {
+            return '?'; // TODO: Need Implement
+        });
+
+        $dataTable->addColumn('sub_company_commission', function (Booking $model) {
+            return '?'; // TODO: Need Implement
+        });
+
+        $dataTable->addColumn('vat', function (Booking $model) {
+            return '?'; // TODO: Need Implement
+        });
+
+        if ((\Auth::user())->hasRole('admin')) {
+            $dataTable->addColumn('commission_level_1_1', function (Booking $model) {
+                return '?'; // TODO: Need Implement
+            });
+
+            $dataTable->addColumn('commission_level_1_2', function (Booking $model) {
+                return '?'; // TODO: Need Implement
+            });
+
+            $dataTable->addColumn('commission_level_2_1', function (Booking $model) {
+                return '?'; // TODO: Need Implement
+            });
+
+            $dataTable->addColumn('commission_level_2_2', function (Booking $model) {
+                return '?'; // TODO: Need Implement
+            });
+        }
+
+        $dataTable->addColumn('total_currency', function (Booking $model) {
+            return $model->original_currency->code;
+        });
+
+        $dataTable->addColumn('final_amount', function (Booking $model) {
+            return $model->final_amount;
+        });
+
+        $dataTable->addColumn('distributor_commission', function (Booking $model) {
+            return '?'; // TODO: Need Implement
+        });
+
+        $dataTable->addColumn('amount_invoiced', function (Booking $model) {
+            return '?'; // TODO: Need Implement
         });
 
         $dataTable->addColumn('status', function (Booking $model) {
@@ -114,12 +178,12 @@ class ReportInvoiceDataTable extends DataTable
             $query->orderBy('checkout', $order);
         });
 
-        $dataTable->orderColumn('client_name', static function ($query, $order) {
-            $query->orderBy('client_name', $order);
+        $dataTable->orderColumn('commission', static function ($query, $order) {
+            $query->orderBy('commission', $order);
         });
 
-        $dataTable->orderColumn('client_country', static function ($query, $order) {
-            $query->orderBy('client_country', $order);
+        $dataTable->orderColumn('final_amount', static function ($query, $order) {
+            $query->orderBy('final_amount', $order);
         });
 
         $dataTable->orderColumn('status', static function ($query, $order) {
@@ -218,10 +282,46 @@ class ReportInvoiceDataTable extends DataTable
             Column::make('hotel')->title(__('Hotel'))
                 ->orderable(false)
                 ->addClass('text-center'),
-            Column::make('client_name')->title(__('Client Name'))
+            Column::make('agent_ref')->title(__('Client Name'))
                 ->orderable(false)
                 ->addClass('text-center'),
             Column::make('client_country')->title(__('Client Country'))
+                ->orderable(false)
+                ->addClass('text-center'),
+            Column::make('total_amount')->title(__('Total Amount Charged'))
+                ->addClass('text-center'),
+            Column::make('currency_for_total_amount')->title(__('Currency'))
+                ->orderable(false)
+                ->addClass('text-center'),
+            Column::make('fixed_amount')->title(__('Fixed Amount'))
+                ->addClass('text-center'),
+            Column::make('commission')->title(__('Total Comm.'))
+                ->addClass('text-center')
+                ->visible((\Auth::user())->hasRole('admin')),
+            Column::make('company_commission')->title(__('Comm. Company')),
+            Column::make('sub_company_commission')->title(__('Comm. Sub-Company')),
+            Column::make('vat')->title(__('VAT')),
+            Column::make('commission_level_1_1')->title(__('Comm. Level 1-1'))
+                ->addClass('text-center')
+                ->visible((\Auth::user())->hasRole('admin')),
+            Column::make('commission_level_1_2')->title(__('Comm. Level 1-2'))
+                ->addClass('text-center')
+                ->visible((\Auth::user())->hasRole('admin')),
+            Column::make('commission_level_2_1')->title(__('Comm. Level 2-1'))
+                ->addClass('text-center')
+                ->visible((\Auth::user())->hasRole('admin')),
+            Column::make('commission_level_2_2')->title(__('Comm. Level 2-2'))
+                ->addClass('text-center')
+                ->visible((\Auth::user())->hasRole('admin')),
+            Column::make('total_currency')->title(__('Currency'))
+                ->orderable(false)
+                ->addClass('text-center'),
+            Column::make('final_amount')->title(__('Final Amount'))
+                ->addClass('text-center'),
+            Column::make('distributor_commission')->title(__('Distributor Commission'))
+                ->orderable(false)
+                ->addClass('text-center'),
+            Column::make('amount_invoiced')->title(__('Amount Invoiced'))
                 ->orderable(false)
                 ->addClass('text-center'),
             Column::make('status')->title(__('Status'))
