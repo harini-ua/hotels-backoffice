@@ -96,6 +96,14 @@ class Booking extends Model
     }
 
     /**
+     * Get the partner currency that owns the booking.
+     */
+    public function partner_currency()
+    {
+        return $this->belongsTo(Currency::class, 'partner_currency_id');
+    }
+
+    /**
      * Get the discount code that owns the booking.
      */
     public function discountCode()

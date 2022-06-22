@@ -7,6 +7,8 @@ use App\DataTables\ReportBookingCommissionDataTable;
 use App\Enums\BookingStatus;
 use App\Enums\BookingType;
 use App\Models\Company;
+use App\Models\CompanyBookingCommission;
+use App\Models\CompanySaleOfficeCommission;
 
 class ReportBookingCommissionController extends Controller
 {
