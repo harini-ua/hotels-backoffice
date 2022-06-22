@@ -58,6 +58,7 @@ class ReportInvoiceAdvancedDataTable extends DataTable
         $dataTable->addColumn('customer_name', function (Booking $model) {
             return $model->customer_name;
         });
+
         $dataTable->addColumn('client_country', function (Booking $model) {
             return $model->bookingUser->country->name;
         });
@@ -71,7 +72,11 @@ class ReportInvoiceAdvancedDataTable extends DataTable
         });
 
         $dataTable->addColumn('fixed_amount', function (Booking $model) {
-            return '?'; // TODO: Need Implement
+            $bookingCommission = $model->company->bookingCommission;
+
+            // Get company booking standard commission
+            $standardCommission = ($bookingCommission->standard_commission / 100);
+            return round($standardCommission * $model->sales_office_commission, 2);
         });
 
         if ((\Auth::user())->hasRole('admin')) {
@@ -81,15 +86,39 @@ class ReportInvoiceAdvancedDataTable extends DataTable
         }
 
         $dataTable->addColumn('company_commission', function (Booking $model) {
-            return '?'; // TODO: Need Implement
+            $payBackClient = 0;
+            $bookingCommission = $model->company->bookingCommission;
+            if ($bookingCommission) {
+                $payBackClient = $model->commission * ($bookingCommission->pay_to_client / 100);
+            }
+
+            return $payBackClient;
         });
 
         $dataTable->addColumn('sub_company_commission', function (Booking $model) {
-            return '?'; // TODO: Need Implement
+            return round($model->sub_company_commission, 2);
         });
 
         $dataTable->addColumn('vat', function (Booking $model) {
-            return '?'; // TODO: Need Implement
+            $vatPercentage = $model->company->vats()
+                ->where('country_id', $model->company->country_id)
+                ->first()->percentage;
+
+            $vat = 0;
+            if ($vatPercentage) {
+                $bookingCommission = $model->company->bookingCommission;
+                // If set commission pay to client
+                if ($bookingCommission->pay_to_client) {
+                    $payBackClient = $model->commission * ($bookingCommission->pay_to_client / 100);
+                    $hqDistributor = $model->commission - $payBackClient;
+                } else {
+                    $hqDistributor = $model->commission;
+                }
+
+                $vat = $hqDistributor * ($vatPercentage / 100);
+            }
+
+            return $vat;
         });
 
         if ((\Auth::user())->hasRole('admin')) {
@@ -218,9 +247,10 @@ class ReportInvoiceAdvancedDataTable extends DataTable
         $query->with('provider');
         $query->with('city');
         $query->with('country');
+        $query->with('company.bookingCommission');
         $query->with('hotel');
         $query->with('bookingUser.country');
-        $query->with('discountCode');
+        $query->with('discountCode.discount');
 
         if (!$this->request->has('advanced_filter')) {
             $query->where('id', 0);

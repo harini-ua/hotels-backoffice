@@ -2,7 +2,6 @@
 
 namespace App\DataTables;
 
-use App\Enums\AllowedCurrency;
 use App\Enums\BookingStatus;
 use App\Models\Booking;
 use App\Services\Formatter;

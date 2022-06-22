@@ -230,7 +230,8 @@ class Company extends Model
      */
     public function vat($country_id)
     {
-        return $this->hasOne(CompanyVat::class)->where('country_id', $country_id);
+        return $this->hasOne(CompanyVat::class)
+            ->where('country_id', $country_id);
     }
 
     /**
