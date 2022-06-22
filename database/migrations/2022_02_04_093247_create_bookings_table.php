@@ -59,6 +59,7 @@ class CreateBookingsTable extends Migration
             $table->double('vat', 10, 4)->nullable();
             $table->double('pay_to_client', 10, 4)->nullable()->comment('pay back to client');
             $table->double('sales_office_commission', 10, 4)->nullable()->comment('sales office commission in EUR');
+            $table->double('sub_company_commission', 10, 4)->nullable()->comment('sub company commission in EUR');
             $table->tinyInteger('mail_flag')->default(0)->comment('email sending status to user');
             $table->tinyInteger('extra_nights')->default(0)->comment('booking with Extra nights option');
 
