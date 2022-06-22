@@ -26,7 +26,7 @@ class CompanyExtraNight extends Model
     ];
 
     /**
-     * Get the company that owns the company support.
+     * Get the company that owns the company extra night.
      */
     public function company()
     {
@@ -34,10 +34,10 @@ class CompanyExtraNight extends Model
     }
 
     /**
-     * Get the country that owns the company support.
+     * Get the currency that owns the company extra night.
      */
-    public function country()
+    public function currency()
     {
-        return $this->belongsTo(Country::class);
+        return $this->belongsTo(Currency::class);
     }
 }
