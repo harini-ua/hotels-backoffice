@@ -35,8 +35,8 @@ class ReportBookingVatDataTable extends DataTable
             return 'HEI'.$model->id;
         });
 
-        $dataTable->addColumn('agent_ref', function (Booking $model) {
-            return $model->agent_ref ?? '-';
+        $dataTable->addColumn('customer_name', function (Booking $model) {
+            return $model->customer_name;
         });
 
         $dataTable->addColumn('checkin', function (Booking $model) {
@@ -313,7 +313,7 @@ class ReportBookingVatDataTable extends DataTable
             Column::make('hotel')->title(__('Hotel'))
                 ->orderable(false)
                 ->addClass('text-center'),
-            Column::make('agent_ref')->title(__('Client Name'))
+            Column::make('customer_name')->title(__('Client Name'))
                 ->orderable(false)
                 ->addClass('text-center'),
             Column::make('company')->title(__('Company'))

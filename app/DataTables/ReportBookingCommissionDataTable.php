@@ -56,9 +56,8 @@ class ReportBookingCommissionDataTable extends DataTable
             return $model->hotel->name;
         });
 
-        $dataTable->addColumn('agent_ref', function (Booking $model) {
-            // TODO: Or $model->customer_name
-            return $model->agent_ref ?? '-';
+        $dataTable->addColumn('customer_name', function (Booking $model) {
+            return $model->customer_name;
         });
 
         $dataTable->addColumn('client_country', function (Booking $model) {
@@ -287,7 +286,7 @@ class ReportBookingCommissionDataTable extends DataTable
             Column::make('hotel')->title(__('Hotel'))
                 ->orderable(false)
                 ->addClass('text-center'),
-            Column::make('agent_ref')->title(__('Client Name'))
+            Column::make('customer_name')->title(__('Client Name'))
                 ->orderable(false)
                 ->addClass('text-center'),
             Column::make('client_name')->title(__('Client Name'))

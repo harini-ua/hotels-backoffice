@@ -36,8 +36,8 @@ class ReportBookingVatAdvancedDataTable extends DataTable
             return 'HEI'.$model->id;
         });
 
-        $dataTable->addColumn('agent_ref', function (Booking $model) {
-            return $model->agent_ref ?? '-';
+        $dataTable->addColumn('customer_name', function (Booking $model) {
+            return $model->customer_name;
         });
 
         $dataTable->addColumn('checkin', function (Booking $model) {
