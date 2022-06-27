@@ -133,13 +133,12 @@ class ReportBookingCommissionDataTable extends DataTable
                 ->groupBy('company_id')
                 ->get();
 
-            if (!$salesOfficeLevel1) {
-                $salesOfficeLevel1 = 1;
-            } else {
-                $salesOfficeLevel1 = $salesOfficeLevel1->max('count') ?? 1;
+            $maxLevel1 = 1;
+            if ($salesOfficeLevel1) {
+                $maxLevel1 = $salesOfficeLevel1->max('count') ?? 1;
             }
 
-            for ($i=1; $i <= $salesOfficeLevel1; $i++) {
+            for ($i=1; $i <= $maxLevel1; $i++) {
                 $dataTable->addColumn('commission_level_1_'.$i, function (Booking $model) {
                     return '?'; // TODO: Need Implement
                 });
@@ -151,13 +150,12 @@ class ReportBookingCommissionDataTable extends DataTable
                 ->groupBy('company_id')
                 ->get();
 
-            if (!$salesOfficeLevel2) {
-                $salesOfficeLevel2 = 1;
-            } else {
-                $salesOfficeLevel2 = $salesOfficeLevel2->max('count') ?? 1;
+            $maxLevel2 = 1;
+            if ($salesOfficeLevel2) {
+                $maxLevel2 = $salesOfficeLevel2->max('count') ?? 1;
             }
 
-            for ($i=1; $i <= $salesOfficeLevel2; $i++) {
+            for ($i=1; $i <= $maxLevel2; $i++) {
                 $dataTable->addColumn('commission_level_2_'.$i, function (Booking $model) {
                     return '?'; // TODO: Need Implement
                 });
@@ -375,14 +373,14 @@ class ReportBookingCommissionDataTable extends DataTable
             ->groupBy('company_id')
             ->get();
 
-        if (!$salesOfficeLevel1) {
-            $salesOfficeLevel1 = 1;
-        } else {
-            $salesOfficeLevel1 = $salesOfficeLevel1->max('count') ?? 1;
+        $maxLevel1 = 1;
+        if ($salesOfficeLevel1) {
+            $maxLevel1 = $salesOfficeLevel1->max('count') ?? 1;
         }
 
-        for ($i=1; $i <= $salesOfficeLevel1; $i++) {
-            $columns[] = Column::make('commission_level_1_'.$i)->title(__('Comm. Level 1-'.$i))
+        for ($i=1; $i <= $maxLevel1; $i++) {
+            $columns[] = Column::make('commission_level_1_'.$i)
+                ->title(__('Comm. Level 1-'.$i))
                 ->orderable(false)
                 ->visible((\Auth::user())->hasRole('admin'));
         }
@@ -393,14 +391,14 @@ class ReportBookingCommissionDataTable extends DataTable
             ->groupBy('company_id')
             ->get();
 
-        if (!$salesOfficeLevel2) {
-            $salesOfficeLevel2 = 1;
-        } else {
-            $salesOfficeLevel2 = $salesOfficeLevel2->max('count') ?? 1;
+        $maxLevel2 = 1;
+        if ($salesOfficeLevel2) {
+            $maxLevel2 = $salesOfficeLevel2->max('count') ?? 1;
         }
 
-        for ($i=1; $i <= $salesOfficeLevel2; $i++) {
-            $columns[] = Column::make('commission_level_2_'.$i)->title(__('Comm. Level 2-'.$i))
+        for ($i=1; $i <= $maxLevel2; $i++) {
+            $columns[] = Column::make('commission_level_2_'.$i)
+                ->title(__('Comm. Level 2-'.$i))
                 ->orderable(false)
                 ->visible((\Auth::user())->hasRole('admin'));
         }
