@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BookingDistributorCommission extends Model
+class DistributorBookingCommission extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class BookingDistributorCommission extends Model
      *
      * @var string
      */
-    protected $table = 'booking_distributor_commission';
+    protected $table = 'distributor_booking_commission';
 
     /**
      * The attributes that are mass assignable.
@@ -26,7 +26,7 @@ class BookingDistributorCommission extends Model
     ];
 
     /**
-     * Get the company that owns the booking distributor commission.
+     * Get the company that owns the distributor booking commission.
      */
     public function company()
     {
@@ -34,7 +34,7 @@ class BookingDistributorCommission extends Model
     }
 
     /**
-     * Get the booking that owns the booking distributor commission.
+     * Get the booking that owns the distributor booking commission.
      */
     public function booking()
     {
@@ -42,7 +42,7 @@ class BookingDistributorCommission extends Model
     }
 
     /**
-     * Get the country that owns the booking distributor commission.
+     * Get the country that owns the distributor booking commission.
      */
     public function country()
     {
