@@ -142,4 +142,12 @@ class Booking extends Model
     {
         return $this->hasMany(BookingPaymentType::class);
     }
+
+    /**
+     * Get the booking distributor commission for the booking.
+     */
+    public function bookingDistributorCommission()
+    {
+        return $this->hasMany(BookingDistributorCommission::class);
+    }
 }
