@@ -4,6 +4,7 @@ namespace App\DataTables;
 
 use App\Enums\AllowedCurrency;
 use App\Enums\BookingStatus;
+use App\Enums\PaymentType;
 use App\Models\Booking;
 use App\Models\CompanySaleOfficeCommission;
 use App\Services\Converter;
@@ -177,7 +178,17 @@ class ReportBookingCommissionDataTable extends DataTable
         });
 
         $dataTable->addColumn('payment', function (Booking $model) {
-            return __('Paid');
+            if ($model->amount > 0 && $model->payment_type == PaymentType::DISCOUNT) {
+                return view("admin.datatables.actions", [
+                    'actions' => ['payment'],
+                    'model' => $model,
+                    'route' => route('payment.booking', $model),
+                ]);
+            }
+
+            return view("admin.datatables.view-status", [
+                'status' => __('Paid'),
+            ]);
         });
 
         $this->setOrderColumns($dataTable);
