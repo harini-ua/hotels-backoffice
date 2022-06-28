@@ -206,7 +206,22 @@ class Company extends Model
      */
     public function saleOfficeCommissions()
     {
-        return $this->hasMany(CompanySaleOfficeCommission::class, 'sale_office_country_id');
+        return $this->hasMany(CompanySaleOfficeCommission::class, 'company_id');
+    }
+
+    /**
+     * Get the sale office commissions for the company by conditions.
+     */
+    public function saleOfficeCommissionsByConditions($level, $country_id = null)
+    {
+        $relation = $this->saleOfficeCommissions();
+        $relation->where('level', $level);
+
+        if ($country_id) {
+            $relation->where('country_id', $country_id);
+        }
+
+        return $relation;
     }
 
     /**

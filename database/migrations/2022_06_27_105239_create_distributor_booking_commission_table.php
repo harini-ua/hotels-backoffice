@@ -21,7 +21,7 @@ class CreateDistributorBookingCommissionTable extends Migration
             $table->mediumInteger('commission');
             $table->mediumInteger('company_commission');
             $table->mediumInteger('company_standard');
-            $table->tinyInteger('level')->default(1);
+            $table->tinyInteger('level')->default(\App\Enums\Level::First);
             $table->timestamps();
             $table->softDeletes();
 

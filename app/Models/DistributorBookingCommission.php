@@ -22,7 +22,7 @@ class DistributorBookingCommission extends Model
      * @var array
      */
     protected $fillable = [
-        'company_id', 'booking_id', 'country_id', 'commission', 'level', 'company_commission', 'company_standard'
+        'company_id', 'booking_id', 'country_id', 'commission', 'company_commission', 'company_standard', 'level',
     ];
 
     /**

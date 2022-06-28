@@ -128,11 +128,26 @@ class Booking extends Model
         return $this->hasMany(BookingStatus::class);
     }
 
+    public function companySaleOfficeCommissions()
+    {
+        return $this->hasMany(CompanySaleOfficeCommission::class, 'company_id', 'company_id');
+    }
+
     /**
      * Get the distributor booking commission for the booking.
      */
     public function distributorBookingCommission()
     {
         return $this->hasMany(DistributorBookingCommission::class);
+    }
+
+    /**
+     * Get the distributor booking commission for the booking by conditions.
+     */
+    public function distributorBookingCommissionByConditions($company_id, $level)
+    {
+        return $this->distributorBookingCommission()
+            ->where('company_id', $company_id)
+            ->where('level', $level);
     }
 }
