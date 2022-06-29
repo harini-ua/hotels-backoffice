@@ -26,7 +26,7 @@ class BookingSeeder extends Seeder
 //b.conv_rate_payment_to_user_prices, d.id as discount_voucher_code_id, b.hotelbed_rate_key, b.payment_reference, b.cancelled_date,
 // b.platform_type, b.platform_version_info, b.platform_details, hc.id, b.cityid, b.whtid, b.sub_wht_id, b.partner_amount,
 // (SELECT c.id FROM tblcurrencyname c WHERE c.currencyname = b.partner_currency_type) as partner_currency_type_id,
-// b.vat, b.paytoclient, b.hei, b.original_cost_paid_currency, b.mail_flag, b.extra_nights, b.sub_wht_commission
+// b.vat, b.paytoclient, b.hei, b.original_cost_paid_currency, b.mail_flag, b.extra_nights, b.sub_wht_commission, b.disc_amount_in_pay_currency
 //FROM customer_booking b
 //LEFT JOIN tblcurrencyname c ON c.currencyname = b.selectedcurrency
 //LEFT JOIN discount_codes d ON d.code = b.discount_code
@@ -109,6 +109,7 @@ class BookingSeeder extends Seeder
                         'sub_company_commission' => !(float)$data[50] ? null : (float)$data[50],
                         'mail_flag' => (int)$data[48],
                         'extra_nights' => (int)$data[49],
+                        'discount_amount' =>  !(float)$data[51] ? null : (float)$data[51],
                     ];
                 }
             }

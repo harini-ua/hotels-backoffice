@@ -52,6 +52,7 @@ class CreateBookingsTable extends Migration
             $table->unsignedBigInteger('selected_currency_id')->comment('selected currency by user');
             $table->double('conversion_rate', 8, 6)->comment('conversion rate from EUR to selected currency');
             $table->unsignedBigInteger('discount_voucher_code_id')->nullable()->unsigned();
+            $table->double('discount_amount', 10, 4)->nullable()->comment('discount amount in EUR');
             $table->string('room_rate_key', 1000)->nullable();
             $table->string('payment_reference', 1000)->nullable();
             $table->double('partner_amount', 10, 4)->nullable()->comment('booking amount on booking with partner price grid');
