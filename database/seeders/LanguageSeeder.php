@@ -22,7 +22,9 @@ class LanguageSeeder extends Seeder
                 $languages[] = [
                     'id' => $data[0],
                     'name' => $data[1],
+                    'translation' => $data[2],
                     'code' => $data[3],
+                    'payex_code' => $data[4],
                     'active' => $data[6]
                 ];
             }

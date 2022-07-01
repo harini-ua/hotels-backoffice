@@ -16,7 +16,9 @@ class CreateLanguagesTable extends Migration
         Schema::create('languages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('translation');
             $table->string('code');
+            $table->string('payex_code');
             $table->boolean('active')->default(0);
             $table->timestamps();
         });
