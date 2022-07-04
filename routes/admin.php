@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\CityCommissionController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\CityTranslationController;
 use App\Http\Controllers\CommissionController;
 use App\Http\Controllers\CompanyAccessCodesController;
 use App\Http\Controllers\CompanyAccountController;
@@ -57,6 +58,7 @@ use App\Http\Controllers\SpecialOfferHotelController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\BookingUserController;
 use App\Http\Controllers\SubCompaniesController;
+use App\Http\Controllers\TranslationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -64,13 +66,13 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:admin,distributor,employee')->group(function () {
 
         /** ----- ------ ----- OTHERS */
-        Route::get('/', [DashboardsController::class, 'index'])->name('home');
-        Route::get('dashboard', [DashboardsController::class, 'index'])->name('index');
+        Route::get('/', DashboardsController::class)->name('home');
+        Route::get('dashboard', DashboardsController::class)->name('index');
         Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
 
         /** ----- ------ ----- USERS */
         Route::prefix('users')->as('users.')->group(function () {
-            Route::get('/', [UserController::class, 'index'])->name('index');
+            Route::get('/', UserController::class)->name('index');
         });
 
         /** ----- ------ ----- BOOKING USERS */
@@ -205,7 +207,7 @@ Route::middleware('auth')->group(function () {
 
         /** ----- ------ ----- STATISTICS */
         Route::prefix('statistics')->as('statistics.')->group(function () {
-            Route::get('/', [StatisticController::class, 'index'])->name('index');
+            Route::get('/', StatisticController::class)->name('index');
 
             Route::prefix('overall-bookings')->as('overall-bookings.')->group(function () {
                 Route::get('/', [OverallBookingsController::class, 'index'])->name('index');
@@ -218,7 +220,7 @@ Route::middleware('auth')->group(function () {
 
         /** ----- ------ ----- REPORTS */
         Route::prefix('reports')->as('reports.')->group(function () {
-            Route::get('/', [ReportController::class, 'index'])->name('index');
+            Route::get('/', ReportController::class)->name('index');
 
             Route::get('/booking-customer', [ReportBookingCustomerController::class, 'index'])->name('booking-customer.index');
             Route::get('/booking-customer/advanced', [ReportBookingCustomerController::class, 'advanced'])->name('booking-customer.advanced.index');
@@ -272,9 +274,19 @@ Route::middleware('auth')->group(function () {
         /** ----- ------ ----- PROMO MESSAGE */
         Route::resource('promo-messages', PromoMessageController::class)->except(['show']);
 
+        /** ----- ------ ----- TRANSLATIONS */
+        Route::prefix('translations')->as('translations.')->group(function () {
+            Route::get('/', TranslationController::class)->name('index');
+
+            /** ----- ------ ----- CITIES */
+            Route::prefix('cities')->as('cities.')->group(function () {
+                Route::get('/', [CityTranslationController::class, 'index'])->name('index');
+            });
+        });
+
         /** ----- ------ ----- SETTINGS */
         Route::prefix('settings')->as('settings.')->group(function () {
-            Route::get('/', [SettingController::class, 'index'])->name('index');
+            Route::get('/', SettingController::class)->name('index');
 
             /** ----- ------ ----- COMMISSIONS */
             Route::prefix('commissions')->as('commissions.')->group(function () {

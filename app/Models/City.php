@@ -10,12 +10,14 @@ class City extends Model
 {
     use HasFactory, SpatialTrait;
 
+    public const TABLE_NAME = 'cities';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'cities';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TranslationCitySeeder extends Seeder
+class CityTranslationSeeder extends Seeder
 {
     /**
      * Run the database seeders.
@@ -23,16 +23,17 @@ class TranslationCitySeeder extends Seeder
             while (($data = fgetcsv($open, 1000, ",")) !== false) {
                 $translations_cities[] = [
                     'id' => (int)$data[0],
+                    'country_id' => (int)$data[1],
                     'city_id' => (int)$data[2],
                     'language_id' => (int)$data[3],
                     'city_name' => $data[4],
-                    'translated_name' => $data[5],
+                    'translation' => $data[5],
                 ];
             }
 
             fclose($open);
         }
 
-        DB::table('translations_cities')->insertTs($translations_cities);
+        DB::table('city_translations')->insertTs($translations_cities);
     }
 }

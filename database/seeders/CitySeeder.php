@@ -23,6 +23,7 @@ class CitySeeder extends Seeder
                     'country_id' => $data[5],
                     'name' => $data[2],
                     'state' => $data[4] != '' ? $data[4] : null,
+                    'active' => (int)$data[7],
                     'status' => $data[7] == 1 ? 1 : ($data[8] == 3 ? 3 : ($data[8] == 1 ? 0 : 2)),
                     'position' => DB::raw("(ST_GeomFromText('POINT($data[9] $data[10])'))"),
                     'hotels_count' => $data[12],

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 class DashboardsController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         $breadcrumbs = [
             ['title' => __('Dashboard')],

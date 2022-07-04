@@ -4,19 +4,19 @@ namespace App\Http\Controllers;
 
 use App\View\Components\Menu;
 
-class UserController extends Controller
+class TranslationController extends Controller
 {
     public function __invoke()
     {
         $breadcrumbs = [
-            ['title' => __('Statistics')],
+            ['title' => __('Multilingual')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['name' => __('Users')]
+            ['name' => __('Multilingual')]
         ];
 
         $menu = collect((new Menu())->items);
 
-        $widgets = $menu->where('slag', 'users')->first();
+        $widgets = $menu->where('slag', 'translations')->first();
 
         if (isset($widgets['items'])) {
             $widgets = $widgets['items'];
@@ -25,7 +25,7 @@ class UserController extends Controller
             $widgets = [];
         }
 
-        return view('admin.pages.users.index', compact(
+        return view('admin.pages.translations.index', compact(
             'breadcrumbs', 'widgets'
         ));
     }

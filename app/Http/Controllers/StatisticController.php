@@ -6,7 +6,7 @@ use App\View\Components\Menu;
 
 class StatisticController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         $breadcrumbs = [
             ['title' => __('Statistics')],

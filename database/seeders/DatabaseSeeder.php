@@ -55,6 +55,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CompanyHomepageOptionSeeder::class);
         $this->call(CountryCurrencyRateSeeder::class);
         $this->call(DistributorBookingCommissionSeeder::class);
-        $this->call(TranslationCitySeeder::class);
+        $this->call(CompanySaleOfficeCommissionSeeder::class);
+        $this->call(CityTranslationSeeder::class);
     }
 }

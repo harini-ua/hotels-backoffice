@@ -211,6 +211,22 @@ class Menu extends Component
             ]
         ];
 
+        $this->items[] = [
+            'name' => __('Multilingual'),
+            'slag' => 'translations',
+            'href' => route('translations.index'),
+            'icon' => 'fa fa-language',
+            'guard' => $user->hasRole([UserRole::ADMIN, UserRole::DISTRIBUTOR]),
+            'items' => [
+                [
+                    'name' => __('City Translation'),
+                    'href' => route('translations.cities.index'),
+                    'icon' => 'feather icon-globe',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
+                ],
+            ]
+        ];
+
         /** ----- Settings ----- */
 
         $this->items[] = [
