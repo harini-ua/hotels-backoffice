@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\IpFilter;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VerifyIp
 {
@@ -16,10 +18,11 @@ class VerifyIp
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->ip() !== '127.0.0.1') {
-            // TODO: Implement a list of ips in the database
-            if (!in_array($request->ip(), config('admin.ip.allowed'), true)) {
-                // TODO Implement redirect or reload page with message
+        if (($request->ip() !== '127.0.0.1') && config('admin.ip_verify')) {
+            $ips = IpFilter::all()->get('ip_address');
+
+            if ($ips && !in_array($request->ip(), $ips, true)) {
+                // TODO: Implement
             }
         }
 
