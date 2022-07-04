@@ -32,6 +32,7 @@ use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\DistributorUserController;
 use App\Http\Controllers\HotelBadgeController;
 use App\Http\Controllers\IpFilterController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\OverallBookingsController;
 use App\Http\Controllers\PartnerController;
@@ -288,6 +289,12 @@ Route::middleware('auth')->group(function () {
         /** ----- ------ ----- SETTINGS */
         Route::prefix('settings')->as('settings.')->group(function () {
             Route::get('/', SettingController::class)->name('index');
+
+            /** ----- ------ ----- LANGUAGES */
+            Route::resource('languages', LanguageController::class)->except(['show']);
+            Route::prefix('languages')->as('languages.')->group(function () {
+                Route::post('/{language}/active', [LanguageController::class, 'active'])->name('active');
+            });
 
             /** ----- ------ ----- COMMISSIONS */
             Route::prefix('commissions')->as('commissions.')->group(function () {

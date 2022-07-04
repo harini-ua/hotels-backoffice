@@ -255,6 +255,12 @@ class Menu extends Component
                     'guard' => $user->hasRole(UserRole::ADMIN),
                 ],
                 [
+                    'name' => __('Languages'),
+                    'href' => route('settings.languages.index'),
+                    'icon' => 'fa fa-language',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
+                ],
+                [
                     'name' => __('IP Filter'),
                     'href' => route('settings.ip-filter.index'),
                     'icon' => 'feather icon-filter',

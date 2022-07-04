@@ -5,8 +5,8 @@
 >
     @csrf
     @method('PUT')
-    <input type="hidden" name="country_id" value="{{ $country->id }}"/>
-    <input type="hidden" name="language_id" value="{{ $language->id }}"/>
+    @if($country)<input type="hidden" name="country_id" value="{{ $country->id }}"/>@endif
+    @if($language)<input type="hidden" name="language_id" value="{{ $language->id }}"/>@endif
     <div @if($country) class="m-b-10">
         <div class="row align-items-center">
             <div class="col-md-10 col-lg-10">
