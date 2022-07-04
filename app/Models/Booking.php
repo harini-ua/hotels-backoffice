@@ -27,9 +27,9 @@ class Booking extends Model
         'cancelled_date', 'cancellation_policy', 'refundable_status', 'bookind_user_id', 'company_id', 'sub_company_id',
         'inn_off_code', 'adults', 'children', 'remarks', 'customer_name', 'customer_email', 'customer_phone', 'amount',
         'amount_conversion', 'commission', 'final_amount', 'final_amount_conversion', 'original_currency_id',
-        'selected_currency_id', 'conversion_rate', 'discount_voucher_code_id', 'room_rate_key', 'payment_reference',
-        'partner_amount', 'partner_currency_id', 'vat', 'pay_to_client', 'sales_office_commission', 'mail_flag',
-        'extra_nights', 'platform_type', 'platform_version', 'platform_details',
+        'selected_currency_id', 'conversion_rate', 'discount_voucher_code_id', 'discount_amount', 'room_rate_key',
+        'payment_reference', 'partner_amount', 'partner_currency_id', 'vat', 'pay_to_client', 'sales_office_commission',
+        'mail_flag', 'extra_nights', 'platform_type', 'platform_version', 'platform_details',
     ];
 
     /**

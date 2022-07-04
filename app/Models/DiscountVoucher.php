@@ -25,7 +25,7 @@ class DiscountVoucher extends Model
      */
     protected $fillable = [
         'name', 'voucher_type', 'voucher_codes_count', 'amount', 'amount_type', 'currency_id', 'company_id',
-        'description', 'commission', 'min_price', 'expiry',
+        'description', 'commission_type', 'min_price', 'expiry',
     ];
 
     /**

@@ -23,7 +23,7 @@ class CreateDiscountVouchersTable extends Migration
             $table->unsignedBigInteger('currency_id')->nullable();
             $table->unsignedBigInteger('company_id');
             $table->text('description')->nullable();
-            $table->tinyInteger('commission')->comment('1-company booking commission, 2-company booking & company sale commissions, 3-company sale commission');
+            $table->tinyInteger('commission_type')->default(1)->comment('1-company booking commission, 2-company booking & company sale commissions, 3-company sale commission');
             $table->double('min_price', 8, 2)->comment('minimal booking price in EUR');
             $table->date('expiry')->nullable();
             $table->timestamps();

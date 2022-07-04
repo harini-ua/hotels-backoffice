@@ -33,7 +33,7 @@ class DiscountVoucherSeeder extends Seeder
                     'currency_id' => !(int)$data[17] ? NULL : (int)$data[17],
                     'company_id' => (int)$data[2],
                     'description' => $data[8],
-                    'commission' => (int)$data[10] == 0 || (int)$data[10] > 3 ? 1 : (int)$data[10],
+                    'commission_type' => (int)$data[10] == 0 || (int)$data[10] > 3 ? 1 : (int)$data[10],
                     'min_price' => (float)$data[16],
                     'expiry' => $data[9],
                 ];
