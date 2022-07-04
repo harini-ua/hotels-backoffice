@@ -9,8 +9,10 @@
         @if(!count($countries)) disabled @endif
     >
         <option selected value="">- {{ __('Choice Country') }} -</option>
-        @foreach($countries as $id => $country)
-            <option value="{{ $id }}">{{ $country }}</option>
+        @foreach($countries as $id => $country_name)
+            <option value="{{ $id }}"
+                    @if($country && $country->id == $id) selected @endif
+            >{{ $country_name }}</option>
         @endforeach
     </select>
 </div>
@@ -25,8 +27,10 @@
         @if(!count($languages)) disabled @endif
     >
         <option selected value="">- {{ __('Choice Language') }} -</option>
-        @foreach($languages as $id => $language)
-            <option value="{{ $id }}">{{ $language }}</option>
+        @foreach($languages as $id => $language_name)
+            <option value="{{ $id }}"
+                    @if($language && $language->id == $id) selected @endif
+            >{{ $language_name }}</option>
         @endforeach
     </select>
 </div>

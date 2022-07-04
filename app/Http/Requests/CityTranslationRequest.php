@@ -13,7 +13,7 @@ class CityTranslationRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,27 @@ class CityTranslationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'country_id' => 'required|exists:countries,id',
+            'language_id' => 'required|exists:languages,id',
+            'translations.*.country_id' => 'required|exists:countries,id',
+            'translations.*.city_id' => 'required|exists:cities,id',
+            'translations.*.language_id' => 'required|exists:languages,id',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'country_id.required' => __('The country field is required.'),
+            'language_id.required' => __('The language field is required.'),
+            'translations.*.country_id.required' => __('The country field is required.'),
+            'translations.*.city_id.required' => __('The city field is required.'),
+            'translations.*.language_id.required' => __('The language field is required.'),
         ];
     }
 }

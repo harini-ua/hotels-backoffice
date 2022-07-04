@@ -281,6 +281,7 @@ Route::middleware('auth')->group(function () {
             /** ----- ------ ----- CITIES */
             Route::prefix('cities')->as('cities.')->group(function () {
                 Route::get('/', [CityTranslationController::class, 'index'])->name('index');
+                Route::put('/', [CityTranslationController::class, 'update'])->name('update');
             });
         });
 
