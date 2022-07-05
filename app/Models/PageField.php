@@ -34,4 +34,12 @@ class PageField extends Model
     {
         return $this->belongsTo(Page::class);
     }
+
+    /**
+     * Get the translations for the page field.
+     */
+    public function translations()
+    {
+        return $this->hasMany(PageFieldTranstation::class);
+    }
 }

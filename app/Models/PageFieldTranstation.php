@@ -26,4 +26,12 @@ class PageFieldTranstation extends Model
     protected $fillable = [
         'field_id', 'page_id', 'country_id', 'name', 'translation', 'status', 'is_duplicate'
     ];
+
+    /**
+     * Get the page field that owns the translation.
+     */
+    public function pageField()
+    {
+        return $this->belongsTo(PageField::class);
+    }
 }
