@@ -17,7 +17,7 @@ class CreatePageTranslationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('field_id');
             $table->unsignedBigInteger('page_id');
-            $table->unsignedBigInteger('country_id');
+            $table->unsignedBigInteger('country_id')->nullable();
             $table->string('name');
             $table->string('translation');
             $table->tinyInteger('status')->default(0);
