@@ -11,7 +11,7 @@ class ReportController extends Controller
      *
      * @return mixed
      */
-    public function index()
+    public function __invoke()
     {
         $breadcrumbs = [
             ['title' => __('Reports')],

@@ -219,10 +219,16 @@ class Menu extends Component
             'guard' => $user->hasRole([UserRole::ADMIN, UserRole::DISTRIBUTOR]),
             'items' => [
                 [
+                    'name' => __('Page Translation'),
+                    'href' => route('translations.pages.index'),
+                    'icon' => 'feather icon-file-text',
+                    'guard' => $user->hasRole([UserRole::ADMIN, UserRole::DISTRIBUTOR]),
+                ],
+                [
                     'name' => __('City Translation'),
                     'href' => route('translations.cities.index'),
                     'icon' => 'feather icon-globe',
-                    'guard' => $user->hasRole(UserRole::ADMIN),
+                    'guard' => $user->hasRole([UserRole::ADMIN, UserRole::DISTRIBUTOR]),
                 ],
             ]
         ];
