@@ -6,6 +6,7 @@ use App\Http\Requests\PageTranslationRequest;
 use App\Models\Country;
 use App\Models\Language;
 use App\Models\Page;
+use App\Models\PageField;
 use App\Models\PageFieldTranstation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -54,6 +55,23 @@ class PageTranslationController extends Controller
         if ($request->has(['page', 'language'])) {
             $page = Country::find($request->get('page'));
             $language = Language::find($request->get('language'));
+
+            $query = PageField::leftJoin(PageFieldTranstation::TABLE_NAME, function($join) {
+                $join->on('page_fields.id', '=', 'page_field_translations.field_id');
+            });
+
+            $query->where('page_fields.page_id', $request->get('page_id'));
+            $query->where('page_field_translations.language_id', $request->get('language_id'));
+
+            $query->select([
+                'page_field_translations.id AS id',
+                'page_fields.id AS field_id',
+                'page_fields.page_id AS page_id',
+                'page_field_translations.name',
+                'page_field_translations.translation'
+            ]);
+
+            $translations = $query->get();
         }
 
         return view('admin.pages.page-translations.index', compact(
