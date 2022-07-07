@@ -35,6 +35,7 @@ use App\Http\Controllers\IpFilterController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\OverallBookingsController;
+use App\Http\Controllers\PageFieldController;
 use App\Http\Controllers\PageTranslationController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PartnerProductController;
@@ -284,6 +285,11 @@ Route::middleware('auth')->group(function () {
             Route::prefix('pages')->as('pages.')->group(function () {
                 Route::get('/', [PageTranslationController::class, 'index'])->name('index');
                 Route::put('/', [PageTranslationController::class, 'update'])->name('update');
+
+                Route::prefix('field')->as('field.')->group(function () {
+                    Route::get('create', [PageFieldController::class, 'create'])->name('create');
+                    Route::post('store', [PageFieldController::class, 'store'])->name('store');
+                });
             });
 
             /** ----- ------ ----- CITIES */
