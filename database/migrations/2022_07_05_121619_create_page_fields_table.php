@@ -17,9 +17,12 @@ class CreatePageFieldsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('page_id');
             $table->string('name');
-            $table->tinyInteger('type')->default(0)->comment('0 => text field, 1=> text area, 2=>button, 3 => HTML content');
-            $table->smallInteger('max_length')->comment('maximum character length for the field name');
-            $table->tinyInteger('is_mobile')->comment('0 => Existing verbals, 1 => Web2 Verbals, 2 => Mobile Verbals');
+            $table->tinyInteger('type')->default(0)
+                ->comment('0 => text field, 1=> text area, 2=>button, 3 => HTML content');
+            $table->smallInteger('max_length')->default(30)
+                ->comment('maximum character length for the field name');
+            $table->tinyInteger('is_mobile')->default(0)
+                ->comment('0 => Existing verbals, 1 => Web2 Verbals, 2 => Mobile Verbals');
             $table->timestamps();
 
             $table->foreign('page_id')->references('id')->on('pages');

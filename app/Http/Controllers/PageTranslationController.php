@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CityTranslationRequest;
+use App\Http\Requests\PageTranslationRequest;
 use App\Models\Country;
 use App\Models\Language;
 use App\Models\Page;
@@ -34,6 +34,10 @@ class PageTranslationController extends Controller
             ['name' => __('Page Translations')]
         ];
 
+        $actions = [
+            ['href' => route('translations.pages.field.create'), 'icon' => 'plus', 'name' => __('Create')]
+        ];
+
         $pages = Page::all()
             ->sortBy('order')
             ->pluck('name', 'id');
@@ -53,19 +57,21 @@ class PageTranslationController extends Controller
         }
 
         return view('admin.pages.page-translations.index', compact(
-            'breadcrumbs', 'pages', 'languages', 'page', 'language', 'translations'
+            'breadcrumbs',
+            'actions',
+            'pages', 'languages', 'page', 'language', 'translations'
         ));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param CityTranslationRequest $request
+     * @param PageTranslationRequest $request
      *
      * @return RedirectResponse
      * @throws \Exception
      */
-    public function update(CityTranslationRequest $request)
+    public function update(PageTranslationRequest $request)
     {
         try {
             DB::beginTransaction();

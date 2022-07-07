@@ -6,6 +6,7 @@ use App\Enums\FieldType;
 use App\Enums\VerbalType;
 use App\Http\Requests\PageFieldStoreRequest;
 use App\Models\Page;
+use App\Models\PageField;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -50,11 +51,14 @@ class PageFieldController extends Controller
         try {
             DB::beginTransaction();
 
-            //..
+            $pageField = new PageField();
+            $pageField->fill($request->all());
+
+            $pageField->save();
 
             DB::commit();
 
-            alert()->success(__('Success'), __('Page filed created has been successful.'));
+            alert()->success($pageField->name, __('Page filed created has been successful.'));
         } catch (\PDOException $e) {
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();

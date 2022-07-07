@@ -63,7 +63,7 @@
                                             <input type="number"
                                                    id="max_length"
                                                    name="max_length"
-                                                   value="{{ old('max_length') }}"
+                                                   value="{{ old('max_length') ?: 30 }}"
                                                    min="1"
                                                    class="form-control @error('max_length') is-invalid @enderror">
                                             @error('max_length')
