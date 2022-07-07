@@ -15,9 +15,10 @@ class CreatePageTranslationsTable extends Migration
     {
         Schema::create('page_field_translations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('field_id');
+            $table->unsignedBigInteger('field_id')->nullable();
             $table->unsignedBigInteger('page_id');
             $table->unsignedBigInteger('country_id')->nullable();
+            $table->unsignedBigInteger('language_id');
             $table->string('name');
             $table->string('translation');
             $table->tinyInteger('status')->default(0);
@@ -28,6 +29,7 @@ class CreatePageTranslationsTable extends Migration
             $table->foreign('field_id')->references('id')->on('page_fields');
             $table->foreign('page_id')->references('id')->on('pages');
             $table->foreign('country_id')->references('id')->on('countries');
+            $table->foreign('language_id')->references('id')->on('languages');
         });
     }
 
