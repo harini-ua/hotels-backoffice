@@ -35,6 +35,7 @@ use App\Http\Controllers\IpFilterController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\OverallBookingsController;
+use App\Http\Controllers\PageTranslationController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PartnerProductController;
 use App\Http\Controllers\PaymentController;
@@ -278,6 +279,12 @@ Route::middleware('auth')->group(function () {
         /** ----- ------ ----- TRANSLATIONS */
         Route::prefix('translations')->as('translations.')->group(function () {
             Route::get('/', TranslationController::class)->name('index');
+
+            /** ----- ------ ----- PAGES */
+            Route::prefix('pages')->as('pages.')->group(function () {
+                Route::get('/', [PageTranslationController::class, 'index'])->name('index');
+                Route::put('/', [PageTranslationController::class, 'update'])->name('update');
+            });
 
             /** ----- ------ ----- CITIES */
             Route::prefix('cities')->as('cities.')->group(function () {
