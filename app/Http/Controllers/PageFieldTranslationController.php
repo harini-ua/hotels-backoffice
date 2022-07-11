@@ -108,13 +108,15 @@ class PageFieldTranslationController extends Controller
 
             foreach ($translations as $item) {
                 PageFieldTranstation::updateOrCreate([
-                    'field_id' => $item->field_id,
+                    'field_id' => $item['field_id'],
                     'page_id' => $request->get('page_id'),
                     'language_id' => $request->get('language_id'),
                 ], [
-                    'name' => $item->name,
-                    'translation' => $item->translation,
+                    'name' => $item['name'],
+                    'translation' => $item['translation'],
                 ]);
+
+                DB::commit();
             }
 
             DB::commit();

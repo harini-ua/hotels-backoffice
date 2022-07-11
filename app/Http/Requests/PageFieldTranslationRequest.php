@@ -24,14 +24,28 @@ class PageFieldTranslationRequest extends FormRequest
     public function rules()
     {
         return [
-            'field_id' => 'required|exists:page_fields,id',
             'page_id' => 'required|exists:pages,id',
             'language_id' => 'required|exists:languages,id',
-            'country_id' => 'required|exists:countries,id',
-            'name' => 'required|string',
-            'translation' => 'required|string',
-            'status' => 'nullable|boolean',
-            'is_duplicate' => 'nullable|boolean',
+            'translations.*.field_id' => 'required|exists:page_fields,id',
+            'translations.*.country_id' => 'nullable|exists:countries,id',
+            'translations.*.name' => 'required|string',
+            'translations.*.translation' => 'nullable|string',
+            'translations.*.status' => 'nullable|boolean',
+            'translations.*.is_duplicate' => 'nullable|boolean',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'translations.*.field_id.required' => __('The field is required.'),
+            'translations.*.country_id.required' => __('The country field is required.'),
+            'translations.*.name.required' => __('The name field is required.'),
         ];
     }
 }

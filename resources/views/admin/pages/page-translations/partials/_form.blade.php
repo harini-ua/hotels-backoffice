@@ -23,6 +23,8 @@
             </div>
         </div>
     </div @endif>
+    <input type="hidden" name="page_id" value="{{ $page->id }}"/>
+    <input type="hidden" name="language_id" value="{{ $language->id }}"/>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -44,9 +46,6 @@
                                    name="translations[{{$key}}][id]"
                                    value="{{ $item->id }}"/>
                             <input type="hidden"
-                                   name="translations[{{$key}}][page_id]"
-                                   value="{{ $page->id }}"/>
-                            <input type="hidden"
                                    name="translations[{{$key}}][field_id]"
                                    value="{{ $item->field_id }}"/>
                             <input type="text"
@@ -55,9 +54,6 @@
                                    class="form-control-plaintext"/>
                         </th>
                         <td>
-                            <input type="hidden"
-                                   name="translations[{{$key}}][language_id]"
-                                   value="{{ $language->id }}"/>
                             @switch($item->type)
                                 @case(\App\Enums\FieldType::TEXT)
                                 @case(\App\Enums\FieldType::BUTTON)

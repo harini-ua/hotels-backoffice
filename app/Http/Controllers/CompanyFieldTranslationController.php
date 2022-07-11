@@ -52,21 +52,25 @@ class CompanyFieldTranslationController extends Controller
                 $join->on('company_fields.id', '=', 'company_field_translations.field_id');
             });
 
-            $query->where('company_field_translations.company_id', $request->get('company'));
+            $query->where('company_id', $request->get('company'));
 
             $query->select([
                 'company_field_translations.id AS id',
                 'company_fields.id AS field_id',
-                'company_field_translations.name',
+                'company_field_translations.company_id AS company_id',
+                'company_fields.name AS name',
                 'company_field_translations.translation',
                 'company_fields.is_mobile AS group',
                 'company_fields.type AS type',
                 'company_fields.max_length AS max_length',
             ]);
 
-            $result = $query->get();
+            $result = $query->toSql();
+            var_dump($result);die();
+
             $count = $result->count();
         }
+
 
         $translations = [];
         foreach ($result as $item) {

@@ -28,8 +28,8 @@ class CompanyFieldTranslationRequest extends FormRequest
             'company_id' => 'required|exists:companies,id',
             'language_id' => 'required|exists:languages,id',
             'country_id' => 'required|exists:countries,id',
-            'name' => 'required|string',
-            'translation' => 'required|string',
+            'name' => 'nullable|string',
+            'translation' => 'nullable|string',
             'status' => 'nullable|boolean',
             'is_duplicate' => 'nullable|boolean',
         ];
