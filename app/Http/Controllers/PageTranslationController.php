@@ -72,6 +72,7 @@ class PageTranslationController extends Controller
                 'page_field_translations.translation',
                 'page_fields.is_mobile AS group',
                 'page_fields.type AS type',
+                'page_fields.max_length AS max_length',
             ]);
 
             $result = $query->get();

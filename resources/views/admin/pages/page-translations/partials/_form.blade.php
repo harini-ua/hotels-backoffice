@@ -65,6 +65,7 @@
                                     <input type="text"
                                            name="translations[{{$key}}][translation]"
                                            value="{{ $item->translation }}"
+                                           maxlength="{{ $item->max_length }}"
                                            class="form-control text-field"/>
                                     <small class="form-text" role="alert">{{ __('Max') .' '. $item->max_length .' '. __('letters') }}.</small>
                                     @break
