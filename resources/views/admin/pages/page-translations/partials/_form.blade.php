@@ -58,10 +58,31 @@
                             <input type="hidden"
                                    name="translations[{{$key}}][language_id]"
                                    value="{{ $language->id }}"/>
-                            <input type="text"
-                                   name="translations[{{$key}}][translation]"
-                                   value="{{ $item->translation }}"
-                                   class="form-control"/>
+                            @switch($item->type)
+                                @case(\App\Enums\FieldType::TEXT)
+                                @case(\App\Enums\FieldType::BUTTON)
+                                @default
+                                    <input type="text"
+                                           name="translations[{{$key}}][translation]"
+                                           value="{{ $item->translation }}"
+                                           class="form-control text-field"/>
+                                    <small class="form-text" role="alert">{{ __('Max') .' '. $item->max_length .' '. __('letters') }}.</small>
+                                    @break
+                                @case(\App\Enums\FieldType::TEXTAREA)
+                                    <textarea
+                                        row="5"
+                                        name="translations[{{$key}}][translation]"
+                                        class="form-control textarea-field"
+                                    >{{ $item->translation }}</textarea>
+                                    @break
+                                @case(\App\Enums\FieldType::HTML)
+                                    <textarea
+                                        row="5"
+                                        name="translations[{{$key}}][translation]"
+                                        class="form-control summernote-editor content-field"
+                                    >{{ $item->translation }}</textarea>
+                                    @break
+                            @endswitch
                         </td>
                     </tr>
                 @endforeach

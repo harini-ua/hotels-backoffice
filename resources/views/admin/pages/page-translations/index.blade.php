@@ -3,6 +3,7 @@
 @section('title',  __('Page Translation'))
 
 @section('style')
+    <link href="{{ asset('assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/page-translations.css') }}">
@@ -37,5 +38,6 @@
 @section('script')
     <script src="{{ asset('assets/plugins/pjax/jquery.pjax.js') }}"></script>
     <script src="{{ asset('assets/plugins/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
     <script src="{{asset('js/pages/page-translations.js')}}"></script>
 @endsection

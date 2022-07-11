@@ -4,10 +4,11 @@
 
 @section('style')
     <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/page-translations.css') }}">
 @endsection
 
 @section('rightbar-content')
-    <div class="contentbar partners-create-wrapper">
+    <div class="contentbar page-translations-create-wrapper">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card m-b-30">
@@ -120,4 +121,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script src="{{asset('js/pages/page-translations.js')}}"></script>
 @endsection

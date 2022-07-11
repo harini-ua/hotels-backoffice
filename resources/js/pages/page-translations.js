@@ -11,6 +11,20 @@ jQuery(document).ready(function ($) {
             }
         };
 
+        $('textarea.summernote-editor').summernote({
+            height: 150,
+            minHeight: null,
+            maxHeight: null,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['insert', ['link']],
+            ]
+        });
+
         forms.btn.submit.on('click', (e) => {
             e.preventDefault();
 
