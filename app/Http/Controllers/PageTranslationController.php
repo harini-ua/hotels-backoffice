@@ -51,7 +51,8 @@ class PageTranslationController extends Controller
         $page = null;
         $language = null;
 
-        $translations = [];
+        $result = [];
+        $count = 0;
         if ($request->has(['page', 'language'])) {
             $page = Country::find($request->get('page'));
             $language = Language::find($request->get('language'));
@@ -60,24 +61,32 @@ class PageTranslationController extends Controller
                 $join->on('page_fields.id', '=', 'page_field_translations.field_id');
             });
 
-            $query->where('page_fields.page_id', $request->get('page_id'));
-            $query->where('page_field_translations.language_id', $request->get('language_id'));
+            $query->where('page_fields.page_id', $request->get('page'));
+            $query->where('page_field_translations.language_id', $request->get('language'));
 
             $query->select([
                 'page_field_translations.id AS id',
                 'page_fields.id AS field_id',
                 'page_fields.page_id AS page_id',
                 'page_field_translations.name',
-                'page_field_translations.translation'
+                'page_field_translations.translation',
+                'page_fields.is_mobile AS group',
+                'page_fields.type AS type',
             ]);
 
-            $translations = $query->get();
+            $result = $query->get();
+            $count = $result->count();
+        }
+
+        $translations = [];
+        foreach ($result as $item) {
+            $translations[$item->group][] = $item;
         }
 
         return view('admin.pages.page-translations.index', compact(
             'breadcrumbs',
             'actions',
-            'pages', 'languages', 'page', 'language', 'translations'
+            'pages', 'languages', 'page', 'language', 'translations', 'count'
         ));
     }
 
