@@ -65,12 +65,9 @@ class CompanyFieldTranslationController extends Controller
                 'company_fields.max_length AS max_length',
             ]);
 
-            $result = $query->toSql();
-            var_dump($result);die();
-
+            $result = $query->get();
             $count = $result->count();
         }
-
 
         $translations = [];
         foreach ($result as $item) {
@@ -101,12 +98,14 @@ class CompanyFieldTranslationController extends Controller
 
             foreach ($translations as $item) {
                 CompanyFieldTranslation::updateOrCreate([
-                    'field_id' => $item->field_id,
+                    'field_id' => $item['field_id'],
                     'company_id' => $request->get('company_id'),
                 ], [
-                    'name' => $item->name,
-                    'translation' => $item->translation,
+                    'name' => $item['name'],
+                    'translation' => $item['translation'],
                 ]);
+
+                DB::commit();
             }
 
             DB::commit();

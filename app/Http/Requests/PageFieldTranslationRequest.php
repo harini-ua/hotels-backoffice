@@ -44,8 +44,6 @@ class PageFieldTranslationRequest extends FormRequest
     {
         return [
             'translations.*.field_id.required' => __('The field is required.'),
-            'translations.*.country_id.required' => __('The country field is required.'),
-            'translations.*.name.required' => __('The name field is required.'),
         ];
     }
 }

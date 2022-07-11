@@ -24,14 +24,26 @@ class CompanyFieldTranslationRequest extends FormRequest
     public function rules()
     {
         return [
-            'field_id' => 'required|exists:company_fields,id',
             'company_id' => 'required|exists:companies,id',
             'language_id' => 'required|exists:languages,id',
-            'country_id' => 'required|exists:countries,id',
-            'name' => 'nullable|string',
-            'translation' => 'nullable|string',
-            'status' => 'nullable|boolean',
-            'is_duplicate' => 'nullable|boolean',
+            'translations.*.field_id' => 'required|exists:company_fields,id',
+            'translations.*.country_id' => 'nullable|exists:countries,id',
+            'translations.*.name' => 'nullable|string',
+            'translations.*.translation' => 'nullable|string',
+            'translations.*.status' => 'nullable|boolean',
+            'translations.*.is_duplicate' => 'nullable|boolean',
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'translations.*.field_id.required' => __('The field is required.'),
         ];
     }
 }
