@@ -5,7 +5,7 @@
         name="page_id"
         class="form-control filter-input select-filter select2-single"
         data-table="page-translations-list-datatable"
-        data-url="{{ route('translations.cities.index') }}"
+        data-url="{{ route('translations.pages.index') }}"
         @if(!count($pages)) disabled @endif
     >
         <option selected value="">- {{ __('Choice Page') }} -</option>
@@ -23,7 +23,7 @@
         name="language_id"
         class="form-control filter-input select-filter select2-single"
         data-table="page-translations-list-datatable"
-        data-url="{{ route('translations.cities.index') }}"
+        data-url="{{ route('translations.pages.index') }}"
         @if(!count($languages)) disabled @endif
     >
         <option selected value="">- {{ __('Choice Language') }} -</option>

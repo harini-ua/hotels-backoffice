@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PageTranslationRequest;
+use App\Http\Requests\PageFieldTranslationRequest;
 use App\Models\Country;
 use App\Models\Language;
 use App\Models\Page;
@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
-class PageTranslationController extends Controller
+class PageFieldTranslationController extends Controller
 {
     /**
      * @return mixed
@@ -94,12 +94,12 @@ class PageTranslationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param PageTranslationRequest $request
+     * @param PageFieldTranslationRequest $request
      *
      * @return RedirectResponse
      * @throws \Exception
      */
-    public function update(PageTranslationRequest $request)
+    public function update(PageFieldTranslationRequest $request)
     {
         try {
             DB::beginTransaction();

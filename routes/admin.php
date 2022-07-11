@@ -12,6 +12,7 @@ use App\Http\Controllers\CompanyCommissionController;
 use App\Http\Controllers\CompanyContactController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyExtraNightController;
+use App\Http\Controllers\CompanyFieldController;
 use App\Http\Controllers\CompanyGeneralController;
 use App\Http\Controllers\CompanyHomepageController;
 use App\Http\Controllers\CompanyHotelDistanceController;
@@ -22,6 +23,7 @@ use App\Http\Controllers\CompanySaleOfficeLevel1CommissionController;
 use App\Http\Controllers\CompanySaleOfficeLevel2CommissionController;
 use App\Http\Controllers\CompanyTemplateController;
 use App\Http\Controllers\CompanyThemeController;
+use App\Http\Controllers\CompanyFieldTranslationController;
 use App\Http\Controllers\CompanyVatController;
 use App\Http\Controllers\CountryCommissionController;
 use App\Http\Controllers\CountryController;
@@ -36,7 +38,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\OverallBookingsController;
 use App\Http\Controllers\PageFieldController;
-use App\Http\Controllers\PageTranslationController;
+use App\Http\Controllers\PageFieldTranslationController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PartnerProductController;
 use App\Http\Controllers\PaymentController;
@@ -281,10 +283,21 @@ Route::middleware('auth')->group(function () {
         Route::prefix('translations')->as('translations.')->group(function () {
             Route::get('/', TranslationController::class)->name('index');
 
+            /** ----- ------ ----- COMPANY */
+            Route::prefix('companies')->as('companies.')->group(function () {
+                Route::get('/', [CompanyFieldTranslationController::class, 'index'])->name('index');
+                Route::put('/', [CompanyFieldTranslationController::class, 'update'])->name('update');
+
+                Route::prefix('field')->as('field.')->group(function () {
+                    Route::get('create', [CompanyFieldController::class, 'create'])->name('create');
+                    Route::post('store', [CompanyFieldController::class, 'store'])->name('store');
+                });
+            });
+
             /** ----- ------ ----- PAGES */
             Route::prefix('pages')->as('pages.')->group(function () {
-                Route::get('/', [PageTranslationController::class, 'index'])->name('index');
-                Route::put('/', [PageTranslationController::class, 'update'])->name('update');
+                Route::get('/', [PageFieldTranslationController::class, 'index'])->name('index');
+                Route::put('/', [PageFieldTranslationController::class, 'update'])->name('update');
 
                 Route::prefix('field')->as('field.')->group(function () {
                     Route::get('create', [PageFieldController::class, 'create'])->name('create');

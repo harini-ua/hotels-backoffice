@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Enums\FieldType;
 use App\Enums\VerbalType;
-use App\Http\Requests\PageFieldStoreRequest;
-use App\Models\Page;
-use App\Models\PageField;
+use App\Http\Requests\CompanyFieldStoreRequest;
+use App\Models\CompanyField;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
-class PageFieldController extends Controller
+class CompanyFieldController extends Controller
 {
     /**
      * Show the form for creating a new resource.
@@ -22,48 +21,44 @@ class PageFieldController extends Controller
     public function create()
     {
         $breadcrumbs = [
-            ['title' => __('Create Page Field')],
+            ['title' => __('Create Company Field')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['name' => __('Create Page Field')]
+            ['name' => __('Create Company Field')]
         ];
-
-        $pages = Page::all()
-            ->sortBy('order')
-            ->pluck('name', 'id');
 
         $fieldTypes = FieldType::asSelectArray();
         $verbalType = VerbalType::asSelectArray();
 
-        return view('admin.pages.page-translations.create', compact(
-            'breadcrumbs', 'pages', 'fieldTypes', 'verbalType'
+        return view('admin.pages.company-translations.create', compact(
+            'breadcrumbs', 'fieldTypes', 'verbalType'
         ));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param PageFieldStoreRequest $request
+     * @param CompanyFieldStoreRequest $request
      * @return RedirectResponse|\Symfony\Component\HttpFoundation\BinaryFileResponse
      * @throws \Exception
      */
-    public function store(PageFieldStoreRequest $request)
+    public function store(CompanyFieldStoreRequest $request)
     {
         try {
             DB::beginTransaction();
 
-            $field = new PageField();
+            $field = new CompanyField();
             $field->fill($request->all());
 
             $field->save();
 
             DB::commit();
 
-            alert()->success($field->name, __('Page filed created has been successful.'));
+            alert()->success($field->name, __('Company filed created has been successful.'));
         } catch (\PDOException $e) {
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
         }
 
-        return redirect()->route('translations.pages.index');
+        return redirect()->route('translations.companies.index');
     }
 }

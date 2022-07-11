@@ -219,6 +219,12 @@ class Menu extends Component
             'guard' => $user->hasRole([UserRole::ADMIN, UserRole::DISTRIBUTOR]),
             'items' => [
                 [
+                    'name' => __('Company Sites'),
+                    'href' => route('translations.companies.index'),
+                    'icon' => 'feather icon-shopping-bag',
+                    'guard' => $user->hasRole([UserRole::ADMIN, UserRole::EMPLOYEE]),
+                ],
+                [
                     'name' => __('Page Translation'),
                     'href' => route('translations.pages.index'),
                     'icon' => 'feather icon-file-text',
