@@ -60,5 +60,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PageSeeder::class);
         $this->call(PageFieldSeeder::class);
         $this->call(PageFieldTranslationSeeder::class);
+        $this->call(CompanyFieldSeeder::class);
     }
 }
