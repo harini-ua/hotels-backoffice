@@ -9,12 +9,14 @@ class MealPlanVariant extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'meal_plans_variants';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'meal_plans_variants';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

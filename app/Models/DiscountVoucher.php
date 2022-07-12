@@ -11,12 +11,14 @@ class DiscountVoucher extends Model
 {
     use HasFactory, SoftDeletes;
 
+    public const TABLE_NAME = 'discount_vouchers';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'discount_vouchers';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

@@ -11,12 +11,14 @@ class Distributor extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'distributors';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'distributors';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

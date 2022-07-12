@@ -9,12 +9,14 @@ class SubCompany extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'sub_companies';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'sub_companies';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

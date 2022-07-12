@@ -11,12 +11,14 @@ class Hotel extends Model
 {
     use HasFactory, Searchable, SpatialTrait;
 
+    public const TABLE_NAME = 'hotels';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'hotels';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

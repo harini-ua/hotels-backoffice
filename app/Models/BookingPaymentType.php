@@ -9,12 +9,14 @@ class BookingPaymentType extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'booking_payment_types';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'booking_payment_types';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

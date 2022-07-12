@@ -9,12 +9,14 @@ class   CompanyBookingCommission extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'company_booking_commission';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'company_booking_commission';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

@@ -9,12 +9,14 @@ class Language extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'languages';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'languages';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

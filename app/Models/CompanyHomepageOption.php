@@ -15,12 +15,14 @@ class CompanyHomepageOption extends Model
 
     public const IMAGE_FIELDS = [ 'logo' ];
 
+    public const TABLE_NAME = 'company_homepage_options';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'company_homepage_options';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

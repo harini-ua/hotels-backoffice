@@ -9,12 +9,14 @@ class AccessCode extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'access_codes';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'access_codes';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

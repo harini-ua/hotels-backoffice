@@ -9,12 +9,14 @@ class Facility extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'facilities';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'facilities';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

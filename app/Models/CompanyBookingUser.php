@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class CompanyBookingUser extends Pivot
 {
+    public const TABLE_NAME = 'company_booking_user';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'company_booking_user';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

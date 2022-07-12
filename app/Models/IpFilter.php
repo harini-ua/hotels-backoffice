@@ -9,12 +9,14 @@ class IpFilter extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'ip_filter';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'ip_filter';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

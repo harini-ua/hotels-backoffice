@@ -9,12 +9,14 @@ class CurrencyRate extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'country_currency_rates';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'country_currency_rates';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

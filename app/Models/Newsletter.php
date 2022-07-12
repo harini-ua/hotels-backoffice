@@ -10,12 +10,14 @@ class Newsletter extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'newsletters';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'newsletters';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

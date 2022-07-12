@@ -10,14 +10,19 @@ class Currency extends Model
 {
     use HasFactory, QueryCacheable;
 
-    protected $cacheFor = 84400; // 1 day
+    public const TABLE_NAME = 'currencies';
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'currencies';
+    protected $table = self::TABLE_NAME;
+
+    /**
+     * @var int
+     */
+    protected $cacheFor = 84400; // 1 day
 
     /**
      * The attributes that are mass assignable.

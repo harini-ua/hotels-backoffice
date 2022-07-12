@@ -9,12 +9,14 @@ class DiscountVoucherCode extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'discount_voucher_codes';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'discount_voucher_codes';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

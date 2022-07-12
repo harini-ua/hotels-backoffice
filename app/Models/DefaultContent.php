@@ -17,12 +17,14 @@ class DefaultContent extends Model
     public const FIELDS = [];
     public const IMAGE_FIELDS = [ 'logo' ];
 
+    public const TABLE_NAME = 'default_content';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'default_content';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

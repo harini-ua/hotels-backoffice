@@ -9,12 +9,14 @@ class Partner extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'partners';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'partners';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

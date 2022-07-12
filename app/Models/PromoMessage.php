@@ -17,12 +17,14 @@ class PromoMessage extends Model
 
     public const IMAGE_FIELDS = [ 'image' ];
 
+    public const TABLE_NAME = 'promo_messages';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'promo_messages';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

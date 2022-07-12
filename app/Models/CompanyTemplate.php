@@ -9,12 +9,14 @@ class CompanyTemplate extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'company_templates';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'company_templates';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

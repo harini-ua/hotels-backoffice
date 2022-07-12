@@ -10,12 +10,14 @@ class Company extends Model
 {
     use SoftDeletes, HasFactory;
 
+    public const TABLE_NAME = 'companies';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'companies';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

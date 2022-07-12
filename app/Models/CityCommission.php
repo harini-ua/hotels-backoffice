@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class CityCommission extends Model
 {
+    public const TABLE_NAME = 'city_commissions';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'city_commissions';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

@@ -9,12 +9,14 @@ class Booking extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'bookings';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'bookings';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

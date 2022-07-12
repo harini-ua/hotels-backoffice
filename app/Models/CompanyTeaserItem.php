@@ -14,12 +14,14 @@ class CompanyTeaserItem extends Model
     public const IMAGE_KILOBYTES_SIZE = 4096;
     public const IMAGE_FIELDS = [ 'image' ];
 
+    public const TABLE_NAME = 'company_teaser_items';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'company_teaser_items';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

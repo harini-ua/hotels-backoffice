@@ -9,12 +9,14 @@ class PromoMessageReadStatus extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'promo_message_read_status';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'promo_message_read_status';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

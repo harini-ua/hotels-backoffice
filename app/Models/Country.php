@@ -9,12 +9,14 @@ class Country extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'countries';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'countries';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

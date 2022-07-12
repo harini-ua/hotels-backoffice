@@ -9,12 +9,14 @@ class Provider extends Model
 {
     use HasFactory;
 
+    public const TABLE_NAME = 'providers';
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'providers';
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.
