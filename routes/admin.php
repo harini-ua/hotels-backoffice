@@ -56,6 +56,7 @@ use App\Http\Controllers\ReportCountryBookingController;
 use App\Http\Controllers\ReportHotelsNewestController;
 use App\Http\Controllers\ReportHotelsSummaryController;
 use App\Http\Controllers\ReportInvoiceController;
+use App\Http\Controllers\ResortFeeTranslationController;
 use App\Http\Controllers\SearchingByPeriodController;
 use App\Http\Controllers\SendController;
 use App\Http\Controllers\SettingController;
@@ -309,6 +310,11 @@ Route::middleware('auth')->group(function () {
             Route::prefix('cities')->as('cities.')->group(function () {
                 Route::get('/', [CityTranslationController::class, 'index'])->name('index');
                 Route::put('/', [CityTranslationController::class, 'update'])->name('update');
+            });
+
+            /** ----- ------ ----- RESORT FEE */
+            Route::prefix('resort-fee')->as('resort-fee.')->group(function () {
+                Route::get('/', [ResortFeeTranslationController::class, 'index'])->name('index');
             });
         });
 

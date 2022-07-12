@@ -225,7 +225,7 @@ class Menu extends Component
                     'guard' => $user->hasRole([UserRole::ADMIN, UserRole::EMPLOYEE]),
                 ],
                 [
-                    'name' => __('Page Translation'),
+                    'name' => __('Page Fields'),
                     'href' => route('translations.pages.index'),
                     'icon' => 'feather icon-file-text',
                     'guard' => $user->hasRole([UserRole::ADMIN, UserRole::DISTRIBUTOR]),
@@ -235,6 +235,12 @@ class Menu extends Component
                     'href' => route('translations.cities.index'),
                     'icon' => 'feather icon-globe',
                     'guard' => $user->hasRole([UserRole::ADMIN, UserRole::DISTRIBUTOR]),
+                ],
+                [
+                    'name' => __('Resort Fee'),
+                    'href' => route('translations.resort-fee.index'),
+                    'icon' => 'feather icon-sun',
+                    'guard' => $user->hasRole([UserRole::ADMIN]),
                 ],
             ]
         ];
