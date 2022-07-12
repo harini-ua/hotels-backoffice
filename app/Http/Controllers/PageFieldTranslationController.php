@@ -54,26 +54,62 @@ class PageFieldTranslationController extends Controller
         $result = [];
         $count = 0;
         if ($request->has(['page', 'language'])) {
-            $page = Country::find($request->get('page'));
+            $page = Page::find($request->get('page'));
+            $breadcrumbs[] = ['name' => $page->name];
+
             $language = Language::find($request->get('language'));
+            $breadcrumbs[] = ['name' => $language->name];
 
-            $query = PageField::leftJoin(PageFieldTranstation::TABLE_NAME, function($join) {
-                $join->on('page_fields.id', '=', 'page_field_translations.field_id');
-            });
-
-            $query->where('page_fields.page_id', $request->get('page'));
-            $query->where('page_field_translations.language_id', $request->get('language'));
-
-            $query->select([
-                'page_field_translations.id AS id',
+            $query = PageField::select([
                 'page_fields.id AS field_id',
                 'page_fields.page_id AS page_id',
-                'page_field_translations.name',
-                'page_field_translations.translation',
+                'page_fields.name',
+                'translation.value AS translation',
                 'page_fields.is_mobile AS group',
                 'page_fields.type AS type',
                 'page_fields.max_length AS max_length',
             ]);
+
+            $query->selectRaw($language->id.' AS language_id');
+
+            $translation = DB::table(PageFieldTranstation::TABLE_NAME)
+                ->select([
+                    'page_id',
+                    'field_id',
+                    'language_id',
+                    DB::raw('translation AS value'),
+                ])
+                ->where('page_id', $page->id)
+                ->where('language_id', $language->id);
+
+            $query->leftJoinSub($translation, 'translation', static function($join) {
+                $join->on('page_fields.id', '=', 'translation.field_id');
+            });
+
+            $query->groupBy('field_id');
+
+//            dd($query->get());
+//
+//            $query = PageField::leftJoin(PageFieldTranstation::TABLE_NAME, function($join) {
+//                $join->on('page_fields.id', '=', 'page_field_translations.field_id');
+//            });
+//
+//            $query->where('page_fields.page_id', $request->get('page'));
+//            $query->where('language_id', $request->get('language'));
+//
+//            $query->select([
+//                'page_field_translations.id AS id',
+//                'page_fields.id AS field_id',
+//                'page_fields.page_id AS page_id',
+//                'page_field_translations.name',
+//                'page_field_translations.language_id AS language_id',
+//                'page_field_translations.translation',
+//                'page_fields.is_mobile AS group',
+//                'page_fields.type AS type',
+//                'page_fields.max_length AS max_length',
+//            ]);
+
+//            $query->groupBy('field_id');
 
             $result = $query->get();
             $count = $result->count();

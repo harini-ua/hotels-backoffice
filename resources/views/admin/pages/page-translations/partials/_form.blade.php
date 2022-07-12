@@ -10,7 +10,7 @@
     <div @if($page) class="m-b-10">
         <div class="row align-items-center">
             <div class="col-md-10 col-lg-10">
-                <h5 class=m-t-15">{{ $page->name }} ({{ $count }})</h5>
+                <h5 class=m-t-15">{{$language->name}} "{{ $page->name }}" {{__('page fields')}} ({{ $count }})</h5>
             </div>
             <div class="col-md-2 col-lg-2 text-right">
                 <button
@@ -23,8 +23,8 @@
             </div>
         </div>
     </div @endif>
-    <input type="hidden" name="page_id" value="{{ $page->id }}"/>
-    <input type="hidden" name="language_id" value="{{ $language->id }}"/>
+    @if($page)<input type="hidden" name="page_id" value="{{ $page->id }}"/>@endif
+    @if($language)<input type="hidden" name="language_id" value="{{ $language->id }}"/>@endif
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -93,7 +93,7 @@
     <div @if($page) class="m-b-10">
         <div class="row align-items-center">
             <div class="col-md-10 col-lg-10">
-                <h5 class=m-t-15">{{ $page->name }} ({{ $count }})</h5>
+                <h5 class=m-t-15">{{$language->name}} "{{ $page->name }}" {{__('page fields')}} ({{ $count }})</h5>
             </div>
             <div class="col-md-2 col-lg-2 text-right">
                 <button
