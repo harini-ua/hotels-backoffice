@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CompanyPartner;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -36,6 +37,6 @@ class CompanyPartnerSeeder extends Seeder
             fclose($open);
         }
 
-        DB::table('company_partner')->insertTs($company_partners);
+        DB::table(CompanyPartner::TABLE_NAME)->insertTs($company_partners);
     }
 }

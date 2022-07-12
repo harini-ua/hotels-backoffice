@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CityTranslation;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -34,6 +35,6 @@ class CityTranslationSeeder extends Seeder
             fclose($open);
         }
 
-        DB::table('city_translations')->insertTs($translations_cities);
+        DB::table(CityTranslation::TABLE_NAME)->insertTs($translations_cities);
     }
 }

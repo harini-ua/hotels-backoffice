@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Enums\TeaserType;
 use App\Models\CompanyCarousel;
 use App\Models\CompanyCarouselItem;
+use App\Models\CompanyHomepageOption;
 use App\Models\CompanyTeaser;
 use App\Models\CompanyTeaserItem;
 use Illuminate\Database\Seeder;
@@ -106,7 +107,7 @@ class CompanyHomepageOptionSeeder extends Seeder
         }
 
         foreach (array_chunk($company_homepage_options, 1000) as $company) {
-            DB::table('company_homepage_options')->insertTs($company);
+            DB::table(CompanyHomepageOption::TABLE_NAME)->insertTs($company);
         }
     }
 

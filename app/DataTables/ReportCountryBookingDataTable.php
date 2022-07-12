@@ -149,7 +149,7 @@ class ReportCountryBookingDataTable extends DataTable
         $query->selectRaw('SUM(IF(provider_id = 7, 1, 0)) AS grn_count');
         $query->selectRaw('SUM(provider_id) AS total_count');
 
-        $query->join('countries', 'countries.id', '=', 'bookings.country_id');
+        $query->join(Country::TABLE_NAME, 'countries.id', '=', 'bookings.country_id');
 
         if ($this->request->has('period')) {
             if ($this->request->has('company')) {

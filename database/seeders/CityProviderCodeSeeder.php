@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CityProvider;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -31,6 +32,6 @@ class CityProviderCodeSeeder extends Seeder
             fclose($open);
         }
 
-        DB::table('city_provider')->insertTs($cityProviderCodes);
+        DB::table(CityProvider::TABLE_NAME)->insertTs($cityProviderCodes);
     }
 }

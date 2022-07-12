@@ -46,7 +46,7 @@ class ReportCountryBookingController extends Controller
         $dataTypes = BookingDateType::asSelectArray();
         $platformTypes = BookingPlatform::asSelectArray();
 
-        $platformVersion = DB::table('bookings')
+        $platformVersion = DB::table(Booking::TABLE_NAME)
             ->select('platform_version')
             ->where('platform_version', '!=', '')
             ->whereNotNull('platform_version')

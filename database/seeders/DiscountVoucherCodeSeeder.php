@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\DiscountVoucherCode;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -34,7 +35,7 @@ class DiscountVoucherCodeSeeder extends Seeder
         }
 
         foreach (array_chunk($discount_voucher_codes, 1000) as $discount_voucher_code) {
-            DB::table('discount_voucher_codes')->insertTs($discount_voucher_code);
+            DB::table(DiscountVoucherCode::TABLE_NAME)->insertTs($discount_voucher_code);
         }
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\EnvironmentProvider;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,7 @@ class EnvironmentProviderSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('environment_provider')->insertTs(
+        DB::table(EnvironmentProvider::TABLE_NAME)->insertTs(
             [
                 [
                     'environment_id' => 1,

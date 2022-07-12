@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CountryCurrencyRate;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -69,6 +70,6 @@ class CountryCurrencyRateSeeder extends Seeder
             fclose($open);
         }
 
-        DB::table('country_currency_rates')->insertTs($country_currency_rates);
+        DB::table(CountryCurrencyRate::TABLE_NAME)->insertTs($country_currency_rates);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\HotelProvider;
 use Exception;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -46,7 +47,7 @@ class HotelProviderCodeSeeder extends Seeder
         }
 
         foreach (array_chunk($hotelProviderCodes, 1000) as $hotelProviderCodes) {
-            DB::table('hotel_provider')->insertTs($hotelProviderCodes);
+            DB::table(HotelProvider::TABLE_NAME)->insertTs($hotelProviderCodes);
         }
     }
 }

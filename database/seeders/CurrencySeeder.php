@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Currency;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -27,6 +28,6 @@ class CurrencySeeder extends Seeder
             fclose($open);
         }
 
-        DB::table('currencies')->insertTs($currencies);
+        DB::table(Currency::TABLE_NAME)->insertTs($currencies);
     }
 }

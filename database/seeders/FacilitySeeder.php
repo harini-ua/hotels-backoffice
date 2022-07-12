@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Facility;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,7 @@ class FacilitySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('facilities')->insertTs(
+        DB::table(Facility::TABLE_NAME)->insertTs(
             [
                 [ 'name' => 'ac' ],
                 [ 'name' => 'room_tv' ],

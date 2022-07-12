@@ -2,7 +2,10 @@
 
 namespace App\DataTables;
 
+use App\Models\Booking;
+use App\Models\BookingUser;
 use App\Models\Company;
+use App\Models\CompanyBookingUser;
 use App\Services\Formatter;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -151,14 +154,14 @@ class OverallBookingsDataTable extends DataTable
             , 'companies.created_at'
         ]);
 
-        $query->leftJoin('company_booking_user', 'companies.id', '=', 'company_booking_user.company_id');
-        $query->leftJoin('booking_users', 'company_booking_user.booking_user_id', '=', 'booking_users.id');
-        $query->leftJoin('bookings', 'booking_users.id', '=', 'bookings.user_id');
+        $query->leftJoin(CompanyBookingUser::TABLE_NAME, 'companies.id', '=', 'company_booking_user.company_id');
+        $query->leftJoin(BookingUser::TABLE_NAME, 'company_booking_user.booking_user_id', '=', 'booking_users.id');
+        $query->leftJoin(Booking::TABLE_NAME, 'booking_users.id', '=', 'bookings.user_id');
 
         // Total users by company
         $query->selectRaw('IFNULL(total_user.count, 0) AS total_users');
 
-        $total_user = DB::table('company_booking_user')
+        $total_user = DB::table(CompanyBookingUser::TABLE_NAME)
             ->select(['company_id', DB::raw('COUNT(booking_user_id) AS count'), 'created_at'])
             ->groupBy('company_id');
 
@@ -169,7 +172,7 @@ class OverallBookingsDataTable extends DataTable
         // Total bookings by company
         $query->selectRaw('IFNULL(total_booking.count, 0) AS total_bookings');
 
-        $total_booking = DB::table('bookings')
+        $total_booking = DB::table(Booking::TABLE_NAME)
             ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
         ;
 
@@ -194,7 +197,7 @@ class OverallBookingsDataTable extends DataTable
 
         $query->selectRaw('IFNULL(current_today_user.count, 0) AS current_today_users');
 
-        $current_today_user = DB::table('company_booking_user')
+        $current_today_user = DB::table(CompanyBookingUser::TABLE_NAME)
             ->select(['company_id', DB::raw('COUNT(booking_user_id) AS count'), 'created_at'])
             ->whereDate('created_at', Carbon::now())
             ->groupBy('company_id');
@@ -207,7 +210,7 @@ class OverallBookingsDataTable extends DataTable
 
         $query->selectRaw('IFNULL(current_week_user.count, 0) AS current_week_users');
 
-        $current_week_user = DB::table('company_booking_user')
+        $current_week_user = DB::table(CompanyBookingUser::TABLE_NAME)
             ->select(['company_id', DB::raw('COUNT(booking_user_id) AS count'), 'created_at'])
             ->whereBetween('created_at', [
                 Carbon::now()->startOfWeek(),
@@ -223,7 +226,7 @@ class OverallBookingsDataTable extends DataTable
 
         $query->selectRaw('IFNULL(current_month_user.count, 0) AS current_month_users');
 
-        $current_month_user = DB::table('company_booking_user')
+        $current_month_user = DB::table(CompanyBookingUser::TABLE_NAME)
             ->select(['company_id', DB::raw('COUNT(booking_user_id) AS count'), 'created_at'])
             ->whereBetween('created_at', [
                 Carbon::now()->startOfMonth(),
@@ -239,7 +242,7 @@ class OverallBookingsDataTable extends DataTable
 
         $query->selectRaw('IFNULL(current_year_user.count, 0) AS current_year_users');
 
-        $current_year_user = DB::table('company_booking_user')
+        $current_year_user = DB::table(CompanyBookingUser::TABLE_NAME)
             ->select(['company_id', DB::raw('COUNT(booking_user_id) AS count'), 'created_at'])
             ->whereBetween('created_at', [
                 Carbon::now()->startOfYear(),
@@ -259,7 +262,7 @@ class OverallBookingsDataTable extends DataTable
 
         $query->selectRaw('IFNULL(current_today_booking.count, 0) AS current_today_bookings');
 
-        $current_today_booking = DB::table('bookings')
+        $current_today_booking = DB::table(Booking::TABLE_NAME)
             ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
             ->whereDate('created_at', Carbon::now())
         ;
@@ -272,7 +275,7 @@ class OverallBookingsDataTable extends DataTable
 
         $query->selectRaw('IFNULL(current_week_booking.count, 0) AS current_week_bookings');
 
-        $current_week_booking = DB::table('bookings')
+        $current_week_booking = DB::table(Booking::TABLE_NAME)
             ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
             ->whereBetween('created_at', [
                 Carbon::now()->startOfWeek(),
@@ -288,7 +291,7 @@ class OverallBookingsDataTable extends DataTable
 
         $query->selectRaw('IFNULL(current_month_booking.count, 0) AS current_month_bookings');
 
-        $current_month_booking = DB::table('bookings')
+        $current_month_booking = DB::table(Booking::TABLE_NAME)
             ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
             ->whereBetween('created_at', [
                 Carbon::now()->startOfMonth(),
@@ -304,7 +307,7 @@ class OverallBookingsDataTable extends DataTable
 
         $query->selectRaw('IFNULL(current_year_booking.count, 0) AS current_year_bookings');
 
-        $current_year_booking = DB::table('bookings')
+        $current_year_booking = DB::table(Booking::TABLE_NAME)
             ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
             ->whereBetween('created_at', [
                 Carbon::now()->startOfYear(),
@@ -323,7 +326,7 @@ class OverallBookingsDataTable extends DataTable
 
         $query->selectRaw('IFNULL(previous_today_user.count, 0) AS previous_today_users');
 
-        $previous_today_user = DB::table('company_booking_user')
+        $previous_today_user = DB::table(CompanyBookingUser::TABLE_NAME)
             ->select(['company_id', DB::raw('COUNT(booking_user_id) AS count'), 'created_at'])
             ->whereDate('created_at', Carbon::now()->subYear())
             ->groupBy('company_id');
@@ -336,7 +339,7 @@ class OverallBookingsDataTable extends DataTable
 
         $query->selectRaw('IFNULL(previous_week_user.count, 0) AS previous_week_users');
 
-        $previous_week_user = DB::table('company_booking_user')
+        $previous_week_user = DB::table(CompanyBookingUser::TABLE_NAME)
             ->select(['company_id', DB::raw('COUNT(booking_user_id) AS count'), 'created_at'])
             ->whereBetween('created_at', [
                 Carbon::now()->subYear()->startOfWeek(),
@@ -352,7 +355,7 @@ class OverallBookingsDataTable extends DataTable
 
         $query->selectRaw('IFNULL(previous_month_user.count, 0) AS previous_month_users');
 
-        $previous_month_user = DB::table('company_booking_user')
+        $previous_month_user = DB::table(CompanyBookingUser::TABLE_NAME)
             ->select(['company_id', DB::raw('COUNT(booking_user_id) AS count'), 'created_at'])
             ->whereBetween('created_at', [
                 Carbon::now()->subYear()->startOfMonth(),
@@ -368,7 +371,7 @@ class OverallBookingsDataTable extends DataTable
 
         $query->selectRaw('IFNULL(previous_year_user.count, 0) AS previous_year_users');
 
-        $previous_year_user = DB::table('company_booking_user')
+        $previous_year_user = DB::table(CompanyBookingUser::TABLE_NAME)
             ->select(['company_id', DB::raw('COUNT(booking_user_id) AS count'), 'created_at'])
             ->whereBetween('created_at', [
                 Carbon::now()->subYear()->startOfYear(),
@@ -387,7 +390,7 @@ class OverallBookingsDataTable extends DataTable
 
         $query->selectRaw('IFNULL(previous_today_booking.count, 0) AS previous_today_bookings');
 
-        $previous_today_booking = DB::table('bookings')
+        $previous_today_booking = DB::table(Booking::TABLE_NAME)
             ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
             ->whereDate('created_at', Carbon::now())
         ;
@@ -400,7 +403,7 @@ class OverallBookingsDataTable extends DataTable
 
         $query->selectRaw('IFNULL(previous_week_booking.count, 0) AS previous_week_bookings');
 
-        $previous_week_booking = DB::table('bookings')
+        $previous_week_booking = DB::table(Booking::TABLE_NAME)
             ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
             ->whereBetween('created_at', [
                 Carbon::now()->startOfWeek(),
@@ -416,7 +419,7 @@ class OverallBookingsDataTable extends DataTable
 
         $query->selectRaw('IFNULL(previous_month_booking.count, 0) AS previous_month_bookings');
 
-        $previous_month_booking = DB::table('bookings')
+        $previous_month_booking = DB::table(Booking::TABLE_NAME)
             ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
             ->whereBetween('created_at', [
                 Carbon::now()->startOfMonth(),
@@ -432,7 +435,7 @@ class OverallBookingsDataTable extends DataTable
 
         $query->selectRaw('IFNULL(previous_year_booking.count, 0) AS previous_year_bookings');
 
-        $previous_year_booking = DB::table('bookings')
+        $previous_year_booking = DB::table(Booking::TABLE_NAME)
             ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
             ->whereBetween('created_at', [
                 Carbon::now()->startOfYear(),

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\MealPlan;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,7 @@ class MealPlanSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('meal_plans')->insertTs(
+        DB::table(MealPlan::TABLE_NAME)->insertTs(
             [
                 [
                     'name' => 'All inclusive',

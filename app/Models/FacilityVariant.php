@@ -9,7 +9,7 @@ class FacilityVariant extends Model
 {
     use HasFactory;
 
-    public const TABLE_NAME = 'facilities_variants';
+    public const TABLE_NAME = 'facility_variants';
 
     /**
      * The table associated with the model.

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\PageField;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -31,6 +32,6 @@ class PageFieldSeeder extends Seeder
             fclose($open);
         }
 
-        DB::table('page_fields')->insertTs($page_fields);
+        DB::table(PageField::TABLE_NAME)->insertTs($page_fields);
     }
 }

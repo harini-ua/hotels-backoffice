@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CompanyExtraNight;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -41,7 +42,7 @@ class CompanyExtraNightSeeder extends Seeder
         }
 
         foreach (array_chunk($companies_extra_nights, 1000) as $company_extra_nights) {
-            DB::table('company_extra_nights')->insertTs($company_extra_nights);
+            DB::table(CompanyExtraNight::TABLE_NAME)->insertTs($company_extra_nights);
         }
     }
 }

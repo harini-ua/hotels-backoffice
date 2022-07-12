@@ -10,14 +10,14 @@ class BookingUser extends Model
 {
     use HasRoles, SoftDeletes;
 
-    public const TABLE = 'booking_users';
+    public const TABLE_NAME = 'booking_users';
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = self::TABLE;
+    protected $table = self::TABLE_NAME;
 
     /**
      * The attributes that are mass assignable.

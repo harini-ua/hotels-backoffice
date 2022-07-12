@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Language;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +33,6 @@ class LanguageSeeder extends Seeder
             fclose($open);
         }
 
-        DB::table('languages')->insertTs($languages);
+        DB::table(Language::TABLE_NAME)->insertTs($languages);
     }
 }

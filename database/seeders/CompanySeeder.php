@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Company;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -71,7 +72,7 @@ class CompanySeeder extends Seeder
         }
 
         foreach (array_chunk($companies, 1000) as $company) {
-            DB::table('companies')->insertTs($company);
+            DB::table(Company::TABLE_NAME)->insertTs($company);
         }
     }
 }

@@ -61,7 +61,7 @@ class HotelSeeder extends Seeder
         }
 
         foreach (array_chunk($hotels, 1000) as $hotel_datas) {
-            DB::table('hotels')->insertTs($hotel_datas);
+            DB::table(Hotel::TABLE_NAME)->insertTs($hotel_datas);
         }
     }
 }

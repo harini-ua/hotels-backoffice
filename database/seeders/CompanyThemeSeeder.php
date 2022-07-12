@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CompanyTheme;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -30,6 +31,6 @@ class CompanyThemeSeeder extends Seeder
             fclose($open);
         }
 
-        DB::table('company_themes')->insert($themes);
+        DB::table(CompanyTheme::TABLE_NAME)->insert($themes);
     }
 }

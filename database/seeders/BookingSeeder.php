@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Booking;
 use App\Models\DiscountVoucherCode;
 use App\Models\Hotel;
 use Carbon\Carbon;
@@ -118,7 +119,7 @@ class BookingSeeder extends Seeder
         }
 
         foreach (array_chunk($bookings, 1000) as $booking) {
-            DB::table('bookings')->insert($booking);
+            DB::table(Booking::TABLE_NAME)->insert($booking);
         }
     }
 }

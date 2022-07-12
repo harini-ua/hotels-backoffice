@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\CountryCurrencyRate;
 use App\Models\Currency;
 
 class Converter
@@ -16,7 +17,7 @@ class Converter
     {
         $oldCurrency = Currency::where('code', $oldCurrency)->first();
 
-        $rate = \DB::table('country_currency_rates')
+        $rate = \DB::table(CountryCurrencyRate::TABLE_NAME)
             ->select(
                 \DB::raw('json_extract(rates, "$.'.$newCurrency.'") AS value')
             )

@@ -42,7 +42,7 @@ class CountryController extends Controller
             ['name' => __('All Countries')]
         ];
 
-        $regions = DB::table('countries')
+        $regions = DB::table(Country::TABLE_NAME)
             ->groupBy('region')
             ->pluck('region', 'region');
 

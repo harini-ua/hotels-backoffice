@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Country;
+use App\Models\DistributorCountry;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -18,7 +20,7 @@ class DistributorCountrySeeder extends Seeder
         if (($open = fopen(storage_path('app/seed') . "/distributors.csv", "r")) !== false) {
             while (($data = fgetcsv($open, 0, ',')) !== false) {
                 $country_names = array_filter(explode('|', $data[6]));
-                $countries_ids = DB::table('countries')
+                $countries_ids = DB::table(Country::TABLE_NAME)
                     ->select('id')
                     ->whereIn('name', array_values($country_names))
                     ->get();
@@ -36,7 +38,7 @@ class DistributorCountrySeeder extends Seeder
         }
 
         foreach (array_chunk($distributor_countries, 1000) as $distributor_countries_data) {
-            DB::table('distributor_country')->insertTs($distributor_countries_data);
+            DB::table(DistributorCountry::TABLE_NAME)->insertTs($distributor_countries_data);
         }
     }
 }

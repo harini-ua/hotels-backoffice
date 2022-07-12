@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CompanySaleOfficeCommission;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -40,7 +41,7 @@ class CompanySaleOfficeCommissionSeeder extends Seeder
         }
 
         foreach (array_chunk($companies_sale_office_comissions, 1000) as $company_sale_office_comission) {
-            DB::table('company_sale_office_commission')->insertTs($company_sale_office_comission);
+            DB::table(CompanySaleOfficeCommission::TABLE_NAME)->insertTs($company_sale_office_comission);
         }
     }
 }

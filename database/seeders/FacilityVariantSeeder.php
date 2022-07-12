@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Facility;
+use App\Models\FacilityVariant;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -129,7 +131,11 @@ class FacilityVariantSeeder extends Seeder
         $facilities = [];
         foreach ($facility as $facility_name => $variants) {
             foreach ($variants as $variant) {
-                $facility_id = DB::table('facilities')->select('id')->where('name', $facility_name)->first();
+                $facility_id = DB::table(Facility::TABLE_NAME)
+                    ->select('id')
+                    ->where('name', $facility_name)
+                    ->first();
+
                 $facilities[] = [
                     'facility_id' => $facility_id->id,
                     'name' => strtolower($variant),
@@ -137,6 +143,6 @@ class FacilityVariantSeeder extends Seeder
             }
         }
 
-        DB::table('facility_variants')->insertTs($facilities);
+        DB::table(FacilityVariant::TABLE_NAME)->insertTs($facilities);
     }
 }

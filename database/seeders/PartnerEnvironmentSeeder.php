@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\PartnerEnvironment;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,7 @@ class PartnerEnvironmentSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('partner_environment')->insertTs(
+        DB::table(PartnerEnvironment::TABLE_NAME)->insertTs(
             [
                 [
                     'partner_id' => 1,

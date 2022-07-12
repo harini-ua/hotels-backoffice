@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\MealPlanVariant;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,7 @@ class MealPlanVariantSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('meal_plans_variants')->insertTs(
+        DB::table(MealPlanVariant::TABLE_NAME)->insertTs(
             [
                 [
                     'meal_plan_id' => 1,

@@ -2,7 +2,10 @@
 
 namespace App\DataTables;
 
+use App\Models\Booking;
+use App\Models\BookingUser;
 use App\Models\Company;
+use App\Models\CompanyBookingUser;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Html\Column;
@@ -105,9 +108,9 @@ class SearchingByPeriodDataTable extends DataTable
             , 'companies.created_at'
         ]);
 
-        $query->leftJoin('company_booking_user', 'companies.id', '=', 'company_booking_user.company_id');
-        $query->leftJoin('booking_users', 'company_booking_user.booking_user_id', '=', 'booking_users.id');
-        $query->leftJoin('bookings', 'booking_users.id', '=', 'bookings.user_id');
+        $query->leftJoin(CompanyBookingUser::TABLE_NAME, 'companies.id', '=', 'company_booking_user.company_id');
+        $query->leftJoin(BookingUser::TABLE_NAME, 'company_booking_user.booking_user_id', '=', 'booking_users.id');
+        $query->leftJoin(Booking::TABLE_NAME, 'booking_users.id', '=', 'bookings.user_id');
 
         $this->addFirstPeriodSubSelect($query);
         $this->addSecondPeriodSubSelect($query);
@@ -124,7 +127,7 @@ class SearchingByPeriodDataTable extends DataTable
             // Get total users by first period
             $query->selectRaw('IFNULL(first_period_user.count, 0) AS first_period_users');
 
-            $first_period_user = DB::table('company_booking_user')
+            $first_period_user = DB::table(CompanyBookingUser::TABLE_NAME)
                 ->select(['company_id', DB::raw('COUNT(booking_user_id) AS count'), 'created_at'])
                 ->whereBetween('created_at', $this->firstPeriod)
                 ->groupBy('company_id');
@@ -136,7 +139,7 @@ class SearchingByPeriodDataTable extends DataTable
             // Get total booking by first period
             $query->selectRaw('IFNULL(first_period_booking.count, 0) AS first_period_bookings');
 
-            $first_period_booking = DB::table('bookings')
+            $first_period_booking = DB::table(Booking::TABLE_NAME)
                 ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
                 ->whereBetween('created_at', $this->firstPeriod);
 
@@ -153,7 +156,7 @@ class SearchingByPeriodDataTable extends DataTable
             // Get total users by second period
             $query->selectRaw('IFNULL(second_period_user.count, 0) AS second_period_users');
 
-            $second_period_user = DB::table('company_booking_user')
+            $second_period_user = DB::table(CompanyBookingUser::TABLE_NAME)
                 ->select(['company_id', DB::raw('COUNT(booking_user_id) AS count'), 'created_at'])
                 ->whereBetween('created_at', $this->secondPeriod)
                 ->groupBy('company_id');
@@ -165,7 +168,7 @@ class SearchingByPeriodDataTable extends DataTable
             // Get total booking by second period
             $query->selectRaw('IFNULL(second_period_booking.count, 0) AS second_period_bookings');
 
-            $second_period_booking = DB::table('bookings')
+            $second_period_booking = DB::table(Booking::TABLE_NAME)
                 ->select(['user_id', DB::raw('COUNT(id) AS count'), 'created_at'])
                 ->whereBetween('created_at', $this->secondPeriod);
 

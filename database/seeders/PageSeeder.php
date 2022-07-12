@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Page;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -28,6 +29,6 @@ class PageSeeder extends Seeder
             fclose($open);
         }
 
-        DB::table('pages')->insertTs($pages);
+        DB::table(Page::TABLE_NAME)->insertTs($pages);
     }
 }

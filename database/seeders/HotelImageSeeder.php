@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\HotelImage;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -48,10 +49,10 @@ class HotelImageSeeder extends Seeder
 
         if (count($hotel_images) > 1000) {
             foreach (array_chunk($hotel_images, 1000) as $hotel_image) {
-                DB::table('hotel_images')->insertTs($hotel_image);
+                DB::table(HotelImage::TABLE_NAME)->insertTs($hotel_image);
             }
         } else {
-            DB::table('hotel_images')->insertTs($hotel_images);
+            DB::table(HotelImage::TABLE_NAME)->insertTs($hotel_images);
         }
     }
 }

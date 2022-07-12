@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Provider;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,7 @@ class ProviderSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('providers')->insertTs(
+        DB::table(Provider::TABLE_NAME)->insertTs(
             [
                 [
                     'id' => 1,

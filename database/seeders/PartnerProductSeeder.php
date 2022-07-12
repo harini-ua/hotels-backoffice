@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\PartnerProduct;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -48,6 +49,6 @@ class PartnerProductSeeder extends Seeder
             fclose($open);
         }
 
-        DB::table('partner_products')->insertTs($partner_products);
+        DB::table(PartnerProduct::TABLE_NAME)->insertTs($partner_products);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\FacilityVariant;
+use App\Models\HotelFacility;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +17,7 @@ class HotelFacilitySeeder extends Seeder
     public function run()
     {
         $hotelFacilities = [];
-        $facilities_rows = DB::table('facility_variants')->select('facility_id', 'name')->get();
+        $facilities_rows = DB::table(FacilityVariant::TABLE_NAME)->select('facility_id', 'name')->get();
         $facilities_data = [];
         foreach ($facilities_rows as $facility_data) {
             $facilities_data[$facility_data->facility_id][] = $facility_data->name;
@@ -58,10 +60,10 @@ class HotelFacilitySeeder extends Seeder
 
         if (count($hotelFacilities) > 1000) {
             foreach (array_chunk($hotelFacilities, 1000) as $sliceHotelFacilities) {
-                DB::table('hotel_facility')->insertTs($sliceHotelFacilities);
+                DB::table(HotelFacility::TABLE_NAME)->insertTs($sliceHotelFacilities);
             }
         } else {
-            DB::table('hotel_facility')->insertTs($hotelFacilities);
+            DB::table(HotelFacility::TABLE_NAME)->insertTs($hotelFacilities);
         }
     }
 }

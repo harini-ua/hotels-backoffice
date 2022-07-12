@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\PageFieldTranstation;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -45,7 +46,7 @@ class PageFieldTranslationSeeder extends Seeder
             fclose($open);
         }
         foreach (array_chunk($page_field_translations, 1000) as $translations) {
-            DB::table('page_field_translations')->insertTs($translations);
+            DB::table(PageFieldTranstation::TABLE_NAME)->insertTs($translations);
         }
     }
 }

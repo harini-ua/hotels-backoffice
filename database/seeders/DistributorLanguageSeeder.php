@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\DistributorLanguage;
+use App\Models\Language;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +21,7 @@ class DistributorLanguageSeeder extends Seeder
             while (($data = fgetcsv($open, 0, ',')) !== false) {
                 $languages = array_filter(explode(',', trim($data[7])));
                 if(!empty($languages)) {
-                    $languages_ids = DB::table('languages')
+                    $languages_ids = DB::table(Language::TABLE_NAME)
                         ->select('id')
                         ->whereIn('name', array_values($languages))
                         ->get();
@@ -39,7 +41,7 @@ class DistributorLanguageSeeder extends Seeder
         }
 
         foreach (array_chunk($distributor_languages, 1000) as $distributor_languages_data) {
-            DB::table('distributor_language')->insertTs($distributor_languages_data);
+            DB::table(DistributorLanguage::TABLE_NAME)->insertTs($distributor_languages_data);
         }
     }
 }

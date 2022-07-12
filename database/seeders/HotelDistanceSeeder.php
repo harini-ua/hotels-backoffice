@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\HotelDistance;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -33,7 +34,7 @@ class HotelDistanceSeeder extends Seeder
         }
 
         foreach (array_chunk($hotel_distances, 1000) as $hotel_distance) {
-            DB::table('hotel_distances')->insertTs($hotel_distance);
+            DB::table(HotelDistance::TABLE_NAME)->insertTs($hotel_distance);
         }
     }
 }

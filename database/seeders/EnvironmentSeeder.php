@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Environment;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,7 @@ class EnvironmentSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('environments')->insertTs(
+        DB::table(Environment::TABLE_NAME)->insertTs(
             [
                 [
                     'name' => 'sandbox',

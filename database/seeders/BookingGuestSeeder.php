@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BookingGuest;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -45,7 +46,7 @@ class BookingGuestSeeder extends Seeder
         }
 
         foreach (array_chunk($booking_guests, 1000) as $booking_guest) {
-            DB::table('booking_guests')->insertTs($booking_guest);
+            DB::table(BookingGuest::TABLE_NAME)->insertTs($booking_guest);
         }
     }
 }

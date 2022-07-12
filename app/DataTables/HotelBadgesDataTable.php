@@ -2,6 +2,8 @@
 
 namespace App\DataTables;
 
+use App\Models\City;
+use App\Models\Country;
 use App\Models\Hotel;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -63,8 +65,8 @@ class HotelBadgesDataTable extends DataTable
                 $query->where('h.id', 0);
             }
             if ($this->request->has('country')) {
-                $query->join('cities', 'cities.id', '=', 'h.city_id');
-                $query->join('countries', 'countries.id', '=', 'cities.country_id');
+                $query->join(City::TABLE_NAME, 'cities.id', '=', 'h.city_id');
+                $query->join(Country::TABLE_NAME, 'countries.id', '=', 'cities.country_id');
                 $query->where('countries.id', $this->request->get('country'));
             }
             if ($this->request->has('city')) {

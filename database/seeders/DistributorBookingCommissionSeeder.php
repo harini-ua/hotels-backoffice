@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\DistributorBookingCommission;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -52,7 +53,7 @@ class DistributorBookingCommissionSeeder extends Seeder
         }
 
         foreach (array_chunk($distributors_booking_comissions, 1000) as $distributor_booking_comission) {
-            DB::table('distributor_booking_commission')->insertTs($distributor_booking_comission);
+            DB::table(DistributorBookingCommission::TABLE_NAME)->insertTs($distributor_booking_comission);
         }
     }
 }

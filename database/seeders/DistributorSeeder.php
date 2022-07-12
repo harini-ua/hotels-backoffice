@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Distributor;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -32,7 +33,7 @@ class DistributorSeeder extends Seeder
         }
 
         foreach (array_chunk($distributors, 1000) as $distributor) {
-            DB::table('distributors')->insertTs($distributor);
+            DB::table(Distributor::TABLE_NAME)->insertTs($distributor);
         }
     }
 }
