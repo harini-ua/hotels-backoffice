@@ -6,6 +6,7 @@
     @csrf
     @method('PUT')
     @if($company)<input type="hidden" name="company_id" value="{{ $company->id }}"/>@endif
+    @if($company)<input type="hidden" name="language_id" value="{{ $company->language->id }}"/>@endif
     <div @if($company) class="m-b-10">
         <div class="row align-items-center">
             <div class="col-md-10 col-lg-10">
@@ -54,9 +55,6 @@
                                    class="form-control-plaintext"/>
                         </th>
                         <td>
-                            <input type="hidden"
-                                   name="translations[{{$key}}][language_id]"
-                                   value="{{ $company->language->id }}"/>
                             @switch($item->type)
                                 @case(\App\Enums\FieldType::TEXT)
                                 @case(\App\Enums\FieldType::BUTTON)

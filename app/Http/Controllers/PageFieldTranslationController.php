@@ -88,29 +88,6 @@ class PageFieldTranslationController extends Controller
 
             $query->groupBy('field_id');
 
-//            dd($query->get());
-//
-//            $query = PageField::leftJoin(PageFieldTranstation::TABLE_NAME, function($join) {
-//                $join->on('page_fields.id', '=', 'page_field_translations.field_id');
-//            });
-//
-//            $query->where('page_fields.page_id', $request->get('page'));
-//            $query->where('language_id', $request->get('language'));
-//
-//            $query->select([
-//                'page_field_translations.id AS id',
-//                'page_fields.id AS field_id',
-//                'page_fields.page_id AS page_id',
-//                'page_field_translations.name',
-//                'page_field_translations.language_id AS language_id',
-//                'page_field_translations.translation',
-//                'page_fields.is_mobile AS group',
-//                'page_fields.type AS type',
-//                'page_fields.max_length AS max_length',
-//            ]);
-
-//            $query->groupBy('field_id');
-
             $result = $query->get();
             $count = $result->count();
         }

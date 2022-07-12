@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyFieldStoreRequest;
+use App\Http\Requests\CompanyFieldTranslationRequest;
 use App\Models\Company;
 use App\Models\CompanyField;
 use App\Models\CompanyFieldTranslation;
+use App\Models\PageFieldTranstation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -48,22 +50,30 @@ class CompanyFieldTranslationController extends Controller
             $company = Company::find($request->get('company'));
             $company->load('language');
 
-            $query = CompanyField::leftJoin(CompanyFieldTranslation::TABLE_NAME, function($join) {
-                $join->on('company_fields.id', '=', 'company_field_translations.field_id');
-            });
-
-            $query->where('company_id', $request->get('company'));
-
-            $query->select([
-                'company_field_translations.id AS id',
+            $query = CompanyField::select([
                 'company_fields.id AS field_id',
-                'company_field_translations.company_id AS company_id',
                 'company_fields.name AS name',
-                'company_field_translations.translation',
+                'translation.value AS translation',
                 'company_fields.is_mobile AS group',
                 'company_fields.type AS type',
                 'company_fields.max_length AS max_length',
             ]);
+
+            $query->selectRaw($company->id.' AS company_id');
+
+            $translation = DB::table(CompanyFieldTranslation::TABLE_NAME)
+                ->select([
+                    'field_id',
+                    'company_id',
+                    DB::raw('translation AS value'),
+                ])
+                ->where('company_id', $company->id);
+
+            $query->leftJoinSub($translation, 'translation', static function($join) {
+                $join->on('company_fields.id', '=', 'translation.field_id');
+            });
+
+            $query->groupBy('field_id');
 
             $result = $query->get();
             $count = $result->count();
@@ -84,12 +94,12 @@ class CompanyFieldTranslationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param CompanyFieldStoreRequest $request
+     * @param CompanyFieldTranslationRequest $request
      *
      * @return RedirectResponse
      * @throws \Exception
      */
-    public function update(CompanyFieldStoreRequest $request)
+    public function update(CompanyFieldTranslationRequest $request)
     {
         try {
             DB::beginTransaction();
@@ -100,6 +110,7 @@ class CompanyFieldTranslationController extends Controller
                 CompanyFieldTranslation::updateOrCreate([
                     'field_id' => $item['field_id'],
                     'company_id' => $request->get('company_id'),
+                    'language_id' => $request->get('language_id'),
                 ], [
                     'name' => $item['name'],
                     'translation' => $item['translation'],

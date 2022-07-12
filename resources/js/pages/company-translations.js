@@ -10,19 +10,7 @@ jQuery(document).ready(function ($) {
             }
         };
 
-        $('textarea.summernote-editor').summernote({
-            height: 150,
-            minHeight: null,
-            maxHeight: null,
-            toolbar: [
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['fontsize', ['fontsize']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['height', ['height']],
-                ['insert', ['link']],
-            ]
-        });
+        initEditor()
 
         forms.btn.submit.on('click', (e) => {
             e.preventDefault();
@@ -43,7 +31,7 @@ jQuery(document).ready(function ($) {
         });
 
         $(document).on('pjax:complete', function() {
-            //..
+            initEditor()
         });
 
         function makeUrl(options) {
@@ -52,6 +40,22 @@ jQuery(document).ready(function ($) {
                 url.searchParams.set(name, options.params[name]);
             }
             return url.href;
+        }
+
+        function initEditor() {
+            $('textarea.summernote-editor').summernote({
+                height: 150,
+                minHeight: null,
+                maxHeight: null,
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['insert', ['link']],
+                ]
+            });
         }
     });
 
