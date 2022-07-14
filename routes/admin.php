@@ -315,7 +315,11 @@ Route::middleware('auth')->group(function () {
             /** ----- ------ ----- RESORT FEE */
             Route::prefix('resort-fee')->as('resort-fee.')->group(function () {
                 Route::get('/', [ResortFeeTranslationController::class, 'index'])->name('index');
-            });
+                Route::put('/', [ResortFeeTranslationController::class, 'update'])->name('update');
+
+                Route::get('create', [ResortFeeTranslationController::class, 'create'])->name('create');
+                Route::post('store', [ResortFeeTranslationController::class, 'store'])->name('store');
+            }) ;
         });
 
         /** ----- ------ ----- SETTINGS */

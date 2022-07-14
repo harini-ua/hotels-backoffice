@@ -24,6 +24,31 @@ class ResortFeeTranslation extends Model
      * @var array
      */
     protected $fillable = [
-        'company_id', 'city_id', 'language_id', 'translation'
+        'country_id', 'city_id', 'language_id', 'translation'
     ];
+
+    /**
+     * Get the country that owns the resort fee translation.
+     */
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    /**
+     * Get the city that owns the resort fee translation.
+     */
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    /**
+     * Get the language that owns the resort fee translation.
+     */
+    public function language()
+    {
+        return $this->belongsTo(Language::class);
+
+    }
 }
