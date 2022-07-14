@@ -27,8 +27,8 @@
             <tr>
                 <th scope="col">{{ __('Country') }}</th>
                 <th scope="col">{{ __('City') }}</th>
-                <th scope="col">{{ __('English') }}</th>
-                <th scope="col">{{ __('Translation') }}</th>
+                <th scope="col">@if($language->id !== 1){{ __('English') }}@else{{ __('Resort Fee') }}@endif</th>
+                <th @if($language->id !== 1) scope="col">{{ __('Translation') }}</th @endif>
             </tr>
         </thead>
         <tbody>
@@ -55,13 +55,13 @@
                                value="{{ $item->name }}"
                                class="form-control-plaintext"/>
                     </th>
-                    <td>
+                    <td @if($language->id !== 1)>
                             <textarea
                                 row="5"
                                 name="translations[{{$key}}][translation]"
                                 class="form-control textarea-field"
                             >{{ $item->translation }}</textarea>
-                    </td>
+                    </td @endif>
                 </tr>
             @empty
                 <tr>
