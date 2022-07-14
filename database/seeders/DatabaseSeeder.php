@@ -62,5 +62,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PageFieldTranslationSeeder::class);
         $this->call(CompanyFieldSeeder::class);
         //$this->call(CompanyFieldTranslationSeeder::class);
+        //$this->call(ResortFeeTranslationSeeder::class);
     }
 }
