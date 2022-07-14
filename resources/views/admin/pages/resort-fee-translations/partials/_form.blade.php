@@ -27,8 +27,13 @@
             <tr>
                 <th scope="col">{{ __('Country') }}</th>
                 <th scope="col">{{ __('City') }}</th>
+                @if($language)
                 <th scope="col">@if($language->id !== 1){{ __('English') }}@else{{ __('Resort Fee') }}@endif</th>
                 <th @if($language->id !== 1) scope="col">{{ __('Translation') }}</th @endif>
+                @else
+                    <th scope="col">{{ __('English') }}</th>
+                    <th scope="col">{{ __('Translation') }}</th>
+                @endif
             </tr>
         </thead>
         <tbody>
