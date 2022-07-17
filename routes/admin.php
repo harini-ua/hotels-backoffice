@@ -364,5 +364,12 @@ Route::middleware('auth')->group(function () {
             /** ----- ------ ----- IP WHITE LIST */
             Route::resource('ip-filter', IpFilterController::class)->except(['show']);
         });
+
+        /** ----- ------ ----- FOR ADMIN SUPPORTED */
+        Route::prefix('admin')->as('admin.')->group(function () {
+            Route::get('/phpinfo', function () {
+                phpinfo(-1);
+            });
+        });
     });
 });
