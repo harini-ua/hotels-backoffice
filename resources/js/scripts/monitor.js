@@ -5,6 +5,7 @@ $.ajaxSetup({
     }
 });
 
+// https://pusher.com/tutorials/server-health-monitor-laravel/
 // subscribe to the live-monitor channel and listen to the finished.check event
 window.Echo.channel('live-monitor')
     .listen('.finished.check', (e) => {
