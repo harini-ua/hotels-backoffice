@@ -1,4 +1,5 @@
 <?php
+
 namespace App\SystemChecks;
 
 use Spatie\ServerMonitor\CheckDefinitions\CheckDefinition;
