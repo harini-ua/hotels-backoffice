@@ -112,3 +112,12 @@ i.flag {
     margin-top: 1px;
     transition: transform 0.2s;
 }
+
+.auth-box.error-box {
+    .error-image {
+        margin: 0 !important;
+    }
+}
+.error-image {
+    width: 400px;
+}
