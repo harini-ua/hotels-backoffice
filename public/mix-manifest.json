@@ -83,6 +83,7 @@
     "/js/scripts/datatable.js": "/js/scripts/datatable.js",
     "/js/scripts/filters.js": "/js/scripts/filters.js",
     "/js/scripts/form.js": "/js/scripts/form.js",
+    "/js/scripts/monitor.js": "/js/scripts/monitor.js",
     "/js/scripts/password.js": "/js/scripts/password.js",
     "/js/scripts/related-select.js": "/js/scripts/related-select.js"
 }

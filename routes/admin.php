@@ -35,6 +35,7 @@ use App\Http\Controllers\DistributorUserController;
 use App\Http\Controllers\HotelBadgeController;
 use App\Http\Controllers\IpFilterController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\MonitorController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\OverallBookingsController;
 use App\Http\Controllers\PageFieldController;
@@ -367,8 +368,13 @@ Route::middleware('auth')->group(function () {
 
         /** ----- ------ ----- FOR ADMIN SUPPORTED */
         Route::prefix('admin')->as('admin.')->group(function () {
-            Route::get('/phpinfo', function () {
-                phpinfo(-1);
+            Route::middleware('role:admin')->group(function () {
+                Route::get('/phpinfo', function () {
+                    phpinfo(-1);
+                });
+
+                Route::get('/monitor', [MonitorController::class, 'index']);
+                Route::post('/page-visibility', [MonitorController::class, 'updatePageVisibility']);
             });
         });
     });
