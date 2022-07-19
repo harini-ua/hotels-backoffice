@@ -15,6 +15,7 @@
         "arrilot/laravel-widgets": "^3.13",
         "bensampo/laravel-enum": "^4.2",
         "doctrine/dbal": "^3.3",
+        "dragon-code/laravel-migration-actions": "^2.8",
         "elasticsearch/elasticsearch": "^7.17",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
