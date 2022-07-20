@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'account' => [
+        'deactivation_in_days' => env('DEACTIVATION_IN_DAYS', false),
+    ],
     'dateformat' => 'm/d/Y H:i:s',
     'ip_verify' => env('ADMIN_IP_VERIFY', false),
     'date' => [
