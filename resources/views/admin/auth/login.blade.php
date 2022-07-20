@@ -44,8 +44,14 @@
                                 <div class="form-row mb-3">
                                     <div class="col-sm-6">
                                         <div class="custom-control custom-checkbox text-left">
-                                            <input type="checkbox" class="custom-control-input" id="rememberme" {{ old('remember') ? 'checked' : '' }}>
-                                            <label class="custom-control-label font-14" for="rememberme">{{__('Remember Me')}}</label>
+                                            <input
+                                                type="checkbox"
+                                                id="remember"
+                                                name="remember"
+                                                class="custom-control-input"
+                                                {{ old('remember') ? 'checked' : '' }}
+                                            >
+                                            <label class="custom-control-label font-14" for="remember">{{__('Remember Me')}}</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
