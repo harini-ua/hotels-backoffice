@@ -21,16 +21,18 @@ class CheckDeactivated
         /** @var User $user */
         $user = auth()->user();
 
-        $created = Carbon::parse($user->created_at);
-        $lastLogin = Carbon::parse($user->last_login_at);
+        if ($user) {
+            $created = Carbon::parse($user->created_at);
+            $lastLogin = Carbon::parse($user->last_login_at);
 
-        $days = config('admin.account.deactivation_in_days');
+            $days = config('admin.account.deactivation_in_days');
 
-        if ($days && $created->diffInDays($lastLogin) >= $days) {
-            auth()->logout();
+            if ($days && $created->diffInDays($lastLogin) >= $days) {
+                auth()->logout();
 
-            return redirect()->route('login')
-                ->withMessage(__('This account has been deactivated!'));
+                return redirect()->route('login')
+                    ->withMessage(__('This account has been deactivated!'));
+            }
         }
 
         return $next($request);
