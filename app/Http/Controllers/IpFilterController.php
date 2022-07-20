@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\IpFilterDataTable;
+use App\Enums\IpFilterType;
 use App\Http\Requests\IpFilterStoreRequest;
 use App\Http\Requests\IpFilterUpdateRequest;
 use App\Models\IpFilter;
@@ -54,7 +55,9 @@ class IpFilterController extends Controller
             ['name' => __('Create')]
         ];
 
-        return view('admin.pages.ip-filter.create', compact('breadcrumbs',));
+        $types = IpFilterType::asSelectArray();
+
+        return view('admin.pages.ip-filter.create', compact('breadcrumbs', 'types'));
     }
 
     /**
@@ -74,7 +77,7 @@ class IpFilterController extends Controller
 
             $ipFilter->expiry = null;
             if ($request->has('is_expiry')) {
-                $ipFilter->expiry = $request->get('expiry');
+                $ipFilter->expiry = Carbon::createFromFormat('d/m/Y', $request->get('expiry'));
             }
 
             $ipFilter->creator_id = \Auth::user()->id;
@@ -82,7 +85,10 @@ class IpFilterController extends Controller
 
             DB::commit();
 
-            alert()->success($ipFilter->ip_address, __('IP Filter created has been successful.'));
+            alert()->success(
+                $ipFilter->ip_address,
+                __('IP address have been successfully added to the') . IpFilterType::getDescription($ipFilter->type)
+            );
         } catch (\PDOException $e) {
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();
@@ -111,8 +117,10 @@ class IpFilterController extends Controller
             ['href' => route('settings.ip-filter.create'), 'icon' => 'plus', 'name' => __('Add IP')]
         ];
 
+        $types = IpFilterType::asSelectArray();
+
         return view('admin.pages.ip-filter.update',
-            compact('breadcrumbs', 'actions', 'ipFilter')
+            compact('breadcrumbs', 'actions', 'ipFilter', 'types')
         );
     }
 
@@ -142,7 +150,7 @@ class IpFilterController extends Controller
 
             DB::commit();
 
-            alert()->success($ipFilter->ip_address, __('IP Filter updated has been successful.'));
+            alert()->success($ipFilter->ip_address, __('IP address updated has been successful.'));
         } catch (\PDOException $e) {
             alert()->warning(__('Woops!'), __('Something went wrong, try again.'));
             DB::rollBack();

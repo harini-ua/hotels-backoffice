@@ -15,6 +15,7 @@ class CreateIpFilterTable extends Migration
     {
         Schema::create('ip_filter', function (Blueprint $table) {
             $table->id();
+            $table->smallInteger('type')->default(\App\Enums\IpFilterType::BLACK);
             $table->string('ip_address', 20);
             $table->string('comment');
             $table->unsignedBigInteger('creator_id');

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,7 +25,7 @@ class IpFilter extends Model
      * @var array
      */
     protected $fillable = [
-        'ip_address', 'comment', 'creator_id', 'expiry',
+        'type', 'ip_address', 'comment', 'creator_id', 'expiry',
     ];
 
     /**

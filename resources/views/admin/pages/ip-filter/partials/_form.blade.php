@@ -7,6 +7,24 @@
     @csrf
     @if(isset($model)) @method('PUT') @endif
     <div class="form-group row">
+        <label for="type" class="col-sm-2 col-form-label">{{ __('Type List') }} *</label>
+        <div class="col-sm-4">
+            <select id="type" name="type"
+                    class="form-control select2-single @error('type') is-invalid @enderror"
+            >
+                @foreach($types as $id => $type)
+                    <option
+                        value="{{ $id }}"
+                        @if($model && $model->type == $id) selected @endif
+                    >{{ $type }}</option>
+                @endforeach
+            </select>
+            @error('type')
+            <small class="form-text text-danger" role="alert">{{ $message }}</small>
+            @enderror
+        </div>
+    </div>
+    <div class="form-group row">
         <label for="ip_address" class="col-sm-2 col-form-label">{{ __('IP Address') }} *</label>
         <div class="col-sm-4">
             <input type="text" id="ip_address" name="ip_address"

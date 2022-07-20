@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\IpFilterType;
+use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -25,6 +27,7 @@ class IpFilterStoreRequest extends FormRequest
     public function rules()
     {
         return [
+            'type' => [ 'required', new EnumValue(IpFilterType::class, false) ],
             'ip_address' => [ 'required', 'ip', Rule::unique('ip_filter') ],
             'comment' => 'nullable',
             'is_expiry' => 'nullable|boolean',

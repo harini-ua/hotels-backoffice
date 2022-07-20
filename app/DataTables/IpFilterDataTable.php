@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Enums\IpFilterType;
 use App\Models\IpFilter;
 use App\Services\Formatter;
 use Yajra\DataTables\Html\Button;
@@ -19,6 +20,13 @@ class IpFilterDataTable extends DataTable
     public function dataTable($query)
     {
         $dataTable = datatables()->eloquent($query);
+
+        $dataTable->addColumn('type', function (IpFilter $model) {
+            return view('admin.datatables.view-status', [
+                'status' => IpFilterType::getDescription($model->type),
+                'class' => IpFilterType::getColor($model->type, 'class'),
+            ]);
+        });
 
         $dataTable->addColumn('ip_address', function (IpFilter $model) {
             return $model->ip_address;
@@ -57,6 +65,10 @@ class IpFilterDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
+        $dataTable->orderColumn('type', static function ($query, $order) {
+            $query->orderBy('type', $order);
+        });
+
         $dataTable->orderColumn('expiry', static function ($query, $order) {
             $query->orderBy('expiry', $order);
         });
@@ -127,6 +139,8 @@ class IpFilterDataTable extends DataTable
             Column::make('ip_address')->title(__('IP Address'))
                 ->width(150)
                 ->orderable(false),
+            Column::make('type')->title(__('Type List'))
+                ->width(150),
             Column::make('comment')->title(__('Comment'))->orderable(false),
             Column::make('creator_id')->title(__('Creator'))
                 ->width(250)
