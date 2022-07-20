@@ -33,6 +33,7 @@ use App\Http\Controllers\DiscountVoucherController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\DistributorUserController;
 use App\Http\Controllers\HotelBadgeController;
+use App\Http\Controllers\HotelController;
 use App\Http\Controllers\IpFilterController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MonitorController;
@@ -223,6 +224,12 @@ Route::middleware('auth')->group(function () {
             Route::prefix('searching-period')->as('searching-period.')->group(function () {
                 Route::get('/', [SearchingByPeriodController::class, 'index'])->name('index');
             });
+        });
+
+        /** ----- ------ ----- HOTELS */
+        Route::resource('hotels', HotelController::class)->only(['index', 'edit', 'update']);
+        Route::prefix('hotels')->as('hotels.')->group(function () {
+
         });
 
         /** ----- ------ ----- REPORTS */
