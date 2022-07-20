@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\IpFilter;
+use Illuminate\Support\Facades\App;
 use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable as DefaultRedirectIfTwoFactorAuthenticatable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 
@@ -39,10 +40,6 @@ class RedirectIfTwoFactorAuthenticatable extends DefaultRedirectIfTwoFactorAuthe
     {
         $whiteIps = IpFilter::all()->pluck('ip_address')->toArray();
 
-        if (in_array($request->ip(), $whiteIps, true)) {
-            return false;
-        }
-
-        return true;
+        return !(App::environment('local') || in_array($request->ip(), $whiteIps, true));
     }
 }
