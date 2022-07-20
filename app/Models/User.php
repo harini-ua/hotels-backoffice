@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasRoles, Notifiable, SoftDeletes;
+    use TwoFactorAuthenticatable, HasRoles, Notifiable, SoftDeletes;
 
     public const TABLE_NAME = 'users';
 

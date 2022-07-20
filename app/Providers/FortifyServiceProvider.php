@@ -64,8 +64,24 @@ class FortifyServiceProvider extends ServiceProvider
             }
         });
 
+        Fortify::loginThrough(function ($request) {
+            return [
+                \App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable::class,
+                \Laravel\Fortify\Actions\AttemptToAuthenticate::class,
+                \Laravel\Fortify\Actions\PrepareAuthenticatedSession::class,
+            ];
+        });
+
         RateLimiter::for('two-factor', function (Request $request) {
-            return Limit::perMinute(5)->by($request->session()->get('login.id'));
+            return Limit::perMinute(10)->by($request->session()->get('login.id'));
+        });
+
+        Fortify::confirmPasswordView(function () {
+            return view('admin.auth.passwords.confirm');
+        });
+
+        Fortify::twoFactorChallengeView(function () {
+            return view('admin.auth.two-factor');
         });
     }
 }

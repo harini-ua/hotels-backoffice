@@ -5,6 +5,9 @@ namespace Database\Seeders;
 use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\App;
+use Laravel\Fortify\Actions\EnableTwoFactorAuthentication;
+use Laravel\Fortify\Contracts\TwoFactorAuthenticationProvider;
 
 class UserSeeder extends Seeder
 {
@@ -49,8 +52,18 @@ class UserSeeder extends Seeder
                     $user->master = $user_data['role'] === UserRole::DISTRIBUTOR ? 1 :0;
 
                     $user->save();
-                    $user->assignRole($user_data['role'] == 'super' ? UserRole::ADMIN :
-                        ($user_data['role'] == 'whitelabel' ? UserRole::EMPLOYEE : UserRole::DISTRIBUTOR));
+
+                    if ($user_data['role'] === 'super') {
+                        $user->assignRole(UserRole::ADMIN);
+
+//                        $tfa = App::make('Laravel\Fortify\Contracts\TwoFactorAuthenticationProvider');
+//                        $enable = new EnableTwoFactorAuthentication($tfa);
+//                        $enable($user);
+                    } elseif ($user_data['role'] === 'whitelabel') {
+                        $user->assignRole(UserRole::EMPLOYEE);
+                    } else {
+                        $user->assignRole(UserRole::DISTRIBUTOR);
+                    }
                 }
             }
         }
