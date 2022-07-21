@@ -39,11 +39,13 @@ class HotelsDataTable extends DataTable
         $this->setFilterColumns($dataTable);
 
         $dataTable->filter(function ($query) {
-            if ($this->request->has('country')) {
-                $query->where('country_id', $this->request->get('country'));
-            }
-            if ($this->request->has('city')) {
-                $query->where('city_id', $this->request->get('city'));
+            if (!$this->request->hasAny(['country', 'city'])) {
+                // Making the result empty on purpose
+                $query->where('id', 0);
+            } else {
+                if ($this->request->has('city')) {
+                    $query->where('city_id', $this->request->get('city'));
+                }
             }
         }, true);
 

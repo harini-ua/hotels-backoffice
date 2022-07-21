@@ -15,7 +15,10 @@
     <div class="contentbar hotels-list-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <x-filter>
+                <x-filter
+                    title="{{ __('Hotel Filter') }}"
+                    :collapse="false"
+                >
                     @include('admin.pages.hotels.partials._filter')
                 </x-filter>
             </div>
