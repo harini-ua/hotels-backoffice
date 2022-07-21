@@ -68,7 +68,8 @@ class Hotel extends Model
         return $this
             ->belongsToMany(Provider::class)
             ->using(HotelProvider::class)
-            ->withPivot((new HotelProvider())->getFillable());
+            ->withPivot((new HotelProvider())->getFillable())
+            ;
     }
 
     /**

@@ -32,8 +32,6 @@ class HotelSeeder extends Seeder
 
         if (($open = fopen(storage_path('app/seed') . "/hotels.csv", "r")) !== false) {
             while (($data = fgetcsv($open, 0, ',')) !== false) {
-//                var_dump($data[20]);
-//                exit();
                 $hotels[] = [
                     'id' => (int)$data[0],
                     'city_id' => (int)$data[1],

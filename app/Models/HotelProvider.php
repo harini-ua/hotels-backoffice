@@ -21,6 +21,6 @@ class HotelProvider extends Pivot
      * @var array
      */
     protected $fillable = [
-        'provider_hotel_code', 'tti_code', 'giata_code', 'status', 'blacklisted', 'hotel_name',
+        'hotel_id', 'provider_id', 'provider_hotel_code', 'tti_code', 'giata_code', 'status', 'blacklisted', 'hotel_name',
     ];
 }
