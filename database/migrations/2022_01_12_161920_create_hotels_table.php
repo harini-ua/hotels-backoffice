@@ -22,7 +22,6 @@ class CreateHotelsTable extends Migration
                 ->comment('0-active, 1-blacklisted');
             $table->smallInteger('rating')->default(0);
 
-            // TODO: Need to be clarified
             $table->smallInteger('popularity')->default(0);
             $table->smallInteger('priority_rating')->default(0);
             $table->smallInteger('recommended')->default(0);
@@ -38,7 +37,13 @@ class CreateHotelsTable extends Migration
             $table->longText('description')->nullable();
             $table->string('address')->nullable();
             $table->string('postal_code')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('fax')->nullable();
+            $table->string('website')->nullable();
             $table->point('position')->nullable();
+            $table->string('located')->nullable();
+            $table->string('thumbnail_image')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

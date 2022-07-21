@@ -3,6 +3,9 @@
 @section('title',  __('Update Hotel'))
 
 @section('style')
+    <link href="{{ asset('assets/plugins/slick/slick.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/plugins/slick/slick-theme.css') }}" rel="stylesheet" type="text/css">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/hotels.css') }}">
 @endsection
 
@@ -16,9 +19,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col s12">
-                                @include('admin.pages.hotels.partials._form')
-                            </div>
+                            @include('admin.pages.hotels.partials._form')
                         </div>
                     </div>
                 </div>
@@ -28,5 +29,6 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('assets/plugins/slick/slick.min.js') }}"></script>
     <script src="{{asset('js/pages/hotels.js')}}"></script>
 @endsection

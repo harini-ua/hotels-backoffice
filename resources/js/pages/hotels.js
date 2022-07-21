@@ -60,4 +60,23 @@ jQuery(document).ready(function ($) {
         });
     });
 
+    $('.hotels-edit-wrapper').each(function () {
+        const $this = $(this);
+
+        const forms = {
+            thumbnail_image: $this.find('#thumbnail_image'),
+        };
+
+        forms.thumbnail_image.on('change', function() {
+            const [file] = this.files;
+
+            if (file) {
+                $(this).closest('.form-group')
+                    .find('img.preview')
+                    .attr("src", URL.createObjectURL(file))
+                    .removeClass('disable');
+            }
+        });
+    });
+
 });

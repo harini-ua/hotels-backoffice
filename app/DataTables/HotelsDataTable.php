@@ -99,6 +99,10 @@ class HotelsDataTable extends DataTable
         $dataTable->filterColumn('name', static function ($query, $keyword) {
             $query->where('name', 'like', "%$keyword%");
         });
+
+        $dataTable->filterColumn('tti_code', static function ($query, $keyword) {
+            $query->where('tti_code', 'like', "%$keyword%");
+        });
     }
 
     /**
