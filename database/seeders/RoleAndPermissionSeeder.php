@@ -18,14 +18,16 @@ class RoleAndPermissionSeeder extends Seeder
      */
     public function run()
     {
-        $createAdmin = Permission::create(['name' => 'create admin', 'guard_name' => 'web']);
-        $editProfile = Permission::create(['name' => 'edit profile', 'guard_name' => 'web']);
+        $createAdmin = Permission::create(['name' => \App\Enums\Permission::CTREATE_ADMIN, 'guard_name' => 'web']);
+        $editProfile = Permission::create(['name' => \App\Enums\Permission::EDIT_PROFILE, 'guard_name' => 'web']);
+        $editHotel = Permission::create(['name' => \App\Enums\Permission::EDIT_HOTEL, 'guard_name' => 'web']);
 
         $admin = Role::create(['name' => UserRole::ADMIN, 'guard_name' => 'web']);
 
         $admin->syncPermissions([
             $createAdmin,
             $editProfile,
+            $editHotel
         ]);
 
         $distributor = Role::create(['name' => UserRole::DISTRIBUTOR, 'guard_name' => 'web']);
@@ -48,6 +50,6 @@ class RoleAndPermissionSeeder extends Seeder
         }
 
         $booking = Role::create(['name' => UserRole::BOOKING, 'guard_name' => 'api']);
-        Permission::create(['guard_name' => 'api', 'name' => 'invoice allowed']);
+        $invoiceAllowed = Permission::create(['name' => \App\Enums\Permission::INVOICE_ALLOWED, 'guard_name' => 'api']);
     }
 }

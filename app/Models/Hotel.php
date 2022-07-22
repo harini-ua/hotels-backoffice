@@ -11,6 +11,12 @@ class Hotel extends Model
 {
     use HasFactory, Searchable, SpatialTrait;
 
+    public const IMAGE_DIRECTORY = 'public/hotels/';
+    public const IMAGE_EXTENSIONS = [ 'png', 'jpg', 'jpeg' ];
+    public const IMAGE_KILOBYTES_SIZE = 4096;
+
+    public const IMAGE_FIELDS = [ 'primary_image_url' ];
+
     public const TABLE_NAME = 'hotels';
 
     /**
@@ -28,7 +34,7 @@ class Hotel extends Model
     protected $fillable = [
         'city_id', 'status', 'blacklisted', 'rating', 'priority_rating', 'popularity', 'recommended', 'special_offer',
         'other_rating', 'commission', 'name', 'description', 'address', 'postal_code', 'email', 'phone', 'fax',
-        'website', 'position', 'located', 'thumbnail_image'
+        'website', 'position', 'located', 'primary_image_url'
     ];
 
     /**
@@ -69,8 +75,7 @@ class Hotel extends Model
         return $this
             ->belongsToMany(Provider::class)
             ->using(HotelProvider::class)
-            ->withPivot((new HotelProvider())->getFillable())
-            ;
+            ->withPivot((new HotelProvider())->getFillable());
     }
 
     /**

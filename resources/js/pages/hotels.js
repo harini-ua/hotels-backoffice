@@ -79,4 +79,43 @@ jQuery(document).ready(function ($) {
         });
     });
 
+
+    $('.hotel-images-edit-wrapper').each(function () {
+        const $this = $(this);
+
+        var imageItemId = 1;
+        $this.find(".images-repeater").repeater({
+            show: function () {
+                imageItemId++;
+                $(this).show();
+
+                $(this).find('.preview').attr('src', '');
+
+                $(this).find('input.image-input').on('change', function() {
+                    const [file] = this.files;
+
+                    if (file) {
+                        $(this).closest('.form-group')
+                            .find('img.preview')
+                            .attr("src", URL.createObjectURL(file));
+                    }
+                });
+            },
+            hide: function (item) {
+                swal({
+                    title: 'Are you sure?',
+                    text: 'Are you sure you want to delete this image',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'No, keep it'
+                }).then((result) => {
+                    if (result.value) {
+                        $(this).hide(item);
+                    }
+                });
+            }
+        });
+    });
+
 });

@@ -9,6 +9,12 @@ class HotelImage extends Model
 {
     use HasFactory;
 
+    public const IMAGE_DIRECTORY = 'public/hotels/';
+    public const IMAGE_EXTENSIONS = [ 'png', 'jpg', 'jpeg' ];
+    public const IMAGE_KILOBYTES_SIZE = 4096;
+
+    public const IMAGE_FIELDS = [ 'image' ];
+
     public const TABLE_NAME = 'hotel_images';
 
     /**

@@ -132,3 +132,10 @@ input[type='radio']:checked:after {
     visibility: visible;
     border: 2px solid white;
 }
+
+.select2-selection--multiple {
+    border: solid 1px #fe8a00 !important;
+    .select2-selection__choice {
+        background-color: #fe8a00 !important;
+    }
+}

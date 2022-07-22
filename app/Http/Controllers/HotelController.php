@@ -31,10 +31,9 @@ class HotelController extends Controller
             ->pluck('name', 'id');
 
         $cities = [];
-        $hotels = [];
 
         return $dataTable->render('admin.pages.hotels.index', compact(
-            'breadcrumbs', 'countries', 'cities', 'hotels'
+            'breadcrumbs', 'countries', 'cities',
         ));
     }
 
@@ -55,10 +54,9 @@ class HotelController extends Controller
 
         $hotel->load([
             'city.country',
-//            'provider',
         ]);
 
-        return view('admin.pages.hotels.update', compact(
+        return view('admin.pages.hotels.general.update', compact(
             'breadcrumbs', 'hotel'
         ));
     }
@@ -88,6 +86,6 @@ class HotelController extends Controller
             DB::rollBack();
         }
 
-        return redirect()->route('hotels.index');
+        return redirect()->route('hotels.update', $hotel);
     }
 }

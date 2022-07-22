@@ -34,6 +34,8 @@ use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\DistributorUserController;
 use App\Http\Controllers\HotelBadgeController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\HotelFacilityController;
+use App\Http\Controllers\HotelImageController;
 use App\Http\Controllers\IpFilterController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MonitorController;
@@ -229,7 +231,15 @@ Route::middleware('auth')->group(function () {
         /** ----- ------ ----- HOTELS */
         Route::resource('hotels', HotelController::class)->only(['index', 'edit', 'update']);
         Route::prefix('hotels')->as('hotels.')->group(function () {
+            Route::prefix('{hotel}/images')->as('images.')->group(function () {
+                Route::get('/edit', [HotelImageController::class, 'edit'])->name('edit');
+                Route::put('/update', [HotelImageController::class, 'update'])->name('update');
+            });
 
+            Route::prefix('{hotel}/facilities')->as('facilities.')->group(function () {
+                Route::get('/edit', [HotelFacilityController::class, 'edit'])->name('edit');
+                Route::put('/update', [HotelFacilityController::class, 'update'])->name('update');
+            });
         });
 
         /** ----- ------ ----- REPORTS */
