@@ -1,5 +1,8 @@
 .navigationbar {
-    background-color: #fe8a00;
+    background-color: rgba(255, 255, 255, 0.1);
+    .dropdown {
+        background-color: #fe8a00;
+    }
 }
 .accordion > .card h2 .btn-link {
     color: #fe8a00;

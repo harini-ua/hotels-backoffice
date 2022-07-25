@@ -104,6 +104,15 @@ class Menu extends Component
             ]
         ];
 
+        /** ----- Hotels ----- */
+
+        $this->items[] = [
+            'name' => __('Hotels'),
+            'href' => route('hotels.index'),
+            'icon' => 'fa fa-hotel',
+            'guard' => $user->hasAnyRole([UserRole::ADMIN, UserRole::DISTRIBUTOR]),
+        ];
+
         /** ----- Discounts ----- */
 
         $this->items[] = [
