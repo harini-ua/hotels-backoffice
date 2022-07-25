@@ -58,16 +58,49 @@ jQuery(document).ready(function ($) {
                 swal('Oops!', 'Select all fields to search.', 'error');
             }
         });
+
+        $('.dataTable').on('click', '.save-row', function(e) {
+            let data = {}
+            let row = $(this).closest('tr')
+
+            swal({
+                title: 'Are you sure?',
+                text: 'Hotel data will be updated!',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, update it!',
+                cancelButtonText: 'No, keep it'
+            }).then((result) => {
+                let validate = false;
+
+                row.find('td.column-edit .edit-field').each(function () {
+                    if ($(this).attr('name') === 'commission') {
+                        if ($.isNumeric($(this).val())) {
+                            validate = true;
+                        }
+                        data[$(this).attr('name')] = $(this).val()
+                    }
+
+                    if ($(this).attr('name') === 'blacklisted') {
+                        data[$(this).attr('name')] = $(this).prop('checked')
+                    }
+                });
+
+                if (validate) {
+                    $.post($(this).data('action'), data);
+                } else {
+                    swal('Error!', 'Something went wrong, try again.', 'error');
+                }
+            })
+        });
     });
 
     $('.hotels-edit-wrapper').each(function () {
         const $this = $(this);
     });
 
-
     $('.hotel-images-edit-wrapper').each(function () {
         const $this = $(this);
-
 
         const repeater = {
             wrapper: $this.find(".images-repeater"),

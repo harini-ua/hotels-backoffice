@@ -33,14 +33,6 @@ class HotelsDataTable extends DataTable
     {
         $dataTable = datatables()->eloquent($query);
 
-        $dataTable->addColumn('country', function (Hotel $model) {
-            return $model->city->country->name;
-        });
-
-        $dataTable->addColumn('city', function (Hotel $model) {
-            return $model->city->name;
-        });
-
         $dataTable->addColumn('tti_code', function (Hotel $model) {
             return $model->tti_code ?? '-';
         });
@@ -60,8 +52,16 @@ class HotelsDataTable extends DataTable
             return $model->name;
         });
 
+        $dataTable->addColumn('commission', function (Hotel $model) {
+            return view("admin.pages.hotels.partials._commission-edit", compact('model'));
+        });
+
+        $dataTable->addColumn('blacklisted', function (Hotel $model) {
+            return view("admin.pages.hotels.partials._blacklist-switch", compact('model'));
+        });
+
         $dataTable->addColumn('action', function (Hotel $model) {
-            return view("admin.datatables.actions", ['actions' => ['edit'], 'model' => $model]);
+            return view("admin.datatables.actions", ['actions' => ['save', 'edit'], 'model' => $model]);
         });
 
         $this->setOrderColumns($dataTable);
@@ -172,21 +172,23 @@ class HotelsDataTable extends DataTable
             Column::make('id')->title(__('Hotel Code'))
                 ->width(70)
                 ->addClass('text-center'),
-            Column::make('country')->title(__('Country'))
-                ->orderable(false),
-            Column::make('city')->title(__('City'))
-                ->orderable(false),
             Column::make('tti_code')->title(__('TTI Code'))
                 ->orderable(false),
             Column::make('providers')->title(__('Providers'))
                 ->orderable(false),
             Column::make('name')->title(__('Hotel Name')),
+            Column::make('commission')->title(__('Commission'))
+                ->width(100)
+                ->addClass('column-edit'),
+            Column::make('blacklisted')->title(__('Blacklisted'))
+                ->width(70)
+                ->addClass('column-edit text-center'),
             Column::computed('action')
                 ->orderable(false)
                 ->exportable(false)
                 ->printable(false)
                 ->orderable(false)
-                ->width(100)
+                ->width(150)
                 ->addClass('text-center'),
         ];
     }

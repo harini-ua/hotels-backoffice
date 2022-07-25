@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\DataTables\HotelsDataTable;
 use App\Http\Requests\HotelUpdateRequest;
+use App\Models\City;
 use App\Models\Country;
 use App\Models\Hotel;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HotelController extends Controller
@@ -97,5 +100,21 @@ class HotelController extends Controller
         }
 
         return redirect()->route('hotels.update', $hotel);
+    }
+
+    /**
+     * @param Request $request
+     * @param Hotel  $hotel
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function updateAjax(Request $request, Hotel $hotel)
+    {
+        $hotel->fill($request->all());
+        $hotel->save();
+
+        return response()->json([
+            'success' => true
+        ]);
     }
 }

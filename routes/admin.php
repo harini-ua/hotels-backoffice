@@ -231,6 +231,8 @@ Route::middleware('auth')->group(function () {
         /** ----- ------ ----- HOTELS */
         Route::resource('hotels', HotelController::class)->only(['index', 'edit', 'update']);
         Route::prefix('hotels')->as('hotels.')->group(function () {
+            Route::post('/{hotel}/update-ajax', [HotelController::class, 'updateAjax'])->name('update-ajax');
+
             Route::prefix('{hotel}/images')->as('images.')->group(function () {
                 Route::get('/edit', [HotelImageController::class, 'edit'])->name('edit');
                 Route::put('/update', [HotelImageController::class, 'update'])->name('update');
