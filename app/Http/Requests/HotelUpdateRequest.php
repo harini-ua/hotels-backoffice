@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Axiom\Rules\LocationCoordinates;
 use Illuminate\Foundation\Http\FormRequest;
 
 class HotelUpdateRequest extends FormRequest
@@ -24,7 +25,12 @@ class HotelUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string',
+            'rating' => 'required|integer|between:1,5',
+            'description' => 'required|string',
+            'email' => 'nullable|email',
+            'position' => [ 'nullable', new LocationCoordinates ],
+            'commission' => 'nullable|number',
         ];
     }
 }

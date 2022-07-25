@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Hotel;
 use App\Models\HotelImage;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class HotelImageUpdateRequest extends FormRequest
 {
@@ -26,14 +26,12 @@ class HotelImageUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'primary_image_url' => [ 'nullable', 'sometimes', 'image',
-                'mimes:'.implode(',', Hotel::IMAGE_EXTENSIONS),
-                'max:'.Hotel::IMAGE_KILOBYTES_SIZE
-            ],
+            'images.*.id' => [ 'nullable', 'sometimes', Rule::exists(HotelImage::TABLE_NAME, 'id')],
             'images.*.image' => [ 'nullable', 'sometimes', 'image',
                 'mimes:'.implode(',', HotelImage::IMAGE_EXTENSIONS),
                 'max:'.HotelImage::IMAGE_KILOBYTES_SIZE
             ],
+            'images.*.primary' => 'nullable|boolean',
         ];
     }
 }

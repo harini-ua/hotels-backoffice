@@ -17,6 +17,7 @@ class CreateHotelImagesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('hotel_id');
             $table->string('image', 1000);
+            $table->boolean('primary')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

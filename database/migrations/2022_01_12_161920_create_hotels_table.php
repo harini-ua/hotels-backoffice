@@ -16,6 +16,13 @@ class CreateHotelsTable extends Migration
         Schema::create('hotels', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('city_id');
+            $table->string('city_code');
+            $table->string('city_name');
+
+            $table->unsignedBigInteger('country_id');
+            $table->string('country_code');
+            $table->string('country_name');
+
             $table->tinyInteger('status')->default(0)
                 ->comment('1-new, 2-updated, 3-old, 4-deleted');
             $table->boolean('blacklisted')
@@ -43,7 +50,6 @@ class CreateHotelsTable extends Migration
             $table->string('website')->nullable();
             $table->point('position')->nullable();
             $table->string('located')->nullable();
-            $table->string('thumbnail_image')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

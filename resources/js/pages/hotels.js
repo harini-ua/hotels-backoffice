@@ -62,12 +62,20 @@ jQuery(document).ready(function ($) {
 
     $('.hotels-edit-wrapper').each(function () {
         const $this = $(this);
+    });
 
-        const forms = {
-            thumbnail_image: $this.find('#thumbnail_image'),
-        };
 
-        forms.thumbnail_image.on('change', function() {
+    $('.hotel-images-edit-wrapper').each(function () {
+        const $this = $(this);
+
+
+        const repeater = {
+            wrapper: $this.find(".images-repeater"),
+            image: $this.find('.image-input'),
+            primary: $this.find('.image-type'),
+        }
+
+        repeater.image.on('change', function() {
             const [file] = this.files;
 
             if (file) {
@@ -77,14 +85,14 @@ jQuery(document).ready(function ($) {
                     .removeClass('disable');
             }
         });
-    });
 
-
-    $('.hotel-images-edit-wrapper').each(function () {
-        const $this = $(this);
+        repeater.primary.on('change', function() {
+            $this.find('.image-type').prop('checked', false);
+            $(this).prop('checked', true);
+        });
 
         var imageItemId = 1;
-        $this.find(".images-repeater").repeater({
+        repeater.wrapper.repeater({
             show: function () {
                 imageItemId++;
                 $(this).show();

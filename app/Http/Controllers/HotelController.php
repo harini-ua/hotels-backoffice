@@ -6,6 +6,7 @@ use App\DataTables\HotelsDataTable;
 use App\Http\Requests\HotelUpdateRequest;
 use App\Models\Country;
 use App\Models\Hotel;
+use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 
@@ -76,6 +77,15 @@ class HotelController extends Controller
             DB::beginTransaction();
 
             $hotel->fill($request->all());
+
+            $hotel->blacklisted = $request->has('blacklisted');
+
+            if ($request->filled('position')) {
+                $position = str_replace(' ', '', trim($request->get('position')));
+                $location = explode(',', $position);
+                $hotel->position = new Point($location[0], $location[1]);
+            }
+
             $hotel->save();
 
             DB::commit();

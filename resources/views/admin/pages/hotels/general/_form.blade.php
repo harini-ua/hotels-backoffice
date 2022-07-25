@@ -93,6 +93,60 @@
             </div>
         </div>
         <div class="form-group row">
+            <label for="city_name" class="col-sm-3 col-form-label">{{ __('City Custom Name') }}</label>
+            <div class="col-sm-6">
+                <input type="text" id="city_name" name="city_name"
+                       value="{{ old('city_name') ?? ($model ? $model->city_name : null) }}"
+                       class="form-control @error('city_name') is-invalid @enderror">
+                @error('city_name')
+                <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                @enderror
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="city_code" class="col-sm-3 col-form-label">{{ __('City Code') }}</label>
+            <div class="col-sm-6">
+                <input type="text" id="city_code" name="city_code" disabled
+                       value="{{ old('city_code') ?? ($model ? $model->city_code : null) }}"
+                       class="form-control-plaintext">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="city_id" class="col-sm-3 col-form-label">{{ __('City ID') }}</label>
+            <div class="col-sm-6">
+                <input type="text" id="city_id" name="city_id" disabled
+                       value="{{ old('city_id') ?? ($model ? $model->city_id : null) }}"
+                       class="form-control-plaintext">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="country_name" class="col-sm-3 col-form-label">{{ __('Country Custom Name') }}</label>
+            <div class="col-sm-6">
+                <input type="text" id="country_name" name="country_name"
+                       value="{{ old('country_name') ?? ($model ? $model->country_name : null) }}"
+                       class="form-control @error('country_name') is-invalid @enderror">
+                @error('country_name')
+                <small class="form-text text-danger" role="alert">{{ $message }}</small>
+                @enderror
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="country_code" class="col-sm-3 col-form-label">{{ __('Country Code') }}</label>
+            <div class="col-sm-6">
+                <input type="text" id="country_code" name="country_code" disabled
+                       value="{{ old('country_code') ?? ($model ? $model->country_code : null) }}"
+                       class="form-control-plaintext">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="country_id" class="col-sm-3 col-form-label">{{ __('Country ID') }}</label>
+            <div class="col-sm-6">
+                <input type="text" id="country_id" name="country_id" disabled
+                       value="{{ old('country_id') ?? ($model ? $model->country_id : null) }}"
+                       class="form-control-plaintext">
+            </div>
+        </div>
+        <div class="form-group row">
             <label for="website" class="col-sm-3 col-form-label">{{ __('Website') }}</label>
             <div class="col-sm-6">
                 <input type="text" id="website" name="website"

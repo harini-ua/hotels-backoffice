@@ -30,7 +30,7 @@ class HotelImage extends Model
      * @var array
      */
     protected $fillable = [
-        'hotel_id', 'image',
+        'hotel_id', 'image', 'primary'
     ];
 
     /**
