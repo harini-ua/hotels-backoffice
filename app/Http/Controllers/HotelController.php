@@ -111,10 +111,9 @@ class HotelController extends Controller
     public function updateAjax(Request $request, Hotel $hotel)
     {
         $hotel->fill($request->all());
-        $hotel->save();
 
         return response()->json([
-            'success' => true
+            'success' => $hotel->save()
         ]);
     }
 }

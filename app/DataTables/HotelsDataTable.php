@@ -114,7 +114,7 @@ class HotelsDataTable extends DataTable
     public function query(Hotel $model)
     {
         $query = $model->newQuery();
-        $query->select([ 'hotels.id', 'hotels.city_id', 'hotels.name']);
+        $query->select([ 'hotels.id', 'hotels.city_id', 'hotels.name', 'hotels.commission', 'hotels.blacklisted']);
         $query->selectRaw('hotel_providers.providers AS providers');
         $query->selectRaw('hotel_providers.tti_code AS tti_code');
 

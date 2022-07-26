@@ -71,14 +71,16 @@ jQuery(document).ready(function ($) {
                 confirmButtonText: 'Yes, update it!',
                 cancelButtonText: 'No, keep it'
             }).then((result) => {
-                let validate = false;
+                let validate = true;
+                let message = 'Something went wrong, try again.';
 
                 row.find('td.column-edit .edit-field').each(function () {
                     if ($(this).attr('name') === 'commission') {
-                        if ($.isNumeric($(this).val())) {
-                            validate = true;
+                        if ($(this).val() && !$.isNumeric($(this).val())) {
+                            validate = false
+                            message = 'Commission field must be numeric.'
                         }
-                        data[$(this).attr('name')] = $(this).val()
+                        data[$(this).attr('name')] = $(this).val() ? 1 : 0;
                     }
 
                     if ($(this).attr('name') === 'blacklisted') {
@@ -89,7 +91,7 @@ jQuery(document).ready(function ($) {
                 if (validate) {
                     $.post($(this).data('action'), data);
                 } else {
-                    swal('Error!', 'Something went wrong, try again.', 'error');
+                    swal('Error!', message, 'error');
                 }
             })
         });
