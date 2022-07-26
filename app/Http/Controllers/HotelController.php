@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\DataTables\HotelsDataTable;
 use App\Http\Requests\HotelUpdateRequest;
-use App\Models\City;
 use App\Models\Country;
 use App\Models\Hotel;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
@@ -25,7 +24,6 @@ class HotelController extends Controller
         $breadcrumbs = [
             ['title' => __('Hotels')],
             ['link' => route('home'), 'name' => __('Home')],
-            ['link' => route('hotels.index'), 'name' => __('Hotels')],
             ['name' => __('All Hotels')]
         ];
 

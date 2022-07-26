@@ -111,6 +111,14 @@ class Menu extends Component
             'href' => route('hotels.index'),
             'icon' => 'fa fa-hotel',
             'guard' => $user->hasAnyRole([UserRole::ADMIN, UserRole::DISTRIBUTOR]),
+            'items' => [
+                [
+                    'name' => __('Hotels Providers'),
+                    'href' => route('hotels.providers.index'),
+                    'icon' => 'feather icon-package',
+                    'guard' => $user->hasRole(UserRole::ADMIN),
+                ]
+            ]
         ];
 
         /** ----- Discounts ----- */

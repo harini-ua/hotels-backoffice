@@ -36,6 +36,7 @@ use App\Http\Controllers\HotelBadgeController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\HotelFacilityController;
 use App\Http\Controllers\HotelImageController;
+use App\Http\Controllers\HotelProviderController;
 use App\Http\Controllers\IpFilterController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MonitorController;
@@ -233,14 +234,22 @@ Route::middleware('auth')->group(function () {
         Route::prefix('hotels')->as('hotels.')->group(function () {
             Route::post('/{hotel}/update-ajax', [HotelController::class, 'updateAjax'])->name('update-ajax');
 
+            /** ----- ------ ----- HOTEL IMAGES */
             Route::prefix('{hotel}/images')->as('images.')->group(function () {
                 Route::get('/edit', [HotelImageController::class, 'edit'])->name('edit');
                 Route::put('/update', [HotelImageController::class, 'update'])->name('update');
             });
 
+            /** ----- ------ ----- HOTEL FACILITIES */
             Route::prefix('{hotel}/facilities')->as('facilities.')->group(function () {
                 Route::get('/edit', [HotelFacilityController::class, 'edit'])->name('edit');
                 Route::put('/update', [HotelFacilityController::class, 'update'])->name('update');
+            });
+
+            /** ----- ------ ----- HOTEL PROVIDERS */
+            Route::prefix('providers')->as('providers.')->group(function () {
+                Route::get('/', [HotelProviderController::class, 'index'])->name('index');
+                Route::put('/update-ajax', [HotelProviderController::class, 'updateAjax'])->name('update-ajax');
             });
         });
 
@@ -248,20 +257,26 @@ Route::middleware('auth')->group(function () {
         Route::prefix('reports')->as('reports.')->group(function () {
             Route::get('/', ReportController::class)->name('index');
 
+            /** ----- ------ ----- BOOKING CUSTOMER REPORT */
             Route::get('/booking-customer', [ReportBookingCustomerController::class, 'index'])->name('booking-customer.index');
             Route::get('/booking-customer/advanced', [ReportBookingCustomerController::class, 'advanced'])->name('booking-customer.advanced.index');
 
+            /** ----- ------ ----- BOOKING VAT REPORT */
             Route::get('/booking-vat', [ReportBookingVatController::class, 'index'])->name('booking-vat.index');
             Route::get('/booking-vat/advanced', [ReportBookingVatController::class, 'advanced'])->name('booking-vat.advanced.index');
 
+            /** ----- ------ ----- BOOKING COMMISSION REPORT */
             Route::get('/booking-commission', [ReportBookingCommissionController::class, 'index'])->name('booking-commission.index');
             Route::get('/booking-commission/advanced', [ReportBookingCommissionController::class, 'advanced'])->name('booking-commission.advanced.index');
 
+            /** ----- ------ ----- INVOICE REPORT */
             Route::get('/invoice', [ReportInvoiceController::class, 'index'])->name('invoice.index');
             Route::get('/invoice/advanced', [ReportInvoiceController::class, 'advanced'])->name('invoice.advanced.index');
 
+            /** ----- ------ ----- COUNTRY BOOKING REPORT */
             Route::get('/country-booking', [ReportCountryBookingController::class, 'index'])->name('country-booking.index');
 
+            /** ----- ------ ----- HOTELS REPORT */
             Route::prefix('hotels')->as('hotels.')->group(function () {
                 Route::get('summary', [ReportHotelsSummaryController::class, 'index'])->name('summary.index');
                 Route::get('newest', [ReportHotelsNewestController::class, 'index'])->name('newest.index');

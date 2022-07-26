@@ -69,6 +69,14 @@ class Hotel extends Model
     }
 
     /**
+     * Get the provider associated with the hotel.
+     */
+    public function provider()
+    {
+        return $this->hasOne(HotelProvider::class);
+    }
+
+    /**
      * The providers that belong to the hotel.
      */
     public function providers()
