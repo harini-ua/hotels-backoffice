@@ -33,7 +33,6 @@ return new class extends Actionable
     public function up(): void
     {
         $companies = Company::all()-with('homepageOptions.carousel.items');
-
         foreach ($companies as $company) {
             foreach ($this->fields as $table => $fields) {
                 foreach ($fields as $field) {
