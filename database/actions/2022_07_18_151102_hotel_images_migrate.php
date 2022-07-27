@@ -35,7 +35,8 @@ return new class extends Actionable
                     $fileName = Uuid::uuid1().'.'.$extension;
                     Storage::copy($file, $destination.$fileName);
 
-                    $hotel->update([ $field => $fileName ]);
+                    $hotel->{$field} = $fileName;
+                    $hotel->save();
                 }
             }
         }
@@ -48,6 +49,7 @@ return new class extends Actionable
      */
     public function down(): void
     {
-        //
+        Storage::deleteDirectory('app/public/hotels/');
+        Storage::makeDirectory('app/public/hotels/');
     }
 };
