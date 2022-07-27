@@ -10,7 +10,7 @@ class CompanyCarouselItem extends Model
 {
     use ImageUpload, HasFactory;
 
-    public const IMAGE_DIRECTORY = 'carousel';
+    public const IMAGE_DIRECTORY = 'public/companies/';
     public const IMAGE_EXTENSIONS = [ 'png', 'jpg', 'jpeg' ];
     public const IMAGE_KILOBYTES_SIZE = 4096;
     public const IMAGE_FIELDS = [ 'image' ];

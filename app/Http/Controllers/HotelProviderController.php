@@ -49,6 +49,12 @@ class HotelProviderController extends Controller
      */
     public function updateAjax(Request $request, Hotel $hotel)
     {
+        if ($hotel->blacklisted) {
+            // TODO: Removing a hotel record from elasticsearch
+        } else {
+            // TODO: Adding a hotel record to elasticsearch
+        }
+
         return response()->json([
             'success' => true
         ]);
