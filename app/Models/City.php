@@ -87,7 +87,6 @@ class City extends Model
         return $this->hasMany(Hotel::class);
     }
 
-
     /**
      * Get the country that owns the city.
      */

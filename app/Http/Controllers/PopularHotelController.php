@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\PopularHotelsDataTable;
-use App\Enums\HotelStatus;
 use App\Enums\Rating;
 use App\Http\Requests\PopularHotelStoreRequest;
-use App\Http\Requests\PopularHotelUpdateRequest;
-use App\Models\City;
 use App\Models\Country;
 use App\Models\Hotel;
 use App\Models\PopularHotel;

@@ -9,7 +9,6 @@ use App\Models\CompanyCarouselItem;
 use App\Models\CompanyHomepageOption;
 use App\Models\CompanyTeaserItem;
 use App\Models\CompanyTheme;
-use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;

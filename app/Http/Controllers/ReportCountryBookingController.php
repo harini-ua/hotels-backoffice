@@ -9,7 +9,6 @@ use App\Enums\BookingStatus;
 use App\Models\Booking;
 use App\Models\Company;
 use App\Models\Country;
-use App\Models\Provider;
 use Illuminate\Support\Facades\DB;
 
 class ReportCountryBookingController extends Controller

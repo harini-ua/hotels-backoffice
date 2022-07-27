@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CompanyFieldStoreRequest;
 use App\Http\Requests\CompanyFieldTranslationRequest;
 use App\Models\Company;
 use App\Models\CompanyField;
 use App\Models\CompanyFieldTranslation;
-use App\Models\PageFieldTranstation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

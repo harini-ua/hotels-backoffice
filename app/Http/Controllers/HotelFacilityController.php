@@ -6,7 +6,6 @@ use App\Http\Requests\HotelFacilityUpdateRequest;
 use App\Models\Facility;
 use App\Models\Hotel;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HotelFacilityController extends Controller

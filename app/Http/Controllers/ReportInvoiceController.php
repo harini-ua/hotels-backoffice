@@ -67,7 +67,7 @@ class ReportInvoiceController extends Controller
                 'href' => route('reports.invoice.index'),
                 'class' => 'btn-submit',
                 'icon' => 'search',
-                'name' => __('Advanced Search')
+                'name' => __('Quick Search')
             ]
         ];
 
