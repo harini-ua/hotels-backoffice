@@ -40,14 +40,16 @@ return new class extends Actionable
                         case CompanyHomepageOption::TABLE_NAME:
                             if ($company->homepageOptions->{$field}) {
                                 $file = storage_path($company->homepageOptions->{$field});
-                                $extension = pathinfo(storage_path($company->homepageOptions->{$field}), PATHINFO_EXTENSION);
+                                if (Storage::exists($file)) {
+                                    $extension = pathinfo(storage_path($company->homepageOptions->{$field}), PATHINFO_EXTENSION);
 
-                                $destination = storage_path('app/public/companies/'.$company->id.'/');
-                                $fileName = Uuid::uuid1().'.'.$extension;
-                                Storage::copy($file, $destination.$fileName);
+                                    $destination = storage_path('app/public/companies/' . $company->id . '/');
+                                    $fileName = Uuid::uuid1() . '.' . $extension;
+                                    Storage::copy($file, $destination . $fileName);
 
-                                $company->homepageOptions->{$field} = $fileName;
-                                $company->homepageOptions->save();
+                                    $company->homepageOptions->{$field} = $fileName;
+                                    $company->homepageOptions->save();
+                                }
                             }
                             break;
                         case CompanyCarouselItem::TABLE_NAME:
@@ -55,14 +57,16 @@ return new class extends Actionable
                             foreach ($carouselItems as $carouselItem) {
                                 if ($carouselItem->{$field}) {
                                     $file = storage_path($carouselItem->{$field});
-                                    $extension = pathinfo(storage_path($carouselItem->{$field}), PATHINFO_EXTENSION);
+                                    if (Storage::exists($file)) {
+                                        $extension = pathinfo(storage_path($carouselItem->{$field}), PATHINFO_EXTENSION);
 
-                                    $destination = storage_path('app/public/companies/'.$company->id.'/');
-                                    $fileName = Uuid::uuid1().'.'.$extension;
-                                    Storage::copy($file, $destination.$fileName);
+                                        $destination = storage_path('app/public/companies/'.$company->id.'/');
+                                        $fileName = Uuid::uuid1().'.'.$extension;
+                                        Storage::copy($file, $destination.$fileName);
 
-                                    $carouselItem->{$field} = $fileName;
-                                    $carouselItem->save();
+                                        $carouselItem->{$field} = $fileName;
+                                        $carouselItem->save();
+                                    }
                                 }
                             }
                             break;

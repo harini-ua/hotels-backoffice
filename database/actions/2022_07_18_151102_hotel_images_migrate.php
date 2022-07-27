@@ -29,14 +29,16 @@ return new class extends Actionable
             foreach ($this->fields as $field) {
                 if ($hotel->{$field}) {
                     $file = storage_path($hotel->{$field});
-                    $extension = pathinfo(storage_path($hotel->{$field}), PATHINFO_EXTENSION);
+                    if (Storage::exists($file)) {
+                        $extension = pathinfo(storage_path($hotel->{$field}), PATHINFO_EXTENSION);
 
-                    $destination = storage_path('app/public/hotels/'.$hotel->id.'/');
-                    $fileName = Uuid::uuid1().'.'.$extension;
-                    Storage::copy($file, $destination.$fileName);
+                        $destination = storage_path('app/public/hotels/' . $hotel->id . '/');
+                        $fileName = Uuid::uuid1() . '.' . $extension;
+                        Storage::copy($file, $destination . $fileName);
 
-                    $hotel->{$field} = $fileName;
-                    $hotel->save();
+                        $hotel->{$field} = $fileName;
+                        $hotel->save();
+                    }
                 }
             }
         }
