@@ -48,6 +48,16 @@ class Hotel extends Model
     ];
 
     /**
+     * Get the name of the index associated with the model.
+     *
+     * @return string
+     */
+    public function searchableAs()
+    {
+        return self::TABLE_NAME;
+    }
+
+    /**
      * Determine if the model should be searchable.
      *
      * @return bool
@@ -67,6 +77,8 @@ class Hotel extends Model
     {
         return $query->with([
             'facilities',
+            'city.country',
+            'provider'
         ]);
     }
 

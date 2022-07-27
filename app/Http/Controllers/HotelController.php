@@ -121,7 +121,7 @@ class HotelController extends Controller
 
         $saved = $hotel->save();
 
-        if ($saved) {
+        if ($hotel->isDirty('blacklisted')) {
             $this->indexService->change($hotel, !$hotel->blacklisted);
         }
 

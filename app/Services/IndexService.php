@@ -40,11 +40,7 @@ class IndexService
         $cities = $country->load('cities');
 
         foreach ($cities as $city) {
-            if ($index) {
-                // TODO: Need Implement add to index
-            } else {
-                // TODO: Need Implement remove to index
-            }
+            $this->city($city, $index);
         }
     }
 
@@ -58,9 +54,9 @@ class IndexService
     protected function city(City $city, bool $index = true)
     {
         if ($index) {
-            // TODO: Need Implement add to index
+            $city->searchable();
         } else {
-            // TODO: Need Implement remove to index
+            $city->unsearchable();
         }
     }
 

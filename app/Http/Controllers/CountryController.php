@@ -117,10 +117,10 @@ class CountryController extends Controller
             $country->save();
 
             if ($country->isDirty('blacklisted')) {
-//                $country->cities()->update([
-//                    'blacklisted' => $request->has('blacklisted')
-//                ]);
-//                $this->indexService->change($country, !$request->has('blacklisted'));
+                $country->cities()->update([
+                    'blacklisted' => $request->has('blacklisted')
+                ]);
+                $this->indexService->change($country, !$request->has('blacklisted'));
             }
 
             DB::commit();

@@ -47,6 +47,39 @@ class City extends Model
     ];
 
     /**
+     * Get the name of the index associated with the model.
+     *
+     * @return string
+     */
+    public function searchableAs()
+    {
+        return self::TABLE_NAME;
+    }
+
+    /**
+     * Determine if the model should be searchable.
+     *
+     * @return bool
+     */
+    public function shouldBeSearchable()
+    {
+        return !$this->blacklisted;
+    }
+
+    /**
+     *  Retrieve of the models searchable.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function makeAllSearchableUsing($query)
+    {
+        return $query->with([
+            'country',
+        ]);
+    }
+
+    /**
      * Get the hotels for the city.
      */
     public function hotels()
