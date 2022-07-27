@@ -6,6 +6,7 @@ use App\DataTables\HotelsDataTable;
 use App\Http\Requests\HotelUpdateRequest;
 use App\Models\Country;
 use App\Models\Hotel;
+use App\Services\IndexService;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -14,6 +15,14 @@ use Illuminate\Support\Facades\DB;
 
 class HotelController extends Controller
 {
+    /** @var IndexService $indexService */
+    public $indexService;
+
+    public function __construct(IndexService $indexService)
+    {
+        $this->indexService = $indexService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -110,8 +119,14 @@ class HotelController extends Controller
     {
         $hotel->fill($request->all());
 
+        $saved = $hotel->save();
+
+        if ($saved) {
+            $this->indexService->change($hotel, !$hotel->blacklisted);
+        }
+
         return response()->json([
-            'success' => $hotel->save()
+            'success' => $saved
         ]);
     }
 }

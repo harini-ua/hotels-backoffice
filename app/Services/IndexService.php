@@ -9,7 +9,7 @@ use App\Models\Hotel;
 class IndexService
 {
     /**
-     * @param City|Country $model
+     * @param Country|City|Hotel $model
      * @param bool $index
      * @return void
      */
@@ -74,9 +74,9 @@ class IndexService
     protected function hotel(Hotel $hotel, bool $index = true)
     {
         if ($index) {
-            // TODO: Need Implement add to index
+            $hotel->searchable();
         } else {
-            // TODO: Need Implement remove to index
+            $hotel->unsearchable();
         }
     }
 }
