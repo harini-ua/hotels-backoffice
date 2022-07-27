@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Support\ServiceProvider;
 
 class QueryBuilderMacroProvider extends ServiceProvider
 {

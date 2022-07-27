@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Enums\Rating;
-use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SpecialOfferHotelStoreRequest extends FormRequest

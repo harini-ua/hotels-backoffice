@@ -8,7 +8,6 @@ use App\Models\CompanyCarouselItem;
 use App\Models\DefaultContent;
 use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class DefaultContentUpdateRequest extends FormRequest
 {

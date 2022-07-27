@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use App\Models\IpFilter;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class VerifyIp
 {
