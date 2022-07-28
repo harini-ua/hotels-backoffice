@@ -17,7 +17,7 @@ class HotelImageSeeder extends Seeder
     {
         $hotel_images = [];
 
-//        SELECT h.hotel_code, h.image_url
+//        SELECT h.hotel_code, h.image_url, h.primary_image_url
 //        FROM hotel h
 //        WHERE h.hotel_code IN(49028,255450,259944,312993,363356,392987,395071,395863,396442,402300,450439,456817,496671,515170,520084,535299,2461426,
 //        2461427,2461437,3170,3177,3190,3205,3211,3212,3213,3224,3227,3234,3238,3243,3245,3254,3257,3260,3282,3283,3289,3293,3294,
@@ -38,9 +38,17 @@ class HotelImageSeeder extends Seeder
                             $hotel_images[] = [
                                 'hotel_id' => (int)$data[0],
                                 'image' => $image,
+                                'primary' => 0,
                             ];
                         }
                     }
+                }
+                if ($data[2] !== '' && !strstr($data[2], 'no-image.png')) {
+                    $hotel_images[] = [
+                        'hotel_id' => (int)$data[0],
+                        'image' => $data[2],
+                        'primary' => 1,
+                    ];
                 }
             }
 
