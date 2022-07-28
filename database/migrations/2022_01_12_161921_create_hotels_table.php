@@ -50,6 +50,8 @@ class CreateHotelsTable extends Migration
             $table->string('website')->nullable();
             $table->point('position')->nullable();
             $table->string('located')->nullable();
+            $table->boolean('giata_image_downloaded')->default(0)
+                ->comment('0-have no giata image, 1-downloaded into Amazon S3');
 
             $table->timestamps();
             $table->softDeletes();

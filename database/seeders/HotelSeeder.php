@@ -21,7 +21,8 @@ class HotelSeeder extends Seeder
 //        SELECT h.hotel_code, h.city, h.blacklisting, h.hotel_update_status, h.delete_status, h.star, h.name,
 //        REPLACE(REPLACE(h.description, '\r', ' '), '\n', ' ') as description, h.address, h.post_code, h.latitude,
 //        h.longitude, p.rating AS popularity, r.sort AS recommended, s.rating AS special_offer, h.priority_rating, ha.other_rating,
-//        h.commission, h.taplaceid, h.tareviewcount, h.talangratingurl
+//        h.commission, h.taplaceid, h.tareviewcount, h.talangratingurl, h.city_code, h.city_name, h.country, h.country_code,
+//        h.country_name, h.email, h.telephone, h.fax, h.website, h.giata_image_downloaded
 //        FROM hotel h
 //        LEFT JOIN popular_hotel p ON h.hotel_code = p.hotel_id
 //        LEFT JOIN recommended_hotel r ON h.hotel_code = r.hotel_id
@@ -35,6 +36,11 @@ class HotelSeeder extends Seeder
                 $hotels[] = [
                     'id' => (int)$data[0],
                     'city_id' => (int)$data[1],
+                    'city_code' => (int)$data[21],
+                    'city_name' => $data[22],
+                    'country_id' => (int)$data[23],
+                    'country_code' => $data[24],
+                    'country_name' => $data[25],
                     'blacklisted' => $data[2],
                     'status' => (int)$data[4] == 1 ? 4 : 3,
                     'rating' => (int)$data[5],
@@ -52,6 +58,11 @@ class HotelSeeder extends Seeder
                     'trip_advisor_rating_id' => (int)$data[18],
                     'trip_advisor_rating_count' => (int)$data[19],
                     'trip_advisor_rating_url' => $data[20] === null || $data[20] === '' ? null : $data[20],
+                    'email' => $data[26] === null || $data[26] === '' ? null : $data[26],
+                    'phone' => $data[27] === null || $data[27] === '' ? null : $data[27],
+                    'fax' => $data[28] === null || $data[28] === '' ? null : $data[28],
+                    'website' => $data[29] === null || $data[29] === '' ? null : $data[29],
+                    'giata_image_downloaded' => (int)$data[30],
                 ];
             }
 
