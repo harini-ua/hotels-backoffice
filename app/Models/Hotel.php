@@ -11,12 +11,6 @@ class Hotel extends Model
 {
     use HasFactory, Searchable, SpatialTrait;
 
-    public const IMAGE_DIRECTORY = 'public/hotels/';
-    public const IMAGE_EXTENSIONS = [ 'png', 'jpg', 'jpeg' ];
-    public const IMAGE_KILOBYTES_SIZE = 4096;
-
-    public const IMAGE_FIELDS = [ 'primary_image_url' ];
-
     public const TABLE_NAME = 'hotels';
 
     /**
@@ -35,7 +29,6 @@ class Hotel extends Model
         'city_id', 'city_code', 'city_name', 'country_id', 'country_code', 'country_name', 'status', 'blacklisted',
         'rating', 'priority_rating', 'popularity', 'recommended', 'special_offer', 'other_rating', 'commission', 'name',
         'description', 'address', 'postal_code', 'email', 'phone', 'fax', 'website', 'position', 'located',
-        'primary_image_url'
     ];
 
     /**
