@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\HotelsProvidersDataTable;
 use App\Models\Country;
 use App\Models\Hotel;
+use App\Models\HotelProvider;
 use App\Models\Provider;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -49,14 +50,14 @@ class HotelProviderController extends Controller
      */
     public function updateAjax(Request $request, Hotel $hotel)
     {
-        if ($hotel->blacklisted) {
-            // TODO: Removing a hotel record from elasticsearch
-        } else {
-            // TODO: Adding a hotel record to elasticsearch
-        }
+        /** @var HotelProvider $hotelProvider */
+        $hotelProvider = $hotel->provider;
+        $hotelProvider->fill($request->all());
+
+        $saved = $hotelProvider->save();
 
         return response()->json([
-            'success' => true
+            'success' => $saved
         ]);
     }
 }

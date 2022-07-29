@@ -6,6 +6,7 @@ use App\DataTables\HotelsDataTable;
 use App\Http\Requests\HotelUpdateRequest;
 use App\Models\Country;
 use App\Models\Hotel;
+use App\Models\HotelProvider;
 use App\Services\IndexService;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Illuminate\Http\JsonResponse;
@@ -96,7 +97,14 @@ class HotelController extends Controller
                 $hotel->position = new Point($location[0], $location[1]);
             }
 
-            $hotel->save();
+            $saved = $hotel->save();
+
+            if ($saved && $hotel->isDirty('blacklisted')) {
+                // Add the hotel blacklist for all providers
+                $hotel->providers()->update([
+                    'blacklisted' => $hotel->blacklisted
+                ]);
+            }
 
             DB::commit();
 
@@ -121,8 +129,11 @@ class HotelController extends Controller
 
         $saved = $hotel->save();
 
-        if ($hotel->isDirty('blacklisted')) {
-            $this->indexService->change($hotel, !$hotel->blacklisted);
+        if ($saved && $hotel->isDirty('blacklisted')) {
+            // Add the hotel blacklist for all providers
+            $hotel->providers()->update([
+                'blacklisted' => $hotel->blacklisted
+            ]);
         }
 
         return response()->json([

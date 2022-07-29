@@ -38,8 +38,8 @@ class HotelProviderCodeSeeder extends Seeder
                     'tti_code' => (int)$data[3],
                     'giata_code' => (int)$data[4],
                     'status' => 2,
-                    'blacklisted' => (int)$data[5],
-                    'hotel_name' => $data[6]
+                    'blacklisted' => (int)$data[6],
+                    'hotel_name' => $data[7]
                 ];
             }
 

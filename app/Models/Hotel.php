@@ -5,11 +5,10 @@ namespace App\Models;
 use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 
 class Hotel extends Model
 {
-    use HasFactory, Searchable, SpatialTrait;
+    use HasFactory, SpatialTrait;
 
     public const TABLE_NAME = 'hotels';
 
@@ -41,39 +40,13 @@ class Hotel extends Model
     ];
 
     /**
-     * Get the name of the index associated with the model.
+     * The relations to eager load on every query.
      *
-     * @return string
+     * @var array
      */
-    public function searchableAs()
-    {
-        return self::TABLE_NAME;
-    }
-
-    /**
-     * Determine if the model should be searchable.
-     *
-     * @return bool
-     */
-    public function shouldBeSearchable()
-    {
-        return !$this->blacklisted;
-    }
-
-    /**
-     *  Retrieve of the models searchable.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    protected function makeAllSearchableUsing($query)
-    {
-        return $query->with([
-            'facilities',
-            'city.country',
-            'provider'
-        ]);
-    }
+    protected $with = [
+        'provider',
+    ];
 
     /**
      * Get the city that owns the hotel.
