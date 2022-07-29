@@ -24,7 +24,7 @@ class Country extends Model
      * @var array
      */
     protected $fillable = [
-        'currency_id', 'language_id', 'name', 'region', 'code', 'active', 'blacklisted', 'commission'
+        'currency_id', 'language_id', 'name', 'region', 'code', 'active', 'commission'
     ];
 
     /**

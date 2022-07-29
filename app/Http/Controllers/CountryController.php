@@ -9,7 +9,6 @@ use App\Libraries\GoogleGeocoder;
 use App\Models\Country;
 use App\Models\Currency;
 use App\Models\Language;
-use App\Services\IndexService;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -19,14 +18,6 @@ use Illuminate\Support\Str;
 
 class CountryController extends Controller
 {
-    /** @var IndexService $indexService */
-    public $indexService;
-
-    public function __construct(IndexService $indexService)
-    {
-        $this->indexService = $indexService;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -112,15 +103,14 @@ class CountryController extends Controller
 
             $country->fill($request->all());
             $country->active = $request->has('active');
-            $country->blacklisted = $request->has('blacklisted');
 
             $country->save();
 
-            if ($country->isDirty('blacklisted')) {
+            if ($country->isDirty('active')) {
+                // Change blacklist status for all cities in countries
                 $country->cities()->update([
-                    'blacklisted' => $request->has('blacklisted')
+                    'blacklisted' => $request->has('active')
                 ]);
-                $this->indexService->change($country, !$request->has('blacklisted'));
             }
 
             DB::commit();

@@ -27,7 +27,7 @@ class CountrySeeder extends Seeder
                     'region' => $data[2],
                     'code' => $data[9],
                     'active' => $data[3],
-                    'blacklisted' => 0
+                    'commission' => 0, // TODO: Need migrate, `country_commission` table
                 ];
             }
 
