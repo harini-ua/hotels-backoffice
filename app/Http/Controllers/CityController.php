@@ -7,7 +7,6 @@ use App\DataTables\ProvidersDataTable;
 use App\Http\Requests\CityUpdateRequest;
 use App\Models\City;
 use App\Models\Country;
-use App\Services\IndexService;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -15,14 +14,6 @@ use Illuminate\Support\Facades\DB;
 
 class CityController extends Controller
 {
-    /** @var IndexService $indexService */
-    public $indexService;
-
-    public function __construct(IndexService $indexService)
-    {
-        $this->indexService = $indexService;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -97,11 +88,7 @@ class CityController extends Controller
                 $city->position = new Point($location[0], $location[1]);
             }
 
-            $city->save();
-
-            if ($request->isDirty('blacklisted')) {
-                $this->indexService->change($city, !$city->blacklisted);
-            }
+            $saved = $city->save();
 
             DB::commit();
 

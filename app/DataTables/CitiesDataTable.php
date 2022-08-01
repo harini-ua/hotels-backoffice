@@ -32,15 +32,15 @@ class CitiesDataTable extends DataTable
         });
 
         $dataTable->addColumn('commission', function (City $model) {
-            return $model->commission;
+            return view("admin.pages.cities.partials._commission-edit", compact('model'));
         });
 
-        $dataTable->addColumn('active', function (City $model) {
-            return view("admin.pages.cities.partials._active-switch", compact('model'));
+        $dataTable->addColumn('blacklisted', function (City $model) {
+            return view("admin.pages.cities.partials._blacklist-switch", compact('model'));
         });
 
         $dataTable->addColumn('action', function (City $model) {
-            return view("admin.datatables.actions", ['actions' => ['edit'], 'model' => $model]);
+            return view("admin.datatables.actions", ['actions' => ['save', 'edit'], 'model' => $model]);
         });
 
         $dataTable->rawColumns(['active']);
@@ -149,17 +149,16 @@ class CitiesDataTable extends DataTable
                 ->addClass('text-center'),
             Column::make('commission')->title(__('Commission'))
                 ->width(100)
-                ->addClass('text-center'),
-            Column::make('active')
-                ->orderable('false')
-                ->width(100)
-                ->addClass('text-center'),
+                ->addClass('column-edit'),
+            Column::make('blacklisted')->title(__('Blacklisted'))
+                ->width(70)
+                ->addClass('column-edit text-center'),
             Column::computed('action')
                 ->orderable(false)
                 ->exportable(false)
                 ->printable(false)
                 ->orderable(false)
-                ->width(100)
+                ->width(150)
                 ->addClass('text-center'),
         ];
     }

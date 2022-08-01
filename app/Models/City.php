@@ -5,10 +5,11 @@ namespace App\Models;
 use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class City extends Model
 {
-    use HasFactory, SpatialTrait;
+    use Searchable, HasFactory, SpatialTrait;
 
     public const TABLE_NAME = 'cities';
 
@@ -25,7 +26,8 @@ class City extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'state', 'active', 'blacklisted', 'position', 'hotels_count', 'popularity', 'commission'
+        'name', 'state', 'country_id', 'active', 'status', 'blacklisted', 'position', 'hotels_count', 'popularity',
+        'commission',
     ];
 
     /**
@@ -43,7 +45,8 @@ class City extends Model
      * @var array
      */
     protected $with = [
-        'country'
+        'country',
+        'provider',
     ];
 
     /**
@@ -76,7 +79,17 @@ class City extends Model
     {
         return $query->with([
             'country',
+            'translations',
+            'provider'
         ]);
+    }
+
+    /**
+     * Get the translations for the city.
+     */
+    public function translations()
+    {
+        return $this->hasMany(CityTranslation::class);
     }
 
     /**
@@ -93,6 +106,14 @@ class City extends Model
     public function country()
     {
         return $this->belongsTo(Country::class);
+    }
+
+    /**
+     * Get the provider associated with the city.
+     */
+    public function provider()
+    {
+        return $this->hasOne(CityProvider::class);
     }
 
     /**

@@ -7,20 +7,11 @@ use App\Enums\SortNumber;
 use App\Http\Requests\HotelBadgesUpdateRequest;
 use App\Models\Country;
 use App\Models\Hotel;
-use App\Services\IndexService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 
 class HotelBadgeController extends Controller
 {
-    /** @var IndexService $indexService */
-    public $indexService;
-
-    public function __construct(IndexService $indexService)
-    {
-        $this->indexService = $indexService;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -87,10 +78,6 @@ class HotelBadgeController extends Controller
             $hotel->fill($request->except('blacklisted'));
             $hotel->blacklisted = $request->has('blacklisted');
             $hotel->save();
-
-            if ($hotel->isDirty('blacklisted')) {
-//                $this->indexService->change($hotel, !$request->has('blacklisted'));
-            }
 
             DB::commit();
 

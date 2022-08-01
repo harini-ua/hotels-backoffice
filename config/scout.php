@@ -144,15 +144,15 @@ return [
     */
     'elasticsearch' => [
         'hosts' => [
-            env('ELASTICSEARCH_HOST', 'localhost'),
-             [
-                 'host'   => env('ELASTICSEARCH_HOST', 'localhost'),
-                 'port'   => env('ELASTICSEARCH_PORT', '9200'),
-                 'scheme' => env('ELASTICSEARCH_SCHEME', 'https'),
-                 'path'   => env('ELASTICSEARCH_PATH', '/elastic'),
-                 'user'   => env('ELASTICSEARCH_USER', 'username'),
-                 'pass'   => env('ELASTICSEARCH_PASS', 'password'),
-             ]
+             env('ELASTICSEARCH_HOST', 'localhost'),
+//             [
+//                 'host'   => env('ELASTICSEARCH_HOST', 'localhost'),
+//                 'port'   => env('ELASTICSEARCH_PORT', '9200'),
+//                 'scheme' => env('ELASTICSEARCH_SCHEME', 'https'),
+//                 'path'   => env('ELASTICSEARCH_PATH', '/elastic'),
+//                 'user'   => env('ELASTICSEARCH_USER', 'username'),
+//                 'pass'   => env('ELASTICSEARCH_PASS', 'password'),
+//             ]
         ],
     ]
 ];

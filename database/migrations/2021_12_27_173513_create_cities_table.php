@@ -21,7 +21,9 @@ class CreateCitiesTable extends Migration
             $table->tinyInteger('active')->default(0)
                 ->comment('0-inactive, 1-active');
             $table->tinyInteger('status')->default(0)
-                ->comment('0-new, 1-active, 2-inactive, 3-blacklisted');
+                ->comment('0-new, 1-old');
+            $table->boolean('blacklisted')
+                ->comment('0-active, 1-blacklisted');
             $table->point('position');
             $table->bigInteger('hotels_count')->default(0);
             $table->smallInteger('popularity')->default(10);

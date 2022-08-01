@@ -23,4 +23,20 @@ class CityProvider extends Pivot
     protected $fillable = [
         'provider_city_code',
     ];
+
+    /**
+     * Get the city that owns the city provider.
+     */
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    /**
+     * Get the provider that owns the city provider.
+     */
+    public function provider()
+    {
+        return $this->belongsTo(Provider::class);
+    }
 }

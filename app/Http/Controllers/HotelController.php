@@ -6,8 +6,6 @@ use App\DataTables\HotelsDataTable;
 use App\Http\Requests\HotelUpdateRequest;
 use App\Models\Country;
 use App\Models\Hotel;
-use App\Models\HotelProvider;
-use App\Services\IndexService;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -16,14 +14,6 @@ use Illuminate\Support\Facades\DB;
 
 class HotelController extends Controller
 {
-    /** @var IndexService $indexService */
-    public $indexService;
-
-    public function __construct(IndexService $indexService)
-    {
-        $this->indexService = $indexService;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -87,7 +77,7 @@ class HotelController extends Controller
         try {
             DB::beginTransaction();
 
-            $hotel->fill($request->all());
+            $hotel->fill($request->except('blacklisted'));
 
             $hotel->blacklisted = $request->has('blacklisted');
 
@@ -99,12 +89,12 @@ class HotelController extends Controller
 
             $saved = $hotel->save();
 
-            if ($saved && $hotel->isDirty('blacklisted')) {
-                // Add the hotel blacklist for all providers
-                $hotel->providers()->update([
-                    'blacklisted' => $hotel->blacklisted
-                ]);
-            }
+//            if ($saved && $hotel->isDirty('blacklisted')) {
+//                // Add the hotel blacklist for all providers
+//                $hotel->providers()->update([
+//                    'blacklisted' => $hotel->blacklisted
+//                ]);
+//            }
 
             DB::commit();
 
@@ -129,12 +119,12 @@ class HotelController extends Controller
 
         $saved = $hotel->save();
 
-        if ($saved && $hotel->isDirty('blacklisted')) {
-            // Add the hotel blacklist for all providers
-            $hotel->providers()->update([
-                'blacklisted' => $hotel->blacklisted
-            ]);
-        }
+//        if ($saved && $hotel->isDirty('blacklisted')) {
+//            // Change blacklist status for all hotel providers
+//            $hotel->providers()->update([
+//                'blacklisted' => $hotel->blacklisted
+//            ]);
+//        }
 
         return response()->json([
             'success' => $saved

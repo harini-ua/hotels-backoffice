@@ -59,7 +59,7 @@ class HotelsProvidersDataTable extends DataTable
         $dataTable->filter(function ($query) {
             if (!$this->request->hasAny(['country', 'city'])) {
                 // Making the result empty on purpose
-                $query->where('id', 0);
+                $query->where('hotels.id', 0);
             }
         }, true);
 

@@ -105,5 +105,18 @@
             </div>
         </div>
     </div>
+    <div class="form-group row">
+        <label for="blacklisted" class="col-sm-3 col-form-label">{{ __('Blacklisted') }}</label>
+        <div class="input-group col-sm-2">
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" id="blacklisted" name="blacklisted"
+                       value="1"
+                       @if($model->blacklisted) checked @endif
+                       class="custom-control-input @error('blacklisted') is-invalid @enderror"
+                >
+                <label class="custom-control-label" for="blacklisted"></label>
+            </div>
+        </div>
+    </div>
     <button class="btn btn-submit">{{ __('Submit') }}</button>
 </form>
