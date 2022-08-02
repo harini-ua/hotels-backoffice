@@ -24,11 +24,11 @@ jQuery(document).ready(function ($) {
                             validate = false
                             message = 'Commission field must be numeric.'
                         }
-                        data[$(this).attr('name')] = $(this).val() ? 1 : 0;
+                        data[$(this).attr('name')] = $(this).val();
                     }
 
                     if ($(this).attr('name') === 'blacklisted') {
-                        data[$(this).attr('name')] = $(this).prop('checked')
+                        data[$(this).attr('name')] = $(this).prop('checked') ? 1 : 0;
                     }
                 });
 

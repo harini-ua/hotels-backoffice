@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\CityCommissionController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\CityProviderController;
 use App\Http\Controllers\CityTranslationController;
 use App\Http\Controllers\CommissionController;
 use App\Http\Controllers\CompanyAccessCodesController;
@@ -310,6 +311,12 @@ Route::middleware('auth')->group(function () {
         Route::prefix('cities')->as('cities.')->group(function () {
             Route::post('/{city}/active', [CityController::class, 'active'])->name('active');
             Route::get('/{city}/hotels', [CityController::class, 'hotels'])->name('hotels');
+            Route::post('/{city}/update-ajax', [CityController::class, 'updateAjax'])->name('update-ajax');
+
+            Route::prefix('providers')->as('providers.')->group(function () {
+                Route::get('/{city}/providers/edit', [CityProviderController::class, 'edit'])->name('edit');
+                Route::put('/{city}/providers/update', [CityProviderController::class, 'update'])->name('update');
+            });
         });
 
         /** ----- ------ ----- PROMO MESSAGE */

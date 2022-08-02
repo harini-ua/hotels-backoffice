@@ -61,7 +61,13 @@ class HotelsDataTable extends DataTable
         });
 
         $dataTable->addColumn('action', function (Hotel $model) {
-            return view("admin.datatables.actions", ['actions' => ['save', 'edit'], 'model' => $model]);
+            return view("admin.datatables.actions", [
+                'actions' => [
+                    'save' => route('hotels.update-ajax', $model),
+                    'edit'
+                ],
+                'model' => $model
+            ]);
         });
 
         $this->setOrderColumns($dataTable);

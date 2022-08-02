@@ -40,7 +40,13 @@ class CitiesDataTable extends DataTable
         });
 
         $dataTable->addColumn('action', function (City $model) {
-            return view("admin.datatables.actions", ['actions' => ['save', 'edit'], 'model' => $model]);
+            return view("admin.datatables.actions", [
+                'actions' => [
+                    'save' => route('cities.update-ajax', $model),
+                    'edit',
+                ],
+                'model' => $model
+            ]);
         });
 
         $dataTable->rawColumns(['active']);

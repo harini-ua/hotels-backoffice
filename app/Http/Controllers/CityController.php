@@ -10,6 +10,7 @@ use App\Models\Country;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CityController extends Controller
@@ -112,6 +113,23 @@ class CityController extends Controller
         $city->save();
 
         return response()->json(['success' => true]);
+    }
+
+    /**
+     * @param Request $request
+     * @param City  $city
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function updateAjax(Request $request, City $city)
+    {
+        $city->fill($request->all());
+
+        $saved = $city->save();
+
+        return response()->json([
+            'success' => $saved
+        ]);
     }
 
     /**

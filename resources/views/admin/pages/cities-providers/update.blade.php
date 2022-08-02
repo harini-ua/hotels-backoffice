@@ -16,8 +16,8 @@
                     </div>
                     <div class="card-body">
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link mb-2 active" href="{{ route('cities.edit', $city) }}">{{ __('City Edit') }}</a>
-                            <a class="nav-link mb-2" href="{{ route('cities.providers.edit', $city) }}">{{ __('Providers') }}</a>
+                            <a class="nav-link mb-2" href="{{ route('cities.edit', $city) }}">{{ __('City Edit') }}</a>
+                            <a class="nav-link mb-2 active" href="{{ route('cities.providers.edit', $city) }}">{{ __('Providers') }}</a>
                         </div>
                     </div>
                 </div>
@@ -27,11 +27,19 @@
                     <div class="tab-pane fade show active" id="v-pills-general" role="tabpanel" aria-labelledby="v-pills-general-tab">
                         <div class="card m-b-30">
                             <div class="card-header">
-                                <h5 class="card-title">{{ __('Edit') }}</h5>
+                                <h5 class="card-title">{{ __('Providers') }}</h5>
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    @include('admin.pages.cities.partials._form')
+                                    <div class="col s12">
+                                        @php($model = $city ?? null)
+                                        <form id="city" method="POST" action="{{ route('cities.providers.update', $model->id) }}">
+                                            @csrf
+                                            @if(isset($model)) @method('PUT') @endif
+
+                                            <button class="btn btn-submit">{{ __('Submit') }}</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
