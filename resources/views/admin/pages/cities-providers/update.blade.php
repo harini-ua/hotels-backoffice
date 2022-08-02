@@ -32,11 +32,44 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col s12">
-                                        @php($model = $city ?? null)
-                                        <form id="city" method="POST" action="{{ route('cities.providers.update', $model->id) }}">
+                                        <form id="city" method="POST" action="{{ route('cities.providers.update', $city->id) }}">
                                             @csrf
-                                            @if(isset($model)) @method('PUT') @endif
-
+                                            @method('PUT')
+                                            <div class="table-responsive m-b-30">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">{{ __('Provider Name') }}</th>
+                                                            <th scope="col">{{ __('Provider City Code') }}</th>
+                                                            <th scope="col"
+                                                                class="text-center"
+                                                                style="width: 100px"
+                                                            >{{ __('Active') }}</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach($city->providers as $provider)
+                                                        <tr>
+                                                            <th scope="row">{{ mb_strtoupper($provider->name) }}</th>
+                                                            <td>{{ $provider->pivot->provider_city_code }}</td>
+                                                            <td class="text-center">
+                                                                <div class="custom-control custom-switch">
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        class="custom-control-input edit-field checkbox-field"
+                                                                        id="providers[{{ $provider->id }}][active]"
+                                                                        name="providers[{{ $provider->id }}][active]"
+                                                                        value="1"
+                                                                        @if($provider->pivot->active) checked @endif
+                                                                    >
+                                                                    <label class="custom-control-label" for="providers[{{ $provider->id }}][active]"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                             <button class="btn btn-submit">{{ __('Submit') }}</button>
                                         </form>
                                     </div>

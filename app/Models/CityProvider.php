@@ -21,7 +21,7 @@ class CityProvider extends Pivot
      * @var array
      */
     protected $fillable = [
-        'provider_city_code',
+        'city_id', 'provider_id', 'provider_city_code', 'status', 'active'
     ];
 
     /**

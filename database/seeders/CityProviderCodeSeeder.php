@@ -25,7 +25,8 @@ class CityProviderCodeSeeder extends Seeder
                         'city_id' => (int)$data[7],
                         'provider_id' => (int)$data[5],
                         'provider_city_code' => $data[3],
-                        'status' => $data[9] == 1 ? 2 : $data[12]
+                        'status' => $data[9] == 1 ? 1 : 0,
+                        'active' => $data[12]
                     ];
                 }
             }

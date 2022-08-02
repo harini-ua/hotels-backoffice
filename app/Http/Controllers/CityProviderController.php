@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use App\Models\CityProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +26,7 @@ class CityProviderController extends Controller
             ['name' => $city->name]
         ];
 
-        $city->load('providers');
+        $city->load(['providers', 'country']);
 
         return view('admin.pages.cities-providers.update', compact(
             'breadcrumbs', 'city'
@@ -46,7 +47,14 @@ class CityProviderController extends Controller
         try {
             DB::beginTransaction();
 
-            // TODO: Need Implement
+            // Deactivation all providers
+            CityProvider::where('city_id', $city->id)
+                ->update([ 'active' => 0 ]);
+
+            // Activation of selected providers
+            CityProvider::where('city_id', $city->id)
+                ->whereIn('provider_id', array_keys($request->get('providers')))
+                ->update([ 'active' => 1 ]);
 
             DB::commit();
 
@@ -56,6 +64,6 @@ class CityProviderController extends Controller
             DB::rollBack();
         }
 
-        return redirect()->route('hotels.providers.update', $hotel);
+        return redirect()->route('cities.providers.edit', $city);
     }
 }
