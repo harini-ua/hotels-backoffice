@@ -7,7 +7,7 @@
 - elasticsearch - 7.9.0 
 
 ## Installation
-```
+```bash
 git clone git@github.com:hotelexpress/heilaravel.git .  
 composer install
 npm install
