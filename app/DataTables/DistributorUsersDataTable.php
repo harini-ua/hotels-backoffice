@@ -163,7 +163,7 @@ class DistributorUsersDataTable extends DataTable
                 ->exportable(false)
                 ->printable(false)
                 ->orderable(false)
-                ->width(150)
+                ->width(110)
                 ->addClass('text-center'),
         ];
     }
