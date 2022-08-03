@@ -149,10 +149,25 @@ class PartnerProductController extends Controller
             ['href' => route('partners.products.create'), 'icon' => 'plus', 'name' => __('Create')]
         ];
 
+        $partners = Partner::all()
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        $mealPlans = MealPlan::all()
+            ->sortBy('name')
+            ->pluck('name', 'id');
+
+        $currencies = Currency::all()
+            ->sortBy('code')
+            ->pluck('code', 'id');
+
         return view('admin.pages.partners-products.update', compact(
             'breadcrumbs',
             'actions',
             'partnerProduct',
+            'partners',
+            'mealPlans',
+            'currencies',
         ));
     }
 

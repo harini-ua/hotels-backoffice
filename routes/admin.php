@@ -202,7 +202,14 @@ Route::middleware('auth')->group(function () {
         /** ----- ------ ----- PARTNERS */
         Route::resource('partners', PartnerController::class)->except(['show']);
         Route::prefix('partners')->as('partners.')->group(function () {
-            Route::resource('products', PartnerProductController::class)->except(['show']);
+            Route::prefix('products')->as('products.')->group(function () {
+                Route::get('/', [PartnerProductController::class, 'index'])->name('index');
+                Route::get('/create', [PartnerProductController::class, 'create'])->name('create');
+                Route::post('/', [PartnerProductController::class, 'store'])->name('store');
+                Route::get('{partnerProduct}/edit', [PartnerProductController::class, 'edit'])->name('edit');
+                Route::put('{partnerProduct}', [PartnerProductController::class, 'update'])->name('update');
+                Route::delete('{partnerProduct}', [PartnerProductController::class, 'destroy'])->name('destroy');
+            });
         });
 
         /** ----- ------ ----- NEWSLETTER */

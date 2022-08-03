@@ -3,6 +3,7 @@
 @section('title',  __('Update Partner Product'))
 
 @section('style')
+    <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/partners-products.css') }}">
 @endsection
 
