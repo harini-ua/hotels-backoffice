@@ -213,13 +213,10 @@ class ReportCountryBookingDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('Bfrti')
-            ->pageLength(Country::all()->count())
+            ->dom('lBfrti')
+            ->lengthMenu(config('admin.datatable.length_menu'))
+            ->pageLength(-1)
             ->orderBy(8, 'desc')
-            ->language([
-                'search' => '',
-                'searchPlaceholder' => __('Search')
-            ])
             ->buttons(
                 Button::make('excel'),
                 Button::make('print')

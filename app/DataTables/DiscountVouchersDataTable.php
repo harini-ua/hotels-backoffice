@@ -67,7 +67,7 @@ class DiscountVouchersDataTable extends DataTable
             return view("admin.pages.discount-vouchers.partials._voucher-code", compact('model'));
 
             if ((int) $model->voucher_type === DiscountCodeType::AccessForAll) {
-                return $model->codes()->first()->code;
+                return $model->codes()->first()->code ?? '-';
             }
 
             return 'many';
@@ -156,8 +156,10 @@ class DiscountVouchersDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('rtip')
+            ->dom('lrtip')
             ->orderBy(1)
+            ->lengthMenu(config('admin.datatable.length_menu'))
+            ->pageLength(config('admin.datatable.page_length'))
             ->buttons(
                 Button::make('excel'),
                 Button::make('print'),

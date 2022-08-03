@@ -4,6 +4,7 @@ namespace App\DataTables;
 
 use App\Enums\AllowedCurrency;
 use App\Enums\BookingStatus;
+use App\Enums\Level;
 use App\Enums\PaymentType;
 use App\Models\Booking;
 use App\Models\CompanySaleOfficeCommission;
@@ -116,7 +117,24 @@ class ReportBookingCommissionDataTable extends DataTable
         }
 
         $dataTable->addColumn('company_commission', function (Booking $model) {
-            return round($model->pay_to_client, 2);
+            $payBackClient = 0;
+
+            $bookingCommission = $model->commission;
+            $discountCommissionType = $model->discountCode ? (int) $model->discountCode->discount->commission_type : null;
+            if ($discountCommissionType == 2) {
+                $bookingCommission = $bookingCommission - $model->discount_amount;
+            }
+
+            if ($model->company->bookingCommission) {
+                $payBackClient = $bookingCommission * ($model->company->bookingCommission->standard_commission / 100);
+            }
+
+            if ($discountCommissionType == 3) {
+                $payBackClient = $payBackClient - $model->discount_amount;
+            }
+
+            // TODO: Or use $model->pay_to_client
+            return round($payBackClient, 2);
         });
 
         $dataTable->addColumn('sub_company_commission', function (Booking $model) {
@@ -128,9 +146,9 @@ class ReportBookingCommissionDataTable extends DataTable
         });
 
         if ((\Auth::user())->hasRole('admin')) {
-            $salesOfficeLevel1 = DB::table('company_sale_office_commission')
+            $salesOfficeLevel1 = DB::table(CompanySaleOfficeCommission::TABLE_NAME)
                 ->select(DB::raw('COUNT(*) AS count'))
-                ->where('level', 1)
+                ->where('level', Level::First)
                 ->groupBy('company_id')
                 ->get();
 
@@ -140,14 +158,86 @@ class ReportBookingCommissionDataTable extends DataTable
             }
 
             for ($i=1; $i <= $maxLevel1; $i++) {
-                $dataTable->addColumn('commission_level_1_'.$i, function (Booking $model) {
-                    return '?'; // TODO: Need Implement
+                $dataTable->addColumn('commission_level_1_'.$i, function (Booking $model) use ($i) {
+                    $result = 0;
+
+//                    $payBackClient = 0;
+//                    $bookingCommission = $model->commission;
+//                    $hqDistributor = $model->commission;
+//
+                    $discountCommissionType = $model->discountCode ? (int) $model->discountCode->discount->commission_type : null;
+//
+//                    if ($discountCommissionType == 2) {
+//                        $bookingCommission = $bookingCommission - $model->discount_amount;
+//                    }
+//
+//                    if ($model->company->bookingCommission) {
+//                        $payBackClient = $bookingCommission * ($model->company->bookingCommission->standard_commission / 100);
+//                        $hqDistributor = $bookingCommission - $payBackClient;
+//                    }
+//
+//                    if ($discountCommissionType == 3) {
+//                        $payBackClient = $payBackClient - $model->discount_amount;
+//                    }
+
+                    $salesOfficesLevel1 = $model->distributorBookingCommission()
+                        ->where('company_id', $model->company_id)
+                        ->where('level', Level::First)->get();
+
+                    if ($salesOfficesLevel1) {
+                        $salesOfficesLevel1 = $model->companySaleOfficeCommissions()
+                            ->where('level', Level::First)->get();
+                    }
+
+                    $salesOfficesLevelCountry1 = $model->companySaleOfficeCommissions()
+                        ->where('sale_office_country_id', $model->bookingUser->country_id)
+                        ->where('level', Level::First)->get();
+
+                    if ($salesOfficesLevel1) {
+                        $sumSalesOfficeCommission = 0;
+                        $heiSalesOfficeCommission = false;
+                        foreach ($salesOfficesLevel1 as $salesL1) {
+                            // Sum sales offices commissions
+                            if ($salesL1->sales_office_country_id) {
+                                $sumSalesOfficeCommission += $salesL1->commission;
+                            } else {
+                                // Isset sales office = HEI
+                                $heiSalesOfficeCommission = true;
+                            }
+                        }
+
+                        if ($heiSalesOfficeCommission) {
+                            foreach ($salesOfficesLevel1 as $salesL1) {
+                                // If null sales office = HEI
+                                if (!$salesL1->sales_office_country_id) {
+                                    $result = $hqDistributor * ($salesL1->commission / 100);
+
+                                    if ($discountCommissionType == 6) {
+                                        // TODO: Implement if commission settings = 6
+                                    }
+                                }
+                            }
+                        } else {
+                            $salesL1 = $salesOfficesLevel1[$i-1];
+                            if ($salesL1->sale_office_country_id === $model->bookingUser->country_id) {
+
+
+                                if ($discountCommissionType == 5) {
+                                    // TODO: Implement if commission settings = 5
+                                } elseif ($discountCommissionType == 6) {
+                                    // TODO: Implement if commission settings = 6
+                                }
+                            }
+                        }
+                    }
+
+                    return round($result,2);
                 });
             }
 
-            $salesOfficeLevel2 = DB::table('company_sale_office_commission')
+            $salesOfficeLevel2 = DB::table(CompanySaleOfficeCommission::TABLE_NAME)
                 ->select(DB::raw('COUNT(*) AS count'))
-                ->where('level', 2)
+                ->where('level', Level::Second)
                 ->groupBy('company_id')
                 ->get();
 
@@ -158,7 +248,7 @@ class ReportBookingCommissionDataTable extends DataTable
 
             for ($i=1; $i <= $maxLevel2; $i++) {
                 $dataTable->addColumn('commission_level_2_'.$i, function (Booking $model) {
-                    return '?'; // TODO: Need Implement
+                    return 0; // TODO: Need Implement
                 });
             }
         }
@@ -291,9 +381,11 @@ class ReportBookingCommissionDataTable extends DataTable
         $query->with('city');
         $query->with('country');
         $query->with('company.bookingCommission');
+        $query->with('distributorBookingCommission');
+        $query->with('companySaleOfficeCommissions');
         $query->with('hotel');
         $query->with('bookingUser.country');
-        $query->with('discountCode');
+        $query->with('discountCode.discount');
 
         if (!$this->request->has('quick_filter')) {
             $query->where('id', 0);
@@ -314,13 +406,10 @@ class ReportBookingCommissionDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('rtip')
-            ->pageLength(50)
-            ->orderBy(2, 'desc')
-            ->language([
-                'search' => '',
-                'searchPlaceholder' => __('Search')
-            ])
+            ->dom('lrtip')
+            ->orderBy(2)
+            ->lengthMenu(config('admin.datatable.length_menu'))
+            ->pageLength(config('admin.datatable.page_length'))
             ->buttons(
                 Button::make('excel'),
                 Button::make('print')
@@ -378,7 +467,7 @@ class ReportBookingCommissionDataTable extends DataTable
         $columns[] = Column::make('sub_company_commission')->title(__('Comm. Sub-Company'));
         $columns[] = Column::make('vat')->title(__('VAT'));
 
-        $salesOfficeLevel1 = DB::table('company_sale_office_commission')
+        $salesOfficeLevel1 = DB::table(CompanySaleOfficeCommission::TABLE_NAME)
             ->select(DB::raw('COUNT(*) AS count'))
             ->where('level', 1)
             ->groupBy('company_id')
@@ -396,7 +485,7 @@ class ReportBookingCommissionDataTable extends DataTable
                 ->visible((\Auth::user())->hasRole('admin'));
         }
 
-        $salesOfficeLevel2 = DB::table('company_sale_office_commission')
+        $salesOfficeLevel2 = DB::table(CompanySaleOfficeCommission::TABLE_NAME)
             ->select(DB::raw('COUNT(*) AS count'))
             ->where('level', 2)
             ->groupBy('company_id')

@@ -129,8 +129,10 @@ class HotelBadgesDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('frtip')
+            ->dom('lfrtip')
             ->orderBy(0)
+            ->lengthMenu(config('admin.datatable.length_menu'))
+            ->pageLength(config('admin.datatable.page_length'))
         ;
     }
 

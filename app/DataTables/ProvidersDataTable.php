@@ -81,8 +81,10 @@ class ProvidersDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('Brtip')
+            ->dom('lBrtip')
             ->orderBy(1)
+            ->lengthMenu(config('admin.datatable.length_menu'))
+            ->pageLength(config('admin.datatable.page_length'))
             ->responsive(true)
             ->buttons(
                 Button::make('excel'),

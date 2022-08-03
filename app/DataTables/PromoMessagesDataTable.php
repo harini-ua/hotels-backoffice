@@ -124,8 +124,10 @@ class PromoMessagesDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('rtip')
+            ->dom('lrtip')
             ->orderBy(1)
+            ->lengthMenu(config('admin.datatable.length_menu'))
+            ->pageLength(config('admin.datatable.page_length'))
         ;
     }
 

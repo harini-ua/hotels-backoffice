@@ -20,6 +20,10 @@ return [
             'thousands_sep' => ' ',
         ]
     ],
+    'datatable' => [
+        'page_length' => 100,
+        'length_menu' => [25, 50, 100]
+    ],
     'menu' => [
         'main' => [
             'items' => [

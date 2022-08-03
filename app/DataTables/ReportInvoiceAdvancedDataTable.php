@@ -5,6 +5,7 @@ namespace App\DataTables;
 use App\Enums\BookingStatus;
 use App\Enums\PaymentType;
 use App\Models\Booking;
+use App\Models\CompanySaleOfficeCommission;
 use App\Services\Formatter;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -102,12 +103,12 @@ class ReportInvoiceAdvancedDataTable extends DataTable
         });
 
         $dataTable->addColumn('vat', function (Booking $model) {
-            $vatPercentage = $model->company->vats()
+            $vat = $model->company->vats()
                 ->where('country_id', $model->company->country_id)
-                ->first()->percentage;
+                ->first();
 
-            $vat = 0;
-            if ($vatPercentage) {
+            $result = 0;
+            if ($vat) {
                 $bookingCommission = $model->company->bookingCommission;
                 // If set commission pay to client
                 if ($bookingCommission->pay_to_client) {
@@ -117,14 +118,14 @@ class ReportInvoiceAdvancedDataTable extends DataTable
                     $hqDistributor = $model->commission;
                 }
 
-                $vat = $hqDistributor * ($vatPercentage / 100);
+                $result = $hqDistributor * ($vat->percentage / 100);
             }
 
-            return $vat;
+            return $result;
         });
 
         if ((\Auth::user())->hasRole('admin')) {
-            $salesOfficeLevel1 = DB::table('company_sale_office_commission')
+            $salesOfficeLevel1 = DB::table(CompanySaleOfficeCommission::TABLE_NAME)
                 ->select(DB::raw('COUNT(*) AS count'))
                 ->where('level', 1)
                 ->groupBy('company_id')
@@ -137,11 +138,11 @@ class ReportInvoiceAdvancedDataTable extends DataTable
 
             for ($i=1; $i <= $maxLevel1; $i++) {
                 $dataTable->addColumn('commission_level_1_'.$i, function (Booking $model) {
-                    return '?'; // TODO: Need Implement
+                    return 0; // TODO: Need Implement
                 });
             }
 
-            $salesOfficeLevel2 = DB::table('company_sale_office_commission')
+            $salesOfficeLevel2 = DB::table(CompanySaleOfficeCommission::TABLE_NAME)
                 ->select(DB::raw('COUNT(*) AS count'))
                 ->where('level', 2)
                 ->groupBy('company_id')
@@ -154,7 +155,7 @@ class ReportInvoiceAdvancedDataTable extends DataTable
 
             for ($i=1; $i <= $maxLevel2; $i++) {
                 $dataTable->addColumn('commission_level_2_'.$i, function (Booking $model) {
-                    return '?'; // TODO: Need Implement
+                    return 0; // TODO: Need Implement
                 });
             }
         }
@@ -168,11 +169,11 @@ class ReportInvoiceAdvancedDataTable extends DataTable
         });
 
         $dataTable->addColumn('distributor_commission', function (Booking $model) {
-            return '?'; // TODO: Need Implement
+            return 0; // TODO: Need Implement
         });
 
         $dataTable->addColumn('amount_invoiced', function (Booking $model) {
-            return '?'; // TODO: Need Implement
+            return 0; // TODO: Need Implement
         });
 
         $dataTable->addColumn('status', function (Booking $model) {
@@ -297,17 +298,15 @@ class ReportInvoiceAdvancedDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('report-booking-commission-list-datatable')
+            ->setTableId('report-invoice-list-datatable')
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('rtip')
+            ->dom('lrtip')
             ->pageLength(50)
             ->orderBy(2, 'desc')
-            ->language([
-                'search' => '',
-                'searchPlaceholder' => __('Search')
-            ])
+            ->lengthMenu(config('admin.datatable.length_menu'))
+            ->pageLength(config('admin.datatable.page_length'))
             ->buttons(
                 Button::make('excel'),
                 Button::make('print')
@@ -322,47 +321,7 @@ class ReportInvoiceAdvancedDataTable extends DataTable
      */
     protected function getColumns()
     {
-        $columns = [];
-
-        $salesOfficeLevel1 = DB::table('company_sale_office_commission')
-            ->select(DB::raw('COUNT(*) AS count'))
-            ->where('level', 1)
-            ->groupBy('company_id')
-            ->get();
-
-        $maxLevel1 = 1;
-        if ($salesOfficeLevel1) {
-            $maxLevel1 = $salesOfficeLevel1->max('count') ?? 1;
-        }
-
-        for ($i=1; $i <= $maxLevel1; $i++) {
-            $columns[] = Column::make('commission_level_1_'.$i)
-                ->title(__('Comm. Level 1-'.$i))
-                ->orderable(false)
-                ->visible((\Auth::user())->hasRole('admin'));
-        }
-
-        $salesOfficeLevel2 = DB::table('company_sale_office_commission')
-            ->select(DB::raw('COUNT(*) AS count'))
-            ->where('level', 2)
-            ->groupBy('company_id')
-            ->get();
-
-        $maxLevel2 = 1;
-        if ($salesOfficeLevel2) {
-            $maxLevel2 = $salesOfficeLevel2->max('count') ?? 1;
-        }
-
-        for ($i=1; $i <= $maxLevel2; $i++) {
-            $columns[] = Column::make('commission_level_2_'.$i)
-                ->title(__('Comm. Level 2-'.$i))
-                ->orderable(false)
-                ->visible((\Auth::user())->hasRole('admin'));
-        }
-
-        return $columns;
-
-        return [
+        $columns = [
             Column::make('booking_id')->title(__('Booking ID'))
                 ->width(150)
                 ->orderable(false),
@@ -402,19 +361,58 @@ class ReportInvoiceAdvancedDataTable extends DataTable
             Column::make('total_currency')->title(__('Currency'))
                 ->orderable(false)
                 ->addClass('text-center'),
-            Column::make('final_amount')->title(__('Final Amount'))
-                ->addClass('text-center'),
-            Column::make('distributor_commission')->title(__('Distributor Commission'))
-                ->orderable(false)
-                ->addClass('text-center'),
-            Column::make('amount_invoiced')->title(__('Amount Invoiced'))
-                ->orderable(false)
-                ->addClass('text-center'),
-            Column::make('status')->title(__('Status'))
-                ->addClass('text-center'),
-            Column::make('payment')->title(__('Payment'))
-                ->addClass('text-center'),
         ];
+
+        $salesOfficeLevel1 = DB::table(CompanySaleOfficeCommission::TABLE_NAME)
+            ->select(DB::raw('COUNT(*) AS count'))
+            ->where('level', 1)
+            ->groupBy('company_id')
+            ->get();
+
+        $maxLevel1 = 1;
+        if ($salesOfficeLevel1) {
+            $maxLevel1 = $salesOfficeLevel1->max('count') ?? 1;
+        }
+
+        for ($i=1; $i <= $maxLevel1; $i++) {
+            $columns[] = Column::make('commission_level_1_'.$i)
+                ->title(__('Comm. Level 1-'.$i))
+                ->orderable(false)
+                ->visible((\Auth::user())->hasRole('admin'));
+        }
+
+        $salesOfficeLevel2 = DB::table(CompanySaleOfficeCommission::TABLE_NAME)
+            ->select(DB::raw('COUNT(*) AS count'))
+            ->where('level', 2)
+            ->groupBy('company_id')
+            ->get();
+
+        $maxLevel2 = 1;
+        if ($salesOfficeLevel2) {
+            $maxLevel2 = $salesOfficeLevel2->max('count') ?? 1;
+        }
+
+        for ($i=1; $i <= $maxLevel2; $i++) {
+            $columns[] = Column::make('commission_level_2_'.$i)
+                ->title(__('Comm. Level 2-'.$i))
+                ->orderable(false)
+                ->visible((\Auth::user())->hasRole('admin'));
+        }
+
+        $columns[] = Column::make('final_amount')->title(__('Final Amount'))
+            ->addClass('text-center');
+        $columns[] = Column::make('distributor_commission')->title(__('Distributor Commission'))
+            ->orderable(false)
+            ->addClass('text-center');
+        $columns[] = Column::make('amount_invoiced')->title(__('Amount Invoiced'))
+            ->orderable(false)
+            ->addClass('text-center');
+        $columns[] = Column::make('status')->title(__('Status'))
+            ->addClass('text-center');
+        $columns[] = Column::make('payment')->title(__('Payment'))
+            ->addClass('text-center');
+
+        return $columns;
     }
 
     /**

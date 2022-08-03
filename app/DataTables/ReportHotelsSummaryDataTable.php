@@ -2,7 +2,9 @@
 
 namespace App\DataTables;
 
+use App\Models\City;
 use App\Models\Country;
+use App\Models\Hotel;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -112,26 +114,26 @@ class ReportHotelsSummaryDataTable extends DataTable
         $query->where('country.active', 1);
 
         // Unique Hotels
-        $unique_hotels = DB::table('hotels')
+        $unique_hotels = DB::table(Hotel::TABLE_NAME)
             ->select([
                 'cities.country_id AS country_id',
                 DB::raw('COUNT(hotels.id) AS value'),
             ])
-            ->join('cities', 'cities.id', '=', 'hotels.city_id')
+            ->join(City::TABLE_NAME, 'cities.id', '=', 'hotels.city_id')
             ->groupBy('country_id');
 
         $query->leftJoinSub($unique_hotels, 'unique_hotels', static function($join) {
             $join->on('country.id', '=', 'unique_hotels.country_id');
         });
 
-        $commission_hotels = DB::table('hotels')
+        $commission_hotels = DB::table(Hotel::TABLE_NAME)
             ->select([
                 'cities.country_id AS country_id',
                 DB::raw('COUNT(hotels.id) AS count'),
                 DB::raw('AVG(hotels.commission) AS avg'),
                 DB::raw('SUM(hotels.commission) AS sum'),
             ])
-            ->join('cities', 'cities.id', '=', 'hotels.city_id')
+            ->join(City::TABLE_NAME, 'cities.id', '=', 'hotels.city_id')
             ->where('hotels.commission', '>', 0)
             ->groupBy('country_id');
 
@@ -156,13 +158,11 @@ class ReportHotelsSummaryDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('Bfrti')
+            ->dom('lBfrti')
             ->pageLength(Country::all()->count())
             ->orderBy(1)
-            ->language([
-                'search' => '',
-                'searchPlaceholder' => __('Search')
-            ])
+            ->lengthMenu(config('admin.datatable.length_menu'))
+            ->pageLength(config('admin.datatable.page_length'))
             ->buttons(
                 Button::make('excel'),
                 Button::make('print')

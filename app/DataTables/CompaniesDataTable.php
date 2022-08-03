@@ -131,12 +131,10 @@ class CompaniesDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('Bfrtip')
+            ->dom('lBfrtip')
             ->orderBy(1)
-            ->language([
-                'search' => '',
-                'searchPlaceholder' => __('Search')
-            ])
+            ->lengthMenu(config('admin.datatable.length_menu'))
+            ->pageLength(config('admin.datatable.page_length'))
             ->buttons(
                 Button::make('excel'),
                 Button::make('print')

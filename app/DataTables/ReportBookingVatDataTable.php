@@ -273,13 +273,10 @@ class ReportBookingVatDataTable extends DataTable
             ->addTableClass('table-striped table-bordered dtr-inline')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('rtip')
-            ->pageLength(50)
+            ->dom('lrtip')
             ->orderBy(0, 'desc')
-            ->language([
-                'search' => '',
-                'searchPlaceholder' => __('Search')
-            ])
+            ->lengthMenu(config('admin.datatable.length_menu'))
+            ->pageLength(config('admin.datatable.page_length'))
             ->buttons(
                 Button::make('excel'),
                 Button::make('print')

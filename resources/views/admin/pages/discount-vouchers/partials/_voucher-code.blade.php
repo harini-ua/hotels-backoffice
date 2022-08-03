@@ -1,5 +1,5 @@
 @if($model->voucher_type == \App\Enums\DiscountCodeType::AccessForAll)
-    {{ $model->codes()->first()->code }}
+    {{ $model->codes()->first()->code ?? '-' }}
 @endif
 @if($model->voucher_type == \App\Enums\DiscountCodeType::Individual)
     <a class="btn btn-primary download-codes" href="{{ route('discount-vouchers.download.codes', $model) }}">
