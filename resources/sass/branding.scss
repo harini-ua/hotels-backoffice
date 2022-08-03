@@ -1,3 +1,16 @@
+::-webkit-scrollbar {
+    width: 12px !important;
+}
+::-webkit-scrollbar-track {
+    background: #ffffff !important;
+}
+::-webkit-scrollbar-thumb {
+    background: #fe8a00 !important;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #fe8a00 !important;
+}
+
 .navigationbar {
     background-color: rgba(255, 255, 255, 0.1);
     .dropdown {
