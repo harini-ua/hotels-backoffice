@@ -24,7 +24,7 @@ class CompanyHotelDistanceController extends Controller
             ['name' => $company->company_name]
         ];
 
-        $hotelDistances = $company->mainOptions->hotel_distances_filter;
+        $hotelDistances = $company->mainOptions->hotel_distances_filter ?? [];
 
         $actions = [
             ['href' => route('companies.create'), 'icon' => 'plus', 'name' => __('Create')]
