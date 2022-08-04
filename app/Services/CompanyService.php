@@ -70,63 +70,82 @@ class CompanyService
         $newCompany->created_at = Carbon::now();
         $newCompany->save();
 
-        // Extra Night
-        $extraNight = $this->company->extraNight->replicate();
-        $newCompany->extraNight()->create($extraNight->toArray());
-
-        // Homepage Options
-        $homepageOptions = $this->company->homepageOptions->replicate();
-
-        // Copy default logo
-        $logo = $this->company->homepageOptions->logo;
-        $fileName = Uuid::uuid1().'.'.\File::extension($logo);
-        Storage::copy(
-            'public/companies/'.$this->company->id.'/'.$logo,
-            'public/companies/'.$newCompany->id.'/'.$fileName
-        );
-        $homepageOptions->logo = $fileName;
-
-        $newCarousel = $this->company->homepageOptions->carousel->replicate();
-        $newCarousel->default = false;
-        $newCarousel->push();
-
-        foreach ($this->company->homepageOptions->carousel->items as $item) {
-            $newItem = $item->replicate();
-            $newItem->carousel_id = $newCarousel->id;
-
-            $fileName = Uuid::uuid1().'.'.\File::extension($newItem->image);
-            Storage::copy(
-                'public/companies/'.$this->company->id.'/'.$newItem->image,
-                'public/companies/'.$newCompany->id.'/'.$fileName
-            );
-
-            $newItem->image = $fileName;
-            $newItem->push();
+        // Replicate company extra night
+        if ($this->company->extraNight) {
+            $extraNight = $this->company->extraNight->replicate();
+            $newCompany->extraNight()->create($extraNight->toArray());
         }
 
-        $homepageOptions->carousel_id = $newCarousel->id;
+        // Replicate company homepage options
+        if ($this->company->homepageOptions) {
+            // Homepage Options
+            $homepageOptions = $this->company->homepageOptions->replicate();
 
-        $newTeaser = $this->company->homepageOptions->teaser->replicate();
-        $newTeaser->default = false;
-        $newTeaser->push();
+            // Copy company default logo
+            if ($this->company->homepageOptions->logo) {
+                $fileName = Uuid::uuid1().'.'.\File::extension($this->company->homepageOptions->logo);
+                $logo = $this->company->homepageOptions->logo;
+                if (Storage::exists('public/companies/'.$this->company->id.'/'.$logo)) {
+                    Storage::copy(
+                        'public/companies/'.$this->company->id.'/'.$logo,
+                        'public/companies/'.$newCompany->id.'/'.$fileName
+                    );
+                }
+                $homepageOptions->logo = $fileName;
+            }
 
-        foreach ($this->company->homepageOptions->teaser->items as $item) {
-            $newItem = $item->replicate();
-            $newItem->teaser_id = $newTeaser->id;
-            $newItem->push();
+            // Replicate company homepage options
+            if ($this->company->homepageOptions->carousel) {
+                $newCarousel = $this->company->homepageOptions->carousel->replicate();
+                $newCarousel->default = false;
+                $newCarousel->push();
+
+                foreach ($this->company->homepageOptions->carousel->items as $item) {
+                    $newItem = $item->replicate();
+                    $newItem->carousel_id = $newCarousel->id;
+
+                    $fileName = Uuid::uuid1().'.'.\File::extension($newItem->image);
+
+                    if (Storage::exists('public/companies/'.$this->company->id.'/'.$newItem->image)) {
+                        Storage::copy(
+                            'public/companies/'.$this->company->id.'/'.$newItem->image,
+                            'public/companies/'.$newCompany->id.'/'.$fileName
+                        );
+                    }
+
+                    $newItem->image = $fileName;
+                    $newItem->push();
+                }
+
+                $homepageOptions->carousel_id = $newCarousel->id;
+            }
+
+            $newTeaser = $this->company->homepageOptions->teaser->replicate();
+            $newTeaser->default = false;
+            $newTeaser->push();
+
+            foreach ($this->company->homepageOptions->teaser->items as $item) {
+                $newItem = $item->replicate();
+                $newItem->teaser_id = $newTeaser->id;
+                $newItem->push();
+            }
+
+            $homepageOptions->teaser_id = $newTeaser->id;
+
+            $newCompany->homepageOptions()->create($homepageOptions->toArray());
         }
 
-        $homepageOptions->teaser_id = $newTeaser->id;
+        // Replicate company main options
+        if ($this->company->mainOptions) {
+            $mainOptions = $this->company->mainOptions->replicate();
+            $newCompany->mainOptions()->create($mainOptions->toArray());
+        }
 
-        $newCompany->homepageOptions()->create($homepageOptions->toArray());
-
-        // Main Options
-        $mainOptions = $this->company->mainOptions->replicate();
-        $newCompany->mainOptions()->create($mainOptions->toArray());
-
-        // Prefilled Option
-        $prefilledOptions = $this->company->prefilledOption->replicate();
-        $newCompany->prefilledOption()->create($prefilledOptions->toArray());
+        // Replicate company prefilled option
+        if ($this->company->prefilledOption) {
+            $prefilledOptions = $this->company->prefilledOption->replicate();
+            $newCompany->prefilledOption()->create($prefilledOptions->toArray());
+        }
 
         // TODO: Implement duplicate all relationship
 
