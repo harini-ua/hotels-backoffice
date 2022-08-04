@@ -74,6 +74,8 @@ class CompanyService
         if ($this->company->extraNight) {
             $extraNight = $this->company->extraNight->replicate();
             $newCompany->extraNight()->create($extraNight->toArray());
+        } else {
+            $this->defaultExtraNight();
         }
 
         // Replicate company homepage options
@@ -133,18 +135,24 @@ class CompanyService
             $homepageOptions->teaser_id = $newTeaser->id;
 
             $newCompany->homepageOptions()->create($homepageOptions->toArray());
+        } else {
+            $this->defaultHomepageOptions();
         }
 
         // Replicate company main options
         if ($this->company->mainOptions) {
             $mainOptions = $this->company->mainOptions->replicate();
             $newCompany->mainOptions()->create($mainOptions->toArray());
+        } else {
+            $this->defaultMainOptions();
         }
 
         // Replicate company prefilled option
         if ($this->company->prefilledOption) {
             $prefilledOptions = $this->company->prefilledOption->replicate();
             $newCompany->prefilledOption()->create($prefilledOptions->toArray());
+        } else {
+            $this->defaultPrefilledOption();
         }
 
         // TODO: Implement duplicate all relationship
