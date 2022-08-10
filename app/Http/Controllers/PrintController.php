@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Transformers\BookingReceiptTransformer;
+use App\Transformers\BookingVoucherTransformer;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use League\Fractal\Resource\Item;
 
 class PrintController extends Controller
 {
@@ -16,9 +19,9 @@ class PrintController extends Controller
     {
         $booking = Booking::findOrFail($id);
 
-        // TODO: Need Implement
+        $resource = new Item($booking, new BookingReceiptTransformer);
 
-        return view('admin.print.receipt', compact('booking'));
+        return view('admin.print.receipt', compact('booking', 'resource'));
     }
 
     /**
@@ -29,8 +32,8 @@ class PrintController extends Controller
     {
         $booking = Booking::findOrFail($id);
 
-        // TODO: Need Implement
+        $resource = new Item($booking, new BookingVoucherTransformer);
 
-        return view('admin.print.voucher', compact('booking'));
+        return view('admin.print.voucher', compact('booking', 'resource'));
     }
 }
