@@ -18,7 +18,7 @@ class CreateCountriesTable extends Migration
             $table->unsignedBigInteger('currency_id');
             $table->unsignedBigInteger('language_id');
             $table->string('name');
-            $table->string('region');
+            $table->string('region')->nullable();
             $table->string('code');
             $table->boolean('active')->default(1);
             $table->boolean('blacklisted')->default(0);

@@ -24,7 +24,7 @@ class CountrySeeder extends Seeder
                     'currency_id' => 1,
                     'language_id' => $data[4],
                     'name' => ucwords(mb_strtolower($data[1])),
-                    'region' => $data[2],
+                    'region' => in_array($data[2], [' ', ''], true) ? null : $data[2],
                     'code' => $data[9],
                     'active' => $data[3],
                     'commission' => 0, // TODO: Need migrate, `country_commission` table
