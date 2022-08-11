@@ -70,11 +70,11 @@ class BookingSeeder extends Seeder
                     $bookings[] = [
                         'id' => (int)$data[0],
                         'provider_id' => (int)$data[1],
-                        'booking_reference' => $data[3],
-                        'booking_cancel_reference' => $data[4],
+                        'booking_reference' => $data[52] === 'N/A' || $data[3] == 'NULL' || $data[3] == '' ? null : $data[3],
+                        'booking_cancel_reference' => $data[4] == 'NULL' || $data[4] == '' ? null : $data[4],
                         'payment_type' => (int)$data[5],
                         'status' => $data[6] == 'CONFIRMED' ? 1 : ($data[6] == 'Cancelled' ? 2 : ($data[6] == 'Paid, but not confirmed' ? 3 : ($data[6] == 'Not Paid' ? 4 : 0))),
-                        'item_code' => $data[7],
+                        'item_code' => $data[7] == 'NULL' || $data[7] == '' ? null : $data[7],
                         'checkin' => date('Y-m-d', strtotime(str_replace('/', '-', $data[8]))),
                         'checkout' => date('Y-m-d', strtotime(str_replace('/', '-', $data[9]))),
                         'hotel_id' => (int)$data[10],
@@ -83,16 +83,16 @@ class BookingSeeder extends Seeder
                         'nights' => (int)$data[13],
                         'cancellation_date' => $cancellation_date,
                         'cancelled_date' => $data[34] == null ? null : date('Y-m-d', strtotime($data[34])),
-                        'cancellation_policy' => $data[16],
+                        'cancellation_policy' => $data[16] === 'NULL' || $data[16] == null || $data[16] == '' ? null : $data[16],
                         'refundable_status' => empty($refundable[0]) ? 0 : 1,
                         'booking_user_id' => (int)$data[18],
-                        'inn_off_code' => $data[19],
+                        'inn_off_code' => $data[19] === 'NULL' || $data[19] == '' ? null : $data[19],
                         'adults' => (int)$data[20],
                         'children' => (int)$data[21],
-                        'remarks' => $data[22],
-                        'customer_name' => $data[23],
-                        'customer_email' => $data[24],
-                        'customer_phone' => $data[25],
+                        'remarks' => $data[22] === 'NULL' || $data[22] == '' ? null : $data[22],
+                        'customer_name' => $data[23] === 'NULL' || $data[23] == null || $data[23] == '' ? null : $data[23],
+                        'customer_email' => $data[24] === 'NULL' || $data[24] == null || $data[24] == '' ? null : $data[24],
+                        'customer_phone' => $data[25] === 'NULL' || $data[25] == null || $data[25] == '' ? null : $data[25],
                         'amount' => (float)$data[26],
                         'amount_conversion' => (float)$data[47],
                         'commission' => (float)$data[27],
@@ -102,12 +102,12 @@ class BookingSeeder extends Seeder
                         'selected_currency_id' => !(int)$data[29] ? 1 : (int)$data[29],
                         'conversion_rate' => (float)$data[30],
                         'discount_voucher_code_id' => !(int)$data[31] ? null : (int)$data[31],
-                        'room_rate_key' => $data[32],
-                        'payment_reference' => $data[33],
+                        'room_rate_key' => $data[32] === 'NULL' ? null : $data[32],
+                        'payment_reference' => $data[33] === 'NULL' ? null : $data[33],
                         'created_at' => Carbon::parse($data[2]),
                         'platform_type' => !(int)$data[35] || (int)$data[35] > 4 ? 2 : (int)$data[35],
-                        'platform_version' => $data[36],
-                        'platform_details' => $data[37],
+                        'platform_version' => $data[36] === 'NULL' || $data[36] == null || $data[36] == '' ? null :$data[36],
+                        'platform_details' => $data[37] === 'NULL' || $data[37] == null || $data[37] == '' ? null :$data[37],
                         'country_id' => !(int)$data[38] ? null : (int)$data[38],
                         'city_id' => !(int)$data[39] ? null : (int)$data[39],
                         'company_id' => !(int)$data[40] ? null : (int)$data[40],
@@ -121,9 +121,9 @@ class BookingSeeder extends Seeder
                         'mail_flag' => (int)$data[48],
                         'extra_nights' => (int)$data[49],
                         'discount_amount' =>  !(float)$data[51] ? null : (float)$data[51],
-                        'additional_booking_reference' =>  $data[52] == null || $data[52] == '' ? null : $data[52],
-                        'supplier_name' =>  $data[53] == null || $data[53] == '' ? null : $data[53],
-                        'vat_number' =>  $data[54] == null || $data[54] == '' ? null : $data[54],
+                        'additional_booking_reference' => $data[52] === 'N/A' || $data[52] === 'NULL' || $data[52] == null || $data[52] == '' ? null : $data[52],
+                        'supplier_name' => $data[53] === 'NULL' || $data[53] == null || $data[53] == '' ? null : $data[53],
+                        'vat_number' => $data[54] === 'NULL' || $data[54] == null || $data[54] == '' ? null : trim($data[54]),
                     ];
                 }
             }
@@ -132,6 +132,10 @@ class BookingSeeder extends Seeder
         }
 
         foreach (array_chunk($bookings, 1000) as $booking) {
+            // Remove if value null
+//            foreach (array_keys($booking, null) as $key) {
+//                unset($booking[$key]);
+//            }
             DB::table(Booking::TABLE_NAME)->insert($booking);
         }
     }

@@ -16,8 +16,8 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('provider_id');
-            $table->string('booking_reference', 100);
-            $table->string('booking_cancel_reference', 100);
+            $table->string('booking_reference', 100)->nullable();
+            $table->string('booking_cancel_reference', 100)->nullable();
             $table->string('additional_booking_reference', 100)->nullable();
             $table->tinyInteger('payment_type')->comment('0-paid by card, 1-discount, 2-invoice');
             $table->tinyInteger('status')->default(0)->comment('0-not finished, 1-confirmed, 2-cancelled, 3-paid, but not confirmed, 4-not paid');
@@ -43,9 +43,9 @@ class CreateBookingsTable extends Migration
             $table->text('remarks')->nullable();
             $table->string('supplier_name', 200)->nullable();
             $table->string('vat_number', 100)->nullable();
-            $table->string('customer_name', 200);
-            $table->string('customer_email', 100);
-            $table->string('customer_phone', 100);
+            $table->string('customer_name', 200)->nullable();
+            $table->string('customer_email', 100)->nullable();
+            $table->string('customer_phone', 100)->nullable();
             $table->double('amount', 10, 4)->comment('start booking amount in EUR');
             $table->double('amount_conversion', 10, 4)->comment('start booking amount in selected currency');
             $table->double('commission', 10, 4)->comment('booking commission in EUR');
@@ -67,7 +67,7 @@ class CreateBookingsTable extends Migration
             $table->tinyInteger('mail_flag')->default(0)->comment('email sending status to user');
             $table->tinyInteger('extra_nights')->default(0)->comment('booking with Extra nights option');
 
-            $table->tinyInteger('platform_type')->default(2)
+            $table->tinyInteger('platform_type')->default(2)->nullable()
                 ->comment('1-mobile app, 2-web browser, 3-mobile browser, 4-mac browser');
             $table->string('platform_version')->nullable()
                 ->comment('Platform version info such as browser version, mobile os version etc');
