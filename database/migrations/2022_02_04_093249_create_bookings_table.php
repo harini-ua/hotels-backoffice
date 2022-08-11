@@ -18,6 +18,7 @@ class CreateBookingsTable extends Migration
             $table->unsignedBigInteger('provider_id');
             $table->string('booking_reference', 100);
             $table->string('booking_cancel_reference', 100);
+            $table->string('additional_booking_reference', 100)->nullable();
             $table->tinyInteger('payment_type')->comment('0-paid by card, 1-discount, 2-invoice');
             $table->tinyInteger('status')->default(0)->comment('0-not finished, 1-confirmed, 2-cancelled, 3-paid, but not confirmed, 4-not paid');
             $table->string('item_code', 100)->nullable();
@@ -40,6 +41,8 @@ class CreateBookingsTable extends Migration
             $table->tinyInteger('adults');
             $table->tinyInteger('children')->nullable();
             $table->text('remarks')->nullable();
+            $table->string('supplier_name', 200)->nullable();
+            $table->string('vat_number', 100)->nullable();
             $table->string('customer_name', 200);
             $table->string('customer_email', 100);
             $table->string('customer_phone', 100);
