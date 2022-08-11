@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CompanySupport;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -61,6 +62,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PageFieldSeeder::class);
         $this->call(PageFieldTranslationSeeder::class);
         $this->call(CompanyFieldSeeder::class);
+        $this->call(CompanySupportSeeder::class);
         //$this->call(CompanyFieldTranslationSeeder::class);
         //$this->call(ResortFeeTranslationSeeder::class);
     }
