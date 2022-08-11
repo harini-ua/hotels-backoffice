@@ -74,7 +74,7 @@
                                                     <select name="supports[{{ $i }}][country_id]"
                                                             class="form-control select2-single @error('country_id') is-invalid @enderror"
                                                     >
-                                                        <option value="">{{ __('Select Country') }}</option>
+                                                        <option value="">{{ __('International') }}</option>
                                                         @php( $country_id = old("supports.$i.country_id") )
                                                         @php( $country_id = $supports && $supports[$i]->country_id ? $supports[$i]->country_id : null )
                                                         {{ $country_id }}

@@ -24,7 +24,7 @@ class CompanyCustomerSupportUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'supports.*.country_id' => 'required|exists:countries,id',
+            'supports.*.country_id' => 'nullable|exists:countries,id',
             'supports.*.email' => 'required|email',
             'supports.*.phone' => 'required|string',
             'supports.*.work_hours' => 'required|string',

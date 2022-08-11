@@ -16,7 +16,7 @@ class CreateCompanySupportTable extends Migration
         Schema::create('company_support', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('company_id');
-            $table->unsignedBigInteger('country_id');
+            $table->unsignedBigInteger('country_id')->nullable();
             $table->string('email');
             $table->string('phone');
             $table->string('work_hours');
