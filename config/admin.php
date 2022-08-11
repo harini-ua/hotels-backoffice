@@ -13,6 +13,12 @@ return [
         'delimiter' => ' ',
         'format' => '{SYMBOL}{DELIMITER}{VALUE}',
     ],
+    'language' => [
+        'default' => [
+            'id' => 1,
+            'name' => 'English',
+        ]
+    ],
     'number' => [
         'format' => [
             'decimals' => 2,

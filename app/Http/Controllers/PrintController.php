@@ -22,6 +22,7 @@ class PrintController extends Controller
         $resource = new Item($booking, new BookingReceiptTransformer);
 
         return view('admin.print.receipt', compact('booking', 'resource'));
+        // https://ho.hotel-express.com/admin/index.php/admin/receipt_print/2347551
     }
 
     /**
@@ -32,8 +33,11 @@ class PrintController extends Controller
     {
         $booking = Booking::findOrFail($id);
 
-        $resource = new Item($booking, new BookingVoucherTransformer);
+        $resource = (new BookingVoucherTransformer)->transform($booking);
+
+        dd($resource);
 
         return view('admin.print.voucher', compact('booking', 'resource'));
+        // https://ho.hotel-express.com/admin/index.php/admin/voucher_print/2347551
     }
 }
