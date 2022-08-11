@@ -58,6 +58,15 @@ class BookingSeeder extends Seeder
                         $cancellation_date = date('Y-m-d H:i:s', strtotime($date . ' ' . $time));
                     }
 
+                    $roomType = $data[11];
+                    $roomType = rtrim($roomType, ',');
+                    $roomType = preg_replace('/(?<!\d),|,(?!\d{3})/', ', ', $roomType);
+                    $roomType = str_replace(
+                        array('   ', '  ',  '),(', '()',  ')(', ' ,',  'e(',  'd(',  'm(',),
+                        array(  ' ',  ' ', '), (',  ' ', ') (',  ',', 'e (', 'd (', 'm (',),
+                        $roomType
+                    );
+
                     $bookings[] = [
                         'id' => (int)$data[0],
                         'provider_id' => (int)$data[1],
@@ -69,7 +78,7 @@ class BookingSeeder extends Seeder
                         'checkin' => date('Y-m-d', strtotime(str_replace('/', '-', $data[8]))),
                         'checkout' => date('Y-m-d', strtotime(str_replace('/', '-', $data[9]))),
                         'hotel_id' => (int)$data[10],
-                        'room_type' => $data[11],
+                        'room_type' => $roomType,
                         'rooms' => (int)$data[12],
                         'nights' => (int)$data[13],
                         'cancellation_date' => $cancellation_date,
