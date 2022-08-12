@@ -23,7 +23,7 @@ class BookingSeeder extends Seeder
 //        SELECT b.booking_no, a.api_id, b.voucher_date, b.booking_ref_no, b.booking_reference_cancel_grn, b.full_discount, b.status,
 //b.itemcode, b.check_in, b.check_out, b.hei_hotel_code, b.room_type, b.no_of_room, b.nights, b.trans_cancellation_date,
 //b.trans_cancellation_time, b.cancellation_policy, b.refundablestatus, b.euserid, b.inoffcode, b.adult_count, b.child_count,
-//b.remark, b.customer_name, b.customer_email, b.phone, b.original_cost, b.bookingcommission, b.final_amount, c.id as currency_id,
+//b.contract_remark, b.customer_name, b.customer_email, b.phone, b.original_cost, b.bookingcommission, b.final_amount, c.id as currency_id,
 //b.conv_rate_payment_to_user_prices, d.id as discount_voucher_code_id, b.hotelbed_rate_key, b.payment_reference, b.cancelled_date,
 // b.platform_type, b.platform_version_info, b.platform_details, hc.id, b.cityid, b.whtid, b.sub_wht_id, b.partner_amount,
 // (SELECT c.id FROM tblcurrencyname c WHERE c.currencyname = b.partner_currency_type) as partner_currency_type_id,
