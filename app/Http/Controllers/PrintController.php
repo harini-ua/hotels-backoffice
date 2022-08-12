@@ -33,11 +33,9 @@ class PrintController extends Controller
     {
         $booking = Booking::findOrFail($id);
 
-        $resource = (new BookingVoucherTransformer)->transform($booking);
+        $data = (new BookingVoucherTransformer)->transform($booking);
 
-        dd($resource);
-
-        return view('admin.print.voucher', compact('booking', 'resource'));
+        return view('admin.print.voucher', compact('booking', 'data'));
         // https://ho.hotel-express.com/admin/index.php/admin/voucher_print/2347551
     }
 }

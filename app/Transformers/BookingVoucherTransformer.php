@@ -19,7 +19,6 @@ class BookingVoucherTransformer extends TransformerAbstract
      */
     public function transform(Booking $booking)
     {
-        // Load relationships
         $booking->with([
             'provider',
             'hotel',
@@ -29,15 +28,14 @@ class BookingVoucherTransformer extends TransformerAbstract
             'guests',
         ]);
 
-        // Build final data result
         if ($booking->provider->name === 'grn') {
-            $result['booking_number'] = $booking->id;
+            $result['booking_number'] = $booking->booking_reference;
         } elseif ($booking->inn_off_code) {
-            $result['booking_number'] = $booking->inn_off_code .'-'. $booking->id;
+            $result['booking_number'] = $booking->inn_off_code .'-'. $booking->booking_reference;
         } elseif ($booking->provider->name === 'miki') {
-            $result['booking_number'] = $booking->id .' - '. $booking->additional_booking_reference;
+            $result['booking_number'] = $booking->booking_reference .' - '. $booking->additional_booking_reference;
         } else {
-            $result['booking_number'] = $booking->id;
+            $result['booking_number'] = $booking->booking_reference;
         }
 
         $result['booking_username'] = $booking->guests[0]->fullname;
@@ -52,19 +50,20 @@ class BookingVoucherTransformer extends TransformerAbstract
         $result['supplier_name'] = $booking->supplier_name;
         $result['vat_number'] = $booking->vat_number;
 
-        // TODO: $booking->contract_remark ?
-        if ($booking->contract_remark) {
+        $result['remark'] = null;
+        if ($booking->remark) {
             $textToBeRemoved = "Please note that once the client has checked in and in the event of an unanticipated " .
                 "departure, the hotel may invoice the total amount of the reservation. In the event of a no-show, the " .
                 "hotel is also authorized to invoice the total amount of the reservation.";
-            $remark = str_replace($textToBeRemoved, '', trim($booking->contract_remark));
-            $result['contract_remark'] = iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $remark);
+            $remark = str_replace($textToBeRemoved, '', trim($booking->remark));
+            $result['remark'] = iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $remark);
         }
 
         $result['rooms'] = $booking->rooms;
         $result['adults'] = $booking->adults;
         $result['children'] = $booking->children;
 
+        $result['children_ages'] = [];
         foreach ($booking->guests as $guest) {
             if ($guest->child_age) {
                 $result['children_ages'][] = $guest->child_age;
@@ -72,8 +71,25 @@ class BookingVoucherTransformer extends TransformerAbstract
         }
 
         $result['mobile_flag'] = $booking->mail_flag;
+
+        $result['country_name'] = $booking->country->name;
+        $result['region_name'] = $booking->country->region;
+
+        $result['show_extra_benefits'] = false;
+        $countryPartners = ['Norway', 'Sweden', 'Denmark', 'Finland', 'Iceland', 'Turkey', 'Israel'];
+        if (
+            ($result['region_name'] === 'Europe' || in_array($result['country_name'], $countryPartners, true))
+            &&
+            ($result['country_name'] !== 'Kazakhstan')
+        ) {
+            $result['show_extra_benefits'] = true;
+        }
+
+        $result['show_all_booking_non_refund'] = $booking->company->template
+            ? $booking->company->template->show_all_booking_non_refund : 0;
+
         $result['hotel_name'] = $booking->hotel->name;
-        $result['hotel_address'] = $booking->hotel->address;
+        $result['hotel_address'] = rtrim($booking->hotel->address, '<br>');
         $result['room_type'] = explode('-', $booking->room_type);
         $result['customer_support'] = $this->getCustomerSupport($booking);
         $result['provider_name'] = $booking->provider->name;
@@ -99,6 +115,10 @@ class BookingVoucherTransformer extends TransformerAbstract
                 $support = $booking->bookingUser->company->supports()
                     ->whereNull('country_id')->first();
             }
+        }
+
+        if (! $support) {
+            return null;
         }
 
         return [
@@ -146,6 +166,6 @@ class BookingVoucherTransformer extends TransformerAbstract
 
         $query->where('page_fields.page_id', $pageId);
 
-        return $query->pluck('translation', 'name')->toArray();
+        return $query->pluck('name', 'field_id')->toArray();
     }
 }

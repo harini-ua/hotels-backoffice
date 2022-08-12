@@ -25,9 +25,9 @@ class Company extends Model
      * @var array
      */
     protected $fillable = [
-        'holder_name', 'company_name', 'category', 'country_id', 'city_id', 'language_id', 'admin_id', 'user_id',
-        'address', 'email', 'phone', 'comment', 'status', 'level', 'sub_companies', 'vat', 'newsletter', 'login_type',
-        'access_codes'
+        'holder_name', 'company_name', 'theme_id', 'category', 'country_id', 'template_id', 'city_id', 'language_id',
+        'admin_id', 'user_id', 'address', 'email', 'phone', 'comment', 'status', 'level', 'sub_companies', 'vat',
+        'newsletter', 'login_type', 'access_codes'
     ];
 
     /**
@@ -134,11 +134,27 @@ class Company extends Model
     }
 
     /**
+     * Get the theme that owns the company.
+     */
+    public function theme()
+    {
+        return $this->belongsTo(CompanyTheme::class);
+    }
+
+    /**
      * Get the country that owns the company.
      */
     public function country()
     {
         return $this->belongsTo(Country::class);
+    }
+
+    /**
+     * Get the template that owns the company.
+     */
+    public function template()
+    {
+        return $this->belongsTo(CompanyTemplate::class);
     }
 
     /**
