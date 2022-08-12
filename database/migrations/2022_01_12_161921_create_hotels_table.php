@@ -36,8 +36,8 @@ class CreateHotelsTable extends Migration
             $table->smallInteger('other_rating')->default(0);
             $table->mediumInteger('commission')->default(0);
 
-            $table->bigInteger('trip_advisor_rating_id')->default(0);
-            $table->bigInteger('trip_advisor_rating_count')->default(0);
+            $table->bigInteger('trip_advisor_rating_id')->nullable();
+            $table->bigInteger('trip_advisor_rating_count')->nullable();
             $table->string('trip_advisor_rating_url')->nullable();
 
             $table->string('name', 1000)->nullable();
