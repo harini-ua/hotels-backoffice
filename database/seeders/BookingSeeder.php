@@ -132,10 +132,6 @@ class BookingSeeder extends Seeder
         }
 
         foreach (array_chunk($bookings, 1000) as $booking) {
-            // Remove if value null
-//            foreach (array_keys($booking, null) as $key) {
-//                unset($booking[$key]);
-//            }
             DB::table(Booking::TABLE_NAME)->insert($booking);
         }
     }

@@ -31,15 +31,15 @@ class BookingGuestSeeder extends Seeder
 
         if (($open = fopen(storage_path('app/seed') . "/booking_guests.csv", "r")) !== false) {
             while (($data = fgetcsv($open, 0, ',')) !== false) {
-
-                    $booking_guests[] = [
-                        'id' => (int)$data[0],
-                        'booking_id' => (int)$data[6],
-                        'firstname' => $data[2],
-                        'lastname' => $data[3],
-                        'guest_type' => $data[5] == 'adult' ? 0 : 1,
-                        'child_age' => $data[5] == 'child' ? (int)$data[12] : null,
-                    ];
+                $booking_guests[] = [
+                    'id' => (int)$data[0],
+                    'booking_id' => (int)$data[6],
+                    'firstname' => $data[2],
+                    'lastname' => $data[3],
+                    'guest_type' => $data[5] === 'adult' ? 0 : 1,
+                    'child_age' => $data[5] === 'child' ? (int)$data[12] : null,
+                    'address' => in_array($data[11], ['NULL', '', ' ', '-'], true) ? null : $data[11],
+                ];
             }
 
             fclose($open);
