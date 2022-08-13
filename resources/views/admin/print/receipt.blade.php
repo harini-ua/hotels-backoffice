@@ -159,6 +159,11 @@
             </div>
             <div style="margin: 5px 15px 10px 15px; font-size: 13px; color: #666;">
                 @if($data['provider_name'] === 'grn')
+                    @if($data['show_all_booking_non_refund'] || !$data['refundable'])
+                        {{ $data['translation'][498] }}
+                    @else
+                        {{ $data['translation'][499] }} {{ $data['expiration_date'] }}, {{ $data['translation'][496] }}
+                    @endif
                 @else
                     @if($data['provider_name'] === 'hotelbed')
                         {{ $data['cancellation_policy'] }}

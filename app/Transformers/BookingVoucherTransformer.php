@@ -92,6 +92,19 @@ class BookingVoucherTransformer extends TransformerAbstract
         $result['show_all_booking_non_refund'] = $booking->company->template
             ? $booking->company->template->show_all_booking_non_refund : 0;
 
+        $result['refundable'] = $booking->refundable_status;
+
+        $result['expiration_date'] = $booking->checkin;
+        if ($booking->cancellation_date) {
+            $result['expiration_date'] = $booking->cancellation_date;
+        }
+
+        if (Carbon::parse($result['expiration_date'])->gt(Carbon::now())) {
+            $expiration_date = Carbon::parse($result['expiration_date'], new DateTimeZone('Asia/Kolkata'));
+            $expiration_date = $expiration_date->setTimezone(new \DateTimeZone('Europe/London'));
+            $result['expiration_date'] = $expiration_date;
+        }
+
         $result['hotel_name'] = $booking->hotel->name;
         $result['hotel_address'] = rtrim($booking->hotel->address, '<br>');
         $result['room_type'] = explode('-', $booking->room_type);

@@ -7,7 +7,6 @@ use App\Transformers\BookingReceiptTransformer;
 use App\Transformers\BookingVoucherTransformer;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
-use League\Fractal\Resource\Item;
 
 class PrintController extends Controller
 {
