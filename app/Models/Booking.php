@@ -24,14 +24,16 @@ class Booking extends Model
      * @var array
      */
     protected $fillable = [
-        'provider_id', 'booking_reference', 'booking_cancel_reference', 'payment_type', 'status', 'item_code',
-        'checkin', 'checkout', 'country_id', 'city_id', 'hotel_id', 'room_type', 'rooms', 'nights', 'cancellation_date',
-        'cancelled_date', 'cancellation_policy', 'refundable_status', 'bookind_user_id', 'company_id', 'sub_company_id',
-        'inn_off_code', 'adults', 'children', 'remarks', 'customer_name', 'customer_email', 'customer_phone', 'amount',
-        'amount_conversion', 'commission', 'final_amount', 'final_amount_conversion', 'original_currency_id',
-        'selected_currency_id', 'conversion_rate', 'discount_voucher_code_id', 'discount_amount', 'room_rate_key',
-        'payment_reference', 'partner_amount', 'partner_currency_id', 'vat', 'pay_to_client', 'sales_office_commission',
-        'mail_flag', 'extra_nights', 'platform_type', 'platform_version', 'platform_details',
+        'provider_id', 'booking_reference', 'booking_cancel_reference', 'booking_hash', 'payment_type', 'status',
+        'item_code', 'checkin', 'checkout', 'country_id', 'city_id', 'hotel_id', 'room_type', 'rooms', 'nights',
+        'cancellation_date', 'cancelled_date', 'cancellation_policy', 'refundable_status', 'bookind_user_id',
+        'company_id', 'sub_company_id', 'inn_off_code', 'adults', 'children', 'remarks', 'customer_name',
+        'customer_email', 'customer_phone', 'amount', 'amount_conversion', 'commission', 'final_amount',
+        'final_amount_conversion', 'original_currency_id', 'selected_currency_id', 'conversion_rate',
+        'discount_voucher_code_id', 'discount_amount', 'room_rate_key', 'payment_reference', 'partner_amount',
+        'partner_currency_id', 'vat', 'pay_to_client', 'sales_office_commission', 'mail_flag', 'extra_nights',
+        'platform_type', 'platform_version', 'platform_details', 'additional_booking_reference', 'supplier_name',
+        'vat_number',
     ];
 
     /**

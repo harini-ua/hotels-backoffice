@@ -146,9 +146,34 @@
                 @endif
             @endif
         </table>
-
-        {{--    Cancellation Policy--}}
-
+        @if($result['show_all_booking_non_refund'])
+            <div style="margin: 10px 0 10px 15px; font-weight: bold; color: #333;">
+                <u>{{ $data['translation'][238] }}:</u>
+            </div>
+            <div class="message_box_success" style="margin: 5px 0 10px 15px; font-size: 13px; color: #666;">
+                {{ $data['translation'][498] }}
+            </div>
+        @else
+            <div style="margin: 10px 0 10px 15px; font-weight: bold; color: #333;">
+                <u>{{ $data['translation'][238] }}:</u>
+            </div>
+            <div style="margin: 5px 15px 10px 15px; font-size: 13px; color: #666;">
+                @if($data['provider_name'] === 'grn')
+                @else
+                    @if($data['provider_name'] === 'hotelbed')
+                        {{ $data['cancellation_policy'] }}
+                    @else
+                        {{ $data['translation'][499] }}
+                    @endif
+                @endif
+            </div>
+            @if($data['booking_hash'])
+                <div style="margin-left: 15px; font-size: 13px; color: #666;">
+                    {{ $data['translation'][199] }}
+                    <a style="color: #0080C0" href="{{ $result['cancel_booking_url'] }}"> {{ $data['translation'][236] }}</a>
+                </div>
+            @endif
+        @endif
         <div>
             <div style="margin: 10px 0 10px 15px; font-weight: bold; color: #333;">
                 <u>{{ $data['translation'][247] }}:</u>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\BookingCancellationController;
 use App\Http\Controllers\CityCommissionController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CityProviderController;
@@ -81,6 +82,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/', DashboardsController::class)->name('home');
         Route::get('dashboard', DashboardsController::class)->name('index');
         Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
+        Route::get('booking/{hash}/cancellation', BookingCancellationController::class)->name('booking.cancellation');
 
         /** ----- ------ ----- USERS */
         Route::prefix('users')->as('users.')->group(function () {

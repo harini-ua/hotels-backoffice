@@ -42,7 +42,10 @@ class BookingReceiptTransformer extends TransformerAbstract
         $result['booking_email'] = $booking->guests[0]->email;
         $result['booking_checkin'] = Formatter::date($booking->checkin, 'M d, Y');
         $result['booking_checkout'] = Formatter::date($booking->checkout, 'M d, Y');
-//        $result['cancellation_key'] = $booking->cancellation_key;
+        $result['booking_hash'] = $booking->booking_hash;
+        $result['cancel_booking_url'] = route('booking.cancellation', $booking->booking_hash);
+        $result['cancellation_date'] = $booking->cancellation_date;
+        $result['cancellation_policy'] = $booking->cancellation_policy;
 
         $result['hotel_name'] = $booking->hotel->name;
         $result['hotel_address'] = rtrim($booking->hotel->address, '<br>');
@@ -102,6 +105,7 @@ class BookingReceiptTransformer extends TransformerAbstract
         $result['logo'] = asset('storage/companies/'.$booking->company->id.'/'.$booking->company->homepageOptions->logo);
         $result['copyright'] = '© 1987 - ' .Carbon::now()->format('Y');
         $result['translation'] = $this->getPageField(121, (int) $result['user_language_id']);
+        $result['translation'] += $this->getPageField(131, (int) $result['user_language_id']);
 
         return $result;
     }
