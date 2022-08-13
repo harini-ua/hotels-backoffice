@@ -134,7 +134,7 @@
                     <td style="padding-left: 15px;">0,-</td>
                 </tr>
             @else
-                @if($result['extra_nights'])
+                @if($data['extra_nights'])
                     <tr style="font-size: 13px; color: #666;">
                         <td style="white-space: nowrap; vertical-align: top; padding-left: 15px;">
                             {{ $data['translation'][198] }}:
@@ -146,7 +146,7 @@
                 @endif
             @endif
         </table>
-        @if($result['show_all_booking_non_refund'])
+        @if($data['show_all_booking_non_refund'])
             <div style="margin: 10px 0 10px 15px; font-weight: bold; color: #333;">
                 <u>{{ $data['translation'][238] }}:</u>
             </div>
@@ -170,7 +170,7 @@
             @if($data['booking_hash'])
                 <div style="margin-left: 15px; font-size: 13px; color: #666;">
                     {{ $data['translation'][199] }}
-                    <a style="color: #0080C0" href="{{ $result['cancel_booking_url'] }}"> {{ $data['translation'][236] }}</a>
+                    <a style="color: #0080C0" href="{{ $data['cancel_booking_url'] }}"> {{ $data['translation'][236] }}</a>
                 </div>
             @endif
         @endif

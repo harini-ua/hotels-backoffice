@@ -38,7 +38,7 @@ class BookingReceiptTransformer extends TransformerAbstract
             $result['booking_number'] = $booking->booking_reference;
         }
 
-        $result['country_name'] = $booking->bookingUser->country->name;
+        $result['booking_username'] = $booking->guests[0]->fullname;
         $result['booking_email'] = $booking->guests[0]->email;
         $result['booking_checkin'] = Formatter::date($booking->checkin, 'M d, Y');
         $result['booking_checkout'] = Formatter::date($booking->checkout, 'M d, Y');
@@ -49,6 +49,7 @@ class BookingReceiptTransformer extends TransformerAbstract
 
         $result['hotel_name'] = $booking->hotel->name;
         $result['hotel_address'] = rtrim($booking->hotel->address, '<br>');
+        $result['country_name'] = $booking->bookingUser->country->name;
         $result['room_type'] = explode('-', $booking->room_type);
         $result['rooms'] = $booking->rooms;
         $result['adults'] = $booking->adults;

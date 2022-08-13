@@ -21,8 +21,6 @@ class PrintController extends Controller
 
         $data = (new BookingReceiptTransformer)->transform($booking);
 
-        dd($data);
-
         return view('admin.print.receipt', compact('booking', 'data'));
         // https://ho.hotel-express.com/admin/index.php/admin/receipt_print/2347551
     }
