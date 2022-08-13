@@ -15,7 +15,7 @@
                 </span>
             </td>
             <td align="right">
-                <img style="float: right; overflow: hidden;" height="35px" src="{{ $data['logo'] }}"  alt="logo"/>
+                <img style="float: right; overflow: hidden;" height="35px" src="{{ $data['logo'] }}" alt="logo"/>
             </td>
         </tr>
     </table>

@@ -8,6 +8,7 @@ use App\Models\Hotel;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class BookingSeeder extends Seeder
 {
@@ -72,6 +73,7 @@ class BookingSeeder extends Seeder
                         'provider_id' => (int)$data[1],
                         'booking_reference' => $data[3] === 'N/A' || $data[3] === 'NULL' || $data[3] == '' ? null : $data[3],
                         'booking_cancel_reference' => $data[4] === 'NULL' || $data[4] == '' ? null : $data[4],
+                        'booking_hash' => $data[6] === 'CONFIRMED' || $data[6] === 'Cancelled' ? Str::random(40) : null,
                         'payment_type' => (int)$data[5],
                         'status' => $data[6] === 'CONFIRMED' ? 1 : ($data[6] === 'Cancelled' ? 2 : ($data[6] === 'Paid, but not confirmed' ? 3 : ($data[6] === 'Not Paid' ? 4 : 0))),
                         'item_code' => $data[7] === 'NULL' || $data[7] == '' ? null : $data[7],

@@ -41,7 +41,7 @@ class Company extends Model
             'company_id',
             'id',
             'id',
-            'partner_id',
+            'partner_id'
         );
     }
 
@@ -56,7 +56,7 @@ class Company extends Model
             'company_id',
             'partner_id',
             'id',
-            'id',
+            'id'
         );
     }
 
