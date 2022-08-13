@@ -38,7 +38,6 @@ class BookingGuestSeeder extends Seeder
                     'lastname' => $data[3],
                     'guest_type' => $data[5] === 'adult' ? 0 : 1,
                     'child_age' => $data[5] === 'child' ? (int)$data[12] : null,
-                    'address' => in_array($data[11], ['NULL', '', ' ', '-'], true) ? null : $data[11],
                 ];
             }
 
