@@ -97,13 +97,67 @@ class ImagesMigrate extends Command
         Company::with(['homepageOptions.carousel.items'])
             ->chunk($chunk, function ($items) {
                 /** @var Company $item */
-                foreach ($items as $item) {
-                    if ($item->logo) {
-                        // TODO: Need implement
-                    }
+                foreach ($items as $company) {
+                    if ($item->homepageOptions) {
+                        $homepage = $item->homepageOptions;
+                        if ($homepage->logo && ! filter_var($homepage->logo, FILTER_VALIDATE_URL)) {
+                            $exploded = explode('/', $homepage->logo);
+                            $oldFileName = end($exploded);
 
-                    if ($item->mobile_background_image) {
-                        // TODO: Need implement
+                            if (Storage::exists('public/old/companies/mainpagelogo/'.$oldFileName)) {
+                                $newFileName = Uuid::uuid1().'.'.strtolower(\File::extension($homepage->logo));
+
+                                Storage::copy(
+                                    'public/old/companies/mainpagelogo/'.$oldFileName,
+                                    'public/companies/'.$company->id.'/'.$newFileName
+                                );
+
+                                $homepage->update(['image' => $newFileName]);
+                            }
+                        }
+
+                        if ($homepage->mobile_background_image &&
+                            ! filter_var($homepage->mobile_background_image, FILTER_VALIDATE_URL))
+                        {
+                            $exploded = explode('/', $homepage->mobile_background_image);
+                            $oldFileName = end($exploded);
+
+                            if (Storage::exists('public/old/companies/'.$oldFileName)) {
+                                $newFileName = Uuid::uuid1().'.'.strtolower(\File::extension($homepage->mobile_background_image));
+
+                                Storage::copy(
+                                    'public/old/companies/'.$oldFileName,
+                                    'public/companies/'.$company->id.'/'.$newFileName
+                                );
+
+                                $homepage->update(['image' => $newFileName]);
+                            }
+                        }
+
+                        if ($homepage->carousel) {
+                            $carousel = $homepage->carousel;
+                            foreach ($carousel->items as $item) {
+                                if ($item->image) {
+                                    if (! filter_var($item->image, FILTER_VALIDATE_URL)) {
+                                        $exploded = explode('/', $item->image);
+                                        $oldFileName = end($exploded);
+
+                                        if (Storage::exists('public/old/companies/'.$oldFileName)) {
+                                            $newFileName = Uuid::uuid1().'.'.strtolower(\File::extension($item->image));
+
+                                            Storage::copy(
+                                                'public/old/companies/'.$oldFileName,
+                                                'public/companies/'.$company->id.'/'.$newFileName
+                                            );
+
+                                            $item->update(['image' => $newFileName]);
+                                        }
+                                    }
+                                } else {
+                                    $item->delete();
+                                }
+                            }
+                        }
                     }
                 }
             });
