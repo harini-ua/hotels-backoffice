@@ -29,12 +29,13 @@ class BookingSeeder extends Seeder
 // b.platform_type, b.platform_version_info, b.platform_details, hc.id, b.cityid, b.whtid, b.sub_wht_id, b.partner_amount,
 // (SELECT c.id FROM tblcurrencyname c WHERE c.currencyname = b.partner_currency_type) as partner_currency_type_id,
 // b.vat, b.paytoclient, b.hei, b.original_cost_paid_currency, b.mail_flag, b.extra_nights, b.sub_wht_commission, b.disc_amount_in_pay_currency,
-// b.miki_reference, b.hbed_supplier_name, b.hbed_vat_no
+// b.miki_reference, b.hbed_supplier_name, b.hbed_vat_no, ck.canacelltion_key
 //FROM customer_booking b
 //LEFT JOIN tblcurrencyname c ON c.currencyname = b.selectedcurrency
 //LEFT JOIN discount_codes d ON d.code = b.discount_code
 //LEFT JOIN api_control a ON a.api_name = b.api
 //LEFT JOIN hei_country hc ON hc.country = b.countryName
+//LEFT JOIN cancellation_keys ck ON ck.booking_id = b.booking_no
 //WHERE a.api_id IS NOT NULL AND b.euserid IN(413,414,415,417,419,420,421,426,439,440,441,442,443,444,448,450,456,457,469,474,496,514,531,582,583,584,595,598,606,607,610,649,728,846,1413,1414,1415,1416,1417,
 //        1418,1425,1567,1647,1665,1716,2180,2181,2567,3278,3386,3514,3712,3851,4442,5955,6022,8321,8963,10735,11264,11654,17143,18250,19534,20760,21626,21627,21629,22252,22639,43215,44758,
 //        46906,49866,56297,62937,69120,76246,79846,79866,79871,80264,84098,84790,85033,86191,88897,95737,96661,105752,106065,600005870,600005871,600005875,600005876,600005877,
@@ -72,8 +73,7 @@ class BookingSeeder extends Seeder
                         'provider_id' => (int)$data[1],
                         'booking_reference' => $data[3] === 'N/A' || $data[3] === 'NULL' || $data[3] == '' ? null : $data[3],
                         'booking_cancel_reference' => $data[4] === 'NULL' || $data[4] == '' ? null : $data[4],
-                        // TODO: Need fixed hash
-                        'booking_hash' => $data[6] === 'CONFIRMED' || $data[6] === 'Cancelled' ? Str::random(40) : null,
+                        'booking_hash' => $data[55] === 'NULL' || $data[55] == null || $data[55] == '' ? null : $data[55],
                         'payment_type' => (int)$data[5],
                         'status' => $data[6] === 'CONFIRMED' ? 1 : ($data[6] === 'Cancelled' ? 2 : ($data[6] === 'Paid, but not confirmed' ? 3 : ($data[6] === 'Not Paid' ? 4 : 0))),
                         'item_code' => $data[7] === 'NULL' || $data[7] == '' ? null : $data[7],
