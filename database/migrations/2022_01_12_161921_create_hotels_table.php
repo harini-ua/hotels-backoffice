@@ -16,12 +16,12 @@ class CreateHotelsTable extends Migration
         Schema::create('hotels', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('city_id');
-            $table->string('city_code');
-            $table->string('city_name');
+            $table->string('city_code')->nullable();
+            $table->string('city_name')->nullable();
 
             $table->unsignedBigInteger('country_id');
-            $table->string('country_code');
-            $table->string('country_name');
+            $table->string('country_code')->nullable();
+            $table->string('country_name')->nullable();
 
             $table->tinyInteger('status')->default(0)
                 ->comment('1-new, 2-updated, 3-old, 4-deleted');

@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
                     'role' => $data[8],
                     'firstname' => $data[10],
                     'lastname' => $data[11],
-                    'address' => $data[12],
+                    'address' => in_array($data[12], ['', ' '], true) ? null : $data[12],
                 ];
             }
 
