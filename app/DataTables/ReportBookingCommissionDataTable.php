@@ -37,8 +37,8 @@ class ReportBookingCommissionDataTable extends DataTable
             return view('admin.datatables.view-voucher', ['model' => $model]);
         });
 
-        $dataTable->addColumn('hei_id', function (Booking $model) {
-            return 'HEI'.$model->id;
+        $dataTable->addColumn('id', function (Booking $model) {
+            return $model->id;
         });
 
         $dataTable->addColumn('checkin', function (Booking $model) {
@@ -195,20 +195,18 @@ class ReportBookingCommissionDataTable extends DataTable
 
                     if ($salesOfficesLevel1) {
                         $sumSalesOfficeCommission = 0;
-                        $heiSalesOfficeCommission = false;
+                        $salesOfficeCommission = false;
                         foreach ($salesOfficesLevel1 as $salesL1) {
                             // Sum sales offices commissions
                             if ($salesL1->sales_office_country_id) {
                                 $sumSalesOfficeCommission += $salesL1->commission;
                             } else {
-                                // Isset sales office = HEI
-                                $heiSalesOfficeCommission = true;
+                                $salesOfficeCommission = true;
                             }
                         }
 
-                        if ($heiSalesOfficeCommission) {
+                        if ($salesOfficeCommission) {
                             foreach ($salesOfficesLevel1 as $salesL1) {
-                                // If null sales office = HEI
                                 if (!$salesL1->sales_office_country_id) {
                                     $result = $hqDistributor * ($salesL1->commission / 100);
 
@@ -312,7 +310,7 @@ class ReportBookingCommissionDataTable extends DataTable
      */
     protected function setOrderColumns($dataTable)
     {
-        $dataTable->orderColumn('hei_id', static function ($query, $order) {
+        $dataTable->orderColumn('id', static function ($query, $order) {
             $query->orderBy('id', $order);
         });
 
@@ -362,7 +360,7 @@ class ReportBookingCommissionDataTable extends DataTable
             $query->where('booking_reference', 'like', "%$keyword%");
         });
 
-        $dataTable->filterColumn('hei_id', static function ($query, $keyword) {
+        $dataTable->filterColumn('id', static function ($query, $keyword) {
             $query->where('id', 'like', "%$keyword%");
         });
     }
@@ -429,7 +427,7 @@ class ReportBookingCommissionDataTable extends DataTable
         $columns[] = Column::make('booking_id')->title(__('Booking ID'))
             ->width(150)
             ->orderable(false);
-        $columns[] = Column::make('hei_id')->title(__('HEI ID'))
+        $columns[] = Column::make('id')->title(__('ID'))
             ->addClass('text-center');
         $columns[] = Column::make('checkin')->title(__('Arrival Date'))
             ->addClass('text-center');

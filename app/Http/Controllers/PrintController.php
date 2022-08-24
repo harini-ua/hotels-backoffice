@@ -21,7 +21,6 @@ class PrintController extends Controller
         $data = (new BookingReceiptTransformer)->transform($booking);
 
         return view('admin.print.receipt', compact('booking', 'data'));
-        // https://ho.hotel-express.com/admin/index.php/admin/receipt_print/2347551
     }
 
     /**
@@ -35,6 +34,5 @@ class PrintController extends Controller
         $data = (new BookingVoucherTransformer)->transform($booking);
 
         return view('admin.print.voucher', compact('booking', 'data'));
-        // https://ho.hotel-express.com/admin/index.php/admin/voucher_print/2347551
     }
 }

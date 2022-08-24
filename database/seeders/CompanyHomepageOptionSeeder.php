@@ -23,18 +23,6 @@ class CompanyHomepageOptionSeeder extends Seeder
     {
         $company_homepage_options = [];
 
-        //for company_homepage_options.csv
-//        SELECT c.whiteid as company_id, p.theme_id, c.logo, c.mobile_slide_pic as mobile_background_image,
-//        c.s_pic1, c.s_text1, c.s_pic2, c.s_text2, c.s_pic3, c.s_text3,
-//        c.s_pic4, c.s_text4, c.s_pic5, c.s_text5, c.rgt_head1, c.rgt_msg1,
-//        c.rgt_head2, c.rgt_msg2, c.testi_title, c.testi_t1, c.testi_t2
-//        FROM white_label_content c
-//        INNER JOIN white_profile_details p ON p.whtid = c.whiteid
-//        WHERE c.whiteid IN(761,804,805,806,807,808,809,810,840,841,842,843,844,845,846,847,848,849,1184,1395,1396,1397,1398,1399,1400,1401,1402,
-//        1403,1404,1418,1419,1420,1421,1422,1423,1556,1594,1706,1707,1708,1709,1710,1711,1712,1713,754,602,886,425,431,443,462,
-//        494,496,497,501,503,516,518,524,568,570,571,587,604,605,616,640,645,682,693,712,719,723,724,732,746,748,750,790,962,
-//        1374,1526,1554,1595,1623,1626,1629,1727,1743)
-
         if (($open = fopen(storage_path('app/seed') . "/company_homepage_options.csv", "r")) !== false) {
             while (($data = fgetcsv($open, 0, ',')) !== false) {
                 $carousel_data = [];
@@ -99,8 +87,6 @@ class CompanyHomepageOptionSeeder extends Seeder
                     'carousel_id' => isset($carousel) ? $carousel->id : null,
                     'teaser_id' => isset($teaser) ? $teaser->id : null,
                 ];
-
-//                $this->downloadImages($data);
             }
 
             fclose($open);
@@ -108,68 +94,6 @@ class CompanyHomepageOptionSeeder extends Seeder
 
         foreach (array_chunk($company_homepage_options, 1000) as $company) {
             DB::table(CompanyHomepageOption::TABLE_NAME)->insertTs($company);
-        }
-    }
-
-    /**
-     * Download company images
-     * @param array $data
-     * @return void
-     */
-    protected function downloadImages(array $data): void
-    {
-        if (App::environment('local'))
-        {
-            $company_dir = storage_path('app/public/companies') . '/' . (int)$data[0];
-            if (!file_exists($company_dir)) {
-                mkdir($company_dir, 0777);
-            }
-
-            $contextOptions = [
-                "ssl" => [
-                    "verify_peer"      => false,
-                    "verify_peer_name" => false,
-                ]
-            ];
-
-            //  for downloading images, execute only on local (long process)
-            if (!file_exists(storage_path('app/public/company_logos'))) {
-                mkdir(storage_path('app/public/company_logos'), 0777);
-            }
-            $logo = 'https://ho.hotel-express.com/admin/white_image/mainpagelogo/' . $data[2];
-            if (($data[2] !== '') && @fopen($logo, 'r')) {
-                $store_path = storage_path('app/public/company_logos') . '/' . $data[2];
-                copy($logo, $store_path, stream_context_create($contextOptions));
-            }
-
-            if (!file_exists(storage_path('app/public/company_images'))) {
-                mkdir(storage_path('app/public/company_images'), 0777);
-            }
-            $images_path = 'https://ho.hotel-express.com/admin/white_image/';
-            if (($data[3] !== '') && @fopen($images_path . $data[3], 'r')) {
-                $store_path = storage_path('app/public/company_images') . '/' . $data[3];
-                copy($images_path . $data[3], $store_path, stream_context_create($contextOptions));
-            }
-            if (($data[4] !== '') && @fopen($images_path . $data[4], 'r')) {
-                $store_path = storage_path('app/public/company_images') . '/' . $data[4];
-                copy($images_path . $data[4], $store_path, stream_context_create($contextOptions));
-            }
-            if (($data[6] !== '') && @fopen($images_path . $data[6], 'r')) {
-                $store_path = storage_path('app/public/company_images') . '/' . $data[6];
-                copy($images_path . $data[6], $store_path, stream_context_create($contextOptions));
-            }
-            if (($data[8] !== '') && @fopen($images_path . $data[8], 'r')) {
-                $store_path = storage_path('app/public/company_images') . '/' . $data[8];
-                copy($images_path . $data[8], $store_path, stream_context_create($contextOptions));
-            }
-            if (($data[10] !== '') && @fopen($images_path . $data[10], 'r')) {
-                $store_path = storage_path('app/public/company_images') . '/' . $data[10];
-                copy($images_path . $data[10], $store_path, stream_context_create($contextOptions));
-            }
-            if (($data[12] !== '') && @fopen($images_path . $data[12], 'r')) {
-                $store_path = storage_path('app/public/company_images') . '/' . $data[12];
-                copy($images_path . $data[12], $store_path, stream_context_create($contextOptions));
-            }
         }
     }
 }

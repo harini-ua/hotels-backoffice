@@ -34,8 +34,8 @@ class ReportBookingCustomerDataTable extends DataTable
             return view('admin.datatables.view-voucher', ['model' => $model]);
         });
 
-        $dataTable->addColumn('hei_id', function (Booking $model) {
-            return 'HEI'.$model->id;
+        $dataTable->addColumn('id', function (Booking $model) {
+            return $model->id;
         });
 
         $dataTable->addColumn('send', function (Booking $model) {
@@ -225,7 +225,7 @@ class ReportBookingCustomerDataTable extends DataTable
             $query->orderBy('booking_reference', $order);
         });
 
-        $dataTable->orderColumn('hei_id', static function ($query, $order) {
+        $dataTable->orderColumn('id', static function ($query, $order) {
             $query->orderBy('id', $order);
         });
 
@@ -293,7 +293,7 @@ class ReportBookingCustomerDataTable extends DataTable
             $query->where('booking_reference', 'like', "%$keyword%");
         });
 
-        $dataTable->filterColumn('hei_id', static function ($query, $keyword) {
+        $dataTable->filterColumn('id', static function ($query, $keyword) {
             $query->where('id', 'like', "%$keyword%");
         });
     }
@@ -359,7 +359,7 @@ class ReportBookingCustomerDataTable extends DataTable
             Column::make('booking_id')->title(__('Booking ID'))
                 ->width(150)
                 ->orderable(false),
-            Column::make('hei_id')->title(__('HEI ID'))
+            Column::make('id')->title(__('ID'))
                 ->addClass('text-center'),
             Column::make('send')->title(__('Re Send'))
                 ->addClass('text-center')

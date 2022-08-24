@@ -90,8 +90,8 @@ class DefaultContentSeeder extends Seeder
         CompanyTeaserItem::insert([
             'teaser_id' => 1,
             'type' => TeaserType::Default,
-            'title' => 'Hotel Express website',
-            'text' => '<p>www.hotelexpressonline.com</p>',
+            'title' => 'Hotel website',
+            'text' => '<p>www.example.com</p>',
             'created_at' => Carbon::now()
         ]);
 

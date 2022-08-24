@@ -16,7 +16,6 @@ class DistributorUserSeeder extends Seeder
      */
     public function run()
     {
-
         if (($open = fopen(storage_path('app/seed') . "/users.csv", "r")) !== false) {
             while (($data = fgetcsv($open, 0, ',')) !== false) {
 

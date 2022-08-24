@@ -85,7 +85,7 @@ return [
     'templation' => [
         'title' => [
             'modify' => true,
-            'prefix' => env('ADMIN_TITLE_PREFIX', 'HEI BackOffice'),
+            'prefix' => env('ADMIN_TITLE_PREFIX', 'Backoffice'),
             'separator' => env('ADMIN_TITLE_SEPARATOR', '-')
         ],
         'footer' => [

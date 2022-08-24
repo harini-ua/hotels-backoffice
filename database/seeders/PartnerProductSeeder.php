@@ -15,8 +15,6 @@ class PartnerProductSeeder extends Seeder
      */
     public function run()
     {
-        //SELECT p.*, c.id as currency_id FROM partner_product p INNER JOIN tblcurrencyname c ON c.currencyname = p.currency
-
         $partner_products = [];
 
         if (($open = fopen(storage_path('app/seed') . "/partner_products.csv", "r")) !== false) {

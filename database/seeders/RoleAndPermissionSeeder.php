@@ -41,7 +41,7 @@ class RoleAndPermissionSeeder extends Seeder
                 'lastname' => 'Lastname',
                 'email' => 'admin@example.com',
                 'password' => \Hash::make('123321'),
-                'company_name' => 'Hotel Express',
+                'company_name' => 'Hotel',
                 'status' => 1
             ]);
 

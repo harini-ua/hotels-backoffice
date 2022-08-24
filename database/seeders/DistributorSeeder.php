@@ -17,7 +17,6 @@ class DistributorSeeder extends Seeder
     {
         $distributors = [];
 
-
         if (($open = fopen(storage_path('app/seed') . "/distributors.csv", "r")) !== false) {
             while (($data = fgetcsv($open, 0, ',')) !== false) {
                 $distributors[] = [

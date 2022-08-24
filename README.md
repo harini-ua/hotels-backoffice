@@ -1,4 +1,4 @@
-# HEI - Hotel Express International (Laravel)
+# Hotel Backoffice (Laravel)
 
 ## Requirements
 - node.js - 12.19.0
@@ -8,7 +8,7 @@
 
 ## Installation
 ```bash
-git clone git@github.com:hotelexpress/heilaravel.git .  
+git clone ...  
 composer install
 npm install
 npm run dev

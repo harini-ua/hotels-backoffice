@@ -18,22 +18,6 @@ class CompanySeeder extends Seeder
         $companies = [];
         $company_user = [];
 
-//for companies.csv
-//SELECT w.whtid, c.id as country_id, hc.id as city_id, l.langid as lang_id, w.wht_name, w.company_name, w.category,
-// w.address, w.email, w.mobile, w.status, w.clientlevel, w.vat, w.newsletter, w.comments,
-// (IF(w.wht_cht_id != '0', 1 + (SELECT COUNT(*) FROM tblaccesscodes ac WHERE ac.whtid = w.whtid),
-// (SELECT COUNT(*) FROM tblaccesscodes ac WHERE ac.whtid = w.whtid))) as access_codes_count_total, w.hei as admin_id, w.sub_white_labels
-// FROM white_profile_details w
-// LEFT JOIN hei_country c ON w.country = c.country
-// LEFT JOIN hei_city hc ON w.city = hc.city AND w.country = hc.country_name
-// lEFT JOIN ml_tbl_language l ON w.language = l.langname
-// LEFT JOIN login lg ON lg.usertypeid = w.whtid AND lg.usertype = 'whitelabel'
-// WHERE hc.id IN(3629,14229,14314,23474,73417,23,8234,14851,74412,74583,11643,22242,29796,36967,72407,2792,20613,20771,20823,20473,21366,26365,68218,74445,3584,25732,33910,74559,76081)
-// ORDER BY `lang_id` ASC
-
-//for company_user.csv
-//SELECT w.whtid, l.id as user_id FROM white_profile_details w LEFT JOIN login l ON w.whtid = l.usertypeid  WHERE l.usertype = 'whitelabel'
-
         if (($company_user_data = fopen(storage_path('app/seed') . "/company_user.csv", "r")) !== false) {
             while (($data_users = fgetcsv($company_user_data, 0, ',')) !== false) {
                 $company_user[$data_users[0]] = $data_users[1];
